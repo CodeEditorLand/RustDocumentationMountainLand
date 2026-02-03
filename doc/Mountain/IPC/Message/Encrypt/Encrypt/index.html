@@ -1,0 +1,79 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Encrypt"><title>Mountain::IPC::Message::Encrypt::Encrypt - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../../../" data-static-root-path="../../../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module Encrypt</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Encrypt</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#encrypt" title="Encrypt">Encrypt</a><ul><li><a href="#file-ipcmessageencryptencryptrs" title="File: IPC/Message/Encrypt/Encrypt.rs">File: IPC/Message/Encrypt/Encrypt.rs</a></li><li><a href="#role-in-mountain-architecture" title="Role in Mountain Architecture">Role in Mountain Architecture</a></li><li><a href="#primary-responsibility" title="Primary Responsibility">Primary Responsibility</a></li><li><a href="#secondary-responsibilities" title="Secondary Responsibilities">Secondary Responsibilities</a></li><li><a href="#dependencies" title="Dependencies">Dependencies</a></li><li><a href="#dependents" title="Dependents">Dependents</a></li><li><a href="#vscode-pattern-reference" title="VSCode Pattern Reference">VSCode Pattern Reference</a></li><li><a href="#security-considerations" title="Security Considerations">Security Considerations</a></li><li><a href="#performance-considerations" title="Performance Considerations">Performance Considerations</a></li><li><a href="#error-handling-strategy" title="Error Handling Strategy">Error Handling Strategy</a></li><li><a href="#thread-safety" title="Thread Safety">Thread Safety</a></li><li><a href="#todo-items" title="TODO Items">TODO Items</a></li></ul></li></ul><h3><a href="#structs">Module Items</a></h3><ul class="block"><li><a href="#structs" title="Structs">Structs</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>IPC::<wbr>Message::<wbr>Encrypt</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../../../index.html">Mountain</a>::<wbr><a href="../../../index.html">IPC</a>::<wbr><a href="../../index.html">Message</a>::<wbr><a href="../index.html">Encrypt</a></div><h1>Module <span>Encrypt</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../../../src/Mountain/IPC/Message/Encrypt/Encrypt.rs.html#1-364">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="encrypt"><a class="doc-anchor" href="#encrypt">§</a>Encrypt</h2><h3 id="file-ipcmessageencryptencryptrs"><a class="doc-anchor" href="#file-ipcmessageencryptencryptrs">§</a>File: IPC/Message/Encrypt/Encrypt.rs</h3><h3 id="role-in-mountain-architecture"><a class="doc-anchor" href="#role-in-mountain-architecture">§</a>Role in Mountain Architecture</h3>
+<p>Provides AES-256-GCM encryption and HMAC message authentication for IPC
+communication, ensuring sensitive data remains secure between Mountain
+backend and Wind frontend.</p>
+<h3 id="primary-responsibility"><a class="doc-anchor" href="#primary-responsibility">§</a>Primary Responsibility</h3>
+<p>Encrypt and decrypt IPC messages using AES-256-GCM for confidentiality
+and HMAC-SHA256 for message authentication and integrity verification.</p>
+<h3 id="secondary-responsibilities"><a class="doc-anchor" href="#secondary-responsibilities">§</a>Secondary Responsibilities</h3>
+<ul>
+<li>Generate and manage encryption keys securely</li>
+<li>Generate unique nonces for each encryption operation</li>
+<li>Verify HMAC signatures to ensure message integrity</li>
+<li>Support key rotation for long-term security</li>
+</ul>
+<h3 id="dependencies"><a class="doc-anchor" href="#dependencies">§</a>Dependencies</h3>
+<p><strong>External Crates:</strong></p>
+<ul>
+<li><code>ring</code> (crypto) - AES-256-GCM and HMAC-SHA256 implementations</li>
+<li><code>base64</code> - Binary-to-text encoding for transport</li>
+<li><code>serde</code> - Serialization</li>
+</ul>
+<p><strong>Internal Modules:</strong></p>
+<ul>
+<li><code>DefineMessage::TauriIPCMessage</code> - Message type to encrypt/decrypt</li>
+</ul>
+<h3 id="dependents"><a class="doc-anchor" href="#dependents">§</a>Dependents</h3>
+<ul>
+<li><code>TauriIPCServer</code> - Uses encryption for sensitive messages</li>
+<li><code>Send</code> - Encrypts outgoing messages when security is required</li>
+<li><code>Receive</code> - Decrypts incoming encrypted messages</li>
+</ul>
+<h3 id="vscode-pattern-reference"><a class="doc-anchor" href="#vscode-pattern-reference">§</a>VSCode Pattern Reference</h3>
+<p>Based on VSCode’s secure IPC patterns in
+<code>vs/base/parts/ipc/electron-main/ipcMain.ts</code></p>
+<ul>
+<li>AEAD mode for authenticated encryption</li>
+<li>Per-message nonces for security</li>
+<li>HMAC for additional integrity verification</li>
+</ul>
+<h3 id="security-considerations"><a class="doc-anchor" href="#security-considerations">§</a>Security Considerations</h3>
+<ul>
+<li>AES-256-GCM provides authenticated encryption (confidentiality +
+integrity)</li>
+<li>HMAC-SHA256 adds verification layer</li>
+<li>Unique nonces prevent replay attacks</li>
+<li>Keys generated with SystemRandom (cryptographically secure)</li>
+<li>Key rotation supported for long-term security</li>
+<li>Memory zeroing on potential sensitive data</li>
+</ul>
+<h3 id="performance-considerations"><a class="doc-anchor" href="#performance-considerations">§</a>Performance Considerations</h3>
+<ul>
+<li>AES-GCM is hardware-accelerated on modern CPUs</li>
+<li>Keys kept in memory for fast access</li>
+<li>Nonces generated quickly (12 bytes)</li>
+<li>Encryption overhead: ~16 bytes for auth tag + 12 bytes nonce</li>
+</ul>
+<h3 id="error-handling-strategy"><a class="doc-anchor" href="#error-handling-strategy">§</a>Error Handling Strategy</h3>
+<ul>
+<li>All cryptographic operations return Result for explicit handling</li>
+<li>Failed HMAC verification rejects message immediately</li>
+<li>Key generation failures are fatal (cannot continue)</li>
+<li>Detailed error messages for debugging</li>
+</ul>
+<h3 id="thread-safety"><a class="doc-anchor" href="#thread-safety">§</a>Thread Safety</h3>
+<ul>
+<li>SecureMessageChannel methods read-only (self)</li>
+<li>Can be safely shared across threads via Arc</li>
+<li>No interior mutability</li>
+</ul>
+<h3 id="todo-items"><a class="doc-anchor" href="#todo-items">§</a>TODO Items</h3>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Add key derivation from system keychain</li>
+<li><input disabled="" type="checkbox"/>
+Implement automatic key rotation schedule</li>
+<li><input disabled="" type="checkbox"/>
+Add key versioning for migration support</li>
+</ul>
+</div></details><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.EncryptedMessage.html" title="struct Mountain::IPC::Message::Encrypt::Encrypt::EncryptedMessage">Encrypted<wbr>Message</a></dt><dd>Encrypted message structure containing ciphertext and authentication data</dd><dt><a class="struct" href="struct.SecureMessageChannel.html" title="struct Mountain::IPC::Message::Encrypt::Encrypt::SecureMessageChannel">Secure<wbr>Message<wbr>Channel</a></dt><dd>Secure message channel with encryption and authentication</dd></dl></section></div></main></body></html>

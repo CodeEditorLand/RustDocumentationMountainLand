@@ -1,4 +1,63 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="SynchronizationProvider Implementation"><title>Mountain::Environment::SynchronizationProvider - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module SynchronizationProvider</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Synchronization<wbr>Provider</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#synchronizationprovider-implementation" title="SynchronizationProvider Implementation">SynchronizationProvider Implementation</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Environment</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Environment</a></div><h1>Module <span>Synchronization<wbr>Provider</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Environment/SynchronizationProvider.rs.html#1-32">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="synchronizationprovider-implementation"><a class="doc-anchor" href="#synchronizationprovider-implementation">§</a>SynchronizationProvider Implementation</h2>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="SynchronizationProvider Implementation"><title>Mountain::Environment::SynchronizationProvider - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module SynchronizationProvider</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Synchronization<wbr>Provider</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#synchronizationprovider-implementation" title="SynchronizationProvider Implementation">SynchronizationProvider Implementation</a><ul><li><a href="#sync-architecture" title="Sync Architecture">Sync Architecture</a></li><li><a href="#conflict-resolution" title="Conflict Resolution">Conflict Resolution</a></li><li><a href="#todo-implementation-status" title="TODO: Implementation Status">TODO: Implementation Status</a></li></ul></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Environment</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Environment</a></div><h1>Module <span>Synchronization<wbr>Provider</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Environment/SynchronizationProvider.rs.html#49-129">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="synchronizationprovider-implementation"><a class="doc-anchor" href="#synchronizationprovider-implementation">§</a>SynchronizationProvider Implementation</h2>
 <p>Implements the <code>SynchronizationProvider</code> trait for the
 <code>MountainEnvironment</code>. This is currently a stub implementation.</p>
+<h3 id="sync-architecture"><a class="doc-anchor" href="#sync-architecture">§</a>Sync Architecture</h3>
+<p>The synchronization provider follows a two-way sync pattern:</p>
+<ol>
+<li><strong>PushUserData</strong>: Upload local data to remote
+<ul>
+<li>Upload settings, keybindings, snippets, extensions</li>
+<li>Handle conflicts by comparing versions</li>
+<li>Update local state after successful push</li>
+<li>Queue push operations when offline</li>
+</ul>
+</li>
+<li><strong>PullUserData</strong>: Download remote data to local
+<ul>
+<li>Download latest data from remote server</li>
+<li>Apply changes to local configuration</li>
+<li>Handle conflicts by comparing timestamps/versions</li>
+<li>Notify UI of sync completion</li>
+</ul>
+</li>
+</ol>
+<h3 id="conflict-resolution"><a class="doc-anchor" href="#conflict-resolution">§</a>Conflict Resolution</h3>
+<p>Strategies for sync conflicts:</p>
+<ul>
+<li><strong>Latest Wins</strong>: Use the most recently modified version</li>
+<li><strong>Local Wins</strong>: Give preference to local changes</li>
+<li><strong>Remote Wins</strong>: Give preference to remote changes</li>
+<li><strong>Manual Resolution</strong>: Prompt user to choose</li>
+<li><strong>Merge</strong>: Attempt to merge conflicting changes</li>
+</ul>
+<h3 id="todo-implementation-status"><a class="doc-anchor" href="#todo-implementation-status">§</a>TODO: Implementation Status</h3>
+<p>Current state: Stub implementation</p>
+<p>Required features:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Sync service client (e.g., Firebase, Supabase)</li>
+<li><input disabled="" type="checkbox"/>
+Authentication provider integration</li>
+<li><input disabled="" type="checkbox"/>
+Data serialization/deserialization</li>
+<li><input disabled="" type="checkbox"/>
+Conflict detection and resolution</li>
+<li><input disabled="" type="checkbox"/>
+Offline queue management</li>
+<li><input disabled="" type="checkbox"/>
+Retry logic with exponential backoff</li>
+<li><input disabled="" type="checkbox"/>
+Progress tracking and notifications</li>
+<li><input disabled="" type="checkbox"/>
+Versioning support</li>
+<li><input disabled="" type="checkbox"/>
+Encryption for sensitive data
+Data types to sync:</li>
+<li>User settings (global storage)</li>
+<li>Keybindings configuration</li>
+<li>Workspaces configuration</li>
+<li>Extensions list and settings</li>
+<li>Code snippets</li>
+<li>UI layout and theme preferences</li>
+</ul>
 </div></details></section></div></main></body></html>

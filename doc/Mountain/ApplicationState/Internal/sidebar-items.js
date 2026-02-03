@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["AnalyzeTextLinesAndEOL","LoadInitialMementoFromDisk","ResolveMementoStorageFilePath","ScanAndPopulateExtensions"],"mod":["URLSerializationHelper"]};
+window.SIDEBAR_ITEMS = {"fn":["AnalyzeTextLinesAndEOL","LoadInitialMementoFromDisk","LoadMementoWithRecovery","ResolveMementoStorageFilePath","ScanAndPopulateExtensions","ScanExtensionsWithRecovery"],"mod":["RecoveryUtilities","URLSerializationHelper"]};

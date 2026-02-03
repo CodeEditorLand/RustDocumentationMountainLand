@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["GetResolvedKeybinding"]};
+window.SIDEBAR_ITEMS = {"fn":["CheckKeybindingConflicts","GetResolvedKeybinding","GetUserKeybindings","RegisterExtensionKeybindings","UnregisterExtensionKeybindings"]};

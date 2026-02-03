@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["ApplicationState","Binary","Command","Environment","ExtensionManagement","FileSystem","ProcessManagement","RunTime","Track","Vine","WorkSpace"]};
+window.SIDEBAR_ITEMS = {"macro":["TraceStep"],"mod":["Air","ApplicationState","Binary","Command","Environment","ExtensionManagement","FileSystem","IPC","ProcessManagement","RunTime","Track","Vine","Workspace"]};

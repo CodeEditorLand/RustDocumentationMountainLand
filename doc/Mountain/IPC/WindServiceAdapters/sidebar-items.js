@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":["FileToDiff","FileToOpenOrCreate","FilesToWait","Logger","OsInfo","Profiles","WindConfigurationService","WindDesktopConfiguration","WindEnvironmentService","WindFileService","WindServiceAdapter","WindStorageService"]};

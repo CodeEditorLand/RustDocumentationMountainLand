@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["ApplyUpdate","AuthenticateUser","CheckForUpdates","DownloadFile","DownloadUpdate","GetAirMetrics","GetAirStatus","IndexFiles","SearchFiles","register_wind_air_commands"],"struct":["AirClientWrapper","AirMetricsDTO","AirServiceStatusDTO","AuthResponseDTO","DownloadResultDTO","FileResultDTO","IndexResultDTO","SearchResultsDTO","UpdateInfoDTO"]};

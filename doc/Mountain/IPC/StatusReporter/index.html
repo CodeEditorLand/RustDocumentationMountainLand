@@ -1,0 +1,181 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Status Reporter - IPC Monitoring &#38; Health Checking"><title>Mountain::IPC::StatusReporter - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module StatusReporter</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Status<wbr>Reporter</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#status-reporter---ipc-monitoring--health-checking" title="Status Reporter - IPC Monitoring &#38; Health Checking">Status Reporter - IPC Monitoring &amp; Health Checking</a></li></ul><h3><a href="#structs">Module Items</a></h3><ul class="block"><li><a href="#structs" title="Structs">Structs</a></li><li><a href="#enums" title="Enums">Enums</a></li><li><a href="#functions" title="Functions">Functions</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>IPC</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">IPC</a></div><h1>Module <span>Status<wbr>Reporter</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/IPC/StatusReporter.rs.html#1-1242">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="status-reporter---ipc-monitoring--health-checking"><a class="doc-anchor" href="#status-reporter---ipc-monitoring--health-checking">§</a>Status Reporter - IPC Monitoring &amp; Health Checking</h2>
+<p><strong>File Responsibilities:</strong>
+This module provides comprehensive monitoring and health checking for the
+IPC layer. It reports Mountain’s IPC status to Sky (the monitoring system)
+and enables real-time observability of the Wind-Mountain communication
+bridge.</p>
+<p><strong>Architectural Role in Wind-Mountain Connection:</strong></p>
+<p>The StatusReporter is the observability layer that provides:</p>
+<ol>
+<li><strong>Real-time Monitoring:</strong> Continuous tracking of IPC health and
+performance</li>
+<li><strong>Performance Metrics:</strong> Collection of latency, throughput, and resource
+usage data</li>
+<li><strong>Health Scoring:</strong> Automated health assessments with alerting</li>
+<li><strong>Service Discovery:</strong> Automatic detection and monitoring of Mountain
+services</li>
+<li><strong>Incident Response:</strong> Automatic recovery attempts for degraded states</li>
+</ol>
+<p><strong>Monitoring Architecture (Microsoft-Inspired):</strong></p>
+<p>This module follows Microsoft’s monitoring and observability patterns:</p>
+<p><strong>1. Three-Pillar Monitoring:</strong></p>
+<ul>
+<li><strong>Telemetry:</strong> Collect and send metrics to Sky</li>
+<li><strong>Health Checks:</strong> Periodic health assessments</li>
+<li><strong>Logging:</strong> Detailed operation and error logging</li>
+</ul>
+<p><strong>2. Metric Categories:</strong></p>
+<ul>
+<li><strong>Availability:</strong> Connection uptime, service status</li>
+<li><strong>Performance:</strong> Latency, throughput, response times</li>
+<li><strong>Reliability:</strong> Error rates, success rates, retry counts</li>
+<li><strong>Capacity:</strong> Resource usage, connection pool utilization</li>
+</ul>
+<p><strong>3. Health Scoring Algorithm:</strong></p>
+<ul>
+<li>Start with perfect health (100%)</li>
+<li>Deduct points for detected issues:
+<ul>
+<li>Connection loss: -25%</li>
+<li>Queue overflow: -15%</li>
+<li>High latency (&gt;100ms): -20%</li>
+<li>Security violations: -30%</li>
+</ul>
+</li>
+<li>Alert when score &lt; 70%</li>
+<li>Critical when score &lt; 50%</li>
+</ul>
+<p><strong>Key Structures:</strong></p>
+<p><strong>ComprehensiveStatusReport:</strong>
+Combines all monitoring data into a single report:</p>
+<ul>
+<li>Basic status (connection, queue, errors)</li>
+<li>Performance metrics (latency, throughput, compression)</li>
+<li>Health status (score, issues, recovery attempts)</li>
+<li>Timestamp for correlation</li>
+</ul>
+<p><strong>PerformanceMetrics:</strong>
+Real-time performance data:</p>
+<ul>
+<li>Messages per second (throughput)</li>
+<li>Average and peak latency (performance)</li>
+<li>Compression ratio (efficiency)</li>
+<li>Connection pool utilization (capacity)</li>
+<li>Memory and CPU usage (resources)</li>
+</ul>
+<p><strong>HealthMonitor:</strong>
+Health state tracking:</p>
+<ul>
+<li>Overall health score (0-100)</li>
+<li>Detected issues with severity levels</li>
+<li>Recovery attempt counter</li>
+<li>Last health check timestamp</li>
+</ul>
+<p><strong>ServiceInfo:</strong>
+Individual service status:</p>
+<ul>
+<li>Service name and version</li>
+<li>Current status (Running/Degraded/Stopped/Error)</li>
+<li>Uptime and last heartbeat</li>
+<li>Dependencies for impact analysis</li>
+<li>Performance metrics per service</li>
+<li>Network endpoint information</li>
+</ul>
+<p><strong>ServiceRegistry:</strong>
+Service discovery registry:</p>
+<ul>
+<li>All discovered services</li>
+<li>Last discovery timestamp</li>
+<li>Configurable discovery interval</li>
+</ul>
+<p><strong>Health Issue Types:</strong></p>
+<ul>
+<li><code>HighLatency</code>: Response time exceeds threshold</li>
+<li><code>MemoryPressure</code>: High memory usage</li>
+<li><code>ConnectionLoss</code>: IPC connection failure</li>
+<li><code>QueueOverflow</code>: Message queue capacity exceeded</li>
+<li><code>SecurityViolation</code>: Unauthorized access or suspicious activity</li>
+<li><code>PerformanceDegradation</code>: General performance decline</li>
+</ul>
+<p><strong>Severity Levels:</strong></p>
+<ul>
+<li><code>Low</code>: Informational, no action needed</li>
+<li><code>Medium</code>: Monitor closely, may need attention</li>
+<li><code>High</code>: Requires investigation and action</li>
+<li><code>Critical</code>: Immediate attention required</li>
+</ul>
+<p><strong>Reporting to Sky:</strong></p>
+<p>StatusReporter emits events that Sky listens to:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code>StatusReporter
+  |
+  | emit(<span class="string">"ipc-status-report"</span>)
+  v
+Sky (Monitoring System)
+  |
+  | Collects metrics
+  | Runs analytics
+  | Triggers alerts
+  | Displays dashboards</code></pre></div>
+<p><strong>Tauri Commands:</strong></p>
+<p>The module provides Tauri commands for external monitoring:</p>
+<ul>
+<li><code>mountain_get_ipc_status</code> - Get current status</li>
+<li><code>mountain_get_ipc_status_history</code> - Get historical status</li>
+<li><code>mountain_start_ipc_status_reporting</code> - Enable periodic reporting</li>
+<li><code>mountain_get_performance_metrics</code> - Get performance data</li>
+<li><code>mountain_get_health_status</code> - Get health status</li>
+<li><code>mountain_perform_health_check</code> - Trigger health check</li>
+<li><code>mountain_attempt_recovery</code> - Attempt automatic recovery</li>
+<li><code>mountain_get_service_registry</code> - Get all services</li>
+<li><code>mountain_get_service_info</code> - Get specific service info</li>
+<li><code>mountain_discover_services</code> - Trigger service discovery</li>
+<li><code>mountain_get_comprehensive_status</code> - Get complete report</li>
+</ul>
+<p><strong>Service Discovery:</strong></p>
+<p>Automatically discovers Mountain services:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// Core services always discovered
+</span><span class="kw">let </span>core_services = <span class="macro">vec!</span>[
+	(<span class="string">"EditorService"</span>, <span class="string">"1.0.0"</span>, Running),
+	(<span class="string">"ExtensionHostService"</span>, <span class="string">"1.0.0"</span>, Running),
+	(<span class="string">"ConfigurationService"</span>, <span class="string">"1.0.0"</span>, Running),
+	(<span class="string">"FileService"</span>, <span class="string">"1.0.0"</span>, Running),
+	(<span class="string">"StorageService"</span>, <span class="string">"1.0.0"</span>, Running),
+];</code></pre></div>
+<p><strong>Automatic Recovery:</strong></p>
+<p>When health score drops below threshold:</p>
+<ol>
+<li>Dispose current IPC server</li>
+<li>Reinitialize IPC server</li>
+<li>Clear error counters</li>
+<li>Log recovery attempt</li>
+<li>Return to normal operation</li>
+</ol>
+<p><strong>Performance Calculations:</strong></p>
+<p><strong>Message Rate:</strong></p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code>messages_per_second = total_messages / time_span_seconds </code></pre></div>
+<p><strong>Average Latency:</strong></p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code>average_latency_ms = sum(latencies) / message_count </code></pre></div>
+<p><strong>Metric Collection Strategy:</strong></p>
+<ol>
+<li><strong>Continuous Collection:</strong> Background tasks collect metrics constantly</li>
+<li><strong>Sliding Window:</strong> Calculate metrics over recent time window (5-10
+samples)</li>
+<li><strong>Periodic Reporting:</strong> Emit to Sky at configured interval (default: 30s)</li>
+<li><strong>Event-Driven:</strong> Emit immediately for critical events</li>
+</ol>
+<p><strong>Health Check Process:</strong></p>
+<p>Every 30 seconds:</p>
+<ol>
+<li>Check IPC connection status</li>
+<li>Check message queue size</li>
+<li>Check performance metrics</li>
+<li>Update health score</li>
+<li>Emit health status event</li>
+<li>Trigger alerts if needed</li>
+</ol>
+</div></details><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.ComprehensiveStatusReport.html" title="struct Mountain::IPC::StatusReporter::ComprehensiveStatusReport">Comprehensive<wbr>Status<wbr>Report</a></dt><dd>Comprehensive status report combining all monitoring data</dd><dt><a class="struct" href="struct.ConnectionStatus.html" title="struct Mountain::IPC::StatusReporter::ConnectionStatus">Connection<wbr>Status</a></dt><dd>Connection status details</dd><dt><a class="struct" href="struct.HealthIssue.html" title="struct Mountain::IPC::StatusReporter::HealthIssue">Health<wbr>Issue</a></dt><dt><a class="struct" href="struct.HealthMonitor.html" title="struct Mountain::IPC::StatusReporter::HealthMonitor">Health<wbr>Monitor</a></dt><dd>Health monitoring system</dd><dt><a class="struct" href="struct.IPCStatusReport.html" title="struct Mountain::IPC::StatusReporter::IPCStatusReport">IPCStatus<wbr>Report</a></dt><dd>IPC status information for Sky monitoring</dd><dt><a class="struct" href="struct.MessageStats.html" title="struct Mountain::IPC::StatusReporter::MessageStats">Message<wbr>Stats</a></dt><dd>Message statistics</dd><dt><a class="struct" href="struct.PerformanceMetrics.html" title="struct Mountain::IPC::StatusReporter::PerformanceMetrics">Performance<wbr>Metrics</a></dt><dd>Advanced performance metrics</dd><dt><a class="struct" href="struct.ServiceInfo.html" title="struct Mountain::IPC::StatusReporter::ServiceInfo">Service<wbr>Info</a></dt><dd>Service discovery information</dd><dt><a class="struct" href="struct.ServiceMetrics.html" title="struct Mountain::IPC::StatusReporter::ServiceMetrics">Service<wbr>Metrics</a></dt><dd>Service metrics</dd><dt><a class="struct" href="struct.ServiceRegistry.html" title="struct Mountain::IPC::StatusReporter::ServiceRegistry">Service<wbr>Registry</a></dt><dd>Service discovery registry</dd><dt><a class="struct" href="struct.StatusReporter.html" title="struct Mountain::IPC::StatusReporter::StatusReporter">Status<wbr>Reporter</a></dt><dd>Status reporter for IPC communication</dd></dl><h2 id="enums" class="section-header">Enums<a href="#enums" class="anchor">§</a></h2><dl class="item-table"><dt><a class="enum" href="enum.HealthIssueType.html" title="enum Mountain::IPC::StatusReporter::HealthIssueType">Health<wbr>Issue<wbr>Type</a></dt><dt><a class="enum" href="enum.ServiceStatus.html" title="enum Mountain::IPC::StatusReporter::ServiceStatus">Service<wbr>Status</a></dt><dd>Service status</dd><dt><a class="enum" href="enum.SeverityLevel.html" title="enum Mountain::IPC::StatusReporter::SeverityLevel">Severity<wbr>Level</a></dt></dl><h2 id="functions" class="section-header">Functions<a href="#functions" class="anchor">§</a></h2><dl class="item-table"><dt><a class="fn" href="fn.initialize_status_reporter.html" title="fn Mountain::IPC::StatusReporter::initialize_status_reporter">initialize_<wbr>status_<wbr>reporter</a></dt><dd>Initialize status reporter in Mountain’s setup</dd><dt><a class="fn" href="fn.mountain_attempt_recovery.html" title="fn Mountain::IPC::StatusReporter::mountain_attempt_recovery">mountain_<wbr>attempt_<wbr>recovery</a></dt><dd>Tauri command to attempt recovery</dd><dt><a class="fn" href="fn.mountain_discover_services.html" title="fn Mountain::IPC::StatusReporter::mountain_discover_services">mountain_<wbr>discover_<wbr>services</a></dt><dd>Tauri command to discover services</dd><dt><a class="fn" href="fn.mountain_get_comprehensive_status.html" title="fn Mountain::IPC::StatusReporter::mountain_get_comprehensive_status">mountain_<wbr>get_<wbr>comprehensive_<wbr>status</a></dt><dd>Tauri command to get comprehensive status report</dd><dt><a class="fn" href="fn.mountain_get_health_status.html" title="fn Mountain::IPC::StatusReporter::mountain_get_health_status">mountain_<wbr>get_<wbr>health_<wbr>status</a></dt><dd>Tauri command to get health status</dd><dt><a class="fn" href="fn.mountain_get_ipc_status.html" title="fn Mountain::IPC::StatusReporter::mountain_get_ipc_status">mountain_<wbr>get_<wbr>ipc_<wbr>status</a></dt><dd>Tauri command to get current IPC status</dd><dt><a class="fn" href="fn.mountain_get_ipc_status_history.html" title="fn Mountain::IPC::StatusReporter::mountain_get_ipc_status_history">mountain_<wbr>get_<wbr>ipc_<wbr>status_<wbr>history</a></dt><dd>Tauri command to get IPC status history</dd><dt><a class="fn" href="fn.mountain_get_performance_metrics.html" title="fn Mountain::IPC::StatusReporter::mountain_get_performance_metrics">mountain_<wbr>get_<wbr>performance_<wbr>metrics</a></dt><dd>ADVANCED TAURI COMMANDS: Microsoft-inspired comprehensive monitoring
+Tauri command to get performance metrics</dd><dt><a class="fn" href="fn.mountain_get_service_info.html" title="fn Mountain::IPC::StatusReporter::mountain_get_service_info">mountain_<wbr>get_<wbr>service_<wbr>info</a></dt><dd>Tauri command to get service information</dd><dt><a class="fn" href="fn.mountain_get_service_registry.html" title="fn Mountain::IPC::StatusReporter::mountain_get_service_registry">mountain_<wbr>get_<wbr>service_<wbr>registry</a></dt><dd>Tauri command to get service registry</dd><dt><a class="fn" href="fn.mountain_perform_health_check.html" title="fn Mountain::IPC::StatusReporter::mountain_perform_health_check">mountain_<wbr>perform_<wbr>health_<wbr>check</a></dt><dd>Tauri command to perform health check</dd><dt><a class="fn" href="fn.mountain_start_ipc_status_reporting.html" title="fn Mountain::IPC::StatusReporter::mountain_start_ipc_status_reporting">mountain_<wbr>start_<wbr>ipc_<wbr>status_<wbr>reporting</a></dt><dd>Tauri command to start periodic status reporting</dd><dt><a class="fn" href="fn.mountain_start_service_discovery.html" title="fn Mountain::IPC::StatusReporter::mountain_start_service_discovery">mountain_<wbr>start_<wbr>service_<wbr>discovery</a></dt><dd>Tauri command to start periodic service discovery</dd></dl></section></div></main></body></html>

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"struct":["MarkerDataDTO"]};
+window.SIDEBAR_ITEMS = {"enum":["MarkerSeverity"],"struct":["MarkerDataDTO"]};

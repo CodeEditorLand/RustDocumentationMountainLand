@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["ConnectToSideCar","SendNotification","SendRequest"]};
+window.SIDEBAR_ITEMS = {"fn":["CheckSideCarHealth","ConnectToSideCar","DisconnectFromSideCar","SendNotification","SendRequest"]};

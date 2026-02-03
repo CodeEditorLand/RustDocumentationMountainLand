@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["MapLockError"],"struct":["ApplicationState"]};
+window.SIDEBAR_ITEMS = {"fn":["MapLockError","MapLockErrorWithRecovery"],"struct":["ApplicationState","StateOperationResult"]};
