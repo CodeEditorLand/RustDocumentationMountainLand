@@ -1,1 +1,72 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `DebugProvider` mod in crate `Mountain`."><title>Mountain::Environment::DebugProvider - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module DebugProvider</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Environment</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Environment</a></div><h1>Module <span>Debug<wbr>Provider</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Environment/DebugProvider.rs.html#67-239">Source</a> </span></div></section></div></main></body></html>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="DebugProvider (Environment)"><title>Mountain::Environment::DebugProvider - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module DebugProvider</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Debug<wbr>Provider</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#debugprovider-environment" title="DebugProvider (Environment)">DebugProvider (Environment)</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Environment</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Environment</a></div><h1>Module <span>Debug<wbr>Provider</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Environment/DebugProvider.rs.html#1-234">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="debugprovider-environment"><a class="doc-anchor" href="#debugprovider-environment">§</a>DebugProvider (Environment)</h2>
+<p>RESPONSIBILITIES:</p>
+<ul>
+<li>Implements <a href="CommonLibrary::Debug::DebugService"><code>DebugService</code></a> for <a href="../MountainEnvironment/struct.MountainEnvironment.html" title="struct Mountain::Environment::MountainEnvironment::MountainEnvironment"><code>MountainEnvironment</code></a></li>
+<li>Manages complete debugging session lifecycle from configuration to termination</li>
+<li>Orchestrates between extension host (Cocoon), debug adapter, and UI</li>
+<li>Handles DAP (Debug Adapter Protocol) message mediation</li>
+</ul>
+<p>ARCHITECTURAL ROLE:</p>
+<ul>
+<li>Core provider for debugging functionality, analogous to VSCode’s debug service</li>
+<li>Uses two-stage registration: configuration providers and adapter descriptor factories</li>
+<li>Each debug type (node, java, rust) can have its own configuration and adapter</li>
+<li>Integrates with <a href="CommonLibrary::IPC::IPCProvider"><code>IPCProvider</code></a> for RPC to Cocoon</li>
+</ul>
+<p>DEBUG SESSION FLOW:</p>
+<ol>
+<li>UI calls <code>StartDebugging</code> with folder URI and configuration</li>
+<li>Mountain RPCs to Cocoon to resolve debug configuration (variable substitution)</li>
+<li>Mountain RPCs to Cocoon to create debug adapter descriptor</li>
+<li>Mountain spawns debug adapter process or connects to TCP server</li>
+<li>Mountain mediates DAP messages between UI and debug adapter</li>
+<li>UI sends DAP commands via <code>SendCommand</code> which forwards to adapter</li>
+<li>Debug adapter sends DAP events/notifications back through Mountain to UI</li>
+<li>Session ends on stop request or adapter process exit</li>
+</ol>
+<p>ERROR HANDLING:</p>
+<ul>
+<li>Uses <a href="CommonLibrary::Error::CommonError"><code>CommonError</code></a> for all operations</li>
+<li>Validates debug type is non-empty (InvalidArgument error)</li>
+<li>TODO: Implement proper session lookup, timeout handling, and error recovery</li>
+</ul>
+<p>PERFORMANCE:</p>
+<ul>
+<li>Debug adapter spawning should be async with timeout protection (5000ms in current RPC)</li>
+<li>DAP message routing needs efficient session lookup (TODO: O(1) hash map)</li>
+<li>Multiple simultaneous debug sessions require careful resource management</li>
+</ul>
+<p>VS CODE REFERENCE:</p>
+<ul>
+<li><code>vs/workbench/contrib/debug/browser/debugService.ts</code> - debug service main logic</li>
+<li><code>vs/workbench/contrib/debug/common/debug.ts</code> - debug interfaces and models</li>
+<li><code>vs/workbench/contrib/debug/browser/adapter/descriptorFactory.ts</code> - adapter descriptor factories</li>
+<li><code>vs/debugAdapter/common/debugProtocol.ts</code> - DAP protocol specification</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Store debug adapter registrations in ApplicationState</li>
+<li>Implement proper debug session tracking and management</li>
+<li>Add debug adapter process spawning and lifecycle management</li>
+<li>Implement proper DAP message routing and serialization</li>
+<li>Add debug session state persistence across UI reloads</li>
+<li>Implement debug console and variable inspection integration</li>
+<li>Add support for multiple simultaneous debug sessions</li>
+<li>Implement debug adapter termination and cleanup</li>
+<li>Add debug session metrics and telemetry</li>
+<li>Consider implementing debug configuration validation</li>
+<li>Add support for debug adapters that communicate via TCP sockets</li>
+<li>Implement debug adapter crash detection and recovery</li>
+</ul>
+<p>MODULE CONTENTS:</p>
+<ul>
+<li><a href="CommonLibrary::Debug::DebugService"><code>DebugService</code></a> implementation:
+<ul>
+<li><a href="Self::RegisterDebugConfigurationProvider"><code>RegisterDebugConfigurationProvider</code></a> - register config resolver</li>
+<li><a href="Self::RegisterDebugAdapterDescriptorFactory"><code>RegisterDebugAdapterDescriptorFactory</code></a> - register adapter factory</li>
+<li><a href="Self::StartDebugging"><code>StartDebugging</code></a> - start debug session (partial)</li>
+<li><a href="Self::SendCommand"><code>SendCommand</code></a> - send DAP command to adapter (stub)</li>
+</ul>
+</li>
+</ul>
+</div></details></section></div></main></body></html>

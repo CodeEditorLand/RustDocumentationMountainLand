@@ -1,5 +1,250 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Contains internal helper functions for the `ApplicationState` module."><title>Mountain::ApplicationState::Internal - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module Internal</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Internal</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#internal-applicationstate" title="Internal (ApplicationState)">Internal (ApplicationState)</a></li></ul><h3><a href="#modules">Module Items</a></h3><ul class="block"><li><a href="#modules" title="Modules">Modules</a></li><li><a href="#functions" title="Functions">Functions</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Application<wbr>State</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">ApplicationState</a></div><h1>Module <span>Internal</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/ApplicationState/Internal.rs.html#234-613">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Contains internal helper functions for the <code>ApplicationState</code> module.</p>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Contains internal helper functions for the `ApplicationState` module."><title>Mountain::ApplicationState::Internal - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module Internal</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Internal</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#internal-applicationstate" title="Internal (ApplicationState)">Internal (ApplicationState)</a><ul><li><a href="#responsibilities" title="RESPONSIBILITIES">RESPONSIBILITIES</a></li><li><a href="#architectural-role" title="ARCHITECTURAL ROLE">ARCHITECTURAL ROLE</a></li><li><a href="#vs-code-reference" title="VS CODE REFERENCE">VS CODE REFERENCE</a></li><li><a href="#key-functions-by-category" title="KEY FUNCTIONS BY CATEGORY">KEY FUNCTIONS BY CATEGORY</a></li><li><a href="#error-handling" title="ERROR HANDLING">ERROR HANDLING</a></li><li><a href="#extension-scanning-flow" title="EXTENSION SCANNING FLOW">EXTENSION SCANNING FLOW</a></li><li><a href="#memento-file-structure" title="MEMENTO FILE STRUCTURE">MEMENTO FILE STRUCTURE</a></li><li><a href="#todos" title="TODOS">TODOS</a></li></ul></li><li><a href="#internal-applicationstate-1" title="Internal (ApplicationState)">Internal (ApplicationState)</a></li></ul><h3><a href="#modules">Module Items</a></h3><ul class="block"><li><a href="#modules" title="Modules">Modules</a></li><li><a href="#functions" title="Functions">Functions</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Application<wbr>State</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">ApplicationState</a></div><h1>Module <span>Internal</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/ApplicationState/Internal.rs.html#1-830">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Contains internal helper functions for the <code>ApplicationState</code> module.</p>
 <h2 id="internal-applicationstate"><a class="doc-anchor" href="#internal-applicationstate">§</a>Internal (ApplicationState)</h2>
+<p>Contains internal helper functions for the <code>ApplicationState</code> module,
+handling tasks like file I/O, path resolution, and serialization that are
+not part of the public API of the state itself.</p>
+<h3 id="responsibilities"><a class="doc-anchor" href="#responsibilities">§</a>RESPONSIBILITIES</h3><h4 id="1-file-io-and-persistence"><a class="doc-anchor" href="#1-file-io-and-persistence">§</a>1. File I/O and Persistence</h4>
+<ul>
+<li>Handle all file system operations for state persistence</li>
+<li>Load memento state from disk on startup</li>
+<li>Write state to disk for crash recovery</li>
+<li>Handle corrupted state files gracefully</li>
+</ul>
+<h4 id="2-path-resolution"><a class="doc-anchor" href="#2-path-resolution">§</a>2. Path Resolution</h4>
+<ul>
+<li>Resolve paths to memento storage files</li>
+<li>Generate filesystem-safe identifiers</li>
+<li>Handle workspace-specific path resolution</li>
+<li>Create directory structures as needed</li>
+</ul>
+<h4 id="3-serialization-and-deserialization"><a class="doc-anchor" href="#3-serialization-and-deserialization">§</a>3. Serialization and Deserialization</h4>
+<ul>
+<li>Handle JSON serialization/deserialization</li>
+<li>Provide URL serialization helpers</li>
+<li>Convert between Rust types and JSON</li>
+<li>Handle errors gracefully</li>
+</ul>
+<h4 id="4-state-population"><a class="doc-anchor" href="#4-state-population">§</a>4. State Population</h4>
+<ul>
+<li>Scan for extensions in registered paths</li>
+<li>Populate extension metadata</li>
+<li>Validate and filter extensions</li>
+<li>Handle scan failures gracefully</li>
+</ul>
+<h4 id="5-text-processing"><a class="doc-anchor" href="#5-text-processing">§</a>5. Text Processing</h4>
+<ul>
+<li>Analyze text content (line endings, lines)</li>
+<li>Support document state management</li>
+<li>Handle various line ending formats</li>
+</ul>
+<h4 id="6-recovery-and-validation"><a class="doc-anchor" href="#6-recovery-and-validation">§</a>6. Recovery and Validation</h4>
+<ul>
+<li>Recover from corrupted state files</li>
+<li>Validate state before loading</li>
+<li>Create backups of corrupted data</li>
+<li>Provide safe state operations</li>
+</ul>
+<h3 id="architectural-role"><a class="doc-anchor" href="#architectural-role">§</a>ARCHITECTURAL ROLE</h3>
+<p>This module provides <strong>internal utilities</strong> for ApplicationState:</p>
+<div class="example-wrap"><pre class="language-text"><code>ApplicationState (Public API) ──► Internal (Private Utilities)
+                                      │
+                                      ├── File I/O
+                                      ├── Path Resolution
+                                      ├── Serialization
+                                      ├── Extension Scanning
+                                      ├── Text Processing
+                                      └── Recovery</code></pre></div><h3 id="vs-code-reference"><a class="doc-anchor" href="#vs-code-reference">§</a>VS CODE REFERENCE</h3>
+<p>This module borrows from VS Code’s internal utilities in:</p>
+<ul>
+<li>
+<p><code>vs/base/node/pfs.ts</code> - Platform file system utilities</p>
+<ul>
+<li>File I/O with error handling</li>
+<li>Directory management</li>
+<li>Path resolution</li>
+</ul>
+</li>
+<li>
+<p><code>vs/platform/storage/common/storageService.ts</code> - Memento handling</p>
+<ul>
+<li>State serialization/deserialization</li>
+<li>Crash recovery</li>
+<li>Invalid state handling</li>
+</ul>
+</li>
+<li>
+<p><code>vs/platform/path/common/path.ts</code> - Path utilities</p>
+<ul>
+<li>Sanitization</li>
+<li>Normalization</li>
+<li>Platform-specific handling</li>
+</ul>
+</li>
+</ul>
+<p>Key patterns adopted:</p>
+<ol>
+<li><strong>Guard Clauses</strong>: Fail fast with descriptive errors</li>
+<li><strong>Recovery-Oriented</strong>: Don’t crash on corrupted data</li>
+<li><strong>Idempotent Operations</strong>: Safe to call multiple times</li>
+<li><strong>Comprehensive Logging</strong>: All operations logged</li>
+</ol>
+<h3 id="key-functions-by-category"><a class="doc-anchor" href="#key-functions-by-category">§</a>KEY FUNCTIONS BY CATEGORY</h3><h4 id="file-io-and-persistence"><a class="doc-anchor" href="#file-io-and-persistence">§</a>File I/O and Persistence</h4>
+<p><strong><code>LoadInitialMementoFromDisk(StorageFilePath)</code></strong>:</p>
+<ul>
+<li>Synchronously loads memento from JSON file</li>
+<li>Returns empty HashMap if file doesn’t exist</li>
+<li>Creates backup and returns empty on parse error</li>
+<li>Creates directory on read error</li>
+</ul>
+<p><strong><code>LoadMementoWithRecovery(StorageFilePath)</code></strong>:</p>
+<ul>
+<li>Robust memento loading with comprehensive error handling</li>
+<li>Returns Result for explicit error handling</li>
+<li>Creates timestamped backup of corrupted files</li>
+<li>Uses CommonError for consistency</li>
+</ul>
+<p><strong><code>attempt_memento_recovery(file_path, corrupted_content)</code></strong>:</p>
+<ul>
+<li>Creates backup of corrupted memento file</li>
+<li>Named with .backup extension</li>
+<li>Logs warning on success, error on failure</li>
+</ul>
+<p><strong><code>create_corrupted_backup(file_path, content)</code></strong>:</p>
+<ul>
+<li>Creates timestamped backup of corrupted file</li>
+<li>Extension format: <code>.json.corrupted.YYYYMMDD_HHMMSS</code></li>
+<li>Logs success/failure</li>
+</ul>
+<h4 id="path-resolution"><a class="doc-anchor" href="#path-resolution">§</a>Path Resolution</h4>
+<p><strong><code>ResolveMementoStorageFilePath(ApplicationDataDirectory, IsGlobalScope, WorkspaceIdentifier)</code></strong>:</p>
+<ul>
+<li>Resolves absolute path for memento file</li>
+<li>Creates <code>{AppData}/User/globalStorage.json</code> for global</li>
+<li>Creates <code>{AppData}/User/workspaceStorage/{id}/storage.json</code> for workspace</li>
+<li>Sanitizes workspace identifier (alphanumeric, hyphens, underscores only)</li>
+</ul>
+<h4 id="extension-management"><a class="doc-anchor" href="#extension-management">§</a>Extension Management</h4>
+<p><strong><code>ScanAndPopulateExtensions(ApplicationHandle, State)</code></strong>:</p>
+<ul>
+<li>Scans all registered extension paths</li>
+<li>Populates state with discovered extensions</li>
+<li>Returns comprehensive scan statistics</li>
+<li>Handles partial failures gracefully</li>
+</ul>
+<p><strong><code>ScanExtensionsWithRecovery(ApplicationHandle, State)</code></strong>:</p>
+<ul>
+<li>Robust extension scanning with recovery</li>
+<li>Clears potentially corrupted state first</li>
+<li>Retries once on failure</li>
+<li>Comprehensive error logging</li>
+</ul>
+<h4 id="text-processing"><a class="doc-anchor" href="#text-processing">§</a>Text Processing</h4>
+<p><strong><code>AnalyzeTextLinesAndEOL(TextContent)</code></strong>:</p>
+<ul>
+<li>Detects line ending type (CRLF or LF)</li>
+<li>Splits text into lines vector</li>
+<li>Returns (lines, detected_eol) tuple</li>
+</ul>
+<h4 id="serialization-helpers"><a class="doc-anchor" href="#serialization-helpers">§</a>Serialization Helpers</h4>
+<p><strong><code>URLSerializationHelper</code></strong> module:</p>
+<ul>
+<li>Provides <code>serialize</code> function for Url → String</li>
+<li>Provides <code>deserialize</code> function for String → Url</li>
+<li>Handles parse errors gracefully</li>
+</ul>
+<h4 id="recovery-utilities"><a class="doc-anchor" href="#recovery-utilities">§</a>Recovery Utilities</h4>
+<p><strong><code>RecoveryUtilities</code></strong> module:</p>
+<ul>
+<li><code>validate_and_clean_state</code> - Filter state by validator function</li>
+<li><code>safe_state_operation_with_timeout</code> - Execute with timeout</li>
+<li><code>recover_state_with_backoff</code> - Retry with exponential backoff</li>
+</ul>
+<h3 id="error-handling"><a class="doc-anchor" href="#error-handling">§</a>ERROR HANDLING</h3>
+<p>All functions follow these error handling patterns:</p>
+<p><strong>Silent Failures</strong> (Internal utilities):</p>
+<ul>
+<li>Return default values (empty HashMap, empty Vec)</li>
+<li>Log warnings/errors</li>
+<li>Don’t propagate errors to caller</li>
+</ul>
+<p><strong>Explicit Errors</strong> (Public utilities):</p>
+<ul>
+<li>Return Result&lt;T, CommonError&gt;</li>
+<li>Provide detailed error context</li>
+<li>Include recovery information</li>
+</ul>
+<p><strong>Recovery Patterns</strong>:</p>
+<ol>
+<li>Create backup of corrupted data</li>
+<li>Return safe default</li>
+<li>Log for troubleshooting</li>
+<li>Attempt recovery when appropriate</li>
+</ol>
+<h3 id="extension-scanning-flow"><a class="doc-anchor" href="#extension-scanning-flow">§</a>EXTENSION SCANNING FLOW</h3><div class="example-wrap"><pre class="language-text"><code>ScanExtensionsWithRecovery()
+    ↓
+Clear potentially corrupted state
+    ↓
+ScanAndPopulateExtensions()
+    ↓
+  For each scan path:
+      ↓
+  ScanDirectoryForExtensions()
+      ↓
+  On success: Add extensions to map
+  On error: Log and continue
+    ↓
+  Update state with all found extensions
+    ↓
+  Log scan statistics
+    ↓
+  If any failed:
+      ↓
+  Attempt retry with fresh state</code></pre></div><h3 id="memento-file-structure"><a class="doc-anchor" href="#memento-file-structure">§</a>MEMENTO FILE STRUCTURE</h3>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code>{AppData}/
+├── User/
+│   ├── globalStorage.json          (Global memento)
+│   └── workspaceStorage/
+│       ├── {workspace-id-<span class="number">1</span>}/
+│       │   └── storage.json         (Workspace <span class="number">1 </span>memento)
+│       ├── {workspace-id-<span class="number">2</span>}/
+│       │   ├── storage.json
+│       │   └── storage.json.backup  (Backup <span class="kw">if </span>corrupted)
+│       └── {workspace-id-<span class="number">3</span>}/
+│           └── storage.json</code></pre></div>
+<p><strong>Backup Naming</strong>:</p>
+<ul>
+<li><code>.backup</code> on initial corruption</li>
+<li><code>.corrupted.YYYYMMDD_HHMMSS</code> for timestamped backups</li>
+</ul>
+<h3 id="todos"><a class="doc-anchor" href="#todos">§</a>TODOS</h3>
+<p>High Priority:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Add checksum validation for memento files</li>
+<li><input disabled="" type="checkbox"/>
+Implement incremental memento updates</li>
+<li><input disabled="" type="checkbox"/>
+Add memento version migration support</li>
+</ul>
+<p>Medium Priority:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Add concurrent extension scanning</li>
+<li><input disabled="" type="checkbox"/>
+Implement extension caching</li>
+<li><input disabled="" type="checkbox"/>
+Add extension validation rules</li>
+</ul>
+<p>Low Priority:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Add memento compression</li>
+<li><input disabled="" type="checkbox"/>
+Implement text encoding detection</li>
+<li><input disabled="" type="checkbox"/>
+Add file system watcher integration</li>
+</ul>
+<h2 id="internal-applicationstate-1"><a class="doc-anchor" href="#internal-applicationstate-1">§</a>Internal (ApplicationState)</h2>
 <p>Contains internal helper functions for the <code>ApplicationState</code> module,
 handling tasks like file I/O, path resolution, and serialization that are
 not part of the public API of the state itself.</p>

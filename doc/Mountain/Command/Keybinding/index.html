@@ -1,15 +1,74 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Defines the specific Tauri command handlers for Keybinding data requests that originate from the `Sky` frontend UI."><title>Mountain::Command::Keybinding - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module Keybinding</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Keybinding</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#key-features" title="Key Features:">Key Features:</a></li><li><a href="#vscode-reference" title="VSCode Reference:">VSCode Reference:</a></li></ul><h3><a href="#functions">Module Items</a></h3><ul class="block"><li><a href="#functions" title="Functions">Functions</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Command</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Command</a></div><h1>Module <span>Keybinding</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Command/Keybinding.rs.html#5-100">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Defines the specific Tauri command handlers for Keybinding data requests
-that originate from the <code>Sky</code> frontend UI.</p>
-<h3 id="key-features"><a class="doc-anchor" href="#key-features">§</a>Key Features:</h3>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Keybinding (Command)"><title>Mountain::Command::Keybinding - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module Keybinding</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Keybinding</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#keybinding-command" title="Keybinding (Command)">Keybinding (Command)</a></li></ul><h3><a href="#functions">Module Items</a></h3><ul class="block"><li><a href="#functions" title="Functions">Functions</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Command</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Command</a></div><h1>Module <span>Keybinding</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Command/Keybinding.rs.html#1-145">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="keybinding-command"><a class="doc-anchor" href="#keybinding-command">§</a>Keybinding (Command)</h2>
+<p>RESPONSIBILITIES:</p>
 <ul>
-<li>Keybinding resolution and dispatch</li>
-<li>Keybinding conflict detection</li>
-<li>User keybinding preferences</li>
-<li>Extension keybinding registration</li>
+<li>Defines Tauri command handlers for keybinding operations from Sky frontend</li>
+<li>Bridges keybinding requests to <a href="CommonLibrary::Keybinding::KeybindingProvider"><code>KeybindingProvider</code></a></li>
+<li>Handles keybinding resolution, conflict detection, and extension registration</li>
+<li>Manages user keybinding preferences and extension contributions</li>
 </ul>
-<h3 id="vscode-reference"><a class="doc-anchor" href="#vscode-reference">§</a>VSCode Reference:</h3>
+<p>ARCHITECTURAL ROLE:</p>
 <ul>
-<li>vs/workbench/services/keybinding/browser/keybindingService.ts</li>
-<li>vs/platform/keybinding/common/keybindingResolver.ts</li>
+<li>Command module exposing keybinding functionality via Tauri IPC (<code>#[command]</code>)</li>
+<li>Delegates to Environment’s <a href="../../Environment/KeybindingProvider/index.html" title="mod Mountain::Environment::KeybindingProvider"><code>KeybindingProvider</code></a>
+via DI with <code>Require()</code> trait</li>
+<li>Acts as thin façade layer; all logic resides in provider implementation</li>
+</ul>
+<p>COMMAND REFERENCE (Tauri IPC):</p>
+<ul>
+<li><a href="fn.GetResolvedKeybinding.html" title="fn Mountain::Command::Keybinding::GetResolvedKeybinding"><code>GetResolvedKeybinding</code></a>:
+Get the final resolved keybindings after merging all sources</li>
+<li><a href="fn.GetUserKeybindings.html" title="fn Mountain::Command::Keybinding::GetUserKeybindings"><code>GetUserKeybindings</code></a>:
+Retrieve user-defined keybinding overrides (stub)</li>
+<li><a href="fn.RegisterExtensionKeybindings.html" title="fn Mountain::Command::Keybinding::RegisterExtensionKeybindings"><code>RegisterExtensionKeybindings</code></a>:
+Register keybindings contributed by an extension (stub)</li>
+<li><a href="fn.UnregisterExtensionKeybindings.html" title="fn Mountain::Command::Keybinding::UnregisterExtensionKeybindings"><code>UnregisterExtensionKeybindings</code></a>:
+Remove keybindings for an extension (stub)</li>
+<li><a href="fn.CheckKeybindingConflicts.html" title="fn Mountain::Command::Keybinding::CheckKeybindingConflicts"><code>CheckKeybindingConflicts</code></a>:
+Check if a keybinding conflicts with existing ones (stub)</li>
+</ul>
+<p>ERROR HANDLING:</p>
+<ul>
+<li>Returns <code>Result&lt;Value, String&gt;</code> where errors sent to frontend</li>
+<li>Provider errors converted to strings via <code>map_err(|Error| Error.to_string())</code></li>
+<li>TODO: Implement proper conflict detection and user keybinding storage</li>
+</ul>
+<p>PERFORMANCE:</p>
+<ul>
+<li>All commands are async but currently mostly stubs</li>
+<li>Resolved keybindings query should be O(1) from cached state (TODO)</li>
+</ul>
+<p>VS CODE REFERENCE:</p>
+<ul>
+<li><code>vs/workbench/services/keybinding/browser/keybindingService.ts</code> - keybinding service</li>
+<li><code>vs/platform/keybinding/common/keybindingResolver.ts</code> - keybinding resolution algorithm</li>
+<li><code>vs/workbench/services/keybinding/common/keybinding.ts</code> - keybinding data models</li>
+<li><code>vs/workbench/common/keybindings.ts</code> - keybinding registry and conflict detection</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Implement keybinding resolution with proper weighting (user &gt; extension &gt; default)</li>
+<li>Add keybinding conflict detection across all registered bindings</li>
+<li>Persist user keybinding overrides to ApplicationState</li>
+<li>Implement extension keybinding registration/unregistration</li>
+<li>Support keybinding context conditions (when clauses)</li>
+<li>Add command argument handling in keybindings</li>
+<li>Implement chord keybindings (multi-stroke sequences)</li>
+<li>Add keybinding export/import functionality</li>
+<li>Support platform-specific keybindings (Windows, macOS, Linux)</li>
+<li>Implement keybinding search and discovery UI</li>
+<li>Add keybinding documentation tooltips</li>
+<li>Support macro recording and playback via keybindings</li>
+</ul>
+<p>MODULE CONTENTS:</p>
+<ul>
+<li>Tauri command functions (all <code>#[command] pub async fn</code>):
+<ul>
+<li><code>GetResolvedKeybinding</code> - query final resolved keybindings</li>
+<li><code>GetUserKeybindings</code> - get user overrides (stub)</li>
+<li><code>RegisterExtensionKeybindings</code> - register extension bindings (stub)</li>
+<li><code>UnregisterExtensionKeybindings</code> - unregister extension bindings (stub)</li>
+<li><code>CheckKeybindingConflicts</code> - detect conflicts (stub)</li>
+</ul>
+</li>
 </ul>
 </div></details><h2 id="functions" class="section-header">Functions<a href="#functions" class="anchor">§</a></h2><dl class="item-table"><dt><a class="fn" href="fn.CheckKeybindingConflicts.html" title="fn Mountain::Command::Keybinding::CheckKeybindingConflicts">Check<wbr>Keybinding<wbr>Conflicts</a></dt><dt><a class="fn" href="fn.GetResolvedKeybinding.html" title="fn Mountain::Command::Keybinding::GetResolvedKeybinding">GetResolved<wbr>Keybinding</a></dt><dt><a class="fn" href="fn.GetUserKeybindings.html" title="fn Mountain::Command::Keybinding::GetUserKeybindings">GetUser<wbr>Keybindings</a></dt><dt><a class="fn" href="fn.RegisterExtensionKeybindings.html" title="fn Mountain::Command::Keybinding::RegisterExtensionKeybindings">Register<wbr>Extension<wbr>Keybindings</a></dt><dt><a class="fn" href="fn.UnregisterExtensionKeybindings.html" title="fn Mountain::Command::Keybinding::UnregisterExtensionKeybindings">Unregister<wbr>Extension<wbr>Keybindings</a></dt></dl></section></div></main></body></html>

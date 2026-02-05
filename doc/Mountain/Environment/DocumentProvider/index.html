@@ -1,1 +1,174 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `DocumentProvider` mod in crate `Mountain`."><title>Mountain::Environment::DocumentProvider - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module DocumentProvider</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Document<wbr>Provider</a></h2><h3><a href="#functions">Module Items</a></h3><ul class="block"><li><a href="#functions" title="Functions">Functions</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Environment</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Environment</a></div><h1>Module <span>Document<wbr>Provider</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Environment/DocumentProvider.rs.html#104-529">Source</a> </span></div><h2 id="functions" class="section-header">Functions<a href="#functions" class="anchor">§</a></h2><dl class="item-table"><dt><a class="fn" href="fn.NotifyModelRemoved.html" title="fn Mountain::Environment::DocumentProvider::NotifyModelRemoved">Notify<wbr>Model<wbr>Removed</a></dt><dd>Notifies Cocoon that a document has been closed or renamed.</dd></dl></section></div></main></body></html>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="DocumentProvider (Environment)"><title>Mountain::Environment::DocumentProvider - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module DocumentProvider</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Document<wbr>Provider</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#documentprovider-environment" title="DocumentProvider (Environment)">DocumentProvider (Environment)</a><ul><li><a href="#responsibilities" title="RESPONSIBILITIES">RESPONSIBILITIES</a></li><li><a href="#architectural-role" title="ARCHITECTURAL ROLE">ARCHITECTURAL ROLE</a></li><li><a href="#document-open-flow" title="DOCUMENT OPEN FLOW">DOCUMENT OPEN FLOW</a></li><li><a href="#document-change-flow-lsp-style" title="DOCUMENT CHANGE FLOW (LSP-style)">DOCUMENT CHANGE FLOW (LSP-style)</a></li><li><a href="#document-save-flow" title="DOCUMENT SAVE FLOW">DOCUMENT SAVE FLOW</a></li><li><a href="#error-handling" title="ERROR HANDLING">ERROR HANDLING</a></li><li><a href="#performance" title="PERFORMANCE">PERFORMANCE</a></li><li><a href="#vs-code-reference" title="VS CODE REFERENCE">VS CODE REFERENCE</a></li><li><a href="#todo" title="TODO">TODO</a></li><li><a href="#module-contents" title="MODULE CONTENTS">MODULE CONTENTS</a></li></ul></li></ul><h3><a href="#functions">Module Items</a></h3><ul class="block"><li><a href="#functions" title="Functions">Functions</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Environment</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Environment</a></div><h1>Module <span>Document<wbr>Provider</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Environment/DocumentProvider.rs.html#1-676">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="documentprovider-environment"><a class="doc-anchor" href="#documentprovider-environment">§</a>DocumentProvider (Environment)</h2>
+<p>Implements the <code>DocumentProvider</code> trait, managing the complete lifecycle of
+document operations including opening, saving, editing, and closing. It
+maintains document state, coordinates between the frontend (Sky), extension
+host (Cocoon), and filesystem, and handles both native file URIs and custom
+scheme URIs.</p>
+<h3 id="responsibilities"><a class="doc-anchor" href="#responsibilities">§</a>RESPONSIBILITIES</h3><h4 id="1-document-state-management"><a class="doc-anchor" href="#1-document-state-management">§</a>1. Document State Management</h4>
+<ul>
+<li>Maintain all open documents in <code>ApplicationState.OpenDocuments</code></li>
+<li>Track document content, version, dirty status, and metadata</li>
+<li>Support multiple documents open simultaneously</li>
+<li>Handle document focus and activation</li>
+</ul>
+<h4 id="2-document-persistence"><a class="doc-anchor" href="#2-document-persistence">§</a>2. Document Persistence</h4>
+<ul>
+<li>Save documents to the filesystem (<code>Save</code>, <code>SaveAs</code>)</li>
+<li>Handle file I/O errors gracefully</li>
+<li>Support dirty state tracking and prompt on close</li>
+<li>Implement atomic saves to prevent data loss</li>
+</ul>
+<h4 id="3-change-tracking"><a class="doc-anchor" href="#3-change-tracking">§</a>3. Change Tracking</h4>
+<ul>
+<li>Apply incremental text edits via LSP <code>DidChangeTextDocument</code></li>
+<li>Track version identifiers for synchronization</li>
+<li>Maintain line count cache for performance</li>
+<li>Support undo/redo integration (via version history)</li>
+</ul>
+<h4 id="4-uri-scheme-support"><a class="doc-anchor" href="#4-uri-scheme-support">§</a>4. URI Scheme Support</h4>
+<ul>
+<li>Native <code>file://</code> URIs: Read/write from filesystem</li>
+<li>Custom schemes (untitled:, git:, vscode-vfs:): Via <code>TextDocumentContentProvider</code></li>
+<li>Extension-hosted documents: Request content from Cocoon</li>
+</ul>
+<h4 id="5-event-orchestration"><a class="doc-anchor" href="#5-event-orchestration">§</a>5. Event Orchestration</h4>
+<ul>
+<li>Emit events to Sky and Cocoon for document lifecycle:
+<ul>
+<li><code>onDidOpenDocument</code>: Document opened</li>
+<li><code>onDidChangeDocument</code>: Content modified</li>
+<li><code>onDidSaveDocument</code>: Document saved</li>
+<li><code>onDidCloseDocument</code>: Document closed</li>
+<li><code>onDidRenameDocument</code>: Document moved/renamed</li>
+</ul>
+</li>
+</ul>
+<h4 id="6-bulk-operations"><a class="doc-anchor" href="#6-bulk-operations">§</a>6. Bulk Operations</h4>
+<ul>
+<li><code>Save All</code>: Save all dirty documents efficiently</li>
+<li>Batch close operations</li>
+<li>Concurrent document operations with proper locking</li>
+</ul>
+<h3 id="architectural-role"><a class="doc-anchor" href="#architectural-role">§</a>ARCHITECTURAL ROLE</h3>
+<p>DocumentProvider is the <strong>document lifecycle manager</strong>:</p>
+<div class="example-wrap"><pre class="language-text"><code>Frontend ──► Open/Edit/Save ──► DocumentProvider ──► FileSystem / Cocoon
+              │                                   │
+              └─► Event Emit ──► Sky/Cocoon ◄─────┘</code></pre></div><h4 id="position-in-mountain"><a class="doc-anchor" href="#position-in-mountain">§</a>Position in Mountain</h4>
+<ul>
+<li><code>Environment</code> module: Document management capability</li>
+<li>Implements <code>CommonLibrary::Document::DocumentProvider</code> trait</li>
+<li>Accessible via <code>Environment.Require&lt;dyn DocumentProvider&gt;()</code></li>
+</ul>
+<h4 id="document-state-model"><a class="doc-anchor" href="#document-state-model">§</a>Document State Model</h4>
+<p>Stored in <code>ApplicationState.OpenDocuments</code> as <code>HashMap&lt;String, DocumentStateDTO&gt;</code>:</p>
+<ul>
+<li><code>URI</code>: Document identifier</li>
+<li><code>LanguageIdentifier</code>: Syntax highlighting language</li>
+<li><code>Lines</code>: Vector of document lines (for efficient editing)</li>
+<li><code>Version</code>: Monotonic version for LSP sync</li>
+<li><code>IsDirty</code>: Unsaved changes flag</li>
+<li><code>Encoding</code>: Text encoding (usually UTF-8)</li>
+<li><code>EOL</code>: End-of-line sequence (LF or CRLF)</li>
+</ul>
+<h4 id="dependencies"><a class="doc-anchor" href="#dependencies">§</a>Dependencies</h4>
+<ul>
+<li><code>ApplicationState</code>: Document state storage</li>
+<li><code>FileSystemReader</code> / <code>FileSystemWriter</code>: File I/O</li>
+<li><code>IPCProvider</code>: For extension document providers</li>
+<li><code>Log</code>: Document change logging</li>
+</ul>
+<h4 id="dependents"><a class="doc-anchor" href="#dependents">§</a>Dependents</h4>
+<ul>
+<li>Text editors: Load and modify document content</li>
+<li>Language servers: Receive document change notifications</li>
+<li><code>Binary::Main</code>::<code>MountainGetWorkbenchConfiguration</code>: Initial document setup</li>
+<li>Extension providers: Custom document handling</li>
+</ul>
+<h3 id="document-open-flow"><a class="doc-anchor" href="#document-open-flow">§</a>DOCUMENT OPEN FLOW</h3>
+<ol>
+<li>Frontend calls <code>OpenDocument(uri, options)</code></li>
+<li>Provider checks if already open → return existing</li>
+<li>If <code>file://</code> URI: <code>FileSystemReader::ReadFile</code> → content</li>
+<li>If custom URI: <code>IPCProvider::SendRequest</code> to extension</li>
+<li>Create <code>DocumentStateDTO</code> with content</li>
+<li>Store in <code>ApplicationState.OpenDocuments</code></li>
+<li>Emit <code>onDidOpenDocument</code> event to Sky/Cocoon</li>
+<li>Return document state to frontend</li>
+</ol>
+<h3 id="document-change-flow-lsp-style"><a class="doc-anchor" href="#document-change-flow-lsp-style">§</a>DOCUMENT CHANGE FLOW (LSP-style)</h3>
+<ol>
+<li>Frontend sends <code>ApplyChanges(uri, version, changes)</code></li>
+<li>Provider looks up document in <code>OpenDocuments</code></li>
+<li>Apply delta changes or full text replacement</li>
+<li>Increment <code>Version</code> and <code>VersionIdentifier</code></li>
+<li>Set <code>IsDirty = true</code></li>
+<li>Emit <code>onDidChangeDocument</code> event</li>
+<li>Return updated document state</li>
+</ol>
+<h3 id="document-save-flow"><a class="doc-anchor" href="#document-save-flow">§</a>DOCUMENT SAVE FLOW</h3>
+<ol>
+<li>Frontend calls <code>SaveDocument(uri)</code> or <code>SaveAll</code></li>
+<li>For each dirty document:
+<ul>
+<li>Serialize document content from <code>Lines</code></li>
+<li>Write to filesystem via <code>FileSystemWriter::WriteFile</code></li>
+<li>Clear <code>IsDirty</code> flag</li>
+<li>Emit <code>onDidSaveDocument</code> event</li>
+</ul>
+</li>
+<li>Return save results (success/failure per document)</li>
+</ol>
+<h3 id="error-handling"><a class="doc-anchor" href="#error-handling">§</a>ERROR HANDLING</h3>
+<ul>
+<li>Document not found: <code>CommonError::FileSystemNotFound</code></li>
+<li>Permission denied: <code>CommonError::FileSystemIO</code></li>
+<li>Already open: Return existing (not an error)</li>
+<li>Unsaved changes: Prompt user or force close (configurable)</li>
+<li>Extension provider failure: <code>CommonError::IPCError</code></li>
+</ul>
+<h3 id="performance"><a class="doc-anchor" href="#performance">§</a>PERFORMANCE</h3>
+<ul>
+<li>Document state stored in memory (fast access)</li>
+<li>Large files may impact memory (consider streaming for &gt;10MB)</li>
+<li>Line-based storage enables efficient edits</li>
+<li>Version numbers prevent race conditions in collaborative editing</li>
+</ul>
+<h3 id="vs-code-reference"><a class="doc-anchor" href="#vs-code-reference">§</a>VS CODE REFERENCE</h3>
+<p>Patterns from VS Code:</p>
+<ul>
+<li><code>vs/workbench/api/common/extHostDocumentProvider.ts</code> - Document provider interface</li>
+<li><code>vs/workbench/services/files/common/files.ts</code> - File document provider</li>
+<li><code>vs/workbench/services/textService/common/textService.ts</code> - Text document management</li>
+</ul>
+<h3 id="todo"><a class="doc-anchor" href="#todo">§</a>TODO</h3>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Implement document encoding detection (BOM, charset heuristics)</li>
+<li><input disabled="" type="checkbox"/>
+Add document change history for undo/redo across sessions</li>
+<li><input disabled="" type="checkbox"/>
+Support document snapshots for diff/merge operations</li>
+<li><input disabled="" type="checkbox"/>
+Implement document locking for collaborative editing</li>
+<li><input disabled="" type="checkbox"/>
+Add document analytics (edit time, change frequency)</li>
+<li><input disabled="" type="checkbox"/>
+Support virtual documents (generated content, no file on disk)</li>
+<li><input disabled="" type="checkbox"/>
+Implement document templates and snippets</li>
+<li><input disabled="" type="checkbox"/>
+Add document validation and format on save</li>
+<li><input disabled="" type="checkbox"/>
+Support document encryption for sensitive files</li>
+<li><input disabled="" type="checkbox"/>
+Implement document migration across versions</li>
+</ul>
+<h3 id="module-contents"><a class="doc-anchor" href="#module-contents">§</a>MODULE CONTENTS</h3>
+<ul>
+<li>[<code>DocumentProvider</code>]: Main struct implementing the trait</li>
+<li>Document open/close/edit methods</li>
+<li>Save and Save All implementations</li>
+<li>Event emission and notification</li>
+<li>URI scheme handling</li>
+</ul>
+</div></details><h2 id="functions" class="section-header">Functions<a href="#functions" class="anchor">§</a></h2><dl class="item-table"><dt><a class="fn" href="fn.NotifyModelRemoved.html" title="fn Mountain::Environment::DocumentProvider::NotifyModelRemoved">Notify<wbr>Model<wbr>Removed</a></dt><dd>Notifies Cocoon that a document has been closed or renamed.</dd></dl></section></div></main></body></html>

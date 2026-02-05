@@ -1,4 +1,65 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `Utility` mod in crate `Mountain`."><title>Mountain::Environment::Utility - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module Utility</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Utility</a></h2><h3><a href="#functions">Module Items</a></h3><ul class="block"><li><a href="#functions" title="Functions">Functions</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Environment</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Environment</a></div><h1>Module <span>Utility</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Environment/Utility.rs.html#36-164">Source</a> </span></div><h2 id="functions" class="section-header">Functions<a href="#functions" class="anchor">§</a></h2><dl class="item-table"><dt><a class="fn" href="fn.DetectLanguageIdentifierFromFilePath.html" title="fn Mountain::Environment::Utility::DetectLanguageIdentifierFromFilePath">Detect<wbr>Language<wbr>Identifier<wbr>From<wbr>File<wbr>Path</a></dt><dd>A simple utility to detect a language identifier string from a file path’s
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Utility (Environment)"><title>Mountain::Environment::Utility - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module Utility</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Utility</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#utility-environment" title="Utility (Environment)">Utility (Environment)</a></li></ul><h3><a href="#functions">Module Items</a></h3><ul class="block"><li><a href="#functions" title="Functions">Functions</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Environment</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Environment</a></div><h1>Module <span>Utility</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Environment/Utility.rs.html#1-182">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="utility-environment"><a class="doc-anchor" href="#utility-environment">§</a>Utility (Environment)</h2>
+<p>Shared utility functions used across all Environment provider implementations
+in <a href="../MountainEnvironment/struct.MountainEnvironment.html" title="struct Mountain::Environment::MountainEnvironment::MountainEnvironment"><code>MountainEnvironment</code></a>.
+These handle cross-cutting concerns: error mapping, security validation,
+language detection, and URI conversions.</p>
+<p>RESPONSIBILITIES:</p>
+<ul>
+<li><strong>Error Mapping</strong>: Convert <code>PoisonError</code> from Mutex locks to [<code>CommonError::StateLockPoisoned</code>]</li>
+<li><strong>Security Validation</strong>: Enforce workspace trust and path access boundaries via <a href="fn.IsPathAllowedForAccess.html" title="fn Mountain::Environment::Utility::IsPathAllowedForAccess"><code>IsPathAllowedForAccess</code></a></li>
+<li><strong>Language Detection</strong>: Infer language identifiers from file extensions (basic mapping)</li>
+<li><strong>URI Conversion</strong>: Parse VS Code <code>UriComponents</code> DTOs into Rust <a href="https://docs.rs/url/2.5.7/url/struct.Url.html" title="struct url::Url"><code>Url</code></a> types</li>
+</ul>
+<p>SECURITY MODEL:</p>
+<ul>
+<li><a href="fn.IsPathAllowedForAccess.html" title="fn Mountain::Environment::Utility::IsPathAllowedForAccess"><code>IsPathAllowedForAccess</code></a> is the primary security gate for all filesystem operations:
+<ul>
+<li>Requires workspace trust (<code>ApplicationState.IsTrusted</code>)</li>
+<li>Path must be within one of the registered workspace folders</li>
+<li>Prevents extensions from accessing arbitrary system files</li>
+<li>Trust status is atomic and thread-safe via <code>AtomicBool</code></li>
+</ul>
+</li>
+</ul>
+<p>ERROR HANDLING:</p>
+<ul>
+<li>All functions return <a href="CommonLibrary::Error::CommonError"><code>CommonError</code></a> on failure</li>
+<li>Mutex lock poisoning is mapped to <code>StateLockPoisoned</code> with context</li>
+<li>Path access violations return <code>FileSystemPermissionDenied</code></li>
+<li>URI parsing failures return <code>InvalidArgument</code> with descriptive reason</li>
+</ul>
+<p>PERFORMANCE:</p>
+<ul>
+<li>Language detection is O(1) match on file extension</li>
+<li>Path validation iterates workspace folders (O(n), but typically small n)</li>
+<li>TODO: Add caching for language detection results</li>
+</ul>
+<p>VS CODE REFERENCE:</p>
+<ul>
+<li><code>vs/base/common/network.ts</code> - URI handling and conversion</li>
+<li><code>vs/workbench/services/files/common/fileService.ts</code> - path validation patterns</li>
+<li><code>vs/workbench/common/resources.ts</code> - workspace trust model</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Add more comprehensive language detection (from .editorconfig, shebang, etc.)</li>
+<li>Implement path normalization to prevent directory traversal attacks</li>
+<li>Add caching for language detection results (LRU cache)</li>
+<li>Consider adding symbolic link resolution with security checks</li>
+<li>Add support for custom language mappings from user settings</li>
+<li>Implement path-based permission levels (read-only, read/write per folder)</li>
+<li>Add audit logging for path access attempts (security monitoring)</li>
+<li>Consider using <code>path_slash</code> crate for cross-platform path normalization</li>
+</ul>
+<p>MODULE CONTENTS:</p>
+<ul>
+<li><a href="Self::MapApplicationStateLockErrorToCommonError"><code>MapApplicationStateLockErrorToCommonError</code></a></li>
+<li><a href="Self::MapLockErrorToCommonError"><code>MapLockErrorToCommonError</code></a></li>
+<li><a href="Self::DetectLanguageIdentifierFromFilePath"><code>DetectLanguageIdentifierFromFilePath</code></a></li>
+<li><a href="Self::IsPathAllowedForAccess"><code>IsPathAllowedForAccess</code></a></li>
+<li><a href="Self::GetURLFromURIComponentsDTO"><code>GetURLFromURIComponentsDTO</code></a></li>
+</ul>
+</div></details><h2 id="functions" class="section-header">Functions<a href="#functions" class="anchor">§</a></h2><dl class="item-table"><dt><a class="fn" href="fn.DetectLanguageIdentifierFromFilePath.html" title="fn Mountain::Environment::Utility::DetectLanguageIdentifierFromFilePath">Detect<wbr>Language<wbr>Identifier<wbr>From<wbr>File<wbr>Path</a></dt><dd>A simple utility to detect a language identifier string from a file path’s
 extension.</dd><dt><a class="fn" href="fn.GetURLFromURIComponentsDTO.html" title="fn Mountain::Environment::Utility::GetURLFromURIComponentsDTO">GetURL<wbr>FromURI<wbr>ComponentsDTO</a></dt><dd>Helper to get a <code>Url</code> from a <code>serde_json::Value</code> which is expected to be a
 <code>UriComponents</code> DTO from VS Code.</dd><dt><a class="fn" href="fn.IsPathAllowedForAccess.html" title="fn Mountain::Environment::Utility::IsPathAllowedForAccess">IsPath<wbr>Allowed<wbr>ForAccess</a></dt><dd>A critical security helper that checks if a given filesystem path is
 allowed for access.</dd><dt><a class="fn" href="fn.MapApplicationStateLockErrorToCommonError.html" title="fn Mountain::Environment::Utility::MapApplicationStateLockErrorToCommonError">MapApplication<wbr>State<wbr>Lock<wbr>Error<wbr>ToCommon<wbr>Error</a></dt><dd>Maps a <code>PoisonError</code> from a failed <code>ApplicationState</code> Mutex lock into a

@@ -1,4 +1,171 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Contains the main dispatch functions."><title>Mountain::Track::DispatchLogic - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module DispatchLogic</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Dispatch<wbr>Logic</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#dispatchlogic" title="DispatchLogic">DispatchLogic</a></li></ul><h3><a href="#functions">Module Items</a></h3><ul class="block"><li><a href="#functions" title="Functions">Functions</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Track</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Track</a></div><h1>Module <span>Dispatch<wbr>Logic</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Track/DispatchLogic.rs.html#149-292">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Contains the main dispatch functions.</p>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Contains the main dispatch functions."><title>Mountain::Track::DispatchLogic - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module DispatchLogic</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Dispatch<wbr>Logic</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#dispatchlogic-track" title="DispatchLogic (Track)">DispatchLogic (Track)</a><ul><li><a href="#responsibilities" title="RESPONSIBILITIES">RESPONSIBILITIES</a></li><li><a href="#architectural-role" title="ARCHITECTURAL ROLE">ARCHITECTURAL ROLE</a></li><li><a href="#key-components" title="KEY COMPONENTS">KEY COMPONENTS</a></li><li><a href="#error-handling" title="ERROR HANDLING">ERROR HANDLING</a></li><li><a href="#logging" title="LOGGING">LOGGING</a></li><li><a href="#performance-considerations" title="PERFORMANCE CONSIDERATIONS">PERFORMANCE CONSIDERATIONS</a></li><li><a href="#request-flow-example" title="REQUEST FLOW EXAMPLE">REQUEST FLOW EXAMPLE</a></li><li><a href="#todo" title="TODO">TODO</a></li><li><a href="#module-contents" title="MODULE CONTENTS">MODULE CONTENTS</a></li></ul></li><li><a href="#dispatchlogic" title="DispatchLogic">DispatchLogic</a></li></ul><h3><a href="#functions">Module Items</a></h3><ul class="block"><li><a href="#functions" title="Functions">Functions</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Track</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Track</a></div><h1>Module <span>Dispatch<wbr>Logic</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Track/DispatchLogic.rs.html#1-453">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Contains the main dispatch functions.</p>
+<h2 id="dispatchlogic-track"><a class="doc-anchor" href="#dispatchlogic-track">§</a>DispatchLogic (Track)</h2>
+<p>Contains the main dispatch functions for routing all incoming commands and
+RPC requests to the appropriate execution logic via the effect system.</p>
+<h3 id="responsibilities"><a class="doc-anchor" href="#responsibilities">§</a>RESPONSIBILITIES</h3><h4 id="1-request-routing"><a class="doc-anchor" href="#1-request-routing">§</a>1. Request Routing</h4>
+<ul>
+<li>Route all incoming requests from the Sky frontend to appropriate effects</li>
+<li>Route all incoming requests from Cocoon sidecars to appropriate effects</li>
+<li>Provide specific, high-performance Tauri command handlers for frequent UI interactions</li>
+<li>Handle both synchronous (UI) and asynchronous (backend) dispatch paths</li>
+</ul>
+<h4 id="2-error-handling-and-recovery"><a class="doc-anchor" href="#2-error-handling-and-recovery">§</a>2. Error Handling and Recovery</h4>
+<ul>
+<li>Provide robust error handling for all dispatch operations</li>
+<li>Log all routing decisions for observability and debugging</li>
+<li>Handle effect creation failures gracefully</li>
+<li>Support error context propagation to callers</li>
+</ul>
+<h4 id="3-type-safety-and-validation"><a class="doc-anchor" href="#3-type-safety-and-validation">§</a>3. Type Safety and Validation</h4>
+<ul>
+<li>Ensure type-safe message passing through Rust’s type system</li>
+<li>Validate request parameters before dispatch</li>
+<li>Handle serialization/deserialization errors</li>
+<li>Support complex parameter types (JSON, URLs, etc.)</li>
+</ul>
+<h3 id="architectural-role"><a class="doc-anchor" href="#architectural-role">§</a>ARCHITECTURAL ROLE</h3>
+<p>DispatchLogic is the <strong>dispatcher layer</strong> that sits between request sources
+and the effect execution system:</p>
+<div class="example-wrap"><pre class="language-text"><code>Sky (Frontend) ──► DispatchLogic ──► EffectCreation ──► ApplicationRunTime ──► Providers
+Cocoon (Sidecar) ──► DispatchLogic ──► EffectCreation ──► ApplicationRunTime ──► Providers</code></pre></div><h4 id="design-patterns"><a class="doc-anchor" href="#design-patterns">§</a>Design Patterns:</h4>
+<ol>
+<li><strong>Command Pattern</strong>: Execute commands by name</li>
+<li><strong>Strategy Pattern</strong>: Different dispatch strategies for frontend vs sidecar</li>
+<li><strong>Observer Pattern</strong>: Handle UI request-response interactions</li>
+</ol>
+<h4 id="vs-code-reference"><a class="doc-anchor" href="#vs-code-reference">§</a>VS Code Reference:</h4>
+<p>This module borrows from VS Code’s request routing:</p>
+<ul>
+<li><code>vs/workbench/services/extensions/common/rpcProtocol.ts</code> - RPC routing</li>
+<li><code>vs/base/parts/ipc/common/ipc.ts</code> - IPC message dispatch</li>
+<li><code>vs/platform/request/common/request.ts</code> - Request handling</li>
+</ul>
+<p>Key concepts from VS Code:</p>
+<ul>
+<li>Async request/response pairs with unique IDs</li>
+<li>Type-safe message passing</li>
+<li>Comprehensive error propagation</li>
+<li>Request cancellation support (TODO)</li>
+</ul>
+<h3 id="key-components"><a class="doc-anchor" href="#key-components">§</a>KEY COMPONENTS</h3><h4 id="dispatchfrontendcommand"><a class="doc-anchor" href="#dispatchfrontendcommand">§</a>DispatchFrontendCommand</h4>
+<p>The primary Tauri command handler for requests originating from the Sky
+frontend. General-purpose entry point for commands defined in Common crate.</p>
+<p><strong>Flow</strong>:</p>
+<ol>
+<li>Log the incoming command</li>
+<li>Call <code>EffectCreation::CreateEffectForRequest</code> to create effect</li>
+<li>Execute effect with runtime</li>
+<li>Return result or error to frontend</li>
+</ol>
+<h4 id="dispatchsidecarrequest"><a class="doc-anchor" href="#dispatchsidecarrequest">§</a>DispatchSideCarRequest</h4>
+<p>Dispatcher for requests from Cocoon sidecars via gRPC. Routes RPC calls to
+effect-based implementations.</p>
+<p><strong>Flow</strong>:</p>
+<ol>
+<li>Log incoming sidecar request with sidecar ID</li>
+<li>Create effect via <code>EffectCreation::CreateEffectForRequest</code></li>
+<li>Execute effect with runtime</li>
+<li>Return result or error to sidecar</li>
+</ol>
+<h4 id="resolveuirequest"><a class="doc-anchor" href="#resolveuirequest">§</a>ResolveUIRequest</h4>
+<p>Tauri command handler for UI to send back results of request-response
+interactions (dialogs, message boxes).</p>
+<p><strong>Flow</strong>:</p>
+<ol>
+<li>Look up pending UI request by ID</li>
+<li>Remove from pending requests map</li>
+<li>Send result through oneshot channel</li>
+<li>Handle dropped receiver errors gracefully</li>
+</ol>
+<h4 id="mountainwebviewpostmessagefromguest"><a class="doc-anchor" href="#mountainwebviewpostmessagefromguest">§</a>MountainWebviewPostMessageFromGuest</h4>
+<p>Tauri command handler for Webview guest to post message back to extension host.</p>
+<p><strong>Flow</strong>:</p>
+<ol>
+<li>Get IPC provider from runtime</li>
+<li>Forward message to main Cocoon sidecar</li>
+<li>Handle IPC errors gracefully</li>
+</ol>
+<h3 id="error-handling"><a class="doc-anchor" href="#error-handling">§</a>ERROR HANDLING</h3>
+<p>All dispatch functions return <code>Result&lt;Value, String&gt;</code> where:</p>
+<ul>
+<li><code>Ok(Value)</code>: Successful execution with JSON-serializable result</li>
+<li><code>Err(String)</code>: Error with descriptive message</li>
+</ul>
+<p>Error recovery mechanisms:</p>
+<ul>
+<li>Effect creation failures are caught and logged</li>
+<li>Unknown commands are reported with context</li>
+<li>UI request timeouts are handled gracefully</li>
+<li>IPC errors are propagated with context</li>
+</ul>
+<h3 id="logging"><a class="doc-anchor" href="#logging">§</a>LOGGING</h3>
+<p>Comprehensive logging for:</p>
+<ul>
+<li>All incoming commands and RPC requests</li>
+<li>Effect creation failures</li>
+<li>UI request resolution</li>
+<li>Webview message forwarding</li>
+<li>All errors with context</li>
+</ul>
+<p>Log levels:</p>
+<ul>
+<li><code>debug</code>: Normal operation flow</li>
+<li><code>info</code>: Significant events</li>
+<li><code>warn</code>: Recoverable issues</li>
+<li><code>error</code>: Critical failures</li>
+</ul>
+<h3 id="performance-considerations"><a class="doc-anchor" href="#performance-considerations">§</a>PERFORMANCE CONSIDERATIONS</h3>
+<ul>
+<li>Direct provider calls used for hot paths (configuration, diagnostics)</li>
+<li>Effect-based execution for consistency and maintainability</li>
+<li>Async operations to avoid blocking UI thread</li>
+<li>Minimal locking and contention</li>
+</ul>
+<h3 id="request-flow-example"><a class="doc-anchor" href="#request-flow-example">§</a>REQUEST FLOW EXAMPLE</h3><div class="example-wrap"><pre class="language-text"><code>Frontend: app.invoke(&quot;vscode.getConfiguration&quot;, { section: &quot;editor&quot; })
+   ↓
+Tauri: DispatchFrontendCommand(Command=&quot;vscode.getConfiguration&quot;, ...)
+   ↓
+EffectCreation::CreateEffectForRequest() ──► Lookup effect builder
+   ↓
+ApplicationRunTime::Run(Effect) ──► Submit to Echo scheduler
+   ↓
+Effect::Apply(capability) ──► Call ConfigurationProvider::GetConfiguration
+   ↓
+Result serialized to JSON ──► Returned to frontend</code></pre></div><h3 id="todo"><a class="doc-anchor" href="#todo">§</a>TODO</h3>
+<p>High Priority:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Add request timeout handling</li>
+<li><input disabled="" type="checkbox"/>
+Implement request cancellation support</li>
+<li><input disabled="" type="checkbox"/>
+Add request metrics and telemetry</li>
+</ul>
+<p>Medium Priority:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Add request throttling for high-frequency operations</li>
+<li><input disabled="" type="checkbox"/>
+Implement request batching for related operations</li>
+<li><input disabled="" type="checkbox"/>
+Add request replay for debugging</li>
+</ul>
+<p>Low Priority:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Add request caching for idempotent operations</li>
+<li><input disabled="" type="checkbox"/>
+Implement request tracing across entire pipeline</li>
+<li><input disabled="" type="checkbox"/>
+Add request priority queuing</li>
+</ul>
+<h3 id="module-contents"><a class="doc-anchor" href="#module-contents">§</a>MODULE CONTENTS</h3>
+<ul>
+<li>[<code>DispatchFrontendCommand</code>]: Main frontend command handler (Tauri command)</li>
+<li>[<code>DispatchSideCarRequest</code>]: Sidecar RPC request dispatcher</li>
+<li>[<code>ResolveUIRequest</code>]: UI request-response result handler (Tauri command)</li>
+<li>[<code>MountainWebviewPostMessageFromGuest</code>]: Webview message forwarder (Tauri command)</li>
+</ul>
 <h2 id="dispatchlogic"><a class="doc-anchor" href="#dispatchlogic">§</a>DispatchLogic</h2>
 <p>Contains the main dispatch functions for routing all incoming commands and
 RPC requests to the appropriate execution logic via the effect system.</p>

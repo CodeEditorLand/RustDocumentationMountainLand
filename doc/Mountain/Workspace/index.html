@@ -1,35 +1,126 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Workspace Module"><title>Mountain::Workspace - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module Workspace</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Workspace</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#workspace-module" title="Workspace Module">Workspace Module</a><ul><li><a href="#responsibility" title="RESPONSIBILITY">RESPONSIBILITY</a></li><li><a href="#architectural-role" title="ARCHITECTURAL ROLE">ARCHITECTURAL ROLE</a></li><li><a href="#design-patterns-borrowed-from-vscode" title="DESIGN PATTERNS (Borrowed from VSCode)">DESIGN PATTERNS (Borrowed from VSCode)</a></li><li><a href="#todo" title="TODO">TODO</a></li></ul></li></ul><h3><a href="#modules">Module Items</a></h3><ul class="block"><li><a href="#modules" title="Modules">Modules</a></li></ul></section><div id="rustdoc-modnav"><h2 class="in-crate"><a href="../index.html">In crate Mountain</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../index.html">Mountain</a></div><h1>Module <span>Workspace</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../src/Mountain/Workspace/mod.rs.html#7-39">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="workspace-module"><a class="doc-anchor" href="#workspace-module">§</a>Workspace Module</h2><h3 id="responsibility"><a class="doc-anchor" href="#responsibility">§</a>RESPONSIBILITY</h3>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Workspace Module"><title>Mountain::Workspace - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module Workspace</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Workspace</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#workspace-module" title="Workspace Module">Workspace Module</a><ul><li><a href="#responsibilities" title="RESPONSIBILITIES">RESPONSIBILITIES</a></li><li><a href="#architectural-role" title="ARCHITECTURAL ROLE">ARCHITECTURAL ROLE</a></li><li><a href="#workspace-state" title="WORKSPACE STATE">WORKSPACE STATE</a></li><li><a href="#multi-root-support" title="MULTI-ROOT SUPPORT">MULTI-ROOT SUPPORT</a></li><li><a href="#configuration-precedence" title="CONFIGURATION PRECEDENCE">CONFIGURATION PRECEDENCE</a></li><li><a href="#vs-code-reference" title="VS CODE REFERENCE">VS CODE REFERENCE</a></li><li><a href="#error-handling" title="ERROR HANDLING">ERROR HANDLING</a></li><li><a href="#todo" title="TODO">TODO</a></li><li><a href="#module-contents" title="MODULE CONTENTS">MODULE CONTENTS</a></li></ul></li></ul><h3><a href="#modules">Module Items</a></h3><ul class="block"><li><a href="#modules" title="Modules">Modules</a></li></ul></section><div id="rustdoc-modnav"><h2 class="in-crate"><a href="../index.html">In crate Mountain</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../index.html">Mountain</a></div><h1>Module <span>Workspace</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../src/Mountain/Workspace/mod.rs.html#1-119">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="workspace-module"><a class="doc-anchor" href="#workspace-module">§</a>Workspace Module</h2>
+<p>Provides workspace-related services including workspace folder management,
+<code>.code-workspace</code> file parsing, and multi-root workspace support.</p>
+<h3 id="responsibilities"><a class="doc-anchor" href="#responsibilities">§</a>RESPONSIBILITIES</h3><h4 id="1-workspace-folder-management"><a class="doc-anchor" href="#1-workspace-folder-management">§</a>1. Workspace Folder Management</h4>
 <ul>
-<li>Workspace folder management and state tracking</li>
-<li><code>.code-workspace</code> file parsing and serialization</li>
-<li>Multi-root workspace support</li>
-<li>Workspace configuration and settings management</li>
-<li>Workspace folder add/remove/reorder operations</li>
-<li>Workspace trust and security validation</li>
+<li>Track currently open workspace folders</li>
+<li>Support adding, removing, and reordering folders</li>
+<li>Validate folder paths and permissions</li>
+<li>Persist workspace state across sessions</li>
+</ul>
+<h4 id="2-workspace-file-parsing"><a class="doc-anchor" href="#2-workspace-file-parsing">§</a>2. Workspace File Parsing</h4>
+<ul>
+<li>Parse <code>.code-workspace</code> JSON files</li>
+<li>Extract workspace configuration and settings</li>
+<li>Resolve workspace folder paths</li>
+<li>Validate workspace file structure</li>
+</ul>
+<h4 id="3-multi-root-workspace-support"><a class="doc-anchor" href="#3-multi-root-workspace-support">§</a>3. Multi-Root Workspace Support</h4>
+<ul>
+<li>Manage workspaces with multiple root folders</li>
+<li>Handle folder-specific configuration overrides</li>
+<li>Support workspace-scoped settings</li>
+<li>Merge configuration from multiple sources</li>
+</ul>
+<h4 id="4-workspace-configuration"><a class="doc-anchor" href="#4-workspace-configuration">§</a>4. Workspace Configuration</h4>
+<ul>
+<li>Provide merged workspace configuration</li>
+<li>Support workspace-specific settings</li>
+<li>Integrate with global configuration system</li>
+<li>Handle configuration precedence (workspace &gt; folder &gt; global)</li>
+</ul>
+<h4 id="5-workspace-trust--security"><a class="doc-anchor" href="#5-workspace-trust--security">§</a>5. Workspace Trust &amp; Security</h4>
+<ul>
+<li>Implement workspace trust validation</li>
+<li>Mark untrusted workspaces with restricted capabilities</li>
+<li>Provide prompt for user to trust/untrust workspaces</li>
 </ul>
 <h3 id="architectural-role"><a class="doc-anchor" href="#architectural-role">§</a>ARCHITECTURAL ROLE</h3>
+<p>The Workspace module is the <strong>workspace management layer</strong>:</p>
+<div class="example-wrap"><pre class="language-text"><code>UI (Explorer) ──► WorkspaceService ──► ApplicationState ──► Disk
+                     │
+                     └─► ConfigurationProvider</code></pre></div><h4 id="position-in-mountain"><a class="doc-anchor" href="#position-in-mountain">§</a>Position in Mountain</h4>
 <ul>
-<li>Provides workspace services to providers and commands</li>
-<li>Integrates with ApplicationState for workspace persistence</li>
-<li>Supplies workspace data to Wind/Sky for UI rendering</li>
-<li>Handles workspace-related IPC commands from Wind</li>
+<li><code>Workspace</code> module: Workspace lifecycle and configuration</li>
+<li>Implements <code>CommonLibrary::Workspace::WorkspaceProvider</code> trait</li>
+<li>Accessible via <code>Environment.Require&lt;dyn WorkspaceProvider&gt;()</code></li>
 </ul>
-<h3 id="design-patterns-borrowed-from-vscode"><a class="doc-anchor" href="#design-patterns-borrowed-from-vscode">§</a>DESIGN PATTERNS (Borrowed from VSCode)</h3>
+<h4 id="dependencies"><a class="doc-anchor" href="#dependencies">§</a>Dependencies</h4>
 <ul>
-<li>Workspace Service (vs/platform/workspace/)</li>
-<li>Workspace Configuration pattern</li>
-<li>Multi-root workspace management</li>
-<li>Workspace folders data structure</li>
+<li><code>ApplicationState</code>: Stores workspace state</li>
+<li><code>ConfigurationProvider</code>: For workspace settings</li>
+<li><code>FileSystemReader</code>: For reading <code>.code-workspace</code> files</li>
+</ul>
+<h4 id="dependents"><a class="doc-anchor" href="#dependents">§</a>Dependents</h4>
+<ul>
+<li><code>InitializationData</code>: Uses workspace data for Cocoon initialization</li>
+<li><code>ApplicationState</code>: Stores workspace folders and configuration path</li>
+<li><code>Binary::Main</code>: Sets up workspace from CLI args</li>
+</ul>
+<h3 id="workspace-state"><a class="doc-anchor" href="#workspace-state">§</a>WORKSPACE STATE</h3>
+<p>Stored in <code>ApplicationState</code>:</p>
+<ul>
+<li><code>WorkspaceFolders</code>: Vec<WorkspaceFolderStateDTO></li>
+<li><code>WorkspaceConfigurationPath</code>: Optional PathBuf to <code>.code-workspace</code> file</li>
+<li><code>IsTrusted</code>: Trust status flag</li>
+<li><code>WindowState</code>: Window geometry and placement</li>
+</ul>
+<h3 id="multi-root-support"><a class="doc-anchor" href="#multi-root-support">§</a>MULTI-ROOT SUPPORT</h3>
+<p>Mountain supports VS Code-style multi-root workspaces:</p>
+<ul>
+<li>Multiple folders can be opened simultaneously</li>
+<li>Each folder has a URI and display name</li>
+<li>Folders are indexed (0-based) for ordering</li>
+<li>Workspace configuration applies to all folders</li>
+</ul>
+<h3 id="configuration-precedence"><a class="doc-anchor" href="#configuration-precedence">§</a>CONFIGURATION PRECEDENCE</h3>
+<p>Configuration sources are merged in this order (later overrides earlier):</p>
+<ol>
+<li>Default settings (built-in)</li>
+<li>Global user settings (<code>settings.json</code>)</li>
+<li>Workspace settings (<code>.code-workspace</code> file)</li>
+<li>Folder settings (<code>folder/.vscode/settings.json</code>)</li>
+<li>Workspace-specific overrides per folder</li>
+</ol>
+<h3 id="vs-code-reference"><a class="doc-anchor" href="#vs-code-reference">§</a>VS CODE REFERENCE</h3>
+<p>Patterns from VS Code:</p>
+<ul>
+<li><code>vs/platform/workspace/common/workspace.ts</code> - Workspace service</li>
+<li><code>vs/platform/workspace/common/workspaceFolders.ts</code> - Workspace folder operations</li>
+<li><code>vs/platform/configuration/common/configuration.ts</code> - Configuration merging</li>
+</ul>
+<h3 id="error-handling"><a class="doc-anchor" href="#error-handling">§</a>ERROR HANDLING</h3>
+<ul>
+<li>Invalid workspace files: Return <code>CommonError::ConfigurationLoad</code></li>
+<li>Permission errors: <code>CommonError::FileSystemIO</code></li>
+<li>Unauthorized workspace: <code>CommonError::SecurityViolation</code></li>
+<li>Missing folders: <code>CommonError::FileSystemNotFound</code></li>
 </ul>
 <h3 id="todo"><a class="doc-anchor" href="#todo">§</a>TODO</h3>
 <ul>
-<li>Implement workspace trust management</li>
-<li>Add workspace folder validation</li>
-<li>Support workspace templates</li>
-<li>Implement workspace sharing and collaboration</li>
-<li>Add workspace statistics and metrics</li>
-<li>Support workspace snapshots and restore</li>
-<li>Implement workspace local history</li>
-<li>Add workspace migration and upgrade paths</li>
+<li><input disabled="" type="checkbox"/>
+Implement workspace trust management with user prompts</li>
+<li><input disabled="" type="checkbox"/>
+Add workspace template creation and management</li>
+<li><input disabled="" type="checkbox"/>
+Support workspace sharing and collaboration features</li>
+<li><input disabled="" type="checkbox"/>
+Add workspace statistics (folder count, file count, size)</li>
+<li><input disabled="" type="checkbox"/>
+Implement workspace snapshots for quick restore</li>
+<li><input disabled="" type="checkbox"/>
+Add workspace local history (file changes over time)</li>
+<li><input disabled="" type="checkbox"/>
+Create workspace migration tools for version upgrades</li>
+<li><input disabled="" type="checkbox"/>
+Support virtual workspaces (non-file URIs)</li>
+<li><input disabled="" type="checkbox"/>
+Add workspace search across all folders</li>
+<li><input disabled="" type="checkbox"/>
+Implement workspace-specific extensions</li>
 </ul>
-</div></details><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="WorkspaceFileService/index.html" title="mod Mountain::Workspace::WorkspaceFileService">Workspace<wbr>File<wbr>Service</a></dt><dd>Workspace File Service</dd></dl></section></div></main></body></html>
+<h3 id="module-contents"><a class="doc-anchor" href="#module-contents">§</a>MODULE CONTENTS</h3>
+<ul>
+<li><a href="WorkspaceFileService/index.html" title="mod Mountain::Workspace::WorkspaceFileService"><code>WorkspaceFileService</code></a>: Parsing and serialization of <code>.code-workspace</code> files</li>
+</ul>
+</div></details><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="WorkspaceFileService/index.html" title="mod Mountain::Workspace::WorkspaceFileService">Workspace<wbr>File<wbr>Service</a></dt><dd>WorkspaceFileService (Workspace)</dd></dl></section></div></main></body></html>

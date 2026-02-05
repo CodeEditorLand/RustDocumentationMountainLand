@@ -1,36 +1,77 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Air Integration Module"><title>Mountain::Air - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module Air</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Air</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#air-integration-module" title="Air Integration Module">Air Integration Module</a><ul><li><a href="#responsibility" title="RESPONSIBILITY">RESPONSIBILITY</a></li><li><a href="#architectural-role" title="ARCHITECTURAL ROLE">ARCHITECTURAL ROLE</a></li><li><a href="#design-patterns-borrowed-from-vscode" title="DESIGN PATTERNS (Borrowed from VSCode)">DESIGN PATTERNS (Borrowed from VSCode)</a></li><li><a href="#todo" title="TODO">TODO</a></li></ul></li></ul><h3><a href="#modules">Module Items</a></h3><ul class="block"><li><a href="#modules" title="Modules">Modules</a></li></ul></section><div id="rustdoc-modnav"><h2 class="in-crate"><a href="../index.html">In crate Mountain</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../index.html">Mountain</a></div><h1>Module <span>Air</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../src/Mountain/Air/mod.rs.html#10-47">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="air-integration-module"><a class="doc-anchor" href="#air-integration-module">§</a>Air Integration Module</h2><h3 id="responsibility"><a class="doc-anchor" href="#responsibility">§</a>RESPONSIBILITY</h3>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Air (Air Integration Module)"><title>Mountain::Air - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module Air</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Air</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#air-air-integration-module" title="Air (Air Integration Module)">Air (Air Integration Module)</a></li></ul><h3><a href="#modules">Module Items</a></h3><ul class="block"><li><a href="#modules" title="Modules">Modules</a></li></ul></section><div id="rustdoc-modnav"><h2 class="in-crate"><a href="../index.html">In crate Mountain</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../index.html">Mountain</a></div><h1>Module <span>Air</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../src/Mountain/Air/mod.rs.html#1-67">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="air-air-integration-module"><a class="doc-anchor" href="#air-air-integration-module">§</a>Air (Air Integration Module)</h2>
+<p>RESPONSIBILITIES:</p>
 <ul>
-<li>gRPC client for Air daemon (background service)</li>
+<li>Provides gRPC client connectivity to the Air daemon service</li>
+<li>Implements Air service methods for:
+<ul>
 <li>Update management and distribution</li>
 <li>Authentication and credential management</li>
 <li>File indexing and search operations</li>
 <li>System monitoring and metrics collection</li>
-<li>Connection pooling and health checks</li>
 </ul>
-<h3 id="architectural-role"><a class="doc-anchor" href="#architectural-role">§</a>ARCHITECTURAL ROLE</h3>
-<ul>
-<li>Provides Air daemon integration to Mountain</li>
-<li>Integrates with UpdateService for self-updates</li>
-<li>Provides authentication to Environment providers</li>
-<li>Supplies search capabilities to Environment/SearchProvider</li>
-<li>Handles Air service unavailability gracefully</li>
+</li>
+<li>Handles connection management and error translation to [<code>CommonError</code>]</li>
+<li>Wraps client in [<code>Arc</code>] for shared access across the application</li>
 </ul>
-<h3 id="design-patterns-borrowed-from-vscode"><a class="doc-anchor" href="#design-patterns-borrowed-from-vscode">§</a>DESIGN PATTERNS (Borrowed from VSCode)</h3>
+<p>ARCHITECTURAL ROLE:</p>
 <ul>
-<li>Background service integration pattern</li>
-<li>gRPC client connection management</li>
-<li>Service provider pattern with availability checking</li>
-<li>Graceful degradation when service unavailable</li>
+<li>Integration point with the Air background service (daemon)</li>
+<li>Used by multiple Mountain components:
+<ul>
+<li><a href="crate::Update::UpdateService"><code>UpdateService</code></a> for self-updates</li>
+<li><a href="../Environment/SearchProvider/index.html" title="mod Mountain::Environment::SearchProvider"><code>SearchProvider</code></a> for file search</li>
+<li>[<code>AuthenticationProvider</code>] (if implemented) for user credentials</li>
 </ul>
-<h3 id="todo"><a class="doc-anchor" href="#todo">§</a>TODO</h3>
+</li>
+<li>Connection is optional; Mountain can function without Air (graceful degradation)</li>
+<li>Service discovery and health checking via gRPC</li>
+</ul>
+<p>MODULE STRUCTURE:</p>
 <ul>
-<li>Implement connection retry with backoff</li>
+<li><code>AirClient</code> - gRPC client wrapper with connection management</li>
+<li><code>AirServiceProvider</code> - provider trait implementation for DI</li>
+<li><code>AirServiceTypesStub</code> - stub types for when Air library is unavailable</li>
+</ul>
+<p>CONNECTION PATTERNS:</p>
+<ul>
+<li>Uses tonic gRPC client for transport</li>
+<li>Connection establishment via <code>ConnectToSideCar</code> (host:port)</li>
+<li>Health checking with timeout protection</li>
+<li>TODO: Implement connection pooling, retry with exponential backoff</li>
+</ul>
+<p>ERROR HANDLING:</p>
+<ul>
+<li>All gRPC errors translated to <a href="CommonLibrary::Error::CommonError"><code>CommonError::IPCError</code></a></li>
+<li>Connection failures logged and return error</li>
+<li>Service unavailability handled gracefully (return error, caller decides fallback)</li>
+</ul>
+<p>PERFORMANCE:</p>
+<ul>
+<li>gRPC channels are expensive; reuse via Arc<AirServiceClient></li>
+<li>TODO: Add request caching for frequently accessed data (auth tokens, etc.)</li>
+<li>TODO: Implement metrics collection for Air service calls (latency, success rate)</li>
+</ul>
+<p>VS CODE REFERENCE:</p>
+<ul>
+<li><code>vs/platform/telemetry/common/telemetry.ts</code> - telemetry/analytics service pattern</li>
+<li><code>vs/platform/update/common/update.ts</code> - update service integration</li>
+<li><code>vs/workbench/services/search/common/search.ts</code> - search service architecture</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Implement connection retry with exponential backoff</li>
 <li>Add connection pooling for multiple concurrent requests</li>
-<li>Implement request caching for frequently accessed data</li>
-<li>Add metrics collection for Air service calls</li>
-<li>Implement fallback strategies when Air unavailable</li>
-<li>Support for multiple Air daemons (load balancing)</li>
-<li>Add request timeout configuration</li>
-<li>Implement request/response logging</li>
+<li>Implement request caching for frequently accessed data (auth tokens, etc.)</li>
+<li>Add metrics collection for Air service calls (latency, success rate, errors)</li>
+<li>Implement fallback strategies when Air unavailable (local search, etc.)</li>
+<li>Support for multiple Air daemons (load balancing/failover)</li>
+<li>Add request timeout configuration (configurable per operation type)</li>
+<li>Implement request/response logging for debugging</li>
+<li>Add telemetry for Air service health and usage</li>
+<li>Implement bidirectional streaming for real-time updates</li>
 </ul>
-</div></details><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="AirClient/index.html" title="mod Mountain::Air::AirClient">AirClient</a></dt><dt><a class="mod" href="AirServiceProvider/index.html" title="mod Mountain::Air::AirServiceProvider">AirService<wbr>Provider</a></dt><dt><a class="mod" href="AirServiceTypesStub/index.html" title="mod Mountain::Air::AirServiceTypesStub">AirService<wbr>Types<wbr>Stub</a></dt><dd>Air Service Types Stub</dd></dl></section></div></main></body></html>
+<p>MODULE CONTENTS:</p>
+<ul>
+<li>Re-exports: <code>AirClient</code>, <code>AirServiceProvider</code>, <code>AirServiceTypesStub</code></li>
+</ul>
+</div></details><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="AirClient/index.html" title="mod Mountain::Air::AirClient">AirClient</a></dt><dd>AirClient</dd><dt><a class="mod" href="AirServiceProvider/index.html" title="mod Mountain::Air::AirServiceProvider">AirService<wbr>Provider</a></dt><dd>AirServiceProvider</dd><dt><a class="mod" href="AirServiceTypesStub/index.html" title="mod Mountain::Air::AirServiceTypesStub">AirService<wbr>Types<wbr>Stub</a></dt><dd>Air Service Types Stub</dd></dl></section></div></main></body></html>

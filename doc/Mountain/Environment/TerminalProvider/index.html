@@ -1,4 +1,65 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="TerminalProvider Implementation"><title>Mountain::Environment::TerminalProvider - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module TerminalProvider</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Terminal<wbr>Provider</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#terminalprovider-implementation" title="TerminalProvider Implementation">TerminalProvider Implementation</a><ul><li><a href="#terminal-architecture" title="Terminal Architecture">Terminal Architecture</a></li><li><a href="#terminal-lifecycle" title="Terminal Lifecycle">Terminal Lifecycle</a></li><li><a href="#shell-detection" title="Shell Detection">Shell Detection</a></li><li><a href="#io-streaming" title="I/O Streaming">I/O Streaming</a></li></ul></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Environment</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Environment</a></div><h1>Module <span>Terminal<wbr>Provider</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Environment/TerminalProvider.rs.html#58-351">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="terminalprovider-implementation"><a class="doc-anchor" href="#terminalprovider-implementation">§</a>TerminalProvider Implementation</h2>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="File: Mountain/Source/Environment/TerminalProvider.rs Role: Implements the `TerminalProvider` trait for the `MountainEnvironment`. Responsibilities:"><title>Mountain::Environment::TerminalProvider - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module TerminalProvider</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Terminal<wbr>Provider</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#terminalprovider-implementation" title="TerminalProvider Implementation">TerminalProvider Implementation</a><ul><li><a href="#terminal-architecture" title="Terminal Architecture">Terminal Architecture</a></li><li><a href="#terminal-lifecycle" title="Terminal Lifecycle">Terminal Lifecycle</a></li><li><a href="#shell-detection" title="Shell Detection">Shell Detection</a></li><li><a href="#io-streaming" title="I/O Streaming">I/O Streaming</a></li></ul></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Environment</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Environment</a></div><h1>Module <span>Terminal<wbr>Provider</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Environment/TerminalProvider.rs.html#1-351">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>File: Mountain/Source/Environment/TerminalProvider.rs
+Role: Implements the <code>TerminalProvider</code> trait for the <code>MountainEnvironment</code>.
+Responsibilities:</p>
+<ul>
+<li>Core logic for managing integrated terminal instances.</li>
+<li>Creating native pseudo-terminals (PTYs) and handling their I/O.</li>
+<li>Spawning and managing the lifecycle of the underlying shell processes.</li>
+<li>Handle terminal show/hide UI state.</li>
+<li>Send text input to terminal processes.</li>
+<li>Manage terminal environment variables.</li>
+<li>Handle terminal resizing and dimension management.
+-Support terminal profiles and configuration.</li>
+<li>Handle terminal process exit detection.</li>
+<li>Manage terminal input/output channels.</li>
+<li>Support terminal color schemes and themes.</li>
+<li>Handle terminal bell/notification support.</li>
+<li>Implement terminal buffer management.</li>
+<li>Support terminal search and navigation.</li>
+<li>Handle terminal clipboard operations.</li>
+<li>Implement terminal tab support.</li>
+<li>Support custom shell integration.</li>
+</ul>
+<p>TODOs:</p>
+<ul>
+<li>Implement terminal profile management</li>
+<li>Add terminal environment variable management</li>
+<li>Implement terminal resize handling (PtySize updates)</li>
+<li>Support terminal color scheme configuration</li>
+<li>Add terminal bell handling and visual notifications</li>
+<li>Implement terminal buffer scrolling and history</li>
+<li>Support terminal search within output</li>
+<li>Add terminal reconnection for crashed processes</li>
+<li>Implement terminal tab management</li>
+<li>Support terminal split view</li>
+<li>Add terminal decoration support (e.g., cwd indicator)</li>
+<li>Implement terminal command history</li>
+<li>Support terminal shell integration (e.g., fish, zsh, bash)</li>
+<li>Add terminal ANSI escape sequence handling</li>
+<li>Implement terminal clipboard operations</li>
+<li>Support terminal link detection and navigation</li>
+<li>Add terminal performance optimizations for large output</li>
+<li>Implement terminal process tree (parent/child processes)</li>
+<li>Support terminal environment injection</li>
+<li>Add terminal keyboard mapping customization</li>
+<li>Implement terminal logging for debugging</li>
+<li>Support terminal font size and font family</li>
+<li>Add terminal UTF-8 and Unicode support</li>
+<li>Implement terminal timeout and idle detection</li>
+<li>Support terminal command execution automation</li>
+<li>Add terminal multi-instance management</li>
+</ul>
+<p>Inspired by VSCode’s integrated terminal which:</p>
+<ul>
+<li>Uses native PTY for process isolation</li>
+<li>Streams I/O to avoid blocking the main thread</li>
+<li>Supports multiple terminal instances</li>
+<li>Handles terminal show/hide state</li>
+<li>Manages terminal process lifecycle</li>
+<li>Supports terminal profiles and custom shells</li>
+<li>Provides shell integration features</li>
+</ul>
+<h2 id="terminalprovider-implementation"><a class="doc-anchor" href="#terminalprovider-implementation">§</a>TerminalProvider Implementation</h2>
 <p>Implements the <code>TerminalProvider</code> trait for the <code>MountainEnvironment</code>. This
 provider contains the core logic for managing integrated terminal instances,
 including creating native pseudo-terminals (PTYs) and handling their I/O.</p>
@@ -32,7 +93,7 @@ including creating native pseudo-terminals (PTYs) and handling their I/O.</p>
 <ul>
 <li><strong>Input Task</strong>: Receives text from channel and writes to PTY master</li>
 <li><strong>Output Task</strong>: Reads from PTY master and forwards to sidecar</li>
-<li><strong>Exit Task</strong>: Waits for process exit and notifies sidecar
-Each terminal gets its own I/O tasks to prevent blocking each other.</li>
+<li><strong>Exit Task</strong>: Waits for process exit and notifies sidecar</li>
 </ul>
+<p>Each terminal gets its own I/O tasks to prevent blocking each other.</p>
 </div></details></section></div></main></body></html>
