@@ -1,138 +1,19 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="ConfigurationProvider (Environment)"><title>Mountain::Environment::ConfigurationProvider - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module ConfigurationProvider</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Configuration<wbr>Provider</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#configurationprovider-environment" title="ConfigurationProvider (Environment)">ConfigurationProvider (Environment)</a><ul><li><a href="#responsibilities" title="RESPONSIBILITIES">RESPONSIBILITIES</a></li><li><a href="#architectural-role" title="ARCHITECTURAL ROLE">ARCHITECTURAL ROLE</a></li><li><a href="#configuration-merge-strategy" title="CONFIGURATION MERGE STRATEGY">CONFIGURATION MERGE STRATEGY</a></li><li><a href="#property-access" title="PROPERTY ACCESS">PROPERTY ACCESS</a></li><li><a href="#error-handling" title="ERROR HANDLING">ERROR HANDLING</a></li><li><a href="#performance" title="PERFORMANCE">PERFORMANCE</a></li><li><a href="#vs-code-reference" title="VS CODE REFERENCE">VS CODE REFERENCE</a></li><li><a href="#todo" title="TODO">TODO</a></li><li><a href="#module-contents" title="MODULE CONTENTS">MODULE CONTENTS</a></li></ul></li></ul><h3><a href="#functions">Module Items</a></h3><ul class="block"><li><a href="#functions" title="Functions">Functions</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Environment</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Environment</a></div><h1>Module <span>Configuration<wbr>Provider</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Environment/ConfigurationProvider.rs.html#1-472">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="configurationprovider-environment"><a class="doc-anchor" href="#configurationprovider-environment">§</a>ConfigurationProvider (Environment)</h2>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="ConfigurationProvider (Environment)"><title>Mountain::Environment::ConfigurationProvider - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module ConfigurationProvider</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Configuration<wbr>Provider</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#configurationprovider-environment" title="ConfigurationProvider (Environment)">ConfigurationProvider (Environment)</a><ul><li><a href="#implementation-strategy" title="Implementation Strategy">Implementation Strategy</a></li></ul></li></ul><h3><a href="#modules">Module Items</a></h3><ul class="block"><li><a href="#modules" title="Modules">Modules</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Environment</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Environment</a></div><h1>Module <span>Configuration<wbr>Provider</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Environment/ConfigurationProvider/mod.rs.html#1-74">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="configurationprovider-environment"><a class="doc-anchor" href="#configurationprovider-environment">§</a>ConfigurationProvider (Environment)</h2>
 <p>Implements <code>ConfigurationProvider</code> and <code>ConfigurationInspector</code> traits,
 managing all application settings across multiple scopes (Default, User,
 Workspace, Folder). It handles the configuration cascade, merging settings
 from various sources in the correct precedence order.</p>
-<h3 id="responsibilities"><a class="doc-anchor" href="#responsibilities">§</a>RESPONSIBILITIES</h3><h4 id="1-configuration-cascade"><a class="doc-anchor" href="#1-configuration-cascade">§</a>1. Configuration Cascade</h4>
+<h3 id="implementation-strategy"><a class="doc-anchor" href="#implementation-strategy">§</a>Implementation Strategy</h3>
+<p>The trait implementation is split across multiple helper modules for
+maintainability:</p>
 <ul>
-<li>Implement multi-layer configuration hierarchy: Default → User → Workspace
-→ Folder</li>
-<li>Apply precedence rules: higher layers override lower layers</li>
-<li>Merge configuration objects from different sources</li>
-<li>Handle configuration inheritance and overrides</li>
+<li>[<code>GetValue</code>]: <code>GetConfigurationValue</code> - retrieval from merged cache</li>
+<li>[<code>UpdateValue</code>]: <code>UpdateConfigurationValue</code> - persistence and re-merge</li>
+<li>[<code>InspectValue</code>]: <code>InspectConfigurationValue</code> - introspection across
+scopes</li>
+<li><code>InitializeAndMergeConfigurations</code></li>
 </ul>
-<h4 id="2-configuration-storage"><a class="doc-anchor" href="#2-configuration-storage">§</a>2. Configuration Storage</h4>
-<ul>
-<li>Read default settings from resource files</li>
-<li>Load user settings from global storage (<code>globalStorage.json</code>)</li>
-<li>Load workspace settings from <code>.code-workspace</code> files</li>
-<li>Load folder settings from <code>.vscode/settings.json</code></li>
-<li>Persist configuration changes to disk</li>
-</ul>
-<h4 id="3-configuration-access"><a class="doc-anchor" href="#3-configuration-access">§</a>3. Configuration Access</h4>
-<ul>
-<li>Provide <code>GetConfiguration</code> for retrieving merged settings</li>
-<li>Support nested property access via dot notation (e.g., <code>"editor.fontSize"</code>)</li>
-<li>Implement <code>ConfigurationInspector</code> for introspection</li>
-<li>Cache configuration for performance</li>
-</ul>
-<h4 id="4-configuration-updates"><a class="doc-anchor" href="#4-configuration-updates">§</a>4. Configuration Updates</h4>
-<ul>
-<li>Handle runtime configuration changes</li>
-<li>Notify listeners when configuration updates occur</li>
-<li>Persist changes to appropriate storage layer</li>
-<li>Re-merge configuration after changes</li>
-</ul>
-<h3 id="architectural-role"><a class="doc-anchor" href="#architectural-role">§</a>ARCHITECTURAL ROLE</h3>
-<p>ConfigurationProvider is the <strong>configuration management core</strong>:</p>
-<div class="example-wrap"><pre class="language-text"><code>Providers ──► ConfigurationProvider ──► MergedConfigurationStateDTO ──► Disk
-              │
-              └─► Multiple Storage Layers</code></pre></div><h4 id="position-in-mountain"><a class="doc-anchor" href="#position-in-mountain">§</a>Position in Mountain</h4>
-<ul>
-<li><code>Environment</code> module: Core capability provider</li>
-<li>Implements <code>CommonLibrary::Configuration::ConfigurationProvider</code> and
-<code>ConfigurationInspector</code></li>
-<li>Accessible via <code>Environment.Require&lt;dyn ConfigurationProvider&gt;()</code></li>
-</ul>
-<h4 id="configuration-scope-precedence-lowest-to-highest"><a class="doc-anchor" href="#configuration-scope-precedence-lowest-to-highest">§</a>Configuration Scope Precedence (lowest to highest)</h4>
-<ol>
-<li><strong>Default</strong>: Built-in Mountain defaults</li>
-<li><strong>User</strong>: Global user settings (<code>User/settings.json</code>)</li>
-<li><strong>Workspace</strong>: Workspace file (<code>.code-workspace</code>)</li>
-<li><strong>Folder</strong>: Per-folder settings (<code>.vscode/settings.json</code>)</li>
-<li><strong>Workspace-Folder</strong>: Workspace settings for specific folder</li>
-</ol>
-<h4 id="dependencies"><a class="doc-anchor" href="#dependencies">§</a>Dependencies</h4>
-<ul>
-<li><code>ApplicationState</code>: Access to <code>Configuration</code> state and storage paths</li>
-<li><code>FileSystemReader</code>: Read configuration files from disk</li>
-<li><code>Log</code>: Configuration change logging</li>
-</ul>
-<h4 id="dependents"><a class="doc-anchor" href="#dependents">§</a>Dependents</h4>
-<ul>
-<li>All providers that need configuration values</li>
-<li><code>Binary::Main</code>: Initial configuration setup</li>
-<li><code>InitializationData</code>: Includes configuration in frontend payload</li>
-<li>Command handlers: Read settings to customize behavior</li>
-</ul>
-<h3 id="configuration-merge-strategy"><a class="doc-anchor" href="#configuration-merge-strategy">§</a>CONFIGURATION MERGE STRATEGY</h3>
-<p>Configuration is merged using a <strong>depth-first cascade</strong>:</p>
-<ol>
-<li>Start with default values</li>
-<li>Overlay user settings (if exist)</li>
-<li>Overlay workspace settings (if exists)</li>
-<li>For each folder, overlay folder settings</li>
-<li>For workspace-folders, apply folder-specific overrides</li>
-</ol>
-<p>The final result is a single JSON object representing the effective
-configuration for the current context.</p>
-<h3 id="property-access"><a class="doc-anchor" href="#property-access">§</a>PROPERTY ACCESS</h3>
-<ul>
-<li><code>GetConfiguration(Section)</code> returns the entire configuration or a
-subsection</li>
-<li>Section uses dot notation: <code>"editor.fontSize"</code> or <code>"typescript.format.enable"</code></li>
-<li>Returns <code>serde_json::Value</code> which can be queried further</li>
-<li>Missing properties return <code>Value::Null</code></li>
-</ul>
-<h3 id="error-handling"><a class="doc-anchor" href="#error-handling">§</a>ERROR HANDLING</h3>
-<ul>
-<li>File read errors: <code>CommonError::FileSystemIO</code></li>
-<li>JSON parse errors: <code>CommonError::SerializationError</code></li>
-<li>Invalid section paths: <code>Value::Null</code> (no error)</li>
-<li>Write permission errors: <code>CommonError::FileSystemIO</code></li>
-</ul>
-<h3 id="performance"><a class="doc-anchor" href="#performance">§</a>PERFORMANCE</h3>
-<ul>
-<li>Configuration is cached in <code>ApplicationState::Configuration</code></li>
-<li>Merging happens on change (not on every read)</li>
-<li>File reads are async via <code>ApplicationRunTime</code></li>
-<li>Consider incremental merging for large configurations (TODO)</li>
-</ul>
-<h3 id="vs-code-reference"><a class="doc-anchor" href="#vs-code-reference">§</a>VS CODE REFERENCE</h3>
-<p>Patterns from VS Code’s configuration system:</p>
-<ul>
-<li><code>vs/platform/configuration/common/configuration.ts</code> - Configuration service</li>
-<li><code>vs/platform/configuration/common/configurationCache.ts</code> - Caching</li>
-<li><code>vs/platform/configuration/common/configurationLayer.ts</code> - Layer merging</li>
-</ul>
-<h3 id="todo"><a class="doc-anchor" href="#todo">§</a>TODO</h3>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Implement configuration change observers/eventing</li>
-<li><input disabled="" type="checkbox"/>
-Add configuration schema validation</li>
-<li><input disabled="" type="checkbox"/>
-Support configuration profiles (dev, prod, test)</li>
-<li><input disabled="" type="checkbox"/>
-Implement configuration export/import</li>
-<li><input disabled="" type="checkbox"/>
-Add configuration search and query API</li>
-<li><input disabled="" type="checkbox"/>
-Support remote configuration sources</li>
-<li><input disabled="" type="checkbox"/>
-Add configuration diffing for debugging</li>
-<li><input disabled="" type="checkbox"/>
-Implement configuration hot-reload without restart</li>
-<li><input disabled="" type="checkbox"/>
-Add configuration permissions and security</li>
-<li><input disabled="" type="checkbox"/>
-Support configuration templates and presets</li>
-</ul>
-<h3 id="module-contents"><a class="doc-anchor" href="#module-contents">§</a>MODULE CONTENTS</h3>
-<ul>
-<li>[<code>ConfigurationProvider</code>]: Main struct implementing configuration management</li>
-<li>Configuration loading and merging functions</li>
-<li>Storage layer abstractions</li>
-</ul>
-</div></details><h2 id="functions" class="section-header">Functions<a href="#functions" class="anchor">§</a></h2><dl class="item-table"><dt><a class="fn" href="fn.InitializeAndMergeConfigurations.html" title="fn Mountain::Environment::ConfigurationProvider::InitializeAndMergeConfigurations">Initialize<wbr>AndMerge<wbr>Configurations</a></dt><dd>Logic to load and merge all configuration files into the effective
-configuration stored in <code>ApplicationState</code>.</dd></dl></section></div></main></body></html>
+<p>The single <code>impl ConfigurationProvider for MountainEnvironment</code> block in
+this file delegates to those helper functions. This satisfies Rust’s orphan
+rules while keeping code organized.</p>
+</div></details><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="Loading/index.html" title="mod Mountain::Environment::ConfigurationProvider::Loading">Loading</a></dt><dd>Configuration loading and merging utilities.</dd></dl></section></div></main></body></html>

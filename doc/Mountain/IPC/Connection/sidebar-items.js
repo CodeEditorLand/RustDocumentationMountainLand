@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["Health","Manage","Pool"]};
+window.SIDEBAR_ITEMS = {"mod":["Health","Manager","Types"]};

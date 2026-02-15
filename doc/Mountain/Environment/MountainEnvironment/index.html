@@ -1,10 +1,12 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="MountainEnvironment (Environment)"><title>Mountain::Environment::MountainEnvironment - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module MountainEnvironment</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Mountain<wbr>Environment</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#mountainenvironment-environment" title="MountainEnvironment (Environment)">MountainEnvironment (Environment)</a><ul><li><a href="#responsibilities" title="RESPONSIBILITIES">RESPONSIBILITIES</a></li><li><a href="#architectural-role" title="ARCHITECTURAL ROLE">ARCHITECTURAL ROLE</a></li><li><a href="#dependency-injection-pattern" title="DEPENDENCY INJECTION PATTERN">DEPENDENCY INJECTION PATTERN</a></li><li><a href="#initialization-sequence" title="INITIALIZATION SEQUENCE">INITIALIZATION SEQUENCE</a></li><li><a href="#air-integration" title="AIR INTEGRATION">AIR INTEGRATION</a></li><li><a href="#vs-code-reference" title="VS CODE REFERENCE">VS CODE REFERENCE</a></li><li><a href="#provider-traits-implemented" title="PROVIDER TRAITS IMPLEMENTED">PROVIDER TRAITS IMPLEMENTED</a></li><li><a href="#todo" title="TODO">TODO</a></li></ul></li></ul><h3><a href="#structs">Module Items</a></h3><ul class="block"><li><a href="#structs" title="Structs">Structs</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Environment</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Environment</a></div><h1>Module <span>Mountain<wbr>Environment</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Environment/MountainEnvironment.rs.html#1-668">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="mountainenvironment-environment"><a class="doc-anchor" href="#mountainenvironment-environment">§</a>MountainEnvironment (Environment)</h2>
-<p>The primary dependency injection (DI) container for the Mountain application.
-It implements all provider traits defined in the Common crate, acting as the
-central orchestrator that provides access to all platform services.</p>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Main DI container struct."><title>Mountain::Environment::MountainEnvironment - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module MountainEnvironment</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Mountain<wbr>Environment</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#mountainenvironment-environment" title="MountainEnvironment (Environment)">MountainEnvironment (Environment)</a><ul><li><a href="#responsibilities" title="RESPONSIBILITIES">RESPONSIBILITIES</a></li><li><a href="#architectural-role" title="ARCHITECTURAL ROLE">ARCHITECTURAL ROLE</a></li><li><a href="#dependency-injection-pattern" title="DEPENDENCY INJECTION PATTERN">DEPENDENCY INJECTION PATTERN</a></li><li><a href="#initialization-sequence" title="INITIALIZATION SEQUENCE">INITIALIZATION SEQUENCE</a></li><li><a href="#air-integration" title="AIR INTEGRATION">AIR INTEGRATION</a></li><li><a href="#vs-code-reference" title="VS CODE REFERENCE">VS CODE REFERENCE</a></li><li><a href="#provider-traits-implemented" title="PROVIDER TRAITS IMPLEMENTED">PROVIDER TRAITS IMPLEMENTED</a></li><li><a href="#todo" title="TODO">TODO</a></li></ul></li></ul><h3><a href="#structs">Module Items</a></h3><ul class="block"><li><a href="#structs" title="Structs">Structs</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Environment</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Environment</a></div><h1>Module <span>Mountain<wbr>Environment</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Environment/MountainEnvironment.rs.html#1-560">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Main DI container struct.</p>
+<h2 id="mountainenvironment-environment"><a class="doc-anchor" href="#mountainenvironment-environment">§</a>MountainEnvironment (Environment)</h2>
+<p>The primary dependency injection (DI) container for the Mountain
+application. It implements all provider traits defined in the Common crate,
+acting as the central orchestrator that provides access to all platform
+services.</p>
 <h3 id="responsibilities"><a class="doc-anchor" href="#responsibilities">§</a>RESPONSIBILITIES</h3><h4 id="1-dependency-injection-container"><a class="doc-anchor" href="#1-dependency-injection-container">§</a>1. Dependency Injection Container</h4>
 <ul>
-<li>Implements <code>Requires&lt;T&gt;</code> for all 19+ provider traits</li>
+<li>Implements <code>Requires&lt;T&gt;</code> for all 25+ provider traits via macro</li>
 <li>Enable other components to request dependencies through <code>Require()</code> method</li>
 <li>Provide lazy initialization with proper lifetime management</li>
 <li>Support circular dependencies via <code>Arc</code>-wrapped self-references</li>
@@ -18,7 +20,8 @@ central orchestrator that provides access to all platform services.</p>
 </ul>
 <h4 id="3-air-integration-optional"><a class="doc-anchor" href="#3-air-integration-optional">§</a>3. Air Integration (Optional)</h4>
 <ul>
-<li>Manage the Air gRPC client for cloud-based services when <code>AirIntegration</code> feature enabled</li>
+<li>Manage the Air gRPC client for cloud-based services when <code>AirIntegration</code>
+feature enabled</li>
 <li>Enable dynamic switching between local and cloud services</li>
 <li>Provide health checking for Air daemon availability</li>
 <li>Support fallback to local services when Air unavailable</li>
@@ -32,7 +35,8 @@ central orchestrator that provides access to all platform services.</p>
 </ul>
 <h4 id="5-service-orchestration"><a class="doc-anchor" href="#5-service-orchestration">§</a>5. Service Orchestration</h4>
 <ul>
-<li>Act as central coordinator between all providers (FileSystem, Document, Command, etc.)</li>
+<li>Act as central coordinator between all providers (FileSystem, Document,
+Command, etc.)</li>
 <li>Ensure proper initialization order and dependency resolution</li>
 <li>Facilitate inter-provider communication via IPC or direct calls</li>
 <li>Provide capability resolution through <code>Requires&lt;T&gt;</code> trait</li>
@@ -44,12 +48,12 @@ the entire application:</p>
 <ul>
 <li><code>Environment</code> module: Root of the dependency injection system</li>
 <li>Implements Common crate’s <code>Environment</code> and <code>Requires</code> traits</li>
-<li>All providers accessed through capability-based lookups
-! - Created early in startup and shared via <code>Arc&lt;MountainEnvironment&gt;</code></li>
+<li>All providers accessed through capability-based lookups</li>
+<li>Created early in startup and shared via <code>Arc&lt;MountainEnvironment&gt;</code></li>
 </ul>
 <h4 id="dependencies-incoming"><a class="doc-anchor" href="#dependencies-incoming">§</a>Dependencies (Incoming)</h4>
 <ul>
-<li><code>CommonLibrary::*</code> provider traits (19+ interfaces)</li>
+<li><code>CommonLibrary::*</code> provider traits (25+ interfaces)</li>
 <li><code>tauri::AppHandle</code>: UI and platform integration</li>
 <li><code>ApplicationState</code>: Shared application state</li>
 <li><code>AirServiceClient</code> (optional): Cloud service integration</li>
@@ -59,7 +63,8 @@ the entire application:</p>
 <li>All command handlers: Require capabilities from environment</li>
 <li><code>ApplicationRunTime</code>: Uses environment for effect execution</li>
 <li>Provider implementations: self-referencing via <code>Arc&lt;dyn Trait&gt;</code></li>
-<li><code>InitializationData</code>: Uses environment to gather extensions and workspace data</li>
+<li><code>InitializationData</code>: Uses environment to gather extensions and workspace
+data</li>
 </ul>
 <h3 id="dependency-injection-pattern"><a class="doc-anchor" href="#dependency-injection-pattern">§</a>DEPENDENCY INJECTION PATTERN</h3>
 <p>Mountain uses a <strong>service locator pattern</strong> with trait-based lookup:</p>
@@ -72,23 +77,28 @@ the entire application:</p>
 <p>This enables:</p>
 <ul>
 <li><strong>Loose coupling</strong>: Components depend on traits, not concrete types</li>
-<li><strong>Circular dependencies</strong>: All providers can require each other through Environment</li>
+<li><strong>Circular dependencies</strong>: All providers can require each other through
+Environment</li>
 <li><strong>Testability</strong>: Environment can be mocked or stubbed for tests</li>
 <li><strong>Flexibility</strong>: New providers added without changing dependents</li>
 </ul>
 <h3 id="initialization-sequence"><a class="doc-anchor" href="#initialization-sequence">§</a>INITIALIZATION SEQUENCE</h3>
 <ol>
-<li><strong>Create Environment</strong>: <code>MountainEnvironment::Create(app_handle)</code></li>
+<li><strong>Create Environment</strong>: <code>MountainEnvironment::Create(app_handle, app_state)</code></li>
 <li><strong>Provider Instantiation</strong>: Lazy through <code>Requires&lt;T&gt;</code> trait calls</li>
-<li><strong>State Access</strong>: Each provider can access <code>ApplicationState</code> and <code>AppHandle</code> via self</li>
-<li><strong>Inter-Provider Communication</strong>: Via trait methods (direct Rust calls) or IPC</li>
+<li><strong>State Access</strong>: Each provider can access <code>ApplicationState</code> and
+<code>AppHandle</code> via self</li>
+<li><strong>Inter-Provider Communication</strong>: Via trait methods (direct Rust calls)
+or IPC</li>
 </ol>
-<p>Note: Provider implementations are separate modules in <code>Environment/</code> directory.
-Each module implements a specific trait and can be included/excluded via feature flags.</p>
+<p>Note: Provider implementations are separate modules in <code>Environment/</code>
+directory. Each module implements a specific trait and can be
+included/excluded via feature flags.</p>
 <h3 id="air-integration"><a class="doc-anchor" href="#air-integration">§</a>AIR INTEGRATION</h3>
 <p>When <code>AirIntegration</code> feature is enabled:</p>
 <ul>
-<li><code>AirClient</code> field is <code>Option&lt;Arc&lt;AirServiceClient&lt;tonic::transport::Channel&gt;&gt;&gt;</code></li>
+<li><code>AirClient</code> field is
+<code>Option&lt;Arc&lt;AirServiceClient&lt;tonic::transport::Channel&gt;&gt;&gt;</code></li>
 <li><code>CreateWithAir()</code> allows passing pre-configured Air client</li>
 <li><code>SetAirClient()</code> allows dynamic switching at runtime</li>
 <li><code>IsAirAvailable()</code> performs health check on Air daemon</li>
@@ -103,9 +113,11 @@ Each module implements a specific trait and can be included/excluded via feature
 <h3 id="vs-code-reference"><a class="doc-anchor" href="#vs-code-reference">§</a>VS CODE REFERENCE</h3>
 <p>Patterns borrowed from VS Code’s service architecture:</p>
 <ul>
-<li><code>vs/platform/instantiation/common/instantiation.ts</code> - Service collection and instantiation</li>
+<li><code>vs/platform/instantiation/common/instantiation.ts</code> - Service collection
+and instantiation</li>
 <li><code>vs/platform/workspace/common/workspace.ts</code> - Service locator pattern</li>
-<li><code>vs/workbench/services/extensions/common/extensions.ts</code> - Extension point management</li>
+<li><code>vs/workbench/services/extensions/common/extensions.ts</code> - Extension point
+management</li>
 </ul>
 <p>Key concepts:</p>
 <ul>
@@ -115,10 +127,12 @@ Each module implements a specific trait and can be included/excluded via feature
 <li>Thread-safe service access</li>
 </ul>
 <h3 id="provider-traits-implemented"><a class="doc-anchor" href="#provider-traits-implemented">§</a>PROVIDER TRAITS IMPLEMENTED</h3>
-<p>The following 19+ provider traits are implemented (full list in module body):</p>
+<p>The following 25+ provider traits are implemented using the
+<code>impl_provider!</code> macro:</p>
 <ul>
 <li><code>CommandExecutor</code> - Execute commands and actions</li>
 <li><code>ConfigurationProvider</code> - Access application configuration</li>
+<li><code>ConfigurationInspector</code> - Inspect configuration values</li>
 <li><code>CustomEditorProvider</code> - Custom document editor support</li>
 <li><code>DebugService</code> - Debug adapter protocol integration</li>
 <li><code>DiagnosticManager</code> - Diagnostic/lint/error management</li>
@@ -141,11 +155,7 @@ Each module implements a specific trait and can be included/excluded via feature
 <li><code>WorkspaceProvider</code> - Workspace and folder management</li>
 <li><code>WorkspaceEditApplier</code> - Workspace edit application (text changes)</li>
 <li><code>ExtensionManagementService</code> - Extension scanning and metadata</li>
-<li><code>DebugService</code> - Debug adapter protocol</li>
-<li><code>KeybindingProvider</code> - Keybinding resolution</li>
 <li><code>SearchProvider</code> - Search and replace functionality</li>
-<li><code>SearchProvider</code> - Search functionality (duplicate, will keep one)</li>
-<li>(Plus more as the system evolves)</li>
 </ul>
 <h3 id="todo"><a class="doc-anchor" href="#todo">§</a>TODO</h3>
 <ul>

@@ -66,260 +66,271 @@
 <a href=#66 id=66 data-nosnippet>66</a>//! ## COMMAND EXECUTION FLOW
 <a href=#67 id=67 data-nosnippet>67</a>//!
 <a href=#68 id=68 data-nosnippet>68</a>//! 1. **Request**: Caller invokes `ExecuteCommand(command_id, args)`
-<a href=#69 id=69 data-nosnippet>69</a>//! 2. **Lookup**: Provider looks up command in `ApplicationState::CommandRegistry`
-<a href=#70 id=70 data-nosnippet>70</a>//! 3. **Handler**: Retrieves the associated handler (native function or extension RPC)
-<a href=#71 id=71 data-nosnippet>71</a>//! 4. **Execute**: Calls handler with arguments
-<a href=#72 id=72 data-nosnippet>72</a>//! 5. **Result**: Returns serialized JSON result or error
-<a href=#73 id=73 data-nosnippet>73</a>//!
-<a href=#74 id=74 data-nosnippet>74</a>//! ## NATIVE vs EXTENSION COMMANDS
+<a href=#69 id=69 data-nosnippet>69</a>//! 2. **Lookup**: Provider looks up command in
+<a href=#70 id=70 data-nosnippet>70</a>//!    `ApplicationState::CommandRegistry`
+<a href=#71 id=71 data-nosnippet>71</a>//! 3. **Handler**: Retrieves the associated handler (native function or
+<a href=#72 id=72 data-nosnippet>72</a>//!    extension RPC)
+<a href=#73 id=73 data-nosnippet>73</a>//! 4. **Execute**: Calls handler with arguments
+<a href=#74 id=74 data-nosnippet>74</a>//! 5. **Result**: Returns serialized JSON result or error
 <a href=#75 id=75 data-nosnippet>75</a>//!
-<a href=#76 id=76 data-nosnippet>76</a>//! ### Native Commands
-<a href=#77 id=77 data-nosnippet>77</a>//! - Implemented directly in Rust
-<a href=#78 id=78 data-nosnippet>78</a>//! - Registered via `RegisterCommand` function
-<a href=#79 id=79 data-nosnippet>79</a>//! - Handler is a function pointer or Arc&lt;Fn&gt;
-<a href=#80 id=80 data-nosnippet>80</a>//! - Zero IPC overhead, direct call
-<a href=#81 id=81 data-nosnippet>81</a>//!
-<a href=#82 id=82 data-nosnippet>82</a>//! ### Extension Commands
-<a href=#83 id=83 data-nosnippet>83</a>//! - Defined in extension's `package.json` `contributes.commands`
-<a href=#84 id=84 data-nosnippet>84</a>//! - Registered when extension is activated
-<a href=#85 id=85 data-nosnippet>85</a>//! - Handler is RPC method to extension sidecar
-<a href=#86 id=86 data-nosnippet>86</a>//! - Goes through IPC layer with serialization
-<a href=#87 id=87 data-nosnippet>87</a>//!
-<a href=#88 id=88 data-nosnippet>88</a>//! ## ERROR HANDLING
+<a href=#76 id=76 data-nosnippet>76</a>//! ## NATIVE vs EXTENSION COMMANDS
+<a href=#77 id=77 data-nosnippet>77</a>//!
+<a href=#78 id=78 data-nosnippet>78</a>//! ### Native Commands
+<a href=#79 id=79 data-nosnippet>79</a>//! - Implemented directly in Rust
+<a href=#80 id=80 data-nosnippet>80</a>//! - Registered via `RegisterCommand` function
+<a href=#81 id=81 data-nosnippet>81</a>//! - Handler is a function pointer or Arc&lt;Fn&gt;
+<a href=#82 id=82 data-nosnippet>82</a>//! - Zero IPC overhead, direct call
+<a href=#83 id=83 data-nosnippet>83</a>//!
+<a href=#84 id=84 data-nosnippet>84</a>//! ### Extension Commands
+<a href=#85 id=85 data-nosnippet>85</a>//! - Defined in extension's `package.json` `contributes.commands`
+<a href=#86 id=86 data-nosnippet>86</a>//! - Registered when extension is activated
+<a href=#87 id=87 data-nosnippet>87</a>//! - Handler is RPC method to extension sidecar
+<a href=#88 id=88 data-nosnippet>88</a>//! - Goes through IPC layer with serialization
 <a href=#89 id=89 data-nosnippet>89</a>//!
-<a href=#90 id=90 data-nosnippet>90</a>//! - Command not found: Returns `CommonError::InvalidArgument`
-<a href=#91 id=91 data-nosnippet>91</a>//! - Handler errors: Propagated as `CommonError`
-<a href=#92 id=92 data-nosnippet>92</a>//! - IPC failures: Converted to `CommonError::IPCError`
-<a href=#93 id=93 data-nosnippet>93</a>//! - Serialization failures: `CommonError::SerializationError`
-<a href=#94 id=94 data-nosnippet>94</a>//!
-<a href=#95 id=95 data-nosnippet>95</a>//! ## PERFORMANCE
+<a href=#90 id=90 data-nosnippet>90</a>//! ## ERROR HANDLING
+<a href=#91 id=91 data-nosnippet>91</a>//!
+<a href=#92 id=92 data-nosnippet>92</a>//! - Command not found: Returns `CommonError::InvalidArgument`
+<a href=#93 id=93 data-nosnippet>93</a>//! - Handler errors: Propagated as `CommonError`
+<a href=#94 id=94 data-nosnippet>94</a>//! - IPC failures: Converted to `CommonError::IPCError`
+<a href=#95 id=95 data-nosnippet>95</a>//! - Serialization failures: `CommonError::SerializationError`
 <a href=#96 id=96 data-nosnippet>96</a>//!
-<a href=#97 id=97 data-nosnippet>97</a>//! - Native commands: Near-zero overhead (direct function call)
-<a href=#98 id=98 data-nosnippet>98</a>//! - Extension commands: IPC serialization + network latency
-<a href=#99 id=99 data-nosnippet>99</a>//! - Command lookup: HashMap lookup by string ID (fast)
-<a href=#100 id=100 data-nosnippet>100</a>//! - Consider caching frequently used command results
-<a href=#101 id=101 data-nosnippet>101</a>//!
-<a href=#102 id=102 data-nosnippet>102</a>//! ## VS CODE REFERENCE
+<a href=#97 id=97 data-nosnippet>97</a>//! ## PERFORMANCE
+<a href=#98 id=98 data-nosnippet>98</a>//!
+<a href=#99 id=99 data-nosnippet>99</a>//! - Native commands: Near-zero overhead (direct function call)
+<a href=#100 id=100 data-nosnippet>100</a>//! - Extension commands: IPC serialization + network latency
+<a href=#101 id=101 data-nosnippet>101</a>//! - Command lookup: HashMap lookup by string ID (fast)
+<a href=#102 id=102 data-nosnippet>102</a>//! - Consider caching frequently used command results
 <a href=#103 id=103 data-nosnippet>103</a>//!
-<a href=#104 id=104 data-nosnippet>104</a>//! Borrowed from VS Code's command system:
-<a href=#105 id=105 data-nosnippet>105</a>//! - `vs/platform/commands/common/commands.ts` - Command definitions
-<a href=#106 id=106 data-nosnippet>106</a>//! - `vs/workbench/services/commands/common/commandService.ts` - Command registry
-<a href=#107 id=107 data-nosnippet>107</a>//! - `vs/platform/commands/common/commandExecutor.ts` - Command execution
-<a href=#108 id=108 data-nosnippet>108</a>//!
-<a href=#109 id=109 data-nosnippet>109</a>//! ## TODO
-<a href=#110 id=110 data-nosnippet>110</a>//!
-<a href=#111 id=111 data-nosnippet>111</a>//! - [ ] Implement command contribution points from extensions
-<a href=#112 id=112 data-nosnippet>112</a>//! - [ ] Add command enablement/disable state management
-<a href=#113 id=113 data-nosnippet>113</a>//! - [ ] Support command categories and grouping
-<a href=#114 id=114 data-nosnippet>114</a>//! - [ ] Add command history and undo/redo stack
-<a href=#115 id=115 data-nosnippet>115</a>//! - [ ] Implement command keyboard shortcut resolution
-<a href=#116 id=116 data-nosnippet>116</a>//! - [ ] Add command telemetry (usage metrics)
-<a href=#117 id=117 data-nosnippet>117</a>//! - [ ] Support command aliases and deprecation
-<a href=#118 id=118 data-nosnippet>118</a>//! - [ ] Add command permission validation
-<a href=#119 id=119 data-nosnippet>119</a>//! - [ ] Implement command batching for related operations
-<a href=#120 id=120 data-nosnippet>120</a>//!
-<a href=#121 id=121 data-nosnippet>121</a>//! ## MODULE CONTENTS
-<a href=#122 id=122 data-nosnippet>122</a>//!
-<a href=#123 id=123 data-nosnippet>123</a>//! - [`CommandProvider`]: Main struct implementing `CommandExecutor`
-<a href=#124 id=124 data-nosnippet>124</a>//! - Command registration functions (to be added)
-<a href=#125 id=125 data-nosnippet>125</a>//! - Extension command proxy logic
-<a href=#126 id=126 data-nosnippet>126</a>
-<a href=#127 id=127 data-nosnippet>127</a></span><span class="comment">//
-<a href=#128 id=128 data-nosnippet>128</a>// 1. **Command Registry**: Maintains a centralized registry of all registered
-<a href=#129 id=129 data-nosnippet>129</a>//    commands and their corresponding handlers (native or proxied).
-<a href=#130 id=130 data-nosnippet>130</a>//
-<a href=#131 id=131 data-nosnippet>131</a>// 2. **Command Dispatching**: Routes command execution requests to the
-<a href=#132 id=132 data-nosnippet>132</a>//    appropriate handler based on the command identifier.
-<a href=#133 id=133 data-nosnippet>133</a>//
-<a href=#134 id=134 data-nosnippet>134</a>// 3. **Extension Command Proxying**: Enables extensions to contribute commands
-<a href=#135 id=135 data-nosnippet>135</a>//    that are executed in their sidecar processes via IPC.
-<a href=#136 id=136 data-nosnippet>136</a>//
-<a href=#137 id=137 data-nosnippet>137</a>// 4. **Command Lifecycle Management**: Handles registration, unregistration,
-<a href=#138 id=138 data-nosnippet>138</a>//    and querying of available commands.
-<a href=#139 id=139 data-nosnippet>139</a>//
-<a href=#140 id=140 data-nosnippet>140</a>// # Command Execution Flow
+<a href=#104 id=104 data-nosnippet>104</a>//! ## VS CODE REFERENCE
+<a href=#105 id=105 data-nosnippet>105</a>//!
+<a href=#106 id=106 data-nosnippet>106</a>//! Borrowed from VS Code's command system:
+<a href=#107 id=107 data-nosnippet>107</a>//! - `vs/platform/commands/common/commands.ts` - Command definitions
+<a href=#108 id=108 data-nosnippet>108</a>//! - `vs/workbench/services/commands/common/commandService.ts` - Command
+<a href=#109 id=109 data-nosnippet>109</a>//!   registry
+<a href=#110 id=110 data-nosnippet>110</a>//! - `vs/platform/commands/common/commandExecutor.ts` - Command execution
+<a href=#111 id=111 data-nosnippet>111</a>//!
+<a href=#112 id=112 data-nosnippet>112</a>//! ## TODO
+<a href=#113 id=113 data-nosnippet>113</a>//!
+<a href=#114 id=114 data-nosnippet>114</a>//! - [ ] Implement command contribution points from extensions
+<a href=#115 id=115 data-nosnippet>115</a>//! - [ ] Add command enablement/disable state management
+<a href=#116 id=116 data-nosnippet>116</a>//! - [ ] Support command categories and grouping
+<a href=#117 id=117 data-nosnippet>117</a>//! - [ ] Add command history and undo/redo stack
+<a href=#118 id=118 data-nosnippet>118</a>//! - [ ] Implement command keyboard shortcut resolution
+<a href=#119 id=119 data-nosnippet>119</a>//! - [ ] Add command telemetry (usage metrics)
+<a href=#120 id=120 data-nosnippet>120</a>//! - [ ] Support command aliases and deprecation
+<a href=#121 id=121 data-nosnippet>121</a>//! - [ ] Add command permission validation
+<a href=#122 id=122 data-nosnippet>122</a>//! - [ ] Implement command batching for related operations
+<a href=#123 id=123 data-nosnippet>123</a>//!
+<a href=#124 id=124 data-nosnippet>124</a>//! ## MODULE CONTENTS
+<a href=#125 id=125 data-nosnippet>125</a>//!
+<a href=#126 id=126 data-nosnippet>126</a>//! - [`CommandProvider`]: Main struct implementing `CommandExecutor`
+<a href=#127 id=127 data-nosnippet>127</a>//! - Command registration functions (to be added)
+<a href=#128 id=128 data-nosnippet>128</a>//! - Extension command proxy logic
+<a href=#129 id=129 data-nosnippet>129</a>
+<a href=#130 id=130 data-nosnippet>130</a></span><span class="comment">// 1. **Command Registry**: Maintains a centralized registry of all registered
+<a href=#131 id=131 data-nosnippet>131</a>//    commands and their corresponding handlers (native or proxied).
+<a href=#132 id=132 data-nosnippet>132</a>//
+<a href=#133 id=133 data-nosnippet>133</a>// 2. **Command Dispatching**: Routes command execution requests to the
+<a href=#134 id=134 data-nosnippet>134</a>//    appropriate handler based on the command identifier.
+<a href=#135 id=135 data-nosnippet>135</a>//
+<a href=#136 id=136 data-nosnippet>136</a>// 3. **Extension Command Proxying**: Enables extensions to contribute commands
+<a href=#137 id=137 data-nosnippet>137</a>//    that are executed in their sidecar processes via IPC.
+<a href=#138 id=138 data-nosnippet>138</a>//
+<a href=#139 id=139 data-nosnippet>139</a>// 4. **Command Lifecycle Management**: Handles registration, unregistration,
+<a href=#140 id=140 data-nosnippet>140</a>//    and querying of available commands.
 <a href=#141 id=141 data-nosnippet>141</a>//
-<a href=#142 id=142 data-nosnippet>142</a>// 1. Extension or system calls ExecuteCommand(identifier, args)
-<a href=#143 id=143 data-nosnippet>143</a>// 2. CommandProvider looks up the command in ApplicationState.CommandRegistry
-<a href=#144 id=144 data-nosnippet>144</a>// 3. If native handler: executes Rust function directly with AppHandle and
-<a href=#145 id=145 data-nosnippet>145</a>//    arguments
-<a href=#146 id=146 data-nosnippet>146</a>// 4. If proxied handler: sends IPC request to the owning sidecar via Vine
-<a href=#147 id=147 data-nosnippet>147</a>//    client
-<a href=#148 id=148 data-nosnippet>148</a>// 5. Returns result or error to caller
-<a href=#149 id=149 data-nosnippet>149</a>//
-<a href=#150 id=150 data-nosnippet>150</a>// # Patterns Borrowed from VSCode
-<a href=#151 id=151 data-nosnippet>151</a>//
-<a href=#152 id=152 data-nosnippet>152</a>// - **Command Registry**: Follows VSCode's command registry pattern where
-<a href=#153 id=153 data-nosnippet>153</a>//   commands are identified by strings and can be contributed by extensions.
+<a href=#142 id=142 data-nosnippet>142</a>// # Command Execution Flow
+<a href=#143 id=143 data-nosnippet>143</a>//
+<a href=#144 id=144 data-nosnippet>144</a>// 1. Extension or system calls ExecuteCommand(identifier, args)
+<a href=#145 id=145 data-nosnippet>145</a>// 2. CommandProvider looks up the command in
+<a href=#146 id=146 data-nosnippet>146</a>//    ApplicationState.Extension.Registry.CommandRegistry
+<a href=#147 id=147 data-nosnippet>147</a>// 3. If native handler: executes Rust function directly with AppHandle and
+<a href=#148 id=148 data-nosnippet>148</a>//    arguments
+<a href=#149 id=149 data-nosnippet>149</a>// 4. If proxied handler: sends IPC request to the owning sidecar via Vine
+<a href=#150 id=150 data-nosnippet>150</a>//    client
+<a href=#151 id=151 data-nosnippet>151</a>// 5. Returns result or error to caller
+<a href=#152 id=152 data-nosnippet>152</a>//
+<a href=#153 id=153 data-nosnippet>153</a>// # Patterns Borrowed from VSCode
 <a href=#154 id=154 data-nosnippet>154</a>//
-<a href=#155 id=155 data-nosnippet>155</a>// - **Context Passing**: Like VSCode's execution context, Mountain passes the
-<a href=#156 id=156 data-nosnippet>156</a>//   AppHandle and Runtime to native handlers for context awareness.
+<a href=#155 id=155 data-nosnippet>155</a>// - **Command Registry**: Follows VSCode's command registry pattern where
+<a href=#156 id=156 data-nosnippet>156</a>//   commands are identified by strings and can be contributed by extensions.
 <a href=#157 id=157 data-nosnippet>157</a>//
-<a href=#158 id=158 data-nosnippet>158</a>// - **Conflict Resolution**: VSCode allows command overrides; Mountain
-<a href=#159 id=159 data-nosnippet>159</a>//   currently does not implement conflict resolution (TODO).
+<a href=#158 id=158 data-nosnippet>158</a>// - **Context Passing**: Like VSCode's execution context, Mountain passes the
+<a href=#159 id=159 data-nosnippet>159</a>//   AppHandle and Runtime to native handlers for context awareness.
 <a href=#160 id=160 data-nosnippet>160</a>//
-<a href=#161 id=161 data-nosnippet>161</a>// # TODOs
-<a href=#162 id=162 data-nosnippet>162</a>//
-<a href=#163 id=163 data-nosnippet>163</a>// - [ ] Implement command conflict resolution strategy
-<a href=#164 id=164 data-nosnippet>164</a>// - [ ] Add command execution context (selection, active editor, etc.)
-<a href=#165 id=165 data-nosnippet>165</a>// - [ ] Implement command categories and metadata
-<a href=#166 id=166 data-nosnippet>166</a>// - [ ] Add command enablement/disablement based on context
-<a href=#167 id=167 data-nosnippet>167</a>// - [ ] Implement command execution metrics and telemetry
-<a href=#168 id=168 data-nosnippet>168</a>// - [ ] Add command keyboard shortcut registration lookup
-<a href=#169 id=169 data-nosnippet>169</a>// - [ ] Implement command execution timeout and cancellation
-<a href=#170 id=170 data-nosnippet>170</a>// - [ ] Add validation of command arguments
-<a href=#171 id=171 data-nosnippet>171</a>// - [ ] Consider adding command preconditions
-<a href=#172 id=172 data-nosnippet>172</a>// - [ ] Implement command history for undo/redo scenarios
-<a href=#173 id=173 data-nosnippet>173</a>
-<a href=#174 id=174 data-nosnippet>174</a></span><span class="kw">use </span>std::{future::Future, pin::Pin, sync::Arc};
-<a href=#175 id=175 data-nosnippet>175</a>
-<a href=#176 id=176 data-nosnippet>176</a><span class="kw">use </span>CommonLibrary::{
-<a href=#177 id=177 data-nosnippet>177</a>	Command::CommandExecutor::CommandExecutor,
-<a href=#178 id=178 data-nosnippet>178</a>	Error::CommonError::CommonError,
-<a href=#179 id=179 data-nosnippet>179</a>	IPC::DTO::ProxyTarget::ProxyTarget,
-<a href=#180 id=180 data-nosnippet>180</a>};
-<a href=#181 id=181 data-nosnippet>181</a><span class="kw">use </span>async_trait::async_trait;
-<a href=#182 id=182 data-nosnippet>182</a><span class="kw">use </span>log::{debug, error, info};
-<a href=#183 id=183 data-nosnippet>183</a><span class="kw">use </span>serde_json::{Value, json};
-<a href=#184 id=184 data-nosnippet>184</a><span class="kw">use </span>tauri::{AppHandle, Manager, Runtime, WebviewWindow};
-<a href=#185 id=185 data-nosnippet>185</a>
-<a href=#186 id=186 data-nosnippet>186</a><span class="kw">use </span><span class="kw">super</span>::MountainEnvironment::MountainEnvironment;
-<a href=#187 id=187 data-nosnippet>187</a><span class="kw">use </span>crate::{RunTime::ApplicationRunTime::ApplicationRunTime, Vine::Client};
+<a href=#161 id=161 data-nosnippet>161</a>// - **Conflict Resolution**: VSCode allows command overrides; Mountain
+<a href=#162 id=162 data-nosnippet>162</a>//   currently does not implement conflict resolution (TODO).
+<a href=#163 id=163 data-nosnippet>163</a>//
+<a href=#164 id=164 data-nosnippet>164</a>// # TODOs
+<a href=#165 id=165 data-nosnippet>165</a>//
+<a href=#166 id=166 data-nosnippet>166</a>// - [ ] Implement command conflict resolution strategy
+<a href=#167 id=167 data-nosnippet>167</a>// - [ ] Add command execution context (selection, active editor, etc.)
+<a href=#168 id=168 data-nosnippet>168</a>// - [ ] Implement command categories and metadata
+<a href=#169 id=169 data-nosnippet>169</a>// - [ ] Add command enablement/disablement based on context
+<a href=#170 id=170 data-nosnippet>170</a>// - [ ] Implement command execution metrics and telemetry
+<a href=#171 id=171 data-nosnippet>171</a>// - [ ] Add command keyboard shortcut registration lookup
+<a href=#172 id=172 data-nosnippet>172</a>// - [ ] Implement command execution timeout and cancellation
+<a href=#173 id=173 data-nosnippet>173</a>// - [ ] Add validation of command arguments
+<a href=#174 id=174 data-nosnippet>174</a>// - [ ] Consider adding command preconditions
+<a href=#175 id=175 data-nosnippet>175</a>// - [ ] Implement command history for undo/redo scenarios
+<a href=#176 id=176 data-nosnippet>176</a>
+<a href=#177 id=177 data-nosnippet>177</a></span><span class="kw">use </span>std::{future::Future, pin::Pin, sync::Arc};
+<a href=#178 id=178 data-nosnippet>178</a>
+<a href=#179 id=179 data-nosnippet>179</a><span class="kw">use </span>CommonLibrary::{
+<a href=#180 id=180 data-nosnippet>180</a>	Command::CommandExecutor::CommandExecutor,
+<a href=#181 id=181 data-nosnippet>181</a>	Error::CommonError::CommonError,
+<a href=#182 id=182 data-nosnippet>182</a>	IPC::DTO::ProxyTarget::ProxyTarget,
+<a href=#183 id=183 data-nosnippet>183</a>};
+<a href=#184 id=184 data-nosnippet>184</a><span class="kw">use </span>async_trait::async_trait;
+<a href=#185 id=185 data-nosnippet>185</a><span class="kw">use </span>log::{debug, error, info};
+<a href=#186 id=186 data-nosnippet>186</a><span class="kw">use </span>serde_json::{Value, json};
+<a href=#187 id=187 data-nosnippet>187</a><span class="kw">use </span>tauri::{AppHandle, Manager, Runtime, WebviewWindow};
 <a href=#188 id=188 data-nosnippet>188</a>
-<a href=#189 id=189 data-nosnippet>189</a><span class="doccomment">/// An enum representing the different ways a command can be handled.
-<a href=#190 id=190 data-nosnippet>190</a></span><span class="kw">pub enum </span>CommandHandler&lt;R:Runtime + <span class="lifetime">'static</span>&gt; {
-<a href=#191 id=191 data-nosnippet>191</a>	<span class="doccomment">/// A command handled by a native, asynchronous Rust function.
-<a href=#192 id=192 data-nosnippet>192</a>	</span>Native(
-<a href=#193 id=193 data-nosnippet>193</a>		<span class="kw">fn</span>(
-<a href=#194 id=194 data-nosnippet>194</a>			AppHandle&lt;R&gt;,
-<a href=#195 id=195 data-nosnippet>195</a>
-<a href=#196 id=196 data-nosnippet>196</a>			WebviewWindow&lt;R&gt;,
-<a href=#197 id=197 data-nosnippet>197</a>
-<a href=#198 id=198 data-nosnippet>198</a>			Arc&lt;ApplicationRunTime&gt;,
-<a href=#199 id=199 data-nosnippet>199</a>
-<a href=#200 id=200 data-nosnippet>200</a>			Value,
-<a href=#201 id=201 data-nosnippet>201</a>		) -&gt; Pin&lt;Box&lt;<span class="kw">dyn </span>Future&lt;Output = <span class="prelude-ty">Result</span>&lt;Value, String&gt;&gt; + Send&gt;&gt;,
-<a href=#202 id=202 data-nosnippet>202</a>	),
-<a href=#203 id=203 data-nosnippet>203</a>
-<a href=#204 id=204 data-nosnippet>204</a>	<span class="doccomment">/// A command implemented in an extension and proxied to a sidecar.
-<a href=#205 id=205 data-nosnippet>205</a>	</span>Proxied { SideCarIdentifier:String, CommandIdentifier:String },
-<a href=#206 id=206 data-nosnippet>206</a>}
-<a href=#207 id=207 data-nosnippet>207</a>
-<a href=#208 id=208 data-nosnippet>208</a><span class="kw">impl</span>&lt;R:Runtime&gt; Clone <span class="kw">for </span>CommandHandler&lt;R&gt; {
-<a href=#209 id=209 data-nosnippet>209</a>	<span class="kw">fn </span>clone(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="self">Self </span>{
-<a href=#210 id=210 data-nosnippet>210</a>		<span class="kw">match </span><span class="self">self </span>{
-<a href=#211 id=211 data-nosnippet>211</a>			<span class="self">Self</span>::Native(Function) =&gt; <span class="self">Self</span>::Native(<span class="kw-2">*</span>Function),
-<a href=#212 id=212 data-nosnippet>212</a>
-<a href=#213 id=213 data-nosnippet>213</a>			<span class="self">Self</span>::Proxied { SideCarIdentifier, CommandIdentifier } =&gt; {
-<a href=#214 id=214 data-nosnippet>214</a>				<span class="self">Self</span>::Proxied {
-<a href=#215 id=215 data-nosnippet>215</a>					SideCarIdentifier:SideCarIdentifier.clone(),
-<a href=#216 id=216 data-nosnippet>216</a>
-<a href=#217 id=217 data-nosnippet>217</a>					CommandIdentifier:CommandIdentifier.clone(),
-<a href=#218 id=218 data-nosnippet>218</a>				}
-<a href=#219 id=219 data-nosnippet>219</a>			},
-<a href=#220 id=220 data-nosnippet>220</a>		}
-<a href=#221 id=221 data-nosnippet>221</a>	}
-<a href=#222 id=222 data-nosnippet>222</a>}
-<a href=#223 id=223 data-nosnippet>223</a>
-<a href=#224 id=224 data-nosnippet>224</a><span class="attr">#[async_trait]
-<a href=#225 id=225 data-nosnippet>225</a></span><span class="kw">impl </span>CommandExecutor <span class="kw">for </span>MountainEnvironment {
-<a href=#226 id=226 data-nosnippet>226</a>	<span class="doccomment">/// Executes a registered command by dispatching it to the appropriate
-<a href=#227 id=227 data-nosnippet>227</a>	/// handler.
-<a href=#228 id=228 data-nosnippet>228</a>	</span><span class="kw">async fn </span>ExecuteCommand(<span class="kw-2">&amp;</span><span class="self">self</span>, CommandIdentifier:String, Argument:Value) -&gt; <span class="prelude-ty">Result</span>&lt;Value, CommonError&gt; {
-<a href=#229 id=229 data-nosnippet>229</a>		<span class="kw">let </span>HandlerInfoOption = <span class="self">self
-<a href=#230 id=230 data-nosnippet>230</a>			</span>.ApplicationState
-<a href=#231 id=231 data-nosnippet>231</a>			.CommandRegistry
-<a href=#232 id=232 data-nosnippet>232</a>			.lock()
-<a href=#233 id=233 data-nosnippet>233</a>			.map_err(<span class="kw">super</span>::Utility::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?
-<a href=#234 id=234 data-nosnippet>234</a>			</span>.get(<span class="kw-2">&amp;</span>CommandIdentifier)
-<a href=#235 id=235 data-nosnippet>235</a>			.cloned();
-<a href=#236 id=236 data-nosnippet>236</a>
-<a href=#237 id=237 data-nosnippet>237</a>		<span class="kw">match </span>HandlerInfoOption {
-<a href=#238 id=238 data-nosnippet>238</a>			<span class="prelude-val">Some</span>(CommandHandler::Native(Function)) =&gt; {
-<a href=#239 id=239 data-nosnippet>239</a>				<span class="macro">debug!</span>(<span class="string">"[CommandProvider] Executing NATIVE command '{}'."</span>, CommandIdentifier);
-<a href=#240 id=240 data-nosnippet>240</a>
-<a href=#241 id=241 data-nosnippet>241</a>				<span class="kw">let </span>RunTime:Arc&lt;ApplicationRunTime&gt; =
-<a href=#242 id=242 data-nosnippet>242</a>					<span class="self">self</span>.ApplicationHandle.state::&lt;Arc&lt;ApplicationRunTime&gt;&gt;().inner().clone();
-<a href=#243 id=243 data-nosnippet>243</a>
-<a href=#244 id=244 data-nosnippet>244</a>				<span class="kw">let </span>MainWindow = <span class="self">self</span>.ApplicationHandle.get_webview_window(<span class="string">"main"</span>).ok_or_else(|| {
-<a href=#245 id=245 data-nosnippet>245</a>					CommonError::UserInterfaceInteraction {
-<a href=#246 id=246 data-nosnippet>246</a>						Reason:<span class="string">"Main window not found for command execution"</span>.into(),
-<a href=#247 id=247 data-nosnippet>247</a>					}
-<a href=#248 id=248 data-nosnippet>248</a>				})<span class="question-mark">?</span>;
-<a href=#249 id=249 data-nosnippet>249</a>
-<a href=#250 id=250 data-nosnippet>250</a>				Function(<span class="self">self</span>.ApplicationHandle.clone(), MainWindow, RunTime, Argument)
-<a href=#251 id=251 data-nosnippet>251</a>					.<span class="kw">await
-<a href=#252 id=252 data-nosnippet>252</a>					</span>.map_err(|Error| CommonError::CommandExecution { CommandIdentifier, Reason:Error })
-<a href=#253 id=253 data-nosnippet>253</a>			},
+<a href=#189 id=189 data-nosnippet>189</a><span class="kw">use </span><span class="kw">super</span>::MountainEnvironment::MountainEnvironment;
+<a href=#190 id=190 data-nosnippet>190</a><span class="kw">use </span>crate::{RunTime::ApplicationRunTime::ApplicationRunTime, Vine::Client};
+<a href=#191 id=191 data-nosnippet>191</a>
+<a href=#192 id=192 data-nosnippet>192</a><span class="doccomment">/// An enum representing the different ways a command can be handled.
+<a href=#193 id=193 data-nosnippet>193</a></span><span class="kw">pub enum </span>CommandHandler&lt;R:Runtime + <span class="lifetime">'static</span>&gt; {
+<a href=#194 id=194 data-nosnippet>194</a>	<span class="doccomment">/// A command handled by a native, asynchronous Rust function.
+<a href=#195 id=195 data-nosnippet>195</a>	</span>Native(
+<a href=#196 id=196 data-nosnippet>196</a>		<span class="kw">fn</span>(
+<a href=#197 id=197 data-nosnippet>197</a>			AppHandle&lt;R&gt;,
+<a href=#198 id=198 data-nosnippet>198</a>
+<a href=#199 id=199 data-nosnippet>199</a>			WebviewWindow&lt;R&gt;,
+<a href=#200 id=200 data-nosnippet>200</a>
+<a href=#201 id=201 data-nosnippet>201</a>			Arc&lt;ApplicationRunTime&gt;,
+<a href=#202 id=202 data-nosnippet>202</a>
+<a href=#203 id=203 data-nosnippet>203</a>			Value,
+<a href=#204 id=204 data-nosnippet>204</a>		) -&gt; Pin&lt;Box&lt;<span class="kw">dyn </span>Future&lt;Output = <span class="prelude-ty">Result</span>&lt;Value, String&gt;&gt; + Send&gt;&gt;,
+<a href=#205 id=205 data-nosnippet>205</a>	),
+<a href=#206 id=206 data-nosnippet>206</a>
+<a href=#207 id=207 data-nosnippet>207</a>	<span class="doccomment">/// A command implemented in an extension and proxied to a sidecar.
+<a href=#208 id=208 data-nosnippet>208</a>	</span>Proxied { SideCarIdentifier:String, CommandIdentifier:String },
+<a href=#209 id=209 data-nosnippet>209</a>}
+<a href=#210 id=210 data-nosnippet>210</a>
+<a href=#211 id=211 data-nosnippet>211</a><span class="kw">impl</span>&lt;R:Runtime&gt; Clone <span class="kw">for </span>CommandHandler&lt;R&gt; {
+<a href=#212 id=212 data-nosnippet>212</a>	<span class="kw">fn </span>clone(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="self">Self </span>{
+<a href=#213 id=213 data-nosnippet>213</a>		<span class="kw">match </span><span class="self">self </span>{
+<a href=#214 id=214 data-nosnippet>214</a>			<span class="self">Self</span>::Native(Function) =&gt; <span class="self">Self</span>::Native(<span class="kw-2">*</span>Function),
+<a href=#215 id=215 data-nosnippet>215</a>
+<a href=#216 id=216 data-nosnippet>216</a>			<span class="self">Self</span>::Proxied { SideCarIdentifier, CommandIdentifier } =&gt; {
+<a href=#217 id=217 data-nosnippet>217</a>				<span class="self">Self</span>::Proxied {
+<a href=#218 id=218 data-nosnippet>218</a>					SideCarIdentifier:SideCarIdentifier.clone(),
+<a href=#219 id=219 data-nosnippet>219</a>
+<a href=#220 id=220 data-nosnippet>220</a>					CommandIdentifier:CommandIdentifier.clone(),
+<a href=#221 id=221 data-nosnippet>221</a>				}
+<a href=#222 id=222 data-nosnippet>222</a>			},
+<a href=#223 id=223 data-nosnippet>223</a>		}
+<a href=#224 id=224 data-nosnippet>224</a>	}
+<a href=#225 id=225 data-nosnippet>225</a>}
+<a href=#226 id=226 data-nosnippet>226</a>
+<a href=#227 id=227 data-nosnippet>227</a><span class="attr">#[async_trait]
+<a href=#228 id=228 data-nosnippet>228</a></span><span class="kw">impl </span>CommandExecutor <span class="kw">for </span>MountainEnvironment {
+<a href=#229 id=229 data-nosnippet>229</a>	<span class="doccomment">/// Executes a registered command by dispatching it to the appropriate
+<a href=#230 id=230 data-nosnippet>230</a>	/// handler.
+<a href=#231 id=231 data-nosnippet>231</a>	</span><span class="kw">async fn </span>ExecuteCommand(<span class="kw-2">&amp;</span><span class="self">self</span>, CommandIdentifier:String, Argument:Value) -&gt; <span class="prelude-ty">Result</span>&lt;Value, CommonError&gt; {
+<a href=#232 id=232 data-nosnippet>232</a>		<span class="kw">let </span>HandlerInfoOption = <span class="self">self
+<a href=#233 id=233 data-nosnippet>233</a>			</span>.ApplicationState
+<a href=#234 id=234 data-nosnippet>234</a>			.Extension
+<a href=#235 id=235 data-nosnippet>235</a>			.Registry
+<a href=#236 id=236 data-nosnippet>236</a>			.CommandRegistry
+<a href=#237 id=237 data-nosnippet>237</a>			.lock()
+<a href=#238 id=238 data-nosnippet>238</a>			.map_err(<span class="kw">super</span>::Utility::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?
+<a href=#239 id=239 data-nosnippet>239</a>			</span>.get(<span class="kw-2">&amp;</span>CommandIdentifier)
+<a href=#240 id=240 data-nosnippet>240</a>			.cloned();
+<a href=#241 id=241 data-nosnippet>241</a>
+<a href=#242 id=242 data-nosnippet>242</a>		<span class="kw">match </span>HandlerInfoOption {
+<a href=#243 id=243 data-nosnippet>243</a>			<span class="prelude-val">Some</span>(CommandHandler::Native(Function)) =&gt; {
+<a href=#244 id=244 data-nosnippet>244</a>				<span class="macro">debug!</span>(<span class="string">"[CommandProvider] Executing NATIVE command '{}'."</span>, CommandIdentifier);
+<a href=#245 id=245 data-nosnippet>245</a>
+<a href=#246 id=246 data-nosnippet>246</a>				<span class="kw">let </span>RunTime:Arc&lt;ApplicationRunTime&gt; =
+<a href=#247 id=247 data-nosnippet>247</a>					<span class="self">self</span>.ApplicationHandle.state::&lt;Arc&lt;ApplicationRunTime&gt;&gt;().inner().clone();
+<a href=#248 id=248 data-nosnippet>248</a>
+<a href=#249 id=249 data-nosnippet>249</a>				<span class="kw">let </span>MainWindow = <span class="self">self</span>.ApplicationHandle.get_webview_window(<span class="string">"main"</span>).ok_or_else(|| {
+<a href=#250 id=250 data-nosnippet>250</a>					CommonError::UserInterfaceInteraction {
+<a href=#251 id=251 data-nosnippet>251</a>						Reason:<span class="string">"Main window not found for command execution"</span>.into(),
+<a href=#252 id=252 data-nosnippet>252</a>					}
+<a href=#253 id=253 data-nosnippet>253</a>				})<span class="question-mark">?</span>;
 <a href=#254 id=254 data-nosnippet>254</a>
-<a href=#255 id=255 data-nosnippet>255</a>			<span class="prelude-val">Some</span>(CommandHandler::Proxied { SideCarIdentifier, CommandIdentifier: ProxiedCommandIdentifier }) =&gt; {
-<a href=#256 id=256 data-nosnippet>256</a>				<span class="macro">debug!</span>(
-<a href=#257 id=257 data-nosnippet>257</a>					<span class="string">"[CommandProvider] Executing PROXIED command '{}' on sidecar '{}'."</span>,
-<a href=#258 id=258 data-nosnippet>258</a>					CommandIdentifier, SideCarIdentifier
-<a href=#259 id=259 data-nosnippet>259</a>				);
-<a href=#260 id=260 data-nosnippet>260</a>
-<a href=#261 id=261 data-nosnippet>261</a>				<span class="kw">let </span>RPCParameters = <span class="macro">json!</span>([ProxiedCommandIdentifier, Argument]);
-<a href=#262 id=262 data-nosnippet>262</a>
-<a href=#263 id=263 data-nosnippet>263</a>				<span class="kw">let </span>RPCMethod = <span class="macro">format!</span>(<span class="string">"{}$ExecuteContributedCommand"</span>, ProxyTarget::ExtHostCommands.GetTargetPrefix());
-<a href=#264 id=264 data-nosnippet>264</a>
-<a href=#265 id=265 data-nosnippet>265</a>				Client::SendRequest(<span class="kw-2">&amp;</span>SideCarIdentifier, RPCMethod, RPCParameters, <span class="number">30000</span>)
-<a href=#266 id=266 data-nosnippet>266</a>					.<span class="kw">await
-<a href=#267 id=267 data-nosnippet>267</a>					</span>.map_err(|Error| CommonError::IPCError { Description:Error.to_string() })
-<a href=#268 id=268 data-nosnippet>268</a>			},
+<a href=#255 id=255 data-nosnippet>255</a>				Function(<span class="self">self</span>.ApplicationHandle.clone(), MainWindow, RunTime, Argument)
+<a href=#256 id=256 data-nosnippet>256</a>					.<span class="kw">await
+<a href=#257 id=257 data-nosnippet>257</a>					</span>.map_err(|Error| CommonError::CommandExecution { CommandIdentifier, Reason:Error })
+<a href=#258 id=258 data-nosnippet>258</a>			},
+<a href=#259 id=259 data-nosnippet>259</a>
+<a href=#260 id=260 data-nosnippet>260</a>			<span class="prelude-val">Some</span>(CommandHandler::Proxied { SideCarIdentifier, CommandIdentifier: ProxiedCommandIdentifier }) =&gt; {
+<a href=#261 id=261 data-nosnippet>261</a>				<span class="macro">debug!</span>(
+<a href=#262 id=262 data-nosnippet>262</a>					<span class="string">"[CommandProvider] Executing PROXIED command '{}' on sidecar '{}'."</span>,
+<a href=#263 id=263 data-nosnippet>263</a>					CommandIdentifier, SideCarIdentifier
+<a href=#264 id=264 data-nosnippet>264</a>				);
+<a href=#265 id=265 data-nosnippet>265</a>
+<a href=#266 id=266 data-nosnippet>266</a>				<span class="kw">let </span>RPCParameters = <span class="macro">json!</span>([ProxiedCommandIdentifier, Argument]);
+<a href=#267 id=267 data-nosnippet>267</a>
+<a href=#268 id=268 data-nosnippet>268</a>				<span class="kw">let </span>RPCMethod = <span class="macro">format!</span>(<span class="string">"{}$ExecuteContributedCommand"</span>, ProxyTarget::ExtHostCommands.GetTargetPrefix());
 <a href=#269 id=269 data-nosnippet>269</a>
-<a href=#270 id=270 data-nosnippet>270</a>			<span class="prelude-val">None </span>=&gt; {
-<a href=#271 id=271 data-nosnippet>271</a>				<span class="macro">error!</span>(<span class="string">"[CommandProvider] Command '{}' not found in registry."</span>, CommandIdentifier);
-<a href=#272 id=272 data-nosnippet>272</a>
-<a href=#273 id=273 data-nosnippet>273</a>				<span class="prelude-val">Err</span>(CommonError::CommandNotFound { Identifier:CommandIdentifier })
-<a href=#274 id=274 data-nosnippet>274</a>			},
-<a href=#275 id=275 data-nosnippet>275</a>		}
-<a href=#276 id=276 data-nosnippet>276</a>	}
+<a href=#270 id=270 data-nosnippet>270</a>				Client::SendRequest(<span class="kw-2">&amp;</span>SideCarIdentifier, RPCMethod, RPCParameters, <span class="number">30000</span>)
+<a href=#271 id=271 data-nosnippet>271</a>					.<span class="kw">await
+<a href=#272 id=272 data-nosnippet>272</a>					</span>.map_err(|Error| CommonError::IPCError { Description:Error.to_string() })
+<a href=#273 id=273 data-nosnippet>273</a>			},
+<a href=#274 id=274 data-nosnippet>274</a>
+<a href=#275 id=275 data-nosnippet>275</a>			<span class="prelude-val">None </span>=&gt; {
+<a href=#276 id=276 data-nosnippet>276</a>				<span class="macro">error!</span>(<span class="string">"[CommandProvider] Command '{}' not found in registry."</span>, CommandIdentifier);
 <a href=#277 id=277 data-nosnippet>277</a>
-<a href=#278 id=278 data-nosnippet>278</a>	<span class="doccomment">/// Registers a command contributed by a sidecar process.
-<a href=#279 id=279 data-nosnippet>279</a>	</span><span class="kw">async fn </span>RegisterCommand(<span class="kw-2">&amp;</span><span class="self">self</span>, SideCarIdentifier:String, CommandIdentifier:String) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
-<a href=#280 id=280 data-nosnippet>280</a>		<span class="macro">info!</span>(
-<a href=#281 id=281 data-nosnippet>281</a>			<span class="string">"[CommandProvider] Registering PROXY command '{}' from sidecar '{}'"</span>,
-<a href=#282 id=282 data-nosnippet>282</a>			CommandIdentifier, SideCarIdentifier
-<a href=#283 id=283 data-nosnippet>283</a>		);
-<a href=#284 id=284 data-nosnippet>284</a>
-<a href=#285 id=285 data-nosnippet>285</a>		<span class="kw">let </span><span class="kw-2">mut </span>Registry = <span class="self">self
-<a href=#286 id=286 data-nosnippet>286</a>			</span>.ApplicationState
-<a href=#287 id=287 data-nosnippet>287</a>			.CommandRegistry
-<a href=#288 id=288 data-nosnippet>288</a>			.lock()
-<a href=#289 id=289 data-nosnippet>289</a>			.map_err(<span class="kw">super</span>::Utility::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?</span>;
-<a href=#290 id=290 data-nosnippet>290</a>
-<a href=#291 id=291 data-nosnippet>291</a>		Registry.insert(
-<a href=#292 id=292 data-nosnippet>292</a>			CommandIdentifier.clone(),
-<a href=#293 id=293 data-nosnippet>293</a>			CommandHandler::Proxied { SideCarIdentifier, CommandIdentifier },
-<a href=#294 id=294 data-nosnippet>294</a>		);
-<a href=#295 id=295 data-nosnippet>295</a>
-<a href=#296 id=296 data-nosnippet>296</a>		<span class="prelude-val">Ok</span>(())
-<a href=#297 id=297 data-nosnippet>297</a>	}
-<a href=#298 id=298 data-nosnippet>298</a>
-<a href=#299 id=299 data-nosnippet>299</a>	<span class="doccomment">/// Unregisters a previously registered command.
-<a href=#300 id=300 data-nosnippet>300</a>	</span><span class="kw">async fn </span>UnregisterCommand(<span class="kw-2">&amp;</span><span class="self">self</span>, _SideCarIdentifier:String, CommandIdentifier:String) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
-<a href=#301 id=301 data-nosnippet>301</a>		<span class="macro">info!</span>(<span class="string">"[CommandProvider] Unregistering command '{}'"</span>, CommandIdentifier);
+<a href=#278 id=278 data-nosnippet>278</a>				<span class="prelude-val">Err</span>(CommonError::CommandNotFound { Identifier:CommandIdentifier })
+<a href=#279 id=279 data-nosnippet>279</a>			},
+<a href=#280 id=280 data-nosnippet>280</a>		}
+<a href=#281 id=281 data-nosnippet>281</a>	}
+<a href=#282 id=282 data-nosnippet>282</a>
+<a href=#283 id=283 data-nosnippet>283</a>	<span class="doccomment">/// Registers a command contributed by a sidecar process.
+<a href=#284 id=284 data-nosnippet>284</a>	</span><span class="kw">async fn </span>RegisterCommand(<span class="kw-2">&amp;</span><span class="self">self</span>, SideCarIdentifier:String, CommandIdentifier:String) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
+<a href=#285 id=285 data-nosnippet>285</a>		<span class="macro">info!</span>(
+<a href=#286 id=286 data-nosnippet>286</a>			<span class="string">"[CommandProvider] Registering PROXY command '{}' from sidecar '{}'"</span>,
+<a href=#287 id=287 data-nosnippet>287</a>			CommandIdentifier, SideCarIdentifier
+<a href=#288 id=288 data-nosnippet>288</a>		);
+<a href=#289 id=289 data-nosnippet>289</a>
+<a href=#290 id=290 data-nosnippet>290</a>		<span class="kw">let </span><span class="kw-2">mut </span>Registry = <span class="self">self
+<a href=#291 id=291 data-nosnippet>291</a>			</span>.ApplicationState
+<a href=#292 id=292 data-nosnippet>292</a>			.Extension
+<a href=#293 id=293 data-nosnippet>293</a>			.Registry
+<a href=#294 id=294 data-nosnippet>294</a>			.CommandRegistry
+<a href=#295 id=295 data-nosnippet>295</a>			.lock()
+<a href=#296 id=296 data-nosnippet>296</a>			.map_err(<span class="kw">super</span>::Utility::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?</span>;
+<a href=#297 id=297 data-nosnippet>297</a>
+<a href=#298 id=298 data-nosnippet>298</a>		Registry.insert(
+<a href=#299 id=299 data-nosnippet>299</a>			CommandIdentifier.clone(),
+<a href=#300 id=300 data-nosnippet>300</a>			CommandHandler::Proxied { SideCarIdentifier, CommandIdentifier },
+<a href=#301 id=301 data-nosnippet>301</a>		);
 <a href=#302 id=302 data-nosnippet>302</a>
-<a href=#303 id=303 data-nosnippet>303</a>		<span class="self">self</span>.ApplicationState
-<a href=#304 id=304 data-nosnippet>304</a>			.CommandRegistry
-<a href=#305 id=305 data-nosnippet>305</a>			.lock()
-<a href=#306 id=306 data-nosnippet>306</a>			.map_err(<span class="kw">super</span>::Utility::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?
-<a href=#307 id=307 data-nosnippet>307</a>			</span>.remove(<span class="kw-2">&amp;</span>CommandIdentifier);
-<a href=#308 id=308 data-nosnippet>308</a>
-<a href=#309 id=309 data-nosnippet>309</a>		<span class="prelude-val">Ok</span>(())
-<a href=#310 id=310 data-nosnippet>310</a>	}
-<a href=#311 id=311 data-nosnippet>311</a>
-<a href=#312 id=312 data-nosnippet>312</a>	<span class="doccomment">/// Gets a list of all currently registered command IDs.
-<a href=#313 id=313 data-nosnippet>313</a>	</span><span class="kw">async fn </span>GetAllCommands(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;String&gt;, CommonError&gt; {
-<a href=#314 id=314 data-nosnippet>314</a>		<span class="macro">debug!</span>(<span class="string">"[CommandProvider] Getting all command identifiers."</span>);
-<a href=#315 id=315 data-nosnippet>315</a>
-<a href=#316 id=316 data-nosnippet>316</a>		<span class="kw">let </span>Registry = <span class="self">self
-<a href=#317 id=317 data-nosnippet>317</a>			</span>.ApplicationState
-<a href=#318 id=318 data-nosnippet>318</a>			.CommandRegistry
-<a href=#319 id=319 data-nosnippet>319</a>			.lock()
-<a href=#320 id=320 data-nosnippet>320</a>			.map_err(<span class="kw">super</span>::Utility::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?</span>;
-<a href=#321 id=321 data-nosnippet>321</a>
-<a href=#322 id=322 data-nosnippet>322</a>		<span class="prelude-val">Ok</span>(Registry.keys().cloned().collect())
-<a href=#323 id=323 data-nosnippet>323</a>	}
-<a href=#324 id=324 data-nosnippet>324</a>}
+<a href=#303 id=303 data-nosnippet>303</a>		<span class="prelude-val">Ok</span>(())
+<a href=#304 id=304 data-nosnippet>304</a>	}
+<a href=#305 id=305 data-nosnippet>305</a>
+<a href=#306 id=306 data-nosnippet>306</a>	<span class="doccomment">/// Unregisters a previously registered command.
+<a href=#307 id=307 data-nosnippet>307</a>	</span><span class="kw">async fn </span>UnregisterCommand(<span class="kw-2">&amp;</span><span class="self">self</span>, _SideCarIdentifier:String, CommandIdentifier:String) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
+<a href=#308 id=308 data-nosnippet>308</a>		<span class="macro">info!</span>(<span class="string">"[CommandProvider] Unregistering command '{}'"</span>, CommandIdentifier);
+<a href=#309 id=309 data-nosnippet>309</a>
+<a href=#310 id=310 data-nosnippet>310</a>		<span class="self">self</span>.ApplicationState
+<a href=#311 id=311 data-nosnippet>311</a>			.Extension
+<a href=#312 id=312 data-nosnippet>312</a>			.Registry
+<a href=#313 id=313 data-nosnippet>313</a>			.CommandRegistry
+<a href=#314 id=314 data-nosnippet>314</a>			.lock()
+<a href=#315 id=315 data-nosnippet>315</a>			.map_err(<span class="kw">super</span>::Utility::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?
+<a href=#316 id=316 data-nosnippet>316</a>			</span>.remove(<span class="kw-2">&amp;</span>CommandIdentifier);
+<a href=#317 id=317 data-nosnippet>317</a>
+<a href=#318 id=318 data-nosnippet>318</a>		<span class="prelude-val">Ok</span>(())
+<a href=#319 id=319 data-nosnippet>319</a>	}
+<a href=#320 id=320 data-nosnippet>320</a>
+<a href=#321 id=321 data-nosnippet>321</a>	<span class="doccomment">/// Gets a list of all currently registered command IDs.
+<a href=#322 id=322 data-nosnippet>322</a>	</span><span class="kw">async fn </span>GetAllCommands(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;String&gt;, CommonError&gt; {
+<a href=#323 id=323 data-nosnippet>323</a>		<span class="macro">debug!</span>(<span class="string">"[CommandProvider] Getting all command identifiers."</span>);
+<a href=#324 id=324 data-nosnippet>324</a>
+<a href=#325 id=325 data-nosnippet>325</a>		<span class="kw">let </span>Registry = <span class="self">self
+<a href=#326 id=326 data-nosnippet>326</a>			</span>.ApplicationState
+<a href=#327 id=327 data-nosnippet>327</a>			.Extension
+<a href=#328 id=328 data-nosnippet>328</a>			.Registry
+<a href=#329 id=329 data-nosnippet>329</a>			.CommandRegistry
+<a href=#330 id=330 data-nosnippet>330</a>			.lock()
+<a href=#331 id=331 data-nosnippet>331</a>			.map_err(<span class="kw">super</span>::Utility::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?</span>;
+<a href=#332 id=332 data-nosnippet>332</a>
+<a href=#333 id=333 data-nosnippet>333</a>		<span class="prelude-val">Ok</span>(Registry.keys().cloned().collect())
+<a href=#334 id=334 data-nosnippet>334</a>	}
+<a href=#335 id=335 data-nosnippet>335</a>}
 </code></pre></div></section></main></body></html>

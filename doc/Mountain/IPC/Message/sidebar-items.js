@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["Compress","Define","Encrypt","Route"]};
+window.SIDEBAR_ITEMS = {"mod":["Types"]};

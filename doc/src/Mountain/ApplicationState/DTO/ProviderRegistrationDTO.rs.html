@@ -7,11 +7,11 @@
 <a href=#7 id=7 data-nosnippet>7</a>//!
 <a href=#8 id=8 data-nosnippet>8</a>//! # FIELDS
 <a href=#9 id=9 data-nosnippet>9</a>//! - Handle: Unique registration handle
-<a href=#10 id=10 data-nosnippet>10</a>/// - ProviderType: Type of feature provider
-<a href=#11 id=11 data-nosnippet>11</a>/// - Selector: Document selector value
-<a href=#12 id=12 data-nosnippet>12</a>/// - SideCarIdentifier: Host sidecar process ID
-<a href=#13 id=13 data-nosnippet>13</a>/// - ExtensionIdentifier: Contributor extension ID
-<a href=#14 id=14 data-nosnippet>14</a>/// - Options: Provider-specific options
+<a href=#10 id=10 data-nosnippet>10</a>//! - ProviderType: Type of feature provider
+<a href=#11 id=11 data-nosnippet>11</a>//! - Selector: Document selector value
+<a href=#12 id=12 data-nosnippet>12</a>//! - SideCarIdentifier: Host sidecar process ID
+<a href=#13 id=13 data-nosnippet>13</a>//! - ExtensionIdentifier: Contributor extension ID
+<a href=#14 id=14 data-nosnippet>14</a>//! - Options: Provider-specific options
 <a href=#15 id=15 data-nosnippet>15</a></span><span class="kw">use </span>CommonLibrary::LanguageFeature::DTO::ProviderType::ProviderType;
 <a href=#16 id=16 data-nosnippet>16</a><span class="kw">use </span>serde::{Deserialize, Serialize};
 <a href=#17 id=17 data-nosnippet>17</a><span class="kw">use </span>serde_json::Value;
@@ -98,7 +98,7 @@
 <a href=#98 id=98 data-nosnippet>98</a>	///
 <a href=#99 id=99 data-nosnippet>99</a>	/// # Returns
 <a href=#100 id=100 data-nosnippet>100</a>	/// True if provider selector matches the document
-<a href=#101 id=101 data-nosnippet>101</a>	</span><span class="kw">pub fn </span>MatchesSelector(<span class="kw-2">&amp;</span><span class="self">self</span>, DocumentURI:<span class="kw-2">&amp;</span>str, LanguageIdentifier:<span class="kw-2">&amp;</span>str) -&gt; bool {
+<a href=#101 id=101 data-nosnippet>101</a>	</span><span class="kw">pub fn </span>MatchesSelector(<span class="kw-2">&amp;</span><span class="self">self</span>, _DocumentURI:<span class="kw-2">&amp;</span>str, LanguageIdentifier:<span class="kw-2">&amp;</span>str) -&gt; bool {
 <a href=#102 id=102 data-nosnippet>102</a>		<span class="comment">// This is a simplified matching logic
 <a href=#103 id=103 data-nosnippet>103</a>		// A full implementation would traverse the selector value
 <a href=#104 id=104 data-nosnippet>104</a>		</span><span class="kw">if let </span><span class="prelude-val">Some</span>(SelectorObj) = <span class="self">self</span>.Selector.as_object() {

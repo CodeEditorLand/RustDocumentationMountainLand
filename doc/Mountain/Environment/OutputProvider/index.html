@@ -1,74 +1,21 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="OutputProvider (Environment)"><title>Mountain::Environment::OutputProvider - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module OutputProvider</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Output<wbr>Provider</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#outputprovider-environment" title="OutputProvider (Environment)">OutputProvider (Environment)</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Environment</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Environment</a></div><h1>Module <span>Output<wbr>Provider</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Environment/OutputProvider.rs.html#1-271">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="outputprovider-environment"><a class="doc-anchor" href="#outputprovider-environment">§</a>OutputProvider (Environment)</h2>
-<p>RESPONSIBILITIES:</p>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="OutputProvider (Environment)"><title>Mountain::Environment::OutputProvider - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module OutputProvider</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Output<wbr>Provider</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#outputprovider-environment" title="OutputProvider (Environment)">OutputProvider (Environment)</a><ul><li><a href="#implementation-strategy" title="Implementation Strategy">Implementation Strategy</a></li></ul></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Environment</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Environment</a></div><h1>Module <span>Output<wbr>Provider</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Environment/OutputProvider/mod.rs.html#1-78">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="outputprovider-environment"><a class="doc-anchor" href="#outputprovider-environment">§</a>OutputProvider (Environment)</h2>
+<p>Implements the
+<a href="CommonLibrary::Output::OutputChannelManager"><code>OutputChannelManager</code></a> trait
+for
+<a href="../MountainEnvironment/struct.MountainEnvironment.html" title="struct Mountain::Environment::MountainEnvironment::MountainEnvironment"><code>MountainEnvironment</code></a>.</p>
+<p>This provider manages multiple output channels (e.g., ‘Extension Host’,
+‘JavaScript’, ‘Git’), handling channel lifecycle, content management, and UI
+visibility. It maintains in-memory buffers with size limits and emits Tauri
+events to the Sky frontend for UI updates.</p>
+<h3 id="implementation-strategy"><a class="doc-anchor" href="#implementation-strategy">§</a>Implementation Strategy</h3>
+<p>The trait implementation is split across multiple helper modules for
+maintainability:</p>
 <ul>
-<li>Implements <a href="CommonLibrary::Output::OutputChannelManager"><code>OutputChannelManager</code></a> for <a href="../MountainEnvironment/struct.MountainEnvironment.html" title="struct Mountain::Environment::MountainEnvironment::MountainEnvironment"><code>MountainEnvironment</code></a></li>
-<li>Manages multiple output channels (e.g., ‘Extension Host’, ‘JavaScript’, ‘Git’)</li>
-<li>Handles channel lifecycle: creation, appending, replacement, clearing, disposal</li>
-<li>Maintains in-memory buffers with size limits and automatic trimming</li>
-<li>Emits Tauri events to Sky frontend for UI updates</li>
-<li>Controls channel visibility and reveal behavior</li>
+<li>[<code>ChannelLifecycle</code>]: <code>RegisterChannel</code>, <code>Dispose</code></li>
+<li>[<code>ChannelContent</code>]: <code>Append</code>, <code>Replace</code>, <code>Clear</code></li>
+<li>[<code>ChannelVisibility</code>]: <code>Reveal</code>, <code>Close</code></li>
 </ul>
-<p>ARCHITECTURAL ROLE:</p>
-<ul>
-<li>Environment provider for output channel management</li>
-<li>Channels stored in <a href="../../ApplicationState/ApplicationState/index.html" title="mod Mountain::ApplicationState::ApplicationState"><code>ApplicationState.OutputChannels</code></a></li>
-<li>Uses Tauri event system (<code>tauri::Emitter</code>) for UI communication</li>
-<li>Integrates with <a href="crate::Utility"><code>Utility</code></a> for state lock error handling</li>
-<li>Buffer management with 10MB limit per channel and 1MB trim threshold</li>
-</ul>
-<p>ERROR HANDLING:</p>
-<ul>
-<li>Uses <a href="CommonLibrary::Error::CommonError"><code>CommonError</code></a> for all operations</li>
-<li>Validates channel name length (1-256 chars) and language identifier (max 64 chars)</li>
-<li>Rejects append values exceeding 1MB per operation</li>
-<li>State lock errors mapped via <a href="crate::Utility"><code>Utility::MapApplicationStateLockErrorToCommonError</code></a></li>
-<li>Warns on operations for non-existent channels (Append, Replace, Clear, Reveal)</li>
-<li>Close operation is stubbed with warning</li>
-</ul>
-<p>PERFORMANCE:</p>
-<ul>
-<li>In-memory buffer with O(1) append and O(n) replace operations</li>
-<li>Automatic buffer trimming when approaching 10MB limit (drains from front)</li>
-<li>Lock on shared state should be minimized; drops guard promptly after mutation</li>
-<li>TODO: Consider streaming large outputs directly to UI without buffering</li>
-</ul>
-<p>VS CODE REFERENCE:</p>
-<ul>
-<li><code>vs/workbench/contrib/output/common/output.ts</code> - output channel service</li>
-<li><code>vs/workbench/services/output/common/outputService.ts</code> - output service main logic</li>
-<li><code>vs/workbench/contrib/output/browser/outputPanel.ts</code> - output view UI</li>
-</ul>
-<p>TODO:</p>
-<ul>
-<li>Implement output formatting (syntax highlighting, line numbers)</li>
-<li>Add output encoding support (UTF-8, UTF-16, ASCII)</li>
-<li>Implement output buffering with configurable size limits</li>
-<li>Add output channel persistence to disk for recovery</li>
-<li>Implement output channel export functionality (save to file)</li>
-<li>Add output search and filtering capabilities</li>
-<li>Support output channel grouping and categorization</li>
-<li>Implement output timestamping for each line</li>
-<li>Add output channel priority (relevance ordering)</li>
-<li>Support output channel logging levels (debug, info, warn, error)</li>
-<li>Implement output deduplication to reduce noise</li>
-<li>Add output channel statistics (line count, char count, age)</li>
-<li>Implement output scroll-to-bottom behavior configuration</li>
-<li>Support output word wrap configuration</li>
-<li>Implement Close operation fully (hide channel and cleanup)</li>
-</ul>
-<p>MODULE CONTENTS:</p>
-<ul>
-<li><a href="CommonLibrary::Output::OutputChannelManager"><code>OutputChannelManager</code></a> implementation:
-<ul>
-<li><a href="Self::RegisterChannel"><code>RegisterChannel</code></a> - create new channel with validation</li>
-<li><a href="Self::Append"><code>Append</code></a> - add text with buffer size enforcement (1MB per call)</li>
-<li><a href="Self::Replace"><code>Replace</code></a> - replace entire channel buffer</li>
-<li><a href="Self::Clear"><code>Clear</code></a> - empty channel buffer</li>
-<li><a href="Self::Reveal"><code>Reveal</code></a> - show channel in UI with focus option</li>
-<li><a href="Self::Close"><code>Close</code></a> - hide channel (stub)</li>
-<li><a href="Self::Dispose"><code>Dispose</code></a> - permanently remove channel from state</li>
-</ul>
-</li>
-<li>Data type: <a href="../../ApplicationState/DTO/OutputChannelStateDTO/index.html" title="mod Mountain::ApplicationState::DTO::OutputChannelStateDTO"><code>OutputChannelStateDTO</code></a></li>
-</ul>
+<p>The single <code>impl OutputChannelManager for MountainEnvironment</code> block in this
+file delegates to those helper functions. This satisfies Rust’s orphan rules
+while keeping code organized.</p>
 </div></details></section></div></main></body></html>

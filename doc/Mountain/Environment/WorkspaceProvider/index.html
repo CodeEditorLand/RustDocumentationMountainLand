@@ -1,38 +1,48 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="WorkspaceProvider (Environment)"><title>Mountain::Environment::WorkspaceProvider - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module WorkspaceProvider</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Workspace<wbr>Provider</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#workspaceprovider-environment" title="WorkspaceProvider (Environment)">WorkspaceProvider (Environment)</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Environment</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Environment</a></div><h1>Module <span>Workspace<wbr>Provider</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Environment/WorkspaceProvider.rs.html#1-174">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="workspaceprovider-environment"><a class="doc-anchor" href="#workspaceprovider-environment">§</a>WorkspaceProvider (Environment)</h2>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="WorkspaceProvider (Environment)"><title>Mountain::Environment::WorkspaceProvider - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module WorkspaceProvider</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Workspace<wbr>Provider</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#workspaceprovider-environment" title="WorkspaceProvider (Environment)">WorkspaceProvider (Environment)</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Environment</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Environment</a></div><h1>Module <span>Workspace<wbr>Provider</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Environment/WorkspaceProvider.rs.html#1-214">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="workspaceprovider-environment"><a class="doc-anchor" href="#workspaceprovider-environment">§</a>WorkspaceProvider (Environment)</h2>
 <p>RESPONSIBILITIES:</p>
 <ul>
-<li>Implements <a href="CommonLibrary::Workspace::WorkspaceProvider"><code>WorkspaceProvider</code></a> and
-<a href="CommonLibrary::Workspace::WorkspaceEditApplier"><code>WorkspaceEditApplier</code></a> traits for <a href="../MountainEnvironment/struct.MountainEnvironment.html" title="struct Mountain::Environment::MountainEnvironment::MountainEnvironment"><code>MountainEnvironment</code></a></li>
+<li>Implements
+<a href="CommonLibrary::Workspace::WorkspaceProvider"><code>WorkspaceProvider</code></a> and
+<a href="CommonLibrary::Workspace::WorkspaceEditApplier"><code>WorkspaceEditApplier</code></a>
+traits for <a href="../MountainEnvironment/struct.MountainEnvironment.html" title="struct Mountain::Environment::MountainEnvironment::MountainEnvironment"><code>MountainEnvironment</code></a></li>
 <li>Manages multi-root workspace folder operations and configuration</li>
 <li>Provides workspace trust management and file discovery capabilities</li>
 <li>Handles workspace edit application and custom editor routing</li>
 </ul>
 <p>ARCHITECTURAL ROLE:</p>
 <ul>
-<li>Core provider in the Environment system, exposing workspace-level functionality
-to frontend via gRPC through the <a href="../../Air/AirServiceProvider/index.html" title="mod Mountain::Air::AirServiceProvider"><code>AirService</code></a></li>
+<li>Core provider in the Environment system, exposing workspace-level
+functionality to frontend via gRPC through the
+<a href="../../Air/AirServiceProvider/index.html" title="mod Mountain::Air::AirServiceProvider"><code>AirService</code></a></li>
 <li>Workspace provider is one of the foundational services alongside Document,
 Configuration, and Diagnostic providers</li>
-<li>Integrates with <a href="../../ApplicationState/ApplicationState/index.html" title="mod Mountain::ApplicationState::ApplicationState"><code>ApplicationState</code></a>
-for persistent workspace folder storage</li>
+<li>Integrates with
+<a href="../../ApplicationState/State/ApplicationState/struct.ApplicationState.html" title="struct Mountain::ApplicationState::State::ApplicationState::ApplicationState"><code>ApplicationState</code></a> for
+persistent workspace folder storage</li>
 </ul>
 <p>ERROR HANDLING:</p>
 <ul>
 <li>Uses <a href="CommonLibrary::Error::CommonError"><code>CommonError</code></a> for all operations</li>
-<li>Application state lock errors are mapped using <a href="../Utility/fn.MapApplicationStateLockErrorToCommonError.html" title="fn Mountain::Environment::Utility::MapApplicationStateLockErrorToCommonError"><code>Utility::MapApplicationStateLockErrorToCommonError</code></a></li>
-<li>Some operations are stubbed with logging (FindFilesInWorkspace, OpenFile, ApplyWorkspaceEdit)</li>
+<li>Application state lock errors are mapped using
+<a href="../Utility/ErrorMapping/fn.MapApplicationStateLockErrorToCommonError.html" title="fn Mountain::Environment::Utility::ErrorMapping::MapApplicationStateLockErrorToCommonError"><code>Utility::MapApplicationStateLockErrorToCommonError</code></a></li>
+<li>Some operations are stubbed with logging (FindFilesInWorkspace, OpenFile,
+ApplyWorkspaceEdit)</li>
 </ul>
 <p>PERFORMANCE:</p>
 <ul>
 <li>Workspace folder lookup uses O(n) linear search through folder list</li>
-<li>Lock contention on <code>ApplicationState.WorkspaceFolders</code> should be minimized</li>
+<li>Lock contention on <code>ApplicationState.Workspace.WorkspaceFolders</code> should be
+minimized</li>
 <li>File discovery and workspace edit application are not yet optimized</li>
 </ul>
 <p>VS CODE REFERENCE:</p>
 <ul>
-<li><code>vs/workbench/services/workspace/browser/workspaceService.ts</code> - workspace service implementation</li>
-<li><code>vs/workbench/contrib/files/common/editors/textFileEditor.ts</code> - file editor integration</li>
-<li><code>vs/platform/workspace/common/workspace.ts</code> - workspace types and interfaces</li>
+<li><code>vs/workbench/services/workspace/browser/workspaceService.ts</code> - workspace
+service implementation</li>
+<li><code>vs/workbench/contrib/files/common/editors/textFileEditor.ts</code> - file
+editor integration</li>
+<li><code>vs/platform/workspace/common/workspace.ts</code> - workspace types and
+interfaces</li>
 </ul>
 <p>TODO:</p>
 <ul>
@@ -44,23 +54,33 @@ for persistent workspace folder storage</li>
 </ul>
 <p>MODULE CONTENTS:</p>
 <ul>
-<li><a href="CommonLibrary::Workspace::WorkspaceProvider"><code>WorkspaceProvider</code></a> implementation:
+<li><a href="CommonLibrary::Workspace::WorkspaceProvider"><code>WorkspaceProvider</code></a>
+implementation:
 <ul>
-<li><a href="Self::GetWorkspaceFoldersInfo"><code>GetWorkspaceFoldersInfo</code></a> - enumerate all workspace folders</li>
-<li><a href="Self::GetWorkspaceFolderInfo"><code>GetWorkspaceFolderInfo</code></a> - find folder containing a URI</li>
-<li><a href="Self::GetWorkspaceName"><code>GetWorkspaceName</code></a> - workspace identifier from state</li>
-<li><a href="Self::GetWorkspaceConfigurationPath"><code>GetWorkspaceConfigurationPath</code></a> - .code-workspace path</li>
+<li><a href="Self::GetWorkspaceFoldersInfo"><code>GetWorkspaceFoldersInfo</code></a> - enumerate
+all workspace folders</li>
+<li><a href="Self::GetWorkspaceFolderInfo"><code>GetWorkspaceFolderInfo</code></a> - find folder
+containing a URI</li>
+<li><a href="Self::GetWorkspaceName"><code>GetWorkspaceName</code></a> - workspace identifier from
+state</li>
+<li><a href="Self::GetWorkspaceConfigurationPath"><code>GetWorkspaceConfigurationPath</code></a> -
+.code-workspace path</li>
 <li><a href="Self::IsWorkspaceTrusted"><code>IsWorkspaceTrusted</code></a> - trust status check</li>
-<li><a href="Self::RequestWorkspaceTrust"><code>RequestWorkspaceTrust</code></a> - trust acquisition (stub)</li>
-<li><a href="Self::FindFilesInWorkspace"><code>FindFilesInWorkspace</code></a> - file discovery (stub)</li>
+<li><a href="Self::RequestWorkspaceTrust"><code>RequestWorkspaceTrust</code></a> - trust
+acquisition (stub)</li>
+<li><a href="Self::FindFilesInWorkspace"><code>FindFilesInWorkspace</code></a> - file discovery
+(stub)</li>
 <li><a href="Self::OpenFile"><code>OpenFile</code></a> - file opening (stub)</li>
 </ul>
 </li>
-<li><a href="CommonLibrary::Workspace::WorkspaceEditApplier"><code>WorkspaceEditApplier</code></a> implementation:
+<li><a href="CommonLibrary::Workspace::WorkspaceEditApplier"><code>WorkspaceEditApplier</code></a>
+implementation:
 <ul>
-<li><a href="Self::ApplyWorkspaceEdit"><code>ApplyWorkspaceEdit</code></a> - edit application (stub)</li>
+<li><a href="Self::ApplyWorkspaceEdit"><code>ApplyWorkspaceEdit</code></a> - edit application
+(stub)</li>
 </ul>
 </li>
-<li>Data types: [<code>(Url, String, usize)</code>] tuple for folder info (URI, name, index)</li>
+<li>Data types: [<code>(Url, String, usize)</code>] tuple for folder info (URI, name,
+index)</li>
 </ul>
 </div></details></section></div></main></body></html>

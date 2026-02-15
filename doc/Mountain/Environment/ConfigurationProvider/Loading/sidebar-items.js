@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["initialize_and_merge_configurations"]};

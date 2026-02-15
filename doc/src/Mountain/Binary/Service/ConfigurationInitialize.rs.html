@@ -5,7 +5,7 @@
 <a href=#5 id=5 data-nosnippet>5</a></span><span class="kw">use </span>log::{error, info};
 <a href=#6 id=6 data-nosnippet>6</a>
 <a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span><span class="kw">crate</span>::Environment::{
-<a href=#8 id=8 data-nosnippet>8</a>	ConfigurationProvider::InitializeAndMergeConfigurations,
+<a href=#8 id=8 data-nosnippet>8</a>	ConfigurationProvider::Loading::initialize_and_merge_configurations,
 <a href=#9 id=9 data-nosnippet>9</a>	MountainEnvironment::MountainEnvironment,
 <a href=#10 id=10 data-nosnippet>10</a>};
 <a href=#11 id=11 data-nosnippet>11</a>
@@ -32,7 +32,7 @@
 <a href=#32 id=32 data-nosnippet>32</a>///
 <a href=#33 id=33 data-nosnippet>33</a>/// Returns an error if configuration initialization or merging fails.
 <a href=#34 id=34 data-nosnippet>34</a></span><span class="kw">pub async fn </span>ConfigurationInitialize(Environment:<span class="kw-2">&amp;</span>std::sync::Arc&lt;MountainEnvironment&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
-<a href=#35 id=35 data-nosnippet>35</a>	<span class="kw">match </span>InitializeAndMergeConfigurations(Environment).<span class="kw">await </span>{
+<a href=#35 id=35 data-nosnippet>35</a>	<span class="kw">match </span>initialize_and_merge_configurations(Environment).<span class="kw">await </span>{
 <a href=#36 id=36 data-nosnippet>36</a>		<span class="prelude-val">Ok</span>(()) =&gt; {
 <a href=#37 id=37 data-nosnippet>37</a>			<span class="macro">info!</span>(<span class="string">"[Config] [Initialize] Configuration initialized and merged successfully."</span>);
 <a href=#38 id=38 data-nosnippet>38</a>			<span class="prelude-val">Ok</span>(())

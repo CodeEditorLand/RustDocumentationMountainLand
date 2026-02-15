@@ -1,7 +1,10 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="AirClient"><title>Mountain::Air::AirClient - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module AirClient</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module AirClient</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#airclient" title="AirClient">AirClient</a><ul><li><a href="#responsibilities" title="RESPONSIBILITIES">RESPONSIBILITIES</a></li><li><a href="#architectural-role" title="ARCHITECTURAL ROLE">ARCHITECTURAL ROLE</a></li><li><a href="#configuration" title="CONFIGURATION">CONFIGURATION</a></li><li><a href="#error-handling" title="ERROR HANDLING">ERROR HANDLING</a></li><li><a href="#thread-safety" title="THREAD SAFETY">THREAD SAFETY</a></li><li><a href="#performance-considerations" title="PERFORMANCE CONSIDERATIONS">PERFORMANCE CONSIDERATIONS</a></li><li><a href="#vscode-reference" title="VSCODE REFERENCE">VSCODE REFERENCE</a></li><li><a href="#todo" title="TODO">TODO</a></li><li><a href="#module-contents" title="MODULE CONTENTS">MODULE CONTENTS</a></li></ul></li></ul><h3><a href="#structs">Module Items</a></h3><ul class="block"><li><a href="#structs" title="Structs">Structs</a></li><li><a href="#constants" title="Constants">Constants</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Air</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Air</a></div><h1>Module <span>AirClient</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Air/AirClient.rs.html#1-151">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="airclient"><a class="doc-anchor" href="#airclient">§</a>AirClient</h2>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="AirClient"><title>Mountain::Air::AirClient - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module AirClient</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module AirClient</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#airclient" title="AirClient">AirClient</a><ul><li><a href="#responsibilities" title="RESPONSIBILITIES">RESPONSIBILITIES</a></li><li><a href="#architectural-role" title="ARCHITECTURAL ROLE">ARCHITECTURAL ROLE</a></li><li><a href="#implementation" title="IMPLEMENTATION">IMPLEMENTATION</a></li><li><a href="#configuration" title="CONFIGURATION">CONFIGURATION</a></li><li><a href="#error-handling" title="ERROR HANDLING">ERROR HANDLING</a></li><li><a href="#thread-safety" title="THREAD SAFETY">THREAD SAFETY</a></li><li><a href="#performance-considerations" title="PERFORMANCE CONSIDERATIONS">PERFORMANCE CONSIDERATIONS</a></li><li><a href="#todo" title="TODO">TODO</a></li><li><a href="#module-contents" title="MODULE CONTENTS">MODULE CONTENTS</a></li></ul></li></ul><h3><a href="#structs">Module Items</a></h3><ul class="block"><li><a href="#structs" title="Structs">Structs</a></li><li><a href="#constants" title="Constants">Constants</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Air</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Air</a></div><h1>Module <span>AirClient</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Air/AirClient.rs.html#1-1257">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="airclient"><a class="doc-anchor" href="#airclient">§</a>AirClient</h2>
 <p>gRPC client wrapper for the Air daemon service, providing Mountain with
 access to cloud-based backend services including updates, authentication,
 file indexing, and system monitoring.</p>
+<p>IMPORTANT: The gRPC client is wrapped in Arc&lt;Mutex&lt;&gt;&gt; to enable safe
+concurrent access from multiple threads, as tonic’s client methods require
+mutable access.</p>
 <h3 id="responsibilities"><a class="doc-anchor" href="#responsibilities">§</a>RESPONSIBILITIES</h3>
 <ul>
 <li><strong>Connection Management</strong>: Manage gRPC connection lifecycle to Air service</li>
@@ -20,16 +23,10 @@ backend service:</p>
 <li>Part of the service management layer</li>
 <li>Features-gated behind <code>AirIntegration</code> feature flag</li>
 </ul>
-<h4 id="dependencies"><a class="doc-anchor" href="#dependencies">§</a>Dependencies</h4>
+<h3 id="implementation"><a class="doc-anchor" href="#implementation">§</a>IMPLEMENTATION</h3>
+<p>This implementation uses the generated gRPC client from the Air library:</p>
 <ul>
-<li><code>tonic</code>: gRPC client framework</li>
-<li><code>CommonLibrary::Error::CommonError</code>: Error handling</li>
-<li><code>log</code>: Structured logging</li>
-</ul>
-<h4 id="dependents"><a class="doc-anchor" href="#dependents">§</a>Dependents</h4>
-<ul>
-<li><code>AirServiceProvider</code>: High-level API that wraps AirClient</li>
-<li><code>Binary::Service::VineStart</code>: Initializes Air connection</li>
+<li><code>AirLibrary::Vine::Generated::air_service_client::AirServiceClient</code></li>
 </ul>
 <h3 id="configuration"><a class="doc-anchor" href="#configuration">§</a>CONFIGURATION</h3>
 <ul>
@@ -46,8 +43,9 @@ backend service:</p>
 </ul>
 <h3 id="thread-safety"><a class="doc-anchor" href="#thread-safety">§</a>THREAD SAFETY</h3>
 <ul>
-<li><code>AirClient</code> is <code>Clone</code>able and can be shared across threads via <code>Arc&lt;AirClient&gt;</code></li>
-<li>Internal connection state is protected by mutexes (to be implemented)</li>
+<li><code>AirClient</code> is <code>Clone</code>able and can be shared across threads via
+<code>Arc&lt;AirClient&gt;</code></li>
+<li>The underlying tonic client is thread-safe</li>
 <li>All public methods are safe to call from multiple threads</li>
 </ul>
 <h3 id="performance-considerations"><a class="doc-anchor" href="#performance-considerations">§</a>PERFORMANCE CONSIDERATIONS</h3>
@@ -57,18 +55,9 @@ backend service:</p>
 <li>(TODO) Add request caching for frequently accessed data</li>
 <li>(TODO) Implement request timeout configuration</li>
 </ul>
-<h3 id="vscode-reference"><a class="doc-anchor" href="#vscode-reference">§</a>VSCODE REFERENCE</h3>
-<p>This implementation borrows patterns from VS Code’s extension host and
-remote communication:</p>
-<ul>
-<li><code>vs/platform/remote/common/remoteAgentConnection.ts</code> - Connection management</li>
-<li><code>vs/platform/remote/common/remoteAgentService.ts</code> - Service proxy pattern</li>
-</ul>
 <h3 id="todo"><a class="doc-anchor" href="#todo">§</a>TODO</h3>
 <p>High Priority:</p>
 <ul>
-<li><input disabled="" type="checkbox"/>
-Implement actual gRPC client with generated tonic code</li>
 <li><input disabled="" type="checkbox"/>
 Add connection retry with exponential backoff</li>
 <li><input disabled="" type="checkbox"/>
@@ -83,15 +72,6 @@ Implement connection health monitoring</li>
 <li><input disabled="" type="checkbox"/>
 Add metrics collection for RPC calls</li>
 </ul>
-<p>Low Priority:</p>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Support multiple Air daemons (load balancing)</li>
-<li><input disabled="" type="checkbox"/>
-Add request priority queuing</li>
-<li><input disabled="" type="checkbox"/>
-Implement circuit breaker pattern</li>
-</ul>
 <h3 id="module-contents"><a class="doc-anchor" href="#module-contents">§</a>MODULE CONTENTS</h3>
 <ul>
 <li><a href="struct.AirClient.html" title="struct Mountain::Air::AirClient::AirClient"><code>AirClient</code></a>: Main client struct</li>
@@ -100,4 +80,4 @@ Implement circuit breaker pattern</li>
 </div></details><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.AirClient.html" title="struct Mountain::Air::AirClient::AirClient">AirClient</a></dt><dd>Air gRPC client wrapper that handles connection to the Air daemon service.
 This provides a clean interface for Mountain to interact with Air’s
 capabilities including update management, authentication, file indexing,
-and system monitoring.</dd></dl><h2 id="constants" class="section-header">Constants<a href="#constants" class="anchor">§</a></h2><dl class="item-table"><dt><a class="constant" href="constant.DEFAULT_AIR_SERVER_ADDRESS.html" title="constant Mountain::Air::AirClient::DEFAULT_AIR_SERVER_ADDRESS">DEFAULT_<wbr>AIR_<wbr>SERVER_<wbr>ADDRESS</a></dt><dd>Default gRPC server address for the Air daemon.</dd></dl></section></div></main></body></html>
+and system monitoring.</dd><dt><a class="struct" href="struct.AirMetrics.html" title="struct Mountain::Air::AirClient::AirMetrics">AirMetrics</a></dt><dd>Metrics from the Air daemon.</dd><dt><a class="struct" href="struct.AirStatus.html" title="struct Mountain::Air::AirClient::AirStatus">AirStatus</a></dt><dd>Status of the Air daemon.</dd><dt><a class="struct" href="struct.DownloadStream.html" title="struct Mountain::Air::AirClient::DownloadStream">Download<wbr>Stream</a></dt><dd>Wrapper for an asynchronous download stream.</dd><dt><a class="struct" href="struct.DownloadStreamChunk.html" title="struct Mountain::Air::AirClient::DownloadStreamChunk">Download<wbr>Stream<wbr>Chunk</a></dt><dd>Chunk of data from a streaming download.</dd><dt><a class="struct" href="struct.ExtendedFileInfo.html" title="struct Mountain::Air::AirClient::ExtendedFileInfo">Extended<wbr>File<wbr>Info</a></dt><dd>Extended file information.</dd><dt><a class="struct" href="struct.FileInfo.html" title="struct Mountain::Air::AirClient::FileInfo">File<wbr>Info</a></dt><dd>Information about a downloaded file.</dd><dt><a class="struct" href="struct.FileResult.html" title="struct Mountain::Air::AirClient::FileResult">File<wbr>Result</a></dt><dd>Result of a file search.</dd><dt><a class="struct" href="struct.IndexInfo.html" title="struct Mountain::Air::AirClient::IndexInfo">Index<wbr>Info</a></dt><dd>Information about file indexing.</dd><dt><a class="struct" href="struct.ResourceUsage.html" title="struct Mountain::Air::AirClient::ResourceUsage">Resource<wbr>Usage</a></dt><dd>Resource usage information.</dd><dt><a class="struct" href="struct.UpdateInfo.html" title="struct Mountain::Air::AirClient::UpdateInfo">Update<wbr>Info</a></dt><dd>Information about an available update.</dd></dl><h2 id="constants" class="section-header">Constants<a href="#constants" class="anchor">§</a></h2><dl class="item-table"><dt><a class="constant" href="constant.DEFAULT_AIR_SERVER_ADDRESS.html" title="constant Mountain::Air::AirClient::DEFAULT_AIR_SERVER_ADDRESS">DEFAULT_<wbr>AIR_<wbr>SERVER_<wbr>ADDRESS</a></dt><dd>Default gRPC server address for the Air daemon.</dd></dl></section></div></main></body></html>

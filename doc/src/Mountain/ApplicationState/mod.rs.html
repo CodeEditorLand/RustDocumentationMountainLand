@@ -203,14 +203,21 @@
 <a href=#203 id=203 data-nosnippet>203</a>//! - [ ] Add state export/import functionality
 <a href=#204 id=204 data-nosnippet>204</a>
 <a href=#205 id=205 data-nosnippet>205</a></span><span class="comment">// --- Public Modules ---
-<a href=#206 id=206 data-nosnippet>206</a></span><span class="doccomment">/// Defines the main `ApplicationState` struct and its core implementation.
-<a href=#207 id=207 data-nosnippet>207</a></span><span class="kw">pub mod </span>ApplicationState;
-<a href=#208 id=208 data-nosnippet>208</a>
-<a href=#209 id=209 data-nosnippet>209</a><span class="doccomment">/// Defines all DTOs used to represent the various components of the application
-<a href=#210 id=210 data-nosnippet>210</a>/// state.
-<a href=#211 id=211 data-nosnippet>211</a></span><span class="kw">pub mod </span>DTO;
+<a href=#206 id=206 data-nosnippet>206</a>
+<a href=#207 id=207 data-nosnippet>207</a></span><span class="doccomment">/// State management sub-modules.
+<a href=#208 id=208 data-nosnippet>208</a></span><span class="kw">pub mod </span>State;
+<a href=#209 id=209 data-nosnippet>209</a>
+<a href=#210 id=210 data-nosnippet>210</a><span class="doccomment">/// Internal utility sub-modules for persistence, scanning, etc.
+<a href=#211 id=211 data-nosnippet>211</a></span><span class="kw">pub mod </span>Internal;
 <a href=#212 id=212 data-nosnippet>212</a>
-<a href=#213 id=213 data-nosnippet>213</a><span class="comment">// --- Internal Implementation ---
-<a href=#214 id=214 data-nosnippet>214</a></span><span class="doccomment">/// Contains internal helper functions for the `ApplicationState` module.
-<a href=#215 id=215 data-nosnippet>215</a></span><span class="kw">pub mod </span>Internal;
+<a href=#213 id=213 data-nosnippet>213</a><span class="doccomment">/// Data Transfer Objects for serialization.
+<a href=#214 id=214 data-nosnippet>214</a></span><span class="kw">pub mod </span>DTO;
+<a href=#215 id=215 data-nosnippet>215</a>
+<a href=#216 id=216 data-nosnippet>216</a><span class="comment">// --- Re-exports for backward compatibility ---
+<a href=#217 id=217 data-nosnippet>217</a>
+<a href=#218 id=218 data-nosnippet>218</a></span><span class="doccomment">/// Re-export the main ApplicationState struct and helpers for backward
+<a href=#219 id=219 data-nosnippet>219</a>/// compatibility
+<a href=#220 id=220 data-nosnippet>220</a></span><span class="kw">pub use </span>State::ApplicationState::{ApplicationState, MapLockError, MapLockErrorWithRecovery, StateOperationResult};
+<a href=#221 id=221 data-nosnippet>221</a><span class="kw">pub use </span>State::{ConfigurationState, ExtensionState, FeatureState, UIState, WorkspaceState};
+<a href=#222 id=222 data-nosnippet>222</a><span class="kw">pub use </span>Internal::{ExtensionScanner, PathResolution, Persistence, Recovery, Serialization, TextProcessing};
 </code></pre></div></section></main></body></html>

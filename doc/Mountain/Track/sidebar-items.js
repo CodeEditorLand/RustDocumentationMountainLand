@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["DispatchLogic","EffectCreation"]};
+window.SIDEBAR_ITEMS = {"mod":["Effect","FrontendCommand","SideCarRequest","UIRequest","Webview"]};

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["ApplicationRunTime"]};
+window.SIDEBAR_ITEMS = {"mod":["ApplicationRunTime","Execute","Shutdown"]};

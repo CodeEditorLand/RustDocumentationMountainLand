@@ -1,177 +1,23 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="TreeViewProvider (Environment)"><title>Mountain::Environment::TreeViewProvider - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module TreeViewProvider</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Tree<wbr>View<wbr>Provider</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#treeviewprovider-environment" title="TreeViewProvider (Environment)">TreeViewProvider (Environment)</a><ul><li><a href="#responsibilities" title="RESPONSIBILITIES">RESPONSIBILITIES</a></li><li><a href="#architectural-role" title="ARCHITECTURAL ROLE">ARCHITECTURAL ROLE</a></li><li><a href="#tree-item-dto" title="TREE ITEM DTO">TREE ITEM DTO</a></li><li><a href="#tree-view-options" title="TREE VIEW OPTIONS">TREE VIEW OPTIONS</a></li><li><a href="#error-handling" title="ERROR HANDLING">ERROR HANDLING</a></li><li><a href="#performance" title="PERFORMANCE">PERFORMANCE</a></li><li><a href="#vs-code-reference" title="VS CODE REFERENCE">VS CODE REFERENCE</a></li><li><a href="#todo" title="TODO">TODO</a></li><li><a href="#module-contents" title="MODULE CONTENTS">MODULE CONTENTS</a></li></ul></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Environment</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Environment</a></div><h1>Module <span>Tree<wbr>View<wbr>Provider</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Environment/TreeViewProvider.rs.html#1-567">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="treeviewprovider-environment"><a class="doc-anchor" href="#treeviewprovider-environment">§</a>TreeViewProvider (Environment)</h2>
-<p>Implements the <code>TreeViewProvider</code> trait for <code>MountainEnvironment</code>, managing
-the lifecycle of custom tree views and orchestrating data flow between the
-extension host (Cocoon) and the UI (Sky).</p>
-<h3 id="responsibilities"><a class="doc-anchor" href="#responsibilities">§</a>RESPONSIBILITIES</h3><h4 id="1-tree-view-registration"><a class="doc-anchor" href="#1-tree-view-registration">§</a>1. Tree View Registration</h4>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="TreeViewProvider (Environment)"><title>Mountain::Environment::TreeViewProvider - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module TreeViewProvider</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Tree<wbr>View<wbr>Provider</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#treeviewprovider-environment" title="TreeViewProvider (Environment)">TreeViewProvider (Environment)</a><ul><li><a href="#implementation-strategy" title="Implementation Strategy">Implementation Strategy</a></li></ul></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Environment</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Environment</a></div><h1>Module <span>Tree<wbr>View<wbr>Provider</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Environment/TreeViewProvider/mod.rs.html#1-144">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="treeviewprovider-environment"><a class="doc-anchor" href="#treeviewprovider-environment">§</a>TreeViewProvider (Environment)</h2>
+<p>Implements the
+<a href="CommonLibrary::TreeView::TreeViewProvider"><code>TreeViewProvider</code></a> trait for
+<a href="../MountainEnvironment/struct.MountainEnvironment.html" title="struct Mountain::Environment::MountainEnvironment::MountainEnvironment"><code>MountainEnvironment</code></a>.</p>
+<p>This provider manages the lifecycle of custom tree views and orchestrates
+data flow between the extension host (Cocoon) and the UI (Sky). It handles
+registration, data dispatching, UI state updates, events, and state
+persistence.</p>
+<h3 id="implementation-strategy"><a class="doc-anchor" href="#implementation-strategy">§</a>Implementation Strategy</h3>
+<p>The trait implementation is split across multiple helper modules for
+maintainability:</p>
 <ul>
-<li>Register tree view providers from extensions via <code>RegisterTreeDataProvider</code></li>
-<li>Create and store tree view state in <code>ApplicationState.ActiveTreeViews</code></li>
-<li>Manage tree view identifiers and view types</li>
-<li>Handle tree view unregistration and cleanup</li>
+<li>[<code>Registration</code>]: <code>RegisterTreeDataProvider</code>, <code>UnregisterTreeDataProvider</code></li>
+<li>[<code>DataAccess</code>]: <code>GetChildren</code>, <code>GetTreeItem</code> (dispatcher logic)</li>
+<li>[<code>UIState</code>]: <code>SetTreeViewMessage</code>, <code>SetTreeViewTitle</code>, <code>SetTreeViewBadge</code></li>
+<li>[<code>Events</code>]: <code>OnTreeNodeExpanded</code>, <code>OnTreeSelectionChanged</code></li>
+<li>[<code>StatePersistence</code>]: <code>PersistTreeViewState</code>, <code>RestoreTreeViewState</code></li>
+<li>[<code>Visibility</code>]: <code>RevealTreeItem</code>, <code>RefreshTreeView</code></li>
 </ul>
-<h4 id="2-data-provider-dispatching"><a class="doc-anchor" href="#2-data-provider-dispatching">§</a>2. Data Provider Dispatching</h4>
-<ul>
-<li>Route tree data requests to appropriate provider (native or extension)</li>
-<li>Support both native Rust providers and extension-sidecar providers</li>
-<li>Handle <code>GetChildren</code>, <code>GetTreeItem</code>, <code>OnTreeSelectionChanged</code>, etc.</li>
-<li>Ensure thread-safe access to provider state</li>
-</ul>
-<h4 id="3-tree-state-management"><a class="doc-anchor" href="#3-tree-state-management">§</a>3. Tree State Management</h4>
-<ul>
-<li>Track tree view options (title, description, message, badge)</li>
-<li>Manage tree item visibility and selection state</li>
-<li>Persist tree state across sessions (expanded/collapsed nodes)</li>
-<li>Support tree view state restoration</li>
-</ul>
-<h4 id="4-ui-events--notifications"><a class="doc-anchor" href="#4-ui-events--notifications">§</a>4. UI Events &amp; Notifications</h4>
-<ul>
-<li>Handle tree node expansion/collapse events</li>
-<li>Process tree item selection changes</li>
-<li>Emit events to Sky for UI updates</li>
-<li>Support <code>RefreshTreeView</code> for manual updates</li>
-</ul>
-<h4 id="5-advanced-features"><a class="doc-anchor" href="#5-advanced-features">§</a>5. Advanced Features</h4>
-<ul>
-<li>Drag-and-drop support (<code>HasHandleDrag</code>, <code>HasHandleDrop</code>)</li>
-<li>Multi-selection support (<code>CanSelectMany</code>)</li>
-<li>Badge display on tree items</li>
-<li>Message display above tree view</li>
-<li>Title and description updates</li>
-</ul>
-<h3 id="architectural-role"><a class="doc-anchor" href="#architectural-role">§</a>ARCHITECTURAL ROLE</h3>
-<p>TreeViewProvider is the <strong>tree view orchestration layer</strong>:</p>
-<div class="example-wrap"><pre class="language-text"><code>Extension ──► RegisterTreeDataProvider ──► TreeViewProvider ──► Sky TreeView
-                    │                              │
-                    └─► IPC Calls ──► Cocoon ◄────┘</code></pre></div><h4 id="position-in-mountain"><a class="doc-anchor" href="#position-in-mountain">§</a>Position in Mountain</h4>
-<ul>
-<li><code>Environment</code> module: UI tree capability provider</li>
-<li>Implements <code>CommonLibrary::TreeView::TreeViewProvider</code> trait</li>
-<li>Accessible via <code>Environment.Require&lt;dyn TreeViewProvider&gt;()</code></li>
-</ul>
-<h4 id="tree-view-provider-types"><a class="doc-anchor" href="#tree-view-provider-types">§</a>Tree View Provider Types</h4>
-<p><strong>Native Provider</strong>:</p>
-<ul>
-<li>Implemented directly in Rust</li>
-<li>Example: <code>FileExplorerViewProvider</code></li>
-<li>Direct function calls (no IPC)</li>
-<li>High performance, full control</li>
-</ul>
-<p><strong>Extension Provider</strong>:</p>
-<ul>
-<li>Implemented in extension (TypeScript/JavaScript)</li>
-<li>Runs in Cocoon sidecar process</li>
-<li>Accessed via IPC (<code>SendNotificationToSideCar</code>)</li>
-<li>Isolated, sandboxed, extensible</li>
-</ul>
-<h4 id="data-flow"><a class="doc-anchor" href="#data-flow">§</a>Data Flow</h4>
-<ol>
-<li><strong>Registration</strong>: Extension calls <code>RegisterTreeDataProvider(viewId, options)</code></li>
-<li><strong>Initial Request</strong>: Sky calls <code>GetChildren(viewId, parentHandle)</code> for root</li>
-<li><strong>Provider Call</strong>: TreeViewProvider routes to provider’s <code>GetChildren</code></li>
-<li><strong>Result</strong>: Provider returns <code>TreeItemDTO</code> JSON objects</li>
-<li><strong>Display</strong>: Sky renders tree items in UI</li>
-<li><strong>User Action</strong>: User expands/clicks/selects items</li>
-<li><strong>Events</strong>: Sky calls <code>OnTreeNodeExpanded</code>, <code>OnTreeSelectionChanged</code>, etc.</li>
-</ol>
-<h4 id="dependencies"><a class="doc-anchor" href="#dependencies">§</a>Dependencies</h4>
-<ul>
-<li><code>ApplicationState</code>: Tree view state storage (<code>ActiveTreeViews</code>)</li>
-<li><code>IPCProvider</code>: For extension provider communication</li>
-<li><code>Log</code>: Tree view operation logging</li>
-</ul>
-<h4 id="dependents"><a class="doc-anchor" href="#dependents">§</a>Dependents</h4>
-<ul>
-<li>Extensions: Register tree views for Explorer, Outline, etc.</li>
-<li>Native providers: FileExplorer, SymbolTree, etc.</li>
-<li><code>Binary::Bootstrap::RegisterTreeViewProviders</code>: Initial registration</li>
-<li>Sky UI: Tree view component requests data</li>
-</ul>
-<h3 id="tree-item-dto"><a class="doc-anchor" href="#tree-item-dto">§</a>TREE ITEM DTO</h3>
-<p><code>TreeItemDTO</code> structure (JSON):</p>
-<ul>
-<li><code>handle</code>: Unique identifier for the item</li>
-<li><code>label</code>: Display label (with <code>label</code> property)</li>
-<li><code>collapsibleState</code>: 0=none, 1=collapsed, 2=expanded</li>
-<li><code>resourceUri</code>: URI for the item (file, folder, symbol)</li>
-<li><code>command</code>: Command to execute on activation (click/double-click)</li>
-<li><code>description</code>: Secondary text (right-aligned)</li>
-<li><code>iconPath</code>: Icon for the item (theme aware)</li>
-<li><code>contextValue</code>: Context for theming and keybindings</li>
-</ul>
-<h3 id="tree-view-options"><a class="doc-anchor" href="#tree-view-options">§</a>TREE VIEW OPTIONS</h3>
-<p><code>TreeViewOptionsDTO</code> during registration:</p>
-<ul>
-<li><code>canSelectMany</code>: Allow multi-selection (Ctrl+Click)</li>
-<li><code>canHide</code>: Allow user to hide tree view</li>
-<li><code>hasFileIcon</code>: Show file icons next to items</li>
-<li><code>hasDecoration</code>: Show tooltips and badges</li>
-<li><code>dragAndDrop</code>: Enable drag-and-drop</li>
-<li><code>canRename</code>: Allow renaming tree items</li>
-<li><code>canDelete</code>: Allow deleting tree items</li>
-<li><code>menu</code>: Context menu contributions</li>
-<li><code>selectOnFocus</code>: Select item when tree gains focus</li>
-</ul>
-<h3 id="error-handling"><a class="doc-anchor" href="#error-handling">§</a>ERROR HANDLING</h3>
-<ul>
-<li>Provider not found: <code>CommonError::InvalidArgument</code></li>
-<li>Provider error: Propagate as <code>CommonError</code></li>
-<li>IPC failure: <code>CommonError::IPCError</code></li>
-<li>Invalid tree item: <code>CommonError::InvalidArgument</code></li>
-<li>State lock errors: <code>CommonError::StateLockPoisoned</code></li>
-</ul>
-<h3 id="performance"><a class="doc-anchor" href="#performance">§</a>PERFORMANCE</h3>
-<ul>
-<li>Tree data providers should be lazy (load children on demand)</li>
-<li>Cache tree item results to avoid redundant computation</li>
-<li>Use <code>RefreshTreeView</code> sparingly (expensive operation)</li>
-<li>Consider background loading for large trees</li>
-<li>Limit child count per node (paging for very large directories)</li>
-</ul>
-<h3 id="vs-code-reference"><a class="doc-anchor" href="#vs-code-reference">§</a>VS CODE REFERENCE</h3>
-<p>Patterns from VS Code:</p>
-<ul>
-<li><code>vs/workbench/api/common/extHostTreeViews.ts</code> - Extension API</li>
-<li><code>vs/workbench/services/views/common/treeViewService.ts</code> - Tree view service</li>
-<li><code>vs/platform/views/common/views.ts</code> - Tree view data model</li>
-</ul>
-<h3 id="todo"><a class="doc-anchor" href="#todo">§</a>TODO</h3>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Implement tree view state persistence (expanded nodes, selection)</li>
-<li><input disabled="" type="checkbox"/>
-Add tree view theming support (custom CSS)</li>
-<li><input disabled="" type="checkbox"/>
-Support tree view filtering and search</li>
-<li><input disabled="" type="checkbox"/>
-Implement tree view sorting and ordering</li>
-<li><input disabled="" type="checkbox"/>
-Add tree view virtualization for large trees</li>
-<li><input disabled="" type="checkbox"/>
-Support tree view column rendering (like file explorer details)</li>
-<li><input disabled="" type="checkbox"/>
-Implement tree view keyboard navigation enhancements</li>
-<li><input disabled="" type="checkbox"/>
-Add tree view context menu customization</li>
-<li><input disabled="" type="checkbox"/>
-Support tree view drag-and-drop reordering</li>
-<li><input disabled="" type="checkbox"/>
-Implement tree view accessibility (screen reader, keyboard-only)</li>
-<li><input disabled="" type="checkbox"/>
-Add tree view animations (expand/collapse)</li>
-<li><input disabled="" type="checkbox"/>
-Support tree view grouping and categorization</li>
-<li><input disabled="" type="checkbox"/>
-Implement tree view configuration UI</li>
-<li><input disabled="" type="checkbox"/>
-Add tree view performance monitoring</li>
-</ul>
-<h3 id="module-contents"><a class="doc-anchor" href="#module-contents">§</a>MODULE CONTENTS</h3>
-<ul>
-<li>[<code>TreeViewProvider</code>]: Main struct implementing the trait</li>
-<li>Tree view registration and lifecycle</li>
-<li>Provider dispatch logic (native vs extension)</li>
-<li>Event handling (selection, expansion, etc.)</li>
-<li>State persistence and restoration</li>
-<li>Drag-and-drop coordination</li>
-</ul>
+<p>The single <code>impl TreeViewProvider for MountainEnvironment</code> block in this
+file delegates to those helper functions. This satisfies Rust’s orphan rules
+while keeping code organized.</p>
 </div></details></section></div></main></body></html>

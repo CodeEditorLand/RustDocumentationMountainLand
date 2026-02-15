@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["DetectLanguageIdentifierFromFilePath","GetURLFromURIComponentsDTO","IsPathAllowedForAccess","MapApplicationStateLockErrorToCommonError","MapLockErrorToCommonError"]};
+window.SIDEBAR_ITEMS = {"mod":["ErrorMapping","LanguageDetection","PathSecurity","UriParsing"]};

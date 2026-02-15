@@ -690,7 +690,7 @@
 <a href=#690 id=690 data-nosnippet>690</a>		<span class="macro">assert!</span>(user_perms.contains(<span class="kw-2">&amp;</span><span class="string">"file.read"</span>.to_string()));
 <a href=#691 id=691 data-nosnippet>691</a>
 <a href=#692 id=692 data-nosnippet>692</a>		<span class="kw">let </span>admin_perms = validator.GetRolePermissions(<span class="string">"admin"</span>).<span class="kw">await</span>;
-<a href=#693 id=693 data-nosnippet>693</a>		<span class="macro">assert!</span>(admin_perms.len(), <span class="string">"Admin should have many permissions"</span>);
+<a href=#693 id=693 data-nosnippet>693</a>		<span class="macro">assert_ne!</span>(admin_perms.len(), <span class="number">0</span>, <span class="string">"Admin should have many permissions"</span>);
 <a href=#694 id=694 data-nosnippet>694</a>	}
 <a href=#695 id=695 data-nosnippet>695</a>
 <a href=#696 id=696 data-nosnippet>696</a>	<span class="attr">#[tokio::test]

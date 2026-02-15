@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"struct":["RPCModelContentChangeDTO","RPCRangeDTO"]};
+window.SIDEBAR_ITEMS = {"struct":["RPCModelContentChangeDTO"]};

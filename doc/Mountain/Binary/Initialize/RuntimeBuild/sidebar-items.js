@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["Build"]};
+window.SIDEBAR_ITEMS = {"fn":["Build","BuildWithConfig","CreateBuilder"],"struct":["SchedulerConfig"]};

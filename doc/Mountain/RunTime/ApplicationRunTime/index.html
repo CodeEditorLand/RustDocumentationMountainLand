@@ -1,88 +1,51 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="ApplicationRunTime"><title>Mountain::RunTime::ApplicationRunTime - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module ApplicationRunTime</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Application<wbr>RunTime</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#applicationruntime" title="ApplicationRunTime">ApplicationRunTime</a><ul><li><a href="#responsibilities" title="RESPONSIBILITIES">RESPONSIBILITIES</a></li><li><a href="#architectural-role" title="ARCHITECTURAL ROLE">ARCHITECTURAL ROLE</a></li><li><a href="#todo" title="TODO">TODO</a></li></ul></li></ul><h3><a href="#structs">Module Items</a></h3><ul class="block"><li><a href="#structs" title="Structs">Structs</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>RunTime</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">RunTime</a></div><h1>Module <span>Application<wbr>RunTime</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/RunTime/ApplicationRunTime.rs.html#1-422">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="applicationruntime"><a class="doc-anchor" href="#applicationruntime">§</a>ApplicationRunTime</h2>
-<p>Core execution engine powered by Echo scheduler, bridging the declarative
-ActionEffect system with high-performance task execution.</p>
-<h3 id="responsibilities"><a class="doc-anchor" href="#responsibilities">§</a>RESPONSIBILITIES</h3><h4 id="effect-execution"><a class="doc-anchor" href="#effect-execution">§</a>Effect Execution</h4>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Application runtime module containing the struct definition. The struct is accessible as `RunTime::ApplicationRunTime::ApplicationRunTime`."><title>Mountain::RunTime::ApplicationRunTime - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module ApplicationRunTime</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Application<wbr>RunTime</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#applicationruntime-runtime" title="ApplicationRunTime (RunTime)">ApplicationRunTime (RunTime)</a><ul><li><a href="#responsibilities" title="RESPONSIBILITIES">RESPONSIBILITIES</a></li><li><a href="#architectural-role" title="ARCHITECTURAL ROLE">ARCHITECTURAL ROLE</a></li><li><a href="#key-components" title="KEY COMPONENTS">KEY COMPONENTS</a></li><li><a href="#error-handling" title="ERROR HANDLING">ERROR HANDLING</a></li><li><a href="#logging" title="LOGGING">LOGGING</a></li><li><a href="#performance-considerations" title="PERFORMANCE CONSIDERATIONS">PERFORMANCE CONSIDERATIONS</a></li><li><a href="#todo" title="TODO">TODO</a></li></ul></li></ul><h3><a href="#reexports">Module Items</a></h3><ul class="block"><li><a href="#reexports" title="Re-exports">Re-exports</a></li><li><a href="#modules" title="Modules">Modules</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>RunTime</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">RunTime</a></div><h1>Module <span>Application<wbr>RunTime</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/RunTime/ApplicationRunTime/mod.rs.html#1-56">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Application runtime module containing the struct definition.
+The struct is accessible as
+<code>RunTime::ApplicationRunTime::ApplicationRunTime</code>.</p>
+<h2 id="applicationruntime-runtime"><a class="doc-anchor" href="#applicationruntime-runtime">§</a>ApplicationRunTime (RunTime)</h2><h3 id="responsibilities"><a class="doc-anchor" href="#responsibilities">§</a>RESPONSIBILITIES</h3>
+<p>Main runtime struct that provides effect execution and lifecycle management
+capabilities for the Mountain application. Acts as the central coordinator
+between the Echo scheduler and application services.</p>
+<h3 id="architectural-role"><a class="doc-anchor" href="#architectural-role">§</a>ARCHITECTURAL ROLE</h3>
+<p>Core execution engine in Mountain’s architecture that bridges declarative
+effect system with high-performance task execution through Echo scheduler.</p>
+<h3 id="key-components"><a class="doc-anchor" href="#key-components">§</a>KEY COMPONENTS</h3>
 <ul>
-<li>Execute ActionEffect via Echo scheduler with proper capability injection</li>
-<li>Provide main Run() method for synchronous effect execution</li>
-<li>Support timeout-based effect execution with cancellation</li>
-<li>Implement retry mechanisms with exponential backoff</li>
-<li>Handle effect result channels and error propagation</li>
-<li>Ensure thread-safe execution environment</li>
+<li><strong>ApplicationRunTime</strong>: Main runtime struct holding Scheduler and
+Environment</li>
 </ul>
-<h4 id="service-shutdown--recovery"><a class="doc-anchor" href="#service-shutdown--recovery">§</a>Service Shutdown &amp; Recovery</h4>
+<h3 id="error-handling"><a class="doc-anchor" href="#error-handling">§</a>ERROR HANDLING</h3>
+<p>All errors are propagated through Result types with detailed context.
+Shutdown operations use error recovery to continue cleanup even when
+individual services fail.</p>
+<h3 id="logging"><a class="doc-anchor" href="#logging">§</a>LOGGING</h3>
+<p>Uses log crate with appropriate severity levels:</p>
 <ul>
-<li>Coordinate graceful shutdown of all application services</li>
-<li>Implement shutdown with timeout and recovery mechanisms</li>
-<li>Shutdown Cocoon sidecar with retry attempts</li>
-<li>Safely dispose of all active terminal instances</li>
-<li>Persist application state (GlobalMemento) before exit</li>
-<li>Flush pending operations and UI requests</li>
-<li>Collect and report shutdown errors without crashing</li>
+<li><code>info</code>: Initialization, successful completion</li>
+<li><code>debug</code>: Detailed operation steps</li>
+<li><code>warn</code>: Recoverable errors during shutdown</li>
+<li><code>error</code>: Failed operations</li>
 </ul>
-<h4 id="error-recovery"><a class="doc-anchor" href="#error-recovery">§</a>Error Recovery</h4>
+<h3 id="performance-considerations"><a class="doc-anchor" href="#performance-considerations">§</a>PERFORMANCE CONSIDERATIONS</h3>
 <ul>
-<li>Implement fallback strategies for service unavailability</li>
-<li>Provide detailed error context for diagnostics</li>
-<li>Log all failures with appropriate severity levels</li>
-<li>Continue shutdown even when some services fail</li>
+<li>Uses Arc for shared state to minimize cloning</li>
+<li>Scheduler handles parallel execution efficiently</li>
+<li>Shutdown operations are optimized to complete quickly</li>
 </ul>
-<h3 id="architectural-role"><a class="doc-anchor" href="#architectural-role">§</a>ARCHITECTURAL ROLE</h3><h4 id="position-in-mountain"><a class="doc-anchor" href="#position-in-mountain">§</a>Position in Mountain</h4>
+<h3 id="todo"><a class="doc-anchor" href="#todo">§</a>TODO</h3>
+<p>Medium Priority:</p>
 <ul>
-<li>Implementation of ApplicationRunTime trait from Common</li>
-<li>Core execution engine for entire application</li>
-<li>Bridges declarative effect system with Echo scheduler</li>
+<li><input disabled="" type="checkbox"/>
+Add effect execution metrics</li>
+<li><input disabled="" type="checkbox"/>
+Implement effect cancellation support</li>
+<li><input disabled="" type="checkbox"/>
+Add effect execution tracing</li>
 </ul>
-<h4 id="dependencies"><a class="doc-anchor" href="#dependencies">§</a>Dependencies</h4>
+<p>Low Priority:</p>
 <ul>
-<li>Echo::Scheduler: High-performance work-stealing scheduler</li>
-<li>Common::Effect::ApplicationRunTime: Trait implementation</li>
-<li>Common::Environment: Environment integration</li>
-<li>MountainEnvironment: Capability provider for all services</li>
-<li>IPCProvider: Sidecar communication</li>
-<li>TerminalProvider: Terminal lifecycle management</li>
+<li><input disabled="" type="checkbox"/>
+Add effect prioritization levels beyond Normal</li>
+<li><input disabled="" type="checkbox"/>
+Implement circuit breaker pattern for failing effects</li>
 </ul>
-<h4 id="dependents"><a class="doc-anchor" href="#dependents">§</a>Dependents</h4>
-<ul>
-<li>Binary: Initializes and manages lifecycle</li>
-<li>Command handlers: Execute effects via Run()</li>
-<li>IPC services: Submit effects from frontend</li>
-<li>Shutdown controller: Calls ShutdownWithRecovery()</li>
-</ul>
-<h4 id="vscode-patterns-borrowed"><a class="doc-anchor" href="#vscode-patterns-borrowed">§</a>VSCode Patterns Borrowed</h4>
-<ul>
-<li>Workbench service instantiation sequence</li>
-<li>Service lifecycle management (dispose pattern)</li>
-<li>Graceful degradation when services unavailable</li>
-<li>Comprehensive error handling during shutdown</li>
-<li>State persistence before exit (memento system)</li>
-</ul>
-<h3 id="todo"><a class="doc-anchor" href="#todo">§</a>TODO</h3><h4 id="immediate-improvements"><a class="doc-anchor" href="#immediate-improvements">§</a>Immediate Improvements</h4>
-<ul>
-<li>Add effect execution metrics (count, duration, success rate)</li>
-<li>Implement effect execution tracing and profiling</li>
-<li>Add effect prioritization levels beyond Normal</li>
-<li>Implement effect cancellation token propagation</li>
-<li>Add circuit breaker pattern for failing effects</li>
-</ul>
-<h4 id="future-work"><a class="doc-anchor" href="#future-work">§</a>Future Work</h4>
-<ul>
-<li>Implement distributed effect execution across instances</li>
-<li>Add effect result caching for idempotent operations</li>
-<li>Implement effect pipeline with chaining and composition</li>
-<li>Add real-time effect monitoring dashboard</li>
-<li>Implement adaptive timeout based on historical performance</li>
-<li>Add effect execution limits (rate limiting)</li>
-</ul>
-<h4 id="missing-functionality-to-probe"><a class="doc-anchor" href="#missing-functionality-to-probe">§</a>Missing Functionality to Probe</h4>
-<ul>
-<li>Optimal timeout values for different effect categories</li>
-<li>Retry strategy customization per effect type</li>
-<li>Backoff policy tuning for different error conditions</li>
-<li>Effect execution throttling under high load</li>
-<li>Service health check intervals for shutdown</li>
-<li>State persistence durability guarantees</li>
-<li>Pending operation flush timeout</li>
-</ul>
-</div></details><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.ApplicationRunTime.html" title="struct Mountain::RunTime::ApplicationRunTime::ApplicationRunTime">Application<wbr>RunTime</a></dt><dd>A <code>RunTime</code> that uses a high-performance, work-stealing scheduler (<code>Echo</code>)
-to execute all <code>ActionEffect</code>s.</dd></dl></section></div></main></body></html>
+</div></details><h2 id="reexports" class="section-header">Re-exports<a href="#reexports" class="anchor">§</a></h2><dl class="item-table reexports"><dt id="reexport.ApplicationRunTime"><code>pub use RuntimeStruct::<a class="struct" href="RuntimeStruct/struct.ApplicationRunTime.html" title="struct Mountain::RunTime::ApplicationRunTime::RuntimeStruct::ApplicationRunTime">ApplicationRunTime</a>;</code></dt></dl><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="RuntimeStruct/index.html" title="mod Mountain::RunTime::ApplicationRunTime::RuntimeStruct">Runtime<wbr>Struct</a></dt><dd>Main runtime struct definition.</dd></dl></section></div></main></body></html>

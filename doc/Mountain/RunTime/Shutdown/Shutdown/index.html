@@ -1,0 +1,40 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Shutdown orchestration and service cleanup implemented on ApplicationRunTime."><title>Mountain::RunTime::Shutdown::Shutdown - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../../" data-static-root-path="../../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module Shutdown</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Shutdown</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#shutdown-runtimeshutdown" title="Shutdown (RunTime::Shutdown)">Shutdown (RunTime::Shutdown)</a><ul><li><a href="#responsibilities" title="RESPONSIBILITIES">RESPONSIBILITIES</a></li><li><a href="#architectural-role" title="ARCHITECTURAL ROLE">ARCHITECTURAL ROLE</a></li><li><a href="#key-components" title="KEY COMPONENTS">KEY COMPONENTS</a></li><li><a href="#error-handling" title="ERROR HANDLING">ERROR HANDLING</a></li><li><a href="#logging" title="LOGGING">LOGGING</a></li><li><a href="#performance-considerations" title="PERFORMANCE CONSIDERATIONS">PERFORMANCE CONSIDERATIONS</a></li><li><a href="#todo" title="TODO">TODO</a></li></ul></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>RunTime::<wbr>Shutdown</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../../index.html">Mountain</a>::<wbr><a href="../../index.html">RunTime</a>::<wbr><a href="../index.html">Shutdown</a></div><h1>Module <span>Shutdown</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../../src/Mountain/RunTime/Shutdown/Shutdown.rs.html#1-253">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Shutdown orchestration and service cleanup implemented on
+ApplicationRunTime.</p>
+<h2 id="shutdown-runtimeshutdown"><a class="doc-anchor" href="#shutdown-runtimeshutdown">§</a>Shutdown (RunTime::Shutdown)</h2><h3 id="responsibilities"><a class="doc-anchor" href="#responsibilities">§</a>RESPONSIBILITIES</h3>
+<p>Service shutdown and lifecycle management for graceful application
+termination. Coordinates cleanup of all application services with error
+recovery.</p>
+<h3 id="architectural-role"><a class="doc-anchor" href="#architectural-role">§</a>ARCHITECTURAL ROLE</h3>
+<p>The lifecycle manager in Mountain’s architecture that ensures clean
+application termination and state persistence.</p>
+<h3 id="key-components"><a class="doc-anchor" href="#key-components">§</a>KEY COMPONENTS</h3>
+<ul>
+<li><strong>Shutdown</strong>: Main shutdown orchestration</li>
+<li><strong>ShutdownWithRecovery</strong>: Enhanced shutdown with error recovery</li>
+<li><strong>ShutdownCocoonWithRetry</strong>: Cocoon sidecar shutdown with retry</li>
+<li><strong>DisposeTerminalsSafely</strong>: Terminal cleanup</li>
+<li><strong>SaveApplicationState</strong>: State persistence</li>
+<li><strong>FlushPendingOperations</strong>: Cleanup pending operations</li>
+</ul>
+<h3 id="error-handling"><a class="doc-anchor" href="#error-handling">§</a>ERROR HANDLING</h3>
+<p>All shutdown operations use error recovery to continue cleanup even when
+individual services fail. Errors are collected and reported without
+crashing. Multi-attempt retry for critical operations like Cocoon shutdown.</p>
+<h3 id="logging"><a class="doc-anchor" href="#logging">§</a>LOGGING</h3>
+<p>Uses log crate with appropriate severity levels:</p>
+<ul>
+<li><code>info</code>: Shutdown initiation and completion</li>
+<li><code>debug</code>: Detailed operation steps</li>
+<li><code>warn</code>: Recoverable errors during shutdown</li>
+<li><code>error</code>: Failed operations (but continues shutdown)</li>
+</ul>
+<h3 id="performance-considerations"><a class="doc-anchor" href="#performance-considerations">§</a>PERFORMANCE CONSIDERATIONS</h3>
+<ul>
+<li>Shutdown operations are optimized to complete quickly</li>
+<li>Sequential cleanup to avoid race conditions</li>
+<li>Minimal blocking during state persistence</li>
+<li>Uses timeout recovery to prevent hanging</li>
+</ul>
+<h3 id="todo"><a class="doc-anchor" href="#todo">§</a>TODO</h3>
+<p>None</p>
+</div></details></section></div></main></body></html>

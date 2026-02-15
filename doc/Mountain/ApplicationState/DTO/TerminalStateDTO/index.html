@@ -9,6 +9,15 @@
 <ul>
 <li>Identifier: Unique terminal identifier</li>
 <li>Name: Terminal display name</li>
+<li>OSProcessIdentifier: OS process ID</li>
+<li>ShellPath: Shell executable path</li>
+<li>ShellArguments: Shell launch arguments</li>
+<li>CurrentWorkingDirectory: Working directory path</li>
+<li>EnvironmentVariables: Environment variable map</li>
+<li>IsPTY: PTY mode flag</li>
+<li>PTYInputTransmitter: PTY input channel sender</li>
+<li>ReaderTaskHandle: Output reader task handle</li>
+<li>ProcessWaitHandle: Process wait task handle</li>
 </ul>
 </div></details><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.TerminalStateDTO.html" title="struct Mountain::ApplicationState::DTO::TerminalStateDTO::TerminalStateDTO">Terminal<wbr>StateDTO</a></dt><dd>Holds the complete state and runtime resources for a single pseudo-terminal
 (PTY) instance. This includes configuration, process identifiers, and

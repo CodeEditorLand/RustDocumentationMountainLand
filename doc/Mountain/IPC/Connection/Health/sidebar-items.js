@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["MonitorHealth"]};
+window.SIDEBAR_ITEMS = {"struct":["HealthChecker"]};

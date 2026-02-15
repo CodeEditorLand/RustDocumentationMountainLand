@@ -4,6 +4,18 @@
 <li>Serializable format for gRPC/IPC transmission</li>
 <li>Used by Mountain to track Webview lifecycle</li>
 </ul>
-<h2 id="fields-1"><a class="doc-anchor" href="#fields-1">§</a>FIELDS</h2></div></details><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.WebviewStateDTO.html" title="struct Mountain::ApplicationState::DTO::WebviewStateDTO::WebviewStateDTO">Webview<wbr>StateDTO</a></dt><dd>A struct that holds the complete state for a single Webview panel instance.
+<h2 id="fields-1"><a class="doc-anchor" href="#fields-1">§</a>FIELDS</h2>
+<ul>
+<li>Handle: Unique Webview UUID</li>
+<li>ViewType: Extension-defined view type</li>
+<li>Title: Current panel title</li>
+<li>ContentOptions: Web content and security settings</li>
+<li>PanelOptions: Panel behavior options</li>
+<li>SideCarIdentifier: Host sidecar process ID</li>
+<li>ExtensionIdentifier: Owner extension ID</li>
+<li>IsActive: Focus state flag</li>
+<li>IsVisible: Visibility state flag</li>
+</ul>
+</div></details><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.WebviewStateDTO.html" title="struct Mountain::ApplicationState::DTO::WebviewStateDTO::WebviewStateDTO">Webview<wbr>StateDTO</a></dt><dd>A struct that holds the complete state for a single Webview panel instance.
 This is stored in <code>ApplicationState</code> to track all active Webviews managed by
 the host.</dd></dl></section></div></main></body></html>
