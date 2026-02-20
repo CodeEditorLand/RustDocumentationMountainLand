@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":["WebviewLifecycleState"],"struct":["WebviewMessage"]};
+window.SIDEBAR_ITEMS = {"enum":["WebviewLifecycleState"],"mod":["configuration","lifecycle","messaging"],"struct":["WebviewMessage","WebviewMessageContext"]};

@@ -20,7 +20,7 @@
 <a href=#20 id=20 data-nosnippet>20</a>//!
 <a href=#21 id=21 data-nosnippet>21</a>//! ## PERFORMANCE CONSIDERATIONS
 <a href=#22 id=22 data-nosnippet>22</a>//! - Role definitions are stored in HashMap for O(1) lookup
-<a href=#23 id=23 data-nosnippet>23</a>//! - Permissions are stored as Vec&lt;String&gt; for iteration
+<a href=#23 id=23 data-nosnippet>23</a>//! - Permissions are stored as `Vec&lt;String&gt;` for iteration
 <a href=#24 id=24 data-nosnippet>24</a>//!
 <a href=#25 id=25 data-nosnippet>25</a>//! ## TODO
 <a href=#26 id=26 data-nosnippet>26</a>//! - Add role inheritance support
@@ -28,7 +28,7 @@
 <a href=#28 id=28 data-nosnippet>28</a>//! - Add role metadata (creation time, last modified)
 <a href=#29 id=29 data-nosnippet>29</a>//! - Support role aliases
 <a href=#30 id=30 data-nosnippet>30</a>
-<a href=#31 id=31 data-nosnippet>31</a></span><span class="kw">use </span>serde::{Deserialize, Serialize};
+<a href=#31 id=31 data-nosnippet>31</a></span><span class="kw">use </span>serde::{<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>};
 <a href=#32 id=32 data-nosnippet>32</a>
 <a href=#33 id=33 data-nosnippet>33</a><span class="doccomment">/// Role definition for RBAC
 <a href=#34 id=34 data-nosnippet>34</a>///
@@ -58,39 +58,39 @@
 <a href=#58 id=58 data-nosnippet>58</a>///     description: "Editor role with file access".to_string(),
 <a href=#59 id=59 data-nosnippet>59</a>/// };
 <a href=#60 id=60 data-nosnippet>60</a>/// ```
-<a href=#61 id=61 data-nosnippet>61</a></span><span class="attr">#[derive(Debug, Clone, Serialize, Deserialize)]
-<a href=#62 id=62 data-nosnippet>62</a></span><span class="kw">pub struct </span>Role {
+<a href=#61 id=61 data-nosnippet>61</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
+<a href=#62 id=62 data-nosnippet>62</a></span><span class="kw">pub struct </span><a href="../../../../Mountain/IPC/Security/Role/struct.Role.html">Role</a> {
 <a href=#63 id=63 data-nosnippet>63</a>	<span class="doccomment">/// Unique role identifier
-<a href=#64 id=64 data-nosnippet>64</a>	</span><span class="kw">pub </span>name:String,
+<a href=#64 id=64 data-nosnippet>64</a>	</span><span class="kw">pub </span>name:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#65 id=65 data-nosnippet>65</a>
 <a href=#66 id=66 data-nosnippet>66</a>	<span class="doccomment">/// List of permissions granted by this role
-<a href=#67 id=67 data-nosnippet>67</a>	</span><span class="kw">pub </span>permissions:Vec&lt;String&gt;,
+<a href=#67 id=67 data-nosnippet>67</a>	</span><span class="kw">pub </span>permissions:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;,
 <a href=#68 id=68 data-nosnippet>68</a>
 <a href=#69 id=69 data-nosnippet>69</a>	<span class="doccomment">/// Human-readable description of the role
-<a href=#70 id=70 data-nosnippet>70</a>	</span><span class="kw">pub </span>description:String,
+<a href=#70 id=70 data-nosnippet>70</a>	</span><span class="kw">pub </span>description:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#71 id=71 data-nosnippet>71</a>}
 <a href=#72 id=72 data-nosnippet>72</a>
-<a href=#73 id=73 data-nosnippet>73</a><span class="kw">impl </span>Role {
+<a href=#73 id=73 data-nosnippet>73</a><span class="kw">impl </span><a href="#62-71">Role</a> {
 <a href=#74 id=74 data-nosnippet>74</a>	<span class="doccomment">/// Create a new role
-<a href=#75 id=75 data-nosnippet>75</a>	</span><span class="kw">pub fn </span>new(name:String, permissions:Vec&lt;String&gt;, description:String) -&gt; <span class="self">Self </span>{
-<a href=#76 id=76 data-nosnippet>76</a>		<span class="self">Self </span>{ name, permissions, description }
+<a href=#75 id=75 data-nosnippet>75</a>	</span><span class="kw">pub fn </span>new(name:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, permissions:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;, description:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) -&gt; <span class="self">Self </span>{
+<a href=#76 id=76 data-nosnippet>76</a>		<span class="self">Self </span>{ <a href="#75">name</a>, <a href="#75">permissions</a>, <a href="#75">description</a> }
 <a href=#77 id=77 data-nosnippet>77</a>	}
 <a href=#78 id=78 data-nosnippet>78</a>
 <a href=#79 id=79 data-nosnippet>79</a>	<span class="doccomment">/// Check if role has a specific permission
-<a href=#80 id=80 data-nosnippet>80</a>	</span><span class="kw">pub fn </span>has_permission(<span class="kw-2">&amp;</span><span class="self">self</span>, permission:<span class="kw-2">&amp;</span>str) -&gt; bool { <span class="self">self</span>.permissions.iter().any(|p| p == permission) }
+<a href=#80 id=80 data-nosnippet>80</a>	</span><span class="kw">pub fn </span>has_permission(<span class="kw-2">&amp;</span><span class="self">self</span>, permission:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> { <a class="self" href="#80">self</a>.permissions.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.iter">iter</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.any">any</a>(|p| <a href="#80">p</a> == <a href="#80">permission</a>) }
 <a href=#81 id=81 data-nosnippet>81</a>
 <a href=#82 id=82 data-nosnippet>82</a>	<span class="doccomment">/// Add a permission to the role
-<a href=#83 id=83 data-nosnippet>83</a>	</span><span class="kw">pub fn </span>add_permission(<span class="kw-2">&amp;mut </span><span class="self">self</span>, permission:String) {
-<a href=#84 id=84 data-nosnippet>84</a>		<span class="kw">if </span>!<span class="self">self</span>.has_permission(<span class="kw-2">&amp;</span>permission) {
-<a href=#85 id=85 data-nosnippet>85</a>			<span class="self">self</span>.permissions.push(permission);
+<a href=#83 id=83 data-nosnippet>83</a>	</span><span class="kw">pub fn </span>add_permission(<span class="kw-2">&amp;mut </span><span class="self">self</span>, permission:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) {
+<a href=#84 id=84 data-nosnippet>84</a>		<span class="kw">if </span>!<a class="self" href="#83">self</a>.<a href="#80">has_permission</a>(<span class="kw-2">&amp;</span><a href="#83">permission</a>) {
+<a href=#85 id=85 data-nosnippet>85</a>			<a class="self" href="#83">self</a>.permissions.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.push">push</a>(<a href="#83">permission</a>);
 <a href=#86 id=86 data-nosnippet>86</a>		}
 <a href=#87 id=87 data-nosnippet>87</a>	}
 <a href=#88 id=88 data-nosnippet>88</a>
 <a href=#89 id=89 data-nosnippet>89</a>	<span class="doccomment">/// Remove a permission from the role
-<a href=#90 id=90 data-nosnippet>90</a>	</span><span class="kw">pub fn </span>remove_permission(<span class="kw-2">&amp;mut </span><span class="self">self</span>, permission:<span class="kw-2">&amp;</span>str) { <span class="self">self</span>.permissions.retain(|p| <span class="macro">p !</span>= permission); }
+<a href=#90 id=90 data-nosnippet>90</a>	</span><span class="kw">pub fn </span>remove_permission(<span class="kw-2">&amp;mut </span><span class="self">self</span>, permission:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) { <a class="self" href="#90">self</a>.permissions.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.retain">retain</a>(|p| <a href="#90">p !</a>= <a href="#90">permission</a>); }
 <a href=#91 id=91 data-nosnippet>91</a>
 <a href=#92 id=92 data-nosnippet>92</a>	<span class="doccomment">/// Get the count of permissions
-<a href=#93 id=93 data-nosnippet>93</a>	</span><span class="kw">pub fn </span>permission_count(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; usize { <span class="self">self</span>.permissions.len() }
+<a href=#93 id=93 data-nosnippet>93</a>	</span><span class="kw">pub fn </span>permission_count(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> { <a class="self" href="#93">self</a>.permissions.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.len">len</a>() }
 <a href=#94 id=94 data-nosnippet>94</a>}
 <a href=#95 id=95 data-nosnippet>95</a>
 <a href=#96 id=96 data-nosnippet>96</a><span class="attr">#[cfg(test)]

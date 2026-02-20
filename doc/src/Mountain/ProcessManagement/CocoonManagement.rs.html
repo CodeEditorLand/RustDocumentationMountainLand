@@ -40,8 +40,8 @@
 <a href=#40 id=40 data-nosnippet>40</a>//! # Module Contents
 <a href=#41 id=41 data-nosnippet>41</a>//!
 <a href=#42 id=42 data-nosnippet>42</a>//! - [`InitializeCocoon`]: Main entry point for Cocoon initialization
-<a href=#43 id=43 data-nosnippet>43</a>//! - [`LaunchAndManageCocoonSideCar`]: Process spawning and lifecycle
-<a href=#44 id=44 data-nosnippet>44</a>//!   management
+<a href=#43 id=43 data-nosnippet>43</a>//! - `LaunchAndManageCocoonSideCar`: Process spawning and lifecycle
+<a href=#44 id=44 data-nosnippet>44</a>//! management
 <a href=#45 id=45 data-nosnippet>45</a>//!
 <a href=#46 id=46 data-nosnippet>46</a>//! ## Example
 <a href=#47 id=47 data-nosnippet>47</a>//!
@@ -55,10 +55,10 @@
 <a href=#55 id=55 data-nosnippet>55</a>//! }
 <a href=#56 id=56 data-nosnippet>56</a>//! ```
 <a href=#57 id=57 data-nosnippet>57</a>
-<a href=#58 id=58 data-nosnippet>58</a></span><span class="kw">use </span>std::{collections::HashMap, process::Stdio, sync::Arc, time::Duration};
+<a href=#58 id=58 data-nosnippet>58</a></span><span class="kw">use </span>std::{<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">collections::HashMap</a>, <a href="https://doc.rust-lang.org/nightly/std/process/struct.Stdio.html">process::Stdio</a>, <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">sync::Arc</a>, <a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html">time::Duration</a>};
 <a href=#59 id=59 data-nosnippet>59</a>
 <a href=#60 id=60 data-nosnippet>60</a><span class="kw">use </span>CommonLibrary::Error::CommonError::CommonError;
-<a href=#61 id=61 data-nosnippet>61</a><span class="kw">use </span>log::{info, trace, warn};
+<a href=#61 id=61 data-nosnippet>61</a><span class="kw">use </span>log::{<a href="https://docs.rs/log/0.4.29/log/macro.info.html">info</a>, <a href="https://docs.rs/log/0.4.29/log/macro.trace.html">trace</a>, <a href="https://docs.rs/log/0.4.29/log/macro.warn.html">warn</a>};
 <a href=#62 id=62 data-nosnippet>62</a><span class="kw">use </span>tauri::{
 <a href=#63 id=63 data-nosnippet>63</a>	AppHandle,
 <a href=#64 id=64 data-nosnippet>64</a>	Manager,
@@ -72,51 +72,51 @@
 <a href=#72 id=72 data-nosnippet>72</a>	time::sleep,
 <a href=#73 id=73 data-nosnippet>73</a>};
 <a href=#74 id=74 data-nosnippet>74</a>
-<a href=#75 id=75 data-nosnippet>75</a><span class="kw">use </span><span class="kw">super</span>::InitializationData;
+<a href=#75 id=75 data-nosnippet>75</a><span class="kw">use </span><a href="mod.rs.html#56"><span class="kw">super</span>::InitializationData</a>;
 <a href=#76 id=76 data-nosnippet>76</a><span class="kw">use </span>crate::{
-<a href=#77 id=77 data-nosnippet>77</a>	Environment::MountainEnvironment::MountainEnvironment,
-<a href=#78 id=78 data-nosnippet>78</a>	IPC::Common::HealthStatus::{HealthIssue, HealthMonitor},
-<a href=#79 id=79 data-nosnippet>79</a>	Vine,
+<a href=#77 id=77 data-nosnippet>77</a>	<a href="../Environment/MountainEnvironment.rs.html#220-230">Environment::MountainEnvironment::MountainEnvironment</a>,
+<a href=#78 id=78 data-nosnippet>78</a>	IPC::Common::HealthStatus::{<a href="../IPC/Common/HealthStatus.rs.html#25-40">HealthIssue</a>, <a href="../IPC/Common/HealthStatus.rs.html#72-82">HealthMonitor</a>},
+<a href=#79 id=79 data-nosnippet>79</a>	<a href="../Library.rs.html#81">Vine</a>,
 <a href=#80 id=80 data-nosnippet>80</a>};
 <a href=#81 id=81 data-nosnippet>81</a>
 <a href=#82 id=82 data-nosnippet>82</a><span class="doccomment">/// Configuration constants for Cocoon process management
-<a href=#83 id=83 data-nosnippet>83</a></span><span class="kw">const </span>COCOON_SIDE_CAR_IDENTIFIER:<span class="kw-2">&amp;</span>str = <span class="string">"cocoon-main"</span>;
-<a href=#84 id=84 data-nosnippet>84</a><span class="kw">const </span>COCOON_GRPC_PORT:u16 = <span class="number">50052</span>;
-<a href=#85 id=85 data-nosnippet>85</a><span class="kw">const </span>MOUNTAIN_GRPC_PORT:u16 = <span class="number">50051</span>;
-<a href=#86 id=86 data-nosnippet>86</a><span class="kw">const </span>GRPC_SERVER_READY_DELAY_MS:u64 = <span class="number">2000</span>;
-<a href=#87 id=87 data-nosnippet>87</a><span class="kw">const </span>BOOTSTRAP_SCRIPT_PATH:<span class="kw-2">&amp;</span>str = <span class="string">"scripts/cocoon/bootstrap-fork.js"</span>;
-<a href=#88 id=88 data-nosnippet>88</a><span class="kw">const </span>HANDSHAKE_TIMEOUT_MS:u64 = <span class="number">60000</span>;
-<a href=#89 id=89 data-nosnippet>89</a><span class="kw">const </span>HEALTH_CHECK_INTERVAL_SECONDS:u64 = <span class="number">5</span>;
-<a href=#90 id=90 data-nosnippet>90</a><span class="kw">const </span>MAX_RESTART_ATTEMPTS:u32 = <span class="number">3</span>;
-<a href=#91 id=91 data-nosnippet>91</a><span class="kw">const </span>RESTART_WINDOW_SECONDS:u64 = <span class="number">300</span>;
+<a href=#83 id=83 data-nosnippet>83</a></span><span class="kw">const </span><a href="../../../Mountain/ProcessManagement/CocoonManagement/constant.COCOON_SIDE_CAR_IDENTIFIER.html">COCOON_SIDE_CAR_IDENTIFIER</a>:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a> = <span class="string">"cocoon-main"</span>;
+<a href=#84 id=84 data-nosnippet>84</a><span class="kw">const </span><a href="../../../Mountain/ProcessManagement/CocoonManagement/constant.COCOON_GRPC_PORT.html">COCOON_GRPC_PORT</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.u16.html">u16</a> = <span class="number">50052</span>;
+<a href=#85 id=85 data-nosnippet>85</a><span class="kw">const </span><a href="../../../Mountain/ProcessManagement/CocoonManagement/constant.MOUNTAIN_GRPC_PORT.html">MOUNTAIN_GRPC_PORT</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.u16.html">u16</a> = <span class="number">50051</span>;
+<a href=#86 id=86 data-nosnippet>86</a><span class="kw">const </span><a href="../../../Mountain/ProcessManagement/CocoonManagement/constant.GRPC_SERVER_READY_DELAY_MS.html">GRPC_SERVER_READY_DELAY_MS</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a> = <span class="number">2000</span>;
+<a href=#87 id=87 data-nosnippet>87</a><span class="kw">const </span><a href="../../../Mountain/ProcessManagement/CocoonManagement/constant.BOOTSTRAP_SCRIPT_PATH.html">BOOTSTRAP_SCRIPT_PATH</a>:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a> = <span class="string">"scripts/cocoon/bootstrap-fork.js"</span>;
+<a href=#88 id=88 data-nosnippet>88</a><span class="kw">const </span><a href="../../../Mountain/ProcessManagement/CocoonManagement/constant.HANDSHAKE_TIMEOUT_MS.html">HANDSHAKE_TIMEOUT_MS</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a> = <span class="number">60000</span>;
+<a href=#89 id=89 data-nosnippet>89</a><span class="kw">const </span><a href="../../../Mountain/ProcessManagement/CocoonManagement/constant.HEALTH_CHECK_INTERVAL_SECONDS.html">HEALTH_CHECK_INTERVAL_SECONDS</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a> = <span class="number">5</span>;
+<a href=#90 id=90 data-nosnippet>90</a><span class="kw">const </span><a href="../../../Mountain/ProcessManagement/CocoonManagement/constant.MAX_RESTART_ATTEMPTS.html">MAX_RESTART_ATTEMPTS</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a> = <span class="number">3</span>;
+<a href=#91 id=91 data-nosnippet>91</a><span class="kw">const </span><a href="../../../Mountain/ProcessManagement/CocoonManagement/constant.RESTART_WINDOW_SECONDS.html">RESTART_WINDOW_SECONDS</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a> = <span class="number">300</span>;
 <a href=#92 id=92 data-nosnippet>92</a>
 <a href=#93 id=93 data-nosnippet>93</a><span class="doccomment">/// Global state for tracking Cocoon process lifecycle
-<a href=#94 id=94 data-nosnippet>94</a></span><span class="kw">struct </span>CocoonProcessState {
-<a href=#95 id=95 data-nosnippet>95</a>	ChildProcess:<span class="prelude-ty">Option</span>&lt;Child&gt;,
-<a href=#96 id=96 data-nosnippet>96</a>	IsRunning:bool,
-<a href=#97 id=97 data-nosnippet>97</a>	StartTime:<span class="prelude-ty">Option</span>&lt;tokio::time::Instant&gt;,
-<a href=#98 id=98 data-nosnippet>98</a>	RestartCount:u32,
-<a href=#99 id=99 data-nosnippet>99</a>	LastRestartTime:<span class="prelude-ty">Option</span>&lt;tokio::time::Instant&gt;,
+<a href=#94 id=94 data-nosnippet>94</a></span><span class="kw">struct </span><a href="../../../Mountain/ProcessManagement/CocoonManagement/struct.CocoonProcessState.html">CocoonProcessState</a> {
+<a href=#95 id=95 data-nosnippet>95</a>	ChildProcess:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;Child&gt;,
+<a href=#96 id=96 data-nosnippet>96</a>	IsRunning:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
+<a href=#97 id=97 data-nosnippet>97</a>	StartTime:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;tokio::time::Instant&gt;,
+<a href=#98 id=98 data-nosnippet>98</a>	RestartCount:<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+<a href=#99 id=99 data-nosnippet>99</a>	LastRestartTime:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;tokio::time::Instant&gt;,
 <a href=#100 id=100 data-nosnippet>100</a>}
 <a href=#101 id=101 data-nosnippet>101</a>
-<a href=#102 id=102 data-nosnippet>102</a><span class="kw">impl </span>Default <span class="kw">for </span>CocoonProcessState {
+<a href=#102 id=102 data-nosnippet>102</a><span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a> <span class="kw">for </span><a href="#94-100">CocoonProcessState</a> {
 <a href=#103 id=103 data-nosnippet>103</a>	<span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{
 <a href=#104 id=104 data-nosnippet>104</a>		<span class="self">Self </span>{
-<a href=#105 id=105 data-nosnippet>105</a>			ChildProcess:<span class="prelude-val">None</span>,
+<a href=#105 id=105 data-nosnippet>105</a>			ChildProcess:<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>,
 <a href=#106 id=106 data-nosnippet>106</a>			IsRunning:<span class="bool-val">false</span>,
-<a href=#107 id=107 data-nosnippet>107</a>			StartTime:<span class="prelude-val">None</span>,
+<a href=#107 id=107 data-nosnippet>107</a>			StartTime:<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>,
 <a href=#108 id=108 data-nosnippet>108</a>			RestartCount:<span class="number">0</span>,
-<a href=#109 id=109 data-nosnippet>109</a>			LastRestartTime:<span class="prelude-val">None</span>,
+<a href=#109 id=109 data-nosnippet>109</a>			LastRestartTime:<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>,
 <a href=#110 id=110 data-nosnippet>110</a>		}
 <a href=#111 id=111 data-nosnippet>111</a>	}
 <a href=#112 id=112 data-nosnippet>112</a>}
 <a href=#113 id=113 data-nosnippet>113</a>
 <a href=#114 id=114 data-nosnippet>114</a><span class="doccomment">/// Global state for Cocoon process management
-<a href=#115 id=115 data-nosnippet>115</a></span><span class="macro">lazy_static::lazy_static!</span> {
-<a href=#116 id=116 data-nosnippet>116</a>	<span class="kw">static </span><span class="kw-2">ref </span>COCOON_STATE: Arc&lt;Mutex&lt;CocoonProcessState&gt;&gt; =
+<a href=#115 id=115 data-nosnippet>115</a></span><a href="https://docs.rs/lazy_static/1.5.0/lazy_static/macro.lazy_static.html">lazy_static::lazy_static!</a> {
+<a href=#116 id=116 data-nosnippet>116</a>	<span class="kw">static </span><span class="kw-2">ref </span><a href="#115-121">COCOON_STATE</a>: <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;Mutex&lt;<a href="#94-100">CocoonProcessState</a>&gt;&gt; =
 <a href=#117 id=117 data-nosnippet>117</a>		Arc::new(Mutex::new(CocoonProcessState::default()));
 <a href=#118 id=118 data-nosnippet>118</a>
-<a href=#119 id=119 data-nosnippet>119</a>	<span class="kw">static </span><span class="kw-2">ref </span>COCOON_HEALTH: Arc&lt;Mutex&lt;HealthMonitor&gt;&gt; =
+<a href=#119 id=119 data-nosnippet>119</a>	<span class="kw">static </span><span class="kw-2">ref </span><a href="#115-121">COCOON_HEALTH</a>: <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;Mutex&lt;<a href="../IPC/Common/HealthStatus.rs.html#72-82">HealthMonitor</a>&gt;&gt; =
 <a href=#120 id=120 data-nosnippet>120</a>		Arc::new(Mutex::new(HealthMonitor::new()));
 <a href=#121 id=121 data-nosnippet>121</a>}
 <a href=#122 id=122 data-nosnippet>122</a>
@@ -153,9 +153,9 @@
 <a href=#153 id=153 data-nosnippet>153</a>///
 <a href=#154 id=154 data-nosnippet>154</a>/// InitializeCocoon(&amp;app_handle, &amp;environment).await?;
 <a href=#155 id=155 data-nosnippet>155</a>/// ```
-<a href=#156 id=156 data-nosnippet>156</a></span><span class="kw">pub async fn </span>InitializeCocoon(
+<a href=#156 id=156 data-nosnippet>156</a></span><span class="kw">pub async fn </span><a href="../../../Mountain/ProcessManagement/CocoonManagement/fn.InitializeCocoon.html">InitializeCocoon</a>(
 <a href=#157 id=157 data-nosnippet>157</a>	ApplicationHandle:<span class="kw-2">&amp;</span>AppHandle,
-<a href=#158 id=158 data-nosnippet>158</a>	Environment:<span class="kw-2">&amp;</span>Arc&lt;MountainEnvironment&gt;,
+<a href=#158 id=158 data-nosnippet>158</a>	Environment:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../Environment/MountainEnvironment.rs.html#220-230">MountainEnvironment</a>&gt;,
 <a href=#159 id=159 data-nosnippet>159</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
 <a href=#160 id=160 data-nosnippet>160</a>	<span class="macro">info!</span>(<span class="string">"[CocoonManagement] Initializing Cocoon sidecar manager..."</span>);
 <a href=#161 id=161 data-nosnippet>161</a>
@@ -204,9 +204,9 @@
 <a href=#204 id=204 data-nosnippet>204</a>/// The process runs as a background task with IO redirection for logging.
 <a href=#205 id=205 data-nosnippet>205</a>/// Process failures are logged but not automatically restarted (callers should
 <a href=#206 id=206 data-nosnippet>206</a>/// implement restart strategies based on their requirements).
-<a href=#207 id=207 data-nosnippet>207</a></span><span class="kw">async fn </span>LaunchAndManageCocoonSideCar(
+<a href=#207 id=207 data-nosnippet>207</a></span><span class="kw">async fn </span><a href="../../../Mountain/ProcessManagement/CocoonManagement/fn.LaunchAndManageCocoonSideCar.html">LaunchAndManageCocoonSideCar</a>(
 <a href=#208 id=208 data-nosnippet>208</a>	ApplicationHandle:AppHandle,
-<a href=#209 id=209 data-nosnippet>209</a>	Environment:Arc&lt;MountainEnvironment&gt;,
+<a href=#209 id=209 data-nosnippet>209</a>	Environment:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../Environment/MountainEnvironment.rs.html#220-230">MountainEnvironment</a>&gt;,
 <a href=#210 id=210 data-nosnippet>210</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
 <a href=#211 id=211 data-nosnippet>211</a>	<span class="kw">let </span>SideCarIdentifier = COCOON_SIDE_CAR_IDENTIFIER.to_string();
 <a href=#212 id=212 data-nosnippet>212</a>	<span class="kw">let </span>path_resolver:PathResolver&lt;Wry&gt; = ApplicationHandle.path().clone();
@@ -371,7 +371,7 @@
 <a href=#371 id=371 data-nosnippet>371</a>}
 <a href=#372 id=372 data-nosnippet>372</a>
 <a href=#373 id=373 data-nosnippet>373</a><span class="doccomment">/// Background task that monitors Cocoon process health and logs crashes
-<a href=#374 id=374 data-nosnippet>374</a></span><span class="kw">async fn </span>monitor_cocoon_health_task(state:Arc&lt;Mutex&lt;CocoonProcessState&gt;&gt;) {
+<a href=#374 id=374 data-nosnippet>374</a></span><span class="kw">async fn </span><a href="../../../Mountain/ProcessManagement/CocoonManagement/fn.monitor_cocoon_health_task.html">monitor_cocoon_health_task</a>(state:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;Mutex&lt;<a href="#94-100">CocoonProcessState</a>&gt;&gt;) {
 <a href=#375 id=375 data-nosnippet>375</a>	<span class="kw">loop </span>{
 <a href=#376 id=376 data-nosnippet>376</a>		tokio::time::sleep(Duration::from_secs(HEALTH_CHECK_INTERVAL_SECONDS)).<span class="kw">await</span>;
 <a href=#377 id=377 data-nosnippet>377</a>

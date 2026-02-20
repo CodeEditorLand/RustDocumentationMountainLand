@@ -31,9 +31,9 @@
 <a href=#31 id=31 data-nosnippet>31</a>// - Add health history tracking
 <a href=#32 id=32 data-nosnippet>32</a>// - Support multiple health check types
 <a href=#33 id=33 data-nosnippet>33</a>
-<a href=#34 id=34 data-nosnippet>34</a></span><span class="kw">use </span>log::debug;
+<a href=#34 id=34 data-nosnippet>34</a></span><span class="kw">use </span><a href="https://docs.rs/log/0.4.29/log/macro.debug.html">log::debug</a>;
 <a href=#35 id=35 data-nosnippet>35</a>
-<a href=#36 id=36 data-nosnippet>36</a><span class="kw">use </span><span class="kw">super</span>::Types::ConnectionHandle;
+<a href=#36 id=36 data-nosnippet>36</a><span class="kw">use </span><a href="Types.rs.html#126-141"><span class="kw">super</span>::Types::ConnectionHandle</a>;
 <a href=#37 id=37 data-nosnippet>37</a>
 <a href=#38 id=38 data-nosnippet>38</a><span class="doccomment">/// Connection health checker
 <a href=#39 id=39 data-nosnippet>39</a>///
@@ -67,27 +67,27 @@
 <a href=#67 id=67 data-nosnippet>67</a>///
 <a href=#68 id=68 data-nosnippet>68</a>/// let is_healthy = checker.check_connection_health(&amp;mut handle).await;
 <a href=#69 id=69 data-nosnippet>69</a>/// ```
-<a href=#70 id=70 data-nosnippet>70</a></span><span class="kw">pub struct </span>HealthChecker {
+<a href=#70 id=70 data-nosnippet>70</a></span><span class="kw">pub struct </span><a href="../../../../Mountain/IPC/Connection/Health/struct.HealthChecker.html">HealthChecker</a> {
 <a href=#71 id=71 data-nosnippet>71</a>	<span class="doccomment">/// Maximum allowed response time for a connection to be considered healthy
-<a href=#72 id=72 data-nosnippet>72</a>	</span>ping_timeout:std::time::Duration,
+<a href=#72 id=72 data-nosnippet>72</a>	</span>ping_timeout:std::time::<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html">Duration</a>,
 <a href=#73 id=73 data-nosnippet>73</a>}
 <a href=#74 id=74 data-nosnippet>74</a>
-<a href=#75 id=75 data-nosnippet>75</a><span class="kw">impl </span>HealthChecker {
+<a href=#75 id=75 data-nosnippet>75</a><span class="kw">impl </span><a href="#70-73">HealthChecker</a> {
 <a href=#76 id=76 data-nosnippet>76</a>	<span class="doccomment">/// Create a new health checker with default settings
 <a href=#77 id=77 data-nosnippet>77</a>	///
 <a href=#78 id=78 data-nosnippet>78</a>	/// Default ping timeout is 5 seconds.
 <a href=#79 id=79 data-nosnippet>79</a>	</span><span class="kw">pub fn </span>new() -&gt; <span class="self">Self </span>{
-<a href=#80 id=80 data-nosnippet>80</a>		<span class="macro">debug!</span>(<span class="string">"[HealthChecker] Creating health checker with 5s timeout"</span>);
-<a href=#81 id=81 data-nosnippet>81</a>		<span class="self">Self </span>{ ping_timeout:std::time::Duration::from_secs(<span class="number">5</span>) }
+<a href=#80 id=80 data-nosnippet>80</a>		<a href="https://docs.rs/log/0.4.29/log/macro.debug.html">debug!</a>(<span class="string">"[HealthChecker] Creating health checker with 5s timeout"</span>);
+<a href=#81 id=81 data-nosnippet>81</a>		<span class="self">Self </span>{ ping_timeout:std::time::<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html">Duration</a>::<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html#method.from_secs">from_secs</a>(<span class="number">5</span>) }
 <a href=#82 id=82 data-nosnippet>82</a>	}
 <a href=#83 id=83 data-nosnippet>83</a>
 <a href=#84 id=84 data-nosnippet>84</a>	<span class="doccomment">/// Create a new health checker with custom timeout
 <a href=#85 id=85 data-nosnippet>85</a>	///
 <a href=#86 id=86 data-nosnippet>86</a>	/// ## Parameters
 <a href=#87 id=87 data-nosnippet>87</a>	/// - `ping_timeout`: Maximum allowed response time
-<a href=#88 id=88 data-nosnippet>88</a>	</span><span class="kw">pub fn </span>with_timeout(ping_timeout:std::time::Duration) -&gt; <span class="self">Self </span>{
-<a href=#89 id=89 data-nosnippet>89</a>		<span class="macro">debug!</span>(<span class="string">"[HealthChecker] Creating health checker with {:?} timeout"</span>, ping_timeout);
-<a href=#90 id=90 data-nosnippet>90</a>		<span class="self">Self </span>{ ping_timeout }
+<a href=#88 id=88 data-nosnippet>88</a>	</span><span class="kw">pub fn </span>with_timeout(ping_timeout:std::time::<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html">Duration</a>) -&gt; <span class="self">Self </span>{
+<a href=#89 id=89 data-nosnippet>89</a>		<a href="https://docs.rs/log/0.4.29/log/macro.debug.html">debug!</a>(<span class="string">"[HealthChecker] Creating health checker with {:?} timeout"</span>, ping_timeout);
+<a href=#90 id=90 data-nosnippet>90</a>		<span class="self">Self </span>{ <a href="#88">ping_timeout</a> }
 <a href=#91 id=91 data-nosnippet>91</a>	}
 <a href=#92 id=92 data-nosnippet>92</a>
 <a href=#93 id=93 data-nosnippet>93</a>	<span class="doccomment">/// Check connection health by sending a ping
@@ -109,7 +109,7 @@
 <a href=#109 id=109 data-nosnippet>109</a>	/// ```rust,ignore
 <a href=#110 id=110 data-nosnippet>110</a>	/// let is_healthy = checker.check_connection_health(&amp;mut handle).await;
 <a href=#111 id=111 data-nosnippet>111</a>	/// ```
-<a href=#112 id=112 data-nosnippet>112</a>	</span><span class="kw">pub async fn </span>check_connection_health(<span class="kw-2">&amp;</span><span class="self">self</span>, handle:<span class="kw-2">&amp;mut </span>ConnectionHandle) -&gt; bool {
+<a href=#112 id=112 data-nosnippet>112</a>	</span><span class="kw">pub async fn </span>check_connection_health(<span class="kw-2">&amp;</span><span class="self">self</span>, handle:<span class="kw-2">&amp;mut </span><a href="Types.rs.html#126-141">ConnectionHandle</a>) -&gt; bool {
 <a href=#113 id=113 data-nosnippet>113</a>		<span class="kw">let </span>start_time = std::time::Instant::now();
 <a href=#114 id=114 data-nosnippet>114</a>
 <a href=#115 id=115 data-nosnippet>115</a>		<span class="comment">// Simulate network latency (in production, this would be an actual ping)
@@ -137,17 +137,17 @@
 <a href=#137 id=137 data-nosnippet>137</a>	}
 <a href=#138 id=138 data-nosnippet>138</a>
 <a href=#139 id=139 data-nosnippet>139</a>	<span class="doccomment">/// Get the ping timeout
-<a href=#140 id=140 data-nosnippet>140</a>	</span><span class="kw">pub fn </span>ping_timeout(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; std::time::Duration { <span class="self">self</span>.ping_timeout }
+<a href=#140 id=140 data-nosnippet>140</a>	</span><span class="kw">pub fn </span>ping_timeout(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; std::time::<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html">Duration</a> { <a class="self" href="#140">self</a>.ping_timeout }
 <a href=#141 id=141 data-nosnippet>141</a>
 <a href=#142 id=142 data-nosnippet>142</a>	<span class="doccomment">/// Set a new ping timeout
-<a href=#143 id=143 data-nosnippet>143</a>	</span><span class="kw">pub fn </span>set_ping_timeout(<span class="kw-2">&amp;mut </span><span class="self">self</span>, timeout:std::time::Duration) {
-<a href=#144 id=144 data-nosnippet>144</a>		<span class="self">self</span>.ping_timeout = timeout;
-<a href=#145 id=145 data-nosnippet>145</a>		<span class="macro">debug!</span>(<span class="string">"[HealthChecker] Ping timeout updated to {:?}"</span>, timeout);
+<a href=#143 id=143 data-nosnippet>143</a>	</span><span class="kw">pub fn </span>set_ping_timeout(<span class="kw-2">&amp;mut </span><span class="self">self</span>, timeout:std::time::<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html">Duration</a>) {
+<a href=#144 id=144 data-nosnippet>144</a>		<a class="self" href="#143">self</a>.ping_timeout = <a href="#143">timeout</a>;
+<a href=#145 id=145 data-nosnippet>145</a>		<a href="https://docs.rs/log/0.4.29/log/macro.debug.html">debug!</a>(<span class="string">"[HealthChecker] Ping timeout updated to {:?}"</span>, timeout);
 <a href=#146 id=146 data-nosnippet>146</a>	}
 <a href=#147 id=147 data-nosnippet>147</a>}
 <a href=#148 id=148 data-nosnippet>148</a>
-<a href=#149 id=149 data-nosnippet>149</a><span class="kw">impl </span>Default <span class="kw">for </span>HealthChecker {
-<a href=#150 id=150 data-nosnippet>150</a>	<span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{ <span class="self">Self</span>::new() }
+<a href=#149 id=149 data-nosnippet>149</a><span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a> <span class="kw">for </span><a href="#70-73">HealthChecker</a> {
+<a href=#150 id=150 data-nosnippet>150</a>	<span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{ <span class="self">Self</span>::<a href="#79-82">new</a>() }
 <a href=#151 id=151 data-nosnippet>151</a>}
 <a href=#152 id=152 data-nosnippet>152</a>
 <a href=#153 id=153 data-nosnippet>153</a><span class="attr">#[cfg(test)]

@@ -31,89 +31,89 @@
 <a href=#31 id=31 data-nosnippet>31</a>//! - [ ] Add extension metrics collection
 <a href=#32 id=32 data-nosnippet>32</a>
 <a href=#33 id=33 data-nosnippet>33</a></span><span class="kw">use </span>std::{
-<a href=#34 id=34 data-nosnippet>34</a>	collections::HashMap,
-<a href=#35 id=35 data-nosnippet>35</a>	sync::{Arc, Mutex <span class="kw">as </span>StandardMutex},
+<a href=#34 id=34 data-nosnippet>34</a>	<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">collections::HashMap</a>,
+<a href=#35 id=35 data-nosnippet>35</a>	sync::{<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>, <a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">Mutex</a> <span class="kw">as </span>StandardMutex},
 <a href=#36 id=36 data-nosnippet>36</a>};
 <a href=#37 id=37 data-nosnippet>37</a>
-<a href=#38 id=38 data-nosnippet>38</a><span class="kw">use </span>log::debug;
+<a href=#38 id=38 data-nosnippet>38</a><span class="kw">use </span><a href="https://docs.rs/log/0.4.29/log/macro.debug.html">log::debug</a>;
 <a href=#39 id=39 data-nosnippet>39</a>
-<a href=#40 id=40 data-nosnippet>40</a><span class="kw">use </span><span class="kw">crate</span>::ApplicationState::DTO::ExtensionDescriptionStateDTO::ExtensionDescriptionStateDTO;
+<a href=#40 id=40 data-nosnippet>40</a><span class="kw">use </span><a href="../../../DTO/ExtensionDescriptionStateDTO.rs.html#45-101"><span class="kw">crate</span>::ApplicationState::DTO::ExtensionDescriptionStateDTO::ExtensionDescriptionStateDTO</a>;
 <a href=#41 id=41 data-nosnippet>41</a>
 <a href=#42 id=42 data-nosnippet>42</a><span class="doccomment">/// Scanned extensions containing discovered extension metadata.
-<a href=#43 id=43 data-nosnippet>43</a></span><span class="attr">#[derive(Clone)]
-<a href=#44 id=44 data-nosnippet>44</a></span><span class="kw">pub struct </span>Extensions {
+<a href=#43 id=43 data-nosnippet>43</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>)]
+<a href=#44 id=44 data-nosnippet>44</a></span><span class="kw">pub struct </span><a href="../../../../../../Mountain/ApplicationState/State/ExtensionState/ScannedExtensions/ScannedExtensions/struct.Extensions.html">Extensions</a> {
 <a href=#45 id=45 data-nosnippet>45</a>	<span class="doccomment">/// Scanned extensions by identifier.
-<a href=#46 id=46 data-nosnippet>46</a>	</span><span class="kw">pub </span>ScannedExtensions:Arc&lt;StandardMutex&lt;HashMap&lt;String, ExtensionDescriptionStateDTO&gt;&gt;&gt;,
+<a href=#46 id=46 data-nosnippet>46</a>	</span><span class="kw">pub </span>ScannedExtensions:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">StandardMutex</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="../../../DTO/ExtensionDescriptionStateDTO.rs.html#45-101">ExtensionDescriptionStateDTO</a>&gt;&gt;&gt;,
 <a href=#47 id=47 data-nosnippet>47</a>}
 <a href=#48 id=48 data-nosnippet>48</a>
-<a href=#49 id=49 data-nosnippet>49</a><span class="kw">impl </span>Default <span class="kw">for </span>Extensions {
+<a href=#49 id=49 data-nosnippet>49</a><span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a> <span class="kw">for </span><a href="#44-47">Extensions</a> {
 <a href=#50 id=50 data-nosnippet>50</a>	<span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{
-<a href=#51 id=51 data-nosnippet>51</a>		<span class="macro">debug!</span>(<span class="string">"[ScannedExtensions] Initializing default scanned extensions..."</span>);
+<a href=#51 id=51 data-nosnippet>51</a>		<a href="https://docs.rs/log/0.4.29/log/macro.debug.html">debug!</a>(<span class="string">"[ScannedExtensions] Initializing default scanned extensions..."</span>);
 <a href=#52 id=52 data-nosnippet>52</a>
-<a href=#53 id=53 data-nosnippet>53</a>		<span class="self">Self </span>{ ScannedExtensions:Arc::new(StandardMutex::new(HashMap::new())) }
+<a href=#53 id=53 data-nosnippet>53</a>		<span class="self">Self </span>{ ScannedExtensions:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">StandardMutex</a>::<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.new">new</a>(<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>::<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.new">new</a>())) }
 <a href=#54 id=54 data-nosnippet>54</a>	}
 <a href=#55 id=55 data-nosnippet>55</a>}
 <a href=#56 id=56 data-nosnippet>56</a>
-<a href=#57 id=57 data-nosnippet>57</a><span class="kw">impl </span>Extensions {
+<a href=#57 id=57 data-nosnippet>57</a><span class="kw">impl </span><a href="#44-47">Extensions</a> {
 <a href=#58 id=58 data-nosnippet>58</a>	<span class="doccomment">/// Gets all scanned extensions.
-<a href=#59 id=59 data-nosnippet>59</a>	</span><span class="kw">pub fn </span>GetAll(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; HashMap&lt;String, ExtensionDescriptionStateDTO&gt; {
-<a href=#60 id=60 data-nosnippet>60</a>		<span class="self">self</span>.ScannedExtensions
-<a href=#61 id=61 data-nosnippet>61</a>			.lock()
-<a href=#62 id=62 data-nosnippet>62</a>			.ok()
-<a href=#63 id=63 data-nosnippet>63</a>			.map(|guard| guard.clone())
-<a href=#64 id=64 data-nosnippet>64</a>			.unwrap_or_default()
+<a href=#59 id=59 data-nosnippet>59</a>	</span><span class="kw">pub fn </span>GetAll(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="../../../DTO/ExtensionDescriptionStateDTO.rs.html#45-101">ExtensionDescriptionStateDTO</a>&gt; {
+<a href=#60 id=60 data-nosnippet>60</a>		<a class="self" href="#59">self</a>.ScannedExtensions
+<a href=#61 id=61 data-nosnippet>61</a>			.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>()
+<a href=#62 id=62 data-nosnippet>62</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>()
+<a href=#63 id=63 data-nosnippet>63</a>			.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|guard| <a href="#63">guard</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>())
+<a href=#64 id=64 data-nosnippet>64</a>			.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or_default">unwrap_or_default</a>()
 <a href=#65 id=65 data-nosnippet>65</a>	}
 <a href=#66 id=66 data-nosnippet>66</a>
 <a href=#67 id=67 data-nosnippet>67</a>	<span class="doccomment">/// Gets an extension by its identifier.
-<a href=#68 id=68 data-nosnippet>68</a>	</span><span class="kw">pub fn </span>Get(<span class="kw-2">&amp;</span><span class="self">self</span>, identifier:<span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Option</span>&lt;ExtensionDescriptionStateDTO&gt; {
-<a href=#69 id=69 data-nosnippet>69</a>		<span class="self">self</span>.ScannedExtensions
-<a href=#70 id=70 data-nosnippet>70</a>			.lock()
-<a href=#71 id=71 data-nosnippet>71</a>			.ok()
-<a href=#72 id=72 data-nosnippet>72</a>			.and_then(|guard| guard.get(identifier).cloned())
+<a href=#68 id=68 data-nosnippet>68</a>	</span><span class="kw">pub fn </span>Get(<span class="kw-2">&amp;</span><span class="self">self</span>, identifier:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="../../../DTO/ExtensionDescriptionStateDTO.rs.html#45-101">ExtensionDescriptionStateDTO</a>&gt; {
+<a href=#69 id=69 data-nosnippet>69</a>		<a class="self" href="#68">self</a>.ScannedExtensions
+<a href=#70 id=70 data-nosnippet>70</a>			.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>()
+<a href=#71 id=71 data-nosnippet>71</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>()
+<a href=#72 id=72 data-nosnippet>72</a>			.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|guard| <a href="#72">guard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.get">get</a>(<a href="#68">identifier</a>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.cloned">cloned</a>())
 <a href=#73 id=73 data-nosnippet>73</a>	}
 <a href=#74 id=74 data-nosnippet>74</a>
 <a href=#75 id=75 data-nosnippet>75</a>	<span class="doccomment">/// Sets all scanned extensions.
-<a href=#76 id=76 data-nosnippet>76</a>	</span><span class="kw">pub fn </span>SetAll(<span class="kw-2">&amp;</span><span class="self">self</span>, extensions:HashMap&lt;String, ExtensionDescriptionStateDTO&gt;) {
-<a href=#77 id=77 data-nosnippet>77</a>		<span class="kw">if let </span><span class="prelude-val">Ok</span>(<span class="kw-2">mut </span>guard) = <span class="self">self</span>.ScannedExtensions.lock() {
-<a href=#78 id=78 data-nosnippet>78</a>			<span class="kw-2">*</span>guard = extensions;
-<a href=#79 id=79 data-nosnippet>79</a>			<span class="macro">debug!</span>(<span class="string">"[ScannedExtensions] Scanned extensions updated ({} extensions)"</span>, guard.len());
+<a href=#76 id=76 data-nosnippet>76</a>	</span><span class="kw">pub fn </span>SetAll(<span class="kw-2">&amp;</span><span class="self">self</span>, extensions:<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="../../../DTO/ExtensionDescriptionStateDTO.rs.html#45-101">ExtensionDescriptionStateDTO</a>&gt;) {
+<a href=#77 id=77 data-nosnippet>77</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="kw-2">mut </span>guard) = <a class="self" href="#76">self</a>.ScannedExtensions.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>() {
+<a href=#78 id=78 data-nosnippet>78</a>			<span class="kw-2">*</span><a href="#77">guard</a> = <a href="#76">extensions</a>;
+<a href=#79 id=79 data-nosnippet>79</a>			<a href="https://docs.rs/log/0.4.29/log/macro.debug.html">debug!</a>(<span class="string">"[ScannedExtensions] Scanned extensions updated ({} extensions)"</span>, guard.len());
 <a href=#80 id=80 data-nosnippet>80</a>		}
 <a href=#81 id=81 data-nosnippet>81</a>	}
 <a href=#82 id=82 data-nosnippet>82</a>
 <a href=#83 id=83 data-nosnippet>83</a>	<span class="doccomment">/// Adds or updates an extension.
-<a href=#84 id=84 data-nosnippet>84</a>	</span><span class="kw">pub fn </span>AddOrUpdate(<span class="kw-2">&amp;</span><span class="self">self</span>, identifier:String, extension:ExtensionDescriptionStateDTO) {
-<a href=#85 id=85 data-nosnippet>85</a>		<span class="kw">if let </span><span class="prelude-val">Ok</span>(<span class="kw-2">mut </span>guard) = <span class="self">self</span>.ScannedExtensions.lock() {
-<a href=#86 id=86 data-nosnippet>86</a>			guard.insert(identifier, extension);
-<a href=#87 id=87 data-nosnippet>87</a>			<span class="macro">debug!</span>(<span class="string">"[ScannedExtensions] Extension added/updated"</span>);
+<a href=#84 id=84 data-nosnippet>84</a>	</span><span class="kw">pub fn </span>AddOrUpdate(<span class="kw-2">&amp;</span><span class="self">self</span>, identifier:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, extension:<a href="../../../DTO/ExtensionDescriptionStateDTO.rs.html#45-101">ExtensionDescriptionStateDTO</a>) {
+<a href=#85 id=85 data-nosnippet>85</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="kw-2">mut </span>guard) = <a class="self" href="#84">self</a>.ScannedExtensions.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>() {
+<a href=#86 id=86 data-nosnippet>86</a>			<a href="#85">guard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(<a href="#84">identifier</a>, <a href="#84">extension</a>);
+<a href=#87 id=87 data-nosnippet>87</a>			<a href="https://docs.rs/log/0.4.29/log/macro.debug.html">debug!</a>(<span class="string">"[ScannedExtensions] Extension added/updated"</span>);
 <a href=#88 id=88 data-nosnippet>88</a>		}
 <a href=#89 id=89 data-nosnippet>89</a>	}
 <a href=#90 id=90 data-nosnippet>90</a>
 <a href=#91 id=91 data-nosnippet>91</a>	<span class="doccomment">/// Removes an extension by its identifier.
-<a href=#92 id=92 data-nosnippet>92</a>	</span><span class="kw">pub fn </span>Remove(<span class="kw-2">&amp;</span><span class="self">self</span>, identifier:<span class="kw-2">&amp;</span>str) {
-<a href=#93 id=93 data-nosnippet>93</a>		<span class="kw">if let </span><span class="prelude-val">Ok</span>(<span class="kw-2">mut </span>guard) = <span class="self">self</span>.ScannedExtensions.lock() {
-<a href=#94 id=94 data-nosnippet>94</a>			guard.remove(identifier);
-<a href=#95 id=95 data-nosnippet>95</a>			<span class="macro">debug!</span>(<span class="string">"[ScannedExtensions] Extension removed: {}"</span>, identifier);
+<a href=#92 id=92 data-nosnippet>92</a>	</span><span class="kw">pub fn </span>Remove(<span class="kw-2">&amp;</span><span class="self">self</span>, identifier:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) {
+<a href=#93 id=93 data-nosnippet>93</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="kw-2">mut </span>guard) = <a class="self" href="#92">self</a>.ScannedExtensions.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>() {
+<a href=#94 id=94 data-nosnippet>94</a>			<a href="#93">guard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.remove">remove</a>(<a href="#92">identifier</a>);
+<a href=#95 id=95 data-nosnippet>95</a>			<a href="https://docs.rs/log/0.4.29/log/macro.debug.html">debug!</a>(<span class="string">"[ScannedExtensions] Extension removed: {}"</span>, identifier);
 <a href=#96 id=96 data-nosnippet>96</a>		}
 <a href=#97 id=97 data-nosnippet>97</a>	}
 <a href=#98 id=98 data-nosnippet>98</a>
 <a href=#99 id=99 data-nosnippet>99</a>	<span class="doccomment">/// Clears all scanned extensions.
 <a href=#100 id=100 data-nosnippet>100</a>	</span><span class="kw">pub fn </span>Clear(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-<a href=#101 id=101 data-nosnippet>101</a>		<span class="kw">if let </span><span class="prelude-val">Ok</span>(<span class="kw-2">mut </span>guard) = <span class="self">self</span>.ScannedExtensions.lock() {
-<a href=#102 id=102 data-nosnippet>102</a>			guard.clear();
-<a href=#103 id=103 data-nosnippet>103</a>			<span class="macro">debug!</span>(<span class="string">"[ScannedExtensions] All extensions cleared"</span>);
+<a href=#101 id=101 data-nosnippet>101</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="kw-2">mut </span>guard) = <a class="self" href="#100">self</a>.ScannedExtensions.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>() {
+<a href=#102 id=102 data-nosnippet>102</a>			<a href="#101">guard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.clear">clear</a>();
+<a href=#103 id=103 data-nosnippet>103</a>			<a href="https://docs.rs/log/0.4.29/log/macro.debug.html">debug!</a>(<span class="string">"[ScannedExtensions] All extensions cleared"</span>);
 <a href=#104 id=104 data-nosnippet>104</a>		}
 <a href=#105 id=105 data-nosnippet>105</a>	}
 <a href=#106 id=106 data-nosnippet>106</a>
 <a href=#107 id=107 data-nosnippet>107</a>	<span class="doccomment">/// Gets the count of scanned extensions.
-<a href=#108 id=108 data-nosnippet>108</a>	</span><span class="kw">pub fn </span>Count(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; usize { <span class="self">self</span>.ScannedExtensions.lock().ok().map(|guard| guard.len()).unwrap_or(<span class="number">0</span>) }
+<a href=#108 id=108 data-nosnippet>108</a>	</span><span class="kw">pub fn </span>Count(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> { <a class="self" href="#108">self</a>.ScannedExtensions.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|guard| <a href="#108">guard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.len">len</a>()).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or">unwrap_or</a>(<span class="number">0</span>) }
 <a href=#109 id=109 data-nosnippet>109</a>
 <a href=#110 id=110 data-nosnippet>110</a>	<span class="doccomment">/// Checks if an extension exists.
-<a href=#111 id=111 data-nosnippet>111</a>	</span><span class="kw">pub fn </span>Contains(<span class="kw-2">&amp;</span><span class="self">self</span>, identifier:<span class="kw-2">&amp;</span>str) -&gt; bool {
-<a href=#112 id=112 data-nosnippet>112</a>		<span class="self">self</span>.ScannedExtensions
-<a href=#113 id=113 data-nosnippet>113</a>			.lock()
-<a href=#114 id=114 data-nosnippet>114</a>			.ok()
-<a href=#115 id=115 data-nosnippet>115</a>			.map(|guard| guard.contains_key(identifier))
-<a href=#116 id=116 data-nosnippet>116</a>			.unwrap_or(<span class="bool-val">false</span>)
+<a href=#111 id=111 data-nosnippet>111</a>	</span><span class="kw">pub fn </span>Contains(<span class="kw-2">&amp;</span><span class="self">self</span>, identifier:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
+<a href=#112 id=112 data-nosnippet>112</a>		<a class="self" href="#111">self</a>.ScannedExtensions
+<a href=#113 id=113 data-nosnippet>113</a>			.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>()
+<a href=#114 id=114 data-nosnippet>114</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>()
+<a href=#115 id=115 data-nosnippet>115</a>			.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|guard| <a href="#115">guard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.contains_key">contains_key</a>(<a href="#111">identifier</a>))
+<a href=#116 id=116 data-nosnippet>116</a>			.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or">unwrap_or</a>(<span class="bool-val">false</span>)
 <a href=#117 id=117 data-nosnippet>117</a>	}
 <a href=#118 id=118 data-nosnippet>118</a>}
 </code></pre></div></section></main></body></html>

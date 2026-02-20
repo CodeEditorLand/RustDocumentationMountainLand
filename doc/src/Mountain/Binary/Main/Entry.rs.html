@@ -56,50 +56,50 @@
 <a href=#56 id=56 data-nosnippet>56</a>//! - [ ] Implement proper error dialog for startup failures
 <a href=#57 id=57 data-nosnippet>57</a>//! - [ ] Add startup performance metrics
 <a href=#58 id=58 data-nosnippet>58</a>
-<a href=#59 id=59 data-nosnippet>59</a></span><span class="kw">use </span>std::sync::Arc;
+<a href=#59 id=59 data-nosnippet>59</a></span><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">std::sync::Arc</a>;
 <a href=#60 id=60 data-nosnippet>60</a>
-<a href=#61 id=61 data-nosnippet>61</a><span class="kw">use </span>log::{debug, error, info, trace, warn};
+<a href=#61 id=61 data-nosnippet>61</a><span class="kw">use </span>log::{<a href="https://docs.rs/log/0.4.29/log/macro.debug.html">debug</a>, <a href="https://docs.rs/log/0.4.29/log/macro.error.html">error</a>, <a href="https://docs.rs/log/0.4.29/log/macro.info.html">info</a>, <a href="https://docs.rs/log/0.4.29/log/macro.trace.html">trace</a>, <a href="https://docs.rs/log/0.4.29/log/macro.warn.html">warn</a>};
 <a href=#62 id=62 data-nosnippet>62</a><span class="kw">use </span>tauri::{App, RunEvent, Wry};
 <a href=#63 id=63 data-nosnippet>63</a><span class="kw">use </span>Echo::Scheduler::{Scheduler::Scheduler, SchedulerBuilder::SchedulerBuilder};
 <a href=#64 id=64 data-nosnippet>64</a>
 <a href=#65 id=65 data-nosnippet>65</a><span class="kw">use </span>crate::{
 <a href=#66 id=66 data-nosnippet>66</a>	<span class="comment">// Crate root imports
-<a href=#67 id=67 data-nosnippet>67</a>	</span>ApplicationState::ApplicationState,
+<a href=#67 id=67 data-nosnippet>67</a>	</span><a href="../../ApplicationState/State/ApplicationState.rs.html#65-88">ApplicationState::ApplicationState</a>,
 <a href=#68 id=68 data-nosnippet>68</a>	<span class="comment">// Binary submodule imports
-<a href=#69 id=69 data-nosnippet>69</a>	</span>Binary::Build::LocalhostPlugin::LocalhostPlugin <span class="kw">as </span>LocalhostPluginFn,
-<a href=#70 id=70 data-nosnippet>70</a>	Binary::Build::LoggingPlugin::LoggingPlugin <span class="kw">as </span>LoggingPluginFn,
-<a href=#71 id=71 data-nosnippet>71</a>	Binary::Build::TauriBuild::TauriBuild <span class="kw">as </span>TauriBuildFn,
-<a href=#72 id=72 data-nosnippet>72</a>	Binary::Build::WindowBuild::WindowBuild <span class="kw">as </span>WindowBuildFn,
-<a href=#73 id=73 data-nosnippet>73</a>	Binary::Extension::ExtensionPopulate::ExtensionPopulate <span class="kw">as </span>ExtensionPopulateFn,
-<a href=#74 id=74 data-nosnippet>74</a>	Binary::Extension::ScanPathConfigure::ScanPathConfigure <span class="kw">as </span>ScanPathConfigureFn,
-<a href=#75 id=75 data-nosnippet>75</a>	Binary::Initialize::CliParse::Parse <span class="kw">as </span>CliParseFn,
-<a href=#76 id=76 data-nosnippet>76</a>	Binary::Initialize::LogLevel::Resolve <span class="kw">as </span>ResolveLogLevel,
-<a href=#77 id=77 data-nosnippet>77</a>	Binary::Initialize::PortSelector::BuildUrl <span class="kw">as </span>BuildPortUrl,
-<a href=#78 id=78 data-nosnippet>78</a>	Binary::Initialize::PortSelector::Select <span class="kw">as </span>SelectPort,
-<a href=#79 id=79 data-nosnippet>79</a>	Binary::Initialize::StateBuild::Build <span class="kw">as </span>BuildStateFn,
-<a href=#80 id=80 data-nosnippet>80</a>	Binary::Register::AdvancedFeaturesRegister::AdvancedFeaturesRegister <span class="kw">as </span>AdvancedFeaturesRegisterFn,
-<a href=#81 id=81 data-nosnippet>81</a>	Binary::Register::CommandRegister::CommandRegister <span class="kw">as </span>CommandRegisterFn,
-<a href=#82 id=82 data-nosnippet>82</a>	Binary::Register::IPCServerRegister::IPCServerRegister <span class="kw">as </span>IPCServerRegisterFn,
-<a href=#83 id=83 data-nosnippet>83</a>	Binary::Register::StatusReporterRegister::StatusReporterRegister <span class="kw">as </span>StatusReporterRegisterFn,
-<a href=#84 id=84 data-nosnippet>84</a>	Binary::Register::WindSyncRegister::WindSyncRegister <span class="kw">as </span>WindSyncRegisterFn,
-<a href=#85 id=85 data-nosnippet>85</a>	Binary::Service::CocoonStart::CocoonStart <span class="kw">as </span>CocoonStartFn,
-<a href=#86 id=86 data-nosnippet>86</a>	Binary::Service::ConfigurationInitialize::ConfigurationInitialize <span class="kw">as </span>ConfigurationInitializeFn,
-<a href=#87 id=87 data-nosnippet>87</a>	Binary::Service::VineStart::VineStart <span class="kw">as </span>VineStartFn,
-<a href=#88 id=88 data-nosnippet>88</a>	Binary::Shutdown::RuntimeShutdown::RuntimeShutdown <span class="kw">as </span>RuntimeShutdownFn,
-<a href=#89 id=89 data-nosnippet>89</a>	Binary::Shutdown::SchedulerShutdown::SchedulerShutdown <span class="kw">as </span>SchedulerShutdownFn,
-<a href=#90 id=90 data-nosnippet>90</a>	Command,
-<a href=#91 id=91 data-nosnippet>91</a>	Environment::MountainEnvironment::MountainEnvironment,
-<a href=#92 id=92 data-nosnippet>92</a>	ProcessManagement::InitializationData,
-<a href=#93 id=93 data-nosnippet>93</a>	RunTime::ApplicationRunTime::ApplicationRunTime,
-<a href=#94 id=94 data-nosnippet>94</a>	Track,
+<a href=#69 id=69 data-nosnippet>69</a>	</span><a href="../Build/LocalhostPlugin.rs.html#25-34">Binary::Build::LocalhostPlugin::LocalhostPlugin</a> <span class="kw">as </span>LocalhostPluginFn,
+<a href=#70 id=70 data-nosnippet>70</a>	<a href="../Build/LoggingPlugin.rs.html#46-82">Binary::Build::LoggingPlugin::LoggingPlugin</a> <span class="kw">as </span>LoggingPluginFn,
+<a href=#71 id=71 data-nosnippet>71</a>	<a href="../Build/TauriBuild.rs.html#19-31">Binary::Build::TauriBuild::TauriBuild</a> <span class="kw">as </span>TauriBuildFn,
+<a href=#72 id=72 data-nosnippet>72</a>	<a href="../Build/WindowBuild.rs.html#23-54">Binary::Build::WindowBuild::WindowBuild</a> <span class="kw">as </span>WindowBuildFn,
+<a href=#73 id=73 data-nosnippet>73</a>	<a href="../Extension/ExtensionPopulate.rs.html#31-45">Binary::Extension::ExtensionPopulate::ExtensionPopulate</a> <span class="kw">as </span>ExtensionPopulateFn,
+<a href=#74 id=74 data-nosnippet>74</a>	<a href="../Extension/ScanPathConfigure.rs.html#31-66">Binary::Extension::ScanPathConfigure::ScanPathConfigure</a> <span class="kw">as </span>ScanPathConfigureFn,
+<a href=#75 id=75 data-nosnippet>75</a>	<a href="../Initialize/CliParse.rs.html#45-51">Binary::Initialize::CliParse::Parse</a> <span class="kw">as </span>CliParseFn,
+<a href=#76 id=76 data-nosnippet>76</a>	<a href="../Initialize/LogLevel.rs.html#46-52">Binary::Initialize::LogLevel::Resolve</a> <span class="kw">as </span>ResolveLogLevel,
+<a href=#77 id=77 data-nosnippet>77</a>	<a href="../Initialize/PortSelector.rs.html#61">Binary::Initialize::PortSelector::BuildUrl</a> <span class="kw">as </span>BuildPortUrl,
+<a href=#78 id=78 data-nosnippet>78</a>	<a href="../Initialize/PortSelector.rs.html#46-48">Binary::Initialize::PortSelector::Select</a> <span class="kw">as </span>SelectPort,
+<a href=#79 id=79 data-nosnippet>79</a>	<a href="../Initialize/StateBuild.rs.html#74-76">Binary::Initialize::StateBuild::Build</a> <span class="kw">as </span>BuildStateFn,
+<a href=#80 id=80 data-nosnippet>80</a>	<a href="../Register/AdvancedFeaturesRegister.rs.html#33-47">Binary::Register::AdvancedFeaturesRegister::AdvancedFeaturesRegister</a> <span class="kw">as </span>AdvancedFeaturesRegisterFn,
+<a href=#81 id=81 data-nosnippet>81</a>	<a href="../Register/CommandRegister.rs.html#32-40">Binary::Register::CommandRegister::CommandRegister</a> <span class="kw">as </span>CommandRegisterFn,
+<a href=#82 id=82 data-nosnippet>82</a>	<a href="../Register/IPCServerRegister.rs.html#31-39">Binary::Register::IPCServerRegister::IPCServerRegister</a> <span class="kw">as </span>IPCServerRegisterFn,
+<a href=#83 id=83 data-nosnippet>83</a>	<a href="../Register/StatusReporterRegister.rs.html#33-47">Binary::Register::StatusReporterRegister::StatusReporterRegister</a> <span class="kw">as </span>StatusReporterRegisterFn,
+<a href=#84 id=84 data-nosnippet>84</a>	<a href="../Register/WindSyncRegister.rs.html#33-44">Binary::Register::WindSyncRegister::WindSyncRegister</a> <span class="kw">as </span>WindSyncRegisterFn,
+<a href=#85 id=85 data-nosnippet>85</a>	<a href="../Service/CocoonStart.rs.html#33-47">Binary::Service::CocoonStart::CocoonStart</a> <span class="kw">as </span>CocoonStartFn,
+<a href=#86 id=86 data-nosnippet>86</a>	<a href="../Service/ConfigurationInitialize.rs.html#34-45">Binary::Service::ConfigurationInitialize::ConfigurationInitialize</a> <span class="kw">as </span>ConfigurationInitializeFn,
+<a href=#87 id=87 data-nosnippet>87</a>	<a href="../Service/VineStart.rs.html#34-49">Binary::Service::VineStart::VineStart</a> <span class="kw">as </span>VineStartFn,
+<a href=#88 id=88 data-nosnippet>88</a>	<a href="../Shutdown/RuntimeShutdown.rs.html#32-42">Binary::Shutdown::RuntimeShutdown::RuntimeShutdown</a> <span class="kw">as </span>RuntimeShutdownFn,
+<a href=#89 id=89 data-nosnippet>89</a>	<a href="../Shutdown/SchedulerShutdown.rs.html#30-42">Binary::Shutdown::SchedulerShutdown::SchedulerShutdown</a> <span class="kw">as </span>SchedulerShutdownFn,
+<a href=#90 id=90 data-nosnippet>90</a>	<a href="../../Library.rs.html#99">Command</a>,
+<a href=#91 id=91 data-nosnippet>91</a>	<a href="../../Environment/MountainEnvironment.rs.html#220-230">Environment::MountainEnvironment::MountainEnvironment</a>,
+<a href=#92 id=92 data-nosnippet>92</a>	<a href="../../ProcessManagement/mod.rs.html#56">ProcessManagement::InitializationData</a>,
+<a href=#93 id=93 data-nosnippet>93</a>	<a href="../../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">RunTime::ApplicationRunTime::ApplicationRunTime</a>,
+<a href=#94 id=94 data-nosnippet>94</a>	<a href="../../Library.rs.html#101">Track</a>,
 <a href=#95 id=95 data-nosnippet>95</a>};
-<a href=#96 id=96 data-nosnippet>96</a><span class="kw">use </span><span class="kw">super</span>::AppLifecycle::AppLifecycleSetup;
+<a href=#96 id=96 data-nosnippet>96</a><span class="kw">use </span><a href="AppLifecycle.rs.html#126-243"><span class="kw">super</span>::AppLifecycle::AppLifecycleSetup</a>;
 <a href=#97 id=97 data-nosnippet>97</a>
 <a href=#98 id=98 data-nosnippet>98</a><span class="comment">// Note: Tauri commands are used with fully qualified paths in generate_handler
 <a href=#99 id=99 data-nosnippet>99</a>// because the __cmd_* macros generated by #[tauri::command] are module-local.
 <a href=#100 id=100 data-nosnippet>100</a>
 <a href=#101 id=101 data-nosnippet>101</a></span><span class="doccomment">/// Logs a checkpoint message at TRACE level.
-<a href=#102 id=102 data-nosnippet>102</a></span><span class="macro">macro_rules!</span> TraceStep {
+<a href=#102 id=102 data-nosnippet>102</a></span><span class="macro">macro_rules!</span> <a href="../../../../Mountain/Binary/Main/Entry/macro.TraceStep.html">TraceStep</a> {
 <a href=#103 id=103 data-nosnippet>103</a>	($(<span class="macro-nonterminal">$arg</span>:tt)<span class="kw-2">*</span>) =&gt; {{
 <a href=#104 id=104 data-nosnippet>104</a>		<span class="macro">trace!</span>($(<span class="macro-nonterminal">$arg</span>)<span class="kw-2">*</span>);
 <a href=#105 id=105 data-nosnippet>105</a>	}};
@@ -118,94 +118,94 @@
 <a href=#118 id=118 data-nosnippet>118</a>/// 8. Configures the application lifecycle
 <a href=#119 id=119 data-nosnippet>119</a>/// 9. Runs the Tauri application
 <a href=#120 id=120 data-nosnippet>120</a>/// 10. Handles graceful shutdown
-<a href=#121 id=121 data-nosnippet>121</a></span><span class="kw">pub fn </span>Fn() {
+<a href=#121 id=121 data-nosnippet>121</a></span><span class="kw">pub fn </span><a href="../../../../Mountain/Binary/Main/Entry/fn.Fn.html">Fn</a>() {
 <a href=#122 id=122 data-nosnippet>122</a>	<span class="comment">// -------------------------------------------------------------------------
 <a href=#123 id=123 data-nosnippet>123</a>	// [Boot] [Runtime] Tokio runtime creation
 <a href=#124 id=124 data-nosnippet>124</a>	// -------------------------------------------------------------------------
-<a href=#125 id=125 data-nosnippet>125</a>	</span><span class="macro">TraceStep!</span>(<span class="string">"[Boot] [Runtime] Building Tokio runtime..."</span>);
+<a href=#125 id=125 data-nosnippet>125</a>	</span><a href="#102-106">TraceStep!</a>(<span class="string">"[Boot] [Runtime] Building Tokio runtime..."</span>);
 <a href=#126 id=126 data-nosnippet>126</a>
 <a href=#127 id=127 data-nosnippet>127</a>	<span class="kw">let </span>Runtime = tokio::runtime::Builder::new_multi_thread()
 <a href=#128 id=128 data-nosnippet>128</a>		.enable_all()
 <a href=#129 id=129 data-nosnippet>129</a>		.build()
-<a href=#130 id=130 data-nosnippet>130</a>		.expect(<span class="string">"FATAL: Cannot build Tokio runtime."</span>);
+<a href=#130 id=130 data-nosnippet>130</a>		.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.expect">expect</a>(<span class="string">"FATAL: Cannot build Tokio runtime."</span>);
 <a href=#131 id=131 data-nosnippet>131</a>
-<a href=#132 id=132 data-nosnippet>132</a>	<span class="macro">TraceStep!</span>(<span class="string">"[Boot] [Runtime] Tokio runtime built."</span>);
+<a href=#132 id=132 data-nosnippet>132</a>	<a href="#102-106">TraceStep!</a>(<span class="string">"[Boot] [Runtime] Tokio runtime built."</span>);
 <a href=#133 id=133 data-nosnippet>133</a>
-<a href=#134 id=134 data-nosnippet>134</a>	Runtime.block_on(<span class="kw">async </span>{
+<a href=#134 id=134 data-nosnippet>134</a>	<a href="#127">Runtime</a>.block_on(<span class="kw">async </span>{
 <a href=#135 id=135 data-nosnippet>135</a>		<span class="comment">// ---------------------------------------------------------------------
 <a href=#136 id=136 data-nosnippet>136</a>		// [Boot] [Args] CLI parsing (using CliParse module)
 <a href=#137 id=137 data-nosnippet>137</a>		// ---------------------------------------------------------------------
-<a href=#138 id=138 data-nosnippet>138</a>		</span><span class="kw">let </span>_WorkspaceConfigurationPath = CliParseFn();
-<a href=#139 id=139 data-nosnippet>139</a>		<span class="kw">let </span>_InitialFolders: Vec&lt;String&gt; = <span class="macro">vec!</span>[];
+<a href=#138 id=138 data-nosnippet>138</a>		</span><span class="kw">let </span>_WorkspaceConfigurationPath = <a href="../Initialize/CliParse.rs.html#45-51">CliParseFn</a>();
+<a href=#139 id=139 data-nosnippet>139</a>		<span class="kw">let </span>_InitialFolders: <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; = <a href="https://doc.rust-lang.org/nightly/alloc/macro.vec.html">vec!</a>[];
 <a href=#140 id=140 data-nosnippet>140</a>
 <a href=#141 id=141 data-nosnippet>141</a>		<span class="comment">// ---------------------------------------------------------------------
 <a href=#142 id=142 data-nosnippet>142</a>		// [Boot] [State] ApplicationState (using StateBuild module)
 <a href=#143 id=143 data-nosnippet>143</a>		// ---------------------------------------------------------------------
-<a href=#144 id=144 data-nosnippet>144</a>		</span><span class="macro">debug!</span>(<span class="string">"[Boot] [State] Building ApplicationState..."</span>);
+<a href=#144 id=144 data-nosnippet>144</a>		</span><a href="https://docs.rs/log/0.4.29/log/macro.debug.html">debug!</a>(<span class="string">"[Boot] [State] Building ApplicationState..."</span>);
 <a href=#145 id=145 data-nosnippet>145</a>
 <a href=#146 id=146 data-nosnippet>146</a>		<span class="comment">// Create application state directly (StateBuild::Build with default config)
-<a href=#147 id=147 data-nosnippet>147</a>		</span><span class="kw">let </span>AppState = ApplicationState::default();
+<a href=#147 id=147 data-nosnippet>147</a>		</span><span class="kw">let </span>AppState = <a href="../../ApplicationState/State/ApplicationState.rs.html#65-88">ApplicationState</a>::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>();
 <a href=#148 id=148 data-nosnippet>148</a>
-<a href=#149 id=149 data-nosnippet>149</a>		<span class="macro">debug!</span>(
+<a href=#149 id=149 data-nosnippet>149</a>		<a href="https://docs.rs/log/0.4.29/log/macro.debug.html">debug!</a>(
 <a href=#150 id=150 data-nosnippet>150</a>			<span class="string">"[Boot] [State] ApplicationState created with {} workspace folders."</span>,
 <a href=#151 id=151 data-nosnippet>151</a>			AppState.Workspace.WorkspaceFolders.lock().map(|f| f.len()).unwrap_or(<span class="number">0</span>)
 <a href=#152 id=152 data-nosnippet>152</a>		);
 <a href=#153 id=153 data-nosnippet>153</a>
 <a href=#154 id=154 data-nosnippet>154</a>		<span class="comment">// Create Arc for application state to be managed by Tauri
-<a href=#155 id=155 data-nosnippet>155</a>		</span><span class="kw">let </span>AppStateArcForClosure = Arc::new(AppState.clone());
+<a href=#155 id=155 data-nosnippet>155</a>		</span><span class="kw">let </span>AppStateArcForClosure = <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(<a href="#147">AppState</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>());
 <a href=#156 id=156 data-nosnippet>156</a>
 <a href=#157 id=157 data-nosnippet>157</a>		<span class="comment">// ---------------------------------------------------------------------
 <a href=#158 id=158 data-nosnippet>158</a>		// [Boot] [Runtime] Scheduler handles (using RuntimeBuild module)
 <a href=#159 id=159 data-nosnippet>159</a>		// ---------------------------------------------------------------------
-<a href=#160 id=160 data-nosnippet>160</a>		</span><span class="kw">let </span>Scheduler = Arc::new(SchedulerBuilder::Create().Build());
-<a href=#161 id=161 data-nosnippet>161</a>		<span class="kw">let </span>SchedulerForClosure = Scheduler.clone();
-<a href=#162 id=162 data-nosnippet>162</a>		<span class="macro">TraceStep!</span>(<span class="string">"[Boot] [Echo] Scheduler handles prepared."</span>);
+<a href=#160 id=160 data-nosnippet>160</a>		</span><span class="kw">let </span>Scheduler = <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(SchedulerBuilder::Create().Build());
+<a href=#161 id=161 data-nosnippet>161</a>		<span class="kw">let </span>SchedulerForClosure = <a href="#160">Scheduler</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
+<a href=#162 id=162 data-nosnippet>162</a>		<a href="#102-106">TraceStep!</a>(<span class="string">"[Boot] [Echo] Scheduler handles prepared."</span>);
 <a href=#163 id=163 data-nosnippet>163</a>
 <a href=#164 id=164 data-nosnippet>164</a>		<span class="comment">// ---------------------------------------------------------------------
 <a href=#165 id=165 data-nosnippet>165</a>		// [Boot] [Localhost] Port selection (using PortSelector module)
 <a href=#166 id=166 data-nosnippet>166</a>		// ---------------------------------------------------------------------
-<a href=#167 id=167 data-nosnippet>167</a>		</span><span class="kw">let </span>ServerPort = SelectPort();
-<a href=#168 id=168 data-nosnippet>168</a>		<span class="kw">let </span>LocalhostUrl = BuildPortUrl(ServerPort);
+<a href=#167 id=167 data-nosnippet>167</a>		</span><span class="kw">let </span>ServerPort = <a href="../Initialize/PortSelector.rs.html#46-48">SelectPort</a>();
+<a href=#168 id=168 data-nosnippet>168</a>		<span class="kw">let </span>LocalhostUrl = <a href="../Initialize/PortSelector.rs.html#61">BuildPortUrl</a>(<a href="#167">ServerPort</a>);
 <a href=#169 id=169 data-nosnippet>169</a>
 <a href=#170 id=170 data-nosnippet>170</a>		<span class="comment">// ---------------------------------------------------------------------
 <a href=#171 id=171 data-nosnippet>171</a>		// [Boot] [Logging] Log level resolution (using LogLevel module)
 <a href=#172 id=172 data-nosnippet>172</a>		// ---------------------------------------------------------------------
-<a href=#173 id=173 data-nosnippet>173</a>		</span><span class="kw">let </span>log_level = ResolveLogLevel();
+<a href=#173 id=173 data-nosnippet>173</a>		</span><span class="kw">let </span>log_level = <a href="../Initialize/LogLevel.rs.html#46-52">ResolveLogLevel</a>();
 <a href=#174 id=174 data-nosnippet>174</a>
 <a href=#175 id=175 data-nosnippet>175</a>		<span class="comment">// ---------------------------------------------------------------------
 <a href=#176 id=176 data-nosnippet>176</a>		// [Boot] [Tauri] Builder setup (using TauriBuild module)
 <a href=#177 id=177 data-nosnippet>177</a>		// ---------------------------------------------------------------------
-<a href=#178 id=178 data-nosnippet>178</a>		</span><span class="kw">let </span>Builder = TauriBuildFn();
+<a href=#178 id=178 data-nosnippet>178</a>		</span><span class="kw">let </span>Builder = <a href="../Build/TauriBuild.rs.html#19-31">TauriBuildFn</a>();
 <a href=#179 id=179 data-nosnippet>179</a>
-<a href=#180 id=180 data-nosnippet>180</a>		Builder
-<a href=#181 id=181 data-nosnippet>181</a>			.plugin(LoggingPluginFn(log_level))
-<a href=#182 id=182 data-nosnippet>182</a>			.plugin(LocalhostPluginFn(ServerPort))
-<a href=#183 id=183 data-nosnippet>183</a>			.manage(AppStateArcForClosure.clone())
+<a href=#180 id=180 data-nosnippet>180</a>		<a href="#178">Builder</a>
+<a href=#181 id=181 data-nosnippet>181</a>			.plugin(<a href="../Build/LoggingPlugin.rs.html#46-82">LoggingPluginFn</a>(<a href="#173">log_level</a>))
+<a href=#182 id=182 data-nosnippet>182</a>			.plugin(<a href="../Build/LocalhostPlugin.rs.html#25-34">LocalhostPluginFn</a>(<a href="#167">ServerPort</a>))
+<a href=#183 id=183 data-nosnippet>183</a>			.manage(<a href="#155">AppStateArcForClosure</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>())
 <a href=#184 id=184 data-nosnippet>184</a>			.setup({
-<a href=#185 id=185 data-nosnippet>185</a>				<span class="kw">let </span>LocalhostUrl = LocalhostUrl.clone();
+<a href=#185 id=185 data-nosnippet>185</a>				<span class="kw">let </span>LocalhostUrl = <a href="#168">LocalhostUrl</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
 <a href=#186 id=186 data-nosnippet>186</a>				<span class="kw">move </span>|app:<span class="kw-2">&amp;mut </span>App| {
-<a href=#187 id=187 data-nosnippet>187</a>					<span class="macro">info!</span>(<span class="string">"[Lifecycle] [Setup] Setup hook started."</span>);
-<a href=#188 id=188 data-nosnippet>188</a>					<span class="macro">debug!</span>(<span class="string">"[Lifecycle] [Setup] LocalhostUrl={}"</span>, LocalhostUrl);
+<a href=#187 id=187 data-nosnippet>187</a>					<a href="https://docs.rs/log/0.4.29/log/macro.info.html">info!</a>(<span class="string">"[Lifecycle] [Setup] Setup hook started."</span>);
+<a href=#188 id=188 data-nosnippet>188</a>					<a href="https://docs.rs/log/0.4.29/log/macro.debug.html">debug!</a>(<span class="string">"[Lifecycle] [Setup] LocalhostUrl={}"</span>, LocalhostUrl);
 <a href=#189 id=189 data-nosnippet>189</a>
-<a href=#190 id=190 data-nosnippet>190</a>					<span class="kw">let </span>AppHandle = app.handle().clone();
-<a href=#191 id=191 data-nosnippet>191</a>					<span class="macro">TraceStep!</span>(<span class="string">"[Lifecycle] [Setup] AppHandle acquired."</span>);
+<a href=#190 id=190 data-nosnippet>190</a>					<span class="kw">let </span>AppHandle = <a href="#186">app</a>.handle().<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
+<a href=#191 id=191 data-nosnippet>191</a>					<a href="#102-106">TraceStep!</a>(<span class="string">"[Lifecycle] [Setup] AppHandle acquired."</span>);
 <a href=#192 id=192 data-nosnippet>192</a>
 <a href=#193 id=193 data-nosnippet>193</a>					<span class="comment">// ---------------------------------------------------------
 <a href=#194 id=194 data-nosnippet>194</a>					// Setup application lifecycle through AppLifecycle module
 <a href=#195 id=195 data-nosnippet>195</a>					// ---------------------------------------------------------
-<a href=#196 id=196 data-nosnippet>196</a>					</span><span class="kw">let </span>AppStateArcFromClosure = AppStateArcForClosure.clone();
+<a href=#196 id=196 data-nosnippet>196</a>					</span><span class="kw">let </span>AppStateArcFromClosure = <a href="#155">AppStateArcForClosure</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
 <a href=#197 id=197 data-nosnippet>197</a>					
-<a href=#198 id=198 data-nosnippet>198</a>					<span class="kw">if let </span><span class="prelude-val">Err</span>(e) = AppLifecycleSetup(
-<a href=#199 id=199 data-nosnippet>199</a>						app,
-<a href=#200 id=200 data-nosnippet>200</a>						AppHandle.clone(),
-<a href=#201 id=201 data-nosnippet>201</a>						LocalhostUrl.clone(),
-<a href=#202 id=202 data-nosnippet>202</a>						SchedulerForClosure.clone(),
-<a href=#203 id=203 data-nosnippet>203</a>						AppStateArcFromClosure,
+<a href=#198 id=198 data-nosnippet>198</a>					<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(e) = <a href="AppLifecycle.rs.html#126-243">AppLifecycleSetup</a>(
+<a href=#199 id=199 data-nosnippet>199</a>						<a href="#186">app</a>,
+<a href=#200 id=200 data-nosnippet>200</a>						<a href="#190">AppHandle</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>(),
+<a href=#201 id=201 data-nosnippet>201</a>						<a href="#185">LocalhostUrl</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>(),
+<a href=#202 id=202 data-nosnippet>202</a>						<a href="#161">SchedulerForClosure</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>(),
+<a href=#203 id=203 data-nosnippet>203</a>						<a href="#196">AppStateArcFromClosure</a>,
 <a href=#204 id=204 data-nosnippet>204</a>					) {
-<a href=#205 id=205 data-nosnippet>205</a>						<span class="macro">error!</span>(<span class="string">"[Lifecycle] [Setup] Failed to setup lifecycle: {}"</span>, e);
+<a href=#205 id=205 data-nosnippet>205</a>						<a href="https://docs.rs/log/0.4.29/log/macro.error.html">error!</a>(<span class="string">"[Lifecycle] [Setup] Failed to setup lifecycle: {}"</span>, e);
 <a href=#206 id=206 data-nosnippet>206</a>					}
 <a href=#207 id=207 data-nosnippet>207</a>
-<a href=#208 id=208 data-nosnippet>208</a>					<span class="prelude-val">Ok</span>(())
+<a href=#208 id=208 data-nosnippet>208</a>					<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#209 id=209 data-nosnippet>209</a>				}
 <a href=#210 id=210 data-nosnippet>210</a>			})
 <a href=#211 id=211 data-nosnippet>211</a>			.plugin(tauri_plugin_dialog::init())
@@ -244,38 +244,38 @@
 <a href=#244 id=244 data-nosnippet>244</a>				<span class="kw">crate</span>::Binary::IPC::ConfigurationDataCommand::SaveConfigurationData,
 <a href=#245 id=245 data-nosnippet>245</a>			])
 <a href=#246 id=246 data-nosnippet>246</a>			.build(<span class="macro">tauri::generate_context!</span>())
-<a href=#247 id=247 data-nosnippet>247</a>			.expect(<span class="string">"FATAL: Error while building Mountain Tauri application"</span>)
+<a href=#247 id=247 data-nosnippet>247</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.expect">expect</a>(<span class="string">"FATAL: Error while building Mountain Tauri application"</span>)
 <a href=#248 id=248 data-nosnippet>248</a>			.run(<span class="kw">move </span>|app_handle:<span class="kw-2">&amp;</span>tauri::AppHandle, event:tauri::RunEvent| {
 <a href=#249 id=249 data-nosnippet>249</a>				<span class="comment">// Debug-only: log selected lifecycle events
-<a href=#250 id=250 data-nosnippet>250</a>				</span><span class="kw">if </span><span class="macro">cfg!</span>(debug_assertions) {
-<a href=#251 id=251 data-nosnippet>251</a>					<span class="kw">match </span><span class="kw-2">&amp;</span>event {
+<a href=#250 id=250 data-nosnippet>250</a>				</span><span class="kw">if </span><a href="https://doc.rust-lang.org/nightly/core/macro.cfg.html">cfg!</a>(debug_assertions) {
+<a href=#251 id=251 data-nosnippet>251</a>					<span class="kw">match </span><span class="kw-2">&amp;</span><a href="#248">event</a> {
 <a href=#252 id=252 data-nosnippet>252</a>						RunEvent::MainEventsCleared =&gt; {},
 <a href=#253 id=253 data-nosnippet>253</a>						RunEvent::WindowEvent { .. } =&gt; {},
-<a href=#254 id=254 data-nosnippet>254</a>						<span class="kw">_ </span>=&gt; <span class="macro">debug!</span>(<span class="string">"[Lifecycle] [RunEvent] {:?}"</span>, event),
+<a href=#254 id=254 data-nosnippet>254</a>						<span class="kw">_ </span>=&gt; <a href="https://docs.rs/log/0.4.29/log/macro.debug.html">debug!</a>(<span class="string">"[Lifecycle] [RunEvent] {:?}"</span>, event),
 <a href=#255 id=255 data-nosnippet>255</a>					}
 <a href=#256 id=256 data-nosnippet>256</a>				}
 <a href=#257 id=257 data-nosnippet>257</a>
-<a href=#258 id=258 data-nosnippet>258</a>				<span class="kw">if let </span>RunEvent::ExitRequested { api, .. } = event {
-<a href=#259 id=259 data-nosnippet>259</a>					<span class="macro">warn!</span>(<span class="string">"[Lifecycle] [Shutdown] Exit requested. Starting graceful shutdown..."</span>);
-<a href=#260 id=260 data-nosnippet>260</a>					api.prevent_exit();
+<a href=#258 id=258 data-nosnippet>258</a>				<span class="kw">if let </span>RunEvent::ExitRequested { api, .. } = <a href="#248">event</a> {
+<a href=#259 id=259 data-nosnippet>259</a>					<a href="https://docs.rs/log/0.4.29/log/macro.warn.html">warn!</a>(<span class="string">"[Lifecycle] [Shutdown] Exit requested. Starting graceful shutdown..."</span>);
+<a href=#260 id=260 data-nosnippet>260</a>					<a href="#258">api</a>.prevent_exit();
 <a href=#261 id=261 data-nosnippet>261</a>
-<a href=#262 id=262 data-nosnippet>262</a>					<span class="kw">let </span>SchedulerHandle = Scheduler.clone();
-<a href=#263 id=263 data-nosnippet>263</a>					<span class="kw">let </span>app_handle_clone = app_handle.clone();
+<a href=#262 id=262 data-nosnippet>262</a>					<span class="kw">let </span>SchedulerHandle = <a href="#160">Scheduler</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
+<a href=#263 id=263 data-nosnippet>263</a>					<span class="kw">let </span>app_handle_clone = <a href="#248">app_handle</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
 <a href=#264 id=264 data-nosnippet>264</a>
 <a href=#265 id=265 data-nosnippet>265</a>					tokio::spawn(<span class="kw">async move </span>{
-<a href=#266 id=266 data-nosnippet>266</a>						<span class="macro">debug!</span>(<span class="string">"[Lifecycle] [Shutdown] Shutting down ApplicationRunTime..."</span>);
-<a href=#267 id=267 data-nosnippet>267</a>						<span class="kw">let _ </span>= RuntimeShutdownFn(<span class="kw-2">&amp;</span>app_handle_clone).<span class="kw">await</span>;
+<a href=#266 id=266 data-nosnippet>266</a>						<a href="https://docs.rs/log/0.4.29/log/macro.debug.html">debug!</a>(<span class="string">"[Lifecycle] [Shutdown] Shutting down ApplicationRunTime..."</span>);
+<a href=#267 id=267 data-nosnippet>267</a>						<span class="kw">let _ </span>= <a href="../Shutdown/RuntimeShutdown.rs.html#32-42">RuntimeShutdownFn</a>(<span class="kw-2">&amp;</span><a href="#263">app_handle_clone</a>).<span class="kw">await</span>;
 <a href=#268 id=268 data-nosnippet>268</a>
-<a href=#269 id=269 data-nosnippet>269</a>						<span class="macro">debug!</span>(<span class="string">"[Lifecycle] [Shutdown] Stopping Echo scheduler..."</span>);
-<a href=#270 id=270 data-nosnippet>270</a>						<span class="kw">let _ </span>= SchedulerShutdownFn(SchedulerHandle).<span class="kw">await</span>;
+<a href=#269 id=269 data-nosnippet>269</a>						<a href="https://docs.rs/log/0.4.29/log/macro.debug.html">debug!</a>(<span class="string">"[Lifecycle] [Shutdown] Stopping Echo scheduler..."</span>);
+<a href=#270 id=270 data-nosnippet>270</a>						<span class="kw">let _ </span>= <a href="../Shutdown/SchedulerShutdown.rs.html#30-42">SchedulerShutdownFn</a>(<a href="#262">SchedulerHandle</a>).<span class="kw">await</span>;
 <a href=#271 id=271 data-nosnippet>271</a>
-<a href=#272 id=272 data-nosnippet>272</a>						<span class="macro">info!</span>(<span class="string">"[Lifecycle] [Shutdown] Done. Exiting process."</span>);
-<a href=#273 id=273 data-nosnippet>273</a>						app_handle_clone.exit(<span class="number">0</span>);
+<a href=#272 id=272 data-nosnippet>272</a>						<a href="https://docs.rs/log/0.4.29/log/macro.info.html">info!</a>(<span class="string">"[Lifecycle] [Shutdown] Done. Exiting process."</span>);
+<a href=#273 id=273 data-nosnippet>273</a>						<a href="#263">app_handle_clone</a>.exit(<span class="number">0</span>);
 <a href=#274 id=274 data-nosnippet>274</a>					});
 <a href=#275 id=275 data-nosnippet>275</a>				}
 <a href=#276 id=276 data-nosnippet>276</a>			});
 <a href=#277 id=277 data-nosnippet>277</a>
-<a href=#278 id=278 data-nosnippet>278</a>		<span class="macro">info!</span>(<span class="string">"[Lifecycle] [Exit] Mountain application has shut down."</span>);
+<a href=#278 id=278 data-nosnippet>278</a>		<a href="https://docs.rs/log/0.4.29/log/macro.info.html">info!</a>(<span class="string">"[Lifecycle] [Exit] Mountain application has shut down."</span>);
 <a href=#279 id=279 data-nosnippet>279</a>	});
 <a href=#280 id=280 data-nosnippet>280</a>}
 </code></pre></div></section></main></body></html>

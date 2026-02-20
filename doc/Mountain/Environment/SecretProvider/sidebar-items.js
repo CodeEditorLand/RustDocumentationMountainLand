@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {};
+window.SIDEBAR_ITEMS = {"fn":["DeleteSecretFromAir","GetKeyringServiceName","GetSecretFromAir","IsAirAvailable","StoreSecretToAir"]};

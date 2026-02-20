@@ -51,7 +51,7 @@ Extension ──► SetDiagnostics ──► DiagnosticProvider ──► UI Eve
 <h4 id="data-storage"><a class="doc-anchor" href="#data-storage">§</a>Data Storage</h4>
 <ul>
 <li><code>ApplicationState.Feature.Diagnostics</code>: HashMap&lt;String, HashMap&lt;String,
-Vec<MarkerDataDTO>&gt;&gt;
+<code>Vec&lt;MarkerDataDTO&gt;</code>&gt;&gt;
 <ul>
 <li>Outer key: Owner (e.g., “typescript”, “rust-analyzer”)</li>
 <li>Inner key: URI string</li>
@@ -144,7 +144,7 @@ Implement diagnostic caching for offline scenarios</li>
 </ul>
 <h3 id="module-contents"><a class="doc-anchor" href="#module-contents">§</a>MODULE CONTENTS</h3>
 <ul>
-<li>[<code>DiagnosticProvider</code>]: Main struct implementing <code>DiagnosticManager</code></li>
+<li><code>DiagnosticProvider</code>: Main struct implementing <code>DiagnosticManager</code></li>
 <li>Diagnostic storage and retrieval methods</li>
 <li>Change notification and event emission</li>
 <li>Owner management functions</li>

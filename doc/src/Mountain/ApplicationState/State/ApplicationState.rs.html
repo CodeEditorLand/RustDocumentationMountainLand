@@ -46,113 +46,113 @@
 <a href=#46 id=46 data-nosnippet>46</a>//! - [ ] Implement state metrics collection
 <a href=#47 id=47 data-nosnippet>47</a>//! - [ ] Add state diffing for debugging
 <a href=#48 id=48 data-nosnippet>48</a>
-<a href=#49 id=49 data-nosnippet>49</a></span><span class="kw">use </span>std::sync::{Arc, Mutex <span class="kw">as </span>StandardMutex, PoisonError};
+<a href=#49 id=49 data-nosnippet>49</a></span><span class="kw">use </span>std::sync::{<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>, <a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">Mutex</a> <span class="kw">as </span>StandardMutex, <a href="https://doc.rust-lang.org/nightly/std/sync/poison/struct.PoisonError.html">PoisonError</a>};
 <a href=#50 id=50 data-nosnippet>50</a>
 <a href=#51 id=51 data-nosnippet>51</a><span class="kw">use </span>CommonLibrary::Error::CommonError::CommonError;
-<a href=#52 id=52 data-nosnippet>52</a><span class="kw">use </span>log::debug;
+<a href=#52 id=52 data-nosnippet>52</a><span class="kw">use </span><a href="https://docs.rs/log/0.4.29/log/macro.debug.html">log::debug</a>;
 <a href=#53 id=53 data-nosnippet>53</a>
 <a href=#54 id=54 data-nosnippet>54</a><span class="kw">use </span>super::{
-<a href=#55 id=55 data-nosnippet>55</a>	ConfigurationState::State <span class="kw">as </span>ConfigurationState,
-<a href=#56 id=56 data-nosnippet>56</a>	ExtensionState::State::State <span class="kw">as </span>ExtensionState,
-<a href=#57 id=57 data-nosnippet>57</a>	FeatureState::State::State <span class="kw">as </span>FeatureState,
-<a href=#58 id=58 data-nosnippet>58</a>	UIState::State <span class="kw">as </span>UIState,
-<a href=#59 id=59 data-nosnippet>59</a>	WorkspaceState::State <span class="kw">as </span>WorkspaceState,
+<a href=#55 id=55 data-nosnippet>55</a>	<a href="ConfigurationState/ConfigurationState.rs.html#54-66">ConfigurationState::State</a> <span class="kw">as </span>ConfigurationState,
+<a href=#56 id=56 data-nosnippet>56</a>	<a href="ExtensionState/State.rs.html#40-49">ExtensionState::State::State</a> <span class="kw">as </span>ExtensionState,
+<a href=#57 id=57 data-nosnippet>57</a>	<a href="FeatureState/State.rs.html#52-73">FeatureState::State::State</a> <span class="kw">as </span>FeatureState,
+<a href=#58 id=58 data-nosnippet>58</a>	<a href="UIState/UIState.rs.html#45-51">UIState::State</a> <span class="kw">as </span>UIState,
+<a href=#59 id=59 data-nosnippet>59</a>	<a href="WorkspaceState/WorkspaceState.rs.html#53-68">WorkspaceState::State</a> <span class="kw">as </span>WorkspaceState,
 <a href=#60 id=60 data-nosnippet>60</a>};
-<a href=#61 id=61 data-nosnippet>61</a><span class="kw">use </span><span class="kw">crate</span>::Environment::TestProvider::TestProviderState;
+<a href=#61 id=61 data-nosnippet>61</a><span class="kw">use </span><a href="../../Environment/TestProvider.rs.html#163-167"><span class="kw">crate</span>::Environment::TestProvider::TestProviderState</a>;
 <a href=#62 id=62 data-nosnippet>62</a>
 <a href=#63 id=63 data-nosnippet>63</a><span class="doccomment">/// The central, shared, thread-safe state for the entire Mountain application.
-<a href=#64 id=64 data-nosnippet>64</a></span><span class="attr">#[derive(Clone)]
-<a href=#65 id=65 data-nosnippet>65</a></span><span class="kw">pub struct </span>ApplicationState {
+<a href=#64 id=64 data-nosnippet>64</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>)]
+<a href=#65 id=65 data-nosnippet>65</a></span><span class="kw">pub struct </span><a href="../../../../Mountain/ApplicationState/State/ApplicationState/struct.ApplicationState.html">ApplicationState</a> {
 <a href=#66 id=66 data-nosnippet>66</a>	<span class="doccomment">/// Workspace state containing workspace folders, trust, and active
 <a href=#67 id=67 data-nosnippet>67</a>	/// document.
-<a href=#68 id=68 data-nosnippet>68</a>	</span><span class="kw">pub </span>Workspace:WorkspaceState,
+<a href=#68 id=68 data-nosnippet>68</a>	</span><span class="kw">pub </span>Workspace:<a href="WorkspaceState/WorkspaceState.rs.html#53-68">WorkspaceState</a>,
 <a href=#69 id=69 data-nosnippet>69</a>
 <a href=#70 id=70 data-nosnippet>70</a>	<span class="doccomment">/// Configuration and storage state.
-<a href=#71 id=71 data-nosnippet>71</a>	</span><span class="kw">pub </span>Configuration:ConfigurationState,
+<a href=#71 id=71 data-nosnippet>71</a>	</span><span class="kw">pub </span>Configuration:<a href="ConfigurationState/ConfigurationState.rs.html#54-66">ConfigurationState</a>,
 <a href=#72 id=72 data-nosnippet>72</a>
 <a href=#73 id=73 data-nosnippet>73</a>	<span class="doccomment">/// Extension management state.
-<a href=#74 id=74 data-nosnippet>74</a>	</span><span class="kw">pub </span>Extension:ExtensionState,
+<a href=#74 id=74 data-nosnippet>74</a>	</span><span class="kw">pub </span>Extension:<a href="ExtensionState/State.rs.html#40-49">ExtensionState</a>,
 <a href=#75 id=75 data-nosnippet>75</a>
 <a href=#76 id=76 data-nosnippet>76</a>	<span class="doccomment">/// Feature-specific state.
-<a href=#77 id=77 data-nosnippet>77</a>	</span><span class="kw">pub </span>Feature:FeatureState,
+<a href=#77 id=77 data-nosnippet>77</a>	</span><span class="kw">pub </span>Feature:<a href="FeatureState/State.rs.html#52-73">FeatureState</a>,
 <a href=#78 id=78 data-nosnippet>78</a>
 <a href=#79 id=79 data-nosnippet>79</a>	<span class="doccomment">/// User interface request state.
-<a href=#80 id=80 data-nosnippet>80</a>	</span><span class="kw">pub </span>UI:UIState,
+<a href=#80 id=80 data-nosnippet>80</a>	</span><span class="kw">pub </span>UI:<a href="UIState/UIState.rs.html#45-51">UIState</a>,
 <a href=#81 id=81 data-nosnippet>81</a>
 <a href=#82 id=82 data-nosnippet>82</a>	<span class="doccomment">/// Test provider state.
-<a href=#83 id=83 data-nosnippet>83</a>	</span><span class="kw">pub </span>TestProviderState:Arc&lt;tokio::sync::RwLock&lt;TestProviderState&gt;&gt;,
+<a href=#83 id=83 data-nosnippet>83</a>	</span><span class="kw">pub </span>TestProviderState:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;tokio::sync::RwLock&lt;<a href="../../Environment/TestProvider.rs.html#163-167">TestProviderState</a>&gt;&gt;,
 <a href=#84 id=84 data-nosnippet>84</a>
 <a href=#85 id=85 data-nosnippet>85</a>	<span class="doccomment">/// Memento storage paths.
-<a href=#86 id=86 data-nosnippet>86</a>	</span><span class="kw">pub </span>GlobalMementoPath:std::path::PathBuf,
-<a href=#87 id=87 data-nosnippet>87</a>	<span class="kw">pub </span>WorkspaceMementoPath:Arc&lt;StandardMutex&lt;<span class="prelude-ty">Option</span>&lt;std::path::PathBuf&gt;&gt;&gt;,
+<a href=#86 id=86 data-nosnippet>86</a>	</span><span class="kw">pub </span>GlobalMementoPath:std::path::<a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>,
+<a href=#87 id=87 data-nosnippet>87</a>	<span class="kw">pub </span>WorkspaceMementoPath:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">StandardMutex</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;std::path::<a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>&gt;&gt;&gt;,
 <a href=#88 id=88 data-nosnippet>88</a>}
 <a href=#89 id=89 data-nosnippet>89</a>
-<a href=#90 id=90 data-nosnippet>90</a><span class="kw">impl </span>Default <span class="kw">for </span>ApplicationState {
+<a href=#90 id=90 data-nosnippet>90</a><span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a> <span class="kw">for </span><a href="#65-88">ApplicationState</a> {
 <a href=#91 id=91 data-nosnippet>91</a>	<span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{
-<a href=#92 id=92 data-nosnippet>92</a>		<span class="macro">debug!</span>(<span class="string">"[ApplicationState] Initializing default application state..."</span>);
+<a href=#92 id=92 data-nosnippet>92</a>		<a href="https://docs.rs/log/0.4.29/log/macro.debug.html">debug!</a>(<span class="string">"[ApplicationState] Initializing default application state..."</span>);
 <a href=#93 id=93 data-nosnippet>93</a>
 <a href=#94 id=94 data-nosnippet>94</a>		<span class="self">Self </span>{
-<a href=#95 id=95 data-nosnippet>95</a>			Workspace:Default::default(),
-<a href=#96 id=96 data-nosnippet>96</a>			Configuration:Default::default(),
-<a href=#97 id=97 data-nosnippet>97</a>			Extension:Default::default(),
-<a href=#98 id=98 data-nosnippet>98</a>			Feature:Default::default(),
-<a href=#99 id=99 data-nosnippet>99</a>			UI:Default::default(),
-<a href=#100 id=100 data-nosnippet>100</a>			TestProviderState:Arc::new(tokio::sync::RwLock::new(TestProviderState::new())),
-<a href=#101 id=101 data-nosnippet>101</a>			GlobalMementoPath:Default::default(),
-<a href=#102 id=102 data-nosnippet>102</a>			WorkspaceMementoPath:Arc::new(StandardMutex::new(<span class="prelude-val">None</span>)),
+<a href=#95 id=95 data-nosnippet>95</a>			Workspace:Default::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>(),
+<a href=#96 id=96 data-nosnippet>96</a>			Configuration:Default::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>(),
+<a href=#97 id=97 data-nosnippet>97</a>			Extension:Default::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>(),
+<a href=#98 id=98 data-nosnippet>98</a>			Feature:Default::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>(),
+<a href=#99 id=99 data-nosnippet>99</a>			UI:Default::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>(),
+<a href=#100 id=100 data-nosnippet>100</a>			TestProviderState:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(tokio::sync::RwLock::new(<a href="../../Environment/TestProvider.rs.html#163-167">TestProviderState</a>::<a href="../../Environment/TestProvider.rs.html#170">new</a>())),
+<a href=#101 id=101 data-nosnippet>101</a>			GlobalMementoPath:Default::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>(),
+<a href=#102 id=102 data-nosnippet>102</a>			WorkspaceMementoPath:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">StandardMutex</a>::<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.new">new</a>(<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>)),
 <a href=#103 id=103 data-nosnippet>103</a>		}
 <a href=#104 id=104 data-nosnippet>104</a>	}
 <a href=#105 id=105 data-nosnippet>105</a>}
 <a href=#106 id=106 data-nosnippet>106</a>
-<a href=#107 id=107 data-nosnippet>107</a><span class="kw">impl </span>ApplicationState {
+<a href=#107 id=107 data-nosnippet>107</a><span class="kw">impl </span><a href="#65-88">ApplicationState</a> {
 <a href=#108 id=108 data-nosnippet>108</a>	<span class="doccomment">/// Gets the next available unique identifier for a provider registration.
-<a href=#109 id=109 data-nosnippet>109</a>	</span><span class="kw">pub fn </span>GetNextProviderHandle(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u32 { <span class="self">self</span>.Extension.GetNextProviderHandle() }
+<a href=#109 id=109 data-nosnippet>109</a>	</span><span class="kw">pub fn </span>GetNextProviderHandle(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a> { <a class="self" href="#109">self</a>.Extension.<a href="ExtensionState/State.rs.html#65">GetNextProviderHandle</a>() }
 <a href=#110 id=110 data-nosnippet>110</a>
 <a href=#111 id=111 data-nosnippet>111</a>	<span class="doccomment">/// Gets the next available unique identifier for a terminal instance.
-<a href=#112 id=112 data-nosnippet>112</a>	</span><span class="kw">pub fn </span>GetNextTerminalIdentifier(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u64 { <span class="self">self</span>.Feature.GetNextTerminalIdentifier() }
+<a href=#112 id=112 data-nosnippet>112</a>	</span><span class="kw">pub fn </span>GetNextTerminalIdentifier(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a> { <a class="self" href="#112">self</a>.Feature.<a href="FeatureState/State.rs.html#93">GetNextTerminalIdentifier</a>() }
 <a href=#113 id=113 data-nosnippet>113</a>
 <a href=#114 id=114 data-nosnippet>114</a>	<span class="doccomment">/// Gets the next available unique identifier for an SCM provider.
-<a href=#115 id=115 data-nosnippet>115</a>	</span><span class="kw">pub fn </span>GetNextSourceControlManagementProviderHandle(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u32 {
-<a href=#116 id=116 data-nosnippet>116</a>		<span class="self">self</span>.Feature.GetNextSourceControlManagementProviderHandle()
+<a href=#115 id=115 data-nosnippet>115</a>	</span><span class="kw">pub fn </span>GetNextSourceControlManagementProviderHandle(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a> {
+<a href=#116 id=116 data-nosnippet>116</a>		<a class="self" href="#115">self</a>.Feature.<a href="FeatureState/State.rs.html#96-98">GetNextSourceControlManagementProviderHandle</a>()
 <a href=#117 id=117 data-nosnippet>117</a>	}
 <a href=#118 id=118 data-nosnippet>118</a>
 <a href=#119 id=119 data-nosnippet>119</a>	<span class="doccomment">/// Gets the workspace identifier for the current application instance.
 <a href=#120 id=120 data-nosnippet>120</a>	/// This is used to differentiate between different workspace instances
 <a href=#121 id=121 data-nosnippet>121</a>	/// when running multiple instances of the application.
-<a href=#122 id=122 data-nosnippet>122</a>	</span><span class="kw">pub fn </span>GetWorkspaceIdentifier(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;String, CommonError&gt; {
+<a href=#122 id=122 data-nosnippet>122</a>	</span><span class="kw">pub fn </span>GetWorkspaceIdentifier(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, CommonError&gt; {
 <a href=#123 id=123 data-nosnippet>123</a>		<span class="comment">// For now, generate a simple identifier based on the current timestamp
 <a href=#124 id=124 data-nosnippet>124</a>		// In a proper implementation, this would be stored and persisted
-<a href=#125 id=125 data-nosnippet>125</a>		</span><span class="kw">use </span>std::time::{SystemTime, UNIX_EPOCH};
+<a href=#125 id=125 data-nosnippet>125</a>		</span><span class="kw">use </span>std::time::{<a href="https://doc.rust-lang.org/nightly/std/time/struct.SystemTime.html">SystemTime</a>, <a href="https://doc.rust-lang.org/nightly/std/time/constant.UNIX_EPOCH.html">UNIX_EPOCH</a>};
 <a href=#126 id=126 data-nosnippet>126</a>
-<a href=#127 id=127 data-nosnippet>127</a>		<span class="kw">let </span>timestamp = SystemTime::now()
-<a href=#128 id=128 data-nosnippet>128</a>			.duration_since(UNIX_EPOCH)
-<a href=#129 id=129 data-nosnippet>129</a>			.map_err(|e| CommonError::Unknown { Description:<span class="macro">format!</span>(<span class="string">"Failed to get system time: {}"</span>, e) })<span class="question-mark">?</span>;
+<a href=#127 id=127 data-nosnippet>127</a>		<span class="kw">let </span>timestamp = <a href="https://doc.rust-lang.org/nightly/std/time/struct.SystemTime.html">SystemTime</a>::<a href="https://doc.rust-lang.org/nightly/std/time/struct.SystemTime.html#method.now">now</a>()
+<a href=#128 id=128 data-nosnippet>128</a>			.<a href="https://doc.rust-lang.org/nightly/std/time/struct.SystemTime.html#method.duration_since">duration_since</a>(<a href="https://doc.rust-lang.org/nightly/std/time/constant.UNIX_EPOCH.html">UNIX_EPOCH</a>)
+<a href=#129 id=129 data-nosnippet>129</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| CommonError::Unknown { Description:<a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Failed to get system time: {}"</span>, e) })<span class="question-mark">?</span>;
 <a href=#130 id=130 data-nosnippet>130</a>
-<a href=#131 id=131 data-nosnippet>131</a>		<span class="prelude-val">Ok</span>(<span class="macro">format!</span>(<span class="string">"workspace-{:x}"</span>, timestamp.as_millis()))
+<a href=#131 id=131 data-nosnippet>131</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"workspace-{:x}"</span>, timestamp.as_millis()))
 <a href=#132 id=132 data-nosnippet>132</a>	}
 <a href=#133 id=133 data-nosnippet>133</a>}
 <a href=#134 id=134 data-nosnippet>134</a>
 <a href=#135 id=135 data-nosnippet>135</a><span class="doccomment">/// A helper to map a mutex poison error into a CommonError.
-<a href=#136 id=136 data-nosnippet>136</a></span><span class="kw">pub fn </span>MapLockError&lt;T&gt;(Error:PoisonError&lt;T&gt;) -&gt; CommonError {
-<a href=#137 id=137 data-nosnippet>137</a>	CommonError::StateLockPoisoned { Context:Error.to_string() }
+<a href=#136 id=136 data-nosnippet>136</a></span><span class="kw">pub fn </span><a href="../../../../Mountain/ApplicationState/State/ApplicationState/fn.MapLockError.html">MapLockError</a>&lt;T&gt;(Error:<a href="https://doc.rust-lang.org/nightly/std/sync/poison/struct.PoisonError.html">PoisonError</a>&lt;T&gt;) -&gt; CommonError {
+<a href=#137 id=137 data-nosnippet>137</a>	CommonError::StateLockPoisoned { Context:<a href="#136">Error</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>() }
 <a href=#138 id=138 data-nosnippet>138</a>}
 <a href=#139 id=139 data-nosnippet>139</a>
 <a href=#140 id=140 data-nosnippet>140</a><span class="doccomment">/// A helper to map a mutex poison error with recovery attempt.
-<a href=#141 id=141 data-nosnippet>141</a></span><span class="kw">pub fn </span>MapLockErrorWithRecovery&lt;T&gt;(Error:PoisonError&lt;T&gt;, RecoveryContext:<span class="kw-2">&amp;</span>str) -&gt; CommonError {
-<a href=#142 id=142 data-nosnippet>142</a>	<span class="macro">log::warn!</span>(
+<a href=#141 id=141 data-nosnippet>141</a></span><span class="kw">pub fn </span><a href="../../../../Mountain/ApplicationState/State/ApplicationState/fn.MapLockErrorWithRecovery.html">MapLockErrorWithRecovery</a>&lt;T&gt;(Error:<a href="https://doc.rust-lang.org/nightly/std/sync/poison/struct.PoisonError.html">PoisonError</a>&lt;T&gt;, RecoveryContext:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; CommonError {
+<a href=#142 id=142 data-nosnippet>142</a>	<a href="https://docs.rs/log/0.4.29/log/macro.warn.html">log::warn!</a>(
 <a href=#143 id=143 data-nosnippet>143</a>		<span class="string">"[ApplicationState] Attempting recovery from poisoned lock in context: {}"</span>,
 <a href=#144 id=144 data-nosnippet>144</a>		RecoveryContext
 <a href=#145 id=145 data-nosnippet>145</a>	);
 <a href=#146 id=146 data-nosnippet>146</a>	CommonError::StateLockPoisoned {
-<a href=#147 id=147 data-nosnippet>147</a>		Context:<span class="macro">format!</span>(<span class="string">"{} - Recovery attempted: {}"</span>, Error.to_string(), RecoveryContext),
+<a href=#147 id=147 data-nosnippet>147</a>		Context:<a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"{} - Recovery attempted: {}"</span>, Error.to_string(), RecoveryContext),
 <a href=#148 id=148 data-nosnippet>148</a>	}
 <a href=#149 id=149 data-nosnippet>149</a>}
 <a href=#150 id=150 data-nosnippet>150</a>
 <a href=#151 id=151 data-nosnippet>151</a><span class="doccomment">/// Error handling result with recovery information.
-<a href=#152 id=152 data-nosnippet>152</a></span><span class="attr">#[derive(Debug)]
-<a href=#153 id=153 data-nosnippet>153</a></span><span class="kw">pub struct </span>StateOperationResult&lt;T&gt; {
-<a href=#154 id=154 data-nosnippet>154</a>	<span class="kw">pub </span>result:<span class="prelude-ty">Result</span>&lt;T, CommonError&gt;,
-<a href=#155 id=155 data-nosnippet>155</a>	<span class="kw">pub </span>recovery_attempted:bool,
-<a href=#156 id=156 data-nosnippet>156</a>	<span class="kw">pub </span>recovery_successful:bool,
+<a href=#152 id=152 data-nosnippet>152</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>)]
+<a href=#153 id=153 data-nosnippet>153</a></span><span class="kw">pub struct </span><a href="../../../../Mountain/ApplicationState/State/ApplicationState/struct.StateOperationResult.html">StateOperationResult</a>&lt;T&gt; {
+<a href=#154 id=154 data-nosnippet>154</a>	<span class="kw">pub </span>result:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;T, CommonError&gt;,
+<a href=#155 id=155 data-nosnippet>155</a>	<span class="kw">pub </span>recovery_attempted:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
+<a href=#156 id=156 data-nosnippet>156</a>	<span class="kw">pub </span>recovery_successful:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
 <a href=#157 id=157 data-nosnippet>157</a>}
 </code></pre></div></section></main></body></html>

@@ -54,7 +54,7 @@
 <a href=#54 id=54 data-nosnippet>54</a>//!
 <a href=#55 id=55 data-nosnippet>55</a>//! ### Data Storage
 <a href=#56 id=56 data-nosnippet>56</a>//! - `ApplicationState.Feature.Diagnostics`: HashMap&lt;String, HashMap&lt;String,
-<a href=#57 id=57 data-nosnippet>57</a>//!   Vec&lt;MarkerDataDTO&gt;&gt;&gt;
+<a href=#57 id=57 data-nosnippet>57</a>//! `Vec&lt;MarkerDataDTO&gt;`&gt;&gt;
 <a href=#58 id=58 data-nosnippet>58</a>//!   - Outer key: Owner (e.g., "typescript", "rust-analyzer")
 <a href=#59 id=59 data-nosnippet>59</a>//!   - Inner key: URI string
 <a href=#60 id=60 data-nosnippet>60</a>//!   - Value: Vector of diagnostic markers
@@ -129,7 +129,7 @@
 <a href=#129 id=129 data-nosnippet>129</a>//!
 <a href=#130 id=130 data-nosnippet>130</a>//! ## MODULE CONTENTS
 <a href=#131 id=131 data-nosnippet>131</a>//!
-<a href=#132 id=132 data-nosnippet>132</a>//! - [`DiagnosticProvider`]: Main struct implementing `DiagnosticManager`
+<a href=#132 id=132 data-nosnippet>132</a>//! - `DiagnosticProvider`: Main struct implementing `DiagnosticManager`
 <a href=#133 id=133 data-nosnippet>133</a>//! - Diagnostic storage and retrieval methods
 <a href=#134 id=134 data-nosnippet>134</a>//! - Change notification and event emission
 <a href=#135 id=135 data-nosnippet>135</a>//! - Owner management functions
@@ -192,41 +192,41 @@
 <a href=#192 id=192 data-nosnippet>192</a>// - [ ] Add support for diagnostic workspace-wide filtering (exclude files)
 <a href=#193 id=193 data-nosnippet>193</a>
 <a href=#194 id=194 data-nosnippet>194</a></span><span class="kw">use </span>CommonLibrary::{Diagnostic::DiagnosticManager::DiagnosticManager, Error::CommonError::CommonError};
-<a href=#195 id=195 data-nosnippet>195</a><span class="kw">use </span>async_trait::async_trait;
-<a href=#196 id=196 data-nosnippet>196</a><span class="kw">use </span>log::{debug, error, info};
-<a href=#197 id=197 data-nosnippet>197</a><span class="kw">use </span>serde_json::{Value, json};
+<a href=#195 id=195 data-nosnippet>195</a><span class="kw">use </span><a href="https://docs.rs/async-trait/0.1.89/async_trait/attr.async_trait.html">async_trait::async_trait</a>;
+<a href=#196 id=196 data-nosnippet>196</a><span class="kw">use </span>log::{<a href="https://docs.rs/log/0.4.29/log/macro.debug.html">debug</a>, <a href="https://docs.rs/log/0.4.29/log/macro.error.html">error</a>, <a href="https://docs.rs/log/0.4.29/log/macro.info.html">info</a>};
+<a href=#197 id=197 data-nosnippet>197</a><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json</a>};
 <a href=#198 id=198 data-nosnippet>198</a><span class="kw">use </span>tauri::Emitter;
 <a href=#199 id=199 data-nosnippet>199</a>
-<a href=#200 id=200 data-nosnippet>200</a><span class="kw">use </span>super::{MountainEnvironment::MountainEnvironment, Utility};
-<a href=#201 id=201 data-nosnippet>201</a><span class="kw">use </span><span class="kw">crate</span>::ApplicationState::DTO::MarkerDataDTO::MarkerDataDTO;
+<a href=#200 id=200 data-nosnippet>200</a><span class="kw">use </span>super::{<a href="MountainEnvironment.rs.html#220-230">MountainEnvironment::MountainEnvironment</a>, <a href="mod.rs.html#112">Utility</a>};
+<a href=#201 id=201 data-nosnippet>201</a><span class="kw">use </span><a href="../ApplicationState/DTO/MarkerDataDTO.rs.html#35-74"><span class="kw">crate</span>::ApplicationState::DTO::MarkerDataDTO::MarkerDataDTO</a>;
 <a href=#202 id=202 data-nosnippet>202</a>
 <a href=#203 id=203 data-nosnippet>203</a><span class="attr">#[async_trait]
-<a href=#204 id=204 data-nosnippet>204</a></span><span class="kw">impl </span>DiagnosticManager <span class="kw">for </span>MountainEnvironment {
+<a href=#204 id=204 data-nosnippet>204</a></span><span class="kw">impl </span>DiagnosticManager <span class="kw">for </span><a href="MountainEnvironment.rs.html#220-230">MountainEnvironment</a> {
 <a href=#205 id=205 data-nosnippet>205</a>	<span class="doccomment">/// Sets or updates diagnostics for multiple resources from a specific
 <a href=#206 id=206 data-nosnippet>206</a>	/// owner. Empty marker arrays are treated as clearing diagnostics for that
 <a href=#207 id=207 data-nosnippet>207</a>	/// URI.
-<a href=#208 id=208 data-nosnippet>208</a>	</span><span class="kw">async fn </span>SetDiagnostics(<span class="kw-2">&amp;</span><span class="self">self</span>, Owner:String, EntriesDTOValue:Value) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
-<a href=#209 id=209 data-nosnippet>209</a>		<span class="macro">info!</span>(<span class="string">"[DiagnosticProvider] Setting diagnostics for owner: {}"</span>, Owner);
+<a href=#208 id=208 data-nosnippet>208</a>	</span><span class="kw">async fn </span>SetDiagnostics(<span class="kw-2">&amp;</span><a class="self" href="#208">self</a>, <a href="#208">Owner</a>:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="#208">EntriesDTOValue</a>:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
+<a href=#209 id=209 data-nosnippet>209</a>		<a href="https://docs.rs/log/0.4.29/log/macro.info.html">info!</a>(<span class="string">"[DiagnosticProvider] Setting diagnostics for owner: {}"</span>, Owner);
 <a href=#210 id=210 data-nosnippet>210</a>
-<a href=#211 id=211 data-nosnippet>211</a>		<span class="kw">let </span>DeserializedEntries:Vec&lt;(Value, <span class="prelude-ty">Option</span>&lt;Vec&lt;MarkerDataDTO&gt;&gt;)&gt; = serde_json::from_value(EntriesDTOValue)
-<a href=#212 id=212 data-nosnippet>212</a>			.map_err(|Error| {
+<a href=#211 id=211 data-nosnippet>211</a>		<span class="kw">let </span>DeserializedEntries:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;(<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="../ApplicationState/DTO/MarkerDataDTO.rs.html#35-74">MarkerDataDTO</a>&gt;&gt;)&gt; = serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/fn.from_value.html">from_value</a>(<a href="#208">EntriesDTOValue</a>)
+<a href=#212 id=212 data-nosnippet>212</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| {
 <a href=#213 id=213 data-nosnippet>213</a>				CommonError::InvalidArgument {
-<a href=#214 id=214 data-nosnippet>214</a>					ArgumentName:<span class="string">"EntriesDTOValue"</span>.to_string(),
-<a href=#215 id=215 data-nosnippet>215</a>					Reason:<span class="macro">format!</span>(<span class="string">"Failed to deserialize diagnostic entries: {}"</span>, Error),
+<a href=#214 id=214 data-nosnippet>214</a>					ArgumentName:<span class="string">"EntriesDTOValue"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
+<a href=#215 id=215 data-nosnippet>215</a>					Reason:<a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Failed to deserialize diagnostic entries: {}"</span>, Error),
 <a href=#216 id=216 data-nosnippet>216</a>				}
 <a href=#217 id=217 data-nosnippet>217</a>			})<span class="question-mark">?</span>;
 <a href=#218 id=218 data-nosnippet>218</a>
-<a href=#219 id=219 data-nosnippet>219</a>		<span class="kw">let </span><span class="kw-2">mut </span>DiagnosticsMapGuard = <span class="self">self
-<a href=#220 id=220 data-nosnippet>220</a>			</span>.ApplicationState
+<a href=#219 id=219 data-nosnippet>219</a>		<span class="kw">let </span><span class="kw-2">mut </span>DiagnosticsMapGuard = <a class="self" href="#208">self</a>
+<a href=#220 id=220 data-nosnippet>220</a>			.ApplicationState
 <a href=#221 id=221 data-nosnippet>221</a>			.Feature
 <a href=#222 id=222 data-nosnippet>222</a>			.Diagnostics
 <a href=#223 id=223 data-nosnippet>223</a>			.DiagnosticsMap
-<a href=#224 id=224 data-nosnippet>224</a>			.lock()
-<a href=#225 id=225 data-nosnippet>225</a>			.map_err(Utility::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?</span>;
+<a href=#224 id=224 data-nosnippet>224</a>			.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>()
+<a href=#225 id=225 data-nosnippet>225</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(Utility::<a href="Utility/ErrorMapping.rs.html#13-19">MapApplicationStateLockErrorToCommonError</a>)<span class="question-mark">?</span>;
 <a href=#226 id=226 data-nosnippet>226</a>
-<a href=#227 id=227 data-nosnippet>227</a>		<span class="kw">let </span>OwnerMap = DiagnosticsMapGuard.entry(Owner.clone()).or_default();
+<a href=#227 id=227 data-nosnippet>227</a>		<span class="kw">let </span>OwnerMap = <a href="#219">DiagnosticsMapGuard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.entry">entry</a>(<a href="#208">Owner</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>()).<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/enum.Entry.html#method.or_default">or_default</a>();
 <a href=#228 id=228 data-nosnippet>228</a>
-<a href=#229 id=229 data-nosnippet>229</a>		<span class="kw">let </span><span class="kw-2">mut </span>ChangedURIKeys = Vec::new();
+<a href=#229 id=229 data-nosnippet>229</a>		<span class="kw">let </span><span class="kw-2">mut </span>ChangedURIKeys = <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>::<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.new">new</a>();
 <a href=#230 id=230 data-nosnippet>230</a>
 <a href=#231 id=231 data-nosnippet>231</a>		<span class="kw">for </span>(URIComponentsValue, MarkersOption) <span class="kw">in </span>DeserializedEntries {
 <a href=#232 id=232 data-nosnippet>232</a>			<span class="kw">let </span>URIKey = Utility::GetURLFromURIComponentsDTO(<span class="kw-2">&amp;</span>URIComponentsValue)<span class="question-mark">?</span>.to_string();
@@ -244,84 +244,84 @@
 <a href=#244 id=244 data-nosnippet>244</a>			}
 <a href=#245 id=245 data-nosnippet>245</a>		}
 <a href=#246 id=246 data-nosnippet>246</a>
-<a href=#247 id=247 data-nosnippet>247</a>		drop(DiagnosticsMapGuard);
+<a href=#247 id=247 data-nosnippet>247</a>		<a href="https://doc.rust-lang.org/nightly/core/mem/fn.drop.html">drop</a>(<a href="#219">DiagnosticsMapGuard</a>);
 <a href=#248 id=248 data-nosnippet>248</a>
 <a href=#249 id=249 data-nosnippet>249</a>		<span class="comment">// Notify the frontend that diagnostics have changed for specific URIs.
 <a href=#250 id=250 data-nosnippet>250</a>		// Include both added/cleared URIs so UI can update accurately.
-<a href=#251 id=251 data-nosnippet>251</a>		</span><span class="kw">let </span>EventPayload = <span class="macro">json!</span>({ <span class="string">"Owner"</span>: Owner, <span class="string">"Uris"</span>: ChangedURIKeys });
+<a href=#251 id=251 data-nosnippet>251</a>		</span><span class="kw">let </span>EventPayload = <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json!</a>({ <span class="string">"Owner"</span>: Owner, <span class="string">"Uris"</span>: ChangedURIKeys });
 <a href=#252 id=252 data-nosnippet>252</a>
-<a href=#253 id=253 data-nosnippet>253</a>		<span class="kw">if let </span><span class="prelude-val">Err</span>(Error) = <span class="self">self</span>.ApplicationHandle.emit(<span class="string">"sky://diagnostics/changed"</span>, EventPayload) {
-<a href=#254 id=254 data-nosnippet>254</a>			<span class="macro">error!</span>(<span class="string">"[DiagnosticProvider] Failed to emit 'diagnostics_changed': {}"</span>, Error);
+<a href=#253 id=253 data-nosnippet>253</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error) = <a class="self" href="#208">self</a>.ApplicationHandle.emit(<span class="string">"sky://diagnostics/changed"</span>, <a href="#251">EventPayload</a>) {
+<a href=#254 id=254 data-nosnippet>254</a>			<a href="https://docs.rs/log/0.4.29/log/macro.error.html">error!</a>(<span class="string">"[DiagnosticProvider] Failed to emit 'diagnostics_changed': {}"</span>, Error);
 <a href=#255 id=255 data-nosnippet>255</a>		}
 <a href=#256 id=256 data-nosnippet>256</a>
-<a href=#257 id=257 data-nosnippet>257</a>		<span class="macro">info!</span>(
+<a href=#257 id=257 data-nosnippet>257</a>		<a href="https://docs.rs/log/0.4.29/log/macro.info.html">info!</a>(
 <a href=#258 id=258 data-nosnippet>258</a>			<span class="string">"[DiagnosticProvider] Emitted diagnostics changed for {} URI(s)"</span>,
 <a href=#259 id=259 data-nosnippet>259</a>			ChangedURIKeys.len()
 <a href=#260 id=260 data-nosnippet>260</a>		);
 <a href=#261 id=261 data-nosnippet>261</a>
-<a href=#262 id=262 data-nosnippet>262</a>		<span class="prelude-val">Ok</span>(())
+<a href=#262 id=262 data-nosnippet>262</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#263 id=263 data-nosnippet>263</a>	}
 <a href=#264 id=264 data-nosnippet>264</a>
 <a href=#265 id=265 data-nosnippet>265</a>	<span class="doccomment">/// Clears all diagnostics from a specific owner.
-<a href=#266 id=266 data-nosnippet>266</a>	</span><span class="kw">async fn </span>ClearDiagnostics(<span class="kw-2">&amp;</span><span class="self">self</span>, Owner:String) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
-<a href=#267 id=267 data-nosnippet>267</a>		<span class="macro">info!</span>(<span class="string">"[DiagnosticProvider] Clearing all diagnostics for owner: {}"</span>, Owner);
+<a href=#266 id=266 data-nosnippet>266</a>	</span><span class="kw">async fn </span>ClearDiagnostics(<span class="kw-2">&amp;</span><a class="self" href="#266">self</a>, <a href="#266">Owner</a>:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
+<a href=#267 id=267 data-nosnippet>267</a>		<a href="https://docs.rs/log/0.4.29/log/macro.info.html">info!</a>(<span class="string">"[DiagnosticProvider] Clearing all diagnostics for owner: {}"</span>, Owner);
 <a href=#268 id=268 data-nosnippet>268</a>
-<a href=#269 id=269 data-nosnippet>269</a>		<span class="kw">let </span>(ClearedCount, ChangedURIKeys):(usize, Vec&lt;String&gt;) = {
-<a href=#270 id=270 data-nosnippet>270</a>			<span class="kw">let </span><span class="kw-2">mut </span>DiagnosticsMapGuard = <span class="self">self
-<a href=#271 id=271 data-nosnippet>271</a>				</span>.ApplicationState
+<a href=#269 id=269 data-nosnippet>269</a>		<span class="kw">let </span>(ClearedCount, ChangedURIKeys):(<a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;) = {
+<a href=#270 id=270 data-nosnippet>270</a>			<span class="kw">let </span><span class="kw-2">mut </span>DiagnosticsMapGuard = <a class="self" href="#266">self</a>
+<a href=#271 id=271 data-nosnippet>271</a>				.ApplicationState
 <a href=#272 id=272 data-nosnippet>272</a>				.Feature
 <a href=#273 id=273 data-nosnippet>273</a>				.Diagnostics
 <a href=#274 id=274 data-nosnippet>274</a>				.DiagnosticsMap
-<a href=#275 id=275 data-nosnippet>275</a>				.lock()
-<a href=#276 id=276 data-nosnippet>276</a>				.map_err(Utility::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?</span>;
+<a href=#275 id=275 data-nosnippet>275</a>				.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>()
+<a href=#276 id=276 data-nosnippet>276</a>				.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(Utility::<a href="Utility/ErrorMapping.rs.html#13-19">MapApplicationStateLockErrorToCommonError</a>)<span class="question-mark">?</span>;
 <a href=#277 id=277 data-nosnippet>277</a>
-<a href=#278 id=278 data-nosnippet>278</a>			DiagnosticsMapGuard
-<a href=#279 id=279 data-nosnippet>279</a>				.remove(<span class="kw-2">&amp;</span>Owner)
-<a href=#280 id=280 data-nosnippet>280</a>				.map(|OwnerMap| {
-<a href=#281 id=281 data-nosnippet>281</a>					<span class="kw">let </span>keys:Vec&lt;String&gt; = OwnerMap.keys().cloned().collect();
-<a href=#282 id=282 data-nosnippet>282</a>					(keys.len(), keys)
+<a href=#278 id=278 data-nosnippet>278</a>			<a href="#270">DiagnosticsMapGuard</a>
+<a href=#279 id=279 data-nosnippet>279</a>				.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.remove">remove</a>(<span class="kw-2">&amp;</span><a href="#266">Owner</a>)
+<a href=#280 id=280 data-nosnippet>280</a>				.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|OwnerMap| {
+<a href=#281 id=281 data-nosnippet>281</a>					<span class="kw">let </span>keys:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; = <a href="#280">OwnerMap</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.keys">keys</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.cloned">cloned</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.collect">collect</a>();
+<a href=#282 id=282 data-nosnippet>282</a>					(<a href="#281">keys</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.len">len</a>(), <a href="#281">keys</a>)
 <a href=#283 id=283 data-nosnippet>283</a>				})
-<a href=#284 id=284 data-nosnippet>284</a>				.unwrap_or((<span class="number">0</span>, <span class="macro">vec!</span>[]))
+<a href=#284 id=284 data-nosnippet>284</a>				.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or">unwrap_or</a>((<span class="number">0</span>, <a href="https://doc.rust-lang.org/nightly/alloc/macro.vec.html">vec!</a>[]))
 <a href=#285 id=285 data-nosnippet>285</a>		};
 <a href=#286 id=286 data-nosnippet>286</a>
-<a href=#287 id=287 data-nosnippet>287</a>		<span class="kw">if </span>!ChangedURIKeys.is_empty() {
-<a href=#288 id=288 data-nosnippet>288</a>			<span class="macro">info!</span>(
+<a href=#287 id=287 data-nosnippet>287</a>		<span class="kw">if </span>!<a href="#269">ChangedURIKeys</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.is_empty">is_empty</a>() {
+<a href=#288 id=288 data-nosnippet>288</a>			<a href="https://docs.rs/log/0.4.29/log/macro.info.html">info!</a>(
 <a href=#289 id=289 data-nosnippet>289</a>				<span class="string">"[DiagnosticProvider] Cleared {} diagnostics across {} URI(s)"</span>,
 <a href=#290 id=290 data-nosnippet>290</a>				ClearedCount,
 <a href=#291 id=291 data-nosnippet>291</a>				ChangedURIKeys.len()
 <a href=#292 id=292 data-nosnippet>292</a>			);
 <a href=#293 id=293 data-nosnippet>293</a>
-<a href=#294 id=294 data-nosnippet>294</a>			<span class="kw">let </span>EventPayload = <span class="macro">json!</span>({ <span class="string">"Owner"</span>: Owner, <span class="string">"Uris"</span>: ChangedURIKeys });
+<a href=#294 id=294 data-nosnippet>294</a>			<span class="kw">let </span>EventPayload = <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json!</a>({ <span class="string">"Owner"</span>: Owner, <span class="string">"Uris"</span>: ChangedURIKeys });
 <a href=#295 id=295 data-nosnippet>295</a>
-<a href=#296 id=296 data-nosnippet>296</a>			<span class="kw">if let </span><span class="prelude-val">Err</span>(Error) = <span class="self">self</span>.ApplicationHandle.emit(<span class="string">"sky://diagnostics/changed"</span>, EventPayload) {
-<a href=#297 id=297 data-nosnippet>297</a>				<span class="macro">error!</span>(<span class="string">"[DiagnosticProvider] Failed to emit 'diagnostics_changed' on clear: {}"</span>, Error);
+<a href=#296 id=296 data-nosnippet>296</a>			<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error) = <a class="self" href="#266">self</a>.ApplicationHandle.emit(<span class="string">"sky://diagnostics/changed"</span>, <a href="#294">EventPayload</a>) {
+<a href=#297 id=297 data-nosnippet>297</a>				<a href="https://docs.rs/log/0.4.29/log/macro.error.html">error!</a>(<span class="string">"[DiagnosticProvider] Failed to emit 'diagnostics_changed' on clear: {}"</span>, Error);
 <a href=#298 id=298 data-nosnippet>298</a>			}
 <a href=#299 id=299 data-nosnippet>299</a>		}
 <a href=#300 id=300 data-nosnippet>300</a>
-<a href=#301 id=301 data-nosnippet>301</a>		<span class="prelude-val">Ok</span>(())
+<a href=#301 id=301 data-nosnippet>301</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#302 id=302 data-nosnippet>302</a>	}
 <a href=#303 id=303 data-nosnippet>303</a>
 <a href=#304 id=304 data-nosnippet>304</a>	<span class="doccomment">/// Retrieves all diagnostics, optionally filtered by a resource URI.
 <a href=#305 id=305 data-nosnippet>305</a>	/// Returns diagnostics aggregated from all owners for the specified
 <a href=#306 id=306 data-nosnippet>306</a>	/// resource(s).
-<a href=#307 id=307 data-nosnippet>307</a>	</span><span class="kw">async fn </span>GetAllDiagnostics(<span class="kw-2">&amp;</span><span class="self">self</span>, ResourceURIFilterOption:<span class="prelude-ty">Option</span>&lt;Value&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;Value, CommonError&gt; {
-<a href=#308 id=308 data-nosnippet>308</a>		<span class="macro">debug!</span>(
+<a href=#307 id=307 data-nosnippet>307</a>	</span><span class="kw">async fn </span>GetAllDiagnostics(<span class="kw-2">&amp;</span><a class="self" href="#307">self</a>, <a href="#307">ResourceURIFilterOption</a>:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, CommonError&gt; {
+<a href=#308 id=308 data-nosnippet>308</a>		<a href="https://docs.rs/log/0.4.29/log/macro.debug.html">debug!</a>(
 <a href=#309 id=309 data-nosnippet>309</a>			<span class="string">"[DiagnosticProvider] Getting all diagnostics with filter: {:?}"</span>,
 <a href=#310 id=310 data-nosnippet>310</a>			ResourceURIFilterOption
 <a href=#311 id=311 data-nosnippet>311</a>		);
 <a href=#312 id=312 data-nosnippet>312</a>
-<a href=#313 id=313 data-nosnippet>313</a>		<span class="kw">let </span>DiagnosticsMapGuard = <span class="self">self
-<a href=#314 id=314 data-nosnippet>314</a>			</span>.ApplicationState
+<a href=#313 id=313 data-nosnippet>313</a>		<span class="kw">let </span>DiagnosticsMapGuard = <a class="self" href="#307">self</a>
+<a href=#314 id=314 data-nosnippet>314</a>			.ApplicationState
 <a href=#315 id=315 data-nosnippet>315</a>			.Feature
 <a href=#316 id=316 data-nosnippet>316</a>			.Diagnostics
 <a href=#317 id=317 data-nosnippet>317</a>			.DiagnosticsMap
-<a href=#318 id=318 data-nosnippet>318</a>			.lock()
-<a href=#319 id=319 data-nosnippet>319</a>			.map_err(Utility::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?</span>;
+<a href=#318 id=318 data-nosnippet>318</a>			.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>()
+<a href=#319 id=319 data-nosnippet>319</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(Utility::<a href="Utility/ErrorMapping.rs.html#13-19">MapApplicationStateLockErrorToCommonError</a>)<span class="question-mark">?</span>;
 <a href=#320 id=320 data-nosnippet>320</a>
-<a href=#321 id=321 data-nosnippet>321</a>		<span class="kw">let </span><span class="kw-2">mut </span>ResultMap:std::collections::HashMap&lt;String, Vec&lt;MarkerDataDTO&gt;&gt; = std::collections::HashMap::new();
+<a href=#321 id=321 data-nosnippet>321</a>		<span class="kw">let </span><span class="kw-2">mut </span>ResultMap:std::collections::<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="../ApplicationState/DTO/MarkerDataDTO.rs.html#35-74">MarkerDataDTO</a>&gt;&gt; = std::collections::<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>::<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.new">new</a>();
 <a href=#322 id=322 data-nosnippet>322</a>
-<a href=#323 id=323 data-nosnippet>323</a>		<span class="kw">if let </span><span class="prelude-val">Some</span>(FilterURIValue) = ResourceURIFilterOption {
-<a href=#324 id=324 data-nosnippet>324</a>			<span class="kw">let </span>FilterURIKey = Utility::GetURLFromURIComponentsDTO(<span class="kw-2">&amp;</span>FilterURIValue)<span class="question-mark">?</span>.to_string();
+<a href=#323 id=323 data-nosnippet>323</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(FilterURIValue) = <a href="#307">ResourceURIFilterOption</a> {
+<a href=#324 id=324 data-nosnippet>324</a>			<span class="kw">let </span>FilterURIKey = Utility::<a href="Utility/UriParsing.rs.html#10-26">GetURLFromURIComponentsDTO</a>(<span class="kw-2">&amp;</span><a href="#323">FilterURIValue</a>)<span class="question-mark">?</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>();
 <a href=#325 id=325 data-nosnippet>325</a>
 <a href=#326 id=326 data-nosnippet>326</a>			<span class="kw">for </span>OwnerMap <span class="kw">in </span>DiagnosticsMapGuard.values() {
 <a href=#327 id=327 data-nosnippet>327</a>				<span class="kw">if let </span><span class="prelude-val">Some</span>(Markers) = OwnerMap.get(<span class="kw-2">&amp;</span>FilterURIKey) {
@@ -337,11 +337,11 @@
 <a href=#337 id=337 data-nosnippet>337</a>			}
 <a href=#338 id=338 data-nosnippet>338</a>		}
 <a href=#339 id=339 data-nosnippet>339</a>
-<a href=#340 id=340 data-nosnippet>340</a>		<span class="kw">let </span>ResultList:Vec&lt;(String, Vec&lt;MarkerDataDTO&gt;)&gt; = ResultMap.into_iter().collect();
+<a href=#340 id=340 data-nosnippet>340</a>		<span class="kw">let </span>ResultList:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;(<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="../ApplicationState/DTO/MarkerDataDTO.rs.html#35-74">MarkerDataDTO</a>&gt;)&gt; = <a href="#321">ResultMap</a>.<a href="https://doc.rust-lang.org/nightly/core/iter/traits/collect/trait.IntoIterator.html#tymethod.into_iter">into_iter</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.collect">collect</a>();
 <a href=#341 id=341 data-nosnippet>341</a>
-<a href=#342 id=342 data-nosnippet>342</a>		<span class="macro">debug!</span>(<span class="string">"[DiagnosticProvider] Returning {} diagnostic collection(s)"</span>, ResultList.len());
+<a href=#342 id=342 data-nosnippet>342</a>		<a href="https://docs.rs/log/0.4.29/log/macro.debug.html">debug!</a>(<span class="string">"[DiagnosticProvider] Returning {} diagnostic collection(s)"</span>, ResultList.len());
 <a href=#343 id=343 data-nosnippet>343</a>
-<a href=#344 id=344 data-nosnippet>344</a>		serde_json::to_value(ResultList).map_err(|Error| CommonError::from(Error))
+<a href=#344 id=344 data-nosnippet>344</a>		serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/fn.to_value.html">to_value</a>(<a href="#340">ResultList</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| CommonError::<a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from">from</a>(<a href="#344">Error</a>))
 <a href=#345 id=345 data-nosnippet>345</a>	}
 <a href=#346 id=346 data-nosnippet>346</a>}
 </code></pre></div></section></main></body></html>

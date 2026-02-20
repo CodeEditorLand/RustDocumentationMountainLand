@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"struct":["ExtensionDescriptionStateDTO"]};
+window.SIDEBAR_ITEMS = {"constant":["MAX_ACTIVATION_EVENTS","MAX_EXTENSION_NAME_LENGTH","MAX_PUBLISHER_LENGTH","MAX_VERSION_LENGTH"],"struct":["ExtensionDescriptionStateDTO"]};

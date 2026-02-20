@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["Build","BuildWithConfig"],"struct":["StateBuildConfig"]};
+window.SIDEBAR_ITEMS = {"fn":["Build","BuildMinimal","BuildWithConfig","ValidateCapabilities"],"struct":["StateBuildConfig"]};

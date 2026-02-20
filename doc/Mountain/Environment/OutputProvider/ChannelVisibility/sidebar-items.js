@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["close_channel","reveal_channel"]};

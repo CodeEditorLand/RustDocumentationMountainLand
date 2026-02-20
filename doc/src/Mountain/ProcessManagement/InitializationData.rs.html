@@ -30,10 +30,10 @@
 <a href=#30 id=30 data-nosnippet>30</a>//! InitializationData is the **bootstrap orchestrator** for Mountain's
 <a href=#31 id=31 data-nosnippet>31</a>//! startup sequence:
 <a href=#32 id=32 data-nosnippet>32</a>//!
-<a href=#33 id=33 data-nosnippet>33</a>//! ```
+<a href=#33 id=33 data-nosnippet>33</a>//! ```text
 <a href=#34 id=34 data-nosnippet>34</a>//! Binary::Main ──► InitializationData ──► Sky (Frontend)
-<a href=#35 id=35 data-nosnippet>35</a>//!                        │
-<a href=#36 id=36 data-nosnippet>36</a>//!                        └─► Cocoon (Extension Host)
+<a href=#35 id=35 data-nosnippet>35</a>//! │
+<a href=#36 id=36 data-nosnippet>36</a>//! └─► Cocoon (Extension Host)
 <a href=#37 id=37 data-nosnippet>37</a>//! ```
 <a href=#38 id=38 data-nosnippet>38</a>//!
 <a href=#39 id=39 data-nosnippet>39</a>//! ### Position in Mountain
@@ -132,7 +132,7 @@
 <a href=#132 id=132 data-nosnippet>132</a>//! - [`ConstructExtensionHostInitializationData`]: Build IExtensionHostInitData
 <a href=#133 id=133 data-nosnippet>133</a>//!   for Cocoon
 <a href=#134 id=134 data-nosnippet>134</a>
-<a href=#135 id=135 data-nosnippet>135</a></span><span class="kw">use </span>std::{collections::HashMap, env, fs, path::PathBuf, sync::Arc};
+<a href=#135 id=135 data-nosnippet>135</a></span><span class="kw">use </span>std::{<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">collections::HashMap</a>, <a href="https://doc.rust-lang.org/nightly/core/macro.env.html">env</a>, <a href="https://doc.rust-lang.org/nightly/std/fs/index.html">fs</a>, <a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">path::PathBuf</a>, <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">sync::Arc</a>};
 <a href=#136 id=136 data-nosnippet>136</a>
 <a href=#137 id=137 data-nosnippet>137</a><span class="kw">use </span>CommonLibrary::{
 <a href=#138 id=138 data-nosnippet>138</a>	Environment::Requires::Requires,
@@ -140,12 +140,12 @@
 <a href=#140 id=140 data-nosnippet>140</a>	ExtensionManagement::ExtensionManagementService::ExtensionManagementService,
 <a href=#141 id=141 data-nosnippet>141</a>	Workspace::WorkspaceProvider::WorkspaceProvider,
 <a href=#142 id=142 data-nosnippet>142</a>};
-<a href=#143 id=143 data-nosnippet>143</a><span class="kw">use </span>log::info;
-<a href=#144 id=144 data-nosnippet>144</a><span class="kw">use </span>serde_json::{Value, json};
+<a href=#143 id=143 data-nosnippet>143</a><span class="kw">use </span><a href="https://docs.rs/log/0.4.29/log/macro.info.html">log::info</a>;
+<a href=#144 id=144 data-nosnippet>144</a><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json</a>};
 <a href=#145 id=145 data-nosnippet>145</a><span class="kw">use </span>tauri::{AppHandle, Manager, Wry};
-<a href=#146 id=146 data-nosnippet>146</a><span class="kw">use </span>uuid::Uuid;
+<a href=#146 id=146 data-nosnippet>146</a><span class="kw">use </span><a href="https://docs.rs/uuid/1.21.0/uuid/struct.Uuid.html">uuid::Uuid</a>;
 <a href=#147 id=147 data-nosnippet>147</a>
-<a href=#148 id=148 data-nosnippet>148</a><span class="kw">use </span>crate::{ApplicationState::ApplicationState, Environment::MountainEnvironment::MountainEnvironment};
+<a href=#148 id=148 data-nosnippet>148</a><span class="kw">use </span>crate::{<a href="../ApplicationState/State/ApplicationState.rs.html#65-88">ApplicationState::ApplicationState</a>, <a href="../Environment/MountainEnvironment.rs.html#220-230">Environment::MountainEnvironment::MountainEnvironment</a>};
 <a href=#149 id=149 data-nosnippet>149</a>
 <a href=#150 id=150 data-nosnippet>150</a><span class="doccomment">/// Loads or generates a persistent machine ID.
 <a href=#151 id=151 data-nosnippet>151</a>///
@@ -157,43 +157,43 @@
 <a href=#157 id=157 data-nosnippet>157</a>///
 <a href=#158 id=158 data-nosnippet>158</a>/// # Returns
 <a href=#159 id=159 data-nosnippet>159</a>/// The machine ID as a String
-<a href=#160 id=160 data-nosnippet>160</a></span><span class="kw">fn </span>get_or_generate_machine_id(app_data_dir:<span class="kw-2">&amp;</span>PathBuf) -&gt; String {
-<a href=#161 id=161 data-nosnippet>161</a>	<span class="kw">let </span>machine_id_path = app_data_dir.join(<span class="string">"machine-id.txt"</span>);
+<a href=#160 id=160 data-nosnippet>160</a></span><span class="kw">fn </span><a href="../../../Mountain/ProcessManagement/InitializationData/fn.get_or_generate_machine_id.html">get_or_generate_machine_id</a>(app_data_dir:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a> {
+<a href=#161 id=161 data-nosnippet>161</a>	<span class="kw">let </span>machine_id_path = <a href="#160">app_data_dir</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">"machine-id.txt"</span>);
 <a href=#162 id=162 data-nosnippet>162</a>
 <a href=#163 id=163 data-nosnippet>163</a>	<span class="comment">// Try to load existing machine ID
-<a href=#164 id=164 data-nosnippet>164</a>	</span><span class="kw">if let </span><span class="prelude-val">Ok</span>(content) = fs::read_to_string(<span class="kw-2">&amp;</span>machine_id_path) {
-<a href=#165 id=165 data-nosnippet>165</a>		<span class="kw">let </span>trimmed = content.trim();
-<a href=#166 id=166 data-nosnippet>166</a>		<span class="kw">if </span>!trimmed.is_empty() {
-<a href=#167 id=167 data-nosnippet>167</a>			<span class="macro">log::info!</span>(<span class="string">"[InitializationData] Loaded existing machine ID from disk"</span>);
-<a href=#168 id=168 data-nosnippet>168</a>			<span class="kw">return </span>trimmed.to_string();
+<a href=#164 id=164 data-nosnippet>164</a>	</span><span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(content) = fs::<a href="https://doc.rust-lang.org/nightly/std/fs/fn.read_to_string.html">read_to_string</a>(<span class="kw-2">&amp;</span><a href="#161">machine_id_path</a>) {
+<a href=#165 id=165 data-nosnippet>165</a>		<span class="kw">let </span>trimmed = <a href="#164">content</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.trim">trim</a>();
+<a href=#166 id=166 data-nosnippet>166</a>		<span class="kw">if </span>!<a href="#165">trimmed</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.is_empty">is_empty</a>() {
+<a href=#167 id=167 data-nosnippet>167</a>			<a href="https://docs.rs/log/0.4.29/log/macro.info.html">log::info!</a>(<span class="string">"[InitializationData] Loaded existing machine ID from disk"</span>);
+<a href=#168 id=168 data-nosnippet>168</a>			<span class="kw">return </span><a href="#165">trimmed</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>();
 <a href=#169 id=169 data-nosnippet>169</a>		}
 <a href=#170 id=170 data-nosnippet>170</a>	}
 <a href=#171 id=171 data-nosnippet>171</a>
 <a href=#172 id=172 data-nosnippet>172</a>	<span class="comment">// Generate and save new machine ID
-<a href=#173 id=173 data-nosnippet>173</a>	</span><span class="kw">let </span>new_machine_id = Uuid::new_v4().to_string();
+<a href=#173 id=173 data-nosnippet>173</a>	</span><span class="kw">let </span>new_machine_id = <a href="https://docs.rs/uuid/1.21.0/uuid/struct.Uuid.html">Uuid</a>::<a href="https://docs.rs/uuid/1.21.0/uuid/struct.Uuid.html#method.new_v4">new_v4</a>().<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>();
 <a href=#174 id=174 data-nosnippet>174</a>
 <a href=#175 id=175 data-nosnippet>175</a>	<span class="comment">// Ensure directory exists
-<a href=#176 id=176 data-nosnippet>176</a>	</span><span class="kw">if let </span><span class="prelude-val">Some</span>(parent) = machine_id_path.parent() {
-<a href=#177 id=177 data-nosnippet>177</a>		<span class="kw">if let </span><span class="prelude-val">Err</span>(e) = fs::create_dir_all(parent) {
-<a href=#178 id=178 data-nosnippet>178</a>			<span class="macro">log::warn!</span>(<span class="string">"[InitializationData] Failed to create machine ID directory: {}"</span>, e);
+<a href=#176 id=176 data-nosnippet>176</a>	</span><span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(parent) = <a href="#161">machine_id_path</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.parent">parent</a>() {
+<a href=#177 id=177 data-nosnippet>177</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(e) = fs::<a href="https://doc.rust-lang.org/nightly/std/fs/fn.create_dir_all.html">create_dir_all</a>(<a href="#176">parent</a>) {
+<a href=#178 id=178 data-nosnippet>178</a>			<a href="https://docs.rs/log/0.4.29/log/macro.warn.html">log::warn!</a>(<span class="string">"[InitializationData] Failed to create machine ID directory: {}"</span>, e);
 <a href=#179 id=179 data-nosnippet>179</a>		}
 <a href=#180 id=180 data-nosnippet>180</a>	}
 <a href=#181 id=181 data-nosnippet>181</a>
 <a href=#182 id=182 data-nosnippet>182</a>	<span class="comment">// Save to disk
-<a href=#183 id=183 data-nosnippet>183</a>	</span><span class="kw">if let </span><span class="prelude-val">Err</span>(e) = fs::write(<span class="kw-2">&amp;</span>machine_id_path, <span class="kw-2">&amp;</span>new_machine_id) {
-<a href=#184 id=184 data-nosnippet>184</a>		<span class="macro">log::warn!</span>(<span class="string">"[InitializationData] Failed to persist machine ID to disk: {}"</span>, e);
+<a href=#183 id=183 data-nosnippet>183</a>	</span><span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(e) = fs::<a href="https://doc.rust-lang.org/nightly/std/fs/fn.write.html">write</a>(<span class="kw-2">&amp;</span><a href="#161">machine_id_path</a>, <span class="kw-2">&amp;</span><a href="#173">new_machine_id</a>) {
+<a href=#184 id=184 data-nosnippet>184</a>		<a href="https://docs.rs/log/0.4.29/log/macro.warn.html">log::warn!</a>(<span class="string">"[InitializationData] Failed to persist machine ID to disk: {}"</span>, e);
 <a href=#185 id=185 data-nosnippet>185</a>	} <span class="kw">else </span>{
-<a href=#186 id=186 data-nosnippet>186</a>		<span class="macro">log::info!</span>(<span class="string">"[InitializationData] Generated and persisted new machine ID"</span>);
+<a href=#186 id=186 data-nosnippet>186</a>		<a href="https://docs.rs/log/0.4.29/log/macro.info.html">log::info!</a>(<span class="string">"[InitializationData] Generated and persisted new machine ID"</span>);
 <a href=#187 id=187 data-nosnippet>187</a>	}
 <a href=#188 id=188 data-nosnippet>188</a>
-<a href=#189 id=189 data-nosnippet>189</a>	new_machine_id
+<a href=#189 id=189 data-nosnippet>189</a>	<a href="#173">new_machine_id</a>
 <a href=#190 id=190 data-nosnippet>190</a>}
 <a href=#191 id=191 data-nosnippet>191</a>
 <a href=#192 id=192 data-nosnippet>192</a><span class="doccomment">/// Constructs the `ISandboxConfiguration` payload needed by the `Sky` frontend.
-<a href=#193 id=193 data-nosnippet>193</a></span><span class="kw">pub async fn </span>ConstructSandboxConfiguration(
+<a href=#193 id=193 data-nosnippet>193</a></span><span class="kw">pub async fn </span><a href="../../../Mountain/ProcessManagement/InitializationData/fn.ConstructSandboxConfiguration.html">ConstructSandboxConfiguration</a>(
 <a href=#194 id=194 data-nosnippet>194</a>	ApplicationHandle:<span class="kw-2">&amp;</span>AppHandle&lt;Wry&gt;,
 <a href=#195 id=195 data-nosnippet>195</a>
-<a href=#196 id=196 data-nosnippet>196</a>	ApplicationState:<span class="kw-2">&amp;</span>Arc&lt;ApplicationState&gt;,
+<a href=#196 id=196 data-nosnippet>196</a>	ApplicationState:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../ApplicationState/State/ApplicationState.rs.html#65-88">ApplicationState</a>&gt;,
 <a href=#197 id=197 data-nosnippet>197</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Value, CommonError&gt; {
 <a href=#198 id=198 data-nosnippet>198</a>	<span class="macro">info!</span>(<span class="string">"[InitializationData] Constructing ISandboxConfiguration for Sky."</span>);
 <a href=#199 id=199 data-nosnippet>199</a>
@@ -314,7 +314,7 @@
 <a href=#314 id=314 data-nosnippet>314</a>}
 <a href=#315 id=315 data-nosnippet>315</a>
 <a href=#316 id=316 data-nosnippet>316</a><span class="doccomment">/// Constructs the `IExtensionHostInitData` payload sent to `Cocoon`.
-<a href=#317 id=317 data-nosnippet>317</a></span><span class="kw">pub async fn </span>ConstructExtensionHostInitializationData(Environment:<span class="kw-2">&amp;</span>MountainEnvironment) -&gt; <span class="prelude-ty">Result</span>&lt;Value, CommonError&gt; {
+<a href=#317 id=317 data-nosnippet>317</a></span><span class="kw">pub async fn </span><a href="../../../Mountain/ProcessManagement/InitializationData/fn.ConstructExtensionHostInitializationData.html">ConstructExtensionHostInitializationData</a>(Environment:<span class="kw-2">&amp;</span><a href="../Environment/MountainEnvironment.rs.html#220-230">MountainEnvironment</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Value, CommonError&gt; {
 <a href=#318 id=318 data-nosnippet>318</a>	<span class="macro">info!</span>(<span class="string">"[InitializationData] Constructing IExtensionHostInitData for Cocoon."</span>);
 <a href=#319 id=319 data-nosnippet>319</a>
 <a href=#320 id=320 data-nosnippet>320</a>	<span class="kw">let </span>ApplicationState = <span class="kw-2">&amp;</span>Environment.ApplicationState;

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["Loading"]};
+window.SIDEBAR_ITEMS = {"mod":["GetValue","InspectValue","Loading","UpdateValue"]};

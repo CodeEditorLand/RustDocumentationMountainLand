@@ -40,20 +40,20 @@ Vine gRPC Inter-Process Communication (IPC) system.</p>
 <li><code>AddrParseError</code> → <code>AddressParseError</code></li>
 <li><code>PoisonError&lt;T&gt;</code> → <code>InternalLockError</code></li>
 </ul>
-<h3 id="usage-example"><a class="doc-anchor" href="#usage-example">§</a>Usage Example</h3>
-<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">fn </span>handle_error(error:VineError) {
-	<span class="kw">match </span>error {
-		VineError::RequestTimeout { SideCarIdentifier, MethodName, TimeoutMilliseconds } =&gt; {
-			<span class="macro">eprintln!</span>(
-				<span class="string">"Request to {} method '{}' timed out after {}ms"</span>,
-				SideCarIdentifier, MethodName, TimeoutMilliseconds
-			);
-			<span class="comment">// Implement retry logic or fallback behavior
-		</span>},
-		VineError::ClientNotConnected(id) =&gt; {
-			<span class="macro">eprintln!</span>(<span class="string">"Sidecar '{}' not connected, attempting reconnection..."</span>, id);
-			<span class="comment">// Attempt to reconnect
-		</span>},
-		<span class="kw">_ </span>=&gt; <span class="macro">eprintln!</span>(<span class="string">"Vine error: {}"</span>, error),
-	}
+<h3 id="usage-example"><a class="doc-anchor" href="#usage-example">§</a>Usage Example</h3><div class="example-wrap"><pre class="language-text"><code># use Vine::Error::VineError;
+fn handle_error(error:VineError) {
+match error {
+VineError::RequestTimeout { SideCarIdentifier, MethodName, TimeoutMilliseconds } =&gt; {
+eprintln!(
+&quot;Request to {} method &#39;{}&#39; timed out after {}ms&quot;,
+SideCarIdentifier, MethodName, TimeoutMilliseconds
+);
+// Implement retry logic or fallback behavior
+},
+VineError::ClientNotConnected(id) =&gt; {
+eprintln!(&quot;Sidecar &#39;{}&#39; not connected, attempting reconnection...&quot;, id);
+// Attempt to reconnect
+},
+_ =&gt; eprintln!(&quot;Vine error: {}&quot;, error),
+}
 }</code></pre></div></div></details><h2 id="enums" class="section-header">Enums<a href="#enums" class="anchor">§</a></h2><dl class="item-table"><dt><a class="enum" href="enum.VineError.html" title="enum Mountain::Vine::Error::VineError">Vine<wbr>Error</a></dt><dd>A comprehensive error enum for the Vine IPC layer.</dd></dl></section></div></main></body></html>

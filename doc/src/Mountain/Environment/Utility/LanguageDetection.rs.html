@@ -2,23 +2,23 @@
 <a href=#2 id=2 data-nosnippet>2</a>//!
 <a href=#3 id=3 data-nosnippet>3</a>//! Functions for inferring language identifiers from file paths and content.
 <a href=#4 id=4 data-nosnippet>4</a>
-<a href=#5 id=5 data-nosnippet>5</a></span><span class="kw">use </span>std::{ffi::OsStr, path::Path};
+<a href=#5 id=5 data-nosnippet>5</a></span><span class="kw">use </span>std::{<a href="https://doc.rust-lang.org/nightly/std/ffi/os_str/struct.OsStr.html">ffi::OsStr</a>, <a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html">path::Path</a>};
 <a href=#6 id=6 data-nosnippet>6</a>
 <a href=#7 id=7 data-nosnippet>7</a><span class="doccomment">/// A simple utility to detect a language identifier string from a file path's
 <a href=#8 id=8 data-nosnippet>8</a>/// extension.
-<a href=#9 id=9 data-nosnippet>9</a></span><span class="kw">pub fn </span>DetectLanguageIdentifierFromFilePath(Path:<span class="kw-2">&amp;</span>Path) -&gt; String {
-<a href=#10 id=10 data-nosnippet>10</a>	<span class="kw">match </span>Path.extension().and_then(OsStr::to_str) {
-<a href=#11 id=11 data-nosnippet>11</a>		<span class="prelude-val">Some</span>(<span class="string">"js"</span>) | <span class="prelude-val">Some</span>(<span class="string">"mjs"</span>) | <span class="prelude-val">Some</span>(<span class="string">"cjs"</span>) =&gt; <span class="string">"javascript"</span>,
-<a href=#12 id=12 data-nosnippet>12</a>		<span class="prelude-val">Some</span>(<span class="string">"ts"</span>) | <span class="prelude-val">Some</span>(<span class="string">"mts"</span>) | <span class="prelude-val">Some</span>(<span class="string">"cts"</span>) =&gt; <span class="string">"typescript"</span>,
-<a href=#13 id=13 data-nosnippet>13</a>		<span class="prelude-val">Some</span>(<span class="string">"jsx"</span>) =&gt; <span class="string">"javascriptreact"</span>,
-<a href=#14 id=14 data-nosnippet>14</a>		<span class="prelude-val">Some</span>(<span class="string">"tsx"</span>) =&gt; <span class="string">"typescriptreact"</span>,
-<a href=#15 id=15 data-nosnippet>15</a>		<span class="prelude-val">Some</span>(<span class="string">"rs"</span>) =&gt; <span class="string">"rust"</span>,
-<a href=#16 id=16 data-nosnippet>16</a>		<span class="prelude-val">Some</span>(<span class="string">"md"</span>) =&gt; <span class="string">"markdown"</span>,
-<a href=#17 id=17 data-nosnippet>17</a>		<span class="prelude-val">Some</span>(<span class="string">"json"</span>) =&gt; <span class="string">"json"</span>,
-<a href=#18 id=18 data-nosnippet>18</a>		<span class="prelude-val">Some</span>(<span class="string">"html"</span>) =&gt; <span class="string">"html"</span>,
-<a href=#19 id=19 data-nosnippet>19</a>		<span class="prelude-val">Some</span>(<span class="string">"css"</span>) =&gt; <span class="string">"css"</span>,
+<a href=#9 id=9 data-nosnippet>9</a></span><span class="kw">pub fn </span><a href="../../../../Mountain/Environment/Utility/LanguageDetection/fn.DetectLanguageIdentifierFromFilePath.html">DetectLanguageIdentifierFromFilePath</a>(Path:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html">Path</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a> {
+<a href=#10 id=10 data-nosnippet>10</a>	<span class="kw">match </span><a href="#9">Path</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.extension">extension</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(<a href="https://doc.rust-lang.org/nightly/std/ffi/os_str/struct.OsStr.html">OsStr</a>::<a href="https://doc.rust-lang.org/nightly/std/ffi/os_str/struct.OsStr.html#method.to_str">to_str</a>) {
+<a href=#11 id=11 data-nosnippet>11</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<span class="string">"js"</span>) | <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<span class="string">"mjs"</span>) | <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<span class="string">"cjs"</span>) =&gt; <span class="string">"javascript"</span>,
+<a href=#12 id=12 data-nosnippet>12</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<span class="string">"ts"</span>) | <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<span class="string">"mts"</span>) | <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<span class="string">"cts"</span>) =&gt; <span class="string">"typescript"</span>,
+<a href=#13 id=13 data-nosnippet>13</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<span class="string">"jsx"</span>) =&gt; <span class="string">"javascriptreact"</span>,
+<a href=#14 id=14 data-nosnippet>14</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<span class="string">"tsx"</span>) =&gt; <span class="string">"typescriptreact"</span>,
+<a href=#15 id=15 data-nosnippet>15</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<span class="string">"rs"</span>) =&gt; <span class="string">"rust"</span>,
+<a href=#16 id=16 data-nosnippet>16</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<span class="string">"md"</span>) =&gt; <span class="string">"markdown"</span>,
+<a href=#17 id=17 data-nosnippet>17</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<span class="string">"json"</span>) =&gt; <span class="string">"json"</span>,
+<a href=#18 id=18 data-nosnippet>18</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<span class="string">"html"</span>) =&gt; <span class="string">"html"</span>,
+<a href=#19 id=19 data-nosnippet>19</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<span class="string">"css"</span>) =&gt; <span class="string">"css"</span>,
 <a href=#20 id=20 data-nosnippet>20</a>		<span class="kw">_ </span>=&gt; <span class="string">"plaintext"</span>,
 <a href=#21 id=21 data-nosnippet>21</a>	}
-<a href=#22 id=22 data-nosnippet>22</a>	.to_string()
+<a href=#22 id=22 data-nosnippet>22</a>	.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>()
 <a href=#23 id=23 data-nosnippet>23</a>}
 </code></pre></div></section></main></body></html>

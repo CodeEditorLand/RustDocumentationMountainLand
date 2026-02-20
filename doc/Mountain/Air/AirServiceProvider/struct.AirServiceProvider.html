@@ -1,26 +1,32 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="AirServiceProvider provides a high-level, convenient interface to the Air daemon service."><title>AirServiceProvider in Mountain::Air::AirServiceProvider - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="sidebar-items.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc struct"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">AirServiceProvider</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">AirService<wbr>Provider</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#example" title="Example">Example</a></li></ul><h3><a href="#implementations">Methods</a></h3><ul class="block method"><li><a href="#method.address" title="address">address</a></li><li><a href="#method.apply_update" title="apply_update">apply_update</a></li><li><a href="#method.authenticate" title="authenticate">authenticate</a></li><li><a href="#method.check_for_updates" title="check_for_updates">check_for_updates</a></li><li><a href="#method.client" title="client">client</a></li><li><a href="#method.download_file" title="download_file">download_file</a></li><li><a href="#method.download_stream" title="download_stream">download_stream</a></li><li><a href="#method.download_update" title="download_update">download_update</a></li><li><a href="#method.from_client" title="from_client">from_client</a></li><li><a href="#method.get_configuration" title="get_configuration">get_configuration</a></li><li><a href="#method.get_file_info" title="get_file_info">get_file_info</a></li><li><a href="#method.get_metrics" title="get_metrics">get_metrics</a></li><li><a href="#method.get_resource_usage" title="get_resource_usage">get_resource_usage</a></li><li><a href="#method.get_status" title="get_status">get_status</a></li><li><a href="#method.health_check" title="health_check">health_check</a></li><li><a href="#method.index_files" title="index_files">index_files</a></li><li><a href="#method.is_connected" title="is_connected">is_connected</a></li><li><a href="#method.new" title="new">new</a></li><li><a href="#method.new_default" title="new_default">new_default</a></li><li><a href="#method.search_files" title="search_files">search_files</a></li><li><a href="#method.set_resource_limits" title="set_resource_limits">set_resource_limits</a></li><li><a href="#method.update_configuration" title="update_configuration">update_configuration</a></li></ul><h3><a href="#trait-implementations">Trait Implementations</a></h3><ul class="block trait-implementation"><li><a href="#impl-Clone-for-AirServiceProvider" title="Clone">Clone</a></li><li><a href="#impl-Debug-for-AirServiceProvider" title="Debug">Debug</a></li></ul><h3><a href="#synthetic-implementations">Auto Trait Implementations</a></h3><ul class="block synthetic-implementation"><li><a href="#impl-RefUnwindSafe-for-AirServiceProvider" title="!RefUnwindSafe">!RefUnwindSafe</a></li><li><a href="#impl-UnwindSafe-for-AirServiceProvider" title="!UnwindSafe">!UnwindSafe</a></li><li><a href="#impl-Freeze-for-AirServiceProvider" title="Freeze">Freeze</a></li><li><a href="#impl-Send-for-AirServiceProvider" title="Send">Send</a></li><li><a href="#impl-Sync-for-AirServiceProvider" title="Sync">Sync</a></li><li><a href="#impl-Unpin-for-AirServiceProvider" title="Unpin">Unpin</a></li></ul><h3><a href="#blanket-implementations">Blanket Implementations</a></h3><ul class="block blanket-implementation"><li><a href="#impl-Any-for-T" title="Any">Any</a></li><li><a href="#impl-AutoreleaseSafe-for-T" title="AutoreleaseSafe">AutoreleaseSafe</a></li><li><a href="#impl-Borrow%3CT%3E-for-T" title="Borrow&#60;T&#62;">Borrow&#60;T&#62;</a></li><li><a href="#impl-BorrowMut%3CT%3E-for-T" title="BorrowMut&#60;T&#62;">BorrowMut&#60;T&#62;</a></li><li><a href="#impl-CloneToUninit-for-T" title="CloneToUninit">CloneToUninit</a></li><li><a href="#impl-Downcast-for-T" title="Downcast">Downcast</a></li><li><a href="#impl-DowncastSync-for-T" title="DowncastSync">DowncastSync</a></li><li><a href="#impl-From%3CT%3E-for-T" title="From&#60;T&#62;">From&#60;T&#62;</a></li><li><a href="#impl-FromRef%3CT%3E-for-T" title="FromRef&#60;T&#62;">FromRef&#60;T&#62;</a></li><li><a href="#impl-Instrument-for-T" title="Instrument">Instrument</a></li><li><a href="#impl-Into%3CU%3E-for-T" title="Into&#60;U&#62;">Into&#60;U&#62;</a></li><li><a href="#impl-IntoRequest%3CT%3E-for-T" title="IntoRequest&#60;T&#62;">IntoRequest&#60;T&#62;</a></li><li><a href="#impl-LayerExt%3CL%3E-for-L" title="LayerExt&#60;L&#62;">LayerExt&#60;L&#62;</a></li><li><a href="#impl-Pointable-for-T" title="Pointable">Pointable</a></li><li><a href="#impl-PolicyExt-for-T" title="PolicyExt">PolicyExt</a></li><li><a href="#impl-Same-for-T" title="Same">Same</a></li><li><a href="#impl-ToOwned-for-T" title="ToOwned">ToOwned</a></li><li><a href="#impl-TryFrom%3CU%3E-for-T" title="TryFrom&#60;U&#62;">TryFrom&#60;U&#62;</a></li><li><a href="#impl-TryInto%3CU%3E-for-T" title="TryInto&#60;U&#62;">TryInto&#60;U&#62;</a></li><li><a href="#impl-UserEvent-for-T" title="UserEvent">UserEvent</a></li><li><a href="#impl-VZip%3CV%3E-for-T" title="VZip&#60;V&#62;">VZip&#60;V&#62;</a></li><li><a href="#impl-WithSubscriber-for-T" title="WithSubscriber">WithSubscriber</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="index.html">In Mountain::<wbr>Air::<wbr>AirService<wbr>Provider</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Air</a>::<wbr><a href="index.html">AirServiceProvider</a></div><h1>Struct <span class="struct">AirService<wbr>Provider</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#126-129">Source</a> </span></div><pre class="rust item-decl"><code>pub struct AirServiceProvider { <span class="comment">/* private fields */</span> }</code></pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>AirServiceProvider provides a high-level, convenient interface to the Air
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="AirServiceProvider provides a high-level, convenient interface to the Air daemon service."><title>AirServiceProvider in Mountain::Air::AirServiceProvider - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-77263533.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.95.0-nightly (d940e5684 2026-01-19)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="sidebar-items.js"></script><script defer src="../../../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-ffcac47a.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc struct"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">AirServiceProvider</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">AirService<wbr>Provider</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#example" title="Example">Example</a></li></ul><h3><a href="#fields">Fields</a></h3><ul class="block structfield"><li><a href="#structfield.client" title="client">client</a></li></ul><h3><a href="#implementations">Methods</a></h3><ul class="block method"><li><a href="#method.address" title="address">address</a></li><li><a href="#method.apply_update" title="apply_update">apply_update</a></li><li><a href="#method.authenticate" title="authenticate">authenticate</a></li><li><a href="#method.check_for_updates" title="check_for_updates">check_for_updates</a></li><li><a href="#method.client" title="client">client</a></li><li><a href="#method.download_file" title="download_file">download_file</a></li><li><a href="#method.download_stream" title="download_stream">download_stream</a></li><li><a href="#method.download_update" title="download_update">download_update</a></li><li><a href="#method.from_client" title="from_client">from_client</a></li><li><a href="#method.get_configuration" title="get_configuration">get_configuration</a></li><li><a href="#method.get_file_info" title="get_file_info">get_file_info</a></li><li><a href="#method.get_metrics" title="get_metrics">get_metrics</a></li><li><a href="#method.get_resource_usage" title="get_resource_usage">get_resource_usage</a></li><li><a href="#method.get_status" title="get_status">get_status</a></li><li><a href="#method.health_check" title="health_check">health_check</a></li><li><a href="#method.index_files" title="index_files">index_files</a></li><li><a href="#method.is_connected" title="is_connected">is_connected</a></li><li><a href="#method.new" title="new">new</a></li><li><a href="#method.new_default" title="new_default">new_default</a></li><li><a href="#method.search_files" title="search_files">search_files</a></li><li><a href="#method.set_resource_limits" title="set_resource_limits">set_resource_limits</a></li><li><a href="#method.update_configuration" title="update_configuration">update_configuration</a></li></ul><h3><a href="#trait-implementations">Trait Implementations</a></h3><ul class="block trait-implementation"><li><a href="#impl-Clone-for-AirServiceProvider" title="Clone">Clone</a></li><li><a href="#impl-Debug-for-AirServiceProvider" title="Debug">Debug</a></li></ul><h3><a href="#synthetic-implementations">Auto Trait Implementations</a></h3><ul class="block synthetic-implementation"><li><a href="#impl-RefUnwindSafe-for-AirServiceProvider" title="!RefUnwindSafe">!RefUnwindSafe</a></li><li><a href="#impl-UnwindSafe-for-AirServiceProvider" title="!UnwindSafe">!UnwindSafe</a></li><li><a href="#impl-Freeze-for-AirServiceProvider" title="Freeze">Freeze</a></li><li><a href="#impl-Send-for-AirServiceProvider" title="Send">Send</a></li><li><a href="#impl-Sync-for-AirServiceProvider" title="Sync">Sync</a></li><li><a href="#impl-Unpin-for-AirServiceProvider" title="Unpin">Unpin</a></li></ul><h3><a href="#blanket-implementations">Blanket Implementations</a></h3><ul class="block blanket-implementation"><li><a href="#impl-Any-for-T" title="Any">Any</a></li><li><a href="#impl-AutoreleaseSafe-for-T" title="AutoreleaseSafe">AutoreleaseSafe</a></li><li><a href="#impl-Borrow%3CT%3E-for-T" title="Borrow&#60;T&#62;">Borrow&#60;T&#62;</a></li><li><a href="#impl-BorrowMut%3CT%3E-for-T" title="BorrowMut&#60;T&#62;">BorrowMut&#60;T&#62;</a></li><li><a href="#impl-CloneToUninit-for-T" title="CloneToUninit">CloneToUninit</a></li><li><a href="#impl-Downcast-for-T" title="Downcast">Downcast</a></li><li><a href="#impl-DowncastSync-for-T" title="DowncastSync">DowncastSync</a></li><li><a href="#impl-From%3CT%3E-for-T" title="From&#60;T&#62;">From&#60;T&#62;</a></li><li><a href="#impl-FromRef%3CT%3E-for-T" title="FromRef&#60;T&#62;">FromRef&#60;T&#62;</a></li><li><a href="#impl-FutureExt-for-T" title="FutureExt">FutureExt</a></li><li><a href="#impl-Instrument-for-T" title="Instrument">Instrument</a></li><li><a href="#impl-Into%3CU%3E-for-T" title="Into&#60;U&#62;">Into&#60;U&#62;</a></li><li><a href="#impl-IntoRequest%3CT%3E-for-T" title="IntoRequest&#60;T&#62;">IntoRequest&#60;T&#62;</a></li><li><a href="#impl-LayerExt%3CL%3E-for-L" title="LayerExt&#60;L&#62;">LayerExt&#60;L&#62;</a></li><li><a href="#impl-Pointable-for-T" title="Pointable">Pointable</a></li><li><a href="#impl-PolicyExt-for-T" title="PolicyExt">PolicyExt</a></li><li><a href="#impl-Same-for-T" title="Same">Same</a></li><li><a href="#impl-ToOwned-for-T" title="ToOwned">ToOwned</a></li><li><a href="#impl-TryFrom%3CU%3E-for-T" title="TryFrom&#60;U&#62;">TryFrom&#60;U&#62;</a></li><li><a href="#impl-TryInto%3CU%3E-for-T" title="TryInto&#60;U&#62;">TryInto&#60;U&#62;</a></li><li><a href="#impl-UserEvent-for-T" title="UserEvent">UserEvent</a></li><li><a href="#impl-VZip%3CV%3E-for-T" title="VZip&#60;V&#62;">VZip&#60;V&#62;</a></li><li><a href="#impl-WithSubscriber-for-T" title="WithSubscriber">WithSubscriber</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="index.html">In Mountain::<wbr>Air::<wbr>AirService<wbr>Provider</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Air</a>::<wbr><a href="index.html">AirServiceProvider</a></div><h1>Struct <span class="struct">AirService<wbr>Provider</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#126-129">Source</a> </span></div><pre class="rust item-decl"><code>pub struct AirServiceProvider {
+    client: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html" title="struct alloc::sync::Arc">Arc</a>&lt;<a class="struct" href="../AirClient/struct.AirClient.html" title="struct Mountain::Air::AirClient::AirClient">AirClient</a>&gt;,
+}</code></pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>AirServiceProvider provides a high-level, convenient interface to the Air
 daemon service.</p>
 <p>This provider wraps the AirClient and provides simplified methods with
 automatic request ID generation and error handling. It acts as a facade
 pattern, hiding the complexity of gRPC communication from the rest of the
 Mountain application.</p>
-<h2 id="example"><a class="doc-anchor" href="#example">§</a>Example</h2>
-<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>Mountain::Air::AirServiceProvider::{AirServiceProvider, DEFAULT_AIR_SERVER_ADDRESS};
-<span class="kw">use </span>CommonLibrary::Error::CommonError::CommonError;
+<h2 id="example"><a class="doc-anchor" href="#example">§</a>Example</h2><div class="example-wrap"><pre class="language-text"><code>use Mountain::Air::AirServiceProvider::{AirServiceProvider, DEFAULT_AIR_SERVER_ADDRESS};
+use CommonLibrary::Error::CommonError::CommonError;
 
-<span class="kw">let </span>provider = AirServiceProvider::new(DEFAULT_AIR_SERVER_ADDRESS.to_string()).<span class="kw">await</span><span class="question-mark">?</span>;
+# #[tokio::main]
+# async fn main() -&gt; Result&lt;(), CommonError&gt; {
+let provider = AirServiceProvider::new(DEFAULT_AIR_SERVER_ADDRESS.to_string()).await?;
 
-<span class="comment">// Check for health
-</span><span class="kw">let </span>is_healthy = provider.health_check().<span class="kw">await</span><span class="question-mark">?</span>;
-<span class="macro">println!</span>(<span class="string">"Air service healthy: {}"</span>, is_healthy);
+// Check for health
+let is_healthy = provider.health_check().await?;
+println!(&quot;Air service healthy: {}&quot;, is_healthy);
 
-<span class="comment">// Check for updates
-</span><span class="kw">if let </span><span class="prelude-val">Some</span>(update) =
-	provider.check_for_updates(<span class="string">"1.0.0"</span>.to_string(), <span class="string">"stable"</span>.to_string()).<span class="kw">await</span><span class="question-mark">?
-</span>{
-	<span class="macro">println!</span>(<span class="string">"Update available: {}"</span>, update.version);
+// Check for updates
+if let Some(update) =
+	provider.check_for_updates(&quot;1.0.0&quot;.to_string(), &quot;stable&quot;.to_string()).await?
+{
+	println!(&quot;Update available: {}&quot;, update.version);
 }
-</code></pre></div></div></details><h2 id="implementations" class="section-header">Implementations<a href="#implementations" class="anchor">§</a></h2><div id="implementations-list"><details class="toggle implementors-toggle" open><summary><section id="impl-AirServiceProvider" class="impl"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#131-702">Source</a><a href="#impl-AirServiceProvider" class="anchor">§</a><h3 class="code-header">impl <a class="struct" href="struct.AirServiceProvider.html" title="struct Mountain::Air::AirServiceProvider::AirServiceProvider">AirServiceProvider</a></h3></section></summary><div class="impl-items"><details class="toggle method-toggle" open><summary><section id="method.new" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#153-161">Source</a><h4 class="code-header">pub async fn <a href="#method.new" class="fn">new</a>(address: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;Self, CommonError&gt;</h4></section></summary><div class="docblock"><p>Creates a new AirServiceProvider and connects to the Air daemon.</p>
+
+# Ok(())
+# }</code></pre></div></div></details><h2 id="fields" class="fields section-header">Fields<a href="#fields" class="anchor">§</a></h2><span id="structfield.client" class="structfield section-header"><a href="#structfield.client" class="anchor field">§</a><code>client: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html" title="struct alloc::sync::Arc">Arc</a>&lt;<a class="struct" href="../AirClient/struct.AirClient.html" title="struct Mountain::Air::AirClient::AirClient">AirClient</a>&gt;</code></span><div class="docblock"><p>The underlying Air client wrapped in Arc for thread safety</p>
+</div><h2 id="implementations" class="section-header">Implementations<a href="#implementations" class="anchor">§</a></h2><div id="implementations-list"><details class="toggle implementors-toggle" open><summary><section id="impl-AirServiceProvider" class="impl"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#131-702">Source</a><a href="#impl-AirServiceProvider" class="anchor">§</a><h3 class="code-header">impl <a class="struct" href="struct.AirServiceProvider.html" title="struct Mountain::Air::AirServiceProvider::AirServiceProvider">AirServiceProvider</a></h3></section></summary><div class="impl-items"><details class="toggle method-toggle" open><summary><section id="method.new" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#153-161">Source</a><h4 class="code-header">pub async fn <a href="#method.new" class="fn">new</a>(address: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;Self, CommonError&gt;</h4></section></summary><div class="docblock"><p>Creates a new AirServiceProvider and connects to the Air daemon.</p>
 <h5 id="arguments"><a class="doc-anchor" href="#arguments">§</a>Arguments</h5>
 <ul>
 <li><code>address</code> - The gRPC server address (defaults to <code>[::1]:50053</code>)</li>
@@ -30,22 +36,28 @@ Mountain application.</p>
 <li><code>Ok(Self)</code> - Successfully created provider</li>
 <li><code>Err(CommonError)</code> - Connection failure</li>
 </ul>
-<h5 id="example-1"><a class="doc-anchor" href="#example-1">§</a>Example</h5>
-<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>Mountain::Air::AirServiceProvider::AirServiceProvider;
-<span class="kw">use </span>CommonLibrary::Error::CommonError::CommonError;
+<h5 id="example-1"><a class="doc-anchor" href="#example-1">§</a>Example</h5><div class="example-wrap"><pre class="language-text"><code>use Mountain::Air::AirServiceProvider::AirServiceProvider;
+use CommonLibrary::Error::CommonError::CommonError;
 
-<span class="kw">let </span>provider = AirServiceProvider::new(<span class="string">"http://[::1]:50053"</span>.to_string()).<span class="kw">await</span><span class="question-mark">?</span>;</code></pre></div></div></details><details class="toggle method-toggle" open><summary><section id="method.new_default" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#183">Source</a><h4 class="code-header">pub async fn <a href="#method.new_default" class="fn">new_default</a>() -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;Self, CommonError&gt;</h4></section></summary><div class="docblock"><p>Creates a new AirServiceProvider with the default address.</p>
+# #[tokio::main]
+# async fn main() -&gt; Result&lt;(), CommonError&gt; {
+let provider = AirServiceProvider::new(&quot;http://[::1]:50053&quot;.to_string()).await?;
+# Ok(())
+# }</code></pre></div></div></details><details class="toggle method-toggle" open><summary><section id="method.new_default" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#183">Source</a><h4 class="code-header">pub async fn <a href="#method.new_default" class="fn">new_default</a>() -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;Self, CommonError&gt;</h4></section></summary><div class="docblock"><p>Creates a new AirServiceProvider with the default address.</p>
 <p>This is a convenience method that uses <a href="../AirClient/constant.DEFAULT_AIR_SERVER_ADDRESS.html" title="constant Mountain::Air::AirClient::DEFAULT_AIR_SERVER_ADDRESS"><code>DEFAULT_AIR_SERVER_ADDRESS</code></a>.</p>
 <h5 id="returns-1"><a class="doc-anchor" href="#returns-1">§</a>Returns</h5>
 <ul>
 <li><code>Ok(Self)</code> - Successfully created provider</li>
 <li><code>Err(CommonError)</code> - Connection failure</li>
 </ul>
-<h5 id="example-2"><a class="doc-anchor" href="#example-2">§</a>Example</h5>
-<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>Mountain::Air::AirServiceProvider::AirServiceProvider;
-<span class="kw">use </span>CommonLibrary::Error::CommonError::CommonError;
+<h5 id="example-2"><a class="doc-anchor" href="#example-2">§</a>Example</h5><div class="example-wrap"><pre class="language-text"><code>use Mountain::Air::AirServiceProvider::AirServiceProvider;
+use CommonLibrary::Error::CommonError::CommonError;
 
-<span class="kw">let </span>provider = AirServiceProvider::new_default().<span class="kw">await</span><span class="question-mark">?</span>;</code></pre></div></div></details><details class="toggle method-toggle" open><summary><section id="method.from_client" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#195-198">Source</a><h4 class="code-header">pub fn <a href="#method.from_client" class="fn">from_client</a>(client: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html" title="struct alloc::sync::Arc">Arc</a>&lt;<a class="struct" href="../AirClient/struct.AirClient.html" title="struct Mountain::Air::AirClient::AirClient">AirClient</a>&gt;) -&gt; Self</h4></section></summary><div class="docblock"><p>Creates a new AirServiceProvider from an existing AirClient.</p>
+# #[tokio::main]
+# async fn main() -&gt; Result&lt;(), CommonError&gt; {
+let provider = AirServiceProvider::new_default().await?;
+# Ok(())
+# }</code></pre></div></div></details><details class="toggle method-toggle" open><summary><section id="method.from_client" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#195-198">Source</a><h4 class="code-header">pub fn <a href="#method.from_client" class="fn">from_client</a>(client: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html" title="struct alloc::sync::Arc">Arc</a>&lt;<a class="struct" href="../AirClient/struct.AirClient.html" title="struct Mountain::Air::AirClient::AirClient">AirClient</a>&gt;) -&gt; Self</h4></section></summary><div class="docblock"><p>Creates a new AirServiceProvider from an existing AirClient.</p>
 <p>This is useful when you need to share a client or have special
 connection requirements.</p>
 <h5 id="arguments-1"><a class="doc-anchor" href="#arguments-1">§</a>Arguments</h5>
@@ -89,11 +101,17 @@ interface for authentication.</p>
 <li><code>Ok(token)</code> - Authentication token if successful</li>
 <li><code>Err(CommonError)</code> - Authentication error</li>
 </ul>
-<h5 id="example-3"><a class="doc-anchor" href="#example-3">§</a>Example</h5>
-<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>token = provider
-	.authenticate(<span class="string">"user@example.com"</span>.to_string(), <span class="string">"password"</span>.to_string(), <span class="string">"github"</span>.to_string())
-	.<span class="kw">await</span><span class="question-mark">?</span>;
-<span class="macro">println!</span>(<span class="string">"Auth token: {}"</span>, token);</code></pre></div></div></details><details class="toggle method-toggle" open><summary><section id="method.check_for_updates" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#295-306">Source</a><h4 class="code-header">pub async fn <a href="#method.check_for_updates" class="fn">check_for_updates</a>(
+<h5 id="example-3"><a class="doc-anchor" href="#example-3">§</a>Example</h5><div class="example-wrap"><pre class="language-text"><code># use Mountain::Air::AirServiceProvider::AirServiceProvider;
+# use CommonLibrary::Error::CommonError::CommonError;
+# #[tokio::main]
+# async fn main() -&gt; Result&lt;(), CommonError&gt; {
+# let provider = AirServiceProvider::new_default().await?;
+let token = provider
+	.authenticate(&quot;user@example.com&quot;.to_string(), &quot;password&quot;.to_string(), &quot;github&quot;.to_string())
+	.await?;
+println!(&quot;Auth token: {}&quot;, token);
+# Ok(())
+# }</code></pre></div></div></details><details class="toggle method-toggle" open><summary><section id="method.check_for_updates" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#295-306">Source</a><h4 class="code-header">pub async fn <a href="#method.check_for_updates" class="fn">check_for_updates</a>(
     &amp;self,
     current_version: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>,
     channel: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>,
@@ -110,12 +128,18 @@ interface for authentication.</p>
 <li><code>Ok(None)</code> - No update available</li>
 <li><code>Err(CommonError)</code> - Check error</li>
 </ul>
-<h5 id="example-4"><a class="doc-anchor" href="#example-4">§</a>Example</h5>
-<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">if let </span><span class="prelude-val">Some</span>(update) =
-	provider.check_for_updates(<span class="string">"1.0.0"</span>.to_string(), <span class="string">"stable"</span>.to_string()).<span class="kw">await</span><span class="question-mark">?
-</span>{
-	<span class="macro">println!</span>(<span class="string">"Update available: version {}"</span>, update.version);
-}</code></pre></div></div></details><details class="toggle method-toggle" open><summary><section id="method.download_update" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#318-330">Source</a><h4 class="code-header">pub async fn <a href="#method.download_update" class="fn">download_update</a>(
+<h5 id="example-4"><a class="doc-anchor" href="#example-4">§</a>Example</h5><div class="example-wrap"><pre class="language-text"><code># use Mountain::Air::AirServiceProvider::AirServiceProvider;
+# use CommonLibrary::Error::CommonError::CommonError;
+# #[tokio::main]
+# async fn main() -&gt; Result&lt;(), CommonError&gt; {
+# let provider = AirServiceProvider::new_default().await?;
+if let Some(update) =
+	provider.check_for_updates(&quot;1.0.0&quot;.to_string(), &quot;stable&quot;.to_string()).await?
+{
+	println!(&quot;Update available: version {}&quot;, update.version);
+}
+# Ok(())
+# }</code></pre></div></div></details><details class="toggle method-toggle" open><summary><section id="method.download_update" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#318-330">Source</a><h4 class="code-header">pub async fn <a href="#method.download_update" class="fn">download_update</a>(
     &amp;self,
     url: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>,
     destination_path: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>,
@@ -182,23 +206,29 @@ the entire file into memory.</p>
 <li><code>Ok(stream)</code> - Stream that yields download chunks</li>
 <li><code>Err(CommonError)</code> - Download error</li>
 </ul>
-<h5 id="example-5"><a class="doc-anchor" href="#example-5">§</a>Example</h5>
-<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span><span class="kw-2">mut </span>stream = provider
+<h5 id="example-5"><a class="doc-anchor" href="#example-5">§</a>Example</h5><div class="example-wrap"><pre class="language-text"><code># use Mountain::Air::AirServiceProvider::AirServiceProvider;
+# use CommonLibrary::Error::CommonError::CommonError;
+# #[tokio::main]
+# async fn main() -&gt; Result&lt;(), CommonError&gt; {
+# let provider = AirServiceProvider::new_default().await?;
+let mut stream = provider
 	.download_stream(
-		<span class="string">"https://example.com/large-file.zip"</span>.to_string(),
+		&quot;https://example.com/large-file.zip&quot;.to_string(),
 		std::collections::HashMap::new(),
 	)
-	.<span class="kw">await</span><span class="question-mark">?</span>;
+	.await?;
 
-<span class="kw">let </span><span class="kw-2">mut </span>buffer = Vec::new();
-<span class="kw">while let </span><span class="prelude-val">Some</span>(chunk) = stream.next().<span class="kw">await </span>{
-	<span class="kw">let </span>chunk = chunk<span class="question-mark">?</span>;
-	buffer.extend_from_slice(<span class="kw-2">&amp;</span>chunk.data);
-	<span class="macro">println!</span>(<span class="string">"Downloaded: {} / {} bytes"</span>, chunk.downloaded, chunk.total_size);
-	<span class="kw">if </span>chunk.completed {
-		<span class="kw">break</span>;
+let mut buffer = Vec::new();
+while let Some(chunk) = stream.next().await {
+	let chunk = chunk?;
+	buffer.extend_from_slice(&amp;chunk.data);
+	println!(&quot;Downloaded: {} / {} bytes&quot;, chunk.downloaded, chunk.total_size);
+	if chunk.completed {
+		break;
 	}
-}</code></pre></div></div></details><details class="toggle method-toggle" open><summary><section id="method.index_files" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#468-481">Source</a><h4 class="code-header">pub async fn <a href="#method.index_files" class="fn">index_files</a>(
+}
+# Ok(())
+# }</code></pre></div></div></details><details class="toggle method-toggle" open><summary><section id="method.index_files" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#468-481">Source</a><h4 class="code-header">pub async fn <a href="#method.index_files" class="fn">index_files</a>(
     &amp;self,
     path: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>,
     patterns: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;,
@@ -218,16 +248,22 @@ the entire file into memory.</p>
 <li><code>Ok(index_info)</code> - Index information with file count and total size</li>
 <li><code>Err(CommonError)</code> - Indexing error</li>
 </ul>
-<h5 id="example-6"><a class="doc-anchor" href="#example-6">§</a>Example</h5>
-<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>info = provider
+<h5 id="example-6"><a class="doc-anchor" href="#example-6">§</a>Example</h5><div class="example-wrap"><pre class="language-text"><code># use Mountain::Air::AirServiceProvider::AirServiceProvider;
+# use CommonLibrary::Error::CommonError::CommonError;
+# #[tokio::main]
+# async fn main() -&gt; Result&lt;(), CommonError&gt; {
+# let provider = AirServiceProvider::new_default().await?;
+let info = provider
 	.index_files(
-		<span class="string">"/path/to/project"</span>.to_string(),
-		<span class="macro">vec!</span>[<span class="string">"*.rs"</span>.to_string(), <span class="string">"*.ts"</span>.to_string()],
-		<span class="macro">vec!</span>[<span class="string">"node_modules/*"</span>.to_string()],
-		<span class="number">10</span>,
+		&quot;/path/to/project&quot;.to_string(),
+		vec![&quot;*.rs&quot;.to_string(), &quot;*.ts&quot;.to_string()],
+		vec![&quot;node_modules/*&quot;.to_string()],
+		10,
 	)
-	.<span class="kw">await</span><span class="question-mark">?</span>;
-<span class="macro">println!</span>(<span class="string">"Indexed {} files ({} bytes)"</span>, info.files_indexed, info.total_size);</code></pre></div></div></details><details class="toggle method-toggle" open><summary><section id="method.search_files" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#511-524">Source</a><h4 class="code-header">pub async fn <a href="#method.search_files" class="fn">search_files</a>(
+	.await?;
+println!(&quot;Indexed {} files ({} bytes)&quot;, info.files_indexed, info.total_size);
+# Ok(())
+# }</code></pre></div></div></details><details class="toggle method-toggle" open><summary><section id="method.search_files" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#511-524">Source</a><h4 class="code-header">pub async fn <a href="#method.search_files" class="fn">search_files</a>(
     &amp;self,
     query: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>,
     path: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>,
@@ -244,13 +280,19 @@ the entire file into memory.</p>
 <li><code>Ok(results)</code> - Vector of file search results</li>
 <li><code>Err(CommonError)</code> - Search error</li>
 </ul>
-<h5 id="example-7"><a class="doc-anchor" href="#example-7">§</a>Example</h5>
-<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>results = provider
-	.search_files(<span class="string">"fn main"</span>.to_string(), <span class="string">"/path/to/project"</span>.to_string(), <span class="number">50</span>)
-	.<span class="kw">await</span><span class="question-mark">?</span>;
-<span class="kw">for </span>result <span class="kw">in </span>results {
-	<span class="macro">println!</span>(<span class="string">"Found: {} at line {}"</span>, result.path, result.line_number);
-}</code></pre></div></div></details><details class="toggle method-toggle" open><summary><section id="method.get_file_info" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#534-542">Source</a><h4 class="code-header">pub async fn <a href="#method.get_file_info" class="fn">get_file_info</a>(
+<h5 id="example-7"><a class="doc-anchor" href="#example-7">§</a>Example</h5><div class="example-wrap"><pre class="language-text"><code># use Mountain::Air::AirServiceProvider::AirServiceProvider;
+# use CommonLibrary::Error::CommonError::CommonError;
+# #[tokio::main]
+# async fn main() -&gt; Result&lt;(), CommonError&gt; {
+# let provider = AirServiceProvider::new_default().await?;
+let results = provider
+	.search_files(&quot;fn main&quot;.to_string(), &quot;/path/to/project&quot;.to_string(), 50)
+	.await?;
+for result in results {
+	println!(&quot;Found: {} at line {}&quot;, result.path, result.line_number);
+}
+# Ok(())
+# }</code></pre></div></div></details><details class="toggle method-toggle" open><summary><section id="method.get_file_info" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#534-542">Source</a><h4 class="code-header">pub async fn <a href="#method.get_file_info" class="fn">get_file_info</a>(
     &amp;self,
     path: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>,
 ) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="../AirClient/struct.ExtendedFileInfo.html" title="struct Mountain::Air::AirClient::ExtendedFileInfo">ExtendedFileInfo</a>, CommonError&gt;</h4></section></summary><div class="docblock"><p>Gets file information.</p>
@@ -275,10 +317,16 @@ the entire file into memory.</p>
 <li><code>Ok(healthy)</code> - Health status (true if healthy)</li>
 <li><code>Err(CommonError)</code> - Check error</li>
 </ul>
-<h5 id="example-8"><a class="doc-anchor" href="#example-8">§</a>Example</h5>
-<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">if </span>provider.health_check().<span class="kw">await</span><span class="question-mark">? </span>{
-	<span class="macro">println!</span>(<span class="string">"Air service is healthy"</span>);
-}</code></pre></div></div></details><details class="toggle method-toggle" open><summary><section id="method.get_metrics" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#594-599">Source</a><h4 class="code-header">pub async fn <a href="#method.get_metrics" class="fn">get_metrics</a>(
+<h5 id="example-8"><a class="doc-anchor" href="#example-8">§</a>Example</h5><div class="example-wrap"><pre class="language-text"><code># use Mountain::Air::AirServiceProvider::AirServiceProvider;
+# use CommonLibrary::Error::CommonError::CommonError;
+# #[tokio::main]
+# async fn main() -&gt; Result&lt;(), CommonError&gt; {
+# let provider = AirServiceProvider::new_default().await?;
+if provider.health_check().await? {
+	println!(&quot;Air service is healthy&quot;);
+}
+# Ok(())
+# }</code></pre></div></div></details><details class="toggle method-toggle" open><summary><section id="method.get_metrics" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#594-599">Source</a><h4 class="code-header">pub async fn <a href="#method.get_metrics" class="fn">get_metrics</a>(
     &amp;self,
     metric_type: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;,
 ) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="../AirClient/struct.AirMetrics.html" title="struct Mountain::Air::AirClient::AirMetrics">AirMetrics</a>, CommonError&gt;</h4></section></summary><div class="docblock"><p>Gets metrics from the Air daemon.</p>
@@ -329,11 +377,17 @@ the entire file into memory.</p>
 <li><code>Ok(config)</code> - Configuration data as key-value pairs</li>
 <li><code>Err(CommonError)</code> - Request error</li>
 </ul>
-<h5 id="example-9"><a class="doc-anchor" href="#example-9">§</a>Example</h5>
-<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>config = provider.get_configuration(<span class="string">"grpc"</span>.to_string()).<span class="kw">await</span><span class="question-mark">?</span>;
-<span class="kw">for </span>(key, value) <span class="kw">in </span>config {
-	<span class="macro">println!</span>(<span class="string">"{} = {}"</span>, key, value);
-}</code></pre></div></div></details><details class="toggle method-toggle" open><summary><section id="method.update_configuration" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#689-701">Source</a><h4 class="code-header">pub async fn <a href="#method.update_configuration" class="fn">update_configuration</a>(
+<h5 id="example-9"><a class="doc-anchor" href="#example-9">§</a>Example</h5><div class="example-wrap"><pre class="language-text"><code># use Mountain::Air::AirServiceProvider::AirServiceProvider;
+# use CommonLibrary::Error::CommonError::CommonError;
+# #[tokio::main]
+# async fn main() -&gt; Result&lt;(), CommonError&gt; {
+# let provider = AirServiceProvider::new_default().await?;
+let config = provider.get_configuration(&quot;grpc&quot;.to_string()).await?;
+for (key, value) in config {
+	println!(&quot;{} = {}&quot;, key, value);
+}
+# Ok(())
+# }</code></pre></div></div></details><details class="toggle method-toggle" open><summary><section id="method.update_configuration" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#689-701">Source</a><h4 class="code-header">pub async fn <a href="#method.update_configuration" class="fn">update_configuration</a>(
     &amp;self,
     section: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>,
     updates: <a class="struct" href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html" title="struct std::collections::hash::map::HashMap">HashMap</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;,
@@ -361,7 +415,9 @@ generate <code>&amp;mut Any</code>’s vtable from <code>&amp;mut Trait</code>�
     T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/any/trait.Any.html" title="trait core::any::Any">Any</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a>,</div></h3></section></summary><div class="impl-items"><details class="toggle method-toggle" open><summary><section id="method.into_any_arc" class="method trait-impl"><a href="#method.into_any_arc" class="anchor">§</a><h4 class="code-header">fn <a class="fn">into_any_arc</a>(self: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html" title="struct alloc::sync::Arc">Arc</a>&lt;T&gt;) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html" title="struct alloc::sync::Arc">Arc</a>&lt;dyn <a class="trait" href="https://doc.rust-lang.org/nightly/core/any/trait.Any.html" title="trait core::any::Any">Any</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a>&gt;</h4></section></summary><div class='docblock'>Convert <code>Arc&lt;Trait&gt;</code> (where <code>Trait: Downcast</code>) to <code>Arc&lt;Any&gt;</code>. <code>Arc&lt;Any&gt;</code> can then be
 further <code>downcast</code> into <code>Arc&lt;ConcreteType&gt;</code> where <code>ConcreteType</code> implements <code>Trait</code>.</div></details></div></details><details class="toggle implementors-toggle"><summary><section id="impl-From%3CT%3E-for-T" class="impl"><a class="src rightside" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#785">Source</a><a href="#impl-From%3CT%3E-for-T" class="anchor">§</a><h3 class="code-header">impl&lt;T&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html" title="trait core::convert::From">From</a>&lt;T&gt; for T</h3></section></summary><div class="impl-items"><details class="toggle method-toggle" open><summary><section id="method.from" class="method trait-impl"><a class="src rightside" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#788">Source</a><a href="#method.from" class="anchor">§</a><h4 class="code-header">fn <a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from" class="fn">from</a>(t: T) -&gt; T</h4></section></summary><div class="docblock"><p>Returns the argument unchanged.</p>
 </div></details></div></details><details class="toggle implementors-toggle"><summary><section id="impl-FromRef%3CT%3E-for-T" class="impl"><a href="#impl-FromRef%3CT%3E-for-T" class="anchor">§</a><h3 class="code-header">impl&lt;T&gt; FromRef&lt;T&gt; for T<div class="where">where
-    T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a>,</div></h3></section></summary><div class="impl-items"><details class="toggle method-toggle" open><summary><section id="method.from_ref" class="method trait-impl"><a href="#method.from_ref" class="anchor">§</a><h4 class="code-header">fn <a class="fn">from_ref</a>(input: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;T</a>) -&gt; T</h4></section></summary><div class='docblock'>Converts to this type from a reference to the input type.</div></details></div></details><details class="toggle implementors-toggle"><summary><section id="impl-Instrument-for-T" class="impl"><a href="#impl-Instrument-for-T" class="anchor">§</a><h3 class="code-header">impl&lt;T&gt; Instrument for T</h3></section></summary><div class="impl-items"><details class="toggle method-toggle" open><summary><section id="method.instrument" class="method trait-impl"><a href="#method.instrument" class="anchor">§</a><h4 class="code-header">fn <a class="fn">instrument</a>(self, span: Span) -&gt; Instrumented&lt;Self&gt;</h4></section></summary><div class='docblock'>Instruments this type with the provided [<code>Span</code>], returning an
+    T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a>,</div></h3></section></summary><div class="impl-items"><details class="toggle method-toggle" open><summary><section id="method.from_ref" class="method trait-impl"><a href="#method.from_ref" class="anchor">§</a><h4 class="code-header">fn <a class="fn">from_ref</a>(input: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;T</a>) -&gt; T</h4></section></summary><div class='docblock'>Converts to this type from a reference to the input type.</div></details></div></details><details class="toggle implementors-toggle"><summary><section id="impl-FutureExt-for-T" class="impl"><a href="#impl-FutureExt-for-T" class="anchor">§</a><h3 class="code-header">impl&lt;T&gt; FutureExt for T</h3></section></summary><div class="impl-items"><details class="toggle method-toggle" open><summary><section id="method.with_context" class="method trait-impl"><a href="#method.with_context" class="anchor">§</a><h4 class="code-header">fn <a class="fn">with_context</a>(self, otel_cx: Context) -&gt; WithContext&lt;Self&gt;</h4></section></summary><div class='docblock'>Attaches the provided <a href="Context"><code>Context</code></a> to this type, returning a <code>WithContext</code>
+wrapper. <a>Read more</a></div></details><details class="toggle method-toggle" open><summary><section id="method.with_current_context" class="method trait-impl"><a href="#method.with_current_context" class="anchor">§</a><h4 class="code-header">fn <a class="fn">with_current_context</a>(self) -&gt; WithContext&lt;Self&gt;</h4></section></summary><div class='docblock'>Attaches the current <a href="Context"><code>Context</code></a> to this type, returning a <code>WithContext</code>
+wrapper. <a>Read more</a></div></details></div></details><details class="toggle implementors-toggle"><summary><section id="impl-Instrument-for-T" class="impl"><a href="#impl-Instrument-for-T" class="anchor">§</a><h3 class="code-header">impl&lt;T&gt; Instrument for T</h3></section></summary><div class="impl-items"><details class="toggle method-toggle" open><summary><section id="method.instrument" class="method trait-impl"><a href="#method.instrument" class="anchor">§</a><h4 class="code-header">fn <a class="fn">instrument</a>(self, span: Span) -&gt; Instrumented&lt;Self&gt;</h4></section></summary><div class='docblock'>Instruments this type with the provided [<code>Span</code>], returning an
 <code>Instrumented</code> wrapper. <a>Read more</a></div></details><details class="toggle method-toggle" open><summary><section id="method.in_current_span" class="method trait-impl"><a href="#method.in_current_span" class="anchor">§</a><h4 class="code-header">fn <a class="fn">in_current_span</a>(self) -&gt; Instrumented&lt;Self&gt;</h4></section></summary><div class='docblock'>Instruments this type with the <a href="super::Span::current()">current</a> <a href="crate::Span"><code>Span</code></a>, returning an
 <code>Instrumented</code> wrapper. <a>Read more</a></div></details></div></details><details class="toggle implementors-toggle"><summary><section id="impl-Into%3CU%3E-for-T" class="impl"><a class="src rightside" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#767-769">Source</a><a href="#impl-Into%3CU%3E-for-T" class="anchor">§</a><h3 class="code-header">impl&lt;T, U&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;U&gt; for T<div class="where">where
     U: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html" title="trait core::convert::From">From</a>&lt;T&gt;,</div></h3></section></summary><div class="impl-items"><details class="toggle method-toggle" open><summary><section id="method.into" class="method trait-impl"><a class="src rightside" href="https://doc.rust-lang.org/nightly/src/core/convert/mod.rs.html#777">Source</a><a href="#method.into" class="anchor">§</a><h4 class="code-header">fn <a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into" class="fn">into</a>(self) -&gt; U</h4></section></summary><div class="docblock"><p>Calls <code>U::from(self)</code>.</p>

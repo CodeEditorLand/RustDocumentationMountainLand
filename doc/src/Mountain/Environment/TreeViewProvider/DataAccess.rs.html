@@ -2,24 +2,24 @@
 <a href=#2 id=2 data-nosnippet>2</a>//!
 <a href=#3 id=3 data-nosnippet>3</a>//! Internal helper functions for fetching tree data (children, tree items).
 <a href=#4 id=4 data-nosnippet>4</a>
-<a href=#5 id=5 data-nosnippet>5</a></span><span class="kw">use </span>std::sync::Arc;
+<a href=#5 id=5 data-nosnippet>5</a></span><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">std::sync::Arc</a>;
 <a href=#6 id=6 data-nosnippet>6</a>
 <a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span>CommonLibrary::{
 <a href=#8 id=8 data-nosnippet>8</a>	Environment::Requires::Requires,
 <a href=#9 id=9 data-nosnippet>9</a>	Error::CommonError::CommonError,
 <a href=#10 id=10 data-nosnippet>10</a>	IPC::{<span class="self">self</span>, DTO::ProxyTarget::ProxyTarget, IPCProvider::IPCProvider},
 <a href=#11 id=11 data-nosnippet>11</a>};
-<a href=#12 id=12 data-nosnippet>12</a><span class="kw">use </span>log::debug;
-<a href=#13 id=13 data-nosnippet>13</a><span class="kw">use </span>serde_json::Value;
+<a href=#12 id=12 data-nosnippet>12</a><span class="kw">use </span><a href="https://docs.rs/log/0.4.29/log/macro.debug.html">log::debug</a>;
+<a href=#13 id=13 data-nosnippet>13</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#14 id=14 data-nosnippet>14</a>
-<a href=#15 id=15 data-nosnippet>15</a><span class="kw">use </span><span class="kw">crate</span>::Environment::Utility;
+<a href=#15 id=15 data-nosnippet>15</a><span class="kw">use </span><a href="../mod.rs.html#112"><span class="kw">crate</span>::Environment::Utility</a>;
 <a href=#16 id=16 data-nosnippet>16</a>
 <a href=#17 id=17 data-nosnippet>17</a><span class="doccomment">/// Gets the children for a given element.
 <a href=#18 id=18 data-nosnippet>18</a>/// Acts as a dispatcher to native or extension providers.
-<a href=#19 id=19 data-nosnippet>19</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span>get_children(
-<a href=#20 id=20 data-nosnippet>20</a>	env:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::MountainEnvironment,
-<a href=#21 id=21 data-nosnippet>21</a>	view_identifier:String,
-<a href=#22 id=22 data-nosnippet>22</a>	element_handle:<span class="prelude-ty">Option</span>&lt;String&gt;,
+<a href=#19 id=19 data-nosnippet>19</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/TreeViewProvider/DataAccess/fn.get_children.html">get_children</a>(
+<a href=#20 id=20 data-nosnippet>20</a>	env:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#220-230">MountainEnvironment</a>,
+<a href=#21 id=21 data-nosnippet>21</a>	view_identifier:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#22 id=22 data-nosnippet>22</a>	element_handle:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;,
 <a href=#23 id=23 data-nosnippet>23</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;Value&gt;, CommonError&gt; {
 <a href=#24 id=24 data-nosnippet>24</a>	<span class="macro">debug!</span>(
 <a href=#25 id=25 data-nosnippet>25</a>		<span class="string">"[TreeViewProvider] Getting children for view '{}', handle: {:?}"</span>,
@@ -60,10 +60,10 @@
 <a href=#60 id=60 data-nosnippet>60</a>
 <a href=#61 id=61 data-nosnippet>61</a><span class="doccomment">/// Gets the TreeItem for a given element.
 <a href=#62 id=62 data-nosnippet>62</a>/// Acts as a dispatcher to native or extension providers.
-<a href=#63 id=63 data-nosnippet>63</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span>get_tree_item(
-<a href=#64 id=64 data-nosnippet>64</a>	env:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::MountainEnvironment,
-<a href=#65 id=65 data-nosnippet>65</a>	view_identifier:String,
-<a href=#66 id=66 data-nosnippet>66</a>	element_handle:String,
+<a href=#63 id=63 data-nosnippet>63</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/TreeViewProvider/DataAccess/fn.get_tree_item.html">get_tree_item</a>(
+<a href=#64 id=64 data-nosnippet>64</a>	env:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#220-230">MountainEnvironment</a>,
+<a href=#65 id=65 data-nosnippet>65</a>	view_identifier:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#66 id=66 data-nosnippet>66</a>	element_handle:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#67 id=67 data-nosnippet>67</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Value, CommonError&gt; {
 <a href=#68 id=68 data-nosnippet>68</a>	<span class="macro">debug!</span>(
 <a href=#69 id=69 data-nosnippet>69</a>		<span class="string">"[TreeViewProvider] Getting item for view '{}', handle: {}"</span>,

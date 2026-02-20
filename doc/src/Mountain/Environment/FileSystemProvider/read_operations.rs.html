@@ -2,12 +2,12 @@
 <a href=#2 id=2 data-nosnippet>2</a>//!
 <a href=#3 id=3 data-nosnippet>3</a>//! Implementation of
 <a href=#4 id=4 data-nosnippet>4</a>//! [`FileSystemReader`](CommonLibrary::FileSystem::FileSystemReader) for
-<a href=#5 id=5 data-nosnippet>5</a>//! [`MountainEnvironment`](crate::MountainEnvironment::MountainEnvironment)
+<a href=#5 id=5 data-nosnippet>5</a>//! [`MountainEnvironment`]
 <a href=#6 id=6 data-nosnippet>6</a>//!
 <a href=#7 id=7 data-nosnippet>7</a>//! Provides secure, validated filesystem read access with workspace trust
 <a href=#8 id=8 data-nosnippet>8</a>//! enforcement.
 <a href=#9 id=9 data-nosnippet>9</a>
-<a href=#10 id=10 data-nosnippet>10</a></span><span class="kw">use </span>std::path::PathBuf;
+<a href=#10 id=10 data-nosnippet>10</a></span><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">std::path::PathBuf</a>;
 <a href=#11 id=11 data-nosnippet>11</a>
 <a href=#12 id=12 data-nosnippet>12</a><span class="kw">use </span>CommonLibrary::{
 <a href=#13 id=13 data-nosnippet>13</a>	Error::CommonError::CommonError,
@@ -15,10 +15,10 @@
 <a href=#15 id=15 data-nosnippet>15</a>};
 <a href=#16 id=16 data-nosnippet>16</a><span class="kw">use </span>tokio::fs;
 <a href=#17 id=17 data-nosnippet>17</a>
-<a href=#18 id=18 data-nosnippet>18</a><span class="kw">use </span><span class="kw">super</span>::super::{MountainEnvironment::MountainEnvironment, Utility};
+<a href=#18 id=18 data-nosnippet>18</a><span class="kw">use </span><span class="kw">super</span>::super::{<a href="../MountainEnvironment.rs.html#220-230">MountainEnvironment::MountainEnvironment</a>, <a href="../mod.rs.html#112">Utility</a>};
 <a href=#19 id=19 data-nosnippet>19</a>
 <a href=#20 id=20 data-nosnippet>20</a><span class="doccomment">/// Read operations implementation for MountainEnvironment
-<a href=#21 id=21 data-nosnippet>21</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span>read_file_impl(env:<span class="kw-2">&amp;</span>MountainEnvironment, path:<span class="kw-2">&amp;</span>PathBuf) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;u8&gt;, CommonError&gt; {
+<a href=#21 id=21 data-nosnippet>21</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/FileSystemProvider/read_operations/fn.read_file_impl.html">read_file_impl</a>(env:<span class="kw-2">&amp;</span><a href="../MountainEnvironment.rs.html#220-230">MountainEnvironment</a>, path:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;u8&gt;, CommonError&gt; {
 <a href=#22 id=22 data-nosnippet>22</a>	Utility::IsPathAllowedForAccess(<span class="kw-2">&amp;</span>env.ApplicationState, path)<span class="question-mark">?</span>;
 <a href=#23 id=23 data-nosnippet>23</a>
 <a href=#24 id=24 data-nosnippet>24</a>	<span class="comment">// Validate that the path exists and is a file, not a directory
@@ -39,7 +39,7 @@
 <a href=#39 id=39 data-nosnippet>39</a>}
 <a href=#40 id=40 data-nosnippet>40</a>
 <a href=#41 id=41 data-nosnippet>41</a><span class="doccomment">/// Stat operations implementation for MountainEnvironment
-<a href=#42 id=42 data-nosnippet>42</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span>stat_file_impl(env:<span class="kw-2">&amp;</span>MountainEnvironment, path:<span class="kw-2">&amp;</span>PathBuf) -&gt; <span class="prelude-ty">Result</span>&lt;FileSystemStatDTO, CommonError&gt; {
+<a href=#42 id=42 data-nosnippet>42</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/FileSystemProvider/read_operations/fn.stat_file_impl.html">stat_file_impl</a>(env:<span class="kw-2">&amp;</span><a href="../MountainEnvironment.rs.html#220-230">MountainEnvironment</a>, path:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>) -&gt; <span class="prelude-ty">Result</span>&lt;FileSystemStatDTO, CommonError&gt; {
 <a href=#43 id=43 data-nosnippet>43</a>	Utility::IsPathAllowedForAccess(<span class="kw-2">&amp;</span>env.ApplicationState, path)<span class="question-mark">?</span>;
 <a href=#44 id=44 data-nosnippet>44</a>
 <a href=#45 id=45 data-nosnippet>45</a>	<span class="kw">let </span>metadata = fs::metadata(path)
@@ -93,9 +93,9 @@
 <a href=#93 id=93 data-nosnippet>93</a>}
 <a href=#94 id=94 data-nosnippet>94</a>
 <a href=#95 id=95 data-nosnippet>95</a><span class="doccomment">/// ReadDirectory operations implementation for MountainEnvironment
-<a href=#96 id=96 data-nosnippet>96</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span>read_directory_impl(
-<a href=#97 id=97 data-nosnippet>97</a>	env:<span class="kw-2">&amp;</span>MountainEnvironment,
-<a href=#98 id=98 data-nosnippet>98</a>	path:<span class="kw-2">&amp;</span>PathBuf,
+<a href=#96 id=96 data-nosnippet>96</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/FileSystemProvider/read_operations/fn.read_directory_impl.html">read_directory_impl</a>(
+<a href=#97 id=97 data-nosnippet>97</a>	env:<span class="kw-2">&amp;</span><a href="../MountainEnvironment.rs.html#220-230">MountainEnvironment</a>,
+<a href=#98 id=98 data-nosnippet>98</a>	path:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>,
 <a href=#99 id=99 data-nosnippet>99</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;(String, FileTypeDTO)&gt;, CommonError&gt; {
 <a href=#100 id=100 data-nosnippet>100</a>	Utility::IsPathAllowedForAccess(<span class="kw-2">&amp;</span>env.ApplicationState, path)<span class="question-mark">?</span>;
 <a href=#101 id=101 data-nosnippet>101</a>

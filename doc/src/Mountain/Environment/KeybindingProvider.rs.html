@@ -139,7 +139,7 @@
 <a href=#139 id=139 data-nosnippet>139</a>//! Current implementation stores when clauses but only partially
 <a href=#140 id=140 data-nosnippet>140</a>//! evaluates them. Full expression evaluation is pending.
 <a href=#141 id=141 data-nosnippet>141</a>
-<a href=#142 id=142 data-nosnippet>142</a></span><span class="kw">use </span>std::{collections::HashMap, sync::Arc};
+<a href=#142 id=142 data-nosnippet>142</a></span><span class="kw">use </span>std::{<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">collections::HashMap</a>, <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">sync::Arc</a>};
 <a href=#143 id=143 data-nosnippet>143</a>
 <a href=#144 id=144 data-nosnippet>144</a><span class="kw">use </span>CommonLibrary::{
 <a href=#145 id=145 data-nosnippet>145</a>	Effect::ApplicationRunTime::ApplicationRunTime <span class="kw">as _</span>,
@@ -147,42 +147,42 @@
 <a href=#147 id=147 data-nosnippet>147</a>	FileSystem::ReadFile::ReadFile,
 <a href=#148 id=148 data-nosnippet>148</a>	Keybinding::KeybindingProvider::KeybindingProvider,
 <a href=#149 id=149 data-nosnippet>149</a>};
-<a href=#150 id=150 data-nosnippet>150</a><span class="kw">use </span>async_trait::async_trait;
-<a href=#151 id=151 data-nosnippet>151</a><span class="kw">use </span>log::{info, warn};
-<a href=#152 id=152 data-nosnippet>152</a><span class="kw">use </span>serde_json::{Value, json};
+<a href=#150 id=150 data-nosnippet>150</a><span class="kw">use </span><a href="https://docs.rs/async-trait/0.1.89/async_trait/attr.async_trait.html">async_trait::async_trait</a>;
+<a href=#151 id=151 data-nosnippet>151</a><span class="kw">use </span>log::{<a href="https://docs.rs/log/0.4.29/log/macro.info.html">info</a>, <a href="https://docs.rs/log/0.4.29/log/macro.warn.html">warn</a>};
+<a href=#152 id=152 data-nosnippet>152</a><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json</a>};
 <a href=#153 id=153 data-nosnippet>153</a><span class="kw">use </span>tauri::Manager;
 <a href=#154 id=154 data-nosnippet>154</a>
-<a href=#155 id=155 data-nosnippet>155</a><span class="kw">use </span>super::{MountainEnvironment::MountainEnvironment, Utility};
-<a href=#156 id=156 data-nosnippet>156</a><span class="kw">use </span><span class="kw">crate</span>::RunTime::ApplicationRunTime::ApplicationRunTime;
+<a href=#155 id=155 data-nosnippet>155</a><span class="kw">use </span>super::{<a href="MountainEnvironment.rs.html#220-230">MountainEnvironment::MountainEnvironment</a>, <a href="mod.rs.html#112">Utility</a>};
+<a href=#156 id=156 data-nosnippet>156</a><span class="kw">use </span><a href="../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55"><span class="kw">crate</span>::RunTime::ApplicationRunTime::ApplicationRunTime</a>;
 <a href=#157 id=157 data-nosnippet>157</a>
-<a href=#158 id=158 data-nosnippet>158</a><span class="attr">#[derive(serde::Deserialize, serde::Serialize, Clone, Debug)]
+<a href=#158 id=158 data-nosnippet>158</a><span class="attr">#[derive(<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">serde::Deserialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">serde::Serialize</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>)]
 <a href=#159 id=159 data-nosnippet>159</a>#[serde(rename_all = <span class="string">"camelCase"</span>)]
-<a href=#160 id=160 data-nosnippet>160</a></span><span class="kw">struct </span>KeybindingRule {
-<a href=#161 id=161 data-nosnippet>161</a>	key:String,
+<a href=#160 id=160 data-nosnippet>160</a></span><span class="kw">struct </span><a href="../../../Mountain/Environment/KeybindingProvider/struct.KeybindingRule.html">KeybindingRule</a> {
+<a href=#161 id=161 data-nosnippet>161</a>	key:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#162 id=162 data-nosnippet>162</a>
-<a href=#163 id=163 data-nosnippet>163</a>	command:String,
+<a href=#163 id=163 data-nosnippet>163</a>	command:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#164 id=164 data-nosnippet>164</a>
-<a href=#165 id=165 data-nosnippet>165</a>	when:<span class="prelude-ty">Option</span>&lt;String&gt;,
+<a href=#165 id=165 data-nosnippet>165</a>	when:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;,
 <a href=#166 id=166 data-nosnippet>166</a>
-<a href=#167 id=167 data-nosnippet>167</a>	args:<span class="prelude-ty">Option</span>&lt;Value&gt;,
+<a href=#167 id=167 data-nosnippet>167</a>	args:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;,
 <a href=#168 id=168 data-nosnippet>168</a>}
 <a href=#169 id=169 data-nosnippet>169</a>
 <a href=#170 id=170 data-nosnippet>170</a><span class="attr">#[async_trait]
-<a href=#171 id=171 data-nosnippet>171</a></span><span class="kw">impl </span>KeybindingProvider <span class="kw">for </span>MountainEnvironment {
-<a href=#172 id=172 data-nosnippet>172</a>	<span class="kw">async fn </span>GetResolvedKeybinding(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;Value, CommonError&gt; {
-<a href=#173 id=173 data-nosnippet>173</a>		<span class="macro">info!</span>(<span class="string">"[KeybindingProvider] Resolving all keybindings..."</span>);
+<a href=#171 id=171 data-nosnippet>171</a></span><span class="kw">impl </span>KeybindingProvider <span class="kw">for </span><a href="MountainEnvironment.rs.html#220-230">MountainEnvironment</a> {
+<a href=#172 id=172 data-nosnippet>172</a>	<span class="kw">async fn </span>GetResolvedKeybinding(<span class="kw-2">&amp;</span><a class="self" href="#172">self</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, CommonError&gt; {
+<a href=#173 id=173 data-nosnippet>173</a>		<a href="https://docs.rs/log/0.4.29/log/macro.info.html">info!</a>(<span class="string">"[KeybindingProvider] Resolving all keybindings..."</span>);
 <a href=#174 id=174 data-nosnippet>174</a>
-<a href=#175 id=175 data-nosnippet>175</a>		<span class="kw">let </span><span class="kw-2">mut </span>ResolvedKeybindings:HashMap&lt;String, KeybindingRule&gt; = HashMap::new();
+<a href=#175 id=175 data-nosnippet>175</a>		<span class="kw">let </span><span class="kw-2">mut </span>ResolvedKeybindings:<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="#160-168">KeybindingRule</a>&gt; = <a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>::<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.new">new</a>();
 <a href=#176 id=176 data-nosnippet>176</a>
 <a href=#177 id=177 data-nosnippet>177</a>		<span class="comment">// 1. Collect default keybindings from extensions
-<a href=#178 id=178 data-nosnippet>178</a>		</span><span class="kw">let </span>Extensions = <span class="self">self
-<a href=#179 id=179 data-nosnippet>179</a>			</span>.ApplicationState
+<a href=#178 id=178 data-nosnippet>178</a>		</span><span class="kw">let </span>Extensions = <a class="self" href="#172">self</a>
+<a href=#179 id=179 data-nosnippet>179</a>			.ApplicationState
 <a href=#180 id=180 data-nosnippet>180</a>			.Extension
 <a href=#181 id=181 data-nosnippet>181</a>			.ScannedExtensions
 <a href=#182 id=182 data-nosnippet>182</a>			.ScannedExtensions
-<a href=#183 id=183 data-nosnippet>183</a>			.lock()
-<a href=#184 id=184 data-nosnippet>184</a>			.map_err(Utility::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?
-<a href=#185 id=185 data-nosnippet>185</a>			</span>.clone();
+<a href=#183 id=183 data-nosnippet>183</a>			.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>()
+<a href=#184 id=184 data-nosnippet>184</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(Utility::<a href="Utility/ErrorMapping.rs.html#13-19">MapApplicationStateLockErrorToCommonError</a>)<span class="question-mark">?
+<a href=#185 id=185 data-nosnippet>185</a>			</span>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
 <a href=#186 id=186 data-nosnippet>186</a>
 <a href=#187 id=187 data-nosnippet>187</a>		<span class="kw">for </span>Extension <span class="kw">in </span>Extensions.values() {
 <a href=#188 id=188 data-nosnippet>188</a>			<span class="kw">if let </span><span class="prelude-val">Some</span>(Contributes) = Extension.Contributes.as_ref().and_then(|c| c.get(<span class="string">"keybindings"</span>)) {
@@ -200,19 +200,19 @@
 <a href=#200 id=200 data-nosnippet>200</a>		}
 <a href=#201 id=201 data-nosnippet>201</a>
 <a href=#202 id=202 data-nosnippet>202</a>		<span class="comment">// 2. Load and apply user-defined keybindings from keybindings.json
-<a href=#203 id=203 data-nosnippet>203</a>		</span><span class="kw">let </span>UserKeybindingsPath = <span class="self">self
-<a href=#204 id=204 data-nosnippet>204</a>			</span>.ApplicationHandle
+<a href=#203 id=203 data-nosnippet>203</a>		</span><span class="kw">let </span>UserKeybindingsPath = <a class="self" href="#172">self</a>
+<a href=#204 id=204 data-nosnippet>204</a>			.ApplicationHandle
 <a href=#205 id=205 data-nosnippet>205</a>			.path()
 <a href=#206 id=206 data-nosnippet>206</a>			.app_config_dir()
-<a href=#207 id=207 data-nosnippet>207</a>			.map_err(|Error| {
-<a href=#208 id=208 data-nosnippet>208</a>				CommonError::ConfigurationLoad { Description:<span class="macro">format!</span>(<span class="string">"Cannot find app config dir: {}"</span>, Error) }
+<a href=#207 id=207 data-nosnippet>207</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| {
+<a href=#208 id=208 data-nosnippet>208</a>				CommonError::ConfigurationLoad { Description:<a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Cannot find app config dir: {}"</span>, Error) }
 <a href=#209 id=209 data-nosnippet>209</a>			})<span class="question-mark">?
-<a href=#210 id=210 data-nosnippet>210</a>			</span>.join(<span class="string">"keybindings.json"</span>);
+<a href=#210 id=210 data-nosnippet>210</a>			</span>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">"keybindings.json"</span>);
 <a href=#211 id=211 data-nosnippet>211</a>
-<a href=#212 id=212 data-nosnippet>212</a>		<span class="kw">let </span>RunTime = <span class="self">self</span>.ApplicationHandle.state::&lt;Arc&lt;ApplicationRunTime&gt;&gt;().inner().clone();
+<a href=#212 id=212 data-nosnippet>212</a>		<span class="kw">let </span>RunTime = <a class="self" href="#172">self</a>.ApplicationHandle.state::&lt;<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">ApplicationRunTime</a>&gt;&gt;().inner().<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
 <a href=#213 id=213 data-nosnippet>213</a>
-<a href=#214 id=214 data-nosnippet>214</a>		<span class="kw">if let </span><span class="prelude-val">Ok</span>(Content) = RunTime.Run(ReadFile(UserKeybindingsPath)).<span class="kw">await </span>{
-<a href=#215 id=215 data-nosnippet>215</a>			<span class="kw">if let </span><span class="prelude-val">Ok</span>(UserKeybindings) = serde_json::from_slice::&lt;Vec&lt;KeybindingRule&gt;&gt;(<span class="kw-2">&amp;</span>Content) {
+<a href=#214 id=214 data-nosnippet>214</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Content) = <a href="#212">RunTime</a>.Run(ReadFile(<a href="#203">UserKeybindingsPath</a>)).<span class="kw">await </span>{
+<a href=#215 id=215 data-nosnippet>215</a>			<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(UserKeybindings) = serde_json::from_slice::&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="#160-168">KeybindingRule</a>&gt;&gt;(<span class="kw-2">&amp;</span><a href="#214">Content</a>) {
 <a href=#216 id=216 data-nosnippet>216</a>				<span class="kw">for </span>UserKeybinding <span class="kw">in </span>UserKeybindings {
 <a href=#217 id=217 data-nosnippet>217</a>					<span class="kw">let </span>UniqueKey = <span class="macro">format!</span>(<span class="string">"{}{}"</span>, UserKeybinding.key, UserKeybinding.when.as_deref().unwrap_or(<span class="string">""</span>));
 <a href=#218 id=218 data-nosnippet>218</a>
@@ -225,13 +225,13 @@
 <a href=#225 id=225 data-nosnippet>225</a>					}
 <a href=#226 id=226 data-nosnippet>226</a>				}
 <a href=#227 id=227 data-nosnippet>227</a>			} <span class="kw">else </span>{
-<a href=#228 id=228 data-nosnippet>228</a>				<span class="macro">warn!</span>(<span class="string">"[KeybindingProvider] Failed to parse user keybindings.json. It may be malformed."</span>);
+<a href=#228 id=228 data-nosnippet>228</a>				<a href="https://docs.rs/log/0.4.29/log/macro.warn.html">warn!</a>(<span class="string">"[KeybindingProvider] Failed to parse user keybindings.json. It may be malformed."</span>);
 <a href=#229 id=229 data-nosnippet>229</a>			}
 <a href=#230 id=230 data-nosnippet>230</a>		}
 <a href=#231 id=231 data-nosnippet>231</a>
-<a href=#232 id=232 data-nosnippet>232</a>		<span class="kw">let </span>FinalRules:Vec&lt;KeybindingRule&gt; = ResolvedKeybindings.into_values().collect();
+<a href=#232 id=232 data-nosnippet>232</a>		<span class="kw">let </span>FinalRules:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="#160-168">KeybindingRule</a>&gt; = <a href="#175">ResolvedKeybindings</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.into_values">into_values</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.collect">collect</a>();
 <a href=#233 id=233 data-nosnippet>233</a>
-<a href=#234 id=234 data-nosnippet>234</a>		<span class="prelude-val">Ok</span>(<span class="macro">json!</span>(FinalRules))
+<a href=#234 id=234 data-nosnippet>234</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json!</a>(FinalRules))
 <a href=#235 id=235 data-nosnippet>235</a>	}
 <a href=#236 id=236 data-nosnippet>236</a>}
 </code></pre></div></section></main></body></html>

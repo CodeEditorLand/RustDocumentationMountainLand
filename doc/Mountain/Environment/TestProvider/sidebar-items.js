@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"struct":["TestProviderState"]};
+window.SIDEBAR_ITEMS = {"enum":["TestRunStatus"],"struct":["TestControllerState","TestProviderState","TestResult","TestRun"]};

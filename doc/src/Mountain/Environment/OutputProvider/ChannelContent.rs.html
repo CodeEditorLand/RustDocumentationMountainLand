@@ -5,18 +5,18 @@
 <a href=#5 id=5 data-nosnippet>5</a>//! implementation.
 <a href=#6 id=6 data-nosnippet>6</a>
 <a href=#7 id=7 data-nosnippet>7</a></span><span class="kw">use </span>CommonLibrary::Error::CommonError::CommonError;
-<a href=#8 id=8 data-nosnippet>8</a><span class="kw">use </span>log::{info, trace, warn};
-<a href=#9 id=9 data-nosnippet>9</a><span class="kw">use </span>serde_json::json;
+<a href=#8 id=8 data-nosnippet>8</a><span class="kw">use </span>log::{<a href="https://docs.rs/log/0.4.29/log/macro.info.html">info</a>, <a href="https://docs.rs/log/0.4.29/log/macro.trace.html">trace</a>, <a href="https://docs.rs/log/0.4.29/log/macro.warn.html">warn</a>};
+<a href=#9 id=9 data-nosnippet>9</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">serde_json::json</a>;
 <a href=#10 id=10 data-nosnippet>10</a><span class="kw">use </span>tauri::Emitter;
 <a href=#11 id=11 data-nosnippet>11</a>
-<a href=#12 id=12 data-nosnippet>12</a><span class="kw">use </span><span class="kw">crate</span>::Environment::Utility;
+<a href=#12 id=12 data-nosnippet>12</a><span class="kw">use </span><a href="../mod.rs.html#112"><span class="kw">crate</span>::Environment::Utility</a>;
 <a href=#13 id=13 data-nosnippet>13</a>
 <a href=#14 id=14 data-nosnippet>14</a><span class="doccomment">/// Appends text to an output channel.
 <a href=#15 id=15 data-nosnippet>15</a>/// Includes buffer size validation to prevent memory exhaustion.
-<a href=#16 id=16 data-nosnippet>16</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span>append_to_channel(
-<a href=#17 id=17 data-nosnippet>17</a>	env:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::MountainEnvironment,
-<a href=#18 id=18 data-nosnippet>18</a>	channel_identifier:String,
-<a href=#19 id=19 data-nosnippet>19</a>	value:String,
+<a href=#16 id=16 data-nosnippet>16</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/OutputProvider/ChannelContent/fn.append_to_channel.html">append_to_channel</a>(
+<a href=#17 id=17 data-nosnippet>17</a>	env:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#220-230">MountainEnvironment</a>,
+<a href=#18 id=18 data-nosnippet>18</a>	channel_identifier:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#19 id=19 data-nosnippet>19</a>	value:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#20 id=20 data-nosnippet>20</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
 <a href=#21 id=21 data-nosnippet>21</a>	<span class="macro">trace!</span>(<span class="string">"[OutputProvider] Appending to channel: '{}'"</span>, channel_identifier);
 <a href=#22 id=22 data-nosnippet>22</a>
@@ -65,10 +65,10 @@
 <a href=#65 id=65 data-nosnippet>65</a>}
 <a href=#66 id=66 data-nosnippet>66</a>
 <a href=#67 id=67 data-nosnippet>67</a><span class="doccomment">/// Replaces the entire content of an output channel.
-<a href=#68 id=68 data-nosnippet>68</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span>replace_channel_content(
-<a href=#69 id=69 data-nosnippet>69</a>	env:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::MountainEnvironment,
-<a href=#70 id=70 data-nosnippet>70</a>	channel_identifier:String,
-<a href=#71 id=71 data-nosnippet>71</a>	value:String,
+<a href=#68 id=68 data-nosnippet>68</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/OutputProvider/ChannelContent/fn.replace_channel_content.html">replace_channel_content</a>(
+<a href=#69 id=69 data-nosnippet>69</a>	env:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#220-230">MountainEnvironment</a>,
+<a href=#70 id=70 data-nosnippet>70</a>	channel_identifier:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#71 id=71 data-nosnippet>71</a>	value:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#72 id=72 data-nosnippet>72</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
 <a href=#73 id=73 data-nosnippet>73</a>	<span class="macro">info!</span>(<span class="string">"[OutputProvider] Replacing content of channel: '{}'"</span>, channel_identifier);
 <a href=#74 id=74 data-nosnippet>74</a>
@@ -96,9 +96,9 @@
 <a href=#96 id=96 data-nosnippet>96</a>}
 <a href=#97 id=97 data-nosnippet>97</a>
 <a href=#98 id=98 data-nosnippet>98</a><span class="doccomment">/// Clears all content from an output channel.
-<a href=#99 id=99 data-nosnippet>99</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span>clear_channel(
-<a href=#100 id=100 data-nosnippet>100</a>	env:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::MountainEnvironment,
-<a href=#101 id=101 data-nosnippet>101</a>	channel_identifier:String,
+<a href=#99 id=99 data-nosnippet>99</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/OutputProvider/ChannelContent/fn.clear_channel.html">clear_channel</a>(
+<a href=#100 id=100 data-nosnippet>100</a>	env:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#220-230">MountainEnvironment</a>,
+<a href=#101 id=101 data-nosnippet>101</a>	channel_identifier:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#102 id=102 data-nosnippet>102</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
 <a href=#103 id=103 data-nosnippet>103</a>	<span class="macro">info!</span>(<span class="string">"[OutputProvider] Clearing channel: '{}'"</span>, channel_identifier);
 <a href=#104 id=104 data-nosnippet>104</a>

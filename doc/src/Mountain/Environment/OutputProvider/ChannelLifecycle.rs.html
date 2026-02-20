@@ -5,17 +5,17 @@
 <a href=#5 id=5 data-nosnippet>5</a>//! implementation.
 <a href=#6 id=6 data-nosnippet>6</a>
 <a href=#7 id=7 data-nosnippet>7</a></span><span class="kw">use </span>CommonLibrary::Error::CommonError::CommonError;
-<a href=#8 id=8 data-nosnippet>8</a><span class="kw">use </span>log::{error, info};
-<a href=#9 id=9 data-nosnippet>9</a><span class="kw">use </span>serde_json::json;
+<a href=#8 id=8 data-nosnippet>8</a><span class="kw">use </span>log::{<a href="https://docs.rs/log/0.4.29/log/macro.error.html">error</a>, <a href="https://docs.rs/log/0.4.29/log/macro.info.html">info</a>};
+<a href=#9 id=9 data-nosnippet>9</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">serde_json::json</a>;
 <a href=#10 id=10 data-nosnippet>10</a><span class="kw">use </span>tauri::Emitter;
 <a href=#11 id=11 data-nosnippet>11</a>
-<a href=#12 id=12 data-nosnippet>12</a><span class="kw">use </span>crate::{ApplicationState::DTO::OutputChannelStateDTO::OutputChannelStateDTO, Environment::Utility};
+<a href=#12 id=12 data-nosnippet>12</a><span class="kw">use </span>crate::{<a href="../../ApplicationState/DTO/OutputChannelStateDTO.rs.html#31-46">ApplicationState::DTO::OutputChannelStateDTO::OutputChannelStateDTO</a>, <a href="../mod.rs.html#112">Environment::Utility</a>};
 <a href=#13 id=13 data-nosnippet>13</a>
 <a href=#14 id=14 data-nosnippet>14</a><span class="doccomment">/// Registers a new output channel.
-<a href=#15 id=15 data-nosnippet>15</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span>register_channel(
-<a href=#16 id=16 data-nosnippet>16</a>	env:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::MountainEnvironment,
-<a href=#17 id=17 data-nosnippet>17</a>	name:String,
-<a href=#18 id=18 data-nosnippet>18</a>	language_identifier:<span class="prelude-ty">Option</span>&lt;String&gt;,
+<a href=#15 id=15 data-nosnippet>15</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/OutputProvider/ChannelLifecycle/fn.register_channel.html">register_channel</a>(
+<a href=#16 id=16 data-nosnippet>16</a>	env:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#220-230">MountainEnvironment</a>,
+<a href=#17 id=17 data-nosnippet>17</a>	name:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#18 id=18 data-nosnippet>18</a>	language_identifier:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;,
 <a href=#19 id=19 data-nosnippet>19</a>) -&gt; <span class="prelude-ty">Result</span>&lt;String, CommonError&gt; {
 <a href=#20 id=20 data-nosnippet>20</a>	<span class="macro">info!</span>(<span class="string">"[OutputProvider] Registering channel: '{}'"</span>, name);
 <a href=#21 id=21 data-nosnippet>21</a>
@@ -73,9 +73,9 @@
 <a href=#73 id=73 data-nosnippet>73</a>}
 <a href=#74 id=74 data-nosnippet>74</a>
 <a href=#75 id=75 data-nosnippet>75</a><span class="doccomment">/// Disposes of an output channel permanently.
-<a href=#76 id=76 data-nosnippet>76</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span>dispose_channel(
-<a href=#77 id=77 data-nosnippet>77</a>	env:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::MountainEnvironment,
-<a href=#78 id=78 data-nosnippet>78</a>	channel_identifier:String,
+<a href=#76 id=76 data-nosnippet>76</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/OutputProvider/ChannelLifecycle/fn.dispose_channel.html">dispose_channel</a>(
+<a href=#77 id=77 data-nosnippet>77</a>	env:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#220-230">MountainEnvironment</a>,
+<a href=#78 id=78 data-nosnippet>78</a>	channel_identifier:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#79 id=79 data-nosnippet>79</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
 <a href=#80 id=80 data-nosnippet>80</a>	<span class="macro">info!</span>(<span class="string">"[OutputProvider] Disposing channel: '{}'"</span>, channel_identifier);
 <a href=#81 id=81 data-nosnippet>81</a>

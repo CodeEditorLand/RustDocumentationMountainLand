@@ -75,7 +75,7 @@ extension RPC)</li>
 <ul>
 <li>Implemented directly in Rust</li>
 <li>Registered via <code>RegisterCommand</code> function</li>
-<li>Handler is a function pointer or Arc<Fn></li>
+<li>Handler is a function pointer or <code>Arc&lt;Fn&gt;</code></li>
 <li>Zero IPC overhead, direct call</li>
 </ul>
 <h4 id="extension-commands"><a class="doc-anchor" href="#extension-commands">§</a>Extension Commands</h4>
@@ -130,7 +130,7 @@ Implement command batching for related operations</li>
 </ul>
 <h3 id="module-contents"><a class="doc-anchor" href="#module-contents">§</a>MODULE CONTENTS</h3>
 <ul>
-<li>[<code>CommandProvider</code>]: Main struct implementing <code>CommandExecutor</code></li>
+<li><code>CommandProvider</code>: Main struct implementing <code>CommandExecutor</code></li>
 <li>Command registration functions (to be added)</li>
 <li>Extension command proxy logic</li>
 </ul>

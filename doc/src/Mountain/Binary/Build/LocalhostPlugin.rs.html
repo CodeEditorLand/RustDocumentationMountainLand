@@ -22,13 +22,13 @@
 <a href=#22 id=22 data-nosnippet>22</a>/// - Access-Control-Allow-Origin: * (allows all origins)
 <a href=#23 id=23 data-nosnippet>23</a>/// - Access-Control-Allow-Methods: GET, POST, OPTIONS, HEAD
 <a href=#24 id=24 data-nosnippet>24</a>/// - Access-Control-Allow-Headers: Content-Type, Authorization, Origin, Accept
-<a href=#25 id=25 data-nosnippet>25</a></span><span class="kw">pub fn </span>LocalhostPlugin&lt;R:tauri::Runtime&gt;(ServerPort:u16) -&gt; TauriPlugin&lt;R&gt; {
-<a href=#26 id=26 data-nosnippet>26</a>	tauri_plugin_localhost::Builder::new(ServerPort)
+<a href=#25 id=25 data-nosnippet>25</a></span><span class="kw">pub fn </span><a href="../../../../Mountain/Binary/Build/LocalhostPlugin/fn.LocalhostPlugin.html">LocalhostPlugin</a>&lt;R:tauri::Runtime&gt;(ServerPort:<a href="https://doc.rust-lang.org/nightly/std/primitive.u16.html">u16</a>) -&gt; TauriPlugin&lt;R&gt; {
+<a href=#26 id=26 data-nosnippet>26</a>	tauri_plugin_localhost::Builder::new(<a href="#25">ServerPort</a>)
 <a href=#27 id=27 data-nosnippet>27</a>		.on_request(|<span class="kw">_</span>, Response| {
 <a href=#28 id=28 data-nosnippet>28</a>			<span class="comment">// Set CORS headers to allow cross-origin requests from Service Workers
-<a href=#29 id=29 data-nosnippet>29</a>			</span>Response.add_header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"*"</span>);
-<a href=#30 id=30 data-nosnippet>30</a>			Response.add_header(<span class="string">"Access-Control-Allow-Methods"</span>, <span class="string">"GET, POST, OPTIONS, HEAD"</span>);
-<a href=#31 id=31 data-nosnippet>31</a>			Response.add_header(<span class="string">"Access-Control-Allow-Headers"</span>, <span class="string">"Content-Type, Authorization, Origin, Accept"</span>);
+<a href=#29 id=29 data-nosnippet>29</a>			</span><a href="#27">Response</a>.add_header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"*"</span>);
+<a href=#30 id=30 data-nosnippet>30</a>			<a href="#27">Response</a>.add_header(<span class="string">"Access-Control-Allow-Methods"</span>, <span class="string">"GET, POST, OPTIONS, HEAD"</span>);
+<a href=#31 id=31 data-nosnippet>31</a>			<a href="#27">Response</a>.add_header(<span class="string">"Access-Control-Allow-Headers"</span>, <span class="string">"Content-Type, Authorization, Origin, Accept"</span>);
 <a href=#32 id=32 data-nosnippet>32</a>		})
 <a href=#33 id=33 data-nosnippet>33</a>		.build()
 <a href=#34 id=34 data-nosnippet>34</a>}

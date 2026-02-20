@@ -11,41 +11,41 @@
 <a href=#11 id=11 data-nosnippet>11</a>//! - Buffer: Buffered output content
 <a href=#12 id=12 data-nosnippet>12</a>//! - IsVisible: Channel visibility status
 <a href=#13 id=13 data-nosnippet>13</a>
-<a href=#14 id=14 data-nosnippet>14</a></span><span class="kw">use </span>serde::{Deserialize, Serialize};
+<a href=#14 id=14 data-nosnippet>14</a></span><span class="kw">use </span>serde::{<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>};
 <a href=#15 id=15 data-nosnippet>15</a>
 <a href=#16 id=16 data-nosnippet>16</a><span class="doccomment">/// Maximum channel name length
-<a href=#17 id=17 data-nosnippet>17</a></span><span class="kw">const </span>MAX_CHANNEL_NAME_LENGTH:usize = <span class="number">128</span>;
+<a href=#17 id=17 data-nosnippet>17</a></span><span class="kw">const </span><a href="../../../../Mountain/ApplicationState/DTO/OutputChannelStateDTO/constant.MAX_CHANNEL_NAME_LENGTH.html">MAX_CHANNEL_NAME_LENGTH</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> = <span class="number">128</span>;
 <a href=#18 id=18 data-nosnippet>18</a>
 <a href=#19 id=19 data-nosnippet>19</a><span class="doccomment">/// Maximum language identifier length
-<a href=#20 id=20 data-nosnippet>20</a></span><span class="kw">const </span>MAX_LANGUAGE_ID_LENGTH:usize = <span class="number">128</span>;
+<a href=#20 id=20 data-nosnippet>20</a></span><span class="kw">const </span><a href="../../../../Mountain/ApplicationState/DTO/OutputChannelStateDTO/constant.MAX_LANGUAGE_ID_LENGTH.html">MAX_LANGUAGE_ID_LENGTH</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> = <span class="number">128</span>;
 <a href=#21 id=21 data-nosnippet>21</a>
 <a href=#22 id=22 data-nosnippet>22</a><span class="doccomment">/// Maximum buffer size per channel (prevents memory exhaustion)
 <a href=#23 id=23 data-nosnippet>23</a>/// Set to 10MB to prevent unbounded memory growth from excessive output
 <a href=#24 id=24 data-nosnippet>24</a>/// accumulation.
-<a href=#25 id=25 data-nosnippet>25</a></span><span class="kw">const </span>MAX_BUFFER_SIZE:usize = <span class="number">10_000_000</span>;
+<a href=#25 id=25 data-nosnippet>25</a></span><span class="kw">const </span><a href="../../../../Mountain/ApplicationState/DTO/OutputChannelStateDTO/constant.MAX_BUFFER_SIZE.html">MAX_BUFFER_SIZE</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> = <span class="number">10_000_000</span>;
 <a href=#26 id=26 data-nosnippet>26</a>
 <a href=#27 id=27 data-nosnippet>27</a><span class="doccomment">/// Represents the complete state of a single output channel, including its
 <a href=#28 id=28 data-nosnippet>28</a>/// buffered content and visibility status.
-<a href=#29 id=29 data-nosnippet>29</a></span><span class="attr">#[derive(Serialize, Deserialize, Clone, Debug, Default)]
+<a href=#29 id=29 data-nosnippet>29</a></span><span class="attr">#[derive(<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/default/derive.Default.html">Default</a>)]
 <a href=#30 id=30 data-nosnippet>30</a>#[serde(rename_all = <span class="string">"PascalCase"</span>)]
-<a href=#31 id=31 data-nosnippet>31</a></span><span class="kw">pub struct </span>OutputChannelStateDTO {
+<a href=#31 id=31 data-nosnippet>31</a></span><span class="kw">pub struct </span><a href="../../../../Mountain/ApplicationState/DTO/OutputChannelStateDTO/struct.OutputChannelStateDTO.html">OutputChannelStateDTO</a> {
 <a href=#32 id=32 data-nosnippet>32</a>	<span class="doccomment">/// Channel display name
 <a href=#33 id=33 data-nosnippet>33</a>	</span><span class="attr">#[serde(skip_serializing_if = <span class="string">"String::is_empty"</span>)]
-<a href=#34 id=34 data-nosnippet>34</a>	</span><span class="kw">pub </span>Name:String,
+<a href=#34 id=34 data-nosnippet>34</a>	</span><span class="kw">pub </span>Name:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#35 id=35 data-nosnippet>35</a>
 <a href=#36 id=36 data-nosnippet>36</a>	<span class="doccomment">/// Language identifier for syntax highlighting
 <a href=#37 id=37 data-nosnippet>37</a>	</span><span class="attr">#[serde(skip_serializing_if = <span class="string">"Option::is_none"</span>)]
-<a href=#38 id=38 data-nosnippet>38</a>	</span><span class="kw">pub </span>LanguageIdentifier:<span class="prelude-ty">Option</span>&lt;String&gt;,
+<a href=#38 id=38 data-nosnippet>38</a>	</span><span class="kw">pub </span>LanguageIdentifier:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;,
 <a href=#39 id=39 data-nosnippet>39</a>
 <a href=#40 id=40 data-nosnippet>40</a>	<span class="doccomment">/// Buffered output content
 <a href=#41 id=41 data-nosnippet>41</a>	</span><span class="attr">#[serde(skip_serializing_if = <span class="string">"String::is_empty"</span>)]
-<a href=#42 id=42 data-nosnippet>42</a>	</span><span class="kw">pub </span>Buffer:String,
+<a href=#42 id=42 data-nosnippet>42</a>	</span><span class="kw">pub </span>Buffer:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#43 id=43 data-nosnippet>43</a>
 <a href=#44 id=44 data-nosnippet>44</a>	<span class="doccomment">/// Whether the channel is currently visible in UI
-<a href=#45 id=45 data-nosnippet>45</a>	</span><span class="kw">pub </span>IsVisible:bool,
+<a href=#45 id=45 data-nosnippet>45</a>	</span><span class="kw">pub </span>IsVisible:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
 <a href=#46 id=46 data-nosnippet>46</a>}
 <a href=#47 id=47 data-nosnippet>47</a>
-<a href=#48 id=48 data-nosnippet>48</a><span class="kw">impl </span>OutputChannelStateDTO {
+<a href=#48 id=48 data-nosnippet>48</a><span class="kw">impl </span><a href="#31-46">OutputChannelStateDTO</a> {
 <a href=#49 id=49 data-nosnippet>49</a>	<span class="doccomment">/// Creates a new `OutputChannelStateDTO` with validation.
 <a href=#50 id=50 data-nosnippet>50</a>	///
 <a href=#51 id=51 data-nosnippet>51</a>	/// # Arguments
@@ -54,26 +54,26 @@
 <a href=#54 id=54 data-nosnippet>54</a>	///
 <a href=#55 id=55 data-nosnippet>55</a>	/// # Returns
 <a href=#56 id=56 data-nosnippet>56</a>	/// Result containing the DTO or validation error
-<a href=#57 id=57 data-nosnippet>57</a>	</span><span class="kw">pub fn </span>Create(Name:<span class="kw-2">&amp;</span>str, LanguageIdentifier:<span class="prelude-ty">Option</span>&lt;String&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>, String&gt; {
+<a href=#57 id=57 data-nosnippet>57</a>	</span><span class="kw">pub fn </span>Create(Name:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, LanguageIdentifier:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<span class="self">Self</span>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
 <a href=#58 id=58 data-nosnippet>58</a>		<span class="comment">// Validate name length
-<a href=#59 id=59 data-nosnippet>59</a>		</span><span class="kw">if </span>Name.len() &gt; MAX_CHANNEL_NAME_LENGTH {
-<a href=#60 id=60 data-nosnippet>60</a>			<span class="kw">return </span><span class="prelude-val">Err</span>(<span class="macro">format!</span>(
+<a href=#59 id=59 data-nosnippet>59</a>		</span><span class="kw">if </span><a href="#57">Name</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.len">len</a>() &gt; <a href="#17">MAX_CHANNEL_NAME_LENGTH</a> {
+<a href=#60 id=60 data-nosnippet>60</a>			<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(
 <a href=#61 id=61 data-nosnippet>61</a>				<span class="string">"Channel name exceeds maximum length of {} bytes"</span>,
 <a href=#62 id=62 data-nosnippet>62</a>				MAX_CHANNEL_NAME_LENGTH
 <a href=#63 id=63 data-nosnippet>63</a>			));
 <a href=#64 id=64 data-nosnippet>64</a>		}
 <a href=#65 id=65 data-nosnippet>65</a>
 <a href=#66 id=66 data-nosnippet>66</a>		<span class="comment">// Validate language identifier length
-<a href=#67 id=67 data-nosnippet>67</a>		</span><span class="kw">if let </span><span class="prelude-val">Some</span>(LangID) = <span class="kw-2">&amp;</span>LanguageIdentifier {
-<a href=#68 id=68 data-nosnippet>68</a>			<span class="kw">if </span>LangID.len() &gt; MAX_LANGUAGE_ID_LENGTH {
-<a href=#69 id=69 data-nosnippet>69</a>				<span class="kw">return </span><span class="prelude-val">Err</span>(<span class="macro">format!</span>(
+<a href=#67 id=67 data-nosnippet>67</a>		</span><span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(LangID) = <span class="kw-2">&amp;</span><a href="#57">LanguageIdentifier</a> {
+<a href=#68 id=68 data-nosnippet>68</a>			<span class="kw">if </span><a href="#67">LangID</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.len">len</a>() &gt; <a href="#20">MAX_LANGUAGE_ID_LENGTH</a> {
+<a href=#69 id=69 data-nosnippet>69</a>				<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(
 <a href=#70 id=70 data-nosnippet>70</a>					<span class="string">"Language identifier exceeds maximum length of {} bytes"</span>,
 <a href=#71 id=71 data-nosnippet>71</a>					MAX_LANGUAGE_ID_LENGTH
 <a href=#72 id=72 data-nosnippet>72</a>				));
 <a href=#73 id=73 data-nosnippet>73</a>			}
 <a href=#74 id=74 data-nosnippet>74</a>		}
 <a href=#75 id=75 data-nosnippet>75</a>
-<a href=#76 id=76 data-nosnippet>76</a>		<span class="prelude-val">Ok</span>(<span class="self">Self </span>{ Name:Name.to_string(), LanguageIdentifier, Buffer:String::new(), IsVisible:<span class="bool-val">false </span>})
+<a href=#76 id=76 data-nosnippet>76</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="self">Self </span>{ Name:<a href="#57">Name</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(), <a href="#57">LanguageIdentifier</a>, Buffer:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>::<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.new">new</a>(), IsVisible:<span class="bool-val">false </span>})
 <a href=#77 id=77 data-nosnippet>77</a>	}
 <a href=#78 id=78 data-nosnippet>78</a>
 <a href=#79 id=79 data-nosnippet>79</a>	<span class="doccomment">/// Appends content to the buffer with size validation.
@@ -83,41 +83,41 @@
 <a href=#83 id=83 data-nosnippet>83</a>	///
 <a href=#84 id=84 data-nosnippet>84</a>	/// # Returns
 <a href=#85 id=85 data-nosnippet>85</a>	/// Result indicating success or error if buffer would exceed limit
-<a href=#86 id=86 data-nosnippet>86</a>	</span><span class="kw">pub fn </span>Append(<span class="kw-2">&amp;mut </span><span class="self">self</span>, Content:<span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
-<a href=#87 id=87 data-nosnippet>87</a>		<span class="kw">let </span>NewSize = <span class="self">self</span>.Buffer.len() + Content.len();
-<a href=#88 id=88 data-nosnippet>88</a>		<span class="kw">if </span>NewSize &gt; MAX_BUFFER_SIZE {
-<a href=#89 id=89 data-nosnippet>89</a>			<span class="kw">return </span><span class="prelude-val">Err</span>(<span class="macro">format!</span>(<span class="string">"Buffer would exceed maximum size of {} bytes"</span>, MAX_BUFFER_SIZE));
+<a href=#86 id=86 data-nosnippet>86</a>	</span><span class="kw">pub fn </span>Append(<span class="kw-2">&amp;mut </span><span class="self">self</span>, Content:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
+<a href=#87 id=87 data-nosnippet>87</a>		<span class="kw">let </span>NewSize = <a class="self" href="#86">self</a>.Buffer.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.len">len</a>() + <a href="#86">Content</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.len">len</a>();
+<a href=#88 id=88 data-nosnippet>88</a>		<span class="kw">if </span><a href="#87">NewSize</a> &gt; <a href="#25">MAX_BUFFER_SIZE</a> {
+<a href=#89 id=89 data-nosnippet>89</a>			<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Buffer would exceed maximum size of {} bytes"</span>, MAX_BUFFER_SIZE));
 <a href=#90 id=90 data-nosnippet>90</a>		}
 <a href=#91 id=91 data-nosnippet>91</a>
-<a href=#92 id=92 data-nosnippet>92</a>		<span class="self">self</span>.Buffer.push_str(Content);
-<a href=#93 id=93 data-nosnippet>93</a>		<span class="prelude-val">Ok</span>(())
+<a href=#92 id=92 data-nosnippet>92</a>		<a class="self" href="#86">self</a>.Buffer.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.push_str">push_str</a>(<a href="#86">Content</a>);
+<a href=#93 id=93 data-nosnippet>93</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#94 id=94 data-nosnippet>94</a>	}
 <a href=#95 id=95 data-nosnippet>95</a>
 <a href=#96 id=96 data-nosnippet>96</a>	<span class="doccomment">/// Clears the buffer content.
-<a href=#97 id=97 data-nosnippet>97</a>	</span><span class="kw">pub fn </span>Clear(<span class="kw-2">&amp;mut </span><span class="self">self</span>) { <span class="self">self</span>.Buffer.clear(); }
+<a href=#97 id=97 data-nosnippet>97</a>	</span><span class="kw">pub fn </span>Clear(<span class="kw-2">&amp;mut </span><span class="self">self</span>) { <a class="self" href="#97">self</a>.Buffer.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.clear">clear</a>(); }
 <a href=#98 id=98 data-nosnippet>98</a>
 <a href=#99 id=99 data-nosnippet>99</a>	<span class="doccomment">/// Returns the current buffer size in bytes.
-<a href=#100 id=100 data-nosnippet>100</a>	</span><span class="kw">pub fn </span>GetBufferSize(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; usize { <span class="self">self</span>.Buffer.len() }
+<a href=#100 id=100 data-nosnippet>100</a>	</span><span class="kw">pub fn </span>GetBufferSize(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> { <a class="self" href="#100">self</a>.Buffer.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.len">len</a>() }
 <a href=#101 id=101 data-nosnippet>101</a>
 <a href=#102 id=102 data-nosnippet>102</a>	<span class="doccomment">/// Returns the current buffer size as a human-readable string.
-<a href=#103 id=103 data-nosnippet>103</a>	</span><span class="kw">pub fn </span>GetFormattedBufferSize(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; String { FormatBytes(<span class="self">self</span>.Buffer.len()) }
+<a href=#103 id=103 data-nosnippet>103</a>	</span><span class="kw">pub fn </span>GetFormattedBufferSize(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a> { <a href="#113-129">FormatBytes</a>(<a class="self" href="#103">self</a>.Buffer.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.len">len</a>()) }
 <a href=#104 id=104 data-nosnippet>104</a>
 <a href=#105 id=105 data-nosnippet>105</a>	<span class="doccomment">/// Sets the visibility status.
 <a href=#106 id=106 data-nosnippet>106</a>	///
 <a href=#107 id=107 data-nosnippet>107</a>	/// # Arguments
 <a href=#108 id=108 data-nosnippet>108</a>	/// * `IsVisible` - New visibility status
-<a href=#109 id=109 data-nosnippet>109</a>	</span><span class="kw">pub fn </span>SetVisibility(<span class="kw-2">&amp;mut </span><span class="self">self</span>, IsVisible:bool) { <span class="self">self</span>.IsVisible = IsVisible; }
+<a href=#109 id=109 data-nosnippet>109</a>	</span><span class="kw">pub fn </span>SetVisibility(<span class="kw-2">&amp;mut </span><span class="self">self</span>, IsVisible:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) { <a class="self" href="#109">self</a>.IsVisible = <a href="#109">IsVisible</a>; }
 <a href=#110 id=110 data-nosnippet>110</a>}
 <a href=#111 id=111 data-nosnippet>111</a>
 <a href=#112 id=112 data-nosnippet>112</a><span class="doccomment">/// Formats a byte count into a human-readable string.
-<a href=#113 id=113 data-nosnippet>113</a></span><span class="kw">fn </span>FormatBytes(Bytes:usize) -&gt; String {
-<a href=#114 id=114 data-nosnippet>114</a>	<span class="kw">const </span>UNITS:<span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span>str] = <span class="kw-2">&amp;</span>[<span class="string">"B"</span>, <span class="string">"KB"</span>, <span class="string">"MB"</span>, <span class="string">"GB"</span>];
+<a href=#113 id=113 data-nosnippet>113</a></span><span class="kw">fn </span><a href="../../../../Mountain/ApplicationState/DTO/OutputChannelStateDTO/fn.FormatBytes.html">FormatBytes</a>(Bytes:<a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a> {
+<a href=#114 id=114 data-nosnippet>114</a>	<span class="kw">const </span>UNITS:<span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>] = <span class="kw-2">&amp;</span>[<span class="string">"B"</span>, <span class="string">"KB"</span>, <span class="string">"MB"</span>, <span class="string">"GB"</span>];
 <a href=#115 id=115 data-nosnippet>115</a>
-<a href=#116 id=116 data-nosnippet>116</a>	<span class="kw">if </span>Bytes == <span class="number">0 </span>{
-<a href=#117 id=117 data-nosnippet>117</a>		<span class="kw">return </span><span class="string">"0 B"</span>.to_string();
+<a href=#116 id=116 data-nosnippet>116</a>	<span class="kw">if </span><a href="#113">Bytes</a> == <span class="number">0 </span>{
+<a href=#117 id=117 data-nosnippet>117</a>		<span class="kw">return </span><span class="string">"0 B"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>();
 <a href=#118 id=118 data-nosnippet>118</a>	}
 <a href=#119 id=119 data-nosnippet>119</a>
-<a href=#120 id=120 data-nosnippet>120</a>	<span class="kw">let </span><span class="kw-2">mut </span>Size = Bytes <span class="kw">as </span>f64;
+<a href=#120 id=120 data-nosnippet>120</a>	<span class="kw">let </span><span class="kw-2">mut </span>Size = <a href="#113">Bytes</a> <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>;
 <a href=#121 id=121 data-nosnippet>121</a>	<span class="kw">let </span><span class="kw-2">mut </span>MutIndex = <span class="number">0usize</span>;
 <a href=#122 id=122 data-nosnippet>122</a>
 <a href=#123 id=123 data-nosnippet>123</a>	<span class="kw">while </span>Size &gt;= <span class="number">1024.0 </span>&amp;&amp; MutIndex &lt; UNITS.len() - <span class="number">1 </span>{
@@ -125,6 +125,6 @@
 <a href=#125 id=125 data-nosnippet>125</a>		MutIndex += <span class="number">1</span>;
 <a href=#126 id=126 data-nosnippet>126</a>	}
 <a href=#127 id=127 data-nosnippet>127</a>
-<a href=#128 id=128 data-nosnippet>128</a>	<span class="macro">format!</span>(<span class="string">"{:.2} {}"</span>, Size, UNITS[MutIndex])
+<a href=#128 id=128 data-nosnippet>128</a>	<a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"{:.2} {}"</span>, Size, UNITS[MutIndex])
 <a href=#129 id=129 data-nosnippet>129</a>}
 </code></pre></div></section></main></body></html>

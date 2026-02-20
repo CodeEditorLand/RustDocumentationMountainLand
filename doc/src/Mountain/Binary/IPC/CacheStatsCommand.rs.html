@@ -35,7 +35,7 @@
 <a href=#35 id=35 data-nosnippet>35</a>//! - Stats collection should be lightweight
 <a href=#36 id=36 data-nosnippet>36</a>//! - Update interval affects accuracy
 <a href=#37 id=37 data-nosnippet>37</a>
-<a href=#38 id=38 data-nosnippet>38</a></span><span class="kw">use </span>serde_json::{Value, to_value};
+<a href=#38 id=38 data-nosnippet>38</a></span><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/value/fn.to_value.html">to_value</a>};
 <a href=#39 id=39 data-nosnippet>39</a><span class="kw">use </span>tauri::AppHandle;
 <a href=#40 id=40 data-nosnippet>40</a>
 <a href=#41 id=41 data-nosnippet>41</a><span class="doccomment">/// Get cache stats.
@@ -54,7 +54,7 @@
 <a href=#54 id=54 data-nosnippet>54</a>///
 <a href=#55 id=55 data-nosnippet>55</a>/// Returns an error if stats cannot be collected.
 <a href=#56 id=56 data-nosnippet>56</a></span><span class="attr">#[tauri::command]
-<a href=#57 id=57 data-nosnippet>57</a></span><span class="kw">pub async fn </span>MountainGetCacheStats(app_handle:AppHandle) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
+<a href=#57 id=57 data-nosnippet>57</a></span><span class="kw">pub async fn </span><a href="#56">MountainGetCacheStats</a>(app_handle:AppHandle) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
 <a href=#58 id=58 data-nosnippet>58</a>	<span class="kw">let </span>stats = <span class="kw">crate</span>::IPC::AdvancedFeatures::mountain_get_cache_stats(app_handle).<span class="kw">await</span><span class="question-mark">?</span>;
 <a href=#59 id=59 data-nosnippet>59</a>	to_value(<span class="kw-2">&amp;</span>stats).map_err(|e| <span class="macro">format!</span>(<span class="string">"Failed to serialize cache stats: {}"</span>, e))
 <a href=#60 id=60 data-nosnippet>60</a>}

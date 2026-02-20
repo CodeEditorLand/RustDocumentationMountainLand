@@ -27,10 +27,9 @@ startup.</p>
 <h3 id="architectural-role"><a class="doc-anchor" href="#architectural-role">§</a>ARCHITECTURAL ROLE</h3>
 <p>InitializationData is the <strong>bootstrap orchestrator</strong> for Mountain’s
 startup sequence:</p>
-
-<div class="example-wrap"><pre class="rust rust-example-rendered"><code>Binary::Main ──► InitializationData ──► Sky (Frontend)
-                       │
-                       └─► Cocoon (Extension Host)</code></pre></div><h4 id="position-in-mountain"><a class="doc-anchor" href="#position-in-mountain">§</a>Position in Mountain</h4>
+<div class="example-wrap"><pre class="language-text"><code>Binary::Main ──► InitializationData ──► Sky (Frontend)
+│
+└─► Cocoon (Extension Host)</code></pre></div><h4 id="position-in-mountain"><a class="doc-anchor" href="#position-in-mountain">§</a>Position in Mountain</h4>
 <ul>
 <li><code>ProcessManagement</code> module: Process lifecycle and initialization</li>
 <li>Called during <code>Binary::Main</code> startup and <code>CocoonManagement</code> initialization</li>
@@ -123,4 +122,4 @@ Support remote workspace URIs</li>
 <li><a href="fn.ConstructExtensionHostInitializationData.html" title="fn Mountain::ProcessManagement::InitializationData::ConstructExtensionHostInitializationData"><code>ConstructExtensionHostInitializationData</code></a>: Build IExtensionHostInitData
 for Cocoon</li>
 </ul>
-</div></details><h2 id="functions" class="section-header">Functions<a href="#functions" class="anchor">§</a></h2><dl class="item-table"><dt><a class="fn" href="fn.ConstructExtensionHostInitializationData.html" title="fn Mountain::ProcessManagement::InitializationData::ConstructExtensionHostInitializationData">Construct<wbr>Extension<wbr>Host<wbr>Initialization<wbr>Data</a></dt><dd>Constructs the <code>IExtensionHostInitData</code> payload sent to <code>Cocoon</code>.</dd><dt><a class="fn" href="fn.ConstructSandboxConfiguration.html" title="fn Mountain::ProcessManagement::InitializationData::ConstructSandboxConfiguration">Construct<wbr>Sandbox<wbr>Configuration</a></dt><dd>Constructs the <code>ISandboxConfiguration</code> payload needed by the <code>Sky</code> frontend.</dd></dl></section></div></main></body></html>
+</div></details><h2 id="functions" class="section-header">Functions<a href="#functions" class="anchor">§</a></h2><dl class="item-table"><dt><a class="fn" href="fn.ConstructExtensionHostInitializationData.html" title="fn Mountain::ProcessManagement::InitializationData::ConstructExtensionHostInitializationData">Construct<wbr>Extension<wbr>Host<wbr>Initialization<wbr>Data</a></dt><dd>Constructs the <code>IExtensionHostInitData</code> payload sent to <code>Cocoon</code>.</dd><dt><a class="fn" href="fn.ConstructSandboxConfiguration.html" title="fn Mountain::ProcessManagement::InitializationData::ConstructSandboxConfiguration">Construct<wbr>Sandbox<wbr>Configuration</a></dt><dd>Constructs the <code>ISandboxConfiguration</code> payload needed by the <code>Sky</code> frontend.</dd><dt><a class="fn" href="fn.get_or_generate_machine_id.html" title="fn Mountain::ProcessManagement::InitializationData::get_or_generate_machine_id">get_<wbr>or_<wbr>generate_<wbr>machine_<wbr>id</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Loads or generates a persistent machine ID.</dd></dl></section></div></main></body></html>

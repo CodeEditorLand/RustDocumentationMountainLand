@@ -17,8 +17,7 @@
 <li>Request ID generation for tracing</li>
 <li>Connection state management</li>
 </ul>
-
-<div class="example-wrap"><pre class="rust rust-example-rendered"><code>Application ──► AirServiceProvider ──► AirClient ──► gRPC ──► Air Daemon</code></pre></div><h4 id="dependencies"><a class="doc-anchor" href="#dependencies">§</a>Dependencies</h4>
+<div class="example-wrap"><pre class="language-text"><code>Application ──► AirServiceProvider ──► AirClient ──► gRPC ──► Air Daemon</code></pre></div><h4 id="dependencies"><a class="doc-anchor" href="#dependencies">§</a>Dependencies</h4>
 <ul>
 <li><code>AirClient</code>: Low-level gRPC client</li>
 <li><code>uuid</code>: For generating request identifiers</li>
@@ -42,7 +41,7 @@ AirClient type with automatic request ID generation and error handling.</p>
 <h3 id="performance"><a class="doc-anchor" href="#performance">§</a>PERFORMANCE</h3>
 <ul>
 <li>Request ID generation uses UUID v4 (cryptographically random)</li>
-<li>Thread-safe operations via Arc<AirClient></li>
+<li>Thread-safe operations via <code>Arc&lt;AirClient&gt;</code></li>
 <li>Non-blocking async operations via tokio</li>
 </ul>
 <h3 id="vscode-reference"><a class="doc-anchor" href="#vscode-reference">§</a>VSCODE REFERENCE</h3>

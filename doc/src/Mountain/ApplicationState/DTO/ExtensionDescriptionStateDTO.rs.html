@@ -20,118 +20,118 @@
 <a href=#20 id=20 data-nosnippet>20</a>//! - ActivationEvents: Activation event triggers
 <a href=#21 id=21 data-nosnippet>21</a>//! - Contributes: Extension contributions configuration
 <a href=#22 id=22 data-nosnippet>22</a>
-<a href=#23 id=23 data-nosnippet>23</a></span><span class="kw">use </span>serde::{Deserialize, Serialize};
-<a href=#24 id=24 data-nosnippet>24</a><span class="kw">use </span>serde_json::Value;
+<a href=#23 id=23 data-nosnippet>23</a></span><span class="kw">use </span>serde::{<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>};
+<a href=#24 id=24 data-nosnippet>24</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#25 id=25 data-nosnippet>25</a>
 <a href=#26 id=26 data-nosnippet>26</a><span class="doccomment">/// Maximum length for extension name
-<a href=#27 id=27 data-nosnippet>27</a></span><span class="kw">const </span>MAX_EXTENSION_NAME_LENGTH:usize = <span class="number">128</span>;
+<a href=#27 id=27 data-nosnippet>27</a></span><span class="kw">const </span><a href="../../../../Mountain/ApplicationState/DTO/ExtensionDescriptionStateDTO/constant.MAX_EXTENSION_NAME_LENGTH.html">MAX_EXTENSION_NAME_LENGTH</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> = <span class="number">128</span>;
 <a href=#28 id=28 data-nosnippet>28</a>
 <a href=#29 id=29 data-nosnippet>29</a><span class="doccomment">/// Maximum length for version string
-<a href=#30 id=30 data-nosnippet>30</a></span><span class="kw">const </span>MAX_VERSION_LENGTH:usize = <span class="number">64</span>;
+<a href=#30 id=30 data-nosnippet>30</a></span><span class="kw">const </span><a href="../../../../Mountain/ApplicationState/DTO/ExtensionDescriptionStateDTO/constant.MAX_VERSION_LENGTH.html">MAX_VERSION_LENGTH</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> = <span class="number">64</span>;
 <a href=#31 id=31 data-nosnippet>31</a>
 <a href=#32 id=32 data-nosnippet>32</a><span class="doccomment">/// Maximum length for publisher name
-<a href=#33 id=33 data-nosnippet>33</a></span><span class="kw">const </span>MAX_PUBLISHER_LENGTH:usize = <span class="number">64</span>;
+<a href=#33 id=33 data-nosnippet>33</a></span><span class="kw">const </span><a href="../../../../Mountain/ApplicationState/DTO/ExtensionDescriptionStateDTO/constant.MAX_PUBLISHER_LENGTH.html">MAX_PUBLISHER_LENGTH</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> = <span class="number">64</span>;
 <a href=#34 id=34 data-nosnippet>34</a>
 <a href=#35 id=35 data-nosnippet>35</a><span class="doccomment">/// Maximum number of activation events
-<a href=#36 id=36 data-nosnippet>36</a></span><span class="kw">const </span>MAX_ACTIVATION_EVENTS:usize = <span class="number">100</span>;
+<a href=#36 id=36 data-nosnippet>36</a></span><span class="kw">const </span><a href="../../../../Mountain/ApplicationState/DTO/ExtensionDescriptionStateDTO/constant.MAX_ACTIVATION_EVENTS.html">MAX_ACTIVATION_EVENTS</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> = <span class="number">100</span>;
 <a href=#37 id=37 data-nosnippet>37</a>
 <a href=#38 id=38 data-nosnippet>38</a><span class="doccomment">/// Represents the deserialized content of an extension's `package.json` file,
 <a href=#39 id=39 data-nosnippet>39</a>/// augmented with location information and other metadata.
 <a href=#40 id=40 data-nosnippet>40</a>///
 <a href=#41 id=41 data-nosnippet>41</a>/// This is stored in `ApplicationState` to provide the extension host with the
 <a href=#42 id=42 data-nosnippet>42</a>/// list of available extensions and their capabilities.
-<a href=#43 id=43 data-nosnippet>43</a></span><span class="attr">#[derive(Serialize, Deserialize, Clone, Debug)]
+<a href=#43 id=43 data-nosnippet>43</a></span><span class="attr">#[derive(<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>)]
 <a href=#44 id=44 data-nosnippet>44</a>#[serde(rename_all = <span class="string">"PascalCase"</span>)]
-<a href=#45 id=45 data-nosnippet>45</a></span><span class="kw">pub struct </span>ExtensionDescriptionStateDTO {
+<a href=#45 id=45 data-nosnippet>45</a></span><span class="kw">pub struct </span><a href="../../../../Mountain/ApplicationState/DTO/ExtensionDescriptionStateDTO/struct.ExtensionDescriptionStateDTO.html">ExtensionDescriptionStateDTO</a> {
 <a href=#46 id=46 data-nosnippet>46</a>	<span class="comment">// --- Core Metadata ---
 <a href=#47 id=47 data-nosnippet>47</a>	// DTO: { value: string, uuid?: string }
-<a href=#48 id=48 data-nosnippet>48</a>	</span><span class="kw">pub </span>Identifier:Value,
+<a href=#48 id=48 data-nosnippet>48</a>	</span><span class="kw">pub </span>Identifier:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#49 id=49 data-nosnippet>49</a>
 <a href=#50 id=50 data-nosnippet>50</a>	<span class="doccomment">/// Extension display name
 <a href=#51 id=51 data-nosnippet>51</a>	</span><span class="attr">#[serde(skip_serializing_if = <span class="string">"String::is_empty"</span>)]
-<a href=#52 id=52 data-nosnippet>52</a>	</span><span class="kw">pub </span>Name:String,
+<a href=#52 id=52 data-nosnippet>52</a>	</span><span class="kw">pub </span>Name:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#53 id=53 data-nosnippet>53</a>
 <a href=#54 id=54 data-nosnippet>54</a>	<span class="doccomment">/// Semantic version string (e.g., "1.0.0")
 <a href=#55 id=55 data-nosnippet>55</a>	</span><span class="attr">#[serde(skip_serializing_if = <span class="string">"String::is_empty"</span>)]
-<a href=#56 id=56 data-nosnippet>56</a>	</span><span class="kw">pub </span>Version:String,
+<a href=#56 id=56 data-nosnippet>56</a>	</span><span class="kw">pub </span>Version:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#57 id=57 data-nosnippet>57</a>
 <a href=#58 id=58 data-nosnippet>58</a>	<span class="doccomment">/// Publisher name or identifier
 <a href=#59 id=59 data-nosnippet>59</a>	</span><span class="attr">#[serde(skip_serializing_if = <span class="string">"String::is_empty"</span>)]
-<a href=#60 id=60 data-nosnippet>60</a>	</span><span class="kw">pub </span>Publisher:String,
+<a href=#60 id=60 data-nosnippet>60</a>	</span><span class="kw">pub </span>Publisher:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#61 id=61 data-nosnippet>61</a>
 <a href=#62 id=62 data-nosnippet>62</a>	<span class="comment">// DTO: { vscode: string }
 <a href=#63 id=63 data-nosnippet>63</a>	</span><span class="doccomment">/// Engine compatibility requirements
-<a href=#64 id=64 data-nosnippet>64</a>	</span><span class="kw">pub </span>Engines:Value,
+<a href=#64 id=64 data-nosnippet>64</a>	</span><span class="kw">pub </span>Engines:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#65 id=65 data-nosnippet>65</a>
 <a href=#66 id=66 data-nosnippet>66</a>	<span class="comment">// --- Entry Points ---
 <a href=#67 id=67 data-nosnippet>67</a>	</span><span class="doccomment">/// Main entry point path (Node.js runtime)
 <a href=#68 id=68 data-nosnippet>68</a>	</span><span class="attr">#[serde(skip_serializing_if = <span class="string">"Option::is_none"</span>)]
-<a href=#69 id=69 data-nosnippet>69</a>	</span><span class="kw">pub </span>Main:<span class="prelude-ty">Option</span>&lt;String&gt;,
+<a href=#69 id=69 data-nosnippet>69</a>	</span><span class="kw">pub </span>Main:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;,
 <a href=#70 id=70 data-nosnippet>70</a>
 <a href=#71 id=71 data-nosnippet>71</a>	<span class="doccomment">/// Browser entry point path (web extension)
 <a href=#72 id=72 data-nosnippet>72</a>	</span><span class="attr">#[serde(skip_serializing_if = <span class="string">"Option::is_none"</span>)]
-<a href=#73 id=73 data-nosnippet>73</a>	</span><span class="kw">pub </span>Browser:<span class="prelude-ty">Option</span>&lt;String&gt;,
+<a href=#73 id=73 data-nosnippet>73</a>	</span><span class="kw">pub </span>Browser:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;,
 <a href=#74 id=74 data-nosnippet>74</a>
 <a href=#75 id=75 data-nosnippet>75</a>	<span class="comment">// --- Type &amp; Flags ---
 <a href=#76 id=76 data-nosnippet>76</a>	</span><span class="doccomment">/// Module type: commonjs or esm
 <a href=#77 id=77 data-nosnippet>77</a>	</span><span class="attr">#[serde(rename = <span class="string">"Type"</span>, skip_serializing_if = <span class="string">"Option::is_none"</span>)]
-<a href=#78 id=78 data-nosnippet>78</a>	</span><span class="kw">pub </span>ModuleType:<span class="prelude-ty">Option</span>&lt;String&gt;,
+<a href=#78 id=78 data-nosnippet>78</a>	</span><span class="kw">pub </span>ModuleType:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;,
 <a href=#79 id=79 data-nosnippet>79</a>
 <a href=#80 id=80 data-nosnippet>80</a>	<span class="doccomment">/// Whether this is a built-in extension
 <a href=#81 id=81 data-nosnippet>81</a>	</span><span class="attr">#[serde(default)]
-<a href=#82 id=82 data-nosnippet>82</a>	</span><span class="kw">pub </span>IsBuiltin:bool,
+<a href=#82 id=82 data-nosnippet>82</a>	</span><span class="kw">pub </span>IsBuiltin:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
 <a href=#83 id=83 data-nosnippet>83</a>
 <a href=#84 id=84 data-nosnippet>84</a>	<span class="doccomment">/// Whether extension is under active development
 <a href=#85 id=85 data-nosnippet>85</a>	</span><span class="attr">#[serde(default)]
-<a href=#86 id=86 data-nosnippet>86</a>	</span><span class="kw">pub </span>IsUnderDevelopment:bool,
+<a href=#86 id=86 data-nosnippet>86</a>	</span><span class="kw">pub </span>IsUnderDevelopment:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
 <a href=#87 id=87 data-nosnippet>87</a>
 <a href=#88 id=88 data-nosnippet>88</a>	<span class="comment">// --- Location &amp; Activation ---
 <a href=#89 id=89 data-nosnippet>89</a>	// Serialized UriComponents DTO
 <a href=#90 id=90 data-nosnippet>90</a>	</span><span class="doccomment">/// Installation location URI
-<a href=#91 id=91 data-nosnippet>91</a>	</span><span class="kw">pub </span>ExtensionLocation:Value,
+<a href=#91 id=91 data-nosnippet>91</a>	</span><span class="kw">pub </span>ExtensionLocation:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#92 id=92 data-nosnippet>92</a>
 <a href=#93 id=93 data-nosnippet>93</a>	<span class="doccomment">/// Activation event triggers (e.g., "onStartupFinished")
 <a href=#94 id=94 data-nosnippet>94</a>	</span><span class="attr">#[serde(skip_serializing_if = <span class="string">"Option::is_none"</span>)]
-<a href=#95 id=95 data-nosnippet>95</a>	</span><span class="kw">pub </span>ActivationEvents:<span class="prelude-ty">Option</span>&lt;Vec&lt;String&gt;&gt;,
+<a href=#95 id=95 data-nosnippet>95</a>	</span><span class="kw">pub </span>ActivationEvents:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;&gt;,
 <a href=#96 id=96 data-nosnippet>96</a>
 <a href=#97 id=97 data-nosnippet>97</a>	<span class="comment">// --- Contributions ---
 <a href=#98 id=98 data-nosnippet>98</a>	</span><span class="doccomment">/// Extension contributions (commands, views, etc.)
 <a href=#99 id=99 data-nosnippet>99</a>	</span><span class="attr">#[serde(skip_serializing_if = <span class="string">"Option::is_none"</span>)]
-<a href=#100 id=100 data-nosnippet>100</a>	</span><span class="kw">pub </span>Contributes:<span class="prelude-ty">Option</span>&lt;Value&gt;,
+<a href=#100 id=100 data-nosnippet>100</a>	</span><span class="kw">pub </span>Contributes:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;,
 <a href=#101 id=101 data-nosnippet>101</a>}
 <a href=#102 id=102 data-nosnippet>102</a>
-<a href=#103 id=103 data-nosnippet>103</a><span class="kw">impl </span>ExtensionDescriptionStateDTO {
+<a href=#103 id=103 data-nosnippet>103</a><span class="kw">impl </span><a href="#45-101">ExtensionDescriptionStateDTO</a> {
 <a href=#104 id=104 data-nosnippet>104</a>	<span class="doccomment">/// Validates the extension description data.
 <a href=#105 id=105 data-nosnippet>105</a>	///
 <a href=#106 id=106 data-nosnippet>106</a>	/// # Returns
 <a href=#107 id=107 data-nosnippet>107</a>	/// Result indicating success or validation error with reason
-<a href=#108 id=108 data-nosnippet>108</a>	</span><span class="kw">pub fn </span>Validate(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
+<a href=#108 id=108 data-nosnippet>108</a>	</span><span class="kw">pub fn </span>Validate(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
 <a href=#109 id=109 data-nosnippet>109</a>		<span class="comment">// Validate Name length
-<a href=#110 id=110 data-nosnippet>110</a>		</span><span class="kw">if </span><span class="self">self</span>.Name.len() &gt; MAX_EXTENSION_NAME_LENGTH {
-<a href=#111 id=111 data-nosnippet>111</a>			<span class="kw">return </span><span class="prelude-val">Err</span>(<span class="macro">format!</span>(
+<a href=#110 id=110 data-nosnippet>110</a>		</span><span class="kw">if </span><a class="self" href="#108">self</a>.Name.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.len">len</a>() &gt; <a href="#27">MAX_EXTENSION_NAME_LENGTH</a> {
+<a href=#111 id=111 data-nosnippet>111</a>			<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(
 <a href=#112 id=112 data-nosnippet>112</a>				<span class="string">"Extension name exceeds maximum length of {} bytes"</span>,
 <a href=#113 id=113 data-nosnippet>113</a>				MAX_EXTENSION_NAME_LENGTH
 <a href=#114 id=114 data-nosnippet>114</a>			));
 <a href=#115 id=115 data-nosnippet>115</a>		}
 <a href=#116 id=116 data-nosnippet>116</a>
 <a href=#117 id=117 data-nosnippet>117</a>		<span class="comment">// Validate Version length
-<a href=#118 id=118 data-nosnippet>118</a>		</span><span class="kw">if </span><span class="self">self</span>.Version.len() &gt; MAX_VERSION_LENGTH {
-<a href=#119 id=119 data-nosnippet>119</a>			<span class="kw">return </span><span class="prelude-val">Err</span>(<span class="macro">format!</span>(<span class="string">"Version string exceeds maximum length of {} bytes"</span>, MAX_VERSION_LENGTH));
+<a href=#118 id=118 data-nosnippet>118</a>		</span><span class="kw">if </span><a class="self" href="#108">self</a>.Version.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.len">len</a>() &gt; <a href="#30">MAX_VERSION_LENGTH</a> {
+<a href=#119 id=119 data-nosnippet>119</a>			<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Version string exceeds maximum length of {} bytes"</span>, MAX_VERSION_LENGTH));
 <a href=#120 id=120 data-nosnippet>120</a>		}
 <a href=#121 id=121 data-nosnippet>121</a>
 <a href=#122 id=122 data-nosnippet>122</a>		<span class="comment">// Validate Publisher length
-<a href=#123 id=123 data-nosnippet>123</a>		</span><span class="kw">if </span><span class="self">self</span>.Publisher.len() &gt; MAX_PUBLISHER_LENGTH {
-<a href=#124 id=124 data-nosnippet>124</a>			<span class="kw">return </span><span class="prelude-val">Err</span>(<span class="macro">format!</span>(<span class="string">"Publisher exceeds maximum length of {} bytes"</span>, MAX_PUBLISHER_LENGTH));
+<a href=#123 id=123 data-nosnippet>123</a>		</span><span class="kw">if </span><a class="self" href="#108">self</a>.Publisher.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.len">len</a>() &gt; <a href="#33">MAX_PUBLISHER_LENGTH</a> {
+<a href=#124 id=124 data-nosnippet>124</a>			<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Publisher exceeds maximum length of {} bytes"</span>, MAX_PUBLISHER_LENGTH));
 <a href=#125 id=125 data-nosnippet>125</a>		}
 <a href=#126 id=126 data-nosnippet>126</a>
 <a href=#127 id=127 data-nosnippet>127</a>		<span class="comment">// Validate ActivationEvents count
-<a href=#128 id=128 data-nosnippet>128</a>		</span><span class="kw">if let </span><span class="prelude-val">Some</span>(Events) = <span class="kw-2">&amp;</span><span class="self">self</span>.ActivationEvents {
-<a href=#129 id=129 data-nosnippet>129</a>			<span class="kw">if </span>Events.len() &gt; MAX_ACTIVATION_EVENTS {
-<a href=#130 id=130 data-nosnippet>130</a>				<span class="kw">return </span><span class="prelude-val">Err</span>(<span class="macro">format!</span>(<span class="string">"Activation events exceed maximum count of {}"</span>, MAX_ACTIVATION_EVENTS));
+<a href=#128 id=128 data-nosnippet>128</a>		</span><span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Events) = <span class="kw-2">&amp;</span><a class="self" href="#108">self</a>.ActivationEvents {
+<a href=#129 id=129 data-nosnippet>129</a>			<span class="kw">if </span><a href="#128">Events</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.len">len</a>() &gt; <a href="#36">MAX_ACTIVATION_EVENTS</a> {
+<a href=#130 id=130 data-nosnippet>130</a>				<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Activation events exceed maximum count of {}"</span>, MAX_ACTIVATION_EVENTS));
 <a href=#131 id=131 data-nosnippet>131</a>			}
 <a href=#132 id=132 data-nosnippet>132</a>		}
 <a href=#133 id=133 data-nosnippet>133</a>
-<a href=#134 id=134 data-nosnippet>134</a>		<span class="prelude-val">Ok</span>(())
+<a href=#134 id=134 data-nosnippet>134</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#135 id=135 data-nosnippet>135</a>	}
 <a href=#136 id=136 data-nosnippet>136</a>
 <a href=#137 id=137 data-nosnippet>137</a>	<span class="doccomment">/// Creates a minimal extension description for testing or placeholder use.
@@ -144,25 +144,25 @@
 <a href=#144 id=144 data-nosnippet>144</a>	///
 <a href=#145 id=145 data-nosnippet>145</a>	/// # Returns
 <a href=#146 id=146 data-nosnippet>146</a>	/// A new ExtensionDescriptionStateDTO with minimal required fields
-<a href=#147 id=147 data-nosnippet>147</a>	</span><span class="kw">pub fn </span>CreateMinimal(Identifier:Value, Name:String, Version:String, Publisher:String) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>, String&gt; {
+<a href=#147 id=147 data-nosnippet>147</a>	</span><span class="kw">pub fn </span>CreateMinimal(Identifier:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, Name:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, Version:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, Publisher:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<span class="self">Self</span>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
 <a href=#148 id=148 data-nosnippet>148</a>		<span class="kw">let </span>Description = <span class="self">Self </span>{
-<a href=#149 id=149 data-nosnippet>149</a>			Identifier,
-<a href=#150 id=150 data-nosnippet>150</a>			Name:Name.clone(),
-<a href=#151 id=151 data-nosnippet>151</a>			Version:Version.clone(),
-<a href=#152 id=152 data-nosnippet>152</a>			Publisher:Publisher.clone(),
-<a href=#153 id=153 data-nosnippet>153</a>			Engines:<span class="macro">serde_json::json!</span>({ <span class="string">"vscode"</span>: <span class="string">"*" </span>}),
-<a href=#154 id=154 data-nosnippet>154</a>			Main:<span class="prelude-val">None</span>,
-<a href=#155 id=155 data-nosnippet>155</a>			Browser:<span class="prelude-val">None</span>,
-<a href=#156 id=156 data-nosnippet>156</a>			ModuleType:<span class="prelude-val">None</span>,
+<a href=#149 id=149 data-nosnippet>149</a>			<a href="#147">Identifier</a>,
+<a href=#150 id=150 data-nosnippet>150</a>			Name:<a href="#147">Name</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>(),
+<a href=#151 id=151 data-nosnippet>151</a>			Version:<a href="#147">Version</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>(),
+<a href=#152 id=152 data-nosnippet>152</a>			Publisher:<a href="#147">Publisher</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>(),
+<a href=#153 id=153 data-nosnippet>153</a>			Engines:<a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">serde_json::json!</a>({ <span class="string">"vscode"</span>: <span class="string">"*" </span>}),
+<a href=#154 id=154 data-nosnippet>154</a>			Main:<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>,
+<a href=#155 id=155 data-nosnippet>155</a>			Browser:<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>,
+<a href=#156 id=156 data-nosnippet>156</a>			ModuleType:<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>,
 <a href=#157 id=157 data-nosnippet>157</a>			IsBuiltin:<span class="bool-val">false</span>,
 <a href=#158 id=158 data-nosnippet>158</a>			IsUnderDevelopment:<span class="bool-val">false</span>,
-<a href=#159 id=159 data-nosnippet>159</a>			ExtensionLocation:<span class="macro">serde_json::json!</span>(null),
-<a href=#160 id=160 data-nosnippet>160</a>			ActivationEvents:<span class="prelude-val">None</span>,
-<a href=#161 id=161 data-nosnippet>161</a>			Contributes:<span class="prelude-val">None</span>,
+<a href=#159 id=159 data-nosnippet>159</a>			ExtensionLocation:<a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">serde_json::json!</a>(null),
+<a href=#160 id=160 data-nosnippet>160</a>			ActivationEvents:<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>,
+<a href=#161 id=161 data-nosnippet>161</a>			Contributes:<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>,
 <a href=#162 id=162 data-nosnippet>162</a>		};
 <a href=#163 id=163 data-nosnippet>163</a>
-<a href=#164 id=164 data-nosnippet>164</a>		Description.Validate()<span class="question-mark">?</span>;
-<a href=#165 id=165 data-nosnippet>165</a>		<span class="prelude-val">Ok</span>(Description)
+<a href=#164 id=164 data-nosnippet>164</a>		<a href="#148">Description</a>.<a href="#108-135">Validate</a>()<span class="question-mark">?</span>;
+<a href=#165 id=165 data-nosnippet>165</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="#148">Description</a>)
 <a href=#166 id=166 data-nosnippet>166</a>	}
 <a href=#167 id=167 data-nosnippet>167</a>}
 </code></pre></div></section></main></body></html>

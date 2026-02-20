@@ -3,7 +3,7 @@
 <a href=#3 id=3 data-nosnippet>3</a>//! Handles opening documents from file:// URIs, custom scheme URIs (via sidecar
 <a href=#4 id=4 data-nosnippet>4</a>//! providers), and already-open documents.
 <a href=#5 id=5 data-nosnippet>5</a>
-<a href=#6 id=6 data-nosnippet>6</a></span><span class="kw">use </span>std::sync::Arc;
+<a href=#6 id=6 data-nosnippet>6</a></span><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">std::sync::Arc</a>;
 <a href=#7 id=7 data-nosnippet>7</a>
 <a href=#8 id=8 data-nosnippet>8</a><span class="kw">use </span>CommonLibrary::{
 <a href=#9 id=9 data-nosnippet>9</a>	Effect::ApplicationRunTime::ApplicationRunTime <span class="kw">as _</span>,
@@ -12,25 +12,25 @@
 <a href=#12 id=12 data-nosnippet>12</a>	FileSystem::ReadFile::ReadFile,
 <a href=#13 id=13 data-nosnippet>13</a>	IPC::IPCProvider::IPCProvider,
 <a href=#14 id=14 data-nosnippet>14</a>};
-<a href=#15 id=15 data-nosnippet>15</a><span class="kw">use </span>log::{error, info};
-<a href=#16 id=16 data-nosnippet>16</a><span class="kw">use </span>serde_json::{Value, json};
+<a href=#15 id=15 data-nosnippet>15</a><span class="kw">use </span>log::{<a href="https://docs.rs/log/0.4.29/log/macro.error.html">error</a>, <a href="https://docs.rs/log/0.4.29/log/macro.info.html">info</a>};
+<a href=#16 id=16 data-nosnippet>16</a><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json</a>};
 <a href=#17 id=17 data-nosnippet>17</a><span class="kw">use </span>tauri::{Emitter, Manager};
-<a href=#18 id=18 data-nosnippet>18</a><span class="kw">use </span>url::Url;
+<a href=#18 id=18 data-nosnippet>18</a><span class="kw">use </span><a href="https://docs.rs/url/2.5.7/url/struct.Url.html">url::Url</a>;
 <a href=#19 id=19 data-nosnippet>19</a>
 <a href=#20 id=20 data-nosnippet>20</a><span class="kw">use </span>crate::{
-<a href=#21 id=21 data-nosnippet>21</a>	ApplicationState::DTO::DocumentStateDTO::DocumentStateDTO,
-<a href=#22 id=22 data-nosnippet>22</a>	Environment::Utility,
-<a href=#23 id=23 data-nosnippet>23</a>	RunTime::ApplicationRunTime::ApplicationRunTime,
+<a href=#21 id=21 data-nosnippet>21</a>	<a href="../../ApplicationState/DTO/DocumentStateDTO.rs.html#43-69">ApplicationState::DTO::DocumentStateDTO::DocumentStateDTO</a>,
+<a href=#22 id=22 data-nosnippet>22</a>	<a href="../mod.rs.html#112">Environment::Utility</a>,
+<a href=#23 id=23 data-nosnippet>23</a>	<a href="../../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">RunTime::ApplicationRunTime::ApplicationRunTime</a>,
 <a href=#24 id=24 data-nosnippet>24</a>};
 <a href=#25 id=25 data-nosnippet>25</a>
 <a href=#26 id=26 data-nosnippet>26</a><span class="doccomment">/// Opens a document. If the URI scheme is not native (`file`), it attempts to
 <a href=#27 id=27 data-nosnippet>27</a>/// resolve the content from a registered sidecar provider
 <a href=#28 id=28 data-nosnippet>28</a>/// (`TextDocumentContentProvider`).
-<a href=#29 id=29 data-nosnippet>29</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span>open_document(
-<a href=#30 id=30 data-nosnippet>30</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::MountainEnvironment,
-<a href=#31 id=31 data-nosnippet>31</a>	uri_components_dto:Value,
-<a href=#32 id=32 data-nosnippet>32</a>	language_identifier:<span class="prelude-ty">Option</span>&lt;String&gt;,
-<a href=#33 id=33 data-nosnippet>33</a>	content:<span class="prelude-ty">Option</span>&lt;String&gt;,
+<a href=#29 id=29 data-nosnippet>29</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/DocumentProvider/OpenDocument/fn.open_document.html">open_document</a>(
+<a href=#30 id=30 data-nosnippet>30</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#220-230">MountainEnvironment</a>,
+<a href=#31 id=31 data-nosnippet>31</a>	uri_components_dto:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
+<a href=#32 id=32 data-nosnippet>32</a>	language_identifier:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;,
+<a href=#33 id=33 data-nosnippet>33</a>	content:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;,
 <a href=#34 id=34 data-nosnippet>34</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Url, CommonError&gt; {
 <a href=#35 id=35 data-nosnippet>35</a>	<span class="kw">let </span>uri = Utility::GetURLFromURIComponentsDTO(<span class="kw-2">&amp;</span>uri_components_dto)<span class="question-mark">?</span>;
 <a href=#36 id=36 data-nosnippet>36</a>

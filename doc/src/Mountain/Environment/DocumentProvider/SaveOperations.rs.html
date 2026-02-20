@@ -2,30 +2,30 @@
 <a href=#2 id=2 data-nosnippet>2</a>//!
 <a href=#3 id=3 data-nosnippet>3</a>//! Handles SaveDocument, SaveDocumentAs, and SaveAllDocuments.
 <a href=#4 id=4 data-nosnippet>4</a>
-<a href=#5 id=5 data-nosnippet>5</a></span><span class="kw">use </span>std::{path::PathBuf, sync::Arc};
+<a href=#5 id=5 data-nosnippet>5</a></span><span class="kw">use </span>std::{<a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">path::PathBuf</a>, <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">sync::Arc</a>};
 <a href=#6 id=6 data-nosnippet>6</a>
 <a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span>CommonLibrary::{
 <a href=#8 id=8 data-nosnippet>8</a>	Effect::ApplicationRunTime::ApplicationRunTime <span class="kw">as _</span>,
 <a href=#9 id=9 data-nosnippet>9</a>	Environment::Requires::Requires,
 <a href=#10 id=10 data-nosnippet>10</a>	Error::CommonError::CommonError,
 <a href=#11 id=11 data-nosnippet>11</a>	FileSystem::WriteFileBytes::WriteFileBytes,
-<a href=#12 id=12 data-nosnippet>12</a>	UserInterface::{DTO::SaveDialogOptionsDTO::SaveDialogOptionsDTO, ShowSaveDialog::ShowSaveDialog},
+<a href=#12 id=12 data-nosnippet>12</a>	UserInterface::{<a href="../../../../Mountain/Environment/UserInterface/DTO/SaveDialogOptionsDTO/struct.SaveDialogOptionsDTO.html">DTO::SaveDialogOptionsDTO::SaveDialogOptionsDTO</a>, <a href="../../../../Mountain/Environment/UserInterface/ShowSaveDialog/fn.ShowSaveDialog.html">ShowSaveDialog::ShowSaveDialog</a>},
 <a href=#13 id=13 data-nosnippet>13</a>};
-<a href=#14 id=14 data-nosnippet>14</a><span class="kw">use </span>log::{error, info};
-<a href=#15 id=15 data-nosnippet>15</a><span class="kw">use </span>serde_json::json;
+<a href=#14 id=14 data-nosnippet>14</a><span class="kw">use </span>log::{<a href="https://docs.rs/log/0.4.29/log/macro.error.html">error</a>, <a href="https://docs.rs/log/0.4.29/log/macro.info.html">info</a>};
+<a href=#15 id=15 data-nosnippet>15</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">serde_json::json</a>;
 <a href=#16 id=16 data-nosnippet>16</a><span class="kw">use </span>tauri::{Emitter, Manager};
-<a href=#17 id=17 data-nosnippet>17</a><span class="kw">use </span>url::Url;
+<a href=#17 id=17 data-nosnippet>17</a><span class="kw">use </span><a href="https://docs.rs/url/2.5.7/url/struct.Url.html">url::Url</a>;
 <a href=#18 id=18 data-nosnippet>18</a>
 <a href=#19 id=19 data-nosnippet>19</a><span class="kw">use </span>crate::{
-<a href=#20 id=20 data-nosnippet>20</a>	ApplicationState::DTO::DocumentStateDTO::DocumentStateDTO,
-<a href=#21 id=21 data-nosnippet>21</a>	Environment::Utility,
-<a href=#22 id=22 data-nosnippet>22</a>	RunTime::ApplicationRunTime::ApplicationRunTime,
+<a href=#20 id=20 data-nosnippet>20</a>	<a href="../../ApplicationState/DTO/DocumentStateDTO.rs.html#43-69">ApplicationState::DTO::DocumentStateDTO::DocumentStateDTO</a>,
+<a href=#21 id=21 data-nosnippet>21</a>	<a href="../mod.rs.html#112">Environment::Utility</a>,
+<a href=#22 id=22 data-nosnippet>22</a>	<a href="../../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">RunTime::ApplicationRunTime::ApplicationRunTime</a>,
 <a href=#23 id=23 data-nosnippet>23</a>};
 <a href=#24 id=24 data-nosnippet>24</a>
 <a href=#25 id=25 data-nosnippet>25</a><span class="doccomment">/// Saves the document at the given URI.
-<a href=#26 id=26 data-nosnippet>26</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span>save_document(
-<a href=#27 id=27 data-nosnippet>27</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::MountainEnvironment,
-<a href=#28 id=28 data-nosnippet>28</a>	uri:Url,
+<a href=#26 id=26 data-nosnippet>26</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/DocumentProvider/SaveOperations/fn.save_document.html">save_document</a>(
+<a href=#27 id=27 data-nosnippet>27</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#220-230">MountainEnvironment</a>,
+<a href=#28 id=28 data-nosnippet>28</a>	uri:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
 <a href=#29 id=29 data-nosnippet>29</a>) -&gt; <span class="prelude-ty">Result</span>&lt;bool, CommonError&gt; {
 <a href=#30 id=30 data-nosnippet>30</a>	<span class="macro">info!</span>(<span class="string">"[DocumentProvider] Saving document: {}"</span>, uri);
 <a href=#31 id=31 data-nosnippet>31</a>
@@ -77,10 +77,10 @@
 <a href=#77 id=77 data-nosnippet>77</a>}
 <a href=#78 id=78 data-nosnippet>78</a>
 <a href=#79 id=79 data-nosnippet>79</a><span class="doccomment">/// Saves a document to a new location.
-<a href=#80 id=80 data-nosnippet>80</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span>save_document_as(
-<a href=#81 id=81 data-nosnippet>81</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::MountainEnvironment,
-<a href=#82 id=82 data-nosnippet>82</a>	original_uri:Url,
-<a href=#83 id=83 data-nosnippet>83</a>	new_target_uri:<span class="prelude-ty">Option</span>&lt;Url&gt;,
+<a href=#80 id=80 data-nosnippet>80</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/DocumentProvider/SaveOperations/fn.save_document_as.html">save_document_as</a>(
+<a href=#81 id=81 data-nosnippet>81</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#220-230">MountainEnvironment</a>,
+<a href=#82 id=82 data-nosnippet>82</a>	original_uri:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
+<a href=#83 id=83 data-nosnippet>83</a>	new_target_uri:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>&gt;,
 <a href=#84 id=84 data-nosnippet>84</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;Url&gt;, CommonError&gt; {
 <a href=#85 id=85 data-nosnippet>85</a>	<span class="macro">info!</span>(<span class="string">"[DocumentProvider] Saving document as: {}"</span>, original_uri);
 <a href=#86 id=86 data-nosnippet>86</a>
@@ -155,9 +155,9 @@
 <a href=#155 id=155 data-nosnippet>155</a>}
 <a href=#156 id=156 data-nosnippet>156</a>
 <a href=#157 id=157 data-nosnippet>157</a><span class="doccomment">/// Saves all currently dirty documents.
-<a href=#158 id=158 data-nosnippet>158</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span>save_all_documents(
-<a href=#159 id=159 data-nosnippet>159</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::MountainEnvironment,
-<a href=#160 id=160 data-nosnippet>160</a>	include_untitled:bool,
+<a href=#158 id=158 data-nosnippet>158</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/DocumentProvider/SaveOperations/fn.save_all_documents.html">save_all_documents</a>(
+<a href=#159 id=159 data-nosnippet>159</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#220-230">MountainEnvironment</a>,
+<a href=#160 id=160 data-nosnippet>160</a>	include_untitled:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
 <a href=#161 id=161 data-nosnippet>161</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;bool&gt;, CommonError&gt; {
 <a href=#162 id=162 data-nosnippet>162</a>	<span class="macro">info!</span>(
 <a href=#163 id=163 data-nosnippet>163</a>		<span class="string">"[DocumentProvider] SaveAllDocuments called (IncludeUntitled: {})"</span>,

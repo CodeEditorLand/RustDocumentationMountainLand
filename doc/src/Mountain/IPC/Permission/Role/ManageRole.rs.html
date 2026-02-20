@@ -77,47 +77,47 @@
 <a href=#77 id=77 data-nosnippet>77</a>//! - [ ] Add permission negation (deny permissions)
 <a href=#78 id=78 data-nosnippet>78</a>//! - [ ] Support role templates for common permission sets
 <a href=#79 id=79 data-nosnippet>79</a>
-<a href=#80 id=80 data-nosnippet>80</a></span><span class="kw">use </span>std::collections::HashSet;
+<a href=#80 id=80 data-nosnippet>80</a></span><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/std/collections/hash/set/struct.HashSet.html">std::collections::HashSet</a>;
 <a href=#81 id=81 data-nosnippet>81</a>
-<a href=#82 id=82 data-nosnippet>82</a><span class="kw">use </span>serde::{Deserialize, Serialize};
-<a href=#83 id=83 data-nosnippet>83</a><span class="kw">use </span>log::{debug, info, warn};
+<a href=#82 id=82 data-nosnippet>82</a><span class="kw">use </span>serde::{<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>};
+<a href=#83 id=83 data-nosnippet>83</a><span class="kw">use </span>log::{<a href="https://docs.rs/log/0.4.29/log/macro.debug.html">debug</a>, <a href="https://docs.rs/log/0.4.29/log/macro.info.html">info</a>, <a href="https://docs.rs/log/0.4.29/log/macro.warn.html">warn</a>};
 <a href=#84 id=84 data-nosnippet>84</a>
 <a href=#85 id=85 data-nosnippet>85</a><span class="doccomment">/// Role definition for RBAC system
-<a href=#86 id=86 data-nosnippet>86</a></span><span class="attr">#[derive(Debug, Clone, Serialize, Deserialize)]
-<a href=#87 id=87 data-nosnippet>87</a></span><span class="kw">pub struct </span>Role {
+<a href=#86 id=86 data-nosnippet>86</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
+<a href=#87 id=87 data-nosnippet>87</a></span><span class="kw">pub struct </span><a href="../../../../../Mountain/IPC/Permission/Role/ManageRole/struct.Role.html">Role</a> {
 <a href=#88 id=88 data-nosnippet>88</a>	<span class="doccomment">/// Unique role identifier (case-sensitive)
-<a href=#89 id=89 data-nosnippet>89</a>	</span><span class="kw">pub </span>Name:String,
+<a href=#89 id=89 data-nosnippet>89</a>	</span><span class="kw">pub </span>Name:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#90 id=90 data-nosnippet>90</a>
 <a href=#91 id=91 data-nosnippet>91</a>	<span class="doccomment">/// Permissions granted by this role (unique, deduplicated)
-<a href=#92 id=92 data-nosnippet>92</a>	</span><span class="kw">pub </span>Permissions:Vec&lt;String&gt;,
+<a href=#92 id=92 data-nosnippet>92</a>	</span><span class="kw">pub </span>Permissions:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;,
 <a href=#93 id=93 data-nosnippet>93</a>
 <a href=#94 id=94 data-nosnippet>94</a>	<span class="doccomment">/// Human-readable description of role purpose
-<a href=#95 id=95 data-nosnippet>95</a>	</span><span class="kw">pub </span>Description:String,
+<a href=#95 id=95 data-nosnippet>95</a>	</span><span class="kw">pub </span>Description:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#96 id=96 data-nosnippet>96</a>
 <a href=#97 id=97 data-nosnippet>97</a>	<span class="doccomment">/// Optional parent role for inheritance (not yet implemented)
-<a href=#98 id=98 data-nosnippet>98</a>	</span><span class="kw">pub </span>ParentRole:<span class="prelude-ty">Option</span>&lt;String&gt;,
+<a href=#98 id=98 data-nosnippet>98</a>	</span><span class="kw">pub </span>ParentRole:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;,
 <a href=#99 id=99 data-nosnippet>99</a>
 <a href=#100 id=100 data-nosnippet>100</a>	<span class="doccomment">/// Role priority for conflict resolution (higher = more important)
-<a href=#101 id=101 data-nosnippet>101</a>	</span><span class="kw">pub </span>Priority:u32,
+<a href=#101 id=101 data-nosnippet>101</a>	</span><span class="kw">pub </span>Priority:<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
 <a href=#102 id=102 data-nosnippet>102</a>}
 <a href=#103 id=103 data-nosnippet>103</a>
 <a href=#104 id=104 data-nosnippet>104</a><span class="doccomment">/// Permission definition
-<a href=#105 id=105 data-nosnippet>105</a></span><span class="attr">#[derive(Debug, Clone, Serialize, Deserialize)]
-<a href=#106 id=106 data-nosnippet>106</a></span><span class="kw">pub struct </span>Permission {
+<a href=#105 id=105 data-nosnippet>105</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
+<a href=#106 id=106 data-nosnippet>106</a></span><span class="kw">pub struct </span><a href="../../../../../Mountain/IPC/Permission/Role/ManageRole/struct.Permission.html">Permission</a> {
 <a href=#107 id=107 data-nosnippet>107</a>	<span class="doccomment">/// Unique permission identifier (formatted as category.action)
-<a href=#108 id=108 data-nosnippet>108</a>	</span><span class="kw">pub </span>Name:String,
+<a href=#108 id=108 data-nosnippet>108</a>	</span><span class="kw">pub </span>Name:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#109 id=109 data-nosnippet>109</a>
 <a href=#110 id=110 data-nosnippet>110</a>	<span class="doccomment">/// Human-readable description of permission purpose
-<a href=#111 id=111 data-nosnippet>111</a>	</span><span class="kw">pub </span>Description:String,
+<a href=#111 id=111 data-nosnippet>111</a>	</span><span class="kw">pub </span>Description:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#112 id=112 data-nosnippet>112</a>
 <a href=#113 id=113 data-nosnippet>113</a>	<span class="doccomment">/// Permission category for organization
-<a href=#114 id=114 data-nosnippet>114</a>	</span><span class="kw">pub </span>Category:String,
+<a href=#114 id=114 data-nosnippet>114</a>	</span><span class="kw">pub </span>Category:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#115 id=115 data-nosnippet>115</a>
 <a href=#116 id=116 data-nosnippet>116</a>	<span class="doccomment">/// Whether this permission is sensitive (requires special logging)
-<a href=#117 id=117 data-nosnippet>117</a>	</span><span class="kw">pub </span>IsSensitive:bool,
+<a href=#117 id=117 data-nosnippet>117</a>	</span><span class="kw">pub </span>IsSensitive:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
 <a href=#118 id=118 data-nosnippet>118</a>}
 <a href=#119 id=119 data-nosnippet>119</a>
-<a href=#120 id=120 data-nosnippet>120</a><span class="kw">impl </span>Role {
+<a href=#120 id=120 data-nosnippet>120</a><span class="kw">impl </span><a href="#87-102">Role</a> {
 <a href=#121 id=121 data-nosnippet>121</a>	<span class="doccomment">/// Create a new role definition
 <a href=#122 id=122 data-nosnippet>122</a>	///
 <a href=#123 id=123 data-nosnippet>123</a>	/// ## Parameters
@@ -131,10 +131,10 @@
 <a href=#131 id=131 data-nosnippet>131</a>	/// ## Notes
 <a href=#132 id=132 data-nosnippet>132</a>	/// - Permissions are automatically deduplicated
 <a href=#133 id=133 data-nosnippet>133</a>	/// - Default priority is 0
-<a href=#134 id=134 data-nosnippet>134</a>	</span><span class="kw">pub fn </span>New(Name:String, Permissions:Vec&lt;String&gt;, Description:String) -&gt; <span class="self">Self </span>{
-<a href=#135 id=135 data-nosnippet>135</a>		<span class="kw">let </span>UniquePermissions:Vec&lt;String&gt; = Permissions.into_iter().collect::&lt;HashSet&lt;String&gt;&gt;().into_iter().collect();
+<a href=#134 id=134 data-nosnippet>134</a>	</span><span class="kw">pub fn </span>New(Name:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, Permissions:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;, Description:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) -&gt; <span class="self">Self </span>{
+<a href=#135 id=135 data-nosnippet>135</a>		<span class="kw">let </span>UniquePermissions:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; = <a href="#134">Permissions</a>.<a href="https://doc.rust-lang.org/nightly/core/iter/traits/collect/trait.IntoIterator.html#tymethod.into_iter">into_iter</a>().collect::&lt;<a href="https://doc.rust-lang.org/nightly/std/collections/hash/set/struct.HashSet.html">HashSet</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;&gt;().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/collect/trait.IntoIterator.html#tymethod.into_iter">into_iter</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.collect">collect</a>();
 <a href=#136 id=136 data-nosnippet>136</a>
-<a href=#137 id=137 data-nosnippet>137</a>		<span class="self">Self </span>{ Name, Permissions:UniquePermissions, Description, ParentRole:<span class="prelude-val">None</span>, Priority:<span class="number">0 </span>}
+<a href=#137 id=137 data-nosnippet>137</a>		<span class="self">Self </span>{ <a href="#134">Name</a>, Permissions:<a href="#135">UniquePermissions</a>, <a href="#134">Description</a>, ParentRole:<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>, Priority:<span class="number">0 </span>}
 <a href=#138 id=138 data-nosnippet>138</a>	}
 <a href=#139 id=139 data-nosnippet>139</a>
 <a href=#140 id=140 data-nosnippet>140</a>	<span class="doccomment">/// Create a new role with parent inheritance
@@ -149,20 +149,20 @@
 <a href=#149 id=149 data-nosnippet>149</a>	/// ## Returns
 <a href=#150 id=150 data-nosnippet>150</a>	/// New Role instance with inheritance configuration
 <a href=#151 id=151 data-nosnippet>151</a>	</span><span class="kw">pub fn </span>NewWithParent(
-<a href=#152 id=152 data-nosnippet>152</a>		Name:String,
-<a href=#153 id=153 data-nosnippet>153</a>		Permissions:Vec&lt;String&gt;,
-<a href=#154 id=154 data-nosnippet>154</a>		Description:String,
-<a href=#155 id=155 data-nosnippet>155</a>		ParentRole:String,
-<a href=#156 id=156 data-nosnippet>156</a>		Priority:u32,
+<a href=#152 id=152 data-nosnippet>152</a>		Name:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#153 id=153 data-nosnippet>153</a>		Permissions:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;,
+<a href=#154 id=154 data-nosnippet>154</a>		Description:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#155 id=155 data-nosnippet>155</a>		ParentRole:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#156 id=156 data-nosnippet>156</a>		Priority:<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
 <a href=#157 id=157 data-nosnippet>157</a>	) -&gt; <span class="self">Self </span>{
-<a href=#158 id=158 data-nosnippet>158</a>		<span class="kw">let </span>UniquePermissions:Vec&lt;String&gt; = Permissions.into_iter().collect::&lt;HashSet&lt;String&gt;&gt;().into_iter().collect();
+<a href=#158 id=158 data-nosnippet>158</a>		<span class="kw">let </span>UniquePermissions:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; = <a href="#153">Permissions</a>.<a href="https://doc.rust-lang.org/nightly/core/iter/traits/collect/trait.IntoIterator.html#tymethod.into_iter">into_iter</a>().collect::&lt;<a href="https://doc.rust-lang.org/nightly/std/collections/hash/set/struct.HashSet.html">HashSet</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;&gt;().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/collect/trait.IntoIterator.html#tymethod.into_iter">into_iter</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.collect">collect</a>();
 <a href=#159 id=159 data-nosnippet>159</a>
 <a href=#160 id=160 data-nosnippet>160</a>		<span class="self">Self </span>{
-<a href=#161 id=161 data-nosnippet>161</a>			Name,
-<a href=#162 id=162 data-nosnippet>162</a>			Permissions:UniquePermissions,
-<a href=#163 id=163 data-nosnippet>163</a>			Description,
-<a href=#164 id=164 data-nosnippet>164</a>			ParentRole:<span class="prelude-val">Some</span>(ParentRole),
-<a href=#165 id=165 data-nosnippet>165</a>			Priority,
+<a href=#161 id=161 data-nosnippet>161</a>			<a href="#152">Name</a>,
+<a href=#162 id=162 data-nosnippet>162</a>			Permissions:<a href="#158">UniquePermissions</a>,
+<a href=#163 id=163 data-nosnippet>163</a>			<a href="#154">Description</a>,
+<a href=#164 id=164 data-nosnippet>164</a>			ParentRole:<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<a href="#155">ParentRole</a>),
+<a href=#165 id=165 data-nosnippet>165</a>			<a href="#156">Priority</a>,
 <a href=#166 id=166 data-nosnippet>166</a>		}
 <a href=#167 id=167 data-nosnippet>167</a>	}
 <a href=#168 id=168 data-nosnippet>168</a>
@@ -173,18 +173,18 @@
 <a href=#173 id=173 data-nosnippet>173</a>	///
 <a href=#174 id=174 data-nosnippet>174</a>	/// ## Returns
 <a href=#175 id=175 data-nosnippet>175</a>	/// Self for method chaining
-<a href=#176 id=176 data-nosnippet>176</a>	</span><span class="kw">pub fn </span>AddPermission(<span class="kw-2">mut </span><span class="self">self</span>, Permission:String) -&gt; <span class="self">Self </span>{
-<a href=#177 id=177 data-nosnippet>177</a>		<span class="kw">if </span>!<span class="self">self</span>.Permissions.contains(<span class="kw-2">&amp;</span>Permission) {
-<a href=#178 id=178 data-nosnippet>178</a>			<span class="self">self</span>.Permissions.push(Permission.clone());
-<a href=#179 id=179 data-nosnippet>179</a>			<span class="macro">debug!</span>(<span class="string">"[Role] Added permission '{}' to role '{}'"</span>, Permission, <span class="self">self</span>.Name);
+<a href=#176 id=176 data-nosnippet>176</a>	</span><span class="kw">pub fn </span>AddPermission(<span class="kw-2">mut </span><span class="self">self</span>, Permission:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) -&gt; <span class="self">Self </span>{
+<a href=#177 id=177 data-nosnippet>177</a>		<span class="kw">if </span>!<a class="self" href="#176">self</a>.Permissions.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.contains">contains</a>(<span class="kw-2">&amp;</span><a href="#176">Permission</a>) {
+<a href=#178 id=178 data-nosnippet>178</a>			<a class="self" href="#176">self</a>.Permissions.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.push">push</a>(<a href="#176">Permission</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>());
+<a href=#179 id=179 data-nosnippet>179</a>			<a href="https://docs.rs/log/0.4.29/log/macro.debug.html">debug!</a>(<span class="string">"[Role] Added permission '{}' to role '{}'"</span>, Permission, <span class="self">self</span>.Name);
 <a href=#180 id=180 data-nosnippet>180</a>		} <span class="kw">else </span>{
-<a href=#181 id=181 data-nosnippet>181</a>			<span class="macro">debug!</span>(
+<a href=#181 id=181 data-nosnippet>181</a>			<a href="https://docs.rs/log/0.4.29/log/macro.debug.html">debug!</a>(
 <a href=#182 id=182 data-nosnippet>182</a>				<span class="string">"[Role] Permission '{}' already exists in role '{}', skipping"</span>,
 <a href=#183 id=183 data-nosnippet>183</a>				Permission, <span class="self">self</span>.Name
 <a href=#184 id=184 data-nosnippet>184</a>			);
 <a href=#185 id=185 data-nosnippet>185</a>		}
-<a href=#186 id=186 data-nosnippet>186</a>		<span class="self">self
-<a href=#187 id=187 data-nosnippet>187</a>	</span>}
+<a href=#186 id=186 data-nosnippet>186</a>		<a class="self" href="#176">self</a>
+<a href=#187 id=187 data-nosnippet>187</a>	}
 <a href=#188 id=188 data-nosnippet>188</a>
 <a href=#189 id=189 data-nosnippet>189</a>	<span class="doccomment">/// Add multiple permissions to this role
 <a href=#190 id=190 data-nosnippet>190</a>	///
@@ -193,15 +193,15 @@
 <a href=#193 id=193 data-nosnippet>193</a>	///
 <a href=#194 id=194 data-nosnippet>194</a>	/// ## Returns
 <a href=#195 id=195 data-nosnippet>195</a>	/// Self for method chaining
-<a href=#196 id=196 data-nosnippet>196</a>	</span><span class="kw">pub fn </span>AddPermissions(<span class="kw-2">mut </span><span class="self">self</span>, Permissions:<span class="kw">impl </span>IntoIterator&lt;Item = String&gt;) -&gt; <span class="self">Self </span>{
+<a href=#196 id=196 data-nosnippet>196</a>	</span><span class="kw">pub fn </span>AddPermissions(<span class="kw-2">mut </span><span class="self">self</span>, Permissions:<span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/iter/traits/collect/trait.IntoIterator.html">IntoIterator</a>&lt;Item = <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;) -&gt; <span class="self">Self </span>{
 <a href=#197 id=197 data-nosnippet>197</a>		<span class="kw">for </span>Permission <span class="kw">in </span>Permissions {
 <a href=#198 id=198 data-nosnippet>198</a>			<span class="kw">if </span>!<span class="self">self</span>.Permissions.contains(<span class="kw-2">&amp;</span>Permission) {
 <a href=#199 id=199 data-nosnippet>199</a>				<span class="self">self</span>.Permissions.push(Permission.clone());
 <a href=#200 id=200 data-nosnippet>200</a>				<span class="macro">debug!</span>(<span class="string">"[Role] Added permission '{}' to role '{}'"</span>, Permission, <span class="self">self</span>.Name);
 <a href=#201 id=201 data-nosnippet>201</a>			}
 <a href=#202 id=202 data-nosnippet>202</a>		}
-<a href=#203 id=203 data-nosnippet>203</a>		<span class="self">self
-<a href=#204 id=204 data-nosnippet>204</a>	</span>}
+<a href=#203 id=203 data-nosnippet>203</a>		<a class="self" href="#196">self</a>
+<a href=#204 id=204 data-nosnippet>204</a>	}
 <a href=#205 id=205 data-nosnippet>205</a>
 <a href=#206 id=206 data-nosnippet>206</a>	<span class="doccomment">/// Check if this role has a specific permission
 <a href=#207 id=207 data-nosnippet>207</a>	///
@@ -210,29 +210,29 @@
 <a href=#210 id=210 data-nosnippet>210</a>	///
 <a href=#211 id=211 data-nosnippet>211</a>	/// ## Returns
 <a href=#212 id=212 data-nosnippet>212</a>	/// true if role has permission, false otherwise
-<a href=#213 id=213 data-nosnippet>213</a>	</span><span class="kw">pub fn </span>HasPermission(<span class="kw-2">&amp;</span><span class="self">self</span>, Permission:<span class="kw-2">&amp;</span>str) -&gt; bool { <span class="self">self</span>.Permissions.contains(<span class="kw-2">&amp;</span>Permission.to_string()) }
+<a href=#213 id=213 data-nosnippet>213</a>	</span><span class="kw">pub fn </span>HasPermission(<span class="kw-2">&amp;</span><span class="self">self</span>, Permission:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> { <a class="self" href="#213">self</a>.Permissions.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.contains">contains</a>(<span class="kw-2">&amp;</span><a href="#213">Permission</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>()) }
 <a href=#214 id=214 data-nosnippet>214</a>
 <a href=#215 id=215 data-nosnippet>215</a>	<span class="doccomment">/// Get the count of permissions in this role
 <a href=#216 id=216 data-nosnippet>216</a>	///
 <a href=#217 id=217 data-nosnippet>217</a>	/// ## Returns
 <a href=#218 id=218 data-nosnippet>218</a>	/// Number of unique permissions
-<a href=#219 id=219 data-nosnippet>219</a>	</span><span class="kw">pub fn </span>PermissionCount(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; usize { <span class="self">self</span>.Permissions.len() }
+<a href=#219 id=219 data-nosnippet>219</a>	</span><span class="kw">pub fn </span>PermissionCount(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> { <a class="self" href="#219">self</a>.Permissions.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.len">len</a>() }
 <a href=#220 id=220 data-nosnippet>220</a>
 <a href=#221 id=221 data-nosnippet>221</a>	<span class="doccomment">/// Validate role structure integrity
 <a href=#222 id=222 data-nosnippet>222</a>	///
 <a href=#223 id=223 data-nosnippet>223</a>	/// ## Returns
 <a href=#224 id=224 data-nosnippet>224</a>	/// Result indicating success or validation error
-<a href=#225 id=225 data-nosnippet>225</a>	</span><span class="kw">pub fn </span>Validate(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
-<a href=#226 id=226 data-nosnippet>226</a>		<span class="kw">if </span><span class="self">self</span>.Name.is_empty() {
-<a href=#227 id=227 data-nosnippet>227</a>			<span class="kw">return </span><span class="prelude-val">Err</span>(<span class="string">"Role name cannot be empty"</span>.to_string());
+<a href=#225 id=225 data-nosnippet>225</a>	</span><span class="kw">pub fn </span>Validate(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
+<a href=#226 id=226 data-nosnippet>226</a>		<span class="kw">if </span><a class="self" href="#225">self</a>.Name.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.is_empty">is_empty</a>() {
+<a href=#227 id=227 data-nosnippet>227</a>			<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<span class="string">"Role name cannot be empty"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>());
 <a href=#228 id=228 data-nosnippet>228</a>		}
 <a href=#229 id=229 data-nosnippet>229</a>
-<a href=#230 id=230 data-nosnippet>230</a>		<span class="kw">if </span><span class="self">self</span>.Name.contains(|c:char| c.is_whitespace()) {
-<a href=#231 id=231 data-nosnippet>231</a>			<span class="kw">return </span><span class="prelude-val">Err</span>(<span class="string">"Role name cannot contain whitespace"</span>.to_string());
+<a href=#230 id=230 data-nosnippet>230</a>		<span class="kw">if </span><a class="self" href="#225">self</a>.Name.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.contains">contains</a>(|c:<a href="https://doc.rust-lang.org/nightly/std/primitive.char.html">char</a>| <a href="#230">c</a>.<a href="https://doc.rust-lang.org/nightly/core/char/foreigntype.methods.html#method.is_whitespace">is_whitespace</a>()) {
+<a href=#231 id=231 data-nosnippet>231</a>			<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<span class="string">"Role name cannot contain whitespace"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>());
 <a href=#232 id=232 data-nosnippet>232</a>		}
 <a href=#233 id=233 data-nosnippet>233</a>
-<a href=#234 id=234 data-nosnippet>234</a>		<span class="kw">if </span><span class="self">self</span>.Description.is_empty() {
-<a href=#235 id=235 data-nosnippet>235</a>			<span class="kw">return </span><span class="prelude-val">Err</span>(<span class="string">"Role description cannot be empty"</span>.to_string());
+<a href=#234 id=234 data-nosnippet>234</a>		<span class="kw">if </span><a class="self" href="#225">self</a>.Description.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.is_empty">is_empty</a>() {
+<a href=#235 id=235 data-nosnippet>235</a>			<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<span class="string">"Role description cannot be empty"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>());
 <a href=#236 id=236 data-nosnippet>236</a>		}
 <a href=#237 id=237 data-nosnippet>237</a>
 <a href=#238 id=238 data-nosnippet>238</a>		<span class="comment">// Validate permission names
@@ -253,11 +253,11 @@
 <a href=#253 id=253 data-nosnippet>253</a>			}
 <a href=#254 id=254 data-nosnippet>254</a>		}
 <a href=#255 id=255 data-nosnippet>255</a>
-<a href=#256 id=256 data-nosnippet>256</a>		<span class="prelude-val">Ok</span>(())
+<a href=#256 id=256 data-nosnippet>256</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#257 id=257 data-nosnippet>257</a>	}
 <a href=#258 id=258 data-nosnippet>258</a>}
 <a href=#259 id=259 data-nosnippet>259</a>
-<a href=#260 id=260 data-nosnippet>260</a><span class="kw">impl </span>Permission {
+<a href=#260 id=260 data-nosnippet>260</a><span class="kw">impl </span><a href="#106-118">Permission</a> {
 <a href=#261 id=261 data-nosnippet>261</a>	<span class="doccomment">/// Create a new permission definition
 <a href=#262 id=262 data-nosnippet>262</a>	///
 <a href=#263 id=263 data-nosnippet>263</a>	/// ## Parameters
@@ -267,8 +267,8 @@
 <a href=#267 id=267 data-nosnippet>267</a>	///
 <a href=#268 id=268 data-nosnippet>268</a>	/// ## Returns
 <a href=#269 id=269 data-nosnippet>269</a>	/// New Permission instance
-<a href=#270 id=270 data-nosnippet>270</a>	</span><span class="kw">pub fn </span>New(Name:String, Description:String, Category:String) -&gt; <span class="self">Self </span>{
-<a href=#271 id=271 data-nosnippet>271</a>		<span class="self">Self </span>{ Name, Description, Category, IsSensitive:<span class="bool-val">false </span>}
+<a href=#270 id=270 data-nosnippet>270</a>	</span><span class="kw">pub fn </span>New(Name:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, Description:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, Category:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) -&gt; <span class="self">Self </span>{
+<a href=#271 id=271 data-nosnippet>271</a>		<span class="self">Self </span>{ <a href="#270">Name</a>, <a href="#270">Description</a>, <a href="#270">Category</a>, IsSensitive:<span class="bool-val">false </span>}
 <a href=#272 id=272 data-nosnippet>272</a>	}
 <a href=#273 id=273 data-nosnippet>273</a>
 <a href=#274 id=274 data-nosnippet>274</a>	<span class="doccomment">/// Create a new sensitive permission (requires special logging)
@@ -280,8 +280,8 @@
 <a href=#280 id=280 data-nosnippet>280</a>	///
 <a href=#281 id=281 data-nosnippet>281</a>	/// ## Returns
 <a href=#282 id=282 data-nosnippet>282</a>	/// New Permission instance marked as sensitive
-<a href=#283 id=283 data-nosnippet>283</a>	</span><span class="kw">pub fn </span>NewSensitive(Name:String, Description:String, Category:String) -&gt; <span class="self">Self </span>{
-<a href=#284 id=284 data-nosnippet>284</a>		<span class="self">Self </span>{ Name, Description, Category, IsSensitive:<span class="bool-val">true </span>}
+<a href=#283 id=283 data-nosnippet>283</a>	</span><span class="kw">pub fn </span>NewSensitive(Name:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, Description:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, Category:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) -&gt; <span class="self">Self </span>{
+<a href=#284 id=284 data-nosnippet>284</a>		<span class="self">Self </span>{ <a href="#283">Name</a>, <a href="#283">Description</a>, <a href="#283">Category</a>, IsSensitive:<span class="bool-val">true </span>}
 <a href=#285 id=285 data-nosnippet>285</a>	}
 <a href=#286 id=286 data-nosnippet>286</a>
 <a href=#287 id=287 data-nosnippet>287</a>	<span class="doccomment">/// Mark permission as sensitive
@@ -289,25 +289,25 @@
 <a href=#289 id=289 data-nosnippet>289</a>	/// ## Returns
 <a href=#290 id=290 data-nosnippet>290</a>	/// Self for method chaining
 <a href=#291 id=291 data-nosnippet>291</a>	</span><span class="kw">pub fn </span>SetSensitive(<span class="kw-2">mut </span><span class="self">self</span>) -&gt; <span class="self">Self </span>{
-<a href=#292 id=292 data-nosnippet>292</a>		<span class="self">self</span>.IsSensitive = <span class="bool-val">true</span>;
-<a href=#293 id=293 data-nosnippet>293</a>		<span class="self">self
-<a href=#294 id=294 data-nosnippet>294</a>	</span>}
+<a href=#292 id=292 data-nosnippet>292</a>		<a class="self" href="#291">self</a>.IsSensitive = <span class="bool-val">true</span>;
+<a href=#293 id=293 data-nosnippet>293</a>		<a class="self" href="#291">self</a>
+<a href=#294 id=294 data-nosnippet>294</a>	}
 <a href=#295 id=295 data-nosnippet>295</a>
 <a href=#296 id=296 data-nosnippet>296</a>	<span class="doccomment">/// Get the action part of the permission name (after last dot)
 <a href=#297 id=297 data-nosnippet>297</a>	///
 <a href=#298 id=298 data-nosnippet>298</a>	/// ## Returns
 <a href=#299 id=299 data-nosnippet>299</a>	/// Action string or "unknown" if format is invalid
-<a href=#300 id=300 data-nosnippet>300</a>	</span><span class="kw">pub fn </span>GetAction(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; String { <span class="self">self</span>.Name.rsplit(<span class="string">'.'</span>).next().unwrap_or(<span class="string">"unknown"</span>).to_string() }
+<a href=#300 id=300 data-nosnippet>300</a>	</span><span class="kw">pub fn </span>GetAction(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a> { <a class="self" href="#300">self</a>.Name.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.rsplit">rsplit</a>(<span class="string">'.'</span>).<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#tymethod.next">next</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or">unwrap_or</a>(<span class="string">"unknown"</span>).<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>() }
 <a href=#301 id=301 data-nosnippet>301</a>
 <a href=#302 id=302 data-nosnippet>302</a>	<span class="doccomment">/// Get the category part of the permission name (before last dot)
 <a href=#303 id=303 data-nosnippet>303</a>	///
 <a href=#304 id=304 data-nosnippet>304</a>	/// ## Returns
 <a href=#305 id=305 data-nosnippet>305</a>	/// Category string or "unknown" if format is invalid
-<a href=#306 id=306 data-nosnippet>306</a>	</span><span class="kw">pub fn </span>GetCategory(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; String {
-<a href=#307 id=307 data-nosnippet>307</a>		<span class="kw">if let </span><span class="prelude-val">Some</span>(pos) = <span class="self">self</span>.Name.rfind(<span class="string">'.'</span>) {
-<a href=#308 id=308 data-nosnippet>308</a>			<span class="self">self</span>.Name[..pos].to_string()
+<a href=#306 id=306 data-nosnippet>306</a>	</span><span class="kw">pub fn </span>GetCategory(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a> {
+<a href=#307 id=307 data-nosnippet>307</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(pos) = <a class="self" href="#306">self</a>.Name.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.rfind">rfind</a>(<span class="string">'.'</span>) {
+<a href=#308 id=308 data-nosnippet>308</a>			<a class="self" href="#306">self</a>.Name[..pos].<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>()
 <a href=#309 id=309 data-nosnippet>309</a>		} <span class="kw">else </span>{
-<a href=#310 id=310 data-nosnippet>310</a>			<span class="string">"unknown"</span>.to_string()
+<a href=#310 id=310 data-nosnippet>310</a>			<span class="string">"unknown"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>()
 <a href=#311 id=311 data-nosnippet>311</a>		}
 <a href=#312 id=312 data-nosnippet>312</a>	}
 <a href=#313 id=313 data-nosnippet>313</a>
@@ -315,28 +315,28 @@
 <a href=#315 id=315 data-nosnippet>315</a>	///
 <a href=#316 id=316 data-nosnippet>316</a>	/// ## Returns
 <a href=#317 id=317 data-nosnippet>317</a>	/// Result indicating success or validation error
-<a href=#318 id=318 data-nosnippet>318</a>	</span><span class="kw">pub fn </span>Validate(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
-<a href=#319 id=319 data-nosnippet>319</a>		<span class="kw">if </span><span class="self">self</span>.Name.is_empty() {
-<a href=#320 id=320 data-nosnippet>320</a>			<span class="kw">return </span><span class="prelude-val">Err</span>(<span class="string">"Permission name cannot be empty"</span>.to_string());
+<a href=#318 id=318 data-nosnippet>318</a>	</span><span class="kw">pub fn </span>Validate(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
+<a href=#319 id=319 data-nosnippet>319</a>		<span class="kw">if </span><a class="self" href="#318">self</a>.Name.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.is_empty">is_empty</a>() {
+<a href=#320 id=320 data-nosnippet>320</a>			<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<span class="string">"Permission name cannot be empty"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>());
 <a href=#321 id=321 data-nosnippet>321</a>		}
 <a href=#322 id=322 data-nosnippet>322</a>
-<a href=#323 id=323 data-nosnippet>323</a>		<span class="kw">if </span><span class="self">self</span>.Name.contains(|c:char| c.is_whitespace()) {
-<a href=#324 id=324 data-nosnippet>324</a>			<span class="kw">return </span><span class="prelude-val">Err</span>(<span class="string">"Permission name cannot contain whitespace"</span>.to_string());
+<a href=#323 id=323 data-nosnippet>323</a>		<span class="kw">if </span><a class="self" href="#318">self</a>.Name.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.contains">contains</a>(|c:<a href="https://doc.rust-lang.org/nightly/std/primitive.char.html">char</a>| <a href="#323">c</a>.<a href="https://doc.rust-lang.org/nightly/core/char/foreigntype.methods.html#method.is_whitespace">is_whitespace</a>()) {
+<a href=#324 id=324 data-nosnippet>324</a>			<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<span class="string">"Permission name cannot contain whitespace"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>());
 <a href=#325 id=325 data-nosnippet>325</a>		}
 <a href=#326 id=326 data-nosnippet>326</a>
-<a href=#327 id=327 data-nosnippet>327</a>		<span class="kw">if </span>!<span class="self">self</span>.Name.contains(<span class="string">'.'</span>) {
-<a href=#328 id=328 data-nosnippet>328</a>			<span class="kw">return </span><span class="prelude-val">Err</span>(<span class="string">"Permission name must contain a dot separating category and action"</span>.to_string());
+<a href=#327 id=327 data-nosnippet>327</a>		<span class="kw">if </span>!<a class="self" href="#318">self</a>.Name.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.contains">contains</a>(<span class="string">'.'</span>) {
+<a href=#328 id=328 data-nosnippet>328</a>			<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<span class="string">"Permission name must contain a dot separating category and action"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>());
 <a href=#329 id=329 data-nosnippet>329</a>		}
 <a href=#330 id=330 data-nosnippet>330</a>
-<a href=#331 id=331 data-nosnippet>331</a>		<span class="kw">if </span><span class="self">self</span>.Description.is_empty() {
-<a href=#332 id=332 data-nosnippet>332</a>			<span class="kw">return </span><span class="prelude-val">Err</span>(<span class="string">"Permission description cannot be empty"</span>.to_string());
+<a href=#331 id=331 data-nosnippet>331</a>		<span class="kw">if </span><a class="self" href="#318">self</a>.Description.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.is_empty">is_empty</a>() {
+<a href=#332 id=332 data-nosnippet>332</a>			<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<span class="string">"Permission description cannot be empty"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>());
 <a href=#333 id=333 data-nosnippet>333</a>		}
 <a href=#334 id=334 data-nosnippet>334</a>
-<a href=#335 id=335 data-nosnippet>335</a>		<span class="kw">if </span><span class="self">self</span>.Category.is_empty() {
-<a href=#336 id=336 data-nosnippet>336</a>			<span class="kw">return </span><span class="prelude-val">Err</span>(<span class="string">"Permission category cannot be empty"</span>.to_string());
+<a href=#335 id=335 data-nosnippet>335</a>		<span class="kw">if </span><a class="self" href="#318">self</a>.Category.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.is_empty">is_empty</a>() {
+<a href=#336 id=336 data-nosnippet>336</a>			<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<span class="string">"Permission category cannot be empty"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>());
 <a href=#337 id=337 data-nosnippet>337</a>		}
 <a href=#338 id=338 data-nosnippet>338</a>
-<a href=#339 id=339 data-nosnippet>339</a>		<span class="prelude-val">Ok</span>(())
+<a href=#339 id=339 data-nosnippet>339</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#340 id=340 data-nosnippet>340</a>	}
 <a href=#341 id=341 data-nosnippet>341</a>}
 <a href=#342 id=342 data-nosnippet>342</a>
@@ -344,11 +344,11 @@
 <a href=#344 id=344 data-nosnippet>344</a>///
 <a href=#345 id=345 data-nosnippet>345</a>/// ## Returns
 <a href=#346 id=346 data-nosnippet>346</a>/// Role configured with read-only permissions
-<a href=#347 id=347 data-nosnippet>347</a></span><span class="kw">pub fn </span>CreateUserRole() -&gt; Role {
-<a href=#348 id=348 data-nosnippet>348</a>	Role::New(
-<a href=#349 id=349 data-nosnippet>349</a>		<span class="string">"user"</span>.to_string(),
-<a href=#350 id=350 data-nosnippet>350</a>		<span class="macro">vec!</span>[<span class="string">"file.read"</span>.to_string(), <span class="string">"config.read"</span>.to_string(), <span class="string">"storage.read"</span>.to_string()],
-<a href=#351 id=351 data-nosnippet>351</a>		<span class="string">"Standard user with read access"</span>.to_string(),
+<a href=#347 id=347 data-nosnippet>347</a></span><span class="kw">pub fn </span><a href="../../../../../Mountain/IPC/Permission/Role/ManageRole/fn.CreateUserRole.html">CreateUserRole</a>() -&gt; <a href="#87-102">Role</a> {
+<a href=#348 id=348 data-nosnippet>348</a>	<a href="#87-102">Role</a>::<a href="#134-138">New</a>(
+<a href=#349 id=349 data-nosnippet>349</a>		<span class="string">"user"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
+<a href=#350 id=350 data-nosnippet>350</a>		<a href="https://doc.rust-lang.org/nightly/alloc/macro.vec.html">vec!</a>[<span class="string">"file.read"</span>.to_string(), <span class="string">"config.read"</span>.to_string(), <span class="string">"storage.read"</span>.to_string()],
+<a href=#351 id=351 data-nosnippet>351</a>		<span class="string">"Standard user with read access"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
 <a href=#352 id=352 data-nosnippet>352</a>	)
 <a href=#353 id=353 data-nosnippet>353</a>}
 <a href=#354 id=354 data-nosnippet>354</a>
@@ -356,17 +356,17 @@
 <a href=#356 id=356 data-nosnippet>356</a>///
 <a href=#357 id=357 data-nosnippet>357</a>/// ## Returns
 <a href=#358 id=358 data-nosnippet>358</a>/// Role configured with read/write permissions
-<a href=#359 id=359 data-nosnippet>359</a></span><span class="kw">pub fn </span>CreateDeveloperRole() -&gt; Role {
-<a href=#360 id=360 data-nosnippet>360</a>	Role::New(
-<a href=#361 id=361 data-nosnippet>361</a>		<span class="string">"developer"</span>.to_string(),
-<a href=#362 id=362 data-nosnippet>362</a>		<span class="macro">vec!</span>[
+<a href=#359 id=359 data-nosnippet>359</a></span><span class="kw">pub fn </span><a href="../../../../../Mountain/IPC/Permission/Role/ManageRole/fn.CreateDeveloperRole.html">CreateDeveloperRole</a>() -&gt; <a href="#87-102">Role</a> {
+<a href=#360 id=360 data-nosnippet>360</a>	<a href="#87-102">Role</a>::<a href="#134-138">New</a>(
+<a href=#361 id=361 data-nosnippet>361</a>		<span class="string">"developer"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
+<a href=#362 id=362 data-nosnippet>362</a>		<a href="https://doc.rust-lang.org/nightly/alloc/macro.vec.html">vec!</a>[
 <a href=#363 id=363 data-nosnippet>363</a>			<span class="string">"file.read"</span>.to_string(),
 <a href=#364 id=364 data-nosnippet>364</a>			<span class="string">"file.write"</span>.to_string(),
 <a href=#365 id=365 data-nosnippet>365</a>			<span class="string">"config.read"</span>.to_string(),
 <a href=#366 id=366 data-nosnippet>366</a>			<span class="string">"storage.read"</span>.to_string(),
 <a href=#367 id=367 data-nosnippet>367</a>			<span class="string">"storage.write"</span>.to_string(),
 <a href=#368 id=368 data-nosnippet>368</a>		],
-<a href=#369 id=369 data-nosnippet>369</a>		<span class="string">"Developer with read/write access"</span>.to_string(),
+<a href=#369 id=369 data-nosnippet>369</a>		<span class="string">"Developer with read/write access"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
 <a href=#370 id=370 data-nosnippet>370</a>	)
 <a href=#371 id=371 data-nosnippet>371</a>}
 <a href=#372 id=372 data-nosnippet>372</a>
@@ -374,10 +374,10 @@
 <a href=#374 id=374 data-nosnippet>374</a>///
 <a href=#375 id=375 data-nosnippet>375</a>/// ## Returns
 <a href=#376 id=376 data-nosnippet>376</a>/// Role configured with full system access
-<a href=#377 id=377 data-nosnippet>377</a></span><span class="kw">pub fn </span>CreateAdminRole() -&gt; Role {
-<a href=#378 id=378 data-nosnippet>378</a>	Role::New(
-<a href=#379 id=379 data-nosnippet>379</a>		<span class="string">"admin"</span>.to_string(),
-<a href=#380 id=380 data-nosnippet>380</a>		<span class="macro">vec!</span>[
+<a href=#377 id=377 data-nosnippet>377</a></span><span class="kw">pub fn </span><a href="../../../../../Mountain/IPC/Permission/Role/ManageRole/fn.CreateAdminRole.html">CreateAdminRole</a>() -&gt; <a href="#87-102">Role</a> {
+<a href=#378 id=378 data-nosnippet>378</a>	<a href="#87-102">Role</a>::<a href="#134-138">New</a>(
+<a href=#379 id=379 data-nosnippet>379</a>		<span class="string">"admin"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
+<a href=#380 id=380 data-nosnippet>380</a>		<a href="https://doc.rust-lang.org/nightly/alloc/macro.vec.html">vec!</a>[
 <a href=#381 id=381 data-nosnippet>381</a>			<span class="string">"file.read"</span>.to_string(),
 <a href=#382 id=382 data-nosnippet>382</a>			<span class="string">"file.write"</span>.to_string(),
 <a href=#383 id=383 data-nosnippet>383</a>			<span class="string">"config.read"</span>.to_string(),
@@ -388,27 +388,27 @@
 <a href=#388 id=388 data-nosnippet>388</a>			<span class="string">"system.execute"</span>.to_string(),
 <a href=#389 id=389 data-nosnippet>389</a>			<span class="string">"admin.manage"</span>.to_string(),
 <a href=#390 id=390 data-nosnippet>390</a>		],
-<a href=#391 id=391 data-nosnippet>391</a>		<span class="string">"Administrator with full access"</span>.to_string(),
+<a href=#391 id=391 data-nosnippet>391</a>		<span class="string">"Administrator with full access"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
 <a href=#392 id=392 data-nosnippet>392</a>	)
-<a href=#393 id=393 data-nosnippet>393</a>	.AddPermission(<span class="string">"role.manage"</span>.to_string())
+<a href=#393 id=393 data-nosnippet>393</a>	.<a href="#176-187">AddPermission</a>(<span class="string">"role.manage"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>())
 <a href=#394 id=394 data-nosnippet>394</a>}
 <a href=#395 id=395 data-nosnippet>395</a>
 <a href=#396 id=396 data-nosnippet>396</a><span class="doccomment">/// Create all standard roles
 <a href=#397 id=397 data-nosnippet>397</a>///
 <a href=#398 id=398 data-nosnippet>398</a>/// ## Returns
 <a href=#399 id=399 data-nosnippet>399</a>/// Vector containing user, developer, and admin roles
-<a href=#400 id=400 data-nosnippet>400</a></span><span class="kw">pub fn </span>CreateStandardRoles() -&gt; Vec&lt;Role&gt; {
-<a href=#401 id=401 data-nosnippet>401</a>	<span class="macro">info!</span>(<span class="string">"[ManageRole] Creating standard roles"</span>);
-<a href=#402 id=402 data-nosnippet>402</a>	<span class="macro">vec!</span>[CreateUserRole(), CreateDeveloperRole(), CreateAdminRole()]
+<a href=#400 id=400 data-nosnippet>400</a></span><span class="kw">pub fn </span><a href="../../../../../Mountain/IPC/Permission/Role/ManageRole/fn.CreateStandardRoles.html">CreateStandardRoles</a>() -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="#87-102">Role</a>&gt; {
+<a href=#401 id=401 data-nosnippet>401</a>	<a href="https://docs.rs/log/0.4.29/log/macro.info.html">info!</a>(<span class="string">"[ManageRole] Creating standard roles"</span>);
+<a href=#402 id=402 data-nosnippet>402</a>	<a href="https://doc.rust-lang.org/nightly/alloc/macro.vec.html">vec!</a>[CreateUserRole(), CreateDeveloperRole(), CreateAdminRole()]
 <a href=#403 id=403 data-nosnippet>403</a>}
 <a href=#404 id=404 data-nosnippet>404</a>
 <a href=#405 id=405 data-nosnippet>405</a><span class="doccomment">/// Create all standard permissions
 <a href=#406 id=406 data-nosnippet>406</a>///
 <a href=#407 id=407 data-nosnippet>407</a>/// ## Returns
 <a href=#408 id=408 data-nosnippet>408</a>/// Vector containing standard permission definitions
-<a href=#409 id=409 data-nosnippet>409</a></span><span class="kw">pub fn </span>CreateStandardPermissions() -&gt; Vec&lt;Permission&gt; {
-<a href=#410 id=410 data-nosnippet>410</a>	<span class="macro">info!</span>(<span class="string">"[ManageRole] Creating standard permissions"</span>);
-<a href=#411 id=411 data-nosnippet>411</a>	<span class="macro">vec!</span>[
+<a href=#409 id=409 data-nosnippet>409</a></span><span class="kw">pub fn </span><a href="../../../../../Mountain/IPC/Permission/Role/ManageRole/fn.CreateStandardPermissions.html">CreateStandardPermissions</a>() -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="#106-118">Permission</a>&gt; {
+<a href=#410 id=410 data-nosnippet>410</a>	<a href="https://docs.rs/log/0.4.29/log/macro.info.html">info!</a>(<span class="string">"[ManageRole] Creating standard permissions"</span>);
+<a href=#411 id=411 data-nosnippet>411</a>	<a href="https://doc.rust-lang.org/nightly/alloc/macro.vec.html">vec!</a>[
 <a href=#412 id=412 data-nosnippet>412</a>		<span class="comment">// File permissions
 <a href=#413 id=413 data-nosnippet>413</a>		</span>Permission::New(<span class="string">"file.read"</span>.to_string(), <span class="string">"Read file operations"</span>.to_string(), <span class="string">"file"</span>.to_string()),
 <a href=#414 id=414 data-nosnippet>414</a>		Permission::New(

@@ -36,7 +36,7 @@
 <a href=#36 id=36 data-nosnippet>36</a>//! - Zero runtime cost when RUST_LOG does not include TRACE level
 <a href=#37 id=37 data-nosnippet>37</a>//! - Minimal code generation overhead from macro expansion
 <a href=#38 id=38 data-nosnippet>38</a>
-<a href=#39 id=39 data-nosnippet>39</a></span><span class="kw">use </span>log::trace;
+<a href=#39 id=39 data-nosnippet>39</a></span><span class="kw">use </span><a href="https://docs.rs/log/0.4.29/log/macro.trace.html">log::trace</a>;
 <a href=#40 id=40 data-nosnippet>40</a>
 <a href=#41 id=41 data-nosnippet>41</a><span class="doccomment">/// Logs a checkpoint message at TRACE level (for "every step" tracing).
 <a href=#42 id=42 data-nosnippet>42</a>///
@@ -55,7 +55,7 @@
 <a href=#55 id=55 data-nosnippet>55</a>/// - A literal format string
 <a href=#56 id=56 data-nosnippet>56</a>/// - Optional comma-separated values for format placeholders
 <a href=#57 id=57 data-nosnippet>57</a></span><span class="attr">#[macro_export]
-<a href=#58 id=58 data-nosnippet>58</a></span><span class="macro">macro_rules!</span> TraceStep {
+<a href=#58 id=58 data-nosnippet>58</a></span><span class="macro">macro_rules!</span> <a href="../../../../Mountain/macro.TraceStep.html">TraceStep</a> {
 <a href=#59 id=59 data-nosnippet>59</a>	($(<span class="macro-nonterminal">$arg</span>:tt)<span class="kw-2">*</span>) =&gt; {{
 <a href=#60 id=60 data-nosnippet>60</a>		<span class="macro">trace!</span>($(<span class="macro-nonterminal">$arg</span>)<span class="kw-2">*</span>);
 <a href=#61 id=61 data-nosnippet>61</a>	}};

@@ -103,26 +103,26 @@
 <a href=#103 id=103 data-nosnippet>103</a>//! - [ ] Implement log aggregation across multiple instances
 <a href=#104 id=104 data-nosnippet>104</a>
 <a href=#105 id=105 data-nosnippet>105</a></span><span class="kw">use </span>std::{
-<a href=#106 id=106 data-nosnippet>106</a>	collections::VecDeque,
-<a href=#107 id=107 data-nosnippet>107</a>	net::IpAddr,
-<a href=#108 id=108 data-nosnippet>108</a>	sync::Arc,
-<a href=#109 id=109 data-nosnippet>109</a>	time::{Duration, SystemTime, UNIX_EPOCH},
+<a href=#106 id=106 data-nosnippet>106</a>	<a href="https://doc.rust-lang.org/nightly/alloc/collections/vec_deque/struct.VecDeque.html">collections::VecDeque</a>,
+<a href=#107 id=107 data-nosnippet>107</a>	<a href="https://doc.rust-lang.org/nightly/core/net/ip_addr/enum.IpAddr.html">net::IpAddr</a>,
+<a href=#108 id=108 data-nosnippet>108</a>	<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">sync::Arc</a>,
+<a href=#109 id=109 data-nosnippet>109</a>	time::{<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html">Duration</a>, <a href="https://doc.rust-lang.org/nightly/std/time/struct.SystemTime.html">SystemTime</a>, <a href="https://doc.rust-lang.org/nightly/std/time/constant.UNIX_EPOCH.html">UNIX_EPOCH</a>},
 <a href=#110 id=110 data-nosnippet>110</a>};
 <a href=#111 id=111 data-nosnippet>111</a>
 <a href=#112 id=112 data-nosnippet>112</a><span class="kw">use </span>tokio::sync::RwLock;
-<a href=#113 id=113 data-nosnippet>113</a><span class="kw">use </span>log::{debug, error, info, warn};
-<a href=#114 id=114 data-nosnippet>114</a><span class="kw">use </span>serde::{Deserialize, Serialize};
+<a href=#113 id=113 data-nosnippet>113</a><span class="kw">use </span>log::{<a href="https://docs.rs/log/0.4.29/log/macro.debug.html">debug</a>, <a href="https://docs.rs/log/0.4.29/log/macro.error.html">error</a>, <a href="https://docs.rs/log/0.4.29/log/macro.info.html">info</a>, <a href="https://docs.rs/log/0.4.29/log/macro.warn.html">warn</a>};
+<a href=#114 id=114 data-nosnippet>114</a><span class="kw">use </span>serde::{<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>};
 <a href=#115 id=115 data-nosnippet>115</a>
 <a href=#116 id=116 data-nosnippet>116</a><span class="doccomment">/// Maximum number of events to store in the audit log
 <a href=#117 id=117 data-nosnippet>117</a>/// bounded to prevent memory exhaustion
-<a href=#118 id=118 data-nosnippet>118</a></span><span class="kw">const </span>MAX_LOG_SIZE:usize = <span class="number">1000</span>;
+<a href=#118 id=118 data-nosnippet>118</a></span><span class="kw">const </span><a href="../../../../../Mountain/IPC/Permission/Audit/LogEvent/constant.MAX_LOG_SIZE.html">MAX_LOG_SIZE</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> = <span class="number">1000</span>;
 <a href=#119 id=119 data-nosnippet>119</a>
 <a href=#120 id=120 data-nosnippet>120</a><span class="doccomment">/// Default timeout for log operations in milliseconds
-<a href=#121 id=121 data-nosnippet>121</a></span><span class="kw">const </span>LOG_TIMEOUT_MS:u64 = <span class="number">5000</span>;
+<a href=#121 id=121 data-nosnippet>121</a></span><span class="kw">const </span><a href="../../../../../Mountain/IPC/Permission/Audit/LogEvent/constant.LOG_TIMEOUT_MS.html">LOG_TIMEOUT_MS</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a> = <span class="number">5000</span>;
 <a href=#122 id=122 data-nosnippet>122</a>
 <a href=#123 id=123 data-nosnippet>123</a><span class="doccomment">/// Security event type categorization for audit trail classification
-<a href=#124 id=124 data-nosnippet>124</a></span><span class="attr">#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
-<a href=#125 id=125 data-nosnippet>125</a></span><span class="kw">pub enum </span>SecurityEventType {
+<a href=#124 id=124 data-nosnippet>124</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://doc.rust-lang.org/nightly/core/marker/derive.Copy.html">Copy</a>, <a href="https://doc.rust-lang.org/nightly/core/cmp/derive.PartialEq.html">PartialEq</a>, <a href="https://doc.rust-lang.org/nightly/core/cmp/derive.Eq.html">Eq</a>, <a href="https://doc.rust-lang.org/nightly/core/hash/macros/derive.Hash.html">Hash</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
+<a href=#125 id=125 data-nosnippet>125</a></span><span class="kw">pub enum </span><a href="../../../../../Mountain/IPC/Permission/Audit/LogEvent/enum.SecurityEventType.html">SecurityEventType</a> {
 <a href=#126 id=126 data-nosnippet>126</a>	<span class="doccomment">/// Access was granted to a resource or operation
 <a href=#127 id=127 data-nosnippet>127</a>	</span>AccessGranted,
 <a href=#128 id=128 data-nosnippet>128</a>	<span class="doccomment">/// Access was denied due to insufficient permissions
@@ -143,19 +143,19 @@
 <a href=#143 id=143 data-nosnippet>143</a>	</span>PolicyChange,
 <a href=#144 id=144 data-nosnippet>144</a>}
 <a href=#145 id=145 data-nosnippet>145</a>
-<a href=#146 id=146 data-nosnippet>146</a><span class="kw">impl </span>SecurityEventType {
+<a href=#146 id=146 data-nosnippet>146</a><span class="kw">impl </span><a href="#125-144">SecurityEventType</a> {
 <a href=#147 id=147 data-nosnippet>147</a>	<span class="doccomment">/// Get display name for event type
-<a href=#148 id=148 data-nosnippet>148</a>	</span><span class="kw">pub fn </span>DisplayName(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; String {
-<a href=#149 id=149 data-nosnippet>149</a>		<span class="kw">match </span><span class="self">self </span>{
-<a href=#150 id=150 data-nosnippet>150</a>			SecurityEventType::AccessGranted =&gt; String::from(<span class="string">"AccessGranted"</span>),
-<a href=#151 id=151 data-nosnippet>151</a>			SecurityEventType::PermissionDenied =&gt; String::from(<span class="string">"PermissionDenied"</span>),
-<a href=#152 id=152 data-nosnippet>152</a>			SecurityEventType::AuthenticationFailed =&gt; String::from(<span class="string">"AuthenticationFailed"</span>),
-<a href=#153 id=153 data-nosnippet>153</a>			SecurityEventType::ConfigurationChange =&gt; String::from(<span class="string">"ConfigurationChange"</span>),
-<a href=#154 id=154 data-nosnippet>154</a>			SecurityEventType::SecurityViolation =&gt; String::from(<span class="string">"SecurityViolation"</span>),
-<a href=#155 id=155 data-nosnippet>155</a>			SecurityEventType::PerformanceAnomaly =&gt; String::from(<span class="string">"PerformanceAnomaly"</span>),
-<a href=#156 id=156 data-nosnippet>156</a>			SecurityEventType::RoleChange =&gt; String::from(<span class="string">"RoleChange"</span>),
-<a href=#157 id=157 data-nosnippet>157</a>			SecurityEventType::PermissionChange =&gt; String::from(<span class="string">"PermissionChange"</span>),
-<a href=#158 id=158 data-nosnippet>158</a>			SecurityEventType::PolicyChange =&gt; String::from(<span class="string">"PolicyChange"</span>),
+<a href=#148 id=148 data-nosnippet>148</a>	</span><span class="kw">pub fn </span>DisplayName(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a> {
+<a href=#149 id=149 data-nosnippet>149</a>		<span class="kw">match </span><a class="self" href="#148">self</a> {
+<a href=#150 id=150 data-nosnippet>150</a>			SecurityEventType::<a href="#127">AccessGranted</a> =&gt; <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>::<a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from">from</a>(<span class="string">"AccessGranted"</span>),
+<a href=#151 id=151 data-nosnippet>151</a>			SecurityEventType::<a href="#129">PermissionDenied</a> =&gt; <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>::<a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from">from</a>(<span class="string">"PermissionDenied"</span>),
+<a href=#152 id=152 data-nosnippet>152</a>			SecurityEventType::<a href="#131">AuthenticationFailed</a> =&gt; <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>::<a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from">from</a>(<span class="string">"AuthenticationFailed"</span>),
+<a href=#153 id=153 data-nosnippet>153</a>			SecurityEventType::<a href="#133">ConfigurationChange</a> =&gt; <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>::<a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from">from</a>(<span class="string">"ConfigurationChange"</span>),
+<a href=#154 id=154 data-nosnippet>154</a>			SecurityEventType::<a href="#135">SecurityViolation</a> =&gt; <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>::<a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from">from</a>(<span class="string">"SecurityViolation"</span>),
+<a href=#155 id=155 data-nosnippet>155</a>			SecurityEventType::<a href="#137">PerformanceAnomaly</a> =&gt; <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>::<a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from">from</a>(<span class="string">"PerformanceAnomaly"</span>),
+<a href=#156 id=156 data-nosnippet>156</a>			SecurityEventType::<a href="#139">RoleChange</a> =&gt; <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>::<a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from">from</a>(<span class="string">"RoleChange"</span>),
+<a href=#157 id=157 data-nosnippet>157</a>			SecurityEventType::<a href="#141">PermissionChange</a> =&gt; <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>::<a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from">from</a>(<span class="string">"PermissionChange"</span>),
+<a href=#158 id=158 data-nosnippet>158</a>			SecurityEventType::<a href="#143">PolicyChange</a> =&gt; <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>::<a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from">from</a>(<span class="string">"PolicyChange"</span>),
 <a href=#159 id=159 data-nosnippet>159</a>		}
 <a href=#160 id=160 data-nosnippet>160</a>	}
 <a href=#161 id=161 data-nosnippet>161</a>}

@@ -4,7 +4,7 @@
 <a href=#4 id=4 data-nosnippet>4</a>//! - Implements
 <a href=#5 id=5 data-nosnippet>5</a>//!   [`FileSystemReader`](CommonLibrary::FileSystem::FileSystemReader) and
 <a href=#6 id=6 data-nosnippet>6</a>//!   [`FileSystemWriter`](CommonLibrary::FileSystem::FileSystemWriter) for
-<a href=#7 id=7 data-nosnippet>7</a>//!   [`MountainEnvironment`](crate::MountainEnvironment::MountainEnvironment)
+<a href=#7 id=7 data-nosnippet>7</a>//! `MountainEnvironment`
 <a href=#8 id=8 data-nosnippet>8</a>//! - Provides secure, validated filesystem access with workspace trust
 <a href=#9 id=9 data-nosnippet>9</a>//!   enforcement
 <a href=#10 id=10 data-nosnippet>10</a>//! - Handles file operations: read, write, stat, delete, rename, copy,
@@ -14,7 +14,7 @@
 <a href=#14 id=14 data-nosnippet>14</a>//!
 <a href=#15 id=15 data-nosnippet>15</a>//! SECURITY MODEL:
 <a href=#16 id=16 data-nosnippet>16</a>//! - Sandboxed filesystem access limited to registered workspace folders
-<a href=#17 id=17 data-nosnippet>17</a>//! - All operations call [`Utility::IsPathAllowedForAccess`](crate::Utility)
+<a href=#17 id=17 data-nosnippet>17</a>//! - All operations call `Utility::IsPathAllowedForAccess`
 <a href=#18 id=18 data-nosnippet>18</a>//!   first
 <a href=#19 id=19 data-nosnippet>19</a>//! - Requires workspace trust to be enabled for any file access
 <a href=#20 id=20 data-nosnippet>20</a>//! - Path normalization prevents `../` attacks
@@ -58,7 +58,7 @@
 <a href=#58 id=58 data-nosnippet>58</a>//! - [`write_operations.rs`](write_operations.rs) - `FileSystemWriter`
 <a href=#59 id=59 data-nosnippet>59</a>//!   implementation
 <a href=#60 id=60 data-nosnippet>60</a>
-<a href=#61 id=61 data-nosnippet>61</a></span><span class="kw">use </span>std::path::PathBuf;
+<a href=#61 id=61 data-nosnippet>61</a></span><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">std::path::PathBuf</a>;
 <a href=#62 id=62 data-nosnippet>62</a>
 <a href=#63 id=63 data-nosnippet>63</a><span class="kw">use </span>CommonLibrary::{
 <a href=#64 id=64 data-nosnippet>64</a>	Error::CommonError::CommonError,
@@ -68,64 +68,64 @@
 <a href=#68 id=68 data-nosnippet>68</a>		FileSystemWriter::FileSystemWriter,
 <a href=#69 id=69 data-nosnippet>69</a>	},
 <a href=#70 id=70 data-nosnippet>70</a>};
-<a href=#71 id=71 data-nosnippet>71</a><span class="kw">use </span>async_trait::async_trait;
+<a href=#71 id=71 data-nosnippet>71</a><span class="kw">use </span><a href="https://docs.rs/async-trait/0.1.89/async_trait/attr.async_trait.html">async_trait::async_trait</a>;
 <a href=#72 id=72 data-nosnippet>72</a>
-<a href=#73 id=73 data-nosnippet>73</a><span class="kw">use </span>super::{MountainEnvironment::MountainEnvironment, Utility};
+<a href=#73 id=73 data-nosnippet>73</a><span class="kw">use </span>super::{<a href="MountainEnvironment.rs.html#220-230">MountainEnvironment::MountainEnvironment</a>, <a href="mod.rs.html#112">Utility</a>};
 <a href=#74 id=74 data-nosnippet>74</a>
 <a href=#75 id=75 data-nosnippet>75</a><span class="comment">// Private submodules containing the actual implementation
 <a href=#76 id=76 data-nosnippet>76</a></span><span class="attr">#[path = <span class="string">"FileSystemProvider/read_operations.rs"</span>]
-<a href=#77 id=77 data-nosnippet>77</a></span><span class="kw">mod </span>read_operations;
+<a href=#77 id=77 data-nosnippet>77</a></span><span class="kw">mod </span><a href="FileSystemProvider/read_operations.rs.html#1-148">read_operations</a>;
 <a href=#78 id=78 data-nosnippet>78</a><span class="attr">#[path = <span class="string">"FileSystemProvider/write_operations.rs"</span>]
-<a href=#79 id=79 data-nosnippet>79</a></span><span class="kw">mod </span>write_operations;
+<a href=#79 id=79 data-nosnippet>79</a></span><span class="kw">mod </span><a href="FileSystemProvider/write_operations.rs.html#1-212">write_operations</a>;
 <a href=#80 id=80 data-nosnippet>80</a>
 <a href=#81 id=81 data-nosnippet>81</a><span class="attr">#[async_trait]
-<a href=#82 id=82 data-nosnippet>82</a></span><span class="kw">impl </span>FileSystemReader <span class="kw">for </span>MountainEnvironment {
+<a href=#82 id=82 data-nosnippet>82</a></span><span class="kw">impl </span>FileSystemReader <span class="kw">for </span><a href="MountainEnvironment.rs.html#220-230">MountainEnvironment</a> {
 <a href=#83 id=83 data-nosnippet>83</a>	<span class="doccomment">/// Delegates to read_operations module
-<a href=#84 id=84 data-nosnippet>84</a>	</span><span class="kw">async fn </span>ReadFile(<span class="kw-2">&amp;</span><span class="self">self</span>, path:<span class="kw-2">&amp;</span>PathBuf) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;u8&gt;, CommonError&gt; {
-<a href=#85 id=85 data-nosnippet>85</a>		read_operations::read_file_impl(<span class="self">self</span>, path).<span class="kw">await
+<a href=#84 id=84 data-nosnippet>84</a>	</span><span class="kw">async fn </span>ReadFile(<span class="kw-2">&amp;</span><a class="self" href="#84">self</a>, path:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;, CommonError&gt; {
+<a href=#85 id=85 data-nosnippet>85</a>		read_operations::<a href="FileSystemProvider/read_operations.rs.html#21-39">read_file_impl</a>(<a class="self" href="#84">self</a>, <a href="#84">path</a>).<span class="kw">await
 <a href=#86 id=86 data-nosnippet>86</a>	</span>}
 <a href=#87 id=87 data-nosnippet>87</a>
 <a href=#88 id=88 data-nosnippet>88</a>	<span class="doccomment">/// Delegates to read_operations module
-<a href=#89 id=89 data-nosnippet>89</a>	</span><span class="kw">async fn </span>StatFile(<span class="kw-2">&amp;</span><span class="self">self</span>, path:<span class="kw-2">&amp;</span>PathBuf) -&gt; <span class="prelude-ty">Result</span>&lt;FileSystemStatDTO, CommonError&gt; {
-<a href=#90 id=90 data-nosnippet>90</a>		read_operations::stat_file_impl(<span class="self">self</span>, path).<span class="kw">await
+<a href=#89 id=89 data-nosnippet>89</a>	</span><span class="kw">async fn </span>StatFile(<span class="kw-2">&amp;</span><a class="self" href="#89">self</a>, path:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;FileSystemStatDTO, CommonError&gt; {
+<a href=#90 id=90 data-nosnippet>90</a>		read_operations::<a href="FileSystemProvider/read_operations.rs.html#42-93">stat_file_impl</a>(<a class="self" href="#89">self</a>, <a href="#89">path</a>).<span class="kw">await
 <a href=#91 id=91 data-nosnippet>91</a>	</span>}
 <a href=#92 id=92 data-nosnippet>92</a>
 <a href=#93 id=93 data-nosnippet>93</a>	<span class="doccomment">/// Delegates to read_operations module
-<a href=#94 id=94 data-nosnippet>94</a>	</span><span class="kw">async fn </span>ReadDirectory(<span class="kw-2">&amp;</span><span class="self">self</span>, path:<span class="kw-2">&amp;</span>PathBuf) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;(String, FileTypeDTO)&gt;, CommonError&gt; {
-<a href=#95 id=95 data-nosnippet>95</a>		read_operations::read_directory_impl(<span class="self">self</span>, path).<span class="kw">await
+<a href=#94 id=94 data-nosnippet>94</a>	</span><span class="kw">async fn </span>ReadDirectory(<span class="kw-2">&amp;</span><a class="self" href="#94">self</a>, path:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;(<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, FileTypeDTO)&gt;, CommonError&gt; {
+<a href=#95 id=95 data-nosnippet>95</a>		read_operations::<a href="FileSystemProvider/read_operations.rs.html#96-148">read_directory_impl</a>(<a class="self" href="#94">self</a>, <a href="#94">path</a>).<span class="kw">await
 <a href=#96 id=96 data-nosnippet>96</a>	</span>}
 <a href=#97 id=97 data-nosnippet>97</a>}
 <a href=#98 id=98 data-nosnippet>98</a>
 <a href=#99 id=99 data-nosnippet>99</a><span class="attr">#[async_trait]
-<a href=#100 id=100 data-nosnippet>100</a></span><span class="kw">impl </span>FileSystemWriter <span class="kw">for </span>MountainEnvironment {
+<a href=#100 id=100 data-nosnippet>100</a></span><span class="kw">impl </span>FileSystemWriter <span class="kw">for </span><a href="MountainEnvironment.rs.html#220-230">MountainEnvironment</a> {
 <a href=#101 id=101 data-nosnippet>101</a>	<span class="doccomment">/// Delegates to write_operations module
-<a href=#102 id=102 data-nosnippet>102</a>	</span><span class="kw">async fn </span>WriteFile(<span class="kw-2">&amp;</span><span class="self">self</span>, path:<span class="kw-2">&amp;</span>PathBuf, content:Vec&lt;u8&gt;, create:bool, overwrite:bool) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
-<a href=#103 id=103 data-nosnippet>103</a>		write_operations::write_file_impl(<span class="self">self</span>, path, content, create, overwrite).<span class="kw">await
+<a href=#102 id=102 data-nosnippet>102</a>	</span><span class="kw">async fn </span>WriteFile(<span class="kw-2">&amp;</span><a class="self" href="#102">self</a>, path:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>, <a href="#102">content</a>:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;, <a href="#102">create</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>, <a href="#102">overwrite</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
+<a href=#103 id=103 data-nosnippet>103</a>		write_operations::<a href="FileSystemProvider/write_operations.rs.html#18-70">write_file_impl</a>(<a class="self" href="#102">self</a>, <a href="#102">path</a>, <a href="#102">content</a>, <a href="#102">create</a>, <a href="#102">overwrite</a>).<span class="kw">await
 <a href=#104 id=104 data-nosnippet>104</a>	</span>}
 <a href=#105 id=105 data-nosnippet>105</a>
 <a href=#106 id=106 data-nosnippet>106</a>	<span class="doccomment">/// Delegates to write_operations module
-<a href=#107 id=107 data-nosnippet>107</a>	</span><span class="kw">async fn </span>CreateDirectory(<span class="kw-2">&amp;</span><span class="self">self</span>, path:<span class="kw-2">&amp;</span>PathBuf, recursive:bool) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
-<a href=#108 id=108 data-nosnippet>108</a>		write_operations::create_directory_impl(<span class="self">self</span>, path, recursive).<span class="kw">await
+<a href=#107 id=107 data-nosnippet>107</a>	</span><span class="kw">async fn </span>CreateDirectory(<span class="kw-2">&amp;</span><a class="self" href="#107">self</a>, path:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>, <a href="#107">recursive</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
+<a href=#108 id=108 data-nosnippet>108</a>		write_operations::<a href="FileSystemProvider/write_operations.rs.html#73-103">create_directory_impl</a>(<a class="self" href="#107">self</a>, <a href="#107">path</a>, <a href="#107">recursive</a>).<span class="kw">await
 <a href=#109 id=109 data-nosnippet>109</a>	</span>}
 <a href=#110 id=110 data-nosnippet>110</a>
 <a href=#111 id=111 data-nosnippet>111</a>	<span class="doccomment">/// Delegates to write_operations module
-<a href=#112 id=112 data-nosnippet>112</a>	</span><span class="kw">async fn </span>Delete(<span class="kw-2">&amp;</span><span class="self">self</span>, path:<span class="kw-2">&amp;</span>PathBuf, recursive:bool, use_trash:bool) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
-<a href=#113 id=113 data-nosnippet>113</a>		write_operations::delete_impl(<span class="self">self</span>, path, recursive, use_trash).<span class="kw">await
+<a href=#112 id=112 data-nosnippet>112</a>	</span><span class="kw">async fn </span>Delete(<span class="kw-2">&amp;</span><a class="self" href="#112">self</a>, path:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>, <a href="#112">recursive</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>, <a href="#112">use_trash</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
+<a href=#113 id=113 data-nosnippet>113</a>		write_operations::<a href="FileSystemProvider/write_operations.rs.html#106-135">delete_impl</a>(<a class="self" href="#112">self</a>, <a href="#112">path</a>, <a href="#112">recursive</a>, <a href="#112">use_trash</a>).<span class="kw">await
 <a href=#114 id=114 data-nosnippet>114</a>	</span>}
 <a href=#115 id=115 data-nosnippet>115</a>
 <a href=#116 id=116 data-nosnippet>116</a>	<span class="doccomment">/// Delegates to write_operations module
-<a href=#117 id=117 data-nosnippet>117</a>	</span><span class="kw">async fn </span>Rename(<span class="kw-2">&amp;</span><span class="self">self</span>, source:<span class="kw-2">&amp;</span>PathBuf, target:<span class="kw-2">&amp;</span>PathBuf, overwrite:bool) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
-<a href=#118 id=118 data-nosnippet>118</a>		write_operations::rename_impl(<span class="self">self</span>, source, target, overwrite).<span class="kw">await
+<a href=#117 id=117 data-nosnippet>117</a>	</span><span class="kw">async fn </span>Rename(<span class="kw-2">&amp;</span><a class="self" href="#117">self</a>, source:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>, target:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>, <a href="#117">overwrite</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
+<a href=#118 id=118 data-nosnippet>118</a>		write_operations::<a href="FileSystemProvider/write_operations.rs.html#138-155">rename_impl</a>(<a class="self" href="#117">self</a>, <a href="#117">source</a>, <a href="#117">target</a>, <a href="#117">overwrite</a>).<span class="kw">await
 <a href=#119 id=119 data-nosnippet>119</a>	</span>}
 <a href=#120 id=120 data-nosnippet>120</a>
 <a href=#121 id=121 data-nosnippet>121</a>	<span class="doccomment">/// Delegates to write_operations module
-<a href=#122 id=122 data-nosnippet>122</a>	</span><span class="kw">async fn </span>Copy(<span class="kw-2">&amp;</span><span class="self">self</span>, source:<span class="kw-2">&amp;</span>PathBuf, target:<span class="kw-2">&amp;</span>PathBuf, overwrite:bool) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
-<a href=#123 id=123 data-nosnippet>123</a>		write_operations::copy_impl(<span class="self">self</span>, source, target, overwrite).<span class="kw">await
+<a href=#122 id=122 data-nosnippet>122</a>	</span><span class="kw">async fn </span>Copy(<span class="kw-2">&amp;</span><a class="self" href="#122">self</a>, source:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>, target:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>, <a href="#122">overwrite</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
+<a href=#123 id=123 data-nosnippet>123</a>		write_operations::<a href="FileSystemProvider/write_operations.rs.html#158-205">copy_impl</a>(<a class="self" href="#122">self</a>, <a href="#122">source</a>, <a href="#122">target</a>, <a href="#122">overwrite</a>).<span class="kw">await
 <a href=#124 id=124 data-nosnippet>124</a>	</span>}
 <a href=#125 id=125 data-nosnippet>125</a>
 <a href=#126 id=126 data-nosnippet>126</a>	<span class="doccomment">/// Delegates to write_operations module
-<a href=#127 id=127 data-nosnippet>127</a>	</span><span class="kw">async fn </span>CreateFile(<span class="kw-2">&amp;</span><span class="self">self</span>, path:<span class="kw-2">&amp;</span>PathBuf) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
-<a href=#128 id=128 data-nosnippet>128</a>		write_operations::create_file_impl(<span class="self">self</span>, path).<span class="kw">await
+<a href=#127 id=127 data-nosnippet>127</a>	</span><span class="kw">async fn </span>CreateFile(<span class="kw-2">&amp;</span><a class="self" href="#127">self</a>, path:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
+<a href=#128 id=128 data-nosnippet>128</a>		write_operations::<a href="FileSystemProvider/write_operations.rs.html#208-212">create_file_impl</a>(<a class="self" href="#127">self</a>, <a href="#127">path</a>).<span class="kw">await
 <a href=#129 id=129 data-nosnippet>129</a>	</span>}
 <a href=#130 id=130 data-nosnippet>130</a>}
 </code></pre></div></section></main></body></html>

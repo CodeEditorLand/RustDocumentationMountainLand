@@ -22,8 +22,7 @@ providers</li>
 </ul>
 <h3 id="architectural-role"><a class="doc-anchor" href="#architectural-role">§</a>ARCHITECTURAL ROLE</h3>
 <p>The Command module is the <strong>UI-to-Backend bridge</strong>:</p>
-
-<div class="example-wrap"><pre class="rust rust-example-rendered"><code>Sky Frontend ──► Tauri invoke ──► Command Handler ──► Effect System ──► Providers</code></pre></div><h4 id="design-patterns"><a class="doc-anchor" href="#design-patterns">§</a>Design Patterns:</h4>
+<div class="example-wrap"><pre class="language-text"><code>Sky Frontend ──► Tauri invoke ──► Command Handler ──► Effect System ──► Providers</code></pre></div><h4 id="design-patterns"><a class="doc-anchor" href="#design-patterns">§</a>Design Patterns:</h4>
 <ol>
 <li><strong>Command Pattern</strong>: Each handler encapsulates a request</li>
 <li><strong>Facade Pattern</strong>: Simple interface to complex backend operations</li>

@@ -2,9 +2,9 @@
 <a href=#2 id=2 data-nosnippet>2</a>//!
 <a href=#3 id=3 data-nosnippet>3</a>//! Handles graceful shutdown of the Echo task scheduler.
 <a href=#4 id=4 data-nosnippet>4</a>
-<a href=#5 id=5 data-nosnippet>5</a></span><span class="kw">use </span>std::sync::Arc;
+<a href=#5 id=5 data-nosnippet>5</a></span><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">std::sync::Arc</a>;
 <a href=#6 id=6 data-nosnippet>6</a>
-<a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span>log::{debug, error, info};
+<a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span>log::{<a href="https://docs.rs/log/0.4.29/log/macro.debug.html">debug</a>, <a href="https://docs.rs/log/0.4.29/log/macro.error.html">error</a>, <a href="https://docs.rs/log/0.4.29/log/macro.info.html">info</a>};
 <a href=#8 id=8 data-nosnippet>8</a><span class="kw">use </span>Echo::Scheduler::Scheduler::Scheduler;
 <a href=#9 id=9 data-nosnippet>9</a>
 <a href=#10 id=10 data-nosnippet>10</a><span class="doccomment">/// Stops the Echo task scheduler and cleans up its resources.
@@ -27,7 +27,7 @@
 <a href=#27 id=27 data-nosnippet>27</a>/// # Errors
 <a href=#28 id=28 data-nosnippet>28</a>///
 <a href=#29 id=29 data-nosnippet>29</a>/// Returns an error if the scheduler is not exclusively owned or stop fails.
-<a href=#30 id=30 data-nosnippet>30</a></span><span class="kw">pub async fn </span>SchedulerShutdown(SchedulerForShutdown:Arc&lt;Scheduler&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
+<a href=#30 id=30 data-nosnippet>30</a></span><span class="kw">pub async fn </span><a href="../../../../Mountain/Binary/Shutdown/SchedulerShutdown/fn.SchedulerShutdown.html">SchedulerShutdown</a>(SchedulerForShutdown:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;Scheduler&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
 <a href=#31 id=31 data-nosnippet>31</a>	<span class="macro">debug!</span>(<span class="string">"[Shutdown] [Scheduler] Stopping Echo scheduler..."</span>);
 <a href=#32 id=32 data-nosnippet>32</a>
 <a href=#33 id=33 data-nosnippet>33</a>	<span class="comment">// Try to get exclusive ownership for shutdown

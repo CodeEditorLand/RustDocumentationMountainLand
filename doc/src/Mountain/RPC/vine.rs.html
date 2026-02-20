@@ -5,18 +5,18 @@
 <a href=#5 id=5 data-nosnippet>5</a></span><span class="comment">// Placeholder for Vine types
 <a href=#6 id=6 data-nosnippet>6</a>// This module will re-export types from the Vine component
 <a href=#7 id=7 data-nosnippet>7</a>
-<a href=#8 id=8 data-nosnippet>8</a></span><span class="kw">use </span>serde::{Deserialize, Serialize};
+<a href=#8 id=8 data-nosnippet>8</a></span><span class="kw">use </span>serde::{<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>};
 <a href=#9 id=9 data-nosnippet>9</a>
 <a href=#10 id=10 data-nosnippet>10</a><span class="doccomment">/// Vine connection info
-<a href=#11 id=11 data-nosnippet>11</a></span><span class="attr">#[derive(Debug, Clone, Serialize, Deserialize)]
-<a href=#12 id=12 data-nosnippet>12</a></span><span class="kw">pub struct </span>VineConnectionInfo {
-<a href=#13 id=13 data-nosnippet>13</a>	<span class="kw">pub </span>service_name:String,
-<a href=#14 id=14 data-nosnippet>14</a>	<span class="kw">pub </span>endpoint:String,
+<a href=#11 id=11 data-nosnippet>11</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
+<a href=#12 id=12 data-nosnippet>12</a></span><span class="kw">pub struct </span><a href="../../../Mountain/RPC/vine/struct.VineConnectionInfo.html">VineConnectionInfo</a> {
+<a href=#13 id=13 data-nosnippet>13</a>	<span class="kw">pub </span>service_name:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#14 id=14 data-nosnippet>14</a>	<span class="kw">pub </span>endpoint:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#15 id=15 data-nosnippet>15</a>}
 <a href=#16 id=16 data-nosnippet>16</a>
 <a href=#17 id=17 data-nosnippet>17</a><span class="doccomment">/// Vine service status
-<a href=#18 id=18 data-nosnippet>18</a></span><span class="attr">#[derive(Debug, Clone, Serialize, Deserialize)]
-<a href=#19 id=19 data-nosnippet>19</a></span><span class="kw">pub enum </span>VineServiceStatus {
+<a href=#18 id=18 data-nosnippet>18</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
+<a href=#19 id=19 data-nosnippet>19</a></span><span class="kw">pub enum </span><a href="../../../Mountain/RPC/vine/enum.VineServiceStatus.html">VineServiceStatus</a> {
 <a href=#20 id=20 data-nosnippet>20</a>	Connected,
 <a href=#21 id=21 data-nosnippet>21</a>	Disconnected,
 <a href=#22 id=22 data-nosnippet>22</a>	Error,

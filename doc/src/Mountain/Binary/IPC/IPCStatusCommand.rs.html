@@ -34,7 +34,7 @@
 <a href=#34 id=34 data-nosnippet>34</a>//! ### Considerations
 <a href=#35 id=35 data-nosnippet>35</a>//! - Status queries are fast, in-memory operations
 <a href=#36 id=36 data-nosnippet>36</a>
-<a href=#37 id=37 data-nosnippet>37</a></span><span class="kw">use </span>serde_json::Value;
+<a href=#37 id=37 data-nosnippet>37</a></span><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#38 id=38 data-nosnippet>38</a><span class="kw">use </span>tauri::AppHandle;
 <a href=#39 id=39 data-nosnippet>39</a>
 <a href=#40 id=40 data-nosnippet>40</a><span class="doccomment">/// Get IPC status.
@@ -54,7 +54,7 @@
 <a href=#54 id=54 data-nosnippet>54</a>///
 <a href=#55 id=55 data-nosnippet>55</a>/// Returns an error if status cannot be retrieved.
 <a href=#56 id=56 data-nosnippet>56</a></span><span class="attr">#[tauri::command]
-<a href=#57 id=57 data-nosnippet>57</a></span><span class="kw">pub async fn </span>MountainGetIPCStatus(app_handle:AppHandle) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
+<a href=#57 id=57 data-nosnippet>57</a></span><span class="kw">pub async fn </span><a href="#56">MountainGetIPCStatus</a>(app_handle:AppHandle) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
 <a href=#58 id=58 data-nosnippet>58</a>	<span class="kw">crate</span>::IPC::StatusReporter::mountain_get_ipc_status(app_handle).<span class="kw">await
 <a href=#59 id=59 data-nosnippet>59</a></span>}
 </code></pre></div></section></main></body></html>

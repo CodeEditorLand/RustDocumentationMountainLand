@@ -26,8 +26,7 @@ collecting default configuration values from all discovered extensions.</p>
 </ul>
 <h3 id="architectural-role"><a class="doc-anchor" href="#architectural-role">§</a>ARCHITECTURAL ROLE</h3>
 <p>The Extension Scanner is part of the <strong>Extension Management</strong> subsystem:</p>
-
-<div class="example-wrap"><pre class="rust rust-example-rendered"><code>Startup ──► ScanPaths ──► Scanner ──► Extensions Map ──► ApplicationState</code></pre></div><h4 id="position-in-mountain"><a class="doc-anchor" href="#position-in-mountain">§</a>Position in Mountain</h4>
+<div class="example-wrap"><pre class="language-text"><code>Startup ──► ScanPaths ──► Scanner ──► Extensions Map ──► ApplicationState</code></pre></div><h4 id="position-in-mountain"><a class="doc-anchor" href="#position-in-mountain">§</a>Position in Mountain</h4>
 <ul>
 <li><code>ExtensionManagement</code> module: Extension discovery and metadata</li>
 <li>Used during application startup to populate extension registry</li>
@@ -110,8 +109,8 @@ Support extension scanning in subdirectories (recursive)</li>
 <li><a href="fn.ScanDirectoryForExtensions.html" title="fn Mountain::ExtensionManagement::Scanner::ScanDirectoryForExtensions"><code>ScanDirectoryForExtensions</code></a>: Scan a single directory for extensions</li>
 <li><a href="fn.CollectDefaultConfigurations.html" title="fn Mountain::ExtensionManagement::Scanner::CollectDefaultConfigurations"><code>CollectDefaultConfigurations</code></a>: Merge configuration defaults from all
 extensions</li>
-<li>[<code>process_configuration_properties</code>]: Recursive configuration property
+<li><code>process_configuration_properties</code>: Recursive configuration property
 processor</li>
 </ul>
 </div></details><h2 id="functions" class="section-header">Functions<a href="#functions" class="anchor">§</a></h2><dl class="item-table"><dt><a class="fn" href="fn.CollectDefaultConfigurations.html" title="fn Mountain::ExtensionManagement::Scanner::CollectDefaultConfigurations">Collect<wbr>Default<wbr>Configurations</a></dt><dd>A helper function to extract default configuration values from all
-scanned extensions.</dd><dt><a class="fn" href="fn.ScanDirectoryForExtensions.html" title="fn Mountain::ExtensionManagement::Scanner::ScanDirectoryForExtensions">Scan<wbr>Directory<wbr>ForExtensions</a></dt><dd>Scans a single directory for valid extensions.</dd></dl></section></div></main></body></html>
+scanned extensions.</dd><dt><a class="fn" href="fn.ScanDirectoryForExtensions.html" title="fn Mountain::ExtensionManagement::Scanner::ScanDirectoryForExtensions">Scan<wbr>Directory<wbr>ForExtensions</a></dt><dd>Scans a single directory for valid extensions.</dd><dt><a class="fn" href="fn.process_configuration_properties.html" title="fn Mountain::ExtensionManagement::Scanner::process_configuration_properties">process_<wbr>configuration_<wbr>properties</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>RECURSIVE CONFIGURATION PROCESSING: Handle nested object structures</dd></dl></section></div></main></body></html>

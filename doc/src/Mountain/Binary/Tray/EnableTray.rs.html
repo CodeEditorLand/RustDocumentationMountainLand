@@ -6,7 +6,7 @@
 <a href=#6 id=6 data-nosnippet>6</a>//!
 <a href=#7 id=7 data-nosnippet>7</a>//! System tray configuration and initialization.
 <a href=#8 id=8 data-nosnippet>8</a>
-<a href=#9 id=9 data-nosnippet>9</a></span><span class="kw">use </span>log::{debug, error, info, warn};
+<a href=#9 id=9 data-nosnippet>9</a></span><span class="kw">use </span>log::{<a href="https://docs.rs/log/0.4.29/log/macro.debug.html">debug</a>, <a href="https://docs.rs/log/0.4.29/log/macro.error.html">error</a>, <a href="https://docs.rs/log/0.4.29/log/macro.info.html">info</a>, <a href="https://docs.rs/log/0.4.29/log/macro.warn.html">warn</a>};
 <a href=#10 id=10 data-nosnippet>10</a><span class="kw">use </span>tauri::App;
 <a href=#11 id=11 data-nosnippet>11</a>
 <a href=#12 id=12 data-nosnippet>12</a><span class="doccomment">/// Enables and configures the system tray for the application.
@@ -19,8 +19,8 @@
 <a href=#19 id=19 data-nosnippet>19</a>///
 <a href=#20 id=20 data-nosnippet>20</a>/// # Returns
 <a href=#21 id=21 data-nosnippet>21</a>/// `Ok(())` if tray initialization succeeded, or `Err(String)` if it failed.
-<a href=#22 id=22 data-nosnippet>22</a></span><span class="kw">pub fn </span>enable_tray(_app:<span class="kw-2">&amp;</span>App) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
-<a href=#23 id=23 data-nosnippet>23</a>	<span class="macro">info!</span>(<span class="string">"[Tray] Initializing system tray..."</span>);
+<a href=#22 id=22 data-nosnippet>22</a></span><span class="kw">pub fn </span><a href="../../../../Mountain/Binary/Tray/EnableTray/fn.enable_tray.html">enable_tray</a>(_app:<span class="kw-2">&amp;</span>App) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
+<a href=#23 id=23 data-nosnippet>23</a>	<a href="https://docs.rs/log/0.4.29/log/macro.info.html">info!</a>(<span class="string">"[Tray] Initializing system tray..."</span>);
 <a href=#24 id=24 data-nosnippet>24</a>
 <a href=#25 id=25 data-nosnippet>25</a>	<span class="comment">// Implement full system tray functionality using Tauri's SystemTray API.
 <a href=#26 id=26 data-nosnippet>26</a>	// Create tray icon with platform-appropriate format (template for macOS,
@@ -31,7 +31,7 @@
 <a href=#31 id=31 data-nosnippet>31</a>	// tooltip and status icon states (normal, warning, error) for background
 <a href=#32 id=32 data-nosnippet>32</a>	// operations like updates or sync status.
 <a href=#33 id=33 data-nosnippet>33</a>
-<a href=#34 id=34 data-nosnippet>34</a>	</span><span class="macro">debug!</span>(<span class="string">"[Tray] System tray enabled"</span>);
-<a href=#35 id=35 data-nosnippet>35</a>	<span class="prelude-val">Ok</span>(())
+<a href=#34 id=34 data-nosnippet>34</a>	</span><a href="https://docs.rs/log/0.4.29/log/macro.debug.html">debug!</a>(<span class="string">"[Tray] System tray enabled"</span>);
+<a href=#35 id=35 data-nosnippet>35</a>	<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#36 id=36 data-nosnippet>36</a>}
 </code></pre></div></section></main></body></html>

@@ -14,7 +14,7 @@ for <a href="../MountainEnvironment/struct.MountainEnvironment.html" title="stru
 <li>Optional provider for cloud sync functionality (currently stub)</li>
 <li>Would integrate with external sync service (Firebase, Supabase, custom
 backend)</li>
-<li>Uses authentication from [<code>AuthenticationProvider</code>] (to be implemented)</li>
+<li>Uses authentication from <code>AuthenticationProvider</code> (to be implemented)</li>
 <li>Syncs multiple data types: settings, keybindings, workspaces, extensions,
 snippets</li>
 <li>Store sync metadata in
@@ -99,14 +99,11 @@ sync</li>
 </ul>
 <p>MODULE CONTENTS:</p>
 <ul>
-<li><a href="CommonLibrary::Synchronization::SynchronizationProvider"><code>SynchronizationProvider</code></a> implementation:
-<ul>
-<li><a href="Self::PushUserData"><code>PushUserData</code></a> - upload local data to remote
+<li><a href="CommonLibrary::Synchronization::SynchronizationProvider"><code>SynchronizationProvider</code></a> implementation:</li>
+<li><code>PushUserData</code> - upload local data to remote
 (stub)</li>
-<li><a href="Self::PullUserData"><code>PullUserData</code></a> - download remote data to local
+<li><code>PullUserData</code> - download remote data to local
 (stub)</li>
-</ul>
-</li>
 <li>Current state: Stub with logging only; production implementation pending</li>
 </ul>
 <hr />

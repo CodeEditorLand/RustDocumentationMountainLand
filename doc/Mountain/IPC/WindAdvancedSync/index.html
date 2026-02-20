@@ -167,15 +167,14 @@ Update Queue</code></pre></div>
 <li><code>real-time-update-{subscriber}</code> - Real-time updates</li>
 </ul>
 <p><strong>Initialization:</strong></p>
-
-<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// In Mountain setup
-</span><span class="kw">let </span>sync = Arc::new(WindAdvancedSync::new(runtime));
+<div class="example-wrap"><pre class="language-text"><code>// In Mountain setup
+let sync = Arc::new(WindAdvancedSync::new(runtime));
 app_handle.manage(sync.clone());
 
-<span class="comment">// Start sync tasks
-</span><span class="kw">let </span>sync_clone = sync.clone();
-tokio::spawn(<span class="kw">async move </span>{
-	sync_clone.start_synchronization().<span class="kw">await</span>;
+// Start sync tasks
+let sync_clone = sync.clone();
+tokio::spawn(async move {
+sync_clone.start_synchronization().await;
 });</code></pre></div>
 <p><strong>Usage Examples:</strong></p>
 <p><strong>Add Document for Sync:</strong></p>
@@ -207,12 +206,11 @@ app.handle.listen(&#39;real-time-update-my-window-id&#39;, (event) =&gt; {
 <li>Sync duration</li>
 </ul>
 <p><strong>Logged on Every Operation:</strong></p>
-
-<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="macro">trace!</span>(
-	<span class="string">"Document sync completed: {} success, {} errors, {:.2}ms"</span>,
-	success_count,
-	error_count,
-	sync_duration.as_millis()
+<div class="example-wrap"><pre class="language-text"><code>trace!(
+&quot;Document sync completed: {} success, {} errors, {:.2}ms&quot;,
+success_count,
+error_count,
+sync_duration.as_millis()
 );</code></pre></div>
 <p><strong>Integration with Other Modules:</strong></p>
 <p><strong>TauriIPCServer:</strong></p>

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"struct":["MarkerDataDTO"]};
+window.SIDEBAR_ITEMS = {"constant":["MAX_MARKER_MESSAGE_LENGTH","MAX_SOURCE_LENGTH"],"struct":["MarkerDataDTO"]};

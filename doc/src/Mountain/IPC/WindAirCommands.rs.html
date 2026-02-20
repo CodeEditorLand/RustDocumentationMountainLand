@@ -294,93 +294,93 @@
 <a href=#294 id=294 data-nosnippet>294</a>//! - Large file downloads streamed via Air
 <a href=#295 id=295 data-nosnippet>295</a>//! - Indexing operations run asynchronously in Air
 <a href=#296 id=296 data-nosnippet>296</a>
-<a href=#297 id=297 data-nosnippet>297</a></span><span class="kw">use </span>std::sync::Arc;
+<a href=#297 id=297 data-nosnippet>297</a></span><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">std::sync::Arc</a>;
 <a href=#298 id=298 data-nosnippet>298</a>
-<a href=#299 id=299 data-nosnippet>299</a><span class="kw">use </span>serde::{Deserialize, Serialize};
+<a href=#299 id=299 data-nosnippet>299</a><span class="kw">use </span>serde::{<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>};
 <a href=#300 id=300 data-nosnippet>300</a><span class="kw">use </span>tauri::{AppHandle, Manager};
-<a href=#301 id=301 data-nosnippet>301</a><span class="kw">use </span>log::{debug, info};
+<a href=#301 id=301 data-nosnippet>301</a><span class="kw">use </span>log::{<a href="https://docs.rs/log/0.4.29/log/macro.debug.html">debug</a>, <a href="https://docs.rs/log/0.4.29/log/macro.info.html">info</a>};
 <a href=#302 id=302 data-nosnippet>302</a><span class="kw">use </span>CommonLibrary::Error::CommonError::CommonError;
 <a href=#303 id=303 data-nosnippet>303</a>
 <a href=#304 id=304 data-nosnippet>304</a><span class="comment">// Import Air types from the new AirClient implementation.
 <a href=#305 id=305 data-nosnippet>305</a>// These provide actual gRPC connectivity to the Air daemon service.
-<a href=#306 id=306 data-nosnippet>306</a></span><span class="kw">use </span><span class="kw">crate</span>::Air::AirClient <span class="kw">as </span>AirClientModule;
-<a href=#307 id=307 data-nosnippet>307</a><span class="kw">use </span><span class="kw">crate</span>::Air::DEFAULT_AIR_SERVER_ADDRESS;
+<a href=#306 id=306 data-nosnippet>306</a></span><span class="kw">use </span><a href="../Air/mod.rs.html#74"><span class="kw">crate</span>::Air::AirClient</a> <span class="kw">as </span>AirClientModule;
+<a href=#307 id=307 data-nosnippet>307</a><span class="kw">use </span><a href="../Air/AirClient.rs.html#98"><span class="kw">crate</span>::Air::DEFAULT_AIR_SERVER_ADDRESS</a>;
 <a href=#308 id=308 data-nosnippet>308</a>
 <a href=#309 id=309 data-nosnippet>309</a><span class="doccomment">/// Data Transfer Objects for Wind-Air communication
 <a href=#310 id=310 data-nosnippet>310</a>
-<a href=#311 id=311 data-nosnippet>311</a></span><span class="attr">#[derive(Debug, Clone, Serialize, Deserialize)]
-<a href=#312 id=312 data-nosnippet>312</a></span><span class="kw">pub struct </span>UpdateInfoDTO {
-<a href=#313 id=313 data-nosnippet>313</a>	<span class="kw">pub </span>update_available:bool,
-<a href=#314 id=314 data-nosnippet>314</a>	<span class="kw">pub </span>version:String,
-<a href=#315 id=315 data-nosnippet>315</a>	<span class="kw">pub </span>download_url:String,
-<a href=#316 id=316 data-nosnippet>316</a>	<span class="kw">pub </span>release_notes:String,
+<a href=#311 id=311 data-nosnippet>311</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
+<a href=#312 id=312 data-nosnippet>312</a></span><span class="kw">pub struct </span><a href="../../../Mountain/IPC/WindAirCommands/struct.UpdateInfoDTO.html">UpdateInfoDTO</a> {
+<a href=#313 id=313 data-nosnippet>313</a>	<span class="kw">pub </span>update_available:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
+<a href=#314 id=314 data-nosnippet>314</a>	<span class="kw">pub </span>version:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#315 id=315 data-nosnippet>315</a>	<span class="kw">pub </span>download_url:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#316 id=316 data-nosnippet>316</a>	<span class="kw">pub </span>release_notes:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#317 id=317 data-nosnippet>317</a>}
 <a href=#318 id=318 data-nosnippet>318</a>
-<a href=#319 id=319 data-nosnippet>319</a><span class="attr">#[derive(Debug, Clone, Serialize, Deserialize)]
-<a href=#320 id=320 data-nosnippet>320</a></span><span class="kw">pub struct </span>DownloadResultDTO {
-<a href=#321 id=321 data-nosnippet>321</a>	<span class="kw">pub </span>success:bool,
-<a href=#322 id=322 data-nosnippet>322</a>	<span class="kw">pub </span>file_path:String,
-<a href=#323 id=323 data-nosnippet>323</a>	<span class="kw">pub </span>file_size:u64,
-<a href=#324 id=324 data-nosnippet>324</a>	<span class="kw">pub </span>checksum:String,
+<a href=#319 id=319 data-nosnippet>319</a><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
+<a href=#320 id=320 data-nosnippet>320</a></span><span class="kw">pub struct </span><a href="../../../Mountain/IPC/WindAirCommands/struct.DownloadResultDTO.html">DownloadResultDTO</a> {
+<a href=#321 id=321 data-nosnippet>321</a>	<span class="kw">pub </span>success:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
+<a href=#322 id=322 data-nosnippet>322</a>	<span class="kw">pub </span>file_path:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#323 id=323 data-nosnippet>323</a>	<span class="kw">pub </span>file_size:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
+<a href=#324 id=324 data-nosnippet>324</a>	<span class="kw">pub </span>checksum:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#325 id=325 data-nosnippet>325</a>}
 <a href=#326 id=326 data-nosnippet>326</a>
-<a href=#327 id=327 data-nosnippet>327</a><span class="attr">#[derive(Debug, Clone, Serialize, Deserialize)]
-<a href=#328 id=328 data-nosnippet>328</a></span><span class="kw">pub struct </span>AuthResponseDTO {
-<a href=#329 id=329 data-nosnippet>329</a>	<span class="kw">pub </span>success:bool,
-<a href=#330 id=330 data-nosnippet>330</a>	<span class="kw">pub </span>token:String,
-<a href=#331 id=331 data-nosnippet>331</a>	<span class="kw">pub </span>error:<span class="prelude-ty">Option</span>&lt;String&gt;,
+<a href=#327 id=327 data-nosnippet>327</a><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
+<a href=#328 id=328 data-nosnippet>328</a></span><span class="kw">pub struct </span><a href="../../../Mountain/IPC/WindAirCommands/struct.AuthResponseDTO.html">AuthResponseDTO</a> {
+<a href=#329 id=329 data-nosnippet>329</a>	<span class="kw">pub </span>success:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
+<a href=#330 id=330 data-nosnippet>330</a>	<span class="kw">pub </span>token:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#331 id=331 data-nosnippet>331</a>	<span class="kw">pub </span>error:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;,
 <a href=#332 id=332 data-nosnippet>332</a>}
 <a href=#333 id=333 data-nosnippet>333</a>
-<a href=#334 id=334 data-nosnippet>334</a><span class="attr">#[derive(Debug, Clone, Serialize, Deserialize)]
-<a href=#335 id=335 data-nosnippet>335</a></span><span class="kw">pub struct </span>IndexResultDTO {
-<a href=#336 id=336 data-nosnippet>336</a>	<span class="kw">pub </span>success:bool,
-<a href=#337 id=337 data-nosnippet>337</a>	<span class="kw">pub </span>files_indexed:u32,
-<a href=#338 id=338 data-nosnippet>338</a>	<span class="kw">pub </span>total_size:u64,
+<a href=#334 id=334 data-nosnippet>334</a><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
+<a href=#335 id=335 data-nosnippet>335</a></span><span class="kw">pub struct </span><a href="../../../Mountain/IPC/WindAirCommands/struct.IndexResultDTO.html">IndexResultDTO</a> {
+<a href=#336 id=336 data-nosnippet>336</a>	<span class="kw">pub </span>success:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
+<a href=#337 id=337 data-nosnippet>337</a>	<span class="kw">pub </span>files_indexed:<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+<a href=#338 id=338 data-nosnippet>338</a>	<span class="kw">pub </span>total_size:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
 <a href=#339 id=339 data-nosnippet>339</a>}
 <a href=#340 id=340 data-nosnippet>340</a>
-<a href=#341 id=341 data-nosnippet>341</a><span class="attr">#[derive(Debug, Clone, Serialize, Deserialize)]
-<a href=#342 id=342 data-nosnippet>342</a></span><span class="kw">pub struct </span>SearchResultsDTO {
-<a href=#343 id=343 data-nosnippet>343</a>	<span class="kw">pub </span>results:Vec&lt;FileResultDTO&gt;,
-<a href=#344 id=344 data-nosnippet>344</a>	<span class="kw">pub </span>total_results:u32,
+<a href=#341 id=341 data-nosnippet>341</a><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
+<a href=#342 id=342 data-nosnippet>342</a></span><span class="kw">pub struct </span><a href="../../../Mountain/IPC/WindAirCommands/struct.SearchResultsDTO.html">SearchResultsDTO</a> {
+<a href=#343 id=343 data-nosnippet>343</a>	<span class="kw">pub </span>results:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="#348-353">FileResultDTO</a>&gt;,
+<a href=#344 id=344 data-nosnippet>344</a>	<span class="kw">pub </span>total_results:<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
 <a href=#345 id=345 data-nosnippet>345</a>}
 <a href=#346 id=346 data-nosnippet>346</a>
-<a href=#347 id=347 data-nosnippet>347</a><span class="attr">#[derive(Debug, Clone, Serialize, Deserialize)]
-<a href=#348 id=348 data-nosnippet>348</a></span><span class="kw">pub struct </span>FileResultDTO {
-<a href=#349 id=349 data-nosnippet>349</a>	<span class="kw">pub </span>path:String,
-<a href=#350 id=350 data-nosnippet>350</a>	<span class="kw">pub </span>size:u64,
-<a href=#351 id=351 data-nosnippet>351</a>	<span class="kw">pub </span>line:<span class="prelude-ty">Option</span>&lt;u32&gt;,
-<a href=#352 id=352 data-nosnippet>352</a>	<span class="kw">pub </span>content:<span class="prelude-ty">Option</span>&lt;String&gt;,
+<a href=#347 id=347 data-nosnippet>347</a><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
+<a href=#348 id=348 data-nosnippet>348</a></span><span class="kw">pub struct </span><a href="../../../Mountain/IPC/WindAirCommands/struct.FileResultDTO.html">FileResultDTO</a> {
+<a href=#349 id=349 data-nosnippet>349</a>	<span class="kw">pub </span>path:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#350 id=350 data-nosnippet>350</a>	<span class="kw">pub </span>size:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
+<a href=#351 id=351 data-nosnippet>351</a>	<span class="kw">pub </span>line:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;,
+<a href=#352 id=352 data-nosnippet>352</a>	<span class="kw">pub </span>content:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;,
 <a href=#353 id=353 data-nosnippet>353</a>}
 <a href=#354 id=354 data-nosnippet>354</a>
-<a href=#355 id=355 data-nosnippet>355</a><span class="attr">#[derive(Debug, Clone, Serialize, Deserialize)]
-<a href=#356 id=356 data-nosnippet>356</a></span><span class="kw">pub struct </span>AirServiceStatusDTO {
-<a href=#357 id=357 data-nosnippet>357</a>	<span class="kw">pub </span>version:String,
-<a href=#358 id=358 data-nosnippet>358</a>	<span class="kw">pub </span>uptime_seconds:u64,
-<a href=#359 id=359 data-nosnippet>359</a>	<span class="kw">pub </span>total_requests:u64,
-<a href=#360 id=360 data-nosnippet>360</a>	<span class="kw">pub </span>successful_requests:u64,
-<a href=#361 id=361 data-nosnippet>361</a>	<span class="kw">pub </span>failed_requests:u64,
-<a href=#362 id=362 data-nosnippet>362</a>	<span class="kw">pub </span>active_requests:u32,
-<a href=#363 id=363 data-nosnippet>363</a>	<span class="kw">pub </span>healthy:bool,
+<a href=#355 id=355 data-nosnippet>355</a><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
+<a href=#356 id=356 data-nosnippet>356</a></span><span class="kw">pub struct </span><a href="../../../Mountain/IPC/WindAirCommands/struct.AirServiceStatusDTO.html">AirServiceStatusDTO</a> {
+<a href=#357 id=357 data-nosnippet>357</a>	<span class="kw">pub </span>version:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#358 id=358 data-nosnippet>358</a>	<span class="kw">pub </span>uptime_seconds:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
+<a href=#359 id=359 data-nosnippet>359</a>	<span class="kw">pub </span>total_requests:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
+<a href=#360 id=360 data-nosnippet>360</a>	<span class="kw">pub </span>successful_requests:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
+<a href=#361 id=361 data-nosnippet>361</a>	<span class="kw">pub </span>failed_requests:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
+<a href=#362 id=362 data-nosnippet>362</a>	<span class="kw">pub </span>active_requests:<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+<a href=#363 id=363 data-nosnippet>363</a>	<span class="kw">pub </span>healthy:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
 <a href=#364 id=364 data-nosnippet>364</a>}
 <a href=#365 id=365 data-nosnippet>365</a>
-<a href=#366 id=366 data-nosnippet>366</a><span class="attr">#[derive(Debug, Clone, Serialize, Deserialize)]
-<a href=#367 id=367 data-nosnippet>367</a></span><span class="kw">pub struct </span>AirMetricsDTO {
-<a href=#368 id=368 data-nosnippet>368</a>	<span class="kw">pub </span>memory_usage_mb:f64,
-<a href=#369 id=369 data-nosnippet>369</a>	<span class="kw">pub </span>cpu_usage_percent:f64,
-<a href=#370 id=370 data-nosnippet>370</a>	<span class="kw">pub </span>average_response_time:f64,
-<a href=#371 id=371 data-nosnippet>371</a>	<span class="kw">pub </span>disk_usage_mb:f64,
-<a href=#372 id=372 data-nosnippet>372</a>	<span class="kw">pub </span>network_usage_mbps:f64,
+<a href=#366 id=366 data-nosnippet>366</a><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
+<a href=#367 id=367 data-nosnippet>367</a></span><span class="kw">pub struct </span><a href="../../../Mountain/IPC/WindAirCommands/struct.AirMetricsDTO.html">AirMetricsDTO</a> {
+<a href=#368 id=368 data-nosnippet>368</a>	<span class="kw">pub </span>memory_usage_mb:<a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>,
+<a href=#369 id=369 data-nosnippet>369</a>	<span class="kw">pub </span>cpu_usage_percent:<a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>,
+<a href=#370 id=370 data-nosnippet>370</a>	<span class="kw">pub </span>average_response_time:<a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>,
+<a href=#371 id=371 data-nosnippet>371</a>	<span class="kw">pub </span>disk_usage_mb:<a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>,
+<a href=#372 id=372 data-nosnippet>372</a>	<span class="kw">pub </span>network_usage_mbps:<a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>,
 <a href=#373 id=373 data-nosnippet>373</a>}
 <a href=#374 id=374 data-nosnippet>374</a>
 <a href=#375 id=375 data-nosnippet>375</a><span class="doccomment">/// Air Client - Wrapper for the gRPC client connection to Air daemon
-<a href=#376 id=376 data-nosnippet>376</a></span><span class="attr">#[derive(Debug, Clone)]
-<a href=#377 id=377 data-nosnippet>377</a></span><span class="kw">pub struct </span>AirClientWrapper {
-<a href=#378 id=378 data-nosnippet>378</a>	client:AirClientModule::AirClient,
+<a href=#376 id=376 data-nosnippet>376</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>)]
+<a href=#377 id=377 data-nosnippet>377</a></span><span class="kw">pub struct </span><a href="../../../Mountain/IPC/WindAirCommands/struct.AirClientWrapper.html">AirClientWrapper</a> {
+<a href=#378 id=378 data-nosnippet>378</a>	client:AirClientModule::<a href="../Air/AirClient.rs.html#105-111">AirClient</a>,
 <a href=#379 id=379 data-nosnippet>379</a>}
 <a href=#380 id=380 data-nosnippet>380</a>
-<a href=#381 id=381 data-nosnippet>381</a><span class="kw">impl </span>AirClientWrapper {
+<a href=#381 id=381 data-nosnippet>381</a><span class="kw">impl </span><a href="#377-379">AirClientWrapper</a> {
 <a href=#382 id=382 data-nosnippet>382</a>	<span class="doccomment">/// Create a new AirClient connected to the Air daemon
-<a href=#383 id=383 data-nosnippet>383</a>	</span><span class="kw">pub async fn </span>new(address:String) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>, String&gt; {
+<a href=#383 id=383 data-nosnippet>383</a>	</span><span class="kw">pub async fn </span>new(address:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="self">Self</span>, String&gt; {
 <a href=#384 id=384 data-nosnippet>384</a>		<span class="macro">debug!</span>(<span class="string">"[WindAirCommands] Connecting to Air daemon at: {}"</span>, address);
 <a href=#385 id=385 data-nosnippet>385</a>
 <a href=#386 id=386 data-nosnippet>386</a>		<span class="kw">let </span>client = AirClientModule::AirClient::new(<span class="kw-2">&amp;</span>address)
@@ -392,7 +392,7 @@
 <a href=#392 id=392 data-nosnippet>392</a>	}
 <a href=#393 id=393 data-nosnippet>393</a>
 <a href=#394 id=394 data-nosnippet>394</a>	<span class="doccomment">/// Reconnect to Air daemon
-<a href=#395 id=395 data-nosnippet>395</a>	</span><span class="kw">pub async fn </span>reconnect(<span class="kw-2">&amp;mut </span><span class="self">self</span>, address:String) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
+<a href=#395 id=395 data-nosnippet>395</a>	</span><span class="kw">pub async fn </span>reconnect(<span class="kw-2">&amp;mut </span><span class="self">self</span>, address:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
 <a href=#396 id=396 data-nosnippet>396</a>		<span class="macro">debug!</span>(<span class="string">"[WindAirCommands] Reconnecting to Air daemon at: {}"</span>, address);
 <a href=#397 id=397 data-nosnippet>397</a>
 <a href=#398 id=398 data-nosnippet>398</a>		<span class="kw">let </span>client = AirClientModule::AirClient::new(<span class="kw-2">&amp;</span>address)
@@ -422,7 +422,7 @@
 <a href=#422 id=422 data-nosnippet>422</a>/// # Returns
 <a href=#423 id=423 data-nosnippet>423</a>/// `UpdateInfoDTO` with update information or error message
 <a href=#424 id=424 data-nosnippet>424</a></span><span class="attr">#[tauri::command]
-<a href=#425 id=425 data-nosnippet>425</a></span><span class="kw">pub async fn </span>CheckForUpdates(current_version:<span class="prelude-ty">Option</span>&lt;String&gt;, channel:<span class="prelude-ty">Option</span>&lt;String&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;UpdateInfoDTO, String&gt; {
+<a href=#425 id=425 data-nosnippet>425</a></span><span class="kw">pub async fn </span><a href="#424">CheckForUpdates</a>(current_version:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;, channel:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;UpdateInfoDTO, String&gt; {
 <a href=#426 id=426 data-nosnippet>426</a>	<span class="macro">debug!</span>(
 <a href=#427 id=427 data-nosnippet>427</a>		<span class="string">"[WindAirCommands] CheckForUpdates called with version: {:?}, channel: {:?}"</span>,
 <a href=#428 id=428 data-nosnippet>428</a>		current_version, channel
@@ -471,10 +471,10 @@
 <a href=#471 id=471 data-nosnippet>471</a>/// # Returns
 <a href=#472 id=472 data-nosnippet>472</a>/// `DownloadResultDTO` with download status
 <a href=#473 id=473 data-nosnippet>473</a></span><span class="attr">#[tauri::command]
-<a href=#474 id=474 data-nosnippet>474</a></span><span class="kw">pub async fn </span>DownloadUpdate(
-<a href=#475 id=475 data-nosnippet>475</a>	url:String,
-<a href=#476 id=476 data-nosnippet>476</a>	destination:String,
-<a href=#477 id=477 data-nosnippet>477</a>	checksum:<span class="prelude-ty">Option</span>&lt;String&gt;,
+<a href=#474 id=474 data-nosnippet>474</a></span><span class="kw">pub async fn </span><a href="#473">DownloadUpdate</a>(
+<a href=#475 id=475 data-nosnippet>475</a>	url:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#476 id=476 data-nosnippet>476</a>	destination:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#477 id=477 data-nosnippet>477</a>	checksum:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;,
 <a href=#478 id=478 data-nosnippet>478</a>) -&gt; <span class="prelude-ty">Result</span>&lt;DownloadResultDTO, String&gt; {
 <a href=#479 id=479 data-nosnippet>479</a>	<span class="macro">debug!</span>(<span class="string">"[WindAirCommands] DownloadUpdate called: {} -&gt; {}"</span>, url, destination);
 <a href=#480 id=480 data-nosnippet>480</a>
@@ -519,7 +519,7 @@
 <a href=#519 id=519 data-nosnippet>519</a>/// # Returns
 <a href=#520 id=520 data-nosnippet>520</a>/// Success status or error message
 <a href=#521 id=521 data-nosnippet>521</a></span><span class="attr">#[tauri::command]
-<a href=#522 id=522 data-nosnippet>522</a></span><span class="kw">pub async fn </span>ApplyUpdate(update_id:String, update_path:String) -&gt; <span class="prelude-ty">Result</span>&lt;bool, String&gt; {
+<a href=#522 id=522 data-nosnippet>522</a></span><span class="kw">pub async fn </span><a href="#521">ApplyUpdate</a>(update_id:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, update_path:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) -&gt; <span class="prelude-ty">Result</span>&lt;bool, String&gt; {
 <a href=#523 id=523 data-nosnippet>523</a>	<span class="macro">debug!</span>(<span class="string">"[WindAirCommands] ApplyUpdate called: id={}, path={}"</span>, update_id, update_path);
 <a href=#524 id=524 data-nosnippet>524</a>
 <a href=#525 id=525 data-nosnippet>525</a>	<span class="kw">let </span>air_address = get_air_address()<span class="question-mark">?</span>;
@@ -552,7 +552,7 @@
 <a href=#552 id=552 data-nosnippet>552</a>/// # Returns
 <a href=#553 id=553 data-nosnippet>553</a>/// `DownloadResultDTO` with download status
 <a href=#554 id=554 data-nosnippet>554</a></span><span class="attr">#[tauri::command]
-<a href=#555 id=555 data-nosnippet>555</a></span><span class="kw">pub async fn </span>DownloadFile(url:String, destination:String) -&gt; <span class="prelude-ty">Result</span>&lt;DownloadResultDTO, String&gt; {
+<a href=#555 id=555 data-nosnippet>555</a></span><span class="kw">pub async fn </span><a href="#554">DownloadFile</a>(url:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, destination:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) -&gt; <span class="prelude-ty">Result</span>&lt;DownloadResultDTO, String&gt; {
 <a href=#556 id=556 data-nosnippet>556</a>	<span class="macro">debug!</span>(<span class="string">"[WindAirCommands] DownloadFile called: {} -&gt; {}"</span>, url, destination);
 <a href=#557 id=557 data-nosnippet>557</a>
 <a href=#558 id=558 data-nosnippet>558</a>	<span class="kw">let </span>air_address = get_air_address()<span class="question-mark">?</span>;
@@ -590,7 +590,7 @@
 <a href=#590 id=590 data-nosnippet>590</a>/// # Returns
 <a href=#591 id=591 data-nosnippet>591</a>/// `AuthResponseDTO` with authentication token
 <a href=#592 id=592 data-nosnippet>592</a></span><span class="attr">#[tauri::command]
-<a href=#593 id=593 data-nosnippet>593</a></span><span class="kw">pub async fn </span>AuthenticateUser(username:String, password:String, provider:String) -&gt; <span class="prelude-ty">Result</span>&lt;AuthResponseDTO, String&gt; {
+<a href=#593 id=593 data-nosnippet>593</a></span><span class="kw">pub async fn </span><a href="#592">AuthenticateUser</a>(username:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, password:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, provider:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) -&gt; <span class="prelude-ty">Result</span>&lt;AuthResponseDTO, String&gt; {
 <a href=#594 id=594 data-nosnippet>594</a>	<span class="macro">debug!</span>(<span class="string">"[WindAirCommands] AuthenticateUser called: {} via {}"</span>, username, provider);
 <a href=#595 id=595 data-nosnippet>595</a>
 <a href=#596 id=596 data-nosnippet>596</a>	<span class="kw">let </span>air_address = get_air_address()<span class="question-mark">?</span>;
@@ -624,11 +624,11 @@
 <a href=#624 id=624 data-nosnippet>624</a>/// # Returns
 <a href=#625 id=625 data-nosnippet>625</a>/// `IndexResultDTO` with indexing results
 <a href=#626 id=626 data-nosnippet>626</a></span><span class="attr">#[tauri::command]
-<a href=#627 id=627 data-nosnippet>627</a></span><span class="kw">pub async fn </span>IndexFiles(
-<a href=#628 id=628 data-nosnippet>628</a>	path:String,
-<a href=#629 id=629 data-nosnippet>629</a>	patterns:Vec&lt;String&gt;,
-<a href=#630 id=630 data-nosnippet>630</a>	exclude_patterns:<span class="prelude-ty">Option</span>&lt;Vec&lt;String&gt;&gt;,
-<a href=#631 id=631 data-nosnippet>631</a>	max_depth:<span class="prelude-ty">Option</span>&lt;u32&gt;,
+<a href=#627 id=627 data-nosnippet>627</a></span><span class="kw">pub async fn </span><a href="#626">IndexFiles</a>(
+<a href=#628 id=628 data-nosnippet>628</a>	path:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#629 id=629 data-nosnippet>629</a>	patterns:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;,
+<a href=#630 id=630 data-nosnippet>630</a>	exclude_patterns:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;&gt;,
+<a href=#631 id=631 data-nosnippet>631</a>	max_depth:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;,
 <a href=#632 id=632 data-nosnippet>632</a>) -&gt; <span class="prelude-ty">Result</span>&lt;IndexResultDTO, String&gt; {
 <a href=#633 id=633 data-nosnippet>633</a>	<span class="macro">debug!</span>(<span class="string">"[WindAirCommands] IndexFiles called: {} with patterns: {:?}"</span>, path, patterns);
 <a href=#634 id=634 data-nosnippet>634</a>
@@ -672,10 +672,10 @@
 <a href=#672 id=672 data-nosnippet>672</a>/// # Returns
 <a href=#673 id=673 data-nosnippet>673</a>/// `SearchResultsDTO` with matching files
 <a href=#674 id=674 data-nosnippet>674</a></span><span class="attr">#[tauri::command]
-<a href=#675 id=675 data-nosnippet>675</a></span><span class="kw">pub async fn </span>SearchFiles(
-<a href=#676 id=676 data-nosnippet>676</a>	query:String,
-<a href=#677 id=677 data-nosnippet>677</a>	file_patterns:Vec&lt;String&gt;,
-<a href=#678 id=678 data-nosnippet>678</a>	max_results:<span class="prelude-ty">Option</span>&lt;u32&gt;,
+<a href=#675 id=675 data-nosnippet>675</a></span><span class="kw">pub async fn </span><a href="#674">SearchFiles</a>(
+<a href=#676 id=676 data-nosnippet>676</a>	query:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#677 id=677 data-nosnippet>677</a>	file_patterns:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;,
+<a href=#678 id=678 data-nosnippet>678</a>	max_results:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;,
 <a href=#679 id=679 data-nosnippet>679</a>) -&gt; <span class="prelude-ty">Result</span>&lt;SearchResultsDTO, String&gt; {
 <a href=#680 id=680 data-nosnippet>680</a>	<span class="macro">debug!</span>(
 <a href=#681 id=681 data-nosnippet>681</a>		<span class="string">"[WindAirCommands] SearchFiles called: query={}, patterns={:?}"</span>,
@@ -728,7 +728,7 @@
 <a href=#728 id=728 data-nosnippet>728</a>/// # Returns
 <a href=#729 id=729 data-nosnippet>729</a>/// `AirServiceStatusDTO` with service status information
 <a href=#730 id=730 data-nosnippet>730</a></span><span class="attr">#[tauri::command]
-<a href=#731 id=731 data-nosnippet>731</a></span><span class="kw">pub async fn </span>GetAirStatus() -&gt; <span class="prelude-ty">Result</span>&lt;AirServiceStatusDTO, String&gt; {
+<a href=#731 id=731 data-nosnippet>731</a></span><span class="kw">pub async fn </span><a href="#730">GetAirStatus</a>() -&gt; <span class="prelude-ty">Result</span>&lt;AirServiceStatusDTO, String&gt; {
 <a href=#732 id=732 data-nosnippet>732</a>	<span class="macro">debug!</span>(<span class="string">"[WindAirCommands] GetAirStatus called"</span>);
 <a href=#733 id=733 data-nosnippet>733</a>
 <a href=#734 id=734 data-nosnippet>734</a>	<span class="kw">let </span>air_address = get_air_address()<span class="question-mark">?</span>;
@@ -771,7 +771,7 @@
 <a href=#771 id=771 data-nosnippet>771</a>/// # Returns
 <a href=#772 id=772 data-nosnippet>772</a>/// `AirMetricsDTO` with metrics data
 <a href=#773 id=773 data-nosnippet>773</a></span><span class="attr">#[tauri::command]
-<a href=#774 id=774 data-nosnippet>774</a></span><span class="kw">pub async fn </span>GetAirMetrics(metric_type:<span class="prelude-ty">Option</span>&lt;String&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;AirMetricsDTO, String&gt; {
+<a href=#774 id=774 data-nosnippet>774</a></span><span class="kw">pub async fn </span><a href="#773">GetAirMetrics</a>(metric_type:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;AirMetricsDTO, String&gt; {
 <a href=#775 id=775 data-nosnippet>775</a>	<span class="macro">debug!</span>(<span class="string">"[WindAirCommands] GetAirMetrics called with type: {:?}"</span>, metric_type);
 <a href=#776 id=776 data-nosnippet>776</a>
 <a href=#777 id=777 data-nosnippet>777</a>	<span class="kw">let </span>air_address = get_air_address()<span class="question-mark">?</span>;
@@ -801,13 +801,13 @@
 <a href=#801 id=801 data-nosnippet>801</a>// ============================================================================
 <a href=#802 id=802 data-nosnippet>802</a>
 <a href=#803 id=803 data-nosnippet>803</a></span><span class="doccomment">/// Get the Air daemon address from configuration
-<a href=#804 id=804 data-nosnippet>804</a></span><span class="kw">fn </span>get_air_address() -&gt; <span class="prelude-ty">Result</span>&lt;String, String&gt; {
+<a href=#804 id=804 data-nosnippet>804</a></span><span class="kw">fn </span><a href="../../../Mountain/IPC/WindAirCommands/fn.get_air_address.html">get_air_address</a>() -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
 <a href=#805 id=805 data-nosnippet>805</a>	<span class="comment">// Return default Air address
-<a href=#806 id=806 data-nosnippet>806</a>	</span><span class="prelude-val">Ok</span>(DEFAULT_AIR_SERVER_ADDRESS.to_string())
+<a href=#806 id=806 data-nosnippet>806</a>	</span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="../Air/AirClient.rs.html#98">DEFAULT_AIR_SERVER_ADDRESS</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>())
 <a href=#807 id=807 data-nosnippet>807</a>}
 <a href=#808 id=808 data-nosnippet>808</a>
 <a href=#809 id=809 data-nosnippet>809</a><span class="doccomment">/// Get or create the Air client instance
-<a href=#810 id=810 data-nosnippet>810</a></span><span class="kw">async fn </span>get_or_create_air_client(address:String) -&gt; <span class="prelude-ty">Result</span>&lt;AirClientModule::AirClient, String&gt; {
+<a href=#810 id=810 data-nosnippet>810</a></span><span class="kw">async fn </span><a href="../../../Mountain/IPC/WindAirCommands/fn.get_or_create_air_client.html">get_or_create_air_client</a>(address:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) -&gt; <span class="prelude-ty">Result</span>&lt;AirClientModule::AirClient, String&gt; {
 <a href=#811 id=811 data-nosnippet>811</a>	<span class="comment">// Create a new client each time
 <a href=#812 id=812 data-nosnippet>812</a>	// In production, you'd use a state management pattern
 <a href=#813 id=813 data-nosnippet>813</a>	</span>AirClientModule::AirClient::new(<span class="kw-2">&amp;</span>address)
@@ -816,8 +816,8 @@
 <a href=#816 id=816 data-nosnippet>816</a>}
 <a href=#817 id=817 data-nosnippet>817</a>
 <a href=#818 id=818 data-nosnippet>818</a><span class="doccomment">/// Register all Wind-Air commands with Tauri
-<a href=#819 id=819 data-nosnippet>819</a></span><span class="kw">pub fn </span>register_wind_air_commands&lt;R:tauri::Runtime&gt;(builder:tauri::Builder&lt;R&gt;) -&gt; tauri::Builder&lt;R&gt; {
-<a href=#820 id=820 data-nosnippet>820</a>	builder.invoke_handler(<span class="macro">tauri::generate_handler!</span>[
+<a href=#819 id=819 data-nosnippet>819</a></span><span class="kw">pub fn </span><a href="../../../Mountain/IPC/WindAirCommands/fn.register_wind_air_commands.html">register_wind_air_commands</a>&lt;R:tauri::Runtime&gt;(builder:tauri::Builder&lt;R&gt;) -&gt; tauri::Builder&lt;R&gt; {
+<a href=#820 id=820 data-nosnippet>820</a>	<a href="#819">builder</a>.invoke_handler(<span class="macro">tauri::generate_handler!</span>[
 <a href=#821 id=821 data-nosnippet>821</a>		CheckForUpdates,
 <a href=#822 id=822 data-nosnippet>822</a>		DownloadUpdate,
 <a href=#823 id=823 data-nosnippet>823</a>		ApplyUpdate,

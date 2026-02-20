@@ -7,13 +7,14 @@ from various sources in the correct precedence order.</p>
 <p>The trait implementation is split across multiple helper modules for
 maintainability:</p>
 <ul>
-<li>[<code>GetValue</code>]: <code>GetConfigurationValue</code> - retrieval from merged cache</li>
-<li>[<code>UpdateValue</code>]: <code>UpdateConfigurationValue</code> - persistence and re-merge</li>
-<li>[<code>InspectValue</code>]: <code>InspectConfigurationValue</code> - introspection across
+<li><code>GetValue</code>: <code>GetConfigurationValue</code> - retrieval from merged cache</li>
+<li><code>UpdateValue</code>: <code>UpdateConfigurationValue</code> - persistence and re-merge</li>
+<li><code>InspectValue</code>: <code>InspectConfigurationValue</code> - introspection across
 scopes</li>
-<li><code>InitializeAndMergeConfigurations</code></li>
+<li><code>Loading</code>: <code>ReadAndParseConfigurationFile</code>,
+<code>InitializeAndMergeConfigurations</code></li>
 </ul>
 <p>The single <code>impl ConfigurationProvider for MountainEnvironment</code> block in
 this file delegates to those helper functions. This satisfies Rust’s orphan
 rules while keeping code organized.</p>
-</div></details><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="Loading/index.html" title="mod Mountain::Environment::ConfigurationProvider::Loading">Loading</a></dt><dd>Configuration loading and merging utilities.</dd></dl></section></div></main></body></html>
+</div></details><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="GetValue/index.html" title="mod Mountain::Environment::ConfigurationProvider::GetValue">GetValue</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Configuration value retrieval.</dd><dt><a class="mod" href="InspectValue/index.html" title="mod Mountain::Environment::ConfigurationProvider::InspectValue">Inspect<wbr>Value</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Configuration value introspection.</dd><dt><a class="mod" href="Loading/index.html" title="mod Mountain::Environment::ConfigurationProvider::Loading">Loading</a></dt><dd>Configuration loading and merging utilities.</dd><dt><a class="mod" href="UpdateValue/index.html" title="mod Mountain::Environment::ConfigurationProvider::UpdateValue">Update<wbr>Value</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Configuration value update and persistence.</dd></dl></section></div></main></body></html>

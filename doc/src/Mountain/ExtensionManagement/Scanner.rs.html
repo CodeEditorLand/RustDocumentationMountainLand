@@ -29,7 +29,7 @@
 <a href=#29 id=29 data-nosnippet>29</a>//!
 <a href=#30 id=30 data-nosnippet>30</a>//! The Extension Scanner is part of the **Extension Management** subsystem:
 <a href=#31 id=31 data-nosnippet>31</a>//!
-<a href=#32 id=32 data-nosnippet>32</a>//! ```
+<a href=#32 id=32 data-nosnippet>32</a>//! ```text
 <a href=#33 id=33 data-nosnippet>33</a>//! Startup ──► ScanPaths ──► Scanner ──► Extensions Map ──► ApplicationState
 <a href=#34 id=34 data-nosnippet>34</a>//! ```
 <a href=#35 id=35 data-nosnippet>35</a>//!
@@ -109,24 +109,24 @@
 <a href=#109 id=109 data-nosnippet>109</a>//! - [`ScanDirectoryForExtensions`]: Scan a single directory for extensions
 <a href=#110 id=110 data-nosnippet>110</a>//! - [`CollectDefaultConfigurations`]: Merge configuration defaults from all
 <a href=#111 id=111 data-nosnippet>111</a>//!   extensions
-<a href=#112 id=112 data-nosnippet>112</a>//! - [`process_configuration_properties`]: Recursive configuration property
-<a href=#113 id=113 data-nosnippet>113</a>//!   processor
+<a href=#112 id=112 data-nosnippet>112</a>//! - `process_configuration_properties`: Recursive configuration property
+<a href=#113 id=113 data-nosnippet>113</a>//! processor
 <a href=#114 id=114 data-nosnippet>114</a>
-<a href=#115 id=115 data-nosnippet>115</a></span><span class="kw">use </span>std::{path::PathBuf, sync::Arc};
+<a href=#115 id=115 data-nosnippet>115</a></span><span class="kw">use </span>std::{<a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">path::PathBuf</a>, <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">sync::Arc</a>};
 <a href=#116 id=116 data-nosnippet>116</a>
 <a href=#117 id=117 data-nosnippet>117</a><span class="kw">use </span>CommonLibrary::{
 <a href=#118 id=118 data-nosnippet>118</a>	Effect::ApplicationRunTime::ApplicationRunTime <span class="kw">as _</span>,
 <a href=#119 id=119 data-nosnippet>119</a>	Error::CommonError::CommonError,
 <a href=#120 id=120 data-nosnippet>120</a>	FileSystem::{DTO::FileTypeDTO::FileTypeDTO, ReadDirectory::ReadDirectory, ReadFile::ReadFile},
 <a href=#121 id=121 data-nosnippet>121</a>};
-<a href=#122 id=122 data-nosnippet>122</a><span class="kw">use </span>log::{trace, warn};
-<a href=#123 id=123 data-nosnippet>123</a><span class="kw">use </span>serde_json::{Map, Value};
+<a href=#122 id=122 data-nosnippet>122</a><span class="kw">use </span>log::{<a href="https://docs.rs/log/0.4.29/log/macro.trace.html">trace</a>, <a href="https://docs.rs/log/0.4.29/log/macro.warn.html">warn</a>};
+<a href=#123 id=123 data-nosnippet>123</a><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.149/serde_json/map/struct.Map.html">Map</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>};
 <a href=#124 id=124 data-nosnippet>124</a><span class="kw">use </span>tauri::Manager;
 <a href=#125 id=125 data-nosnippet>125</a>
 <a href=#126 id=126 data-nosnippet>126</a><span class="kw">use </span>crate::{
-<a href=#127 id=127 data-nosnippet>127</a>	ApplicationState::{ApplicationState, DTO::ExtensionDescriptionStateDTO::ExtensionDescriptionStateDTO},
-<a href=#128 id=128 data-nosnippet>128</a>	Environment::Utility,
-<a href=#129 id=129 data-nosnippet>129</a>	RunTime::ApplicationRunTime::ApplicationRunTime,
+<a href=#127 id=127 data-nosnippet>127</a>	ApplicationState::{<a href="../ApplicationState/State/ApplicationState.rs.html#65-88">ApplicationState</a>, <a href="../ApplicationState/DTO/ExtensionDescriptionStateDTO.rs.html#45-101">DTO::ExtensionDescriptionStateDTO::ExtensionDescriptionStateDTO</a>},
+<a href=#128 id=128 data-nosnippet>128</a>	<a href="../Environment/mod.rs.html#112">Environment::Utility</a>,
+<a href=#129 id=129 data-nosnippet>129</a>	<a href="../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">RunTime::ApplicationRunTime::ApplicationRunTime</a>,
 <a href=#130 id=130 data-nosnippet>130</a>};
 <a href=#131 id=131 data-nosnippet>131</a>
 <a href=#132 id=132 data-nosnippet>132</a><span class="doccomment">/// Scans a single directory for valid extensions.
@@ -134,10 +134,10 @@
 <a href=#134 id=134 data-nosnippet>134</a>/// This function iterates through a given directory, looking for subdirectories
 <a href=#135 id=135 data-nosnippet>135</a>/// that contain a `package.json` file. It then attempts to parse this file
 <a href=#136 id=136 data-nosnippet>136</a>/// into an `ExtensionDescriptionStateDTO`.
-<a href=#137 id=137 data-nosnippet>137</a></span><span class="kw">pub async fn </span>ScanDirectoryForExtensions(
+<a href=#137 id=137 data-nosnippet>137</a></span><span class="kw">pub async fn </span><a href="../../../Mountain/ExtensionManagement/Scanner/fn.ScanDirectoryForExtensions.html">ScanDirectoryForExtensions</a>(
 <a href=#138 id=138 data-nosnippet>138</a>	ApplicationHandle:tauri::AppHandle,
 <a href=#139 id=139 data-nosnippet>139</a>
-<a href=#140 id=140 data-nosnippet>140</a>	DirectoryPath:PathBuf,
+<a href=#140 id=140 data-nosnippet>140</a>	DirectoryPath:<a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>,
 <a href=#141 id=141 data-nosnippet>141</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;ExtensionDescriptionStateDTO&gt;, CommonError&gt; {
 <a href=#142 id=142 data-nosnippet>142</a>	<span class="kw">let </span>RunTime = ApplicationHandle.state::&lt;Arc&lt;ApplicationRunTime&gt;&gt;().inner().clone();
 <a href=#143 id=143 data-nosnippet>143</a>
@@ -196,15 +196,15 @@
 <a href=#196 id=196 data-nosnippet>196</a>
 <a href=#197 id=197 data-nosnippet>197</a><span class="doccomment">/// A helper function to extract default configuration values from all
 <a href=#198 id=198 data-nosnippet>198</a>/// scanned extensions.
-<a href=#199 id=199 data-nosnippet>199</a></span><span class="kw">pub fn </span>CollectDefaultConfigurations(State:<span class="kw-2">&amp;</span>ApplicationState) -&gt; <span class="prelude-ty">Result</span>&lt;Value, CommonError&gt; {
-<a href=#200 id=200 data-nosnippet>200</a>	<span class="kw">let </span><span class="kw-2">mut </span>MergedDefaults = Map::new();
+<a href=#199 id=199 data-nosnippet>199</a></span><span class="kw">pub fn </span><a href="../../../Mountain/ExtensionManagement/Scanner/fn.CollectDefaultConfigurations.html">CollectDefaultConfigurations</a>(State:<span class="kw-2">&amp;</span><a href="../ApplicationState/State/ApplicationState.rs.html#65-88">ApplicationState</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, CommonError&gt; {
+<a href=#200 id=200 data-nosnippet>200</a>	<span class="kw">let </span><span class="kw-2">mut </span>MergedDefaults = <a href="https://docs.rs/serde_json/1.0.149/serde_json/map/struct.Map.html">Map</a>::<a href="https://docs.rs/serde_json/1.0.149/serde_json/map/struct.Map.html#method.new">new</a>();
 <a href=#201 id=201 data-nosnippet>201</a>
-<a href=#202 id=202 data-nosnippet>202</a>	<span class="kw">let </span>Extensions = State
+<a href=#202 id=202 data-nosnippet>202</a>	<span class="kw">let </span>Extensions = <a href="#199">State</a>
 <a href=#203 id=203 data-nosnippet>203</a>		.Extension
 <a href=#204 id=204 data-nosnippet>204</a>		.ScannedExtensions
 <a href=#205 id=205 data-nosnippet>205</a>		.ScannedExtensions
-<a href=#206 id=206 data-nosnippet>206</a>		.lock()
-<a href=#207 id=207 data-nosnippet>207</a>		.map_err(Utility::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?</span>;
+<a href=#206 id=206 data-nosnippet>206</a>		.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>()
+<a href=#207 id=207 data-nosnippet>207</a>		.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(Utility::<a href="../Environment/Utility/ErrorMapping.rs.html#13-19">MapApplicationStateLockErrorToCommonError</a>)<span class="question-mark">?</span>;
 <a href=#208 id=208 data-nosnippet>208</a>
 <a href=#209 id=209 data-nosnippet>209</a>	<span class="kw">for </span>Extension <span class="kw">in </span>Extensions.values() {
 <a href=#210 id=210 data-nosnippet>210</a>		<span class="kw">if let </span><span class="prelude-val">Some</span>(contributes) = Extension.Contributes.as_ref().and_then(|v| v.as_object()) {
@@ -217,16 +217,16 @@
 <a href=#217 id=217 data-nosnippet>217</a>		}
 <a href=#218 id=218 data-nosnippet>218</a>	}
 <a href=#219 id=219 data-nosnippet>219</a>
-<a href=#220 id=220 data-nosnippet>220</a>	<span class="prelude-val">Ok</span>(Value::Object(MergedDefaults))
+<a href=#220 id=220 data-nosnippet>220</a>	<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Value::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#variant.Object">Object</a>(<a href="#200">MergedDefaults</a>))
 <a href=#221 id=221 data-nosnippet>221</a>}
 <a href=#222 id=222 data-nosnippet>222</a>
 <a href=#223 id=223 data-nosnippet>223</a><span class="doccomment">/// RECURSIVE CONFIGURATION PROCESSING: Handle nested object structures
-<a href=#224 id=224 data-nosnippet>224</a></span><span class="kw">fn </span>process_configuration_properties(
-<a href=#225 id=225 data-nosnippet>225</a>	merged_defaults:<span class="kw-2">&amp;mut </span>serde_json::Map&lt;String, Value&gt;,
-<a href=#226 id=226 data-nosnippet>226</a>	current_path:<span class="kw-2">&amp;</span>str,
-<a href=#227 id=227 data-nosnippet>227</a>	properties:<span class="kw-2">&amp;</span>serde_json::Map&lt;String, Value&gt;,
-<a href=#228 id=228 data-nosnippet>228</a>	visited_keys:<span class="kw-2">&amp;mut </span>Vec&lt;String&gt;,
-<a href=#229 id=229 data-nosnippet>229</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
+<a href=#224 id=224 data-nosnippet>224</a></span><span class="kw">fn </span><a href="../../../Mountain/ExtensionManagement/Scanner/fn.process_configuration_properties.html">process_configuration_properties</a>(
+<a href=#225 id=225 data-nosnippet>225</a>	merged_defaults:<span class="kw-2">&amp;mut </span>serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/map/struct.Map.html">Map</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;,
+<a href=#226 id=226 data-nosnippet>226</a>	current_path:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
+<a href=#227 id=227 data-nosnippet>227</a>	properties:<span class="kw-2">&amp;</span>serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/map/struct.Map.html">Map</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;,
+<a href=#228 id=228 data-nosnippet>228</a>	visited_keys:<span class="kw-2">&amp;mut </span><a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;,
+<a href=#229 id=229 data-nosnippet>229</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
 <a href=#230 id=230 data-nosnippet>230</a>	<span class="kw">for </span>(key, value) <span class="kw">in </span>properties {
 <a href=#231 id=231 data-nosnippet>231</a>		<span class="comment">// Build the full path for this property
 <a href=#232 id=232 data-nosnippet>232</a>		</span><span class="kw">let </span>full_path = <span class="kw">if </span>current_path.is_empty() {
@@ -259,6 +259,6 @@
 <a href=#259 id=259 data-nosnippet>259</a>		</span>visited_keys.retain(|k| <span class="macro">k !</span>= <span class="kw-2">&amp;</span>full_path);
 <a href=#260 id=260 data-nosnippet>260</a>	}
 <a href=#261 id=261 data-nosnippet>261</a>
-<a href=#262 id=262 data-nosnippet>262</a>	<span class="prelude-val">Ok</span>(())
+<a href=#262 id=262 data-nosnippet>262</a>	<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#263 id=263 data-nosnippet>263</a>}
 </code></pre></div></section></main></body></html>

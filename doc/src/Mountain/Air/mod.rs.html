@@ -7,13 +7,13 @@
 <a href=#7 id=7 data-nosnippet>7</a>//!   - Authentication and credential management
 <a href=#8 id=8 data-nosnippet>8</a>//!   - File indexing and search operations
 <a href=#9 id=9 data-nosnippet>9</a>//!   - System monitoring and metrics collection
-<a href=#10 id=10 data-nosnippet>10</a>//! - Handles connection management and error translation to [`CommonError`]
-<a href=#11 id=11 data-nosnippet>11</a>//! - Wraps client in [`Arc`] for shared access across the application
+<a href=#10 id=10 data-nosnippet>10</a>//! - Handles connection management and error translation to `CommonError`
+<a href=#11 id=11 data-nosnippet>11</a>//! - Wraps client in `Arc` for shared access across the application
 <a href=#12 id=12 data-nosnippet>12</a>//!
 <a href=#13 id=13 data-nosnippet>13</a>//! ARCHITECTURAL ROLE:
 <a href=#14 id=14 data-nosnippet>14</a>//! - Integration point with the Air background service (daemon)
 <a href=#15 id=15 data-nosnippet>15</a>//! - Used by multiple Mountain components:
-<a href=#16 id=16 data-nosnippet>16</a>//!   - [`UpdateService`](crate::Update::UpdateService) for self-updates
+<a href=#16 id=16 data-nosnippet>16</a>//! - `UpdateService` for self-updates
 <a href=#17 id=17 data-nosnippet>17</a>//!   - [`SearchProvider`](crate::Environment::SearchProvider) for file search
 <a href=#18 id=18 data-nosnippet>18</a>//!   - [`SecretProvider`](crate::Environment::SecretProvider) for secret
 <a href=#19 id=19 data-nosnippet>19</a>//!     storage
@@ -32,7 +32,7 @@
 <a href=#32 id=32 data-nosnippet>32</a>//! - Uses tonic gRPC client for transport
 <a href=#33 id=33 data-nosnippet>33</a>//! - Connection establishment via `connect()` method
 <a href=#34 id=34 data-nosnippet>34</a>//! - Health checking with timeout protection
-<a href=#35 id=35 data-nosnippet>35</a>//! - Thread-safe operations via Arc&lt;AirClient&gt;
+<a href=#35 id=35 data-nosnippet>35</a>//! - Thread-safe operations via `Arc&lt;AirClient&gt;`
 <a href=#36 id=36 data-nosnippet>36</a>//!
 <a href=#37 id=37 data-nosnippet>37</a>//! ERROR HANDLING:
 <a href=#38 id=38 data-nosnippet>38</a>//! - All gRPC errors translated to
@@ -42,7 +42,7 @@
 <a href=#42 id=42 data-nosnippet>42</a>//!   fallback)
 <a href=#43 id=43 data-nosnippet>43</a>//!
 <a href=#44 id=44 data-nosnippet>44</a>//! PERFORMANCE:
-<a href=#45 id=45 data-nosnippet>45</a>//! - gRPC channels are expensive; reuse via Arc&lt;AirClient&gt;
+<a href=#45 id=45 data-nosnippet>45</a>//! - gRPC channels are expensive; reuse via `Arc&lt;AirClient&gt;`
 <a href=#46 id=46 data-nosnippet>46</a>//! - Non-blocking async operations via tokio
 <a href=#47 id=47 data-nosnippet>47</a>//! - Request ID generation for tracing
 <a href=#48 id=48 data-nosnippet>48</a>//!
@@ -71,28 +71,28 @@
 <a href=#71 id=71 data-nosnippet>71</a>//!   functions
 <a href=#72 id=72 data-nosnippet>72</a>
 <a href=#73 id=73 data-nosnippet>73</a></span><span class="comment">// Module sub-modules
-<a href=#74 id=74 data-nosnippet>74</a></span><span class="kw">pub mod </span>AirClient;
-<a href=#75 id=75 data-nosnippet>75</a><span class="kw">pub mod </span>AirServiceProvider;
+<a href=#74 id=74 data-nosnippet>74</a></span><span class="kw">pub mod </span><a href="AirClient.rs.html#1-1257">AirClient</a>;
+<a href=#75 id=75 data-nosnippet>75</a><span class="kw">pub mod </span><a href="AirServiceProvider.rs.html#1-756">AirServiceProvider</a>;
 <a href=#76 id=76 data-nosnippet>76</a>
 <a href=#77 id=77 data-nosnippet>77</a><span class="comment">// Access AirClient struct as: crate::Air::AirClient::AirClientImpl
 <a href=#78 id=78 data-nosnippet>78</a>// Re-exports using module prefix to avoid naming conflicts
 <a href=#79 id=79 data-nosnippet>79</a></span><span class="kw">pub use </span>AirClient::{
-<a href=#80 id=80 data-nosnippet>80</a>	AirClient <span class="kw">as </span>Client,
-<a href=#81 id=81 data-nosnippet>81</a>	AirMetrics,
-<a href=#82 id=82 data-nosnippet>82</a>	AirStatus,
-<a href=#83 id=83 data-nosnippet>83</a>	DEFAULT_AIR_SERVER_ADDRESS,
-<a href=#84 id=84 data-nosnippet>84</a>	DownloadStream,
-<a href=#85 id=85 data-nosnippet>85</a>	DownloadStreamChunk,
-<a href=#86 id=86 data-nosnippet>86</a>	ExtendedFileInfo,
-<a href=#87 id=87 data-nosnippet>87</a>	FileInfo,
-<a href=#88 id=88 data-nosnippet>88</a>	FileResult,
-<a href=#89 id=89 data-nosnippet>89</a>	IndexInfo,
-<a href=#90 id=90 data-nosnippet>90</a>	ResourceUsage,
-<a href=#91 id=91 data-nosnippet>91</a>	UpdateInfo,
+<a href=#80 id=80 data-nosnippet>80</a>	<a href="AirClient.rs.html#105-111">AirClient</a> <span class="kw">as </span>Client,
+<a href=#81 id=81 data-nosnippet>81</a>	<a href="AirClient.rs.html#1139-1145">AirMetrics</a>,
+<a href=#82 id=82 data-nosnippet>82</a>	<a href="AirClient.rs.html#1125-1135">AirStatus</a>,
+<a href=#83 id=83 data-nosnippet>83</a>	<a href="AirClient.rs.html#98">DEFAULT_AIR_SERVER_ADDRESS</a>,
+<a href=#84 id=84 data-nosnippet>84</a>	<a href="AirClient.rs.html#1201-1203">DownloadStream</a>,
+<a href=#85 id=85 data-nosnippet>85</a>	<a href="AirClient.rs.html#1163-1174">DownloadStreamChunk</a>,
+<a href=#86 id=86 data-nosnippet>86</a>	<a href="AirClient.rs.html#1115-1121">ExtendedFileInfo</a>,
+<a href=#87 id=87 data-nosnippet>87</a>	<a href="AirClient.rs.html#1091-1095">FileInfo</a>,
+<a href=#88 id=88 data-nosnippet>88</a>	<a href="AirClient.rs.html#1106-1111">FileResult</a>,
+<a href=#89 id=89 data-nosnippet>89</a>	<a href="AirClient.rs.html#1099-1102">IndexInfo</a>,
+<a href=#90 id=90 data-nosnippet>90</a>	<a href="AirClient.rs.html#1149-1156">ResourceUsage</a>,
+<a href=#91 id=91 data-nosnippet>91</a>	<a href="AirClient.rs.html#1082-1087">UpdateInfo</a>,
 <a href=#92 id=92 data-nosnippet>92</a>};
 <a href=#93 id=93 data-nosnippet>93</a>
 <a href=#94 id=94 data-nosnippet>94</a><span class="comment">// Re-export the original name for compatibility (using type alias inside the module)
-<a href=#95 id=95 data-nosnippet>95</a></span><span class="kw">pub use </span>AirServiceProvider::generate_request_id;
+<a href=#95 id=95 data-nosnippet>95</a></span><span class="kw">pub use </span><a href="AirServiceProvider.rs.html#725">AirServiceProvider::generate_request_id</a>;
 <a href=#96 id=96 data-nosnippet>96</a>
 <a href=#97 id=97 data-nosnippet>97</a><span class="comment">// Note: AirServiceProvider struct is available via
 <a href=#98 id=98 data-nosnippet>98</a>// crate::Air::AirServiceProvider::AirServiceProvider
@@ -101,5 +101,5 @@
 <a href=#101 id=101 data-nosnippet>101</a>// Note: These are kept for backward compatibility but should not be used in new
 <a href=#102 id=102 data-nosnippet>102</a>// code
 <a href=#103 id=103 data-nosnippet>103</a></span><span class="attr">#[deprecated(note = <span class="string">"Use AirClient and AirServiceProvider instead"</span>)]
-<a href=#104 id=104 data-nosnippet>104</a></span><span class="kw">pub mod </span>AirServiceTypesStub;
+<a href=#104 id=104 data-nosnippet>104</a></span><span class="kw">pub mod </span><a href="AirServiceTypesStub.rs.html#1-193">AirServiceTypesStub</a>;
 </code></pre></div></section></main></body></html>

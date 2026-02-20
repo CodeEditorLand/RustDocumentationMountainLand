@@ -2,40 +2,40 @@
 <a href=#2 id=2 data-nosnippet>2</a>//!
 <a href=#3 id=3 data-nosnippet>3</a>//! Configuration management service for read/write operations.
 <a href=#4 id=4 data-nosnippet>4</a>
-<a href=#5 id=5 data-nosnippet>5</a></span><span class="kw">use </span>std::collections::HashMap;
+<a href=#5 id=5 data-nosnippet>5</a></span><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">std::collections::HashMap</a>;
 <a href=#6 id=6 data-nosnippet>6</a>
-<a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span>serde::{Deserialize, Serialize};
+<a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span>serde::{<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>};
 <a href=#8 id=8 data-nosnippet>8</a>
 <a href=#9 id=9 data-nosnippet>9</a><span class="doccomment">/// Configuration service
-<a href=#10 id=10 data-nosnippet>10</a></span><span class="kw">pub struct </span>ConfigurationService {
-<a href=#11 id=11 data-nosnippet>11</a>	config:HashMap&lt;String, serde_json::Value&gt;,
+<a href=#10 id=10 data-nosnippet>10</a></span><span class="kw">pub struct </span><a href="../../../Mountain/RPC/configuration/struct.ConfigurationService.html">ConfigurationService</a> {
+<a href=#11 id=11 data-nosnippet>11</a>	config:<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;,
 <a href=#12 id=12 data-nosnippet>12</a>}
 <a href=#13 id=13 data-nosnippet>13</a>
-<a href=#14 id=14 data-nosnippet>14</a><span class="kw">impl </span>ConfigurationService {
-<a href=#15 id=15 data-nosnippet>15</a>	<span class="kw">pub fn </span>new() -&gt; <span class="self">Self </span>{ <span class="self">Self </span>{ config:HashMap::new() } }
+<a href=#14 id=14 data-nosnippet>14</a><span class="kw">impl </span><a href="#10-12">ConfigurationService</a> {
+<a href=#15 id=15 data-nosnippet>15</a>	<span class="kw">pub fn </span>new() -&gt; <span class="self">Self </span>{ <span class="self">Self </span>{ config:<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>::<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.new">new</a>() } }
 <a href=#16 id=16 data-nosnippet>16</a>
-<a href=#17 id=17 data-nosnippet>17</a>	<span class="kw">pub fn </span>get(<span class="kw-2">&amp;</span><span class="self">self</span>, key:<span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>serde_json::Value&gt; { <span class="self">self</span>.config.get(key) }
+<a href=#17 id=17 data-nosnippet>17</a>	<span class="kw">pub fn </span>get(<span class="kw-2">&amp;</span><span class="self">self</span>, key:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw-2">&amp;</span>serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt; { <a class="self" href="#17">self</a>.config.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.get">get</a>(<a href="#17">key</a>) }
 <a href=#18 id=18 data-nosnippet>18</a>
-<a href=#19 id=19 data-nosnippet>19</a>	<span class="kw">pub fn </span>set(<span class="kw-2">&amp;mut </span><span class="self">self</span>, key:String, value:serde_json::Value) { <span class="self">self</span>.config.insert(key, value); }
+<a href=#19 id=19 data-nosnippet>19</a>	<span class="kw">pub fn </span>set(<span class="kw-2">&amp;mut </span><span class="self">self</span>, key:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, value:serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) { <a class="self" href="#19">self</a>.config.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(<a href="#19">key</a>, <a href="#19">value</a>); }
 <a href=#20 id=20 data-nosnippet>20</a>}
 <a href=#21 id=21 data-nosnippet>21</a>
-<a href=#22 id=22 data-nosnippet>22</a><span class="kw">impl </span>Default <span class="kw">for </span>ConfigurationService {
-<a href=#23 id=23 data-nosnippet>23</a>	<span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{ <span class="self">Self</span>::new() }
+<a href=#22 id=22 data-nosnippet>22</a><span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a> <span class="kw">for </span><a href="#10-12">ConfigurationService</a> {
+<a href=#23 id=23 data-nosnippet>23</a>	<span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{ <span class="self">Self</span>::<a href="#15">new</a>() }
 <a href=#24 id=24 data-nosnippet>24</a>}
 <a href=#25 id=25 data-nosnippet>25</a>
 <a href=#26 id=26 data-nosnippet>26</a><span class="doccomment">/// Configuration scope
-<a href=#27 id=27 data-nosnippet>27</a></span><span class="attr">#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
-<a href=#28 id=28 data-nosnippet>28</a></span><span class="kw">pub enum </span>ConfigurationScope {
+<a href=#27 id=27 data-nosnippet>27</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://doc.rust-lang.org/nightly/core/marker/derive.Copy.html">Copy</a>, <a href="https://doc.rust-lang.org/nightly/core/cmp/derive.PartialEq.html">PartialEq</a>, <a href="https://doc.rust-lang.org/nightly/core/cmp/derive.Eq.html">Eq</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
+<a href=#28 id=28 data-nosnippet>28</a></span><span class="kw">pub enum </span><a href="../../../Mountain/RPC/configuration/enum.ConfigurationScope.html">ConfigurationScope</a> {
 <a href=#29 id=29 data-nosnippet>29</a>	Global,
 <a href=#30 id=30 data-nosnippet>30</a>	Workspace,
 <a href=#31 id=31 data-nosnippet>31</a>	Folder,
 <a href=#32 id=32 data-nosnippet>32</a>}
 <a href=#33 id=33 data-nosnippet>33</a>
 <a href=#34 id=34 data-nosnippet>34</a><span class="doccomment">/// Configuration update
-<a href=#35 id=35 data-nosnippet>35</a></span><span class="attr">#[derive(Debug, Clone, Serialize, Deserialize)]
-<a href=#36 id=36 data-nosnippet>36</a></span><span class="kw">pub struct </span>ConfigurationUpdate {
-<a href=#37 id=37 data-nosnippet>37</a>	<span class="kw">pub </span>key:String,
-<a href=#38 id=38 data-nosnippet>38</a>	<span class="kw">pub </span>value:serde_json::Value,
-<a href=#39 id=39 data-nosnippet>39</a>	<span class="kw">pub </span>scope:ConfigurationScope,
+<a href=#35 id=35 data-nosnippet>35</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
+<a href=#36 id=36 data-nosnippet>36</a></span><span class="kw">pub struct </span><a href="../../../Mountain/RPC/configuration/struct.ConfigurationUpdate.html">ConfigurationUpdate</a> {
+<a href=#37 id=37 data-nosnippet>37</a>	<span class="kw">pub </span>key:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#38 id=38 data-nosnippet>38</a>	<span class="kw">pub </span>value:serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
+<a href=#39 id=39 data-nosnippet>39</a>	<span class="kw">pub </span>scope:<a href="#28-32">ConfigurationScope</a>,
 <a href=#40 id=40 data-nosnippet>40</a>}
 </code></pre></div></section></main></body></html>

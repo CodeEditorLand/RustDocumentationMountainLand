@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["AppLifecycleSetup"]};
+window.SIDEBAR_ITEMS = {"fn":["AppLifecycleSetup"],"macro":["TraceStep"]};

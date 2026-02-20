@@ -30,14 +30,14 @@
 <a href=#30 id=30 data-nosnippet>30</a>//! - [ ] Implement extension caching
 <a href=#31 id=31 data-nosnippet>31</a>//! - [ ] Add extension validation rules
 <a href=#32 id=32 data-nosnippet>32</a>
-<a href=#33 id=33 data-nosnippet>33</a></span><span class="kw">use </span>std::{collections::HashMap, path::PathBuf};
+<a href=#33 id=33 data-nosnippet>33</a></span><span class="kw">use </span>std::{<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">collections::HashMap</a>, <a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">path::PathBuf</a>};
 <a href=#34 id=34 data-nosnippet>34</a>
 <a href=#35 id=35 data-nosnippet>35</a><span class="kw">use </span>CommonLibrary::Error::CommonError::CommonError;
-<a href=#36 id=36 data-nosnippet>36</a><span class="kw">use </span>log::{debug, error, info, trace, warn};
-<a href=#37 id=37 data-nosnippet>37</a><span class="kw">use </span>serde_json::Value;
+<a href=#36 id=36 data-nosnippet>36</a><span class="kw">use </span>log::{<a href="https://docs.rs/log/0.4.29/log/macro.debug.html">debug</a>, <a href="https://docs.rs/log/0.4.29/log/macro.error.html">error</a>, <a href="https://docs.rs/log/0.4.29/log/macro.info.html">info</a>, <a href="https://docs.rs/log/0.4.29/log/macro.trace.html">trace</a>, <a href="https://docs.rs/log/0.4.29/log/macro.warn.html">warn</a>};
+<a href=#37 id=37 data-nosnippet>37</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#38 id=38 data-nosnippet>38</a><span class="kw">use </span>tauri::AppHandle;
 <a href=#39 id=39 data-nosnippet>39</a>
-<a href=#40 id=40 data-nosnippet>40</a><span class="kw">use </span>crate::{ApplicationState::DTO::ExtensionDescriptionStateDTO::ExtensionDescriptionStateDTO, ExtensionManagement};
+<a href=#40 id=40 data-nosnippet>40</a><span class="kw">use </span>crate::{<a href="../../DTO/ExtensionDescriptionStateDTO.rs.html#45-101">ApplicationState::DTO::ExtensionDescriptionStateDTO::ExtensionDescriptionStateDTO</a>, <a href="../../../Library.rs.html#93">ExtensionManagement</a>};
 <a href=#41 id=41 data-nosnippet>41</a>
 <a href=#42 id=42 data-nosnippet>42</a><span class="doccomment">/// Scans all registered extension paths for valid extensions and populates the
 <a href=#43 id=43 data-nosnippet>43</a>/// state.
@@ -54,9 +54,9 @@
 <a href=#54 id=54 data-nosnippet>54</a>/// - Populates state with discovered extensions
 <a href=#55 id=55 data-nosnippet>55</a>/// - Returns comprehensive scan statistics
 <a href=#56 id=56 data-nosnippet>56</a>/// - Handles partial failures gracefully
-<a href=#57 id=57 data-nosnippet>57</a></span><span class="kw">pub async fn </span>ScanAndPopulateExtensions(
+<a href=#57 id=57 data-nosnippet>57</a></span><span class="kw">pub async fn </span><a href="../../../../../Mountain/ApplicationState/Internal/ExtensionScanner/ScanAndPopulateExtensions/fn.ScanAndPopulateExtensions.html">ScanAndPopulateExtensions</a>(
 <a href=#58 id=58 data-nosnippet>58</a>	ApplicationHandle:AppHandle,
-<a href=#59 id=59 data-nosnippet>59</a>	_State:<span class="kw-2">&amp;</span><span class="kw">crate</span>::ApplicationState::ExtensionState::State::State,
+<a href=#59 id=59 data-nosnippet>59</a>	_State:<span class="kw-2">&amp;</span><span class="kw">crate</span>::ApplicationState::ExtensionState::State::<a href="../../State/ExtensionState/State.rs.html#40-49">State</a>,
 <a href=#60 id=60 data-nosnippet>60</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
 <a href=#61 id=61 data-nosnippet>61</a>	<span class="macro">info!</span>(<span class="string">"[ExtensionScanner] Starting extension scan..."</span>);
 <a href=#62 id=62 data-nosnippet>62</a>
@@ -130,9 +130,9 @@
 <a href=#130 id=130 data-nosnippet>130</a>/// - Performs the scan
 <a href=#131 id=131 data-nosnippet>131</a>/// - Retries once on failure
 <a href=#132 id=132 data-nosnippet>132</a>/// - Comprehensive error logging
-<a href=#133 id=133 data-nosnippet>133</a></span><span class="kw">pub async fn </span>ScanExtensionsWithRecovery(
+<a href=#133 id=133 data-nosnippet>133</a></span><span class="kw">pub async fn </span><a href="../../../../../Mountain/ApplicationState/Internal/ExtensionScanner/ScanAndPopulateExtensions/fn.ScanExtensionsWithRecovery.html">ScanExtensionsWithRecovery</a>(
 <a href=#134 id=134 data-nosnippet>134</a>	ApplicationHandle:AppHandle,
-<a href=#135 id=135 data-nosnippet>135</a>	State:<span class="kw-2">&amp;</span><span class="kw">crate</span>::ApplicationState::ExtensionState::State::State,
+<a href=#135 id=135 data-nosnippet>135</a>	State:<span class="kw-2">&amp;</span><span class="kw">crate</span>::ApplicationState::ExtensionState::State::<a href="../../State/ExtensionState/State.rs.html#40-49">State</a>,
 <a href=#136 id=136 data-nosnippet>136</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
 <a href=#137 id=137 data-nosnippet>137</a>	<span class="macro">info!</span>(<span class="string">"[ExtensionScanner] Starting robust extension scan with recovery..."</span>);
 <a href=#138 id=138 data-nosnippet>138</a>

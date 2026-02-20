@@ -10,15 +10,15 @@
 <li>System monitoring and metrics collection</li>
 </ul>
 </li>
-<li>Handles connection management and error translation to [<code>CommonError</code>]</li>
-<li>Wraps client in [<code>Arc</code>] for shared access across the application</li>
+<li>Handles connection management and error translation to <code>CommonError</code></li>
+<li>Wraps client in <code>Arc</code> for shared access across the application</li>
 </ul>
 <p>ARCHITECTURAL ROLE:</p>
 <ul>
 <li>Integration point with the Air background service (daemon)</li>
-<li>Used by multiple Mountain components:
+<li>Used by multiple Mountain components:</li>
+<li><code>UpdateService</code> for self-updates
 <ul>
-<li><a href="crate::Update::UpdateService"><code>UpdateService</code></a> for self-updates</li>
 <li><a href="../Environment/SearchProvider/index.html" title="mod Mountain::Environment::SearchProvider"><code>SearchProvider</code></a> for file search</li>
 <li><a href="../Environment/SecretProvider/index.html" title="mod Mountain::Environment::SecretProvider"><code>SecretProvider</code></a> for secret
 storage</li>
@@ -41,7 +41,7 @@ generation</li>
 <li>Uses tonic gRPC client for transport</li>
 <li>Connection establishment via <code>connect()</code> method</li>
 <li>Health checking with timeout protection</li>
-<li>Thread-safe operations via Arc<AirClient></li>
+<li>Thread-safe operations via <code>Arc&lt;AirClient&gt;</code></li>
 </ul>
 <p>ERROR HANDLING:</p>
 <ul>
@@ -53,7 +53,7 @@ fallback)</li>
 </ul>
 <p>PERFORMANCE:</p>
 <ul>
-<li>gRPC channels are expensive; reuse via Arc<AirClient></li>
+<li>gRPC channels are expensive; reuse via <code>Arc&lt;AirClient&gt;</code></li>
 <li>Non-blocking async operations via tokio</li>
 <li>Request ID generation for tracing</li>
 </ul>

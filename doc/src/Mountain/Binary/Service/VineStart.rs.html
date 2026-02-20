@@ -2,15 +2,15 @@
 <a href=#2 id=2 data-nosnippet>2</a>//!
 <a href=#3 id=3 data-nosnippet>3</a>//! Initializes and starts the Vine gRPC server.
 <a href=#4 id=4 data-nosnippet>4</a>
-<a href=#5 id=5 data-nosnippet>5</a></span><span class="kw">use </span>log::{error, info};
+<a href=#5 id=5 data-nosnippet>5</a></span><span class="kw">use </span>log::{<a href="https://docs.rs/log/0.4.29/log/macro.error.html">error</a>, <a href="https://docs.rs/log/0.4.29/log/macro.info.html">info</a>};
 <a href=#6 id=6 data-nosnippet>6</a>
 <a href=#7 id=7 data-nosnippet>7</a><span class="doccomment">/// Starts the Vine gRPC server at the specified addresses.
 <a href=#8 id=8 data-nosnippet>8</a>///
 <a href=#9 id=9 data-nosnippet>9</a>/// # Arguments
 <a href=#10 id=10 data-nosnippet>10</a>///
 <a href=#11 id=11 data-nosnippet>11</a>/// * `ApplicationHandle` - The Tauri application handle
-<a href=#12 id=12 data-nosnippet>12</a>/// * `PrimaryAddress` - The primary server address (e.g., "[::1]:50051")
-<a href=#13 id=13 data-nosnippet>13</a>/// * `SecondaryAddress` - The secondary server address (e.g., "[::1]:50052")
+<a href=#12 id=12 data-nosnippet>12</a>/// * `PrimaryAddress` - The primary server address (e.g., "\\[::1\\]:50051")
+<a href=#13 id=13 data-nosnippet>13</a>/// * `SecondaryAddress` - The secondary server address (e.g., "\\[::1\\]:50052")
 <a href=#14 id=14 data-nosnippet>14</a>///
 <a href=#15 id=15 data-nosnippet>15</a>/// # Returns
 <a href=#16 id=16 data-nosnippet>16</a>///
@@ -31,10 +31,10 @@
 <a href=#31 id=31 data-nosnippet>31</a>/// # Errors
 <a href=#32 id=32 data-nosnippet>32</a>///
 <a href=#33 id=33 data-nosnippet>33</a>/// Returns an error if Vine server initialization fails.
-<a href=#34 id=34 data-nosnippet>34</a></span><span class="kw">pub async fn </span>VineStart(
+<a href=#34 id=34 data-nosnippet>34</a></span><span class="kw">pub async fn </span><a href="../../../../Mountain/Binary/Service/VineStart/fn.VineStart.html">VineStart</a>(
 <a href=#35 id=35 data-nosnippet>35</a>	ApplicationHandle:tauri::AppHandle,
-<a href=#36 id=36 data-nosnippet>36</a>	PrimaryAddress:String,
-<a href=#37 id=37 data-nosnippet>37</a>	SecondaryAddress:String,
+<a href=#36 id=36 data-nosnippet>36</a>	PrimaryAddress:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#37 id=37 data-nosnippet>37</a>	SecondaryAddress:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#38 id=38 data-nosnippet>38</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
 <a href=#39 id=39 data-nosnippet>39</a>	<span class="kw">match </span><span class="kw">crate</span>::Vine::Server::Initialize::Initialize(ApplicationHandle, PrimaryAddress, SecondaryAddress) {
 <a href=#40 id=40 data-nosnippet>40</a>		<span class="prelude-val">Ok</span>(()) =&gt; {

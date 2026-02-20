@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["CocoonService","commands","configuration","echo_action","telemetry","types","vine","workspace"]};
+window.SIDEBAR_ITEMS = {"mod":["CocoonService","commands","configuration","debug","echo_action","processes","scm","telemetry","terminals","types","vine","windows","workspace"]};

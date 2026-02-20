@@ -32,105 +32,105 @@
 <a href=#32 id=32 data-nosnippet>32</a>//! - [ ] Add terminal metrics collection
 <a href=#33 id=33 data-nosnippet>33</a>
 <a href=#34 id=34 data-nosnippet>34</a></span><span class="kw">use </span>std::{
-<a href=#35 id=35 data-nosnippet>35</a>	collections::HashMap,
+<a href=#35 id=35 data-nosnippet>35</a>	<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">collections::HashMap</a>,
 <a href=#36 id=36 data-nosnippet>36</a>	sync::{
-<a href=#37 id=37 data-nosnippet>37</a>		Arc,
-<a href=#38 id=38 data-nosnippet>38</a>		Mutex <span class="kw">as </span>StandardMutex,
-<a href=#39 id=39 data-nosnippet>39</a>		atomic::{AtomicU64, Ordering <span class="kw">as </span>AtomicOrdering},
+<a href=#37 id=37 data-nosnippet>37</a>		<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>,
+<a href=#38 id=38 data-nosnippet>38</a>		<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">Mutex</a> <span class="kw">as </span>StandardMutex,
+<a href=#39 id=39 data-nosnippet>39</a>		atomic::{<a href="https://doc.rust-lang.org/nightly/core/sync/atomic/struct.AtomicU64.html">AtomicU64</a>, <a href="https://doc.rust-lang.org/nightly/core/sync/atomic/enum.Ordering.html">Ordering</a> <span class="kw">as </span>AtomicOrdering},
 <a href=#40 id=40 data-nosnippet>40</a>	},
 <a href=#41 id=41 data-nosnippet>41</a>};
 <a href=#42 id=42 data-nosnippet>42</a>
-<a href=#43 id=43 data-nosnippet>43</a><span class="kw">use </span>log::debug;
+<a href=#43 id=43 data-nosnippet>43</a><span class="kw">use </span><a href="https://docs.rs/log/0.4.29/log/macro.debug.html">log::debug</a>;
 <a href=#44 id=44 data-nosnippet>44</a>
-<a href=#45 id=45 data-nosnippet>45</a><span class="kw">use </span><span class="kw">crate</span>::ApplicationState::DTO::TerminalStateDTO::TerminalStateDTO;
+<a href=#45 id=45 data-nosnippet>45</a><span class="kw">use </span><a href="../../../DTO/TerminalStateDTO.rs.html#49-92"><span class="kw">crate</span>::ApplicationState::DTO::TerminalStateDTO::TerminalStateDTO</a>;
 <a href=#46 id=46 data-nosnippet>46</a>
 <a href=#47 id=47 data-nosnippet>47</a><span class="doccomment">/// Active terminals state containing terminals by ID with next identifier
 <a href=#48 id=48 data-nosnippet>48</a>/// counter.
-<a href=#49 id=49 data-nosnippet>49</a></span><span class="attr">#[derive(Clone)]
-<a href=#50 id=50 data-nosnippet>50</a></span><span class="kw">pub struct </span>TerminalState {
+<a href=#49 id=49 data-nosnippet>49</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>)]
+<a href=#50 id=50 data-nosnippet>50</a></span><span class="kw">pub struct </span><a href="../../../../../../Mountain/ApplicationState/State/FeatureState/Terminals/TerminalState/struct.TerminalState.html">TerminalState</a> {
 <a href=#51 id=51 data-nosnippet>51</a>	<span class="doccomment">/// Active terminals organized by ID.
-<a href=#52 id=52 data-nosnippet>52</a>	</span><span class="kw">pub </span>ActiveTerminals:Arc&lt;StandardMutex&lt;HashMap&lt;u64, Arc&lt;StandardMutex&lt;TerminalStateDTO&gt;&gt;&gt;&gt;&gt;,
+<a href=#52 id=52 data-nosnippet>52</a>	</span><span class="kw">pub </span>ActiveTerminals:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">StandardMutex</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>, <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">StandardMutex</a>&lt;<a href="../../../DTO/TerminalStateDTO.rs.html#49-92">TerminalStateDTO</a>&gt;&gt;&gt;&gt;&gt;,
 <a href=#53 id=53 data-nosnippet>53</a>
 <a href=#54 id=54 data-nosnippet>54</a>	<span class="doccomment">/// Counter for generating unique terminal identifiers.
-<a href=#55 id=55 data-nosnippet>55</a>	</span><span class="kw">pub </span>NextTerminalIdentifier:Arc&lt;AtomicU64&gt;,
+<a href=#55 id=55 data-nosnippet>55</a>	</span><span class="kw">pub </span>NextTerminalIdentifier:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="https://doc.rust-lang.org/nightly/core/sync/atomic/struct.AtomicU64.html">AtomicU64</a>&gt;,
 <a href=#56 id=56 data-nosnippet>56</a>}
 <a href=#57 id=57 data-nosnippet>57</a>
-<a href=#58 id=58 data-nosnippet>58</a><span class="kw">impl </span>Default <span class="kw">for </span>TerminalState {
+<a href=#58 id=58 data-nosnippet>58</a><span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a> <span class="kw">for </span><a href="#50-56">TerminalState</a> {
 <a href=#59 id=59 data-nosnippet>59</a>	<span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{
-<a href=#60 id=60 data-nosnippet>60</a>		<span class="macro">debug!</span>(<span class="string">"[TerminalState] Initializing default terminal state..."</span>);
+<a href=#60 id=60 data-nosnippet>60</a>		<a href="https://docs.rs/log/0.4.29/log/macro.debug.html">debug!</a>(<span class="string">"[TerminalState] Initializing default terminal state..."</span>);
 <a href=#61 id=61 data-nosnippet>61</a>
 <a href=#62 id=62 data-nosnippet>62</a>		<span class="self">Self </span>{
-<a href=#63 id=63 data-nosnippet>63</a>			ActiveTerminals:Arc::new(StandardMutex::new(HashMap::new())),
-<a href=#64 id=64 data-nosnippet>64</a>			NextTerminalIdentifier:Arc::new(AtomicU64::new(<span class="number">1</span>)),
+<a href=#63 id=63 data-nosnippet>63</a>			ActiveTerminals:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">StandardMutex</a>::<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.new">new</a>(<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>::<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.new">new</a>())),
+<a href=#64 id=64 data-nosnippet>64</a>			NextTerminalIdentifier:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(<a href="https://doc.rust-lang.org/nightly/core/sync/atomic/struct.AtomicU64.html">AtomicU64</a>::<a href="https://doc.rust-lang.org/nightly/core/sync/atomic/struct.AtomicU64.html#method.new">new</a>(<span class="number">1</span>)),
 <a href=#65 id=65 data-nosnippet>65</a>		}
 <a href=#66 id=66 data-nosnippet>66</a>	}
 <a href=#67 id=67 data-nosnippet>67</a>}
 <a href=#68 id=68 data-nosnippet>68</a>
-<a href=#69 id=69 data-nosnippet>69</a><span class="kw">impl </span>TerminalState {
+<a href=#69 id=69 data-nosnippet>69</a><span class="kw">impl </span><a href="#50-56">TerminalState</a> {
 <a href=#70 id=70 data-nosnippet>70</a>	<span class="doccomment">/// Gets the next available unique identifier for a terminal instance.
-<a href=#71 id=71 data-nosnippet>71</a>	</span><span class="kw">pub fn </span>GetNextTerminalIdentifier(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; u64 { <span class="self">self</span>.NextTerminalIdentifier.fetch_add(<span class="number">1</span>, AtomicOrdering::Relaxed) }
+<a href=#71 id=71 data-nosnippet>71</a>	</span><span class="kw">pub fn </span>GetNextTerminalIdentifier(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a> { <a class="self" href="#71">self</a>.NextTerminalIdentifier.<a href="https://doc.rust-lang.org/nightly/core/sync/atomic/struct.AtomicU64.html#method.fetch_add">fetch_add</a>(<span class="number">1</span>, AtomicOrdering::<a href="https://doc.rust-lang.org/nightly/core/sync/atomic/enum.Ordering.html#variant.Relaxed">Relaxed</a>) }
 <a href=#72 id=72 data-nosnippet>72</a>
 <a href=#73 id=73 data-nosnippet>73</a>	<span class="doccomment">/// Gets all active terminals.
-<a href=#74 id=74 data-nosnippet>74</a>	</span><span class="kw">pub fn </span>GetAll(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; HashMap&lt;u64, TerminalStateDTO&gt; {
-<a href=#75 id=75 data-nosnippet>75</a>		<span class="self">self</span>.ActiveTerminals
-<a href=#76 id=76 data-nosnippet>76</a>			.lock()
-<a href=#77 id=77 data-nosnippet>77</a>			.ok()
-<a href=#78 id=78 data-nosnippet>78</a>			.map(|guard| {
-<a href=#79 id=79 data-nosnippet>79</a>				guard
-<a href=#80 id=80 data-nosnippet>80</a>					.iter()
-<a href=#81 id=81 data-nosnippet>81</a>					.filter_map(|(id, arc)| arc.lock().ok().map(|dto| (<span class="kw-2">*</span>id, dto.clone())))
-<a href=#82 id=82 data-nosnippet>82</a>					.collect()
+<a href=#74 id=74 data-nosnippet>74</a>	</span><span class="kw">pub fn </span>GetAll(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>, <a href="../../../DTO/TerminalStateDTO.rs.html#49-92">TerminalStateDTO</a>&gt; {
+<a href=#75 id=75 data-nosnippet>75</a>		<a class="self" href="#74">self</a>.ActiveTerminals
+<a href=#76 id=76 data-nosnippet>76</a>			.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>()
+<a href=#77 id=77 data-nosnippet>77</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>()
+<a href=#78 id=78 data-nosnippet>78</a>			.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|guard| {
+<a href=#79 id=79 data-nosnippet>79</a>				<a href="#78">guard</a>
+<a href=#80 id=80 data-nosnippet>80</a>					.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.iter">iter</a>()
+<a href=#81 id=81 data-nosnippet>81</a>					.<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.filter_map">filter_map</a>(|(id, arc)| <a href="#81">arc</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|dto| (<span class="kw-2">*</span><a href="#81">id</a>, <a href="#81">dto</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>())))
+<a href=#82 id=82 data-nosnippet>82</a>					.<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.collect">collect</a>()
 <a href=#83 id=83 data-nosnippet>83</a>			})
-<a href=#84 id=84 data-nosnippet>84</a>			.unwrap_or_default()
+<a href=#84 id=84 data-nosnippet>84</a>			.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or_default">unwrap_or_default</a>()
 <a href=#85 id=85 data-nosnippet>85</a>	}
 <a href=#86 id=86 data-nosnippet>86</a>
 <a href=#87 id=87 data-nosnippet>87</a>	<span class="doccomment">/// Gets a terminal by its ID.
-<a href=#88 id=88 data-nosnippet>88</a>	</span><span class="kw">pub fn </span>Get(<span class="kw-2">&amp;</span><span class="self">self</span>, id:u64) -&gt; <span class="prelude-ty">Option</span>&lt;TerminalStateDTO&gt; {
-<a href=#89 id=89 data-nosnippet>89</a>		<span class="self">self</span>.ActiveTerminals
-<a href=#90 id=90 data-nosnippet>90</a>			.lock()
-<a href=#91 id=91 data-nosnippet>91</a>			.ok()
-<a href=#92 id=92 data-nosnippet>92</a>			.and_then(|guard| guard.get(<span class="kw-2">&amp;</span>id).and_then(|arc| arc.lock().ok().map(|dto| dto.clone())))
+<a href=#88 id=88 data-nosnippet>88</a>	</span><span class="kw">pub fn </span>Get(<span class="kw-2">&amp;</span><span class="self">self</span>, id:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="../../../DTO/TerminalStateDTO.rs.html#49-92">TerminalStateDTO</a>&gt; {
+<a href=#89 id=89 data-nosnippet>89</a>		<a class="self" href="#88">self</a>.ActiveTerminals
+<a href=#90 id=90 data-nosnippet>90</a>			.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>()
+<a href=#91 id=91 data-nosnippet>91</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>()
+<a href=#92 id=92 data-nosnippet>92</a>			.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|guard| <a href="#92">guard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.get">get</a>(<span class="kw-2">&amp;</span><a href="#88">id</a>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|arc| <a href="#92">arc</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|dto| <a href="#92">dto</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>())))
 <a href=#93 id=93 data-nosnippet>93</a>	}
 <a href=#94 id=94 data-nosnippet>94</a>
 <a href=#95 id=95 data-nosnippet>95</a>	<span class="doccomment">/// Gets a terminal's Arc&lt;Mutex&lt;&gt;&gt; by its ID for direct manipulation.
-<a href=#96 id=96 data-nosnippet>96</a>	</span><span class="kw">pub fn </span>GetArc(<span class="kw-2">&amp;</span><span class="self">self</span>, id:u64) -&gt; <span class="prelude-ty">Option</span>&lt;Arc&lt;StandardMutex&lt;TerminalStateDTO&gt;&gt;&gt; {
-<a href=#97 id=97 data-nosnippet>97</a>		<span class="self">self</span>.ActiveTerminals.lock().ok().and_then(|guard| guard.get(<span class="kw-2">&amp;</span>id).cloned())
+<a href=#96 id=96 data-nosnippet>96</a>	</span><span class="kw">pub fn </span>GetArc(<span class="kw-2">&amp;</span><span class="self">self</span>, id:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">StandardMutex</a>&lt;<a href="../../../DTO/TerminalStateDTO.rs.html#49-92">TerminalStateDTO</a>&gt;&gt;&gt; {
+<a href=#97 id=97 data-nosnippet>97</a>		<a class="self" href="#96">self</a>.ActiveTerminals.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|guard| <a href="#97">guard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.get">get</a>(<span class="kw-2">&amp;</span><a href="#96">id</a>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.cloned">cloned</a>())
 <a href=#98 id=98 data-nosnippet>98</a>	}
 <a href=#99 id=99 data-nosnippet>99</a>
 <a href=#100 id=100 data-nosnippet>100</a>	<span class="doccomment">/// Adds or updates a terminal.
-<a href=#101 id=101 data-nosnippet>101</a>	</span><span class="kw">pub fn </span>AddOrUpdate(<span class="kw-2">&amp;</span><span class="self">self</span>, id:u64, terminal:TerminalStateDTO) {
-<a href=#102 id=102 data-nosnippet>102</a>		<span class="kw">if let </span><span class="prelude-val">Ok</span>(<span class="kw-2">mut </span>guard) = <span class="self">self</span>.ActiveTerminals.lock() {
-<a href=#103 id=103 data-nosnippet>103</a>			guard.insert(id, Arc::new(StandardMutex::new(terminal)));
-<a href=#104 id=104 data-nosnippet>104</a>			<span class="macro">debug!</span>(<span class="string">"[TerminalState] Terminal added/updated with ID: {}"</span>, id);
+<a href=#101 id=101 data-nosnippet>101</a>	</span><span class="kw">pub fn </span>AddOrUpdate(<span class="kw-2">&amp;</span><span class="self">self</span>, id:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>, terminal:<a href="../../../DTO/TerminalStateDTO.rs.html#49-92">TerminalStateDTO</a>) {
+<a href=#102 id=102 data-nosnippet>102</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="kw-2">mut </span>guard) = <a class="self" href="#101">self</a>.ActiveTerminals.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>() {
+<a href=#103 id=103 data-nosnippet>103</a>			<a href="#102">guard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(<a href="#101">id</a>, <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">StandardMutex</a>::<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.new">new</a>(<a href="#101">terminal</a>)));
+<a href=#104 id=104 data-nosnippet>104</a>			<a href="https://docs.rs/log/0.4.29/log/macro.debug.html">debug!</a>(<span class="string">"[TerminalState] Terminal added/updated with ID: {}"</span>, id);
 <a href=#105 id=105 data-nosnippet>105</a>		}
 <a href=#106 id=106 data-nosnippet>106</a>	}
 <a href=#107 id=107 data-nosnippet>107</a>
 <a href=#108 id=108 data-nosnippet>108</a>	<span class="doccomment">/// Removes a terminal by its ID.
-<a href=#109 id=109 data-nosnippet>109</a>	</span><span class="kw">pub fn </span>Remove(<span class="kw-2">&amp;</span><span class="self">self</span>, id:u64) {
-<a href=#110 id=110 data-nosnippet>110</a>		<span class="kw">if let </span><span class="prelude-val">Ok</span>(<span class="kw-2">mut </span>guard) = <span class="self">self</span>.ActiveTerminals.lock() {
-<a href=#111 id=111 data-nosnippet>111</a>			guard.remove(<span class="kw-2">&amp;</span>id);
-<a href=#112 id=112 data-nosnippet>112</a>			<span class="macro">debug!</span>(<span class="string">"[TerminalState] Terminal removed with ID: {}"</span>, id);
+<a href=#109 id=109 data-nosnippet>109</a>	</span><span class="kw">pub fn </span>Remove(<span class="kw-2">&amp;</span><span class="self">self</span>, id:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>) {
+<a href=#110 id=110 data-nosnippet>110</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="kw-2">mut </span>guard) = <a class="self" href="#109">self</a>.ActiveTerminals.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>() {
+<a href=#111 id=111 data-nosnippet>111</a>			<a href="#110">guard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.remove">remove</a>(<span class="kw-2">&amp;</span><a href="#109">id</a>);
+<a href=#112 id=112 data-nosnippet>112</a>			<a href="https://docs.rs/log/0.4.29/log/macro.debug.html">debug!</a>(<span class="string">"[TerminalState] Terminal removed with ID: {}"</span>, id);
 <a href=#113 id=113 data-nosnippet>113</a>		}
 <a href=#114 id=114 data-nosnippet>114</a>	}
 <a href=#115 id=115 data-nosnippet>115</a>
 <a href=#116 id=116 data-nosnippet>116</a>	<span class="doccomment">/// Clears all active terminals.
 <a href=#117 id=117 data-nosnippet>117</a>	</span><span class="kw">pub fn </span>Clear(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-<a href=#118 id=118 data-nosnippet>118</a>		<span class="kw">if let </span><span class="prelude-val">Ok</span>(<span class="kw-2">mut </span>guard) = <span class="self">self</span>.ActiveTerminals.lock() {
-<a href=#119 id=119 data-nosnippet>119</a>			guard.clear();
-<a href=#120 id=120 data-nosnippet>120</a>			<span class="macro">debug!</span>(<span class="string">"[TerminalState] All terminals cleared"</span>);
+<a href=#118 id=118 data-nosnippet>118</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="kw-2">mut </span>guard) = <a class="self" href="#117">self</a>.ActiveTerminals.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>() {
+<a href=#119 id=119 data-nosnippet>119</a>			<a href="#118">guard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.clear">clear</a>();
+<a href=#120 id=120 data-nosnippet>120</a>			<a href="https://docs.rs/log/0.4.29/log/macro.debug.html">debug!</a>(<span class="string">"[TerminalState] All terminals cleared"</span>);
 <a href=#121 id=121 data-nosnippet>121</a>		}
 <a href=#122 id=122 data-nosnippet>122</a>	}
 <a href=#123 id=123 data-nosnippet>123</a>
 <a href=#124 id=124 data-nosnippet>124</a>	<span class="doccomment">/// Gets the count of active terminals.
-<a href=#125 id=125 data-nosnippet>125</a>	</span><span class="kw">pub fn </span>Count(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; usize { <span class="self">self</span>.ActiveTerminals.lock().ok().map(|guard| guard.len()).unwrap_or(<span class="number">0</span>) }
+<a href=#125 id=125 data-nosnippet>125</a>	</span><span class="kw">pub fn </span>Count(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> { <a class="self" href="#125">self</a>.ActiveTerminals.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|guard| <a href="#125">guard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.len">len</a>()).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or">unwrap_or</a>(<span class="number">0</span>) }
 <a href=#126 id=126 data-nosnippet>126</a>
 <a href=#127 id=127 data-nosnippet>127</a>	<span class="doccomment">/// Checks if a terminal exists.
-<a href=#128 id=128 data-nosnippet>128</a>	</span><span class="kw">pub fn </span>Contains(<span class="kw-2">&amp;</span><span class="self">self</span>, id:u64) -&gt; bool {
-<a href=#129 id=129 data-nosnippet>129</a>		<span class="self">self</span>.ActiveTerminals
-<a href=#130 id=130 data-nosnippet>130</a>			.lock()
-<a href=#131 id=131 data-nosnippet>131</a>			.ok()
-<a href=#132 id=132 data-nosnippet>132</a>			.map(|guard| guard.contains_key(<span class="kw-2">&amp;</span>id))
-<a href=#133 id=133 data-nosnippet>133</a>			.unwrap_or(<span class="bool-val">false</span>)
+<a href=#128 id=128 data-nosnippet>128</a>	</span><span class="kw">pub fn </span>Contains(<span class="kw-2">&amp;</span><span class="self">self</span>, id:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
+<a href=#129 id=129 data-nosnippet>129</a>		<a class="self" href="#128">self</a>.ActiveTerminals
+<a href=#130 id=130 data-nosnippet>130</a>			.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>()
+<a href=#131 id=131 data-nosnippet>131</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>()
+<a href=#132 id=132 data-nosnippet>132</a>			.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|guard| <a href="#132">guard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.contains_key">contains_key</a>(<span class="kw-2">&amp;</span><a href="#128">id</a>))
+<a href=#133 id=133 data-nosnippet>133</a>			.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or">unwrap_or</a>(<span class="bool-val">false</span>)
 <a href=#134 id=134 data-nosnippet>134</a>	}
 <a href=#135 id=135 data-nosnippet>135</a>}
 </code></pre></div></section></main></body></html>

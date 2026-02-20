@@ -2,7 +2,7 @@
 <a href=#2 id=2 data-nosnippet>2</a>//!
 <a href=#3 id=3 data-nosnippet>3</a>//! Registers native commands with the Tauri application.
 <a href=#4 id=4 data-nosnippet>4</a>
-<a href=#5 id=5 data-nosnippet>5</a></span><span class="kw">use </span>crate::{ApplicationState::ApplicationState, Command};
+<a href=#5 id=5 data-nosnippet>5</a></span><span class="kw">use </span>crate::{<a href="../../ApplicationState/State/ApplicationState.rs.html#65-88">ApplicationState::ApplicationState</a>, <a href="../../Library.rs.html#99">Command</a>};
 <a href=#6 id=6 data-nosnippet>6</a>
 <a href=#7 id=7 data-nosnippet>7</a><span class="doccomment">/// Registers all native commands with the Tauri application.
 <a href=#8 id=8 data-nosnippet>8</a>///
@@ -29,13 +29,13 @@
 <a href=#29 id=29 data-nosnippet>29</a>/// # Errors
 <a href=#30 id=30 data-nosnippet>30</a>///
 <a href=#31 id=31 data-nosnippet>31</a>/// Returns an error if command registration fails.
-<a href=#32 id=32 data-nosnippet>32</a></span><span class="kw">pub fn </span>CommandRegister(
+<a href=#32 id=32 data-nosnippet>32</a></span><span class="kw">pub fn </span><a href="../../../../Mountain/Binary/Register/CommandRegister/fn.CommandRegister.html">CommandRegister</a>(
 <a href=#33 id=33 data-nosnippet>33</a>	ApplicationHandle:<span class="kw-2">&amp;</span>tauri::AppHandle,
-<a href=#34 id=34 data-nosnippet>34</a>	AppState:<span class="kw-2">&amp;</span>std::sync::Arc&lt;ApplicationState&gt;,
-<a href=#35 id=35 data-nosnippet>35</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
-<a href=#36 id=36 data-nosnippet>36</a>	Command::Bootstrap::RegisterNativeCommands(ApplicationHandle, AppState)
-<a href=#37 id=37 data-nosnippet>37</a>		.map_err(|Error| <span class="macro">format!</span>(<span class="string">"Failed to register native commands: {}"</span>, Error))<span class="question-mark">?</span>;
+<a href=#34 id=34 data-nosnippet>34</a>	AppState:<span class="kw-2">&amp;</span>std::sync::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../../ApplicationState/State/ApplicationState.rs.html#65-88">ApplicationState</a>&gt;,
+<a href=#35 id=35 data-nosnippet>35</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
+<a href=#36 id=36 data-nosnippet>36</a>	Command::Bootstrap::<a href="../../Command/Bootstrap.rs.html#375-474">RegisterNativeCommands</a>(<a href="#33">ApplicationHandle</a>, <a href="#34">AppState</a>)
+<a href=#37 id=37 data-nosnippet>37</a>		.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Failed to register native commands: {}"</span>, Error))<span class="question-mark">?</span>;
 <a href=#38 id=38 data-nosnippet>38</a>
-<a href=#39 id=39 data-nosnippet>39</a>	<span class="prelude-val">Ok</span>(())
+<a href=#39 id=39 data-nosnippet>39</a>	<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#40 id=40 data-nosnippet>40</a>}
 </code></pre></div></section></main></body></html>

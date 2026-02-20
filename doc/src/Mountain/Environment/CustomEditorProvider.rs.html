@@ -48,115 +48,111 @@
 <a href=#48 id=48 data-nosnippet>48</a>//!
 <a href=#49 id=49 data-nosnippet>49</a>//! MODULE CONTENTS:
 <a href=#50 id=50 data-nosnippet>50</a>//! - [`CustomEditorProvider`](CommonLibrary::CustomEditor::CustomEditorProvider) implementation:
-<a href=#51 id=51 data-nosnippet>51</a>//!   - [`RegisterCustomEditorProvider`](Self::RegisterCustomEditorProvider) -
-<a href=#52 id=52 data-nosnippet>52</a>//!     register extension provider
-<a href=#53 id=53 data-nosnippet>53</a>//!   - [`UnregisterCustomEditorProvider`](Self::UnregisterCustomEditorProvider)
-<a href=#54 id=54 data-nosnippet>54</a>//!     - unregister provider
-<a href=#55 id=55 data-nosnippet>55</a>//!   - [`OnSaveCustomDocument`](Self::OnSaveCustomDocument) - save handler
-<a href=#56 id=56 data-nosnippet>56</a>//!     (stub)
-<a href=#57 id=57 data-nosnippet>57</a>//!   - [`ResolveCustomEditor`](Self::ResolveCustomEditor) - resolve editor
-<a href=#58 id=58 data-nosnippet>58</a>//!     content via RPC
-<a href=#59 id=59 data-nosnippet>59</a>
-<a href=#60 id=60 data-nosnippet>60</a></span><span class="kw">use </span>std::sync::Arc;
-<a href=#61 id=61 data-nosnippet>61</a>
-<a href=#62 id=62 data-nosnippet>62</a><span class="kw">use </span>CommonLibrary::{
-<a href=#63 id=63 data-nosnippet>63</a>	CustomEditor::CustomEditorProvider::CustomEditorProvider,
-<a href=#64 id=64 data-nosnippet>64</a>	Environment::Requires::Requires,
-<a href=#65 id=65 data-nosnippet>65</a>	Error::CommonError::CommonError,
-<a href=#66 id=66 data-nosnippet>66</a>	IPC::{DTO::ProxyTarget::ProxyTarget, IPCProvider::IPCProvider},
-<a href=#67 id=67 data-nosnippet>67</a>};
-<a href=#68 id=68 data-nosnippet>68</a><span class="kw">use </span>async_trait::async_trait;
-<a href=#69 id=69 data-nosnippet>69</a><span class="kw">use </span>log::{info, warn};
-<a href=#70 id=70 data-nosnippet>70</a><span class="kw">use </span>serde_json::{Value, json};
-<a href=#71 id=71 data-nosnippet>71</a><span class="kw">use </span>url::Url;
-<a href=#72 id=72 data-nosnippet>72</a>
-<a href=#73 id=73 data-nosnippet>73</a><span class="kw">use </span><span class="kw">super</span>::MountainEnvironment::MountainEnvironment;
-<a href=#74 id=74 data-nosnippet>74</a>
-<a href=#75 id=75 data-nosnippet>75</a><span class="attr">#[async_trait]
-<a href=#76 id=76 data-nosnippet>76</a></span><span class="kw">impl </span>CustomEditorProvider <span class="kw">for </span>MountainEnvironment {
-<a href=#77 id=77 data-nosnippet>77</a>	<span class="kw">async fn </span>RegisterCustomEditorProvider(<span class="kw-2">&amp;</span><span class="self">self</span>, ViewType:String, _Options:Value) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
-<a href=#78 id=78 data-nosnippet>78</a>		<span class="macro">info!</span>(<span class="string">"[CustomEditorProvider] Registering provider for view type: {}"</span>, ViewType);
-<a href=#79 id=79 data-nosnippet>79</a>
-<a href=#80 id=80 data-nosnippet>80</a>		<span class="comment">// Validate ViewType is non-empty
-<a href=#81 id=81 data-nosnippet>81</a>		</span><span class="kw">if </span>ViewType.is_empty() {
-<a href=#82 id=82 data-nosnippet>82</a>			<span class="kw">return </span><span class="prelude-val">Err</span>(CommonError::InvalidArgument {
-<a href=#83 id=83 data-nosnippet>83</a>				ArgumentName:<span class="string">"ViewType"</span>.to_string(),
-<a href=#84 id=84 data-nosnippet>84</a>				Reason:<span class="string">"ViewType cannot be empty"</span>.to_string(),
-<a href=#85 id=85 data-nosnippet>85</a>			});
-<a href=#86 id=86 data-nosnippet>86</a>		}
-<a href=#87 id=87 data-nosnippet>87</a>
-<a href=#88 id=88 data-nosnippet>88</a>		<span class="comment">// Register custom editor provider in ApplicationState for lifecycle management
-<a href=#89 id=89 data-nosnippet>89</a>		// and resolution. Should associate ViewType with the sidecar identifier for
-<a href=#90 id=90 data-nosnippet>90</a>		// RPC routing, store provider capabilities (supportsMultipleEditors,
-<a href=#91 id=91 data-nosnippet>91</a>		// serialization support), store custom options (mime types, file extensions),
-<a href=#92 id=92 data-nosnippet>92</a>		// validate that the ViewType is not already registered to prevent conflicts,
-<a href=#93 id=93 data-nosnippet>93</a>		// and track registration timestamp and extension origin for debugging.
-<a href=#94 id=94 data-nosnippet>94</a>
-<a href=#95 id=95 data-nosnippet>95</a>		</span><span class="prelude-val">Ok</span>(())
-<a href=#96 id=96 data-nosnippet>96</a>	}
-<a href=#97 id=97 data-nosnippet>97</a>
-<a href=#98 id=98 data-nosnippet>98</a>	<span class="kw">async fn </span>UnregisterCustomEditorProvider(<span class="kw-2">&amp;</span><span class="self">self</span>, ViewType:String) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
-<a href=#99 id=99 data-nosnippet>99</a>		<span class="macro">info!</span>(<span class="string">"[CustomEditorProvider] Unregistering provider for view type: {}"</span>, ViewType);
-<a href=#100 id=100 data-nosnippet>100</a>
-<a href=#101 id=101 data-nosnippet>101</a>		<span class="comment">// Remove custom editor provider registration from ApplicationState. Should
-<a href=#102 id=102 data-nosnippet>102</a>		// check if any active editors are currently using this ViewType and either
-<a href=#103 id=103 data-nosnippet>103</a>		// force close with unsaved changes warning or prevent unregistration, remove
-<a href=#104 id=104 data-nosnippet>104</a>		// all stored configuration, capabilities, and sidecar association, notify the
-<a href=#105 id=105 data-nosnippet>105</a>		// sidecar extension to clean up its internal state, and remove any cached
-<a href=#106 id=106 data-nosnippet>106</a>		// resolution entries for this ViewType.
-<a href=#107 id=107 data-nosnippet>107</a>
-<a href=#108 id=108 data-nosnippet>108</a>		</span><span class="prelude-val">Ok</span>(())
-<a href=#109 id=109 data-nosnippet>109</a>	}
-<a href=#110 id=110 data-nosnippet>110</a>
-<a href=#111 id=111 data-nosnippet>111</a>	<span class="kw">async fn </span>OnSaveCustomDocument(<span class="kw-2">&amp;</span><span class="self">self</span>, ViewType:String, ResourceURI:Url) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
-<a href=#112 id=112 data-nosnippet>112</a>		<span class="macro">info!</span>(
-<a href=#113 id=113 data-nosnippet>113</a>			<span class="string">"[CustomEditorProvider] OnSaveCustomDocument called for '{}' at '{}'"</span>,
-<a href=#114 id=114 data-nosnippet>114</a>			ViewType, ResourceURI
-<a href=#115 id=115 data-nosnippet>115</a>		);
-<a href=#116 id=116 data-nosnippet>116</a>
-<a href=#117 id=117 data-nosnippet>117</a>		<span class="comment">// Implement the complete custom document save workflow. Send RPC request
-<a href=#118 id=118 data-nosnippet>118</a>		// ($customDocument/save) to the extension sidecar responsible for this
-<a href=#119 id=119 data-nosnippet>119</a>		// ViewType, including the ResourceURI. The extension retrieves edited content
-<a href=#120 id=120 data-nosnippet>120</a>		// from its Webview via postMessage and returns the updated data (string or
-<a href=#121 id=121 data-nosnippet>121</a>		// bytes). Mountain receives the content and writes it to the file system using
-<a href=#122 id=122 data-nosnippet>122</a>		// FileSystemWriter with appropriate encoding and atomic write pattern. Emit
-<a href=#123 id=123 data-nosnippet>123</a>		// a document saved notification to refresh UI and trigger post-save hooks
-<a href=#124 id=124 data-nosnippet>124</a>		// (formatters, linters, extension notifications). This enables custom editors
-<a href=#125 id=125 data-nosnippet>125</a>		// to participate in the standard save lifecycle.
+<a href=#51 id=51 data-nosnippet>51</a>//! - `RegisterCustomEditorProvider` - register extension provider
+<a href=#52 id=52 data-nosnippet>52</a>//! - `UnregisterCustomEditorProvider` - unregister provider
+<a href=#53 id=53 data-nosnippet>53</a>//! - `OnSaveCustomDocument` - save handler (stub)
+<a href=#54 id=54 data-nosnippet>54</a>//! - `ResolveCustomEditor` - resolve editor content via RPC
+<a href=#55 id=55 data-nosnippet>55</a>
+<a href=#56 id=56 data-nosnippet>56</a></span><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">std::sync::Arc</a>;
+<a href=#57 id=57 data-nosnippet>57</a>
+<a href=#58 id=58 data-nosnippet>58</a><span class="kw">use </span>CommonLibrary::{
+<a href=#59 id=59 data-nosnippet>59</a>	CustomEditor::CustomEditorProvider::CustomEditorProvider,
+<a href=#60 id=60 data-nosnippet>60</a>	Environment::Requires::Requires,
+<a href=#61 id=61 data-nosnippet>61</a>	Error::CommonError::CommonError,
+<a href=#62 id=62 data-nosnippet>62</a>	IPC::{DTO::ProxyTarget::ProxyTarget, IPCProvider::IPCProvider},
+<a href=#63 id=63 data-nosnippet>63</a>};
+<a href=#64 id=64 data-nosnippet>64</a><span class="kw">use </span><a href="https://docs.rs/async-trait/0.1.89/async_trait/attr.async_trait.html">async_trait::async_trait</a>;
+<a href=#65 id=65 data-nosnippet>65</a><span class="kw">use </span>log::{<a href="https://docs.rs/log/0.4.29/log/macro.info.html">info</a>, <a href="https://docs.rs/log/0.4.29/log/macro.warn.html">warn</a>};
+<a href=#66 id=66 data-nosnippet>66</a><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json</a>};
+<a href=#67 id=67 data-nosnippet>67</a><span class="kw">use </span><a href="https://docs.rs/url/2.5.7/url/struct.Url.html">url::Url</a>;
+<a href=#68 id=68 data-nosnippet>68</a>
+<a href=#69 id=69 data-nosnippet>69</a><span class="kw">use </span><a href="MountainEnvironment.rs.html#220-230"><span class="kw">super</span>::MountainEnvironment::MountainEnvironment</a>;
+<a href=#70 id=70 data-nosnippet>70</a>
+<a href=#71 id=71 data-nosnippet>71</a><span class="attr">#[async_trait]
+<a href=#72 id=72 data-nosnippet>72</a></span><span class="kw">impl </span>CustomEditorProvider <span class="kw">for </span><a href="MountainEnvironment.rs.html#220-230">MountainEnvironment</a> {
+<a href=#73 id=73 data-nosnippet>73</a>	<span class="kw">async fn </span>RegisterCustomEditorProvider(<span class="kw-2">&amp;</span><a class="self" href="#73">self</a>, <a href="#73">ViewType</a>:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="#73">_Options</a>:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
+<a href=#74 id=74 data-nosnippet>74</a>		<a href="https://docs.rs/log/0.4.29/log/macro.info.html">info!</a>(<span class="string">"[CustomEditorProvider] Registering provider for view type: {}"</span>, ViewType);
+<a href=#75 id=75 data-nosnippet>75</a>
+<a href=#76 id=76 data-nosnippet>76</a>		<span class="comment">// Validate ViewType is non-empty
+<a href=#77 id=77 data-nosnippet>77</a>		</span><span class="kw">if </span><a href="#73">ViewType</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.is_empty">is_empty</a>() {
+<a href=#78 id=78 data-nosnippet>78</a>			<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(CommonError::InvalidArgument {
+<a href=#79 id=79 data-nosnippet>79</a>				ArgumentName:<span class="string">"ViewType"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
+<a href=#80 id=80 data-nosnippet>80</a>				Reason:<span class="string">"ViewType cannot be empty"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
+<a href=#81 id=81 data-nosnippet>81</a>			});
+<a href=#82 id=82 data-nosnippet>82</a>		}
+<a href=#83 id=83 data-nosnippet>83</a>
+<a href=#84 id=84 data-nosnippet>84</a>		<span class="comment">// Register custom editor provider in ApplicationState for lifecycle management
+<a href=#85 id=85 data-nosnippet>85</a>		// and resolution. Should associate ViewType with the sidecar identifier for
+<a href=#86 id=86 data-nosnippet>86</a>		// RPC routing, store provider capabilities (supportsMultipleEditors,
+<a href=#87 id=87 data-nosnippet>87</a>		// serialization support), store custom options (mime types, file extensions),
+<a href=#88 id=88 data-nosnippet>88</a>		// validate that the ViewType is not already registered to prevent conflicts,
+<a href=#89 id=89 data-nosnippet>89</a>		// and track registration timestamp and extension origin for debugging.
+<a href=#90 id=90 data-nosnippet>90</a>
+<a href=#91 id=91 data-nosnippet>91</a>		</span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
+<a href=#92 id=92 data-nosnippet>92</a>	}
+<a href=#93 id=93 data-nosnippet>93</a>
+<a href=#94 id=94 data-nosnippet>94</a>	<span class="kw">async fn </span>UnregisterCustomEditorProvider(<span class="kw-2">&amp;</span><a class="self" href="#94">self</a>, <a href="#94">ViewType</a>:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
+<a href=#95 id=95 data-nosnippet>95</a>		<a href="https://docs.rs/log/0.4.29/log/macro.info.html">info!</a>(<span class="string">"[CustomEditorProvider] Unregistering provider for view type: {}"</span>, ViewType);
+<a href=#96 id=96 data-nosnippet>96</a>
+<a href=#97 id=97 data-nosnippet>97</a>		<span class="comment">// Remove custom editor provider registration from ApplicationState. Should
+<a href=#98 id=98 data-nosnippet>98</a>		// check if any active editors are currently using this ViewType and either
+<a href=#99 id=99 data-nosnippet>99</a>		// force close with unsaved changes warning or prevent unregistration, remove
+<a href=#100 id=100 data-nosnippet>100</a>		// all stored configuration, capabilities, and sidecar association, notify the
+<a href=#101 id=101 data-nosnippet>101</a>		// sidecar extension to clean up its internal state, and remove any cached
+<a href=#102 id=102 data-nosnippet>102</a>		// resolution entries for this ViewType.
+<a href=#103 id=103 data-nosnippet>103</a>
+<a href=#104 id=104 data-nosnippet>104</a>		</span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
+<a href=#105 id=105 data-nosnippet>105</a>	}
+<a href=#106 id=106 data-nosnippet>106</a>
+<a href=#107 id=107 data-nosnippet>107</a>	<span class="kw">async fn </span>OnSaveCustomDocument(<span class="kw-2">&amp;</span><a class="self" href="#107">self</a>, <a href="#107">ViewType</a>:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="#107">ResourceURI</a>:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
+<a href=#108 id=108 data-nosnippet>108</a>		<a href="https://docs.rs/log/0.4.29/log/macro.info.html">info!</a>(
+<a href=#109 id=109 data-nosnippet>109</a>			<span class="string">"[CustomEditorProvider] OnSaveCustomDocument called for '{}' at '{}'"</span>,
+<a href=#110 id=110 data-nosnippet>110</a>			ViewType, ResourceURI
+<a href=#111 id=111 data-nosnippet>111</a>		);
+<a href=#112 id=112 data-nosnippet>112</a>
+<a href=#113 id=113 data-nosnippet>113</a>		<span class="comment">// Implement the complete custom document save workflow. Send RPC request
+<a href=#114 id=114 data-nosnippet>114</a>		// ($customDocument/save) to the extension sidecar responsible for this
+<a href=#115 id=115 data-nosnippet>115</a>		// ViewType, including the ResourceURI. The extension retrieves edited content
+<a href=#116 id=116 data-nosnippet>116</a>		// from its Webview via postMessage and returns the updated data (string or
+<a href=#117 id=117 data-nosnippet>117</a>		// bytes). Mountain receives the content and writes it to the file system using
+<a href=#118 id=118 data-nosnippet>118</a>		// FileSystemWriter with appropriate encoding and atomic write pattern. Emit
+<a href=#119 id=119 data-nosnippet>119</a>		// a document saved notification to refresh UI and trigger post-save hooks
+<a href=#120 id=120 data-nosnippet>120</a>		// (formatters, linters, extension notifications). This enables custom editors
+<a href=#121 id=121 data-nosnippet>121</a>		// to participate in the standard save lifecycle.
+<a href=#122 id=122 data-nosnippet>122</a>
+<a href=#123 id=123 data-nosnippet>123</a>		</span><a href="https://docs.rs/log/0.4.29/log/macro.warn.html">warn!</a>(<span class="string">"[CustomEditorProvider] OnSaveCustomDocument is not fully implemented."</span>);
+<a href=#124 id=124 data-nosnippet>124</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
+<a href=#125 id=125 data-nosnippet>125</a>	}
 <a href=#126 id=126 data-nosnippet>126</a>
-<a href=#127 id=127 data-nosnippet>127</a>		</span><span class="macro">warn!</span>(<span class="string">"[CustomEditorProvider] OnSaveCustomDocument is not fully implemented."</span>);
-<a href=#128 id=128 data-nosnippet>128</a>		<span class="prelude-val">Ok</span>(())
-<a href=#129 id=129 data-nosnippet>129</a>	}
-<a href=#130 id=130 data-nosnippet>130</a>
-<a href=#131 id=131 data-nosnippet>131</a>	<span class="kw">async fn </span>ResolveCustomEditor(
-<a href=#132 id=132 data-nosnippet>132</a>		<span class="kw-2">&amp;</span><span class="self">self</span>,
-<a href=#133 id=133 data-nosnippet>133</a>		ViewType:String,
-<a href=#134 id=134 data-nosnippet>134</a>		ResourceURI:Url,
-<a href=#135 id=135 data-nosnippet>135</a>		WebviewPanelHandle:String,
-<a href=#136 id=136 data-nosnippet>136</a>	) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
-<a href=#137 id=137 data-nosnippet>137</a>		<span class="macro">info!</span>(
-<a href=#138 id=138 data-nosnippet>138</a>			<span class="string">"[CustomEditorProvider] Resolving custom editor for '{}' on resource '{}'"</span>,
-<a href=#139 id=139 data-nosnippet>139</a>			ViewType, ResourceURI
-<a href=#140 id=140 data-nosnippet>140</a>		);
-<a href=#141 id=141 data-nosnippet>141</a>
-<a href=#142 id=142 data-nosnippet>142</a>		<span class="comment">// This is the core logic:
-<a href=#143 id=143 data-nosnippet>143</a>		// 1. Find the sidecar that registered this ViewType. For now, assume
-<a href=#144 id=144 data-nosnippet>144</a>		//    "cocoon-main".
-<a href=#145 id=145 data-nosnippet>145</a>		// 2. Make an RPC call to that sidecar's implementation of
-<a href=#146 id=146 data-nosnippet>146</a>		//    `$resolveCustomEditor`.
-<a href=#147 id=147 data-nosnippet>147</a>		// 3. The sidecar will then call back to the host with `setHtml`, `postMessage`,
-<a href=#148 id=148 data-nosnippet>148</a>		//    etc. to populate the webview associated with the `WebviewPanelHandle`.
-<a href=#149 id=149 data-nosnippet>149</a>
-<a href=#150 id=150 data-nosnippet>150</a>		</span><span class="kw">let </span>IPCProvider:Arc&lt;<span class="kw">dyn </span>IPCProvider&gt; = <span class="self">self</span>.Require();
-<a href=#151 id=151 data-nosnippet>151</a>		<span class="kw">let </span>ResourceURIComponents = <span class="macro">json!</span>({ <span class="string">"external"</span>: ResourceURI.to_string() });
-<a href=#152 id=152 data-nosnippet>152</a>		<span class="kw">let </span>RPCMethod = <span class="macro">format!</span>(<span class="string">"{}$resolveCustomEditor"</span>, ProxyTarget::ExtHostCustomEditors.GetTargetPrefix());
-<a href=#153 id=153 data-nosnippet>153</a>		<span class="kw">let </span>RPCParameters = <span class="macro">json!</span>([ResourceURIComponents, ViewType, WebviewPanelHandle]);
-<a href=#154 id=154 data-nosnippet>154</a>
-<a href=#155 id=155 data-nosnippet>155</a>		<span class="comment">// This is a fire-and-forget notification. The sidecar is expected to
-<a href=#156 id=156 data-nosnippet>156</a>		// call back to the host to populate the webview.
-<a href=#157 id=157 data-nosnippet>157</a>		</span>IPCProvider
-<a href=#158 id=158 data-nosnippet>158</a>			.SendNotificationToSideCar(<span class="string">"cocoon-main"</span>.to_string(), RPCMethod, RPCParameters)
-<a href=#159 id=159 data-nosnippet>159</a>			.<span class="kw">await
-<a href=#160 id=160 data-nosnippet>160</a>	</span>}
-<a href=#161 id=161 data-nosnippet>161</a>}
+<a href=#127 id=127 data-nosnippet>127</a>	<span class="kw">async fn </span>ResolveCustomEditor(
+<a href=#128 id=128 data-nosnippet>128</a>		<span class="kw-2">&amp;</span><a class="self" href="#128">self</a>,
+<a href=#129 id=129 data-nosnippet>129</a>		<a href="#129">ViewType</a>:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#130 id=130 data-nosnippet>130</a>		<a href="#130">ResourceURI</a>:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
+<a href=#131 id=131 data-nosnippet>131</a>		<a href="#131">WebviewPanelHandle</a>:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#132 id=132 data-nosnippet>132</a>	) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
+<a href=#133 id=133 data-nosnippet>133</a>		<a href="https://docs.rs/log/0.4.29/log/macro.info.html">info!</a>(
+<a href=#134 id=134 data-nosnippet>134</a>			<span class="string">"[CustomEditorProvider] Resolving custom editor for '{}' on resource '{}'"</span>,
+<a href=#135 id=135 data-nosnippet>135</a>			ViewType, ResourceURI
+<a href=#136 id=136 data-nosnippet>136</a>		);
+<a href=#137 id=137 data-nosnippet>137</a>
+<a href=#138 id=138 data-nosnippet>138</a>		<span class="comment">// This is the core logic:
+<a href=#139 id=139 data-nosnippet>139</a>		// 1. Find the sidecar that registered this ViewType. For now, assume
+<a href=#140 id=140 data-nosnippet>140</a>		//    "cocoon-main".
+<a href=#141 id=141 data-nosnippet>141</a>		// 2. Make an RPC call to that sidecar's implementation of
+<a href=#142 id=142 data-nosnippet>142</a>		//    `$resolveCustomEditor`.
+<a href=#143 id=143 data-nosnippet>143</a>		// 3. The sidecar will then call back to the host with `setHtml`, `postMessage`,
+<a href=#144 id=144 data-nosnippet>144</a>		//    etc. to populate the webview associated with the `WebviewPanelHandle`.
+<a href=#145 id=145 data-nosnippet>145</a>
+<a href=#146 id=146 data-nosnippet>146</a>		</span><span class="kw">let </span>IPCProvider:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<span class="kw">dyn </span>IPCProvider&gt; = <a class="self" href="#128">self</a>.Require();
+<a href=#147 id=147 data-nosnippet>147</a>		<span class="kw">let </span>ResourceURIComponents = <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json!</a>({ <span class="string">"external"</span>: ResourceURI.to_string() });
+<a href=#148 id=148 data-nosnippet>148</a>		<span class="kw">let </span>RPCMethod = <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"{}$resolveCustomEditor"</span>, ProxyTarget::ExtHostCustomEditors.GetTargetPrefix());
+<a href=#149 id=149 data-nosnippet>149</a>		<span class="kw">let </span>RPCParameters = <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json!</a>([ResourceURIComponents, ViewType, WebviewPanelHandle]);
+<a href=#150 id=150 data-nosnippet>150</a>
+<a href=#151 id=151 data-nosnippet>151</a>		<span class="comment">// This is a fire-and-forget notification. The sidecar is expected to
+<a href=#152 id=152 data-nosnippet>152</a>		// call back to the host to populate the webview.
+<a href=#153 id=153 data-nosnippet>153</a>		</span><a href="#146">IPCProvider</a>
+<a href=#154 id=154 data-nosnippet>154</a>			.SendNotificationToSideCar(<span class="string">"cocoon-main"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(), <a href="#148">RPCMethod</a>, <a href="#149">RPCParameters</a>)
+<a href=#155 id=155 data-nosnippet>155</a>			.<span class="kw">await
+<a href=#156 id=156 data-nosnippet>156</a>	</span>}
+<a href=#157 id=157 data-nosnippet>157</a>}
 </code></pre></div></section></main></body></html>

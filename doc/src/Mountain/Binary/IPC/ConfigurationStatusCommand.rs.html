@@ -36,7 +36,7 @@
 <a href=#36 id=36 data-nosnippet>36</a>//! - Status query is typically fast, in-memory
 <a href=#37 id=37 data-nosnippet>37</a>//! - Cache results if computed value
 <a href=#38 id=38 data-nosnippet>38</a>
-<a href=#39 id=39 data-nosnippet>39</a></span><span class="kw">use </span>serde_json::Value;
+<a href=#39 id=39 data-nosnippet>39</a></span><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#40 id=40 data-nosnippet>40</a><span class="kw">use </span>tauri::AppHandle;
 <a href=#41 id=41 data-nosnippet>41</a>
 <a href=#42 id=42 data-nosnippet>42</a><span class="doccomment">/// Get configuration status.
@@ -57,7 +57,7 @@
 <a href=#57 id=57 data-nosnippet>57</a>/// Returns an error if:
 <a href=#58 id=58 data-nosnippet>58</a>/// - Status cannot be retrieved
 <a href=#59 id=59 data-nosnippet>59</a></span><span class="attr">#[tauri::command]
-<a href=#60 id=60 data-nosnippet>60</a></span><span class="kw">pub async fn </span>MountainGetConfigurationStatus(app_handle:AppHandle) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
+<a href=#60 id=60 data-nosnippet>60</a></span><span class="kw">pub async fn </span><a href="#59">MountainGetConfigurationStatus</a>(app_handle:AppHandle) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
 <a href=#61 id=61 data-nosnippet>61</a>	<span class="kw">crate</span>::IPC::ConfigurationBridge::mountain_get_configuration_status(app_handle).<span class="kw">await
 <a href=#62 id=62 data-nosnippet>62</a></span>}
 </code></pre></div></section></main></body></html>

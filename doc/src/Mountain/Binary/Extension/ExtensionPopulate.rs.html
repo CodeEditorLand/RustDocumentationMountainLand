@@ -2,9 +2,9 @@
 <a href=#2 id=2 data-nosnippet>2</a>//!
 <a href=#3 id=3 data-nosnippet>3</a>//! Scans and populates extensions from configured scan paths.
 <a href=#4 id=4 data-nosnippet>4</a>
-<a href=#5 id=5 data-nosnippet>5</a></span><span class="kw">use </span>log::{error, info};
+<a href=#5 id=5 data-nosnippet>5</a></span><span class="kw">use </span>log::{<a href="https://docs.rs/log/0.4.29/log/macro.error.html">error</a>, <a href="https://docs.rs/log/0.4.29/log/macro.info.html">info</a>};
 <a href=#6 id=6 data-nosnippet>6</a>
-<a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span><span class="kw">crate</span>::ApplicationState::{ApplicationState, Internal::ScanAndPopulateExtensions};
+<a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span><span class="kw">crate</span>::ApplicationState::{<a href="../../ApplicationState/State/ApplicationState.rs.html#65-88">ApplicationState</a>, <a href="../../ApplicationState/Internal/ExtensionScanner/ScanAndPopulateExtensions.rs.html#57-117">Internal::ScanAndPopulateExtensions</a>};
 <a href=#8 id=8 data-nosnippet>8</a>
 <a href=#9 id=9 data-nosnippet>9</a><span class="doccomment">/// Scans and populates extensions from the configured scan paths.
 <a href=#10 id=10 data-nosnippet>10</a>///
@@ -28,9 +28,9 @@
 <a href=#28 id=28 data-nosnippet>28</a>/// # Errors
 <a href=#29 id=29 data-nosnippet>29</a>///
 <a href=#30 id=30 data-nosnippet>30</a>/// Returns an error if extension scanning or population fails.
-<a href=#31 id=31 data-nosnippet>31</a></span><span class="kw">pub async fn </span>ExtensionPopulate(
+<a href=#31 id=31 data-nosnippet>31</a></span><span class="kw">pub async fn </span><a href="../../../../Mountain/Binary/Extension/ExtensionPopulate/fn.ExtensionPopulate.html">ExtensionPopulate</a>(
 <a href=#32 id=32 data-nosnippet>32</a>	ApplicationHandle:tauri::AppHandle,
-<a href=#33 id=33 data-nosnippet>33</a>	AppState:<span class="kw-2">&amp;</span>std::sync::Arc&lt;ApplicationState&gt;,
+<a href=#33 id=33 data-nosnippet>33</a>	AppState:<span class="kw-2">&amp;</span>std::sync::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../../ApplicationState/State/ApplicationState.rs.html#65-88">ApplicationState</a>&gt;,
 <a href=#34 id=34 data-nosnippet>34</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
 <a href=#35 id=35 data-nosnippet>35</a>	<span class="kw">match </span>ScanAndPopulateExtensions(ApplicationHandle.clone(), <span class="kw-2">&amp;</span>AppState.Extension).<span class="kw">await </span>{
 <a href=#36 id=36 data-nosnippet>36</a>		<span class="prelude-val">Ok</span>(()) =&gt; {
