@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"constant":["MAX_EDITS_PER_DOCUMENT","MAX_SIDECAR_IDENTIFIER_LENGTH","MAX_VIEW_TYPE_LENGTH"],"struct":["CustomDocumentStateDTO"]};

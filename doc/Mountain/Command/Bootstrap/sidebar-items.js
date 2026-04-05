@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["CommandCloseDocument","CommandFormatDocument","CommandHelloWorld","CommandOpenFile","CommandReloadWindow","CommandSaveDocument","RegisterNativeCommands","ValidateCommandParameters"]};

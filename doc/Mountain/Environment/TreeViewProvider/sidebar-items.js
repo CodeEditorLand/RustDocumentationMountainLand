@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"mod":["DataAccess","Events","Registration","StatePersistence","UIState","Visibility"]};
