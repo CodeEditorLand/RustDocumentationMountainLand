@@ -1,0 +1,3 @@
+Vine::Generated::on_did_receive_message_request::Message: prost::Message
+AirLibrary::Vine::Generated::air::UpdateConfigurationRequest
+AirLibrary::Vine::Generated::air::UpdateConfigurationResponse

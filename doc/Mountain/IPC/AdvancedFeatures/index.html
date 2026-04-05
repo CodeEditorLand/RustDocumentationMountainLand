@@ -1,0 +1,193 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Advanced experimental features."><title>Mountain::IPC::AdvancedFeatures - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-b7b9f40b.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-41dd4d93.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module AdvancedFeatures</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Advanced<wbr>Features</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#advanced-ipc-features---enhanced-synchronization--collaboration" title="Advanced IPC Features - Enhanced Synchronization &#38; Collaboration">Advanced IPC Features - Enhanced Synchronization &amp; Collaboration</a></li></ul><h3><a href="#structs">Module Items</a></h3><ul class="block"><li><a href="#structs" title="Structs">Structs</a></li><li><a href="#functions" title="Functions">Functions</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>IPC</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">IPC</a></div><h1>Module <span>Advanced<wbr>Features</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/IPC/AdvancedFeatures.rs.html#1-649">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Advanced experimental features.</p>
+<h2 id="advanced-ipc-features---enhanced-synchronization--collaboration"><a class="doc-anchor" href="#advanced-ipc-features---enhanced-synchronization--collaboration">§</a>Advanced IPC Features - Enhanced Synchronization &amp; Collaboration</h2>
+<p><strong>File Responsibilities:</strong>
+This module provides advanced features for the IPC layer that go beyond
+basic communication. It implements real-time collaboration support,
+performance optimization through caching, and enhanced monitoring
+capabilities.</p>
+<p><strong>Architectural Role in Wind-Mountain Connection:</strong></p>
+<p>The AdvancedFeatures module extends the IPC layer with:</p>
+<ol>
+<li>
+<p><strong>Real-time Collaboration:</strong> Support for multi-user collaborative editing</p>
+<ul>
+<li>Session management for collaborative workspaces</li>
+<li>Participant tracking and permission management</li>
+<li>Real-time document change broadcasting</li>
+</ul>
+</li>
+<li>
+<p><strong>Performance Optimization:</strong> Intelligent caching to reduce redundant
+operations</p>
+<ul>
+<li>Message caching with TTL (Time-To-Live)</li>
+<li>Cache hit/miss tracking and analytics</li>
+<li>Automatic cleanup of expired cache entries</li>
+</ul>
+</li>
+<li>
+<p><strong>Advanced Monitoring:</strong> Detailed performance tracking and metrics</p>
+<ul>
+<li>Message rate calculations (MPS - Messages Per Second)</li>
+<li>Latency tracking (average, peak)</li>
+<li>Error rate monitoring</li>
+<li>Connection uptime tracking</li>
+</ul>
+</li>
+<li>
+<p><strong>Background Services:</strong> Continuous monitoring and cleanup tasks</p>
+<ul>
+<li>Periodic performance metrics calculation</li>
+<li>Cache cleanup at regular intervals</li>
+<li>Session monitoring for inactivity</li>
+</ul>
+</li>
+</ol>
+<p><strong>Key Features:</strong></p>
+<p><strong>1. Collaboration Support:</strong></p>
+<p><strong>CollaborationSessions:</strong></p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code>CollaborationSession {
+    session_id: String,
+    participants: Vec&lt;String&gt;,
+    active_documents: Vec&lt;String&gt;,
+    last_activity: u64,
+    permissions: CollaborationPermissions,
+}</code></pre></div>
+<p><strong>Permissions:</strong></p>
+<ul>
+<li><code>can_edit</code>: Allow editing</li>
+<li><code>can_view</code>: Read-only access</li>
+<li><code>can_comment</code>: Allow comments</li>
+<li><code>can_share</code>: Allow inviting others</li>
+</ul>
+<p><strong>Session Management:</strong></p>
+<ul>
+<li><code>create_collaboration_session()</code> - Create new session</li>
+<li><code>add_participant()</code> - Add user to session</li>
+<li><code>monitor_collaboration_sessions()</code> - Track active sessions</li>
+<li>Automatic session cleanup on inactivity (5 minutes)</li>
+</ul>
+<p><strong>2. Message Caching:</strong></p>
+<p><strong>Cache Structure:</strong></p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code>MessageCache {
+    cached_messages: HashMap&lt;String, CachedMessage&gt;,
+    cache_hits: u64,
+    cache_misses: u64,
+    cache_size: usize,
+}</code></pre></div>
+<p><strong>CachedMessage:</strong></p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code>CachedMessage {
+	data:serde_json::Value,
+	timestamp:u64,
+	ttl:u64, <span class="comment">// Time to live in seconds
+</span>}</code></pre></div>
+<p><strong>Cache Operations:</strong></p>
+<ul>
+<li><code>cache_message(id, data, ttl)</code> - Store message</li>
+<li><code>get_cached_message(id)</code> - Retrieve message</li>
+<li>Automatic TTL-based expiration</li>
+<li>Periodic cleanup every 60 seconds</li>
+</ul>
+<p><strong>Cache Effectiveness:</strong></p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code>cache_hit_rate = cache_hits / (cache_hits + cache_misses) </code></pre></div>
+<p><strong>3. Performance Monitoring:</strong></p>
+<p><strong>Metrics Tracked:</strong></p>
+<ul>
+<li><code>total_messages_sent</code> - Outgoing message count</li>
+<li><code>total_messages_received</code> - Incoming message count</li>
+<li><code>average_processing_time_ms</code> - Mean latency</li>
+<li><code>peak_message_rate</code> - Maximum observed rate</li>
+<li><code>error_count</code> - Total errors</li>
+<li><code>connection_uptime</code> - Time connected</li>
+</ul>
+<p><strong>Calculations:</strong></p>
+<p><strong>Average Processing Time:</strong></p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code>new_avg = old_avg * (n - <span class="number">1</span>) / n + current_time / n </code></pre></div>
+<p><strong>Message Rate:</strong></p>
+<div class="example-wrap"><pre class="language-text"><code>messages_per_second = total_messages / time_window_seconds</code></pre></div>
+<p><strong>4. Background Services:</strong></p>
+<p><strong>Performance Monitoring (Every 10 seconds):</strong></p>
+<ul>
+<li>Calculate current performance metrics</li>
+<li>Emit metrics to Sky via IPC events</li>
+<li>Update connection uptime</li>
+</ul>
+<p><strong>Cache Cleanup (Every 60 seconds):</strong></p>
+<ul>
+<li>Remove expired cache entries</li>
+<li>Update cache size count</li>
+<li>Log cleanup statistics</li>
+</ul>
+<p><strong>Session Monitoring (Every 30 seconds):</strong></p>
+<ul>
+<li>Remove inactive sessions (5+ minutes idle)</li>
+<li>Emit session updates to subscribers</li>
+<li>Track session count</li>
+</ul>
+<p><strong>Tauri Commands:</strong></p>
+<ul>
+<li><code>mountain_get_performance_stats</code> - Get performance metrics</li>
+<li><code>mountain_get_cache_stats</code> - Get cache statistics</li>
+<li><code>mountain_create_collaboration_session</code> - Create collaboration session</li>
+<li><code>mountain_get_collaboration_sessions</code> - Get all active sessions</li>
+</ul>
+<p><strong>Events Emitted:</strong></p>
+<ul>
+<li><code>ipc-performance-stats</code> - Performance metrics update</li>
+<li><code>collaboration-sessions-update</code> - Active sessions list</li>
+</ul>
+<p><strong>Initialization:</strong></p>
+<div class="example-wrap"><pre class="language-text"><code>// In Mountain setup
+let features = AdvancedFeatures::new(runtime);
+app_handle.manage(features.clone_features());
+features.start_monitoring().await;</code></pre></div>
+<p><strong>Usage Examples:</strong></p>
+<p><strong>Caching a Message:</strong></p>
+<div class="example-wrap"><pre class="language-text"><code>features.cache_message(
+&quot;config:editor&quot;.to_string(),
+serde_json::json!({ &quot;theme&quot;: &quot;dark&quot; }),
+300 // 5 minutes TTL
+).await?;
+
+// Retrieve later
+let cached = features.get_cached_message(&quot;config:editor&quot;).await;</code></pre></div>
+<p><strong>Creating a Collaboration Session:</strong></p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>permissions = CollaborationPermissions {
+	can_edit:<span class="bool-val">true</span>,
+	can_view:<span class="bool-val">true</span>,
+	can_comment:<span class="bool-val">true</span>,
+	can_share:<span class="bool-val">false</span>,
+};
+
+features
+	.create_collaboration_session(<span class="string">"project-alpha"</span>.to_string(), permissions)
+	.<span class="kw">await</span><span class="question-mark">?</span>;
+
+features.add_participant(<span class="string">"project-alpha"</span>, <span class="string">"user123"</span>).<span class="kw">await</span><span class="question-mark">?</span>;</code></pre></div>
+<p><strong>Monitoring Performance:</strong></p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code>features.record_message_statistics(<span class="bool-val">true</span>, <span class="number">15</span>).<span class="kw">await</span>; <span class="comment">// Sent, 15ms
+</span><span class="kw">let </span>stats = features.get_performance_stats().<span class="kw">await</span><span class="question-mark">?</span>;
+<span class="macro">println!</span>(<span class="string">"Average latency: {}ms"</span>, stats.average_processing_time_ms);</code></pre></div>
+<p><strong>Integration with StatusReporter:</strong></p>
+<p>The AdvancedFeatures module works with StatusReporter:</p>
+<ul>
+<li>StatusReporter can call this module for detailed metrics</li>
+<li>Both modules emit events to Sky for monitoring</li>
+<li>Complementary monitoring at different levels</li>
+</ul>
+<p><strong>Advanced Features Future Enhancements:</strong></p>
+<ul>
+<li><strong>Intelligent Caching:</strong> LRU cache eviction, predictive caching</li>
+<li><strong>Collaboration Cursors:</strong> Real-time cursor position sharing</li>
+<li><strong>Conflict Resolution:</strong> Automatic conflict detection and resolution</li>
+<li><strong>Presence Indicators:</strong> Show who is viewing/editing documents</li>
+<li><strong>Change History:</strong> Track all collaborative changes with authors</li>
+</ul>
+</div></details><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.AdvancedFeatures.html" title="struct Mountain::IPC::AdvancedFeatures::AdvancedFeatures">Advanced<wbr>Features</a></dt><dd>Advanced IPC features for enhanced Mountain-Wind synchronization</dd><dt><a class="struct" href="struct.CachedMessage.html" title="struct Mountain::IPC::AdvancedFeatures::CachedMessage">Cached<wbr>Message</a></dt><dd>Cached message with timestamp</dd><dt><a class="struct" href="struct.CollaborationPermissions.html" title="struct Mountain::IPC::AdvancedFeatures::CollaborationPermissions">Collaboration<wbr>Permissions</a></dt><dd>Collaboration permissions</dd><dt><a class="struct" href="struct.CollaborationSession.html" title="struct Mountain::IPC::AdvancedFeatures::CollaborationSession">Collaboration<wbr>Session</a></dt><dd>Real-time collaboration session</dd><dt><a class="struct" href="struct.MessageCache.html" title="struct Mountain::IPC::AdvancedFeatures::MessageCache">Message<wbr>Cache</a></dt><dd>Message cache for performance optimization</dd><dt><a class="struct" href="struct.PerformanceStats.html" title="struct Mountain::IPC::AdvancedFeatures::PerformanceStats">Performance<wbr>Stats</a></dt><dd>Performance statistics for IPC monitoring</dd></dl><h2 id="functions" class="section-header">Functions<a href="#functions" class="anchor">§</a></h2><dl class="item-table"><dt><a class="fn" href="fn.initialize_advanced_features.html" title="fn Mountain::IPC::AdvancedFeatures::initialize_advanced_features">initialize_<wbr>advanced_<wbr>features</a></dt><dd>Initialize advanced features in Mountain’s setup</dd><dt><a class="fn" href="fn.mountain_create_collaboration_session.html" title="fn Mountain::IPC::AdvancedFeatures::mountain_create_collaboration_session">mountain_<wbr>create_<wbr>collaboration_<wbr>session</a></dt><dd>Tauri command to create collaboration session</dd><dt><a class="fn" href="fn.mountain_get_cache_stats.html" title="fn Mountain::IPC::AdvancedFeatures::mountain_get_cache_stats">mountain_<wbr>get_<wbr>cache_<wbr>stats</a></dt><dd>Tauri command to get cache statistics</dd><dt><a class="fn" href="fn.mountain_get_collaboration_sessions.html" title="fn Mountain::IPC::AdvancedFeatures::mountain_get_collaboration_sessions">mountain_<wbr>get_<wbr>collaboration_<wbr>sessions</a></dt><dd>Tauri command to get collaboration sessions</dd><dt><a class="fn" href="fn.mountain_get_performance_stats.html" title="fn Mountain::IPC::AdvancedFeatures::mountain_get_performance_stats">mountain_<wbr>get_<wbr>performance_<wbr>stats</a></dt><dd>Tauri command to get performance statistics</dd></dl></section></div></main></body></html>

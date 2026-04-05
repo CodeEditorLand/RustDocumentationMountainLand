@@ -1,0 +1,85 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="LanguageFeature (Command)"><title>Mountain::Command::LanguageFeature - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-b7b9f40b.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-41dd4d93.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module LanguageFeature</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Language<wbr>Feature</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#languagefeature-command" title="LanguageFeature (Command)">LanguageFeature (Command)</a></li></ul><h3><a href="#modules">Module Items</a></h3><ul class="block"><li><a href="#modules" title="Modules">Modules</a></li><li><a href="#functions" title="Functions">Functions</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Command</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Command</a></div><h1>Module <span>Language<wbr>Feature</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Command/LanguageFeature.rs.html#1-173">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="languagefeature-command"><a class="doc-anchor" href="#languagefeature-command">§</a>LanguageFeature (Command)</h2>
+<p>RESPONSIBILITIES:</p>
+<ul>
+<li>Defines Tauri command handlers for language feature requests from Sky
+frontend</li>
+<li>Bridges Monaco Editor language requests to
+<code>LanguageFeatureProviderRegistry</code></li>
+<li>Provides type-safe parameter handling and validation for LSP features</li>
+<li>Implements hover, code actions, document highlights, completions,
+definition, references</li>
+<li>Uses generic <code>InvokeProvider</code> helper to reduce boilerplate</li>
+</ul>
+<p>ARCHITECTURAL ROLE:</p>
+<ul>
+<li>Command layer that exposes language features via Tauri IPC (<code>#[command]</code>)</li>
+<li>Delegates to Environment’s
+<code>LanguageFeatureProvider</code>
+via DI with <code>Require()</code> trait</li>
+<li>Translates between frontend JSON parameters and Rust DTO types</li>
+<li>Error strings returned directly to frontend for display</li>
+</ul>
+<p>COMMAND REFERENCE (Tauri IPC):</p>
+<ul>
+<li><a href="fn.MountainProvideHover.html" title="fn Mountain::Command::LanguageFeature::MountainProvideHover"><code>MountainProvideHover</code></a>: Show hover information at cursor position</li>
+<li><a href="fn.MountainProvideCodeActions.html" title="fn Mountain::Command::LanguageFeature::MountainProvideCodeActions"><code>MountainProvideCodeActions</code></a>: Get quick fixes and refactorings for a
+code range</li>
+<li><a href="fn.MountainProvideDocumentHighlights.html" title="fn Mountain::Command::LanguageFeature::MountainProvideDocumentHighlights"><code>MountainProvideDocumentHighlights</code></a>: Find symbol occurrences in document</li>
+<li><a href="fn.MountainProvideCompletions.html" title="fn Mountain::Command::LanguageFeature::MountainProvideCompletions"><code>MountainProvideCompletions</code></a>: Get code completion suggestions with
+context</li>
+<li><a href="fn.MountainProvideDefinition.html" title="fn Mountain::Command::LanguageFeature::MountainProvideDefinition"><code>MountainProvideDefinition</code></a>: Jump to symbol definition location</li>
+<li><a href="fn.MountainProvideReferences.html" title="fn Mountain::Command::LanguageFeature::MountainProvideReferences"><code>MountainProvideReferences</code></a>: Find all references to a symbol</li>
+</ul>
+<p>ERROR HANDLING:</p>
+<ul>
+<li>Returns <code>Result&lt;Value, String&gt;</code> where errors sent directly to frontend</li>
+<li>Validates URI non-empty and position format (line/character numbers)</li>
+<li>JSON serialization errors converted to strings</li>
+<li>Provider errors (CommonError) converted to strings via <code>map_err(|Error| Error.to_string())</code></li>
+</ul>
+<p>PERFORMANCE:</p>
+<ul>
+<li>Each command is async and non-blocking</li>
+<li>Provider lookup is O(1) via <code>Require()</code> from DI container</li>
+<li>URI parsing and DTO deserialization adds minimal overhead</li>
+</ul>
+<p>VS CODE REFERENCE:</p>
+<ul>
+<li><code>vs/workbench/api/common/extHostLanguageFeatures.ts</code> - ext host language
+features API</li>
+<li><code>vs/workbench/services/languageFeatures/common/languageFeaturesService.ts</code>
+<ul>
+<li>service layer</li>
+</ul>
+</li>
+<li><code>vs/workbench/contrib/hover/browser/hover.ts</code> - hover implementation</li>
+<li><code>vs/workbench/contrib/completion/browser/completion.ts</code> - completion
+widget</li>
+<li><code>vs/workbench/contrib/definition/browser/definition.ts</code> - go to definition</li>
+<li><code>vs/workbench/contrib/references/browser/references.ts</code> - find references</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Implement more language features: document symbols, formatting, rename,
+signature help</li>
+<li>Add cancellation token support for long-running operations</li>
+<li>Implement request deduplication for identical concurrent requests</li>
+<li>Add request caching for repeated symbol lookups</li>
+<li>Support workspace symbol search</li>
+<li>Add semantic tokens for syntax highlighting</li>
+<li>Implement code lens provider</li>
+<li>Add inlay hints support</li>
+<li>Support linked editing range</li>
+<li>Add call hierarchy and type hierarchy</li>
+<li>Implement document color and color presentation</li>
+<li>Add folding range provider</li>
+<li>Support selection range provider</li>
+</ul>
+<p>MODULE STRUCTURE:</p>
+<ul>
+<li><a href="validation.rs"><code>validation.rs</code></a> - request validation helper</li>
+<li><a href="invoke_provider.rs"><code>invoke_provider.rs</code></a> - generic provider invoker</li>
+<li>Individual command modules for each language feature (containing impls
+only)</li>
+</ul>
+</div></details><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="code_actions/index.html" title="mod Mountain::Command::LanguageFeature::code_actions">code_<wbr>actions</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>LanguageFeature - Code Actions</dd><dt><a class="mod" href="completions/index.html" title="mod Mountain::Command::LanguageFeature::completions">completions</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>LanguageFeature - Completions</dd><dt><a class="mod" href="definition/index.html" title="mod Mountain::Command::LanguageFeature::definition">definition</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>LanguageFeature - Definition</dd><dt><a class="mod" href="highlights/index.html" title="mod Mountain::Command::LanguageFeature::highlights">highlights</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>LanguageFeature - Document Highlights</dd><dt><a class="mod" href="hover/index.html" title="mod Mountain::Command::LanguageFeature::hover">hover</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>LanguageFeature - Hover</dd><dt><a class="mod" href="invoke_provider/index.html" title="mod Mountain::Command::LanguageFeature::invoke_provider">invoke_<wbr>provider</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>LanguageFeature - Invoke Provider Helper</dd><dt><a class="mod" href="references/index.html" title="mod Mountain::Command::LanguageFeature::references">references</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>LanguageFeature - References</dd><dt><a class="mod" href="validation/index.html" title="mod Mountain::Command::LanguageFeature::validation">validation</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>LanguageFeature - Validation</dd></dl><h2 id="functions" class="section-header">Functions<a href="#functions" class="anchor">§</a></h2><dl class="item-table"><dt><a class="fn" href="fn.MountainProvideCodeActions.html" title="fn Mountain::Command::LanguageFeature::MountainProvideCodeActions">Mountain<wbr>Provide<wbr>Code<wbr>Actions</a></dt><dd>Provides code actions (quick fixes and refactorings) for a code range</dd><dt><a class="fn" href="fn.MountainProvideCompletions.html" title="fn Mountain::Command::LanguageFeature::MountainProvideCompletions">Mountain<wbr>Provide<wbr>Completions</a></dt><dd>Provides code completion suggestions</dd><dt><a class="fn" href="fn.MountainProvideDefinition.html" title="fn Mountain::Command::LanguageFeature::MountainProvideDefinition">Mountain<wbr>Provide<wbr>Definition</a></dt><dd>Provides go-to-definition functionality</dd><dt><a class="fn" href="fn.MountainProvideDocumentHighlights.html" title="fn Mountain::Command::LanguageFeature::MountainProvideDocumentHighlights">Mountain<wbr>Provide<wbr>Document<wbr>Highlights</a></dt><dd>Finds symbol occurrences (document highlights) in a document</dd><dt><a class="fn" href="fn.MountainProvideHover.html" title="fn Mountain::Command::LanguageFeature::MountainProvideHover">Mountain<wbr>Provide<wbr>Hover</a></dt><dd>Provides hover information at cursor position</dd><dt><a class="fn" href="fn.MountainProvideReferences.html" title="fn Mountain::Command::LanguageFeature::MountainProvideReferences">Mountain<wbr>Provide<wbr>References</a></dt><dd>Finds all references to a symbol</dd></dl></section></div></main></body></html>

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["MountainProvideCodeActions","MountainProvideCompletions","MountainProvideDefinition","MountainProvideDocumentHighlights","MountainProvideHover","MountainProvideReferences"],"mod":["code_actions","completions","definition","highlights","hover","invoke_provider","references","validation"]};

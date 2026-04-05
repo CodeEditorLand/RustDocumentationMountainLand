@@ -1,0 +1,163 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Legacy Wind Service Handlers."><title>Mountain::IPC::WindServiceHandlers - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-b7b9f40b.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-41dd4d93.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module WindServiceHandlers</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Wind<wbr>Service<wbr>Handlers</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#wind-service-handlers---cross-language-service-bridge" title="Wind Service Handlers - Cross-Language Service Bridge">Wind Service Handlers - Cross-Language Service Bridge</a></li></ul><h3><a href="#functions">Module Items</a></h3><ul class="block"><li><a href="#functions" title="Functions">Functions</a></li><li><a href="#types" title="Type Aliases">Type Aliases</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>IPC</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">IPC</a></div><h1>Module <span>Wind<wbr>Service<wbr>Handlers</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/IPC/WindServiceHandlers.rs.html#1-820">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Legacy Wind Service Handlers.</p>
+<h2 id="wind-service-handlers---cross-language-service-bridge"><a class="doc-anchor" href="#wind-service-handlers---cross-language-service-bridge">§</a>Wind Service Handlers - Cross-Language Service Bridge</h2>
+<p><strong>File Responsibilities:</strong>
+This module provides the direct mapping layer between Wind’s TypeScript
+service invocations and Mountain’s Rust service implementations. It acts as
+the critical translation layer that enables Wind to request operations from
+Mountain through Tauri’s IPC mechanism.</p>
+<p><strong>Architectural Role in Wind-Mountain Connection:</strong></p>
+<p>The WindServiceHandlers module implements the concrete command handlers that
+process IPC invocations from Wind. It serves as the single entry point for
+all Wind-&gt;Mountain service requests:</p>
+<ol>
+<li><strong>Command Mapping:</strong> Maps Wind’s TypeScript service methods to Rust
+implementations</li>
+<li><strong>Type Conversion:</strong> Converts between JSON/TypeScript types and Rust
+types</li>
+<li><strong>Validation:</strong> Validates all inputs before forwarding to Mountain
+services</li>
+<li><strong>Error Handling:</strong> Provides comprehensive error messages back to Wind</li>
+<li><strong>Service Integration:</strong> Connects to Mountain’s internal service
+architecture</li>
+</ol>
+<p><strong>Handled Command Categories:</strong></p>
+<p><strong>1. Configuration Commands:</strong></p>
+<ul>
+<li><code>configuration:get</code> - Retrieve configuration values</li>
+<li><code>configuration:update</code> - Update configuration values</li>
+</ul>
+<p><strong>2. File System Commands:</strong></p>
+<ul>
+<li><code>file:read</code> - Read file contents</li>
+<li><code>file:write</code> - Write to files</li>
+<li><code>file:stat</code> - Get file metadata</li>
+<li><code>file:exists</code> - Check file existence</li>
+<li><code>file:delete</code> - Delete files or directories</li>
+<li><code>file:copy</code> - Copy files</li>
+<li><code>file:move</code> - Move/rename files</li>
+<li><code>file:mkdir</code> - Create directories</li>
+<li><code>file:readdir</code> - Read directory contents</li>
+<li><code>file:readBinary</code> - Read binary files</li>
+<li><code>file:writeBinary</code> - Write binary files</li>
+</ul>
+<p><strong>3. Storage Commands:</strong></p>
+<ul>
+<li><code>storage:get</code> - Retrieve persistent storage values</li>
+<li><code>storage:set</code> - Store persistent values</li>
+</ul>
+<p><strong>4. Environment Commands:</strong></p>
+<ul>
+<li><code>environment:get</code> - Get environment variables</li>
+</ul>
+<p><strong>5. Native Host Commands:</strong></p>
+<ul>
+<li><code>native:showItemInFolder</code> - Reveal file in system file manager</li>
+<li><code>native:openExternal</code> - Open URLs in external browser</li>
+</ul>
+<p><strong>6. Workbench Commands:</strong></p>
+<ul>
+<li><code>workbench:getConfiguration</code> - Get complete workbench configuration</li>
+</ul>
+<p><strong>7. IPC Status Commands:</strong></p>
+<ul>
+<li><code>mountain_get_status</code> - Get overall IPC system status</li>
+<li><code>mountain_get_configuration</code> - Get Mountain configuration snapshot</li>
+<li><code>mountain_get_services_status</code> - Get status of all Mountain services</li>
+<li><code>mountain_get_state</code> - Get current application state</li>
+</ul>
+<p><strong>Communication Pattern:</strong></p>
+<div class="example-wrap"><pre class="language-text"><code>Wind (TypeScript)
+  |
+  | app.handle.invoke(&#39;command&#39;, args)
+  v
+Tauri Bridge (IPC)
+  |
+  | mountain_ipc_invoke(command, args)
+  v
+WindServiceHandlers
+  |
+  | Type conversion + validation
+  v
+Mountain Services (Rust)
+  |
+  | Execute operation
+  v
+Return Result&lt;serde_json::Value&gt;</code></pre></div>
+<p><strong>Type Conversion Strategy (TypeScript &lt;-&gt; Rust):</strong></p>
+<p><strong>Primitive Types:</strong></p>
+<ul>
+<li>TypeScript <code>string</code> ↔ Rust <code>String</code> / <code>&amp;str</code></li>
+<li>TypeScript <code>number</code> ↔ Rust <code>f64</code> / <code>i32</code> / <code>u32</code></li>
+<li>TypeScript <code>boolean</code> ↔ Rust <code>bool</code></li>
+<li>TypeScript <code>null</code> ↔ Rust <code>Option::&lt;T&gt;::None</code></li>
+</ul>
+<p><strong>Complex Types:</strong></p>
+<ul>
+<li>TypeScript <code>object</code> ↔ Rust <code>serde_json::Value</code> / <code>HashMap</code></li>
+<li>TypeScript <code>Array&lt;T&gt;</code> ↔ Rust <code>Vec&lt;T&gt;</code></li>
+<li>TypeScript custom interfaces ↔ Rust structs with Serialize/Deserialize</li>
+</ul>
+<p><strong>Example Type Conversion:</strong></p>
+<div class="example-wrap"><pre class="language-typescript"><code>// Wind (TypeScript)
+interface FileReadOptions {
+  encoding: &#39;utf8&#39; | &#39;binary&#39;;
+  withBOM: boolean;
+}
+const result = await invoke(&#39;file:read&#39;, {
+  path: &#39;/path/to/file.txt&#39;,
+  options: { encoding: &#39;utf8&#39;, withBOM: false }
+});</code></pre></div><div class="example-wrap"><pre class="language-text"><code>// Mountain (Rust)
+args.get(0).and_then(|v| v.as_str()) // Extract path
+args.get(1).and_then(|v| v.as_object()) // Extract options
+// ... validation, processing, return Result</code></pre></div>
+<p><strong>Defensive Error Handling:</strong></p>
+<p>Each handler implements comprehensive error handling:</p>
+<ol>
+<li>
+<p><strong>Input Validation:</strong></p>
+<ul>
+<li>Check parameter presence</li>
+<li>Validate parameter types</li>
+<li>Validate value ranges and formats</li>
+</ul>
+</li>
+<li>
+<p><strong>Service Error Handling:</strong></p>
+<ul>
+<li>Catch and translate service errors</li>
+<li>Provide detailed error messages</li>
+<li>Include context for debugging</li>
+</ul>
+</li>
+<li>
+<p><strong>Error Response Format:</strong></p>
+</li>
+</ol>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code>Error(<span class="string">"Failed to read file: Permission denied (path: /etc/passwd)"</span>) </code></pre></div>
+<p><strong>Comprehensive Error Messages:</strong></p>
+<ul>
+<li>Include operation that failed</li>
+<li>Include relevant parameters (paths, keys, etc.)</li>
+<li>Include the underlying cause</li>
+<li>Format: <code>"Failed to &lt;operation&gt;: &lt;cause&gt; (context: &lt;value&gt;)"</code></li>
+</ul>
+<p><strong>Service Integration Pattern:</strong></p>
+<p>Handlers use Mountain’s dependency injection system via <code>Requires</code> trait:</p>
+<div class="example-wrap"><pre class="language-text"><code>let provider: Arc&lt;dyn ConfigurationProvider&gt; = runtime.Environment.Require();
+provider.GetConfigurationValue(...).await?;</code></pre></div>
+<p>This provides:</p>
+<ul>
+<li>Loose coupling between handlers and services</li>
+<li>Testable architecture (can mock services)</li>
+<li>Centralized service lifecycle management</li>
+</ul>
+<p><strong>Command Registration:</strong></p>
+<p>All handlers are automatically registered when included in Tauri’s
+invoke_handler:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code>.invoke_handler(<span class="macro">tauri::generate_handler!</span>[
+    mountain_ipc_invoke,
+    <span class="comment">// ... other commands
+</span>])</code></pre></div></div></details><h2 id="functions" class="section-header">Functions<a href="#functions" class="anchor">§</a></h2><dl class="item-table"><dt><a class="fn" href="fn.handle_configuration_get.html" title="fn Mountain::IPC::WindServiceHandlers::handle_configuration_get">handle_<wbr>configuration_<wbr>get</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Handler for configuration get requests</dd><dt><a class="fn" href="fn.handle_configuration_update.html" title="fn Mountain::IPC::WindServiceHandlers::handle_configuration_update">handle_<wbr>configuration_<wbr>update</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Handler for configuration update requests</dd><dt><a class="fn" href="fn.handle_environment_get.html" title="fn Mountain::IPC::WindServiceHandlers::handle_environment_get">handle_<wbr>environment_<wbr>get</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Handler for environment get requests</dd><dt><a class="fn" href="fn.handle_file_copy.html" title="fn Mountain::IPC::WindServiceHandlers::handle_file_copy">handle_<wbr>file_<wbr>copy</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Handler for file copy requests</dd><dt><a class="fn" href="fn.handle_file_delete.html" title="fn Mountain::IPC::WindServiceHandlers::handle_file_delete">handle_<wbr>file_<wbr>delete</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Handler for file delete requests</dd><dt><a class="fn" href="fn.handle_file_exists.html" title="fn Mountain::IPC::WindServiceHandlers::handle_file_exists">handle_<wbr>file_<wbr>exists</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Handler for file exists requests</dd><dt><a class="fn" href="fn.handle_file_mkdir.html" title="fn Mountain::IPC::WindServiceHandlers::handle_file_mkdir">handle_<wbr>file_<wbr>mkdir</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Handler for directory creation requests</dd><dt><a class="fn" href="fn.handle_file_move.html" title="fn Mountain::IPC::WindServiceHandlers::handle_file_move">handle_<wbr>file_<wbr>move</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Handler for file move requests</dd><dt><a class="fn" href="fn.handle_file_read.html" title="fn Mountain::IPC::WindServiceHandlers::handle_file_read">handle_<wbr>file_<wbr>read</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Handler for file read requests</dd><dt><a class="fn" href="fn.handle_file_read_binary.html" title="fn Mountain::IPC::WindServiceHandlers::handle_file_read_binary">handle_<wbr>file_<wbr>read_<wbr>binary</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Handler for binary file read requests</dd><dt><a class="fn" href="fn.handle_file_readdir.html" title="fn Mountain::IPC::WindServiceHandlers::handle_file_readdir">handle_<wbr>file_<wbr>readdir</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Handler for directory reading requests</dd><dt><a class="fn" href="fn.handle_file_stat.html" title="fn Mountain::IPC::WindServiceHandlers::handle_file_stat">handle_<wbr>file_<wbr>stat</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Handler for file stat requests</dd><dt><a class="fn" href="fn.handle_file_write.html" title="fn Mountain::IPC::WindServiceHandlers::handle_file_write">handle_<wbr>file_<wbr>write</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Handler for file write requests</dd><dt><a class="fn" href="fn.handle_file_write_binary.html" title="fn Mountain::IPC::WindServiceHandlers::handle_file_write_binary">handle_<wbr>file_<wbr>write_<wbr>binary</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Handler for binary file write requests</dd><dt><a class="fn" href="fn.handle_open_external.html" title="fn Mountain::IPC::WindServiceHandlers::handle_open_external">handle_<wbr>open_<wbr>external</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Handler for opening external URLs</dd><dt><a class="fn" href="fn.handle_show_item_in_folder.html" title="fn Mountain::IPC::WindServiceHandlers::handle_show_item_in_folder">handle_<wbr>show_<wbr>item_<wbr>in_<wbr>folder</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Handler for showing items in folder</dd><dt><a class="fn" href="fn.handle_storage_get.html" title="fn Mountain::IPC::WindServiceHandlers::handle_storage_get">handle_<wbr>storage_<wbr>get</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Handler for storage get requests</dd><dt><a class="fn" href="fn.handle_storage_set.html" title="fn Mountain::IPC::WindServiceHandlers::handle_storage_set">handle_<wbr>storage_<wbr>set</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Handler for storage set requests</dd><dt><a class="fn" href="fn.handle_workbench_configuration.html" title="fn Mountain::IPC::WindServiceHandlers::handle_workbench_configuration">handle_<wbr>workbench_<wbr>configuration</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Handler for workbench configuration requests</dd><dt><a class="fn" href="fn.mountain_ipc_invoke.html" title="fn Mountain::IPC::WindServiceHandlers::mountain_ipc_invoke">mountain_<wbr>ipc_<wbr>invoke</a></dt><dd>Handler for Wind’s MainProcessService.invoke() calls
+Maps Tauri IPC commands to Mountain’s internal command system</dd><dt><a class="fn" href="fn.register_wind_ipc_handlers.html" title="fn Mountain::IPC::WindServiceHandlers::register_wind_ipc_handlers">register_<wbr>wind_<wbr>ipc_<wbr>handlers</a></dt><dd>Register all Wind IPC command handlers</dd></dl><h2 id="types" class="section-header">Type Aliases<a href="#types" class="anchor">§</a></h2><dl class="item-table"><dt><a class="type" href="type.ConfigurationOverridesDTO.html" title="type Mountain::IPC::WindServiceHandlers::ConfigurationOverridesDTO">Configuration<wbr>OverridesDTO</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dt><a class="type" href="type.ConfigurationTarget.html" title="type Mountain::IPC::WindServiceHandlers::ConfigurationTarget">Configuration<wbr>Target</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt></dl></section></div></main></body></html>

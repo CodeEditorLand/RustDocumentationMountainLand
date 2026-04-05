@@ -1,0 +1,122 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="FileExplorerViewProvider (FileSystem)"><title>Mountain::FileSystem::FileExplorerViewProvider - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-b7b9f40b.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-41dd4d93.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module FileExplorerViewProvider</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module File<wbr>Explorer<wbr>View<wbr>Provider</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#fileexplorerviewprovider-filesystem" title="FileExplorerViewProvider (FileSystem)">FileExplorerViewProvider (FileSystem)</a><ul><li><a href="#responsibilities" title="RESPONSIBILITIES">RESPONSIBILITIES</a></li><li><a href="#architectural-role" title="ARCHITECTURAL ROLE">ARCHITECTURAL ROLE</a></li><li><a href="#tree-item-dto-structure" title="TREE ITEM DTO STRUCTURE">TREE ITEM DTO STRUCTURE</a></li><li><a href="#methods-overview" title="METHODS OVERVIEW">METHODS OVERVIEW</a></li><li><a href="#error-handling" title="ERROR HANDLING">ERROR HANDLING</a></li><li><a href="#performance" title="PERFORMANCE">PERFORMANCE</a></li><li><a href="#vs-code-reference" title="VS CODE REFERENCE">VS CODE REFERENCE</a></li><li><a href="#todo" title="TODO">TODO</a></li><li><a href="#module-contents" title="MODULE CONTENTS">MODULE CONTENTS</a></li></ul></li></ul><h3><a href="#structs">Module Items</a></h3><ul class="block"><li><a href="#structs" title="Structs">Structs</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>File<wbr>System</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">FileSystem</a></div><h1>Module <span>File<wbr>Explorer<wbr>View<wbr>Provider</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/FileSystem/FileExplorerViewProvider.rs.html#1-348">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="fileexplorerviewprovider-filesystem"><a class="doc-anchor" href="#fileexplorerviewprovider-filesystem">§</a>FileExplorerViewProvider (FileSystem)</h2>
+<p>A native (Rust-implemented) <code>TreeViewProvider</code> that provides the data for
+the file explorer (tree) view in Mountain. This is a <strong>native provider</strong>,
+meaning it is implemented directly in Rust rather than being provided by an
+extension.</p>
+<h3 id="responsibilities"><a class="doc-anchor" href="#responsibilities">§</a>RESPONSIBILITIES</h3><h4 id="1-root-level-items-workspace-folders"><a class="doc-anchor" href="#1-root-level-items-workspace-folders">§</a>1. Root-Level Items (Workspace Folders)</h4>
+<ul>
+<li>Return the list of workspace folders as root tree nodes</li>
+<li>Each folder appears as a collapsible node at the top level</li>
+<li>Folder names are displayed as labels</li>
+</ul>
+<h4 id="2-directory-listing"><a class="doc-anchor" href="#2-directory-listing">§</a>2. Directory Listing</h4>
+<ul>
+<li>Provide children for a given directory URI (via <code>GetChildren</code>)</li>
+<li>Read filesystem to enumerate files and subdirectories</li>
+<li>Return appropriate <code>TreeItemDTO</code> for each entry</li>
+<li>Handle permissions errors gracefully</li>
+</ul>
+<h4 id="3-tree-item-construction"><a class="doc-anchor" href="#3-tree-item-construction">§</a>3. Tree Item Construction</h4>
+<ul>
+<li>Build <code>TreeItemDTO</code> JSON objects with proper structure:</li>
+<li><code>handle</code>: Unique identifier (file URI)</li>
+<li><code>label</code>: Display name</li>
+<li><code>collapsibleState</code>: 1 for directories, 0 for files</li>
+<li><code>resourceUri</code>: File URI with <code>external</code> property</li>
+<li><code>command</code>: Open file command for leaf nodes</li>
+</ul>
+<h3 id="architectural-role"><a class="doc-anchor" href="#architectural-role">§</a>ARCHITECTURAL ROLE</h3>
+<p>The FileExplorerViewProvider is a <strong>native TreeViewProvider</strong>:</p>
+<div class="example-wrap"><pre class="language-text"><code>TreeView API ──► FileExplorerViewProvider ──► FileSystem ReadDirectory/ReadFile
+                         │
+                         └─► Returns TreeItemDTO JSON</code></pre></div><h4 id="position-in-mountain"><a class="doc-anchor" href="#position-in-mountain">§</a>Position in Mountain</h4>
+<ul>
+<li><code>FileSystem</code> module: File system operations</li>
+<li>Implements <code>CommonLibrary::TreeView::TreeViewProvider</code> trait</li>
+<li>Registered as provider in <code>ApplicationState::ActiveTreeViews</code></li>
+</ul>
+<h4 id="differences-from-extension-providers"><a class="doc-anchor" href="#differences-from-extension-providers">§</a>Differences from Extension Providers</h4>
+<ul>
+<li><strong>Native Provider</strong>: Direct Rust implementation, no extension hosting</li>
+<li><strong>Read-Only</strong>: Only implements “pull” methods (<code>GetChildren</code>,
+<code>GetTreeItem</code>)</li>
+<li><strong>No Push Methods</strong>: Does not use <code>RegisterTreeDataProvider</code>,
+<code>RefreshTreeView</code>, etc.</li>
+<li><strong>No Sidecar</strong>: No extension host communication overhead</li>
+</ul>
+<h4 id="dependencies"><a class="doc-anchor" href="#dependencies">§</a>Dependencies</h4>
+<ul>
+<li><code>CommonLibrary::FileSystem::ReadDirectory</code> and <code>ReadFile</code>: Filesystem
+access</li>
+<li><code>CommonLibrary::TreeView::TreeViewProvider</code>: Provider trait</li>
+<li><code>ApplicationRunTime</code>: Effect execution</li>
+<li><code>ApplicationState</code>: Workspace folder access</li>
+</ul>
+<h4 id="dependents"><a class="doc-anchor" href="#dependents">§</a>Dependents</h4>
+<ul>
+<li><code>Binary::Main::Fn</code>: Creates and registers provider instance</li>
+<li>TreeView UI component: Requests data via provider methods</li>
+<li>Command handlers: Trigger tree view operations</li>
+</ul>
+<h3 id="tree-item-dto-structure"><a class="doc-anchor" href="#tree-item-dto-structure">§</a>TREE ITEM DTO STRUCTURE</h3>
+<p>Each tree item is a JSON object compatible with VS Code’s <code>TreeItem</code>:</p>
+<div class="example-wrap"><pre class="language-json"><code>{
+  &quot;handle&quot;: &quot;file:///path/to/item&quot;,
+  &quot;label&quot;: { &quot;label&quot;: &quot;itemName&quot; },
+  &quot;collapsibleState&quot;: 1,
+  &quot;resourceUri&quot;: { &quot;external&quot;: &quot;file:///path/to/item&quot; },
+  &quot;command&quot;: {
+    &quot;id&quot;: &quot;vscode.open&quot;,
+    &quot;title&quot;: &quot;Open File&quot;,
+    &quot;arguments&quot;: [{ &quot;external&quot;: &quot;file:///path/to/item&quot; }]
+  }
+}</code></pre></div><h3 id="methods-overview"><a class="doc-anchor" href="#methods-overview">§</a>METHODS OVERVIEW</h3>
+<ul>
+<li><code>GetChildren</code>: Returns child items for a given parent directory</li>
+<li><code>GetTreeItem</code>: Returns a single tree item for a given handle (URI)</li>
+<li>Other <code>TreeViewProvider</code> methods (push-based) are no-ops for native
+providers</li>
+</ul>
+<h3 id="error-handling"><a class="doc-anchor" href="#error-handling">§</a>ERROR HANDLING</h3>
+<ul>
+<li>Filesystem errors are converted to <code>CommonError::FileSystemIO</code></li>
+<li>Invalid URIs return <code>CommonError::InvalidArgument</code></li>
+<li>Permission errors are logged and empty results returned</li>
+</ul>
+<h3 id="performance"><a class="doc-anchor" href="#performance">§</a>PERFORMANCE</h3>
+<ul>
+<li>Directory reads are async via <code>ApplicationRunTime</code></li>
+<li>Each <code>GetChildren</code> call reads the directory from disk</li>
+<li>Consider caching for large directories (TODO)</li>
+<li>Stat calls are minimized by using directory entry metadata</li>
+</ul>
+<h3 id="vs-code-reference"><a class="doc-anchor" href="#vs-code-reference">§</a>VS CODE REFERENCE</h3>
+<p>Patterns from VS Code:</p>
+<ul>
+<li><code>vs/workbench/contrib/files/browser/filesViewProvider.ts</code>: File tree
+provider</li>
+<li><code>vs/platform/workspace/common/workspace.ts</code>: Tree item DTO structure</li>
+</ul>
+<h3 id="todo"><a class="doc-anchor" href="#todo">§</a>TODO</h3>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Implement tree item caching for better performance</li>
+<li><input disabled="" type="checkbox"/>
+Add file icon decoration based on file type</li>
+<li><input disabled="" type="checkbox"/>
+Support drag-and-drop operations</li>
+<li><input disabled="" type="checkbox"/>
+Add file/folder filtering (gitignore, exclude patterns)</li>
+<li><input disabled="" type="checkbox"/>
+Implement tree state persistence (expanded/collapsed)</li>
+<li><input disabled="" type="checkbox"/>
+Add file change notifications (watch for file system events)</li>
+<li><input disabled="" type="checkbox"/>
+Support virtual workspace folders (non-file URIs)</li>
+</ul>
+<h3 id="module-contents"><a class="doc-anchor" href="#module-contents">§</a>MODULE CONTENTS</h3>
+<ul>
+<li><a href="struct.FileExplorerViewProvider.html" title="struct Mountain::FileSystem::FileExplorerViewProvider::FileExplorerViewProvider"><code>FileExplorerViewProvider</code></a>: Main provider struct</li>
+<li><code>CreateTreeItemDTO</code>: Helper to build tree item JSON</li>
+</ul>
+</div></details><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.FileExplorerViewProvider.html" title="struct Mountain::FileSystem::FileExplorerViewProvider::FileExplorerViewProvider">File<wbr>Explorer<wbr>View<wbr>Provider</a></dt></dl></section></div></main></body></html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="WebviewProvider (Environment)"><title>Mountain::Environment::WebviewProvider - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-b7b9f40b.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-41dd4d93.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module WebviewProvider</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Webview<wbr>Provider</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#webviewprovider-environment" title="WebviewProvider (Environment)">WebviewProvider (Environment)</a><ul><li><a href="#responsibilities" title="RESPONSIBILITIES">RESPONSIBILITIES</a></li><li><a href="#architectural-role" title="ARCHITECTURAL ROLE">ARCHITECTURAL ROLE</a></li><li><a href="#webview-options" title="WEBVIEW OPTIONS">WEBVIEW OPTIONS</a></li><li><a href="#security-considerations" title="SECURITY CONSIDERATIONS">SECURITY CONSIDERATIONS</a></li><li><a href="#message-flow" title="MESSAGE FLOW">MESSAGE FLOW</a></li><li><a href="#performance" title="PERFORMANCE">PERFORMANCE</a></li><li><a href="#error-handling" title="ERROR HANDLING">ERROR HANDLING</a></li><li><a href="#vs-code-reference" title="VS CODE REFERENCE">VS CODE REFERENCE</a></li><li><a href="#todo" title="TODO">TODO</a></li><li><a href="#module-structure" title="MODULE STRUCTURE">MODULE STRUCTURE</a></li></ul></li></ul><h3><a href="#modules">Module Items</a></h3><ul class="block"><li><a href="#modules" title="Modules">Modules</a></li><li><a href="#structs" title="Structs">Structs</a></li><li><a href="#enums" title="Enums">Enums</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Environment</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Environment</a></div><h1>Module <span>Webview<wbr>Provider</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Environment/WebviewProvider.rs.html#1-248">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="webviewprovider-environment"><a class="doc-anchor" href="#webviewprovider-environment">§</a>WebviewProvider (Environment)</h2>
+<p>Implements the <code>WebviewProvider</code> trait for <code>MountainEnvironment</code>, providing
+the core logic for creating, managing, and securing Webview panels - the
+embedded browser-based UI components that power many extension features.</p>
+<h3 id="responsibilities"><a class="doc-anchor" href="#responsibilities">§</a>RESPONSIBILITIES</h3><h4 id="1-webview-panel-creation"><a class="doc-anchor" href="#1-webview-panel-creation">§</a>1. Webview Panel Creation</h4>
+<ul>
+<li>Create webview windows with proper configuration</li>
+<li>Set up webview content (HTML, CSS, JavaScript)</li>
+<li>Configure webview security (CSP, sandbox, permissions)</li>
+<li>Initialize webview lifecycle and event handlers</li>
+</ul>
+<h4 id="2-webview-management"><a class="doc-anchor" href="#2-webview-management">§</a>2. Webview Management</h4>
+<ul>
+<li>Track active webview instances in <code>ApplicationState.Feature.Webviews</code></li>
+<li>Handle webview focus and visibility changes</li>
+<li>Support webview window positioning and sizing</li>
+<li>Manage webview disposal and cleanup</li>
+</ul>
+<h4 id="3-secure-message-passing"><a class="doc-anchor" href="#3-secure-message-passing">§</a>3. Secure Message Passing</h4>
+<ul>
+<li>Establish bidirectional IPC between host and webview</li>
+<li>Validate and route messages between webview and extension sidecar</li>
+<li>Implement message authentication and authorization</li>
+<li>Prevent cross-origin security vulnerabilities</li>
+</ul>
+<h4 id="4-state-persistence"><a class="doc-anchor" href="#4-state-persistence">§</a>4. State Persistence</h4>
+<ul>
+<li>Save webview state (position, size, content) to <code>ApplicationState</code></li>
+<li>Restore webview state when reopening</li>
+<li>Persist webview settings across sessions</li>
+<li>Handle webview state serialization/deserialization</li>
+</ul>
+<h4 id="5-content-security"><a class="doc-anchor" href="#5-content-security">§</a>5. Content Security</h4>
+<ul>
+<li>Enforce content security policy (CSP)</li>
+<li>Sandbox webview content to prevent escape</li>
+<li>Validate webview URLs and origins</li>
+<li>Protect against XSS and injection attacks</li>
+</ul>
+<h3 id="architectural-role"><a class="doc-anchor" href="#architectural-role">§</a>ARCHITECTURAL ROLE</h3>
+<p>WebviewProvider is the <strong>webview lifecycle manager</strong>:</p>
+<div class="example-wrap"><pre class="language-text"><code>Extension ──► CreateWebview ──► WebviewProvider ──► Tauri WebviewWindow
+                    │                              │
+                    └─► IPC ──► Cocoon ◄───────────┘</code></pre></div><h4 id="position-in-mountain"><a class="doc-anchor" href="#position-in-mountain">§</a>Position in Mountain</h4>
+<ul>
+<li><code>Environment</code> module: Web content capability provider</li>
+<li>Implements <code>CommonLibrary::Webview::WebviewProvider</code> trait</li>
+<li>Accessible via <code>Environment.Require&lt;dyn WebviewProvider&gt;()</code></li>
+</ul>
+<h4 id="webview-types"><a class="doc-anchor" href="#webview-types">§</a>Webview Types</h4>
+<ul>
+<li><strong>Panel</strong>: Sidebar or panel webview (non-floating)</li>
+<li><strong>Editor</strong>: Webview as custom editor (full editor area)</li>
+<li><strong>Modal</strong>: Modal dialog webview (centered, blocks interaction)</li>
+<li><strong>Widget</strong>: Small embedded webview (e.g., diff viewer)</li>
+</ul>
+<h4 id="webview-lifecycle"><a class="doc-anchor" href="#webview-lifecycle">§</a>Webview Lifecycle</h4>
+<ol>
+<li><strong>Create</strong>: Extension calls <code>CreateWebview</code> with options</li>
+<li><strong>Initialize</strong>: Provider builds webview window, sets up event handlers</li>
+<li><strong>Load Content</strong>: HTML loaded, scripts execute</li>
+<li><strong>Ready</strong>: <code>onDidBecomeVisible</code> / <code>onDidBecomeHidden</code> events</li>
+<li><strong>Dispose</strong>: When closed, cleanup state and resources</li>
+</ol>
+<h4 id="dependencies"><a class="doc-anchor" href="#dependencies">§</a>Dependencies</h4>
+<ul>
+<li><code>Tauri</code>: <code>WebviewWindowBuilder</code> for webview creation</li>
+<li><code>ApplicationState</code>: Webview state tracking</li>
+<li><code>IPCProvider</code>: For extension-side communication</li>
+<li><code>Log</code>: Webview lifecycle logging</li>
+</ul>
+<h4 id="dependents"><a class="doc-anchor" href="#dependents">§</a>Dependents</h4>
+<ul>
+<li>Extensions: Create webviews via <code>registerWebviewPanelProvider</code></li>
+<li><code>Binary::Main</code>: Webview window creation during startup</li>
+<li><code>DispatchLogic::MountainWebviewPostMessageFromGuest</code>: Webview → host
+messages</li>
+<li>UI components: Webview panel management</li>
+</ul>
+<h3 id="webview-options"><a class="doc-anchor" href="#webview-options">§</a>WEBVIEW OPTIONS</h3>
+<p><code>WebviewContentOptionsDTO</code> controls webview behavior:</p>
+<ul>
+<li><code>Handle</code>: Unique UUID for this webview</li>
+<li><code>ViewType</code>: Extension-defined type identifier</li>
+<li><code>Title</code>: Panel title</li>
+<li><code>ContentOptions</code>: HTML, base URL, scripts, styles</li>
+<li><code>PanelOptions</code>: Size, position, enable/disable features</li>
+<li><code>SideCarIdentifier</code>: Host extension sidecar</li>
+<li><code>ExtensionIdentifier</code>: Owning extension ID</li>
+<li><code>IsActive</code>, <code>IsVisible</code>: State flags</li>
+</ul>
+<h3 id="security-considerations"><a class="doc-anchor" href="#security-considerations">§</a>SECURITY CONSIDERATIONS</h3>
+<ul>
+<li><strong>Content Security Policy</strong>: Default CSP restricts external resources</li>
+<li><strong>Sandbox</strong>: Webview runs in sandboxed process (no Node.js)</li>
+<li><strong>Message Validation</strong>: All postMessage() calls validated</li>
+<li><strong>Origin Checking</strong>: Verify message source matches expected webview</li>
+<li><strong>Permission Management</strong>: Granular permissions for APIs (geolocation,
+etc.)</li>
+</ul>
+<h3 id="message-flow"><a class="doc-anchor" href="#message-flow">§</a>MESSAGE FLOW</h3>
+<ol>
+<li>Extension → Host: <code>webview.postMessage({ command: "..." })</code></li>
+<li>Provider receives via <code>MountainWebviewPostMessageFromGuest</code> command</li>
+<li>Provider forwards to extension via IPC (<code>SendNotificationToSideCar</code>)</li>
+<li>Extension processes and responds</li>
+<li>Host → Extension: <code>ipc.postMessage({ command: "..." })</code></li>
+<li>Extension receives via <code>onDidReceiveMessage</code> event</li>
+</ol>
+<h3 id="performance"><a class="doc-anchor" href="#performance">§</a>PERFORMANCE</h3>
+<ul>
+<li>Webview creation is relatively expensive (new browser context)</li>
+<li>Reuse webviews when possible instead of creating new ones</li>
+<li>Consider lazy loading for rarely used webviews</li>
+<li>Memory usage: ~50-100MB per webview (depending on content)</li>
+<li>Use <code>Dispose</code> promptly when webview no longer needed</li>
+</ul>
+<h3 id="error-handling"><a class="doc-anchor" href="#error-handling">§</a>ERROR HANDLING</h3>
+<ul>
+<li>Webview creation failure: <code>CommonError::WebviewCreationFailed</code></li>
+<li>IPC communication failure: <code>CommonError::IPCError</code></li>
+<li>Invalid webview options: <code>CommonError::InvalidArgument</code></li>
+<li>Webview already exists: <code>CommonError::DuplicateWebview</code></li>
+</ul>
+<h3 id="vs-code-reference"><a class="doc-anchor" href="#vs-code-reference">§</a>VS CODE REFERENCE</h3>
+<p>Patterns from VS Code:</p>
+<ul>
+<li><code>vs/workbench/contrib/webview/browser/webviewService.ts</code> - Webview service</li>
+<li><code>vs/workbench/contrib/webview/common/webview.ts</code> - Webview data model</li>
+<li><code>vs/workbench/api/browser/mainThreadWebview.ts</code> - Extension API</li>
+</ul>
+<h3 id="todo"><a class="doc-anchor" href="#todo">§</a>TODO</h3>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Implement webview content caching for faster reloads</li>
+<li><input disabled="" type="checkbox"/>
+Add webview theming support (dark/light mode auto)</li>
+<li><input disabled="" type="checkbox"/>
+Support webview extensions/plugins (custom protocols)</li>
+<li><input disabled="" type="checkbox"/>
+Implement webview screenshot and thumbnail generation</li>
+<li><input disabled="" type="checkbox"/>
+Add webview performance monitoring (CPU, memory)</li>
+<li><input disabled="" type="checkbox"/>
+Support webview clustering for related views</li>
+<li><input disabled="" type="checkbox"/>
+Implement webview state snapshots for debugging</li>
+<li><input disabled="" type="checkbox"/>
+Add webview accessibility audit and reporting</li>
+<li><input disabled="" type="checkbox"/>
+Support webview pausing (suspend when not visible)</li>
+<li><input disabled="" type="checkbox"/>
+Implement webview resource preloading strategies</li>
+<li><input disabled="" type="checkbox"/>
+Add webview telemetry for usage and performance</li>
+<li><input disabled="" type="checkbox"/>
+Support webview offline mode with service workers</li>
+<li><input disabled="" type="checkbox"/>
+Implement webview migration across sessions</li>
+<li><input disabled="" type="checkbox"/>
+Add webview debugging tools integration</li>
+</ul>
+<h3 id="module-structure"><a class="doc-anchor" href="#module-structure">§</a>MODULE STRUCTURE</h3>
+<ul>
+<li><a href="lifecycle.rs"><code>lifecycle.rs</code></a> - Webview creation, disposal, reveal</li>
+<li><a href="configuration.rs"><code>configuration.rs</code></a> - Options and HTML setting</li>
+<li><a href="messaging.rs"><code>messaging.rs</code></a> - Message passing and listeners</li>
+</ul>
+</div></details><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="configuration/index.html" title="mod Mountain::Environment::WebviewProvider::configuration">configuration</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>WebviewProvider - Configuration Operations</dd><dt><a class="mod" href="lifecycle/index.html" title="mod Mountain::Environment::WebviewProvider::lifecycle">lifecycle</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>WebviewProvider - Lifecycle Operations</dd><dt><a class="mod" href="messaging/index.html" title="mod Mountain::Environment::WebviewProvider::messaging">messaging</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>WebviewProvider - Messaging Operations</dd></dl><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.WebviewMessage.html" title="struct Mountain::Environment::WebviewProvider::WebviewMessage">Webview<wbr>Message</a></dt><dd>Represents a Webview message</dd><dt><a class="struct" href="struct.WebviewMessageContext.html" title="struct Mountain::Environment::WebviewProvider::WebviewMessageContext">Webview<wbr>Message<wbr>Context</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Webview message handler context</dd></dl><h2 id="enums" class="section-header">Enums<a href="#enums" class="anchor">§</a></h2><dl class="item-table"><dt><a class="enum" href="enum.WebviewLifecycleState.html" title="enum Mountain::Environment::WebviewProvider::WebviewLifecycleState">Webview<wbr>Lifecycle<wbr>State</a></dt><dd>Webview lifecycle state</dd></dl></section></div></main></body></html>

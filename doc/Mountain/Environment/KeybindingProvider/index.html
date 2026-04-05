@@ -1,0 +1,163 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="KeybindingProvider (Environment)"><title>Mountain::Environment::KeybindingProvider - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-b7b9f40b.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-41dd4d93.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module KeybindingProvider</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Keybinding<wbr>Provider</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#keybindingprovider-environment" title="KeybindingProvider (Environment)">KeybindingProvider (Environment)</a><ul><li><a href="#responsibilities" title="RESPONSIBILITIES">RESPONSIBILITIES</a></li><li><a href="#architectural-role" title="ARCHITECTURAL ROLE">ARCHITECTURAL ROLE</a></li><li><a href="#data-model" title="DATA MODEL">DATA MODEL</a></li><li><a href="#when-clause-evaluation" title="WHEN CLAUSE EVALUATION">WHEN CLAUSE EVALUATION</a></li><li><a href="#performance" title="PERFORMANCE">PERFORMANCE</a></li><li><a href="#vs-code-reference" title="VS CODE REFERENCE">VS CODE REFERENCE</a></li><li><a href="#todo" title="TODO">TODO</a></li><li><a href="#module-contents" title="MODULE CONTENTS">MODULE CONTENTS</a></li><li><a href="#when-clause-evaluation-1" title="When Clause Evaluation">When Clause Evaluation</a></li></ul></li></ul><h3><a href="#structs">Module Items</a></h3><ul class="block"><li><a href="#structs" title="Structs">Structs</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Environment</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Environment</a></div><h1>Module <span>Keybinding<wbr>Provider</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Environment/KeybindingProvider.rs.html#1-236">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="keybindingprovider-environment"><a class="doc-anchor" href="#keybindingprovider-environment">§</a>KeybindingProvider (Environment)</h2>
+<p>Implements the <code>KeybindingProvider</code> trait for <code>MountainEnvironment</code>,
+providing keybinding resolution, conflict detection, and command activation
+based on keyboard input.</p>
+<h3 id="responsibilities"><a class="doc-anchor" href="#responsibilities">§</a>RESPONSIBILITIES</h3><h4 id="1-keybinding-collection"><a class="doc-anchor" href="#1-keybinding-collection">§</a>1. Keybinding Collection</h4>
+<ul>
+<li>Gather default keybindings from all extensions (<code>contributes.keybindings</code>)</li>
+<li>Load user-defined keybindings from <code>keybindings.json</code></li>
+<li>Include built-in Mountain keybindings</li>
+<li>Support platform-specific keybinding variants</li>
+</ul>
+<h4 id="2-keybinding-resolution"><a class="doc-anchor" href="#2-keybinding-resolution">§</a>2. Keybinding Resolution</h4>
+<ul>
+<li>Parse keybinding combinations (modifiers + keys)</li>
+<li>Evaluate “when” clauses for context activation</li>
+<li>Resolve conflicts using priority rules:
+<ul>
+<li>User keybindings override extension keybindings</li>
+<li>Extension keybindings override defaults</li>
+<li>Within same priority, use specificity scoring</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-command-activation"><a class="doc-anchor" href="#3-command-activation">§</a>3. Command Activation</h4>
+<ul>
+<li>Match incoming keyboard events to keybindings</li>
+<li>Execute bound commands with proper arguments</li>
+<li>Handle keybinding chords (multi-key sequences)</li>
+<li>Support keybinding cancellation (Esc, etc.)</li>
+</ul>
+<h4 id="4-platform-adaptation"><a class="doc-anchor" href="#4-platform-adaptation">§</a>4. Platform Adaptation</h4>
+<ul>
+<li>Convert between platform-specific modifiers (Cmd on macOS, Ctrl on
+Windows/Linux)</li>
+<li>Support international keyboard layouts</li>
+<li>Handle platform-exclusive keybindings</li>
+</ul>
+<h3 id="architectural-role"><a class="doc-anchor" href="#architectural-role">§</a>ARCHITECTURAL ROLE</h3>
+<p>KeybindingProvider is the <strong>keyboard input mapper</strong>:</p>
+<div class="example-wrap"><pre class="language-text"><code>Keyboard Event ──► KeybindingProvider ──► Resolved Keybinding ──► CommandExecutor</code></pre></div><h4 id="position-in-mountain"><a class="doc-anchor" href="#position-in-mountain">§</a>Position in Mountain</h4>
+<ul>
+<li><code>Environment</code> module: Input handling capability</li>
+<li>Implements <code>CommonLibrary::Keybinding::KeybindingProvider</code> trait</li>
+<li>Accessible via <code>Environment.Require&lt;dyn KeybindingProvider&gt;()</code></li>
+</ul>
+<h4 id="keybinding-source-precedence-highest-to-lowest"><a class="doc-anchor" href="#keybinding-source-precedence-highest-to-lowest">§</a>Keybinding Source Precedence (highest to lowest)</h4>
+<ol>
+<li><strong>User keybindings</strong>: <code>keybindings.json</code> with overrides and unbindings</li>
+<li><strong>Extension keybindings</strong>: From <code>contributes.keybindings</code> in package.json</li>
+<li><strong>Built-in keybindings</strong>: Mountain default shortcuts</li>
+</ol>
+<h4 id="conflict-resolution"><a class="doc-anchor" href="#conflict-resolution">§</a>Conflict Resolution</h4>
+<p>When multiple keybindings match an input:</p>
+<ol>
+<li><strong>Priority</strong>: User &gt; Extension &gt; Built-in</li>
+<li><strong>Specificity</strong>: More specific “when” clause wins</li>
+<li><strong>Scoring</strong>: (TODO) Calculate score based on:
+<ul>
+<li>Number of modifiers (more is more specific)</li>
+<li>Presence of “when” clause conditions</li>
+<li>Platform specificity</li>
+</ul>
+</li>
+</ol>
+<h3 id="data-model"><a class="doc-anchor" href="#data-model">§</a>DATA MODEL</h3>
+<p>A <code>Keybinding</code> consists of:</p>
+<ul>
+<li><code>Command</code>: Command ID to execute</li>
+<li><code>Keybinding</code>: Keyboard shortcut string (e.g., “Ctrl+Shift+P”)</li>
+<li><code>When</code>: Context expression (e.g., “editorTextFocus”)</li>
+<li><code>Source</code>: Where it came from (user, extension, built-in)</li>
+<li><code>Weight</code>: Priority weight for conflict resolution</li>
+</ul>
+<h3 id="when-clause-evaluation"><a class="doc-anchor" href="#when-clause-evaluation">§</a>WHEN CLAUSE EVALUATION</h3>
+<p>“When” clauses are boolean expressions over context keys:</p>
+<ul>
+<li><code>editorTextFocus</code>: Editor has focus</li>
+<li><code>editorHasSelection</code>: Text is selected</li>
+<li><code>resourceLangId == python</code>: File is Python</li>
+<li><code>!editorHasSelection</code>: Negation</li>
+<li><code>editorTextFocus &amp;&amp; !editorHasSelection</code>: AND combination</li>
+</ul>
+<p>Context keys are set by providers based on UI state:</p>
+<ul>
+<li>Focus state, language, file type, editor mode, etc.</li>
+</ul>
+<h3 id="performance"><a class="doc-anchor" href="#performance">§</a>PERFORMANCE</h3>
+<ul>
+<li>Keybinding lookup should be fast (HashMap or trie-based)</li>
+<li>“When” clause evaluation should be efficient (pre-parsed expressions)</li>
+<li>Consider caching resolved keybindings per context</li>
+<li>Platform-specific lookup avoids runtime conversion overhead</li>
+</ul>
+<h3 id="vs-code-reference"><a class="doc-anchor" href="#vs-code-reference">§</a>VS CODE REFERENCE</h3>
+<p>Borrowed from VS Code’s keybinding system:</p>
+<ul>
+<li><code>vs/platform/keybinding/common/keybinding.ts</code> - Keybinding data model</li>
+<li><code>vs/platform/keybinding/common/keybindingResolver.ts</code> - Resolution logic</li>
+<li><code>vs/platform/keybinding/common/keybindingsRegistry.ts</code> - Registry
+management</li>
+<li><code>vs/platform/contextkey/common/contextkey.ts</code> - “When” clause evaluation</li>
+</ul>
+<h3 id="todo"><a class="doc-anchor" href="#todo">§</a>TODO</h3>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Implement complete “when” clause expression parser and evaluator</li>
+<li><input disabled="" type="checkbox"/>
+Add keybinding precedence scoring algorithm</li>
+<li><input disabled="" type="checkbox"/>
+Support keybinding localization (different key labels per locale)</li>
+<li><input disabled="" type="checkbox"/>
+Implement platform-specific modifier conversion (Cmd/Ctrl/Alt)</li>
+<li><input disabled="" type="checkbox"/>
+Add conflict detection and warnings during registration</li>
+<li><input disabled="" type="checkbox"/>
+Implement keybinding chords (e.g., “Ctrl+K Ctrl+C”)</li>
+<li><input disabled="" type="checkbox"/>
+Support custom keybinding schemes (vim, emacs, sublime)</li>
+<li><input disabled="" type="checkbox"/>
+Add keybinding validation and syntax error reporting</li>
+<li><input disabled="" type="checkbox"/>
+Implement keybinding telemetry for usage tracking</li>
+<li><input disabled="" type="checkbox"/>
+Support keybinding migration across versions</li>
+<li><input disabled="" type="checkbox"/>
+Add keybinding export/import functionality</li>
+<li><input disabled="" type="checkbox"/>
+Implement keybinding search and discovery UI</li>
+<li><input disabled="" type="checkbox"/>
+Support keybinding recording from actual key presses</li>
+<li><input disabled="" type="checkbox"/>
+Add keybinding conflict resolution UI</li>
+<li><input disabled="" type="checkbox"/>
+Implement keybinding per-profile (development, debugging, etc.)</li>
+</ul>
+<h3 id="module-contents"><a class="doc-anchor" href="#module-contents">§</a>MODULE CONTENTS</h3>
+<ul>
+<li>[<code>KeybindingProvider</code>]: Main struct implementing the trait</li>
+<li>Keybinding collection and registration</li>
+<li>“When” clause parsing and evaluation</li>
+<li>Conflict resolution logic</li>
+<li>Platform-specific key mapping</li>
+<li>Command activation from keyboard events
+<ul>
+<li>User keybindings override system defaults</li>
+<li>Negative commands (starting with <code>-</code>) unbind keys</li>
+<li>Higher priority values win in cases of ambiguity</li>
+</ul>
+</li>
+</ul>
+<ol start="4">
+<li>Evaluate when clauses at runtime to filter active keybindings</li>
+</ol>
+<h3 id="when-clause-evaluation-1"><a class="doc-anchor" href="#when-clause-evaluation-1">§</a>When Clause Evaluation</h3>
+<p>When clauses are boolean expressions controlling when a keybinding
+is active. Examples:</p>
+<ul>
+<li><code>"editorTextFocus &amp;&amp; !inQuickOpen"</code> - Only when editor has focus</li>
+<li><code>"debugState != 'inactive'"</code> - Only when debugging</li>
+</ul>
+<p>Current implementation stores when clauses but only partially
+evaluates them. Full expression evaluation is pending.</p>
+</div></details><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.KeybindingRule.html" title="struct Mountain::Environment::KeybindingProvider::KeybindingRule">Keybinding<wbr>Rule</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt></dl></section></div></main></body></html>

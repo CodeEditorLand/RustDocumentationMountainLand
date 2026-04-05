@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["DEFAULT_ZOOM_LEVEL","MAX_ZOOM_LEVEL","MIN_ZOOM_LEVEL"],"fn":["DefaultZoomLevel"],"struct":["WindowStateDTO"]};
