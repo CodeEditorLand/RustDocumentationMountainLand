@@ -67,8 +67,8 @@
 <a href=#67 id=67 data-nosnippet>67</a>/// 3. After initialization, we only read from it
 <a href=#68 id=68 data-nosnippet>68</a>/// 4. The RwLock guarantees thread-safe access
 <a href=#69 id=69 data-nosnippet>69</a></span><span class="kw">fn </span><a href="../../../../Mountain/Binary/Build/Scheme/fn.get_service_registry.html">get_service_registry</a>() -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="ServiceRegistry.rs.html#84-89">ServiceRegistry</a>&gt; {
-<a href=#70 id=70 data-nosnippet>70</a><span class="kw">let </span>guard = <a href="#47">SERVICE_REGISTRY</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/rwlock/struct.RwLock.html#method.read">read</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>()<span class="question-mark">?</span>;
-<a href=#71 id=71 data-nosnippet>71</a><a href="#70">guard</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>()
+<a href=#70 id=70 data-nosnippet>70</a>	<span class="kw">let </span>guard = <a href="#47">SERVICE_REGISTRY</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/rwlock/struct.RwLock.html#method.read">read</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>()<span class="question-mark">?</span>;
+<a href=#71 id=71 data-nosnippet>71</a>	<a href="#70">guard</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>()
 <a href=#72 id=72 data-nosnippet>72</a>}
 <a href=#73 id=73 data-nosnippet>73</a>
 <a href=#74 id=74 data-nosnippet>74</a><span class="doccomment">/// DNS port managed state structure

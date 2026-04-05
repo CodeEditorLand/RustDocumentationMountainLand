@@ -58,7 +58,7 @@
 <a href=#58 id=58 data-nosnippet>58</a>	<a href="UIState/UIState.rs.html#45-51">UIState::State</a> <span class="kw">as </span>UIState,
 <a href=#59 id=59 data-nosnippet>59</a>	<a href="WorkspaceState/WorkspaceState.rs.html#53-68">WorkspaceState::State</a> <span class="kw">as </span>WorkspaceState,
 <a href=#60 id=60 data-nosnippet>60</a>};
-<a href=#61 id=61 data-nosnippet>61</a><span class="kw">use </span><a href="../../Environment/TestProvider.rs.html#162-166"><span class="kw">crate</span>::Environment::TestProvider::TestProviderState</a>;
+<a href=#61 id=61 data-nosnippet>61</a><span class="kw">use </span><a href="../../Environment/TestProvider.rs.html#161-165"><span class="kw">crate</span>::Environment::TestProvider::TestProviderState</a>;
 <a href=#62 id=62 data-nosnippet>62</a>
 <a href=#63 id=63 data-nosnippet>63</a><span class="doccomment">/// The central, shared, thread-safe state for the entire Mountain application.
 <a href=#64 id=64 data-nosnippet>64</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>)]
@@ -80,7 +80,7 @@
 <a href=#80 id=80 data-nosnippet>80</a>	</span><span class="kw">pub </span>UI:<a href="UIState/UIState.rs.html#45-51">UIState</a>,
 <a href=#81 id=81 data-nosnippet>81</a>
 <a href=#82 id=82 data-nosnippet>82</a>	<span class="doccomment">/// Test provider state.
-<a href=#83 id=83 data-nosnippet>83</a>	</span><span class="kw">pub </span>TestProviderState:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;tokio::sync::RwLock&lt;<a href="../../Environment/TestProvider.rs.html#162-166">TestProviderState</a>&gt;&gt;,
+<a href=#83 id=83 data-nosnippet>83</a>	</span><span class="kw">pub </span>TestProviderState:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;tokio::sync::RwLock&lt;<a href="../../Environment/TestProvider.rs.html#161-165">TestProviderState</a>&gt;&gt;,
 <a href=#84 id=84 data-nosnippet>84</a>
 <a href=#85 id=85 data-nosnippet>85</a>	<span class="doccomment">/// Memento storage paths.
 <a href=#86 id=86 data-nosnippet>86</a>	</span><span class="kw">pub </span>GlobalMementoPath:std::path::<a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>,
@@ -97,7 +97,7 @@
 <a href=#97 id=97 data-nosnippet>97</a>			Extension:Default::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>(),
 <a href=#98 id=98 data-nosnippet>98</a>			Feature:Default::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>(),
 <a href=#99 id=99 data-nosnippet>99</a>			UI:Default::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>(),
-<a href=#100 id=100 data-nosnippet>100</a>			TestProviderState:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(tokio::sync::RwLock::new(<a href="../../Environment/TestProvider.rs.html#162-166">TestProviderState</a>::<a href="../../Environment/TestProvider.rs.html#169">new</a>())),
+<a href=#100 id=100 data-nosnippet>100</a>			TestProviderState:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(tokio::sync::RwLock::new(<a href="../../Environment/TestProvider.rs.html#161-165">TestProviderState</a>::<a href="../../Environment/TestProvider.rs.html#168">new</a>())),
 <a href=#101 id=101 data-nosnippet>101</a>			GlobalMementoPath:Default::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>(),
 <a href=#102 id=102 data-nosnippet>102</a>			WorkspaceMementoPath:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">StandardMutex</a>::<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.new">new</a>(<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>)),
 <a href=#103 id=103 data-nosnippet>103</a>		}

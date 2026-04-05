@@ -102,11 +102,11 @@
 <a href=#102 id=102 data-nosnippet>102</a>	<a href="../Service/VineStart.rs.html#35-50">Binary::Service::VineStart::VineStart</a> <span class="kw">as </span>VineStartFn,
 <a href=#103 id=103 data-nosnippet>103</a>	<a href="../Shutdown/RuntimeShutdown.rs.html#33-43">Binary::Shutdown::RuntimeShutdown::RuntimeShutdown</a> <span class="kw">as </span>RuntimeShutdownFn,
 <a href=#104 id=104 data-nosnippet>104</a>	<a href="../Shutdown/SchedulerShutdown.rs.html#31-43">Binary::Shutdown::SchedulerShutdown::SchedulerShutdown</a> <span class="kw">as </span>SchedulerShutdownFn,
-<a href=#105 id=105 data-nosnippet>105</a>	<a href="../../Library.rs.html#99">Command</a>,
+<a href=#105 id=105 data-nosnippet>105</a>	<a href="../../Library.rs.html#100">Command</a>,
 <a href=#106 id=106 data-nosnippet>106</a>	<a href="../../Environment/MountainEnvironment.rs.html#219-229">Environment::MountainEnvironment::MountainEnvironment</a>,
 <a href=#107 id=107 data-nosnippet>107</a>	<a href="../../ProcessManagement/mod.rs.html#56">ProcessManagement::InitializationData</a>,
 <a href=#108 id=108 data-nosnippet>108</a>	<a href="../../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">RunTime::ApplicationRunTime::ApplicationRunTime</a>,
-<a href=#109 id=109 data-nosnippet>109</a>	<a href="../../Library.rs.html#101">Track</a>,
+<a href=#109 id=109 data-nosnippet>109</a>	<a href="../../Library.rs.html#102">Track</a>,
 <a href=#110 id=110 data-nosnippet>110</a>};
 <a href=#111 id=111 data-nosnippet>111</a><span class="kw">use </span><a href="AppLifecycle.rs.html#126-243"><span class="kw">super</span>::AppLifecycle::AppLifecycleSetup</a>;
 <a href=#112 id=112 data-nosnippet>112</a>
@@ -237,12 +237,12 @@
 <a href=#237 id=237 data-nosnippet>237</a>					// that land:// protocol_resolution is available
 <a href=#238 id=238 data-nosnippet>238</a>					</span><a href="https://docs.rs/log/0.4.29/log/macro.info.html">info!</a>(<span class="string">"[Lifecycle] [Setup] Starting DNS server on preferred port 5380..."</span>);
 <a href=#239 id=239 data-nosnippet>239</a>					<span class="kw">let </span>dns_port = mist::start(<span class="number">5380</span>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|e| {
-<a href=#240 id=240 data-nosnippet>240</a>					    <a href="https://docs.rs/log/0.4.29/log/macro.warn.html">warn!</a>(<span class="string">"[Lifecycle] [Setup] Failed to start DNS server on port 5380: {}"</span>, e);
-<a href=#241 id=241 data-nosnippet>241</a>					    <span class="comment">// Fallback to random port if preferred port fails
-<a href=#242 id=242 data-nosnippet>242</a>					    </span>mist::start(<span class="number">0</span>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|e| {
-<a href=#243 id=243 data-nosnippet>243</a>					        <a href="https://docs.rs/log/0.4.29/log/macro.error.html">error!</a>(<span class="string">"[Lifecycle] [Setup] Completely failed to start DNS server: {}"</span>, e);
-<a href=#244 id=244 data-nosnippet>244</a>					        <span class="number">0 </span><span class="comment">// Return 0 as error indicator
-<a href=#245 id=245 data-nosnippet>245</a>					    </span>})
+<a href=#240 id=240 data-nosnippet>240</a>						<a href="https://docs.rs/log/0.4.29/log/macro.warn.html">warn!</a>(<span class="string">"[Lifecycle] [Setup] Failed to start DNS server on port 5380: {}"</span>, e);
+<a href=#241 id=241 data-nosnippet>241</a>						<span class="comment">// Fallback to random port if preferred port fails
+<a href=#242 id=242 data-nosnippet>242</a>						</span>mist::start(<span class="number">0</span>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|e| {
+<a href=#243 id=243 data-nosnippet>243</a>							<a href="https://docs.rs/log/0.4.29/log/macro.error.html">error!</a>(<span class="string">"[Lifecycle] [Setup] Completely failed to start DNS server: {}"</span>, e);
+<a href=#244 id=244 data-nosnippet>244</a>							<span class="number">0 </span><span class="comment">// Return 0 as error indicator
+<a href=#245 id=245 data-nosnippet>245</a>						</span>})
 <a href=#246 id=246 data-nosnippet>246</a>					});
 <a href=#247 id=247 data-nosnippet>247</a>
 <a href=#248 id=248 data-nosnippet>248</a>					<span class="kw">if </span><a href="#239">dns_port</a> == <span class="number">0 </span>{
@@ -278,9 +278,9 @@
 <a href=#278 id=278 data-nosnippet>278</a>				}
 <a href=#279 id=279 data-nosnippet>279</a>			})
 <a href=#280 id=280 data-nosnippet>280</a>			.register_asynchronous_uri_scheme_protocol(<span class="string">"land"</span>, |_ctx, request, responder| {
-<a href=#281 id=281 data-nosnippet>281</a>			    <span class="comment">// Implemented: delegate to synchronous scheme handler
-<a href=#282 id=282 data-nosnippet>282</a>			    </span><span class="kw">let </span>response = <span class="kw">crate</span>::Binary::Build::Scheme::<a href="../Build/Scheme.rs.html#405-524">land_scheme_handler</a>(<span class="kw-2">&amp;</span><a href="#280">request</a>);
-<a href=#283 id=283 data-nosnippet>283</a>			    <a href="#280">responder</a>.respond(<a href="#282">response</a>);
+<a href=#281 id=281 data-nosnippet>281</a>				<span class="comment">// Implemented: delegate to synchronous scheme handler
+<a href=#282 id=282 data-nosnippet>282</a>				</span><span class="kw">let </span>response = <span class="kw">crate</span>::Binary::Build::Scheme::<a href="../Build/Scheme.rs.html#405-524">land_scheme_handler</a>(<span class="kw-2">&amp;</span><a href="#280">request</a>);
+<a href=#283 id=283 data-nosnippet>283</a>				<a href="#280">responder</a>.respond(<a href="#282">response</a>);
 <a href=#284 id=284 data-nosnippet>284</a>			})
 <a href=#285 id=285 data-nosnippet>285</a>			.plugin(tauri_plugin_dialog::init())
 <a href=#286 id=286 data-nosnippet>286</a>			.plugin(tauri_plugin_fs::init())

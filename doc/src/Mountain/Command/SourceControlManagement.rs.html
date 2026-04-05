@@ -15,243 +15,244 @@
 <a href=#15 id=15 data-nosnippet>15</a>//! `SourceControlManagementProvider` implementations in the Environment
 <a href=#16 id=16 data-nosnippet>16</a>//!   layer
 <a href=#17 id=17 data-nosnippet>17</a>//! - Uses Tauri's `#[command]` attribute for IPC exposure
-<a href=#18 id=18 data-nosnippet>18</a>//! - Reads from `ApplicationState.SourceControlManagement*` fields to gather state
-<a href=#19 id=19 data-nosnippet>19</a>//! - TODO: Should forward commands to provider methods via DI (Require trait)
-<a href=#20 id=20 data-nosnippet>20</a>//!
-<a href=#21 id=21 data-nosnippet>21</a>//! COMMAND REFERENCE (Tauri IPC):
-<a href=#22 id=22 data-nosnippet>22</a>//! - [`GetAllSourceControlManagementState`]: Returns complete snapshot of
-<a href=#23 id=23 data-nosnippet>23</a>//!   providers, groups, and resources for SCM view
-<a href=#24 id=24 data-nosnippet>24</a>//! - [`GetSCMResourceChanges`]: Get file changes for a specific provider
-<a href=#25 id=25 data-nosnippet>25</a>//! - [`ExecuteSCMCommand`]: Execute SCM operation (commit, push, pull, etc.)
-<a href=#26 id=26 data-nosnippet>26</a>//! - [`GetSCMBranches`]: List branches for provider
-<a href=#27 id=27 data-nosnippet>27</a>//! - [`CheckoutSCMBranch`]: Switch to a different branch
-<a href=#28 id=28 data-nosnippet>28</a>//! - [`GetSCMCommitHistory`]: Retrieve commit log with optional limit
-<a href=#29 id=29 data-nosnippet>29</a>//! - [`StageSCMResource`]: Stage or unstage a file resource
-<a href=#30 id=30 data-nosnippet>30</a>//!
-<a href=#31 id=31 data-nosnippet>31</a>//! ERROR HANDLING:
-<a href=#32 id=32 data-nosnippet>32</a>//! - Returns `Result&lt;Value, String&gt;` where error string is sent to frontend
-<a href=#33 id=33 data-nosnippet>33</a>//! - Uses `MapLockError` to convert Mutex poisoning to error strings
-<a href=#34 id=34 data-nosnippet>34</a>//! - Provider identifier parsing may fail (unwrap_or(0) fallback)
-<a href=#35 id=35 data-nosnippet>35</a>//! - Unknown commands return error string
-<a href=#36 id=36 data-nosnippet>36</a>//!
-<a href=#37 id=37 data-nosnippet>37</a>//! PERFORMANCE:
-<a href=#38 id=38 data-nosnippet>38</a>//! - State access uses RwLock reads; cloning entire state maps (may be heavy)
-<a href=#39 id=39 data-nosnippet>39</a>//! - TODO: Consider pagination for large commit histories and resource lists
-<a href=#40 id=40 data-nosnippet>40</a>//!
-<a href=#41 id=41 data-nosnippet>41</a>//! VS CODE REFERENCE:
-<a href=#42 id=42 data-nosnippet>42</a>//! - `vs/workbench/contrib/scm/common/scm.ts` - SCM model and state aggregation
-<a href=#43 id=43 data-nosnippet>43</a>//! - `vs/workbench/contrib/scm/browser/scmView.ts` - SCM UI panel
-<a href=#44 id=44 data-nosnippet>44</a>//! - `vs/workbench/services/scm/common/scmService.ts` - SCM service façade
-<a href=#45 id=45 data-nosnippet>45</a>//!
-<a href=#46 id=46 data-nosnippet>46</a>//! TODO:
-<a href=#47 id=47 data-nosnippet>47</a>//! - Integrate with `SourceControlManagementProvider` trait methods
-<a href=#48 id=48 data-nosnippet>48</a>//! - Implement actual SCM command execution (currently stubs with mock success)
-<a href=#49 id=49 data-nosnippet>49</a>//! - Add proper error handling for failed git operations
-<a href=#50 id=50 data-nosnippet>50</a>//! - Implement branch retrieval with remote tracking branches
-<a href=#51 id=51 data-nosnippet>51</a>//! - Add commit history with proper commit objects (author, message, hash)
-<a href=#52 id=52 data-nosnippet>52</a>//! - Implement resource staging with correct file paths and states
-<a href=#53 id=53 data-nosnippet>53</a>//! - Add support for stash operations, merging, rebasing
-<a href=#54 id=54 data-nosnippet>54</a>//! - Handle multiple SCM providers simultaneously (git, svn, etc.)
-<a href=#55 id=55 data-nosnippet>55</a>//! - Add cancellation tokens for long-running operations
-<a href=#56 id=56 data-nosnippet>56</a>//! - Implement diff viewing with proper unified diff format
-<a href=#57 id=57 data-nosnippet>57</a>//! - Add SCM resource decoration (git status icons, gutter marks)
-<a href=#58 id=58 data-nosnippet>58</a>//! - Support SCM workspace edit (apply changes from commit/rebase)
-<a href=#59 id=59 data-nosnippet>59</a>//! - Add SCM input box interactions (commit message, branch name)
-<a href=#60 id=60 data-nosnippet>60</a>//!
-<a href=#61 id=61 data-nosnippet>61</a>//! MODULE CONTENTS:
-<a href=#62 id=62 data-nosnippet>62</a>//! - Tauri command functions (all `#[command]` async):
-<a href=#63 id=63 data-nosnippet>63</a>//!   - State retrieval: `GetAllSourceControlManagementState`,
-<a href=#64 id=64 data-nosnippet>64</a>//!     `GetSCMResourceChanges`
-<a href=#65 id=65 data-nosnippet>65</a>//!   - Operations: `ExecuteSCMCommand`, `StageSCMResource`
-<a href=#66 id=66 data-nosnippet>66</a>//!   - Branch management: `GetSCMBranches`, `CheckoutSCMBranch`
-<a href=#67 id=67 data-nosnippet>67</a>//!   - History: `GetSCMCommitHistory`
-<a href=#68 id=68 data-nosnippet>68</a>//! - No data structures (uses DTOs from CommonLibrary)
-<a href=#69 id=69 data-nosnippet>69</a>
-<a href=#70 id=70 data-nosnippet>70</a></span><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">std::sync::Arc</a>;
-<a href=#71 id=71 data-nosnippet>71</a>
-<a href=#72 id=72 data-nosnippet>72</a><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json</a>};
-<a href=#73 id=73 data-nosnippet>73</a><span class="kw">use </span>tauri::{State, command};
-<a href=#74 id=74 data-nosnippet>74</a>
-<a href=#75 id=75 data-nosnippet>75</a><span class="kw">use </span><span class="kw">crate</span>::ApplicationState::{<a href="../ApplicationState/State/ApplicationState.rs.html#65-88">ApplicationState</a>, <a href="../ApplicationState/State/ApplicationState.rs.html#136-138">MapLockError</a>};
-<a href=#76 id=76 data-nosnippet>76</a>
-<a href=#77 id=77 data-nosnippet>77</a><span class="doccomment">/// Retrieves the complete state of all Source Control Management providers,
-<a href=#78 id=78 data-nosnippet>78</a>/// groups, and resources for rendering in the UI.
-<a href=#79 id=79 data-nosnippet>79</a>///
-<a href=#80 id=80 data-nosnippet>80</a>/// This command is called by the frontend to get a full snapshot of the SCM
-<a href=#81 id=81 data-nosnippet>81</a>/// view.
-<a href=#82 id=82 data-nosnippet>82</a></span><span class="attr">#[command]
-<a href=#83 id=83 data-nosnippet>83</a></span><span class="kw">pub async fn </span><a href="#82">GetAllSourceControlManagementState</a>(State:State&lt;<span class="lifetime">'_</span>, <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../ApplicationState/State/ApplicationState.rs.html#65-88">ApplicationState</a>&gt;&gt;) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
-<a href=#84 id=84 data-nosnippet>84</a>	<span class="macro">log::debug!</span>(<span class="string">"[SourceControlManagement Command] Getting all SCM state for UI."</span>);
-<a href=#85 id=85 data-nosnippet>85</a>
-<a href=#86 id=86 data-nosnippet>86</a>	<span class="kw">let </span>Providers = State
-<a href=#87 id=87 data-nosnippet>87</a>		.Feature
-<a href=#88 id=88 data-nosnippet>88</a>		.Markers
-<a href=#89 id=89 data-nosnippet>89</a>		.SourceControlManagementProviders
-<a href=#90 id=90 data-nosnippet>90</a>		.lock()
-<a href=#91 id=91 data-nosnippet>91</a>		.map_err(MapLockError)
-<a href=#92 id=92 data-nosnippet>92</a>		.map_err(|Error| Error.to_string())<span class="question-mark">?
-<a href=#93 id=93 data-nosnippet>93</a>		</span>.clone();
-<a href=#94 id=94 data-nosnippet>94</a>
-<a href=#95 id=95 data-nosnippet>95</a>	<span class="kw">let </span>Groups = State
-<a href=#96 id=96 data-nosnippet>96</a>		.Feature
-<a href=#97 id=97 data-nosnippet>97</a>		.Markers
-<a href=#98 id=98 data-nosnippet>98</a>		.SourceControlManagementGroups
-<a href=#99 id=99 data-nosnippet>99</a>		.lock()
-<a href=#100 id=100 data-nosnippet>100</a>		.map_err(MapLockError)
-<a href=#101 id=101 data-nosnippet>101</a>		.map_err(|Error| Error.to_string())<span class="question-mark">?
-<a href=#102 id=102 data-nosnippet>102</a>		</span>.clone();
-<a href=#103 id=103 data-nosnippet>103</a>
-<a href=#104 id=104 data-nosnippet>104</a>	<span class="kw">let </span>Resources = State
-<a href=#105 id=105 data-nosnippet>105</a>		.Feature
-<a href=#106 id=106 data-nosnippet>106</a>		.Markers
-<a href=#107 id=107 data-nosnippet>107</a>		.SourceControlManagementResources
-<a href=#108 id=108 data-nosnippet>108</a>		.lock()
-<a href=#109 id=109 data-nosnippet>109</a>		.map_err(MapLockError)
-<a href=#110 id=110 data-nosnippet>110</a>		.map_err(|Error| Error.to_string())<span class="question-mark">?
-<a href=#111 id=111 data-nosnippet>111</a>		</span>.clone();
-<a href=#112 id=112 data-nosnippet>112</a>
-<a href=#113 id=113 data-nosnippet>113</a>	<span class="prelude-val">Ok</span>(<span class="macro">json!</span>({
-<a href=#114 id=114 data-nosnippet>114</a>		<span class="string">"providers"</span>: Providers,
-<a href=#115 id=115 data-nosnippet>115</a>		<span class="string">"groups"</span>: Groups,
-<a href=#116 id=116 data-nosnippet>116</a>		<span class="string">"resources"</span>: Resources,
-<a href=#117 id=117 data-nosnippet>117</a>	}))
-<a href=#118 id=118 data-nosnippet>118</a>}
-<a href=#119 id=119 data-nosnippet>119</a>
-<a href=#120 id=120 data-nosnippet>120</a><span class="attr">#[command]
-<a href=#121 id=121 data-nosnippet>121</a></span><span class="kw">pub async fn </span><a href="#120">GetSCMResourceChanges</a>(
-<a href=#122 id=122 data-nosnippet>122</a>	State:State&lt;<span class="lifetime">'_</span>, <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../ApplicationState/State/ApplicationState.rs.html#65-88">ApplicationState</a>&gt;&gt;,
-<a href=#123 id=123 data-nosnippet>123</a>
-<a href=#124 id=124 data-nosnippet>124</a>	ProviderIdentifier:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
-<a href=#125 id=125 data-nosnippet>125</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
-<a href=#126 id=126 data-nosnippet>126</a>	<span class="macro">log::debug!</span>(<span class="string">"[SCM Command] Getting resource changes for provider: {}"</span>, ProviderIdentifier);
-<a href=#127 id=127 data-nosnippet>127</a>
-<a href=#128 id=128 data-nosnippet>128</a>	<span class="kw">let </span>resources_map = State
-<a href=#129 id=129 data-nosnippet>129</a>		.Feature
-<a href=#130 id=130 data-nosnippet>130</a>		.Markers
-<a href=#131 id=131 data-nosnippet>131</a>		.SourceControlManagementResources
-<a href=#132 id=132 data-nosnippet>132</a>		.lock()
-<a href=#133 id=133 data-nosnippet>133</a>		.map_err(MapLockError)
-<a href=#134 id=134 data-nosnippet>134</a>		.map_err(|Error| Error.to_string())<span class="question-mark">?
-<a href=#135 id=135 data-nosnippet>135</a>		</span>.clone();
-<a href=#136 id=136 data-nosnippet>136</a>
-<a href=#137 id=137 data-nosnippet>137</a>	<span class="comment">// Filter resources by provider - Resources is HashMap&lt;u32, HashMap&lt;String,
-<a href=#138 id=138 data-nosnippet>138</a>	// Vec&lt;SourceControlManagementResourceDTO&gt;&gt;&gt; We need to flatten and filter by
-<a href=#139 id=139 data-nosnippet>139</a>	// ProviderHandle (u32) matching ProviderIdentifier (String)
-<a href=#140 id=140 data-nosnippet>140</a>	</span><span class="kw">let </span>provider_handle_u32 = ProviderIdentifier.parse::&lt;u32&gt;().unwrap_or(<span class="number">0</span>);
-<a href=#141 id=141 data-nosnippet>141</a>	<span class="kw">let </span>ProviderResources:Vec&lt;<span class="kw">_</span>&gt; = resources_map
-<a href=#142 id=142 data-nosnippet>142</a>		.iter()
-<a href=#143 id=143 data-nosnippet>143</a>		.flat_map(|(_group_id, group_resources)| group_resources.values())
-<a href=#144 id=144 data-nosnippet>144</a>		.flat_map(|vec_resources| vec_resources.iter())
-<a href=#145 id=145 data-nosnippet>145</a>		.filter(|r| r.ProviderHandle == provider_handle_u32)
-<a href=#146 id=146 data-nosnippet>146</a>		.cloned()
-<a href=#147 id=147 data-nosnippet>147</a>		.collect();
-<a href=#148 id=148 data-nosnippet>148</a>
-<a href=#149 id=149 data-nosnippet>149</a>	<span class="prelude-val">Ok</span>(<span class="macro">json!</span>({
-<a href=#150 id=150 data-nosnippet>150</a>		<span class="string">"resources"</span>: ProviderResources,
-<a href=#151 id=151 data-nosnippet>151</a>	}))
-<a href=#152 id=152 data-nosnippet>152</a>}
-<a href=#153 id=153 data-nosnippet>153</a>
-<a href=#154 id=154 data-nosnippet>154</a><span class="attr">#[command]
-<a href=#155 id=155 data-nosnippet>155</a></span><span class="kw">pub async fn </span><a href="#154">ExecuteSCMCommand</a>(
-<a href=#156 id=156 data-nosnippet>156</a>	State:State&lt;<span class="lifetime">'_</span>, <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../ApplicationState/State/ApplicationState.rs.html#65-88">ApplicationState</a>&gt;&gt;,
-<a href=#157 id=157 data-nosnippet>157</a>
-<a href=#158 id=158 data-nosnippet>158</a>	CommandName:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
-<a href=#159 id=159 data-nosnippet>159</a>
-<a href=#160 id=160 data-nosnippet>160</a>	Arguments:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
-<a href=#161 id=161 data-nosnippet>161</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
-<a href=#162 id=162 data-nosnippet>162</a>	<span class="macro">log::debug!</span>(<span class="string">"[SCM Command] Executing command: {}"</span>, CommandName);
-<a href=#163 id=163 data-nosnippet>163</a>
-<a href=#164 id=164 data-nosnippet>164</a>	<span class="comment">// Execute SCM commands by routing them through the
-<a href=#165 id=165 data-nosnippet>165</a>	// SourceControlManagementProvider trait. The provider registered in
-<a href=#166 id=166 data-nosnippet>166</a>	// ApplicationState performs actual git operations (commit, push, pull, fetch,
-<a href=#167 id=167 data-nosnippet>167</a>	// rebase) with proper error handling, progress reporting, and cancellation
-<a href=#168 id=168 data-nosnippet>168</a>	// support. Current implementation returns mocked success responses
-<a href=#169 id=169 data-nosnippet>169</a>	// for demonstration purposes only.
-<a href=#170 id=170 data-nosnippet>170</a>	</span><span class="kw">match </span>CommandName.as_str() {
-<a href=#171 id=171 data-nosnippet>171</a>		<span class="string">"git.commit" </span>| <span class="string">"commit" </span>=&gt; {
-<a href=#172 id=172 data-nosnippet>172</a>			<span class="macro">log::info!</span>(<span class="string">"[SCM Command] Executing commit"</span>);
-<a href=#173 id=173 data-nosnippet>173</a>			<span class="prelude-val">Ok</span>(<span class="macro">json!</span>({ <span class="string">"success"</span>: <span class="bool-val">true</span>, <span class="string">"message"</span>: <span class="string">"Commit successful" </span>}))
-<a href=#174 id=174 data-nosnippet>174</a>		},
-<a href=#175 id=175 data-nosnippet>175</a>		<span class="string">"git.push" </span>| <span class="string">"push" </span>=&gt; {
-<a href=#176 id=176 data-nosnippet>176</a>			<span class="macro">log::info!</span>(<span class="string">"[SCM Command] Executing push"</span>);
-<a href=#177 id=177 data-nosnippet>177</a>			<span class="prelude-val">Ok</span>(<span class="macro">json!</span>({ <span class="string">"success"</span>: <span class="bool-val">true</span>, <span class="string">"message"</span>: <span class="string">"Push successful" </span>}))
-<a href=#178 id=178 data-nosnippet>178</a>		},
-<a href=#179 id=179 data-nosnippet>179</a>		<span class="string">"git.pull" </span>| <span class="string">"pull" </span>=&gt; {
-<a href=#180 id=180 data-nosnippet>180</a>			<span class="macro">log::info!</span>(<span class="string">"[SCM Command] Executing pull"</span>);
-<a href=#181 id=181 data-nosnippet>181</a>			<span class="prelude-val">Ok</span>(<span class="macro">json!</span>({ <span class="string">"success"</span>: <span class="bool-val">true</span>, <span class="string">"message"</span>: <span class="string">"Pull successful" </span>}))
-<a href=#182 id=182 data-nosnippet>182</a>		},
-<a href=#183 id=183 data-nosnippet>183</a>		<span class="kw">_ </span>=&gt; <span class="prelude-val">Err</span>(<span class="macro">format!</span>(<span class="string">"Unknown SCM command: {}"</span>, CommandName)),
-<a href=#184 id=184 data-nosnippet>184</a>	}
-<a href=#185 id=185 data-nosnippet>185</a>}
-<a href=#186 id=186 data-nosnippet>186</a>
-<a href=#187 id=187 data-nosnippet>187</a><span class="attr">#[command]
-<a href=#188 id=188 data-nosnippet>188</a></span><span class="kw">pub async fn </span><a href="#187">GetSCMBranches</a>(
-<a href=#189 id=189 data-nosnippet>189</a>	_State:State&lt;<span class="lifetime">'_</span>, <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../ApplicationState/State/ApplicationState.rs.html#65-88">ApplicationState</a>&gt;&gt;,
-<a href=#190 id=190 data-nosnippet>190</a>
-<a href=#191 id=191 data-nosnippet>191</a>	ProviderIdentifier:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
-<a href=#192 id=192 data-nosnippet>192</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
-<a href=#193 id=193 data-nosnippet>193</a>	<span class="macro">log::debug!</span>(<span class="string">"[SCM Command] Getting branches for provider: {}"</span>, ProviderIdentifier);
-<a href=#194 id=194 data-nosnippet>194</a>
-<a href=#195 id=195 data-nosnippet>195</a>	<span class="comment">// Retrieve branch information by querying the SCM provider via
-<a href=#196 id=196 data-nosnippet>196</a>	// SourceControlManagementProvider::GetBranches. This fetches local and remote
-<a href=#197 id=197 data-nosnippet>197</a>	// branches with current branch status, tracking relationships, and checkout
-<a href=#198 id=198 data-nosnippet>198</a>	// indicators. The structured data populates the branch picker UI and enables
-<a href=#199 id=199 data-nosnippet>199</a>	// branch switching operations.
-<a href=#200 id=200 data-nosnippet>200</a>	</span><span class="prelude-val">Ok</span>(<span class="macro">json!</span>({
-<a href=#201 id=201 data-nosnippet>201</a>		<span class="string">"branches"</span>: [
-<a href=#202 id=202 data-nosnippet>202</a>			{ <span class="string">"name"</span>: <span class="string">"main"</span>, <span class="string">"isCurrent"</span>: <span class="bool-val">true </span>},
-<a href=#203 id=203 data-nosnippet>203</a>			{ <span class="string">"name"</span>: <span class="string">"develop"</span>, <span class="string">"isCurrent"</span>: <span class="bool-val">false </span>},
-<a href=#204 id=204 data-nosnippet>204</a>		],
-<a href=#205 id=205 data-nosnippet>205</a>	}))
-<a href=#206 id=206 data-nosnippet>206</a>}
-<a href=#207 id=207 data-nosnippet>207</a>
-<a href=#208 id=208 data-nosnippet>208</a><span class="attr">#[command]
-<a href=#209 id=209 data-nosnippet>209</a></span><span class="kw">pub async fn </span><a href="#208">CheckoutSCMBranch</a>(_State:State&lt;<span class="lifetime">'_</span>, <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../ApplicationState/State/ApplicationState.rs.html#65-88">ApplicationState</a>&gt;&gt;, BranchName:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
-<a href=#210 id=210 data-nosnippet>210</a>	<span class="macro">log::debug!</span>(<span class="string">"[SCM Command] Checking out branch: {}"</span>, BranchName);
-<a href=#211 id=211 data-nosnippet>211</a>
-<a href=#212 id=212 data-nosnippet>212</a>	<span class="comment">// Switch to a different branch by invoking the SCM provider's checkout method.
-<a href=#213 id=213 data-nosnippet>213</a>	// This updates the working directory to the specified branch, handling
-<a href=#214 id=214 data-nosnippet>214</a>	// uncommitted changes (prompting to stash or abort), creating branches if they
-<a href=#215 id=215 data-nosnippet>215</a>	// don't exist, and setting up upstream tracking. Proper error handling reports
-<a href=#216 id=216 data-nosnippet>216</a>	// failures to the user with actionable messages.
-<a href=#217 id=217 data-nosnippet>217</a>	</span><span class="prelude-val">Ok</span>(<span class="macro">json!</span>({ <span class="string">"success"</span>: <span class="bool-val">true</span>, <span class="string">"message"</span>: <span class="macro">format!</span>(<span class="string">"Checked out branch: {}"</span>, BranchName) }))
-<a href=#218 id=218 data-nosnippet>218</a>}
-<a href=#219 id=219 data-nosnippet>219</a>
-<a href=#220 id=220 data-nosnippet>220</a><span class="attr">#[command]
-<a href=#221 id=221 data-nosnippet>221</a></span><span class="kw">pub async fn </span><a href="#220">GetSCMCommitHistory</a>(
-<a href=#222 id=222 data-nosnippet>222</a>	_State:State&lt;<span class="lifetime">'_</span>, <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../ApplicationState/State/ApplicationState.rs.html#65-88">ApplicationState</a>&gt;&gt;,
-<a href=#223 id=223 data-nosnippet>223</a>
-<a href=#224 id=224 data-nosnippet>224</a>	MaxCount:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>&gt;,
-<a href=#225 id=225 data-nosnippet>225</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
-<a href=#226 id=226 data-nosnippet>226</a>	<span class="macro">log::debug!</span>(<span class="string">"[SCM Command] Getting commit history, max count: {:?}"</span>, MaxCount);
-<a href=#227 id=227 data-nosnippet>227</a>
-<a href=#228 id=228 data-nosnippet>228</a>	<span class="comment">// Retrieve commit history by querying the SCM provider's log or history API.
-<a href=#229 id=229 data-nosnippet>229</a>	// Returns structured commit data including hash, author, date, message, and
-<a href=#230 id=230 data-nosnippet>230</a>	// parent relationships. The MaxCount parameter limits results and pagination
-<a href=#231 id=231 data-nosnippet>231</a>	// support ensures performance for large repositories. This data populates the
-<a href=#232 id=232 data-nosnippet>232</a>	// Git timeline view in the source control panel.
-<a href=#233 id=233 data-nosnippet>233</a>	</span><span class="kw">let </span>MaxCommits = MaxCount.unwrap_or(<span class="number">50</span>);
-<a href=#234 id=234 data-nosnippet>234</a>	<span class="prelude-val">Ok</span>(<span class="macro">json!</span>({
-<a href=#235 id=235 data-nosnippet>235</a>		<span class="string">"commits"</span>: Vec::&lt;Value&gt;::new(),
-<a href=#236 id=236 data-nosnippet>236</a>		<span class="string">"maxCount"</span>: MaxCommits,
-<a href=#237 id=237 data-nosnippet>237</a>	}))
-<a href=#238 id=238 data-nosnippet>238</a>}
-<a href=#239 id=239 data-nosnippet>239</a>
-<a href=#240 id=240 data-nosnippet>240</a><span class="attr">#[command]
-<a href=#241 id=241 data-nosnippet>241</a></span><span class="kw">pub async fn </span><a href="#240">StageSCMResource</a>(
-<a href=#242 id=242 data-nosnippet>242</a>	_State:State&lt;<span class="lifetime">'_</span>, <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../ApplicationState/State/ApplicationState.rs.html#65-88">ApplicationState</a>&gt;&gt;,
-<a href=#243 id=243 data-nosnippet>243</a>
-<a href=#244 id=244 data-nosnippet>244</a>	ResourceURI:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
-<a href=#245 id=245 data-nosnippet>245</a>
-<a href=#246 id=246 data-nosnippet>246</a>	Staged:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
-<a href=#247 id=247 data-nosnippet>247</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
-<a href=#248 id=248 data-nosnippet>248</a>	<span class="macro">log::debug!</span>(<span class="string">"[SCM Command] Staging resource: {}, staged: {}"</span>, ResourceURI, Staged);
-<a href=#249 id=249 data-nosnippet>249</a>
-<a href=#250 id=250 data-nosnippet>250</a>	<span class="comment">// Control which changes are included in the next commit by calling the SCM
-<a href=#251 id=251 data-nosnippet>251</a>	// provider's stage/unstage methods. Staging adds files to the git index, while
-<a href=#252 id=252 data-nosnippet>252</a>	// unstaging removes them. Validates ResourceURI existence and handles both
-<a href=#253 id=253 data-nosnippet>253</a>	// specific files and entire directories. Returns success/failure status for
-<a href=#254 id=254 data-nosnippet>254</a>	// UI feedback and enables the standard git add/remove workflow.
-<a href=#255 id=255 data-nosnippet>255</a>	</span><span class="prelude-val">Ok</span>(<span class="macro">json!</span>({ <span class="string">"success"</span>: <span class="bool-val">true </span>}))
-<a href=#256 id=256 data-nosnippet>256</a>}
+<a href=#18 id=18 data-nosnippet>18</a>//! - Reads from `ApplicationState.SourceControlManagement*` fields to gather
+<a href=#19 id=19 data-nosnippet>19</a>//!   state
+<a href=#20 id=20 data-nosnippet>20</a>//! - TODO: Should forward commands to provider methods via DI (Require trait)
+<a href=#21 id=21 data-nosnippet>21</a>//!
+<a href=#22 id=22 data-nosnippet>22</a>//! COMMAND REFERENCE (Tauri IPC):
+<a href=#23 id=23 data-nosnippet>23</a>//! - [`GetAllSourceControlManagementState`]: Returns complete snapshot of
+<a href=#24 id=24 data-nosnippet>24</a>//!   providers, groups, and resources for SCM view
+<a href=#25 id=25 data-nosnippet>25</a>//! - [`GetSCMResourceChanges`]: Get file changes for a specific provider
+<a href=#26 id=26 data-nosnippet>26</a>//! - [`ExecuteSCMCommand`]: Execute SCM operation (commit, push, pull, etc.)
+<a href=#27 id=27 data-nosnippet>27</a>//! - [`GetSCMBranches`]: List branches for provider
+<a href=#28 id=28 data-nosnippet>28</a>//! - [`CheckoutSCMBranch`]: Switch to a different branch
+<a href=#29 id=29 data-nosnippet>29</a>//! - [`GetSCMCommitHistory`]: Retrieve commit log with optional limit
+<a href=#30 id=30 data-nosnippet>30</a>//! - [`StageSCMResource`]: Stage or unstage a file resource
+<a href=#31 id=31 data-nosnippet>31</a>//!
+<a href=#32 id=32 data-nosnippet>32</a>//! ERROR HANDLING:
+<a href=#33 id=33 data-nosnippet>33</a>//! - Returns `Result&lt;Value, String&gt;` where error string is sent to frontend
+<a href=#34 id=34 data-nosnippet>34</a>//! - Uses `MapLockError` to convert Mutex poisoning to error strings
+<a href=#35 id=35 data-nosnippet>35</a>//! - Provider identifier parsing may fail (unwrap_or(0) fallback)
+<a href=#36 id=36 data-nosnippet>36</a>//! - Unknown commands return error string
+<a href=#37 id=37 data-nosnippet>37</a>//!
+<a href=#38 id=38 data-nosnippet>38</a>//! PERFORMANCE:
+<a href=#39 id=39 data-nosnippet>39</a>//! - State access uses RwLock reads; cloning entire state maps (may be heavy)
+<a href=#40 id=40 data-nosnippet>40</a>//! - TODO: Consider pagination for large commit histories and resource lists
+<a href=#41 id=41 data-nosnippet>41</a>//!
+<a href=#42 id=42 data-nosnippet>42</a>//! VS CODE REFERENCE:
+<a href=#43 id=43 data-nosnippet>43</a>//! - `vs/workbench/contrib/scm/common/scm.ts` - SCM model and state aggregation
+<a href=#44 id=44 data-nosnippet>44</a>//! - `vs/workbench/contrib/scm/browser/scmView.ts` - SCM UI panel
+<a href=#45 id=45 data-nosnippet>45</a>//! - `vs/workbench/services/scm/common/scmService.ts` - SCM service façade
+<a href=#46 id=46 data-nosnippet>46</a>//!
+<a href=#47 id=47 data-nosnippet>47</a>//! TODO:
+<a href=#48 id=48 data-nosnippet>48</a>//! - Integrate with `SourceControlManagementProvider` trait methods
+<a href=#49 id=49 data-nosnippet>49</a>//! - Implement actual SCM command execution (currently stubs with mock success)
+<a href=#50 id=50 data-nosnippet>50</a>//! - Add proper error handling for failed git operations
+<a href=#51 id=51 data-nosnippet>51</a>//! - Implement branch retrieval with remote tracking branches
+<a href=#52 id=52 data-nosnippet>52</a>//! - Add commit history with proper commit objects (author, message, hash)
+<a href=#53 id=53 data-nosnippet>53</a>//! - Implement resource staging with correct file paths and states
+<a href=#54 id=54 data-nosnippet>54</a>//! - Add support for stash operations, merging, rebasing
+<a href=#55 id=55 data-nosnippet>55</a>//! - Handle multiple SCM providers simultaneously (git, svn, etc.)
+<a href=#56 id=56 data-nosnippet>56</a>//! - Add cancellation tokens for long-running operations
+<a href=#57 id=57 data-nosnippet>57</a>//! - Implement diff viewing with proper unified diff format
+<a href=#58 id=58 data-nosnippet>58</a>//! - Add SCM resource decoration (git status icons, gutter marks)
+<a href=#59 id=59 data-nosnippet>59</a>//! - Support SCM workspace edit (apply changes from commit/rebase)
+<a href=#60 id=60 data-nosnippet>60</a>//! - Add SCM input box interactions (commit message, branch name)
+<a href=#61 id=61 data-nosnippet>61</a>//!
+<a href=#62 id=62 data-nosnippet>62</a>//! MODULE CONTENTS:
+<a href=#63 id=63 data-nosnippet>63</a>//! - Tauri command functions (all `#[command]` async):
+<a href=#64 id=64 data-nosnippet>64</a>//!   - State retrieval: `GetAllSourceControlManagementState`,
+<a href=#65 id=65 data-nosnippet>65</a>//!     `GetSCMResourceChanges`
+<a href=#66 id=66 data-nosnippet>66</a>//!   - Operations: `ExecuteSCMCommand`, `StageSCMResource`
+<a href=#67 id=67 data-nosnippet>67</a>//!   - Branch management: `GetSCMBranches`, `CheckoutSCMBranch`
+<a href=#68 id=68 data-nosnippet>68</a>//!   - History: `GetSCMCommitHistory`
+<a href=#69 id=69 data-nosnippet>69</a>//! - No data structures (uses DTOs from CommonLibrary)
+<a href=#70 id=70 data-nosnippet>70</a>
+<a href=#71 id=71 data-nosnippet>71</a></span><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">std::sync::Arc</a>;
+<a href=#72 id=72 data-nosnippet>72</a>
+<a href=#73 id=73 data-nosnippet>73</a><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json</a>};
+<a href=#74 id=74 data-nosnippet>74</a><span class="kw">use </span>tauri::{State, command};
+<a href=#75 id=75 data-nosnippet>75</a>
+<a href=#76 id=76 data-nosnippet>76</a><span class="kw">use </span><span class="kw">crate</span>::ApplicationState::{<a href="../ApplicationState/State/ApplicationState.rs.html#65-88">ApplicationState</a>, <a href="../ApplicationState/State/ApplicationState.rs.html#136-138">MapLockError</a>};
+<a href=#77 id=77 data-nosnippet>77</a>
+<a href=#78 id=78 data-nosnippet>78</a><span class="doccomment">/// Retrieves the complete state of all Source Control Management providers,
+<a href=#79 id=79 data-nosnippet>79</a>/// groups, and resources for rendering in the UI.
+<a href=#80 id=80 data-nosnippet>80</a>///
+<a href=#81 id=81 data-nosnippet>81</a>/// This command is called by the frontend to get a full snapshot of the SCM
+<a href=#82 id=82 data-nosnippet>82</a>/// view.
+<a href=#83 id=83 data-nosnippet>83</a></span><span class="attr">#[command]
+<a href=#84 id=84 data-nosnippet>84</a></span><span class="kw">pub async fn </span><a href="#83">GetAllSourceControlManagementState</a>(State:State&lt;<span class="lifetime">'_</span>, <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../ApplicationState/State/ApplicationState.rs.html#65-88">ApplicationState</a>&gt;&gt;) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
+<a href=#85 id=85 data-nosnippet>85</a>	<span class="macro">log::debug!</span>(<span class="string">"[SourceControlManagement Command] Getting all SCM state for UI."</span>);
+<a href=#86 id=86 data-nosnippet>86</a>
+<a href=#87 id=87 data-nosnippet>87</a>	<span class="kw">let </span>Providers = State
+<a href=#88 id=88 data-nosnippet>88</a>		.Feature
+<a href=#89 id=89 data-nosnippet>89</a>		.Markers
+<a href=#90 id=90 data-nosnippet>90</a>		.SourceControlManagementProviders
+<a href=#91 id=91 data-nosnippet>91</a>		.lock()
+<a href=#92 id=92 data-nosnippet>92</a>		.map_err(MapLockError)
+<a href=#93 id=93 data-nosnippet>93</a>		.map_err(|Error| Error.to_string())<span class="question-mark">?
+<a href=#94 id=94 data-nosnippet>94</a>		</span>.clone();
+<a href=#95 id=95 data-nosnippet>95</a>
+<a href=#96 id=96 data-nosnippet>96</a>	<span class="kw">let </span>Groups = State
+<a href=#97 id=97 data-nosnippet>97</a>		.Feature
+<a href=#98 id=98 data-nosnippet>98</a>		.Markers
+<a href=#99 id=99 data-nosnippet>99</a>		.SourceControlManagementGroups
+<a href=#100 id=100 data-nosnippet>100</a>		.lock()
+<a href=#101 id=101 data-nosnippet>101</a>		.map_err(MapLockError)
+<a href=#102 id=102 data-nosnippet>102</a>		.map_err(|Error| Error.to_string())<span class="question-mark">?
+<a href=#103 id=103 data-nosnippet>103</a>		</span>.clone();
+<a href=#104 id=104 data-nosnippet>104</a>
+<a href=#105 id=105 data-nosnippet>105</a>	<span class="kw">let </span>Resources = State
+<a href=#106 id=106 data-nosnippet>106</a>		.Feature
+<a href=#107 id=107 data-nosnippet>107</a>		.Markers
+<a href=#108 id=108 data-nosnippet>108</a>		.SourceControlManagementResources
+<a href=#109 id=109 data-nosnippet>109</a>		.lock()
+<a href=#110 id=110 data-nosnippet>110</a>		.map_err(MapLockError)
+<a href=#111 id=111 data-nosnippet>111</a>		.map_err(|Error| Error.to_string())<span class="question-mark">?
+<a href=#112 id=112 data-nosnippet>112</a>		</span>.clone();
+<a href=#113 id=113 data-nosnippet>113</a>
+<a href=#114 id=114 data-nosnippet>114</a>	<span class="prelude-val">Ok</span>(<span class="macro">json!</span>({
+<a href=#115 id=115 data-nosnippet>115</a>		<span class="string">"providers"</span>: Providers,
+<a href=#116 id=116 data-nosnippet>116</a>		<span class="string">"groups"</span>: Groups,
+<a href=#117 id=117 data-nosnippet>117</a>		<span class="string">"resources"</span>: Resources,
+<a href=#118 id=118 data-nosnippet>118</a>	}))
+<a href=#119 id=119 data-nosnippet>119</a>}
+<a href=#120 id=120 data-nosnippet>120</a>
+<a href=#121 id=121 data-nosnippet>121</a><span class="attr">#[command]
+<a href=#122 id=122 data-nosnippet>122</a></span><span class="kw">pub async fn </span><a href="#121">GetSCMResourceChanges</a>(
+<a href=#123 id=123 data-nosnippet>123</a>	State:State&lt;<span class="lifetime">'_</span>, <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../ApplicationState/State/ApplicationState.rs.html#65-88">ApplicationState</a>&gt;&gt;,
+<a href=#124 id=124 data-nosnippet>124</a>
+<a href=#125 id=125 data-nosnippet>125</a>	ProviderIdentifier:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#126 id=126 data-nosnippet>126</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
+<a href=#127 id=127 data-nosnippet>127</a>	<span class="macro">log::debug!</span>(<span class="string">"[SCM Command] Getting resource changes for provider: {}"</span>, ProviderIdentifier);
+<a href=#128 id=128 data-nosnippet>128</a>
+<a href=#129 id=129 data-nosnippet>129</a>	<span class="kw">let </span>resources_map = State
+<a href=#130 id=130 data-nosnippet>130</a>		.Feature
+<a href=#131 id=131 data-nosnippet>131</a>		.Markers
+<a href=#132 id=132 data-nosnippet>132</a>		.SourceControlManagementResources
+<a href=#133 id=133 data-nosnippet>133</a>		.lock()
+<a href=#134 id=134 data-nosnippet>134</a>		.map_err(MapLockError)
+<a href=#135 id=135 data-nosnippet>135</a>		.map_err(|Error| Error.to_string())<span class="question-mark">?
+<a href=#136 id=136 data-nosnippet>136</a>		</span>.clone();
+<a href=#137 id=137 data-nosnippet>137</a>
+<a href=#138 id=138 data-nosnippet>138</a>	<span class="comment">// Filter resources by provider - Resources is HashMap&lt;u32, HashMap&lt;String,
+<a href=#139 id=139 data-nosnippet>139</a>	// Vec&lt;SourceControlManagementResourceDTO&gt;&gt;&gt; We need to flatten and filter by
+<a href=#140 id=140 data-nosnippet>140</a>	// ProviderHandle (u32) matching ProviderIdentifier (String)
+<a href=#141 id=141 data-nosnippet>141</a>	</span><span class="kw">let </span>provider_handle_u32 = ProviderIdentifier.parse::&lt;u32&gt;().unwrap_or(<span class="number">0</span>);
+<a href=#142 id=142 data-nosnippet>142</a>	<span class="kw">let </span>ProviderResources:Vec&lt;<span class="kw">_</span>&gt; = resources_map
+<a href=#143 id=143 data-nosnippet>143</a>		.iter()
+<a href=#144 id=144 data-nosnippet>144</a>		.flat_map(|(_group_id, group_resources)| group_resources.values())
+<a href=#145 id=145 data-nosnippet>145</a>		.flat_map(|vec_resources| vec_resources.iter())
+<a href=#146 id=146 data-nosnippet>146</a>		.filter(|r| r.ProviderHandle == provider_handle_u32)
+<a href=#147 id=147 data-nosnippet>147</a>		.cloned()
+<a href=#148 id=148 data-nosnippet>148</a>		.collect();
+<a href=#149 id=149 data-nosnippet>149</a>
+<a href=#150 id=150 data-nosnippet>150</a>	<span class="prelude-val">Ok</span>(<span class="macro">json!</span>({
+<a href=#151 id=151 data-nosnippet>151</a>		<span class="string">"resources"</span>: ProviderResources,
+<a href=#152 id=152 data-nosnippet>152</a>	}))
+<a href=#153 id=153 data-nosnippet>153</a>}
+<a href=#154 id=154 data-nosnippet>154</a>
+<a href=#155 id=155 data-nosnippet>155</a><span class="attr">#[command]
+<a href=#156 id=156 data-nosnippet>156</a></span><span class="kw">pub async fn </span><a href="#155">ExecuteSCMCommand</a>(
+<a href=#157 id=157 data-nosnippet>157</a>	State:State&lt;<span class="lifetime">'_</span>, <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../ApplicationState/State/ApplicationState.rs.html#65-88">ApplicationState</a>&gt;&gt;,
+<a href=#158 id=158 data-nosnippet>158</a>
+<a href=#159 id=159 data-nosnippet>159</a>	CommandName:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#160 id=160 data-nosnippet>160</a>
+<a href=#161 id=161 data-nosnippet>161</a>	Arguments:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
+<a href=#162 id=162 data-nosnippet>162</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
+<a href=#163 id=163 data-nosnippet>163</a>	<span class="macro">log::debug!</span>(<span class="string">"[SCM Command] Executing command: {}"</span>, CommandName);
+<a href=#164 id=164 data-nosnippet>164</a>
+<a href=#165 id=165 data-nosnippet>165</a>	<span class="comment">// Execute SCM commands by routing them through the
+<a href=#166 id=166 data-nosnippet>166</a>	// SourceControlManagementProvider trait. The provider registered in
+<a href=#167 id=167 data-nosnippet>167</a>	// ApplicationState performs actual git operations (commit, push, pull, fetch,
+<a href=#168 id=168 data-nosnippet>168</a>	// rebase) with proper error handling, progress reporting, and cancellation
+<a href=#169 id=169 data-nosnippet>169</a>	// support. Current implementation returns mocked success responses
+<a href=#170 id=170 data-nosnippet>170</a>	// for demonstration purposes only.
+<a href=#171 id=171 data-nosnippet>171</a>	</span><span class="kw">match </span>CommandName.as_str() {
+<a href=#172 id=172 data-nosnippet>172</a>		<span class="string">"git.commit" </span>| <span class="string">"commit" </span>=&gt; {
+<a href=#173 id=173 data-nosnippet>173</a>			<span class="macro">log::info!</span>(<span class="string">"[SCM Command] Executing commit"</span>);
+<a href=#174 id=174 data-nosnippet>174</a>			<span class="prelude-val">Ok</span>(<span class="macro">json!</span>({ <span class="string">"success"</span>: <span class="bool-val">true</span>, <span class="string">"message"</span>: <span class="string">"Commit successful" </span>}))
+<a href=#175 id=175 data-nosnippet>175</a>		},
+<a href=#176 id=176 data-nosnippet>176</a>		<span class="string">"git.push" </span>| <span class="string">"push" </span>=&gt; {
+<a href=#177 id=177 data-nosnippet>177</a>			<span class="macro">log::info!</span>(<span class="string">"[SCM Command] Executing push"</span>);
+<a href=#178 id=178 data-nosnippet>178</a>			<span class="prelude-val">Ok</span>(<span class="macro">json!</span>({ <span class="string">"success"</span>: <span class="bool-val">true</span>, <span class="string">"message"</span>: <span class="string">"Push successful" </span>}))
+<a href=#179 id=179 data-nosnippet>179</a>		},
+<a href=#180 id=180 data-nosnippet>180</a>		<span class="string">"git.pull" </span>| <span class="string">"pull" </span>=&gt; {
+<a href=#181 id=181 data-nosnippet>181</a>			<span class="macro">log::info!</span>(<span class="string">"[SCM Command] Executing pull"</span>);
+<a href=#182 id=182 data-nosnippet>182</a>			<span class="prelude-val">Ok</span>(<span class="macro">json!</span>({ <span class="string">"success"</span>: <span class="bool-val">true</span>, <span class="string">"message"</span>: <span class="string">"Pull successful" </span>}))
+<a href=#183 id=183 data-nosnippet>183</a>		},
+<a href=#184 id=184 data-nosnippet>184</a>		<span class="kw">_ </span>=&gt; <span class="prelude-val">Err</span>(<span class="macro">format!</span>(<span class="string">"Unknown SCM command: {}"</span>, CommandName)),
+<a href=#185 id=185 data-nosnippet>185</a>	}
+<a href=#186 id=186 data-nosnippet>186</a>}
+<a href=#187 id=187 data-nosnippet>187</a>
+<a href=#188 id=188 data-nosnippet>188</a><span class="attr">#[command]
+<a href=#189 id=189 data-nosnippet>189</a></span><span class="kw">pub async fn </span><a href="#188">GetSCMBranches</a>(
+<a href=#190 id=190 data-nosnippet>190</a>	_State:State&lt;<span class="lifetime">'_</span>, <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../ApplicationState/State/ApplicationState.rs.html#65-88">ApplicationState</a>&gt;&gt;,
+<a href=#191 id=191 data-nosnippet>191</a>
+<a href=#192 id=192 data-nosnippet>192</a>	ProviderIdentifier:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#193 id=193 data-nosnippet>193</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
+<a href=#194 id=194 data-nosnippet>194</a>	<span class="macro">log::debug!</span>(<span class="string">"[SCM Command] Getting branches for provider: {}"</span>, ProviderIdentifier);
+<a href=#195 id=195 data-nosnippet>195</a>
+<a href=#196 id=196 data-nosnippet>196</a>	<span class="comment">// Retrieve branch information by querying the SCM provider via
+<a href=#197 id=197 data-nosnippet>197</a>	// SourceControlManagementProvider::GetBranches. This fetches local and remote
+<a href=#198 id=198 data-nosnippet>198</a>	// branches with current branch status, tracking relationships, and checkout
+<a href=#199 id=199 data-nosnippet>199</a>	// indicators. The structured data populates the branch picker UI and enables
+<a href=#200 id=200 data-nosnippet>200</a>	// branch switching operations.
+<a href=#201 id=201 data-nosnippet>201</a>	</span><span class="prelude-val">Ok</span>(<span class="macro">json!</span>({
+<a href=#202 id=202 data-nosnippet>202</a>		<span class="string">"branches"</span>: [
+<a href=#203 id=203 data-nosnippet>203</a>			{ <span class="string">"name"</span>: <span class="string">"main"</span>, <span class="string">"isCurrent"</span>: <span class="bool-val">true </span>},
+<a href=#204 id=204 data-nosnippet>204</a>			{ <span class="string">"name"</span>: <span class="string">"develop"</span>, <span class="string">"isCurrent"</span>: <span class="bool-val">false </span>},
+<a href=#205 id=205 data-nosnippet>205</a>		],
+<a href=#206 id=206 data-nosnippet>206</a>	}))
+<a href=#207 id=207 data-nosnippet>207</a>}
+<a href=#208 id=208 data-nosnippet>208</a>
+<a href=#209 id=209 data-nosnippet>209</a><span class="attr">#[command]
+<a href=#210 id=210 data-nosnippet>210</a></span><span class="kw">pub async fn </span><a href="#209">CheckoutSCMBranch</a>(_State:State&lt;<span class="lifetime">'_</span>, <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../ApplicationState/State/ApplicationState.rs.html#65-88">ApplicationState</a>&gt;&gt;, BranchName:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
+<a href=#211 id=211 data-nosnippet>211</a>	<span class="macro">log::debug!</span>(<span class="string">"[SCM Command] Checking out branch: {}"</span>, BranchName);
+<a href=#212 id=212 data-nosnippet>212</a>
+<a href=#213 id=213 data-nosnippet>213</a>	<span class="comment">// Switch to a different branch by invoking the SCM provider's checkout method.
+<a href=#214 id=214 data-nosnippet>214</a>	// This updates the working directory to the specified branch, handling
+<a href=#215 id=215 data-nosnippet>215</a>	// uncommitted changes (prompting to stash or abort), creating branches if they
+<a href=#216 id=216 data-nosnippet>216</a>	// don't exist, and setting up upstream tracking. Proper error handling reports
+<a href=#217 id=217 data-nosnippet>217</a>	// failures to the user with actionable messages.
+<a href=#218 id=218 data-nosnippet>218</a>	</span><span class="prelude-val">Ok</span>(<span class="macro">json!</span>({ <span class="string">"success"</span>: <span class="bool-val">true</span>, <span class="string">"message"</span>: <span class="macro">format!</span>(<span class="string">"Checked out branch: {}"</span>, BranchName) }))
+<a href=#219 id=219 data-nosnippet>219</a>}
+<a href=#220 id=220 data-nosnippet>220</a>
+<a href=#221 id=221 data-nosnippet>221</a><span class="attr">#[command]
+<a href=#222 id=222 data-nosnippet>222</a></span><span class="kw">pub async fn </span><a href="#221">GetSCMCommitHistory</a>(
+<a href=#223 id=223 data-nosnippet>223</a>	_State:State&lt;<span class="lifetime">'_</span>, <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../ApplicationState/State/ApplicationState.rs.html#65-88">ApplicationState</a>&gt;&gt;,
+<a href=#224 id=224 data-nosnippet>224</a>
+<a href=#225 id=225 data-nosnippet>225</a>	MaxCount:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>&gt;,
+<a href=#226 id=226 data-nosnippet>226</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
+<a href=#227 id=227 data-nosnippet>227</a>	<span class="macro">log::debug!</span>(<span class="string">"[SCM Command] Getting commit history, max count: {:?}"</span>, MaxCount);
+<a href=#228 id=228 data-nosnippet>228</a>
+<a href=#229 id=229 data-nosnippet>229</a>	<span class="comment">// Retrieve commit history by querying the SCM provider's log or history API.
+<a href=#230 id=230 data-nosnippet>230</a>	// Returns structured commit data including hash, author, date, message, and
+<a href=#231 id=231 data-nosnippet>231</a>	// parent relationships. The MaxCount parameter limits results and pagination
+<a href=#232 id=232 data-nosnippet>232</a>	// support ensures performance for large repositories. This data populates the
+<a href=#233 id=233 data-nosnippet>233</a>	// Git timeline view in the source control panel.
+<a href=#234 id=234 data-nosnippet>234</a>	</span><span class="kw">let </span>MaxCommits = MaxCount.unwrap_or(<span class="number">50</span>);
+<a href=#235 id=235 data-nosnippet>235</a>	<span class="prelude-val">Ok</span>(<span class="macro">json!</span>({
+<a href=#236 id=236 data-nosnippet>236</a>		<span class="string">"commits"</span>: Vec::&lt;Value&gt;::new(),
+<a href=#237 id=237 data-nosnippet>237</a>		<span class="string">"maxCount"</span>: MaxCommits,
+<a href=#238 id=238 data-nosnippet>238</a>	}))
+<a href=#239 id=239 data-nosnippet>239</a>}
+<a href=#240 id=240 data-nosnippet>240</a>
+<a href=#241 id=241 data-nosnippet>241</a><span class="attr">#[command]
+<a href=#242 id=242 data-nosnippet>242</a></span><span class="kw">pub async fn </span><a href="#241">StageSCMResource</a>(
+<a href=#243 id=243 data-nosnippet>243</a>	_State:State&lt;<span class="lifetime">'_</span>, <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../ApplicationState/State/ApplicationState.rs.html#65-88">ApplicationState</a>&gt;&gt;,
+<a href=#244 id=244 data-nosnippet>244</a>
+<a href=#245 id=245 data-nosnippet>245</a>	ResourceURI:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#246 id=246 data-nosnippet>246</a>
+<a href=#247 id=247 data-nosnippet>247</a>	Staged:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
+<a href=#248 id=248 data-nosnippet>248</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
+<a href=#249 id=249 data-nosnippet>249</a>	<span class="macro">log::debug!</span>(<span class="string">"[SCM Command] Staging resource: {}, staged: {}"</span>, ResourceURI, Staged);
+<a href=#250 id=250 data-nosnippet>250</a>
+<a href=#251 id=251 data-nosnippet>251</a>	<span class="comment">// Control which changes are included in the next commit by calling the SCM
+<a href=#252 id=252 data-nosnippet>252</a>	// provider's stage/unstage methods. Staging adds files to the git index, while
+<a href=#253 id=253 data-nosnippet>253</a>	// unstaging removes them. Validates ResourceURI existence and handles both
+<a href=#254 id=254 data-nosnippet>254</a>	// specific files and entire directories. Returns success/failure status for
+<a href=#255 id=255 data-nosnippet>255</a>	// UI feedback and enables the standard git add/remove workflow.
+<a href=#256 id=256 data-nosnippet>256</a>	</span><span class="prelude-val">Ok</span>(<span class="macro">json!</span>({ <span class="string">"success"</span>: <span class="bool-val">true </span>}))
+<a href=#257 id=257 data-nosnippet>257</a>}
 </code></pre></div></section></main></body></html>
