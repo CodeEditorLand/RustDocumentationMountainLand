@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["Hover","ProvideHover","ValidateRequest"]};
+window.SIDEBAR_ITEMS = { "fn": ["Hover", "ProvideHover", "ValidateRequest"] };

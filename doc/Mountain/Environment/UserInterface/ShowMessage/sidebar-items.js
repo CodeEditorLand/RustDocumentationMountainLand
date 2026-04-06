@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["ShowMessage"]};
+window.SIDEBAR_ITEMS = { "fn": ["ShowMessage"] };

@@ -1,1 +1,6 @@
-window.SIDEBAR_ITEMS = {"fn":["MountainCreateCollaborationSession","MountainGetCollaborationSessions"]};
+window.SIDEBAR_ITEMS = {
+	"fn": [
+		"MountainCreateCollaborationSession",
+		"MountainGetCollaborationSessions",
+	],
+};

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["MountainGetWindDesktopConfiguration"]};
+window.SIDEBAR_ITEMS = { "fn": ["MountainGetWindDesktopConfiguration"] };

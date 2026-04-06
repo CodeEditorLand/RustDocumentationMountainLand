@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["ScannedExtensions"]};
+window.SIDEBAR_ITEMS = { "mod": ["ScannedExtensions"] };

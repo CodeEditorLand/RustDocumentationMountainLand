@@ -1,1 +1,3 @@
-window.SIDEBAR_ITEMS = {"struct":["PerformanceMetrics","ThroughputMetrics"]};
+window.SIDEBAR_ITEMS = {
+	"struct": ["PerformanceMetrics", "ThroughputMetrics"],
+};

@@ -1,1 +1,4 @@
-window.SIDEBAR_ITEMS = {"fn":["Initialize","ValidateSocketAddress"],"mod":["ServerConfig"]};
+window.SIDEBAR_ITEMS = {
+	"fn": ["Initialize", "ValidateSocketAddress"],
+	"mod": ["ServerConfig"],
+};

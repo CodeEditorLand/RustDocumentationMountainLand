@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["MountainGetPerformanceStats"]};
+window.SIDEBAR_ITEMS = { "fn": ["MountainGetPerformanceStats"] };

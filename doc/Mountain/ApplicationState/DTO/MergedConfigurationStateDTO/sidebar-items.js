@@ -1,1 +1,4 @@
-window.SIDEBAR_ITEMS = {"constant":["MAX_CONFIGURATION_DEPTH"],"struct":["MergedConfigurationStateDTO"]};
+window.SIDEBAR_ITEMS = {
+	"constant": ["MAX_CONFIGURATION_DEPTH"],
+	"struct": ["MergedConfigurationStateDTO"],
+};

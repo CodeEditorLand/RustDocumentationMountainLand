@@ -1,175 +1,796 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="SecretProvider (Environment)"><title>Mountain::Environment::SecretProvider - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-b7b9f40b.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-41dd4d93.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module SecretProvider</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Secret<wbr>Provider</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#secretprovider-environment" title="SecretProvider (Environment)">SecretProvider (Environment)</a><ul><li><a href="#responsibilities" title="RESPONSIBILITIES">RESPONSIBILITIES</a></li><li><a href="#architectural-role" title="ARCHITECTURAL ROLE">ARCHITECTURAL ROLE</a></li><li><a href="#security-considerations" title="SECURITY CONSIDERATIONS">SECURITY CONSIDERATIONS</a></li><li><a href="#performance" title="PERFORMANCE">PERFORMANCE</a></li><li><a href="#vs-code-reference" title="VS CODE REFERENCE">VS CODE REFERENCE</a></li><li><a href="#todo" title="TODO">TODO</a></li><li><a href="#module-contents" title="MODULE CONTENTS">MODULE CONTENTS</a></li></ul></li><li><a href="#secretprovider-implementation" title="SecretProvider Implementation">SecretProvider Implementation</a><ul><li><a href="#keyring-integration" title="Keyring Integration">Keyring Integration</a></li><li><a href="#security-considerations-1" title="Security Considerations">Security Considerations</a></li><li><a href="#air-integration-strategy" title="Air Integration Strategy">Air Integration Strategy</a></li><li><a href="#secret-operations" title="Secret Operations">Secret Operations</a></li></ul></li></ul><h3><a href="#functions">Module Items</a></h3><ul class="block"><li><a href="#functions" title="Functions">Functions</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Environment</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Environment</a></div><h1>Module <span>Secret<wbr>Provider</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Environment/SecretProvider.rs.html#1-435">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="secretprovider-environment"><a class="doc-anchor" href="#secretprovider-environment">§</a>SecretProvider (Environment)</h2>
-<p>Implements the <code>SecretProvider</code> trait for <code>MountainEnvironment</code>, providing
-secure storage and retrieval of secrets (passwords, tokens, keys) with
-optional integration with system keychains and the Air service.</p>
-<h3 id="responsibilities"><a class="doc-anchor" href="#responsibilities">§</a>RESPONSIBILITIES</h3><h4 id="1-secret-storage"><a class="doc-anchor" href="#1-secret-storage">§</a>1. Secret Storage</h4>
-<ul>
-<li>Store secrets securely in encrypted format</li>
-<li>Support multiple secret types (passwords, API keys, tokens)</li>
-<li>Provide per-secret access control and metadata</li>
-<li>Handle secret creation, update, and deletion</li>
-</ul>
-<h4 id="2-secret-retrieval"><a class="doc-anchor" href="#2-secret-retrieval">§</a>2. Secret Retrieval</h4>
-<ul>
-<li>Retrieve stored secrets by key</li>
-<li>Cache frequently accessed secrets for performance</li>
-<li>Support secret resolution with fallbacks</li>
-<li>Handle missing or expired secrets gracefully</li>
-</ul>
-<h4 id="3-security"><a class="doc-anchor" href="#3-security">§</a>3. Security</h4>
-<ul>
-<li>Encrypt secrets at rest using strong cryptography</li>
-<li>Optional integration with system keychain (macOS Keychain, Windows DPAPI,
-etc.)</li>
-<li>Secure memory handling for secret values</li>
-<li>Audit logging for secret access (optional)</li>
-</ul>
-<h4 id="4-air-integration-optional"><a class="doc-anchor" href="#4-air-integration-optional">§</a>4. Air Integration (Optional)</h4>
-<ul>
-<li>Delegate secret storage to Air service when available</li>
-<li>Support cloud-synced secrets across devices</li>
-<li>Handle Air service availability failures with fallback</li>
-</ul>
-<h3 id="architectural-role"><a class="doc-anchor" href="#architectural-role">§</a>ARCHITECTURAL ROLE</h3>
-<p>SecretProvider is the <strong>secure credential manager</strong> for Mountain:</p>
-<div class="example-wrap"><pre class="language-text"><code>Provider ──► Store/Retrieve ──► Secret Storage (Local or Air)</code></pre></div><h4 id="position-in-mountain"><a class="doc-anchor" href="#position-in-mountain">§</a>Position in Mountain</h4>
-<ul>
-<li><code>Environment</code> module: Security capability provider</li>
-<li>Implements <code>CommonLibrary::Secret::SecretProvider</code> trait</li>
-<li>Accessible via <code>Environment.Require&lt;dyn SecretProvider&gt;()</code></li>
-</ul>
-<h4 id="secret-storage-backends"><a class="doc-anchor" href="#secret-storage-backends">§</a>Secret Storage Backends</h4>
-<ul>
-<li><strong>Local Storage</strong>: Encrypted file in app data directory (default)</li>
-<li><strong>System Keychain</strong>: Platform-native secure storage (optional)</li>
-<li><strong>Air Service</strong>: Cloud-based secret management (optional, feature-gated)</li>
-</ul>
-<h4 id="dependencies"><a class="doc-anchor" href="#dependencies">§</a>Dependencies</h4>
-<ul>
-<li><code>ApplicationState</code>: For storage paths and state</li>
-<li><code>ConfigurationProvider</code>: To read security settings</li>
-<li><code>Log</code>: Secret access auditing (if enabled)</li>
-</ul>
-<h4 id="dependents"><a class="doc-anchor" href="#dependents">§</a>Dependents</h4>
-<ul>
-<li>Authentication flows: Store and retrieve OAuth tokens</li>
-<li>Git credentials: Store SCM passwords and tokens</li>
-<li>Extension secrets: Extension-specific API keys</li>
-<li>System secrets: Mountain service account credentials</li>
-</ul>
-<h3 id="security-considerations"><a class="doc-anchor" href="#security-considerations">§</a>SECURITY CONSIDERATIONS</h3>
-<ul>
-<li>Secrets are never logged or exposed in error messages</li>
-<li>Secret values are zeroed from memory after use</li>
-<li>Access to secret storage should be audited</li>
-<li>Consider rate limiting secret retrieval attempts</li>
-<li>Implement secret expiration and rotation policies</li>
-</ul>
-<h3 id="performance"><a class="doc-anchor" href="#performance">§</a>PERFORMANCE</h3>
-<ul>
-<li>Secret lookups are cached to avoid repeated decryption</li>
-<li>Async operations to avoid blocking the UI</li>
-<li>Consider lazy loading for rarely used secrets</li>
-</ul>
-<h3 id="vs-code-reference"><a class="doc-anchor" href="#vs-code-reference">§</a>VS CODE REFERENCE</h3>
-<p>Patterns from VS Code:</p>
-<ul>
-<li><code>vs/platform/secrets/common/secrets.ts</code> - Secret storage API</li>
-<li><code>vs/platform/secrets/electron-simulator/electronSecretStorage.ts</code> -
-Keychain integration</li>
-</ul>
-<h3 id="todo"><a class="doc-anchor" href="#todo">§</a>TODO</h3>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Implement system keychain integration (macOS Keychain, Windows DPAPI,
-libsecret)</li>
-<li><input disabled="" type="checkbox"/>
-Add secret encryption with hardware-backed keys (TPM, Secure Enclave)</li>
-<li><input disabled="" type="checkbox"/>
-Implement secret versioning and history</li>
-<li><input disabled="" type="checkbox"/>
-Add secret access control lists (ACL) per provider</li>
-<li><input disabled="" type="checkbox"/>
-Support secret sharing between extensions</li>
-<li><input disabled="" type="checkbox"/>
-Implement secret backup and restore</li>
-<li><input disabled="" type="checkbox"/>
-Add secret expiration and automatic rotation</li>
-<li><input disabled="" type="checkbox"/>
-Support secret references (pointer to external secret)</li>
-<li><input disabled="" type="checkbox"/>
-Implement secret audit trail and compliance reporting</li>
-<li><input disabled="" type="checkbox"/>
-Add secret strength validation and generation</li>
-</ul>
-<h3 id="module-contents"><a class="doc-anchor" href="#module-contents">§</a>MODULE CONTENTS</h3>
-<ul>
-<li>[<code>SecretProvider</code>]: Main struct implementing the trait</li>
-<li>Secret storage and retrieval methods</li>
-<li>Encryption/decryption helpers</li>
-<li>System keychain abstraction</li>
-<li>Air service delegation logic</li>
-</ul>
-<h2 id="secretprovider-implementation"><a class="doc-anchor" href="#secretprovider-implementation">§</a>SecretProvider Implementation</h2>
-<p>Implements the <code>SecretProvider</code> trait for the <code>MountainEnvironment</code>. This
-provider contains the core logic for secure secret storage using the system
-keyring, powered by the <code>keyring</code> crate.</p>
-<h3 id="keyring-integration"><a class="doc-anchor" href="#keyring-integration">§</a>Keyring Integration</h3>
-<p>The <code>keyring</code> crate provides cross-platform secure storage:</p>
-<ul>
-<li><strong>macOS</strong>: Native Keychain (OSXKeychain)</li>
-<li><strong>Windows</strong>: Windows Credential Manager (WinCredential)</li>
-<li><strong>Linux</strong>: Secret Service API (dbus-secret-service) or GNOME Keyring</li>
-</ul>
-<p>Each secret is identified by:</p>
-<ul>
-<li><strong>Service Name</strong>: Application identifier (e.g., <code>com.myapp.mountain</code>)</li>
-<li><strong>Key</strong>: Unique identifier within the service (e.g., <code>github-token</code>)</li>
-<li><strong>Value</strong>: The secret data to store</li>
-</ul>
-<h3 id="security-considerations-1"><a class="doc-anchor" href="#security-considerations-1">§</a>Security Considerations</h3>
-<ol>
-<li><strong>No Secret Logging</strong>: Secrets are never logged or included in error
-messages</li>
-<li><strong>Secure Storage</strong>: Keyring handles encryption at the OS level</li>
-<li><strong>Access Control</strong>: OS keychain manages access permissions and unlocking</li>
-<li><strong>Error Handling</strong>: Failed operations don’t expose secret values</li>
-<li><strong>Input Validation</strong>: Extension and key identifiers are validated</li>
-</ol>
-<h3 id="air-integration-strategy"><a class="doc-anchor" href="#air-integration-strategy">§</a>Air Integration Strategy</h3>
-<p>This provider supports delegation to the Air service when available:</p>
-<ul>
-<li>If AirClient is provided, secrets are stored/retrieved via Air service</li>
-<li>If AirClient is unavailable, falls back to local keyring implementation</li>
-<li>This ensures backward compatibility while enabling cloud sync</li>
-<li>Health checks determine Air availability at runtime</li>
-</ul>
-<h3 id="secret-operations"><a class="doc-anchor" href="#secret-operations">§</a>Secret Operations</h3>
-<ul>
-<li>
-<p><strong>GetSecret</strong>: Retrieve a secret from storage</p>
-<ul>
-<li>Returns <code>Some(Value)</code> if found, <code>None</code> if not found</li>
-<li>Delegates to Air if available and healthy</li>
-<li>Falls back to local keyring otherwise</li>
-</ul>
-</li>
-<li>
-<p><strong>StoreSecret</strong>: Store or update a secret</p>
-<ul>
-<li>Creates entry if it doesn’t exist</li>
-<li>Updates entry if it already exists</li>
-<li>Delegates to Air if available and healthy</li>
-<li>Falls back to local keyring otherwise</li>
-</ul>
-</li>
-<li>
-<p><strong>DeleteSecret</strong>: Remove a secret from storage</p>
-<ul>
-<li>Succeeds even if secret doesn’t exist</li>
-<li>Delegates to Air if available and healthy</li>
-<li>Falls back to local keyring otherwise</li>
-</ul>
-</li>
-</ul>
-</div></details><h2 id="functions" class="section-header">Functions<a href="#functions" class="anchor">§</a></h2><dl class="item-table"><dt><a class="fn" href="fn.DeleteSecretFromAir.html" title="fn Mountain::Environment::SecretProvider::DeleteSecretFromAir">Delete<wbr>Secret<wbr>From<wbr>Air</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Deletes a secret from the Air service.</dd><dt><a class="fn" href="fn.GetKeyringServiceName.html" title="fn Mountain::Environment::SecretProvider::GetKeyringServiceName">GetKeyring<wbr>Service<wbr>Name</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Constructs the service name for the keyring entry.</dd><dt><a class="fn" href="fn.GetSecretFromAir.html" title="fn Mountain::Environment::SecretProvider::GetSecretFromAir">GetSecret<wbr>From<wbr>Air</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Retrieves a secret from the Air service.</dd><dt><a class="fn" href="fn.IsAirAvailable.html" title="fn Mountain::Environment::SecretProvider::IsAirAvailable">IsAir<wbr>Available</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Helper to check if Air client is available and healthy.</dd><dt><a class="fn" href="fn.StoreSecretToAir.html" title="fn Mountain::Environment::SecretProvider::StoreSecretToAir">Store<wbr>Secret<wbr>ToAir</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Stores a secret in the Air service.</dd></dl></section></div></main></body></html>
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+		<meta content="rustdoc" name="generator" />
+		<meta content="SecretProvider (Environment)" name="description" />
+		<title>Mountain::Environment::SecretProvider - Rust</title>
+		<script>
+			if (window.location.protocol !== "file:")
+				document.head.insertAdjacentHTML(
+					"beforeend",
+					"SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2"
+						.split(",")
+						.map(
+							(f) =>
+								`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`,
+						)
+						.join(""),
+				);
+		</script>
+		<link
+			href="../../../static.files/normalize-9960930a.css"
+			rel="stylesheet" />
+		<link
+			href="../../../static.files/rustdoc-b7b9f40b.css"
+			rel="stylesheet" />
+		<meta
+			name="rustdoc-vars"
+			data-channel="nightly"
+			data-current-crate="Mountain"
+			data-resource-suffix=""
+			data-root-path="../../../"
+			data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)"
+			data-search-js="search-63369b7b.js"
+			data-settings-js="settings-170eb4bf.js"
+			data-static-root-path="../../../static.files/"
+			data-stringdex-js="stringdex-b897f86f.js"
+			data-themes="" />
+		<script src="../../../static.files/storage-41dd4d93.js"></script>
+		<script defer src="../sidebar-items.js"></script>
+		<script defer src="../../../static.files/main-5013f961.js"></script>
+		<noscript
+			><link
+				href="../../../static.files/noscript-f7c3ffd8.css"
+				rel="stylesheet"
+		/></noscript>
+		<link
+			href="../../../static.files/favicon-32x32-eab170b8.png"
+			rel="alternate icon"
+			type="image/png" />
+		<link
+			href="../../../static.files/favicon-044be391.svg"
+			rel="icon"
+			type="image/svg+xml" />
+	</head>
+	<body class="rustdoc mod">
+		<a class="skip-main-content" href="#main-content"
+			>Skip to main content</a
+		><!--[if lte IE 11
+			]><div class="warning">
+				This old browser is unsupported and will most likely display
+				funky things.
+			</div><!
+		[endif]--><rustdoc-topbar
+			><h2><a href="#">Module SecretProvider</a></h2></rustdoc-topbar
+		>
+		<nav class="sidebar">
+			<div class="sidebar-crate">
+				<h2>
+					<a href="../../../Mountain/index.html">Mountain</a
+					><span class="version">0.0.1</span>
+				</h2>
+			</div>
+			<div class="sidebar-elems">
+				<section id="rustdoc-toc">
+					<h2 class="location">
+						<a href="#">Module Secret<wbr />Provider</a>
+					</h2>
+					<h3><a href="#">Sections</a></h3>
+					<ul class="top-toc block">
+						<li>
+							<a
+								href="#secretprovider-environment"
+								title="SecretProvider (Environment)"
+								>SecretProvider (Environment)</a
+							>
+							<ul>
+								<li>
+									<a
+										href="#responsibilities"
+										title="RESPONSIBILITIES"
+										>RESPONSIBILITIES</a
+									>
+								</li>
+								<li>
+									<a
+										href="#architectural-role"
+										title="ARCHITECTURAL ROLE"
+										>ARCHITECTURAL ROLE</a
+									>
+								</li>
+								<li>
+									<a
+										href="#security-considerations"
+										title="SECURITY CONSIDERATIONS"
+										>SECURITY CONSIDERATIONS</a
+									>
+								</li>
+								<li>
+									<a href="#performance" title="PERFORMANCE"
+										>PERFORMANCE</a
+									>
+								</li>
+								<li>
+									<a
+										href="#vs-code-reference"
+										title="VS CODE REFERENCE"
+										>VS CODE REFERENCE</a
+									>
+								</li>
+								<li><a href="#todo" title="TODO">TODO</a></li>
+								<li>
+									<a
+										href="#module-contents"
+										title="MODULE CONTENTS"
+										>MODULE CONTENTS</a
+									>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a
+								href="#secretprovider-implementation"
+								title="SecretProvider Implementation"
+								>SecretProvider Implementation</a
+							>
+							<ul>
+								<li>
+									<a
+										href="#keyring-integration"
+										title="Keyring Integration"
+										>Keyring Integration</a
+									>
+								</li>
+								<li>
+									<a
+										href="#security-considerations-1"
+										title="Security Considerations"
+										>Security Considerations</a
+									>
+								</li>
+								<li>
+									<a
+										href="#air-integration-strategy"
+										title="Air Integration Strategy"
+										>Air Integration Strategy</a
+									>
+								</li>
+								<li>
+									<a
+										href="#secret-operations"
+										title="Secret Operations"
+										>Secret Operations</a
+									>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<h3><a href="#functions">Module Items</a></h3>
+					<ul class="block">
+						<li>
+							<a href="#functions" title="Functions">Functions</a>
+						</li>
+					</ul>
+				</section>
+				<div id="rustdoc-modnav">
+					<h2>
+						<a href="../index.html"
+							>In Mountain::<wbr />Environment</a
+						>
+					</h2>
+				</div>
+			</div>
+		</nav>
+		<div class="sidebar-resizer" title="Drag to resize sidebar"></div>
+		<main>
+			<div class="width-limiter">
+				<section class="content" id="main-content" tabindex="-1">
+					<div class="main-heading">
+						<div class="rustdoc-breadcrumbs">
+							<a href="../../index.html">Mountain</a>::<wbr /><a
+								href="../index.html"
+								>Environment</a
+							>
+						</div>
+						<h1>
+							Module
+							<span>Secret<wbr />Provider</span>&nbsp;<button
+								id="copy-path"
+								title="Copy item path to clipboard">
+								Copy item path
+							</button>
+						</h1>
+						<rustdoc-toolbar></rustdoc-toolbar
+						><span class="sub-heading"
+							><a
+								class="src"
+								href="../../../src/Mountain/Environment/SecretProvider.rs.html#1-435"
+								>Source</a
+							>
+						</span>
+					</div>
+					<details class="toggle top-doc" open>
+						<summary class="hideme">
+							<span>Expand description</span>
+						</summary>
+						<div class="docblock">
+							<h2 id="secretprovider-environment">
+								<a
+									class="doc-anchor"
+									href="#secretprovider-environment"
+									>§</a
+								>SecretProvider (Environment)
+							</h2>
+							<p>
+								Implements the <code>SecretProvider</code> trait
+								for <code>MountainEnvironment</code>, providing
+								secure storage and retrieval of secrets
+								(passwords, tokens, keys) with optional
+								integration with system keychains and the Air
+								service.
+							</p>
+							<h3 id="responsibilities">
+								<a class="doc-anchor" href="#responsibilities"
+									>§</a
+								>RESPONSIBILITIES
+							</h3>
+							<h4 id="1-secret-storage">
+								<a class="doc-anchor" href="#1-secret-storage"
+									>§</a
+								>1. Secret Storage
+							</h4>
+							<ul>
+								<li>
+									Store secrets securely in encrypted format
+								</li>
+								<li>
+									Support multiple secret types (passwords,
+									API keys, tokens)
+								</li>
+								<li>
+									Provide per-secret access control and
+									metadata
+								</li>
+								<li>
+									Handle secret creation, update, and deletion
+								</li>
+							</ul>
+							<h4 id="2-secret-retrieval">
+								<a class="doc-anchor" href="#2-secret-retrieval"
+									>§</a
+								>2. Secret Retrieval
+							</h4>
+							<ul>
+								<li>Retrieve stored secrets by key</li>
+								<li>
+									Cache frequently accessed secrets for
+									performance
+								</li>
+								<li>
+									Support secret resolution with fallbacks
+								</li>
+								<li>
+									Handle missing or expired secrets gracefully
+								</li>
+							</ul>
+							<h4 id="3-security">
+								<a class="doc-anchor" href="#3-security">§</a>3.
+								Security
+							</h4>
+							<ul>
+								<li>
+									Encrypt secrets at rest using strong
+									cryptography
+								</li>
+								<li>
+									Optional integration with system keychain
+									(macOS Keychain, Windows DPAPI, etc.)
+								</li>
+								<li>
+									Secure memory handling for secret values
+								</li>
+								<li>
+									Audit logging for secret access (optional)
+								</li>
+							</ul>
+							<h4 id="4-air-integration-optional">
+								<a
+									class="doc-anchor"
+									href="#4-air-integration-optional"
+									>§</a
+								>4. Air Integration (Optional)
+							</h4>
+							<ul>
+								<li>
+									Delegate secret storage to Air service when
+									available
+								</li>
+								<li>
+									Support cloud-synced secrets across devices
+								</li>
+								<li>
+									Handle Air service availability failures
+									with fallback
+								</li>
+							</ul>
+							<h3 id="architectural-role">
+								<a class="doc-anchor" href="#architectural-role"
+									>§</a
+								>ARCHITECTURAL ROLE
+							</h3>
+							<p>
+								SecretProvider is the
+								<strong>secure credential manager</strong> for
+								Mountain:
+							</p>
+							<div class="example-wrap">
+								<pre
+									class="language-text"><code>Provider ──► Store/Retrieve ──► Secret Storage (Local or Air)</code></pre>
+							</div>
+							<h4 id="position-in-mountain">
+								<a
+									class="doc-anchor"
+									href="#position-in-mountain"
+									>§</a
+								>Position in Mountain
+							</h4>
+							<ul>
+								<li>
+									<code>Environment</code> module: Security
+									capability provider
+								</li>
+								<li>
+									Implements
+									<code
+										>CommonLibrary::Secret::SecretProvider</code
+									>
+									trait
+								</li>
+								<li>
+									Accessible via
+									<code
+										>Environment.Require&lt;dyn
+										SecretProvider&gt;()</code
+									>
+								</li>
+							</ul>
+							<h4 id="secret-storage-backends">
+								<a
+									class="doc-anchor"
+									href="#secret-storage-backends"
+									>§</a
+								>Secret Storage Backends
+							</h4>
+							<ul>
+								<li>
+									<strong>Local Storage</strong>: Encrypted
+									file in app data directory (default)
+								</li>
+								<li>
+									<strong>System Keychain</strong>:
+									Platform-native secure storage (optional)
+								</li>
+								<li>
+									<strong>Air Service</strong>: Cloud-based
+									secret management (optional, feature-gated)
+								</li>
+							</ul>
+							<h4 id="dependencies">
+								<a class="doc-anchor" href="#dependencies">§</a
+								>Dependencies
+							</h4>
+							<ul>
+								<li>
+									<code>ApplicationState</code>: For storage
+									paths and state
+								</li>
+								<li>
+									<code>ConfigurationProvider</code>: To read
+									security settings
+								</li>
+								<li>
+									<code>Log</code>: Secret access auditing (if
+									enabled)
+								</li>
+							</ul>
+							<h4 id="dependents">
+								<a class="doc-anchor" href="#dependents">§</a
+								>Dependents
+							</h4>
+							<ul>
+								<li>
+									Authentication flows: Store and retrieve
+									OAuth tokens
+								</li>
+								<li>
+									Git credentials: Store SCM passwords and
+									tokens
+								</li>
+								<li>
+									Extension secrets: Extension-specific API
+									keys
+								</li>
+								<li>
+									System secrets: Mountain service account
+									credentials
+								</li>
+							</ul>
+							<h3 id="security-considerations">
+								<a
+									class="doc-anchor"
+									href="#security-considerations"
+									>§</a
+								>SECURITY CONSIDERATIONS
+							</h3>
+							<ul>
+								<li>
+									Secrets are never logged or exposed in error
+									messages
+								</li>
+								<li>
+									Secret values are zeroed from memory after
+									use
+								</li>
+								<li>
+									Access to secret storage should be audited
+								</li>
+								<li>
+									Consider rate limiting secret retrieval
+									attempts
+								</li>
+								<li>
+									Implement secret expiration and rotation
+									policies
+								</li>
+							</ul>
+							<h3 id="performance">
+								<a class="doc-anchor" href="#performance">§</a
+								>PERFORMANCE
+							</h3>
+							<ul>
+								<li>
+									Secret lookups are cached to avoid repeated
+									decryption
+								</li>
+								<li>
+									Async operations to avoid blocking the UI
+								</li>
+								<li>
+									Consider lazy loading for rarely used
+									secrets
+								</li>
+							</ul>
+							<h3 id="vs-code-reference">
+								<a class="doc-anchor" href="#vs-code-reference"
+									>§</a
+								>VS CODE REFERENCE
+							</h3>
+							<p>Patterns from VS Code:</p>
+							<ul>
+								<li>
+									<code
+										>vs/platform/secrets/common/secrets.ts</code
+									>
+									- Secret storage API
+								</li>
+								<li>
+									<code
+										>vs/platform/secrets/electron-simulator/electronSecretStorage.ts</code
+									>
+									- Keychain integration
+								</li>
+							</ul>
+							<h3 id="todo">
+								<a class="doc-anchor" href="#todo">§</a>TODO
+							</h3>
+							<ul>
+								<li>
+									<input disabled="" type="checkbox" />
+									Implement system keychain integration (macOS
+									Keychain, Windows DPAPI, libsecret)
+								</li>
+								<li>
+									<input disabled="" type="checkbox" /> Add
+									secret encryption with hardware-backed keys
+									(TPM, Secure Enclave)
+								</li>
+								<li>
+									<input disabled="" type="checkbox" />
+									Implement secret versioning and history
+								</li>
+								<li>
+									<input disabled="" type="checkbox" /> Add
+									secret access control lists (ACL) per
+									provider
+								</li>
+								<li>
+									<input disabled="" type="checkbox" />
+									Support secret sharing between extensions
+								</li>
+								<li>
+									<input disabled="" type="checkbox" />
+									Implement secret backup and restore
+								</li>
+								<li>
+									<input disabled="" type="checkbox" /> Add
+									secret expiration and automatic rotation
+								</li>
+								<li>
+									<input disabled="" type="checkbox" />
+									Support secret references (pointer to
+									external secret)
+								</li>
+								<li>
+									<input disabled="" type="checkbox" />
+									Implement secret audit trail and compliance
+									reporting
+								</li>
+								<li>
+									<input disabled="" type="checkbox" /> Add
+									secret strength validation and generation
+								</li>
+							</ul>
+							<h3 id="module-contents">
+								<a class="doc-anchor" href="#module-contents"
+									>§</a
+								>MODULE CONTENTS
+							</h3>
+							<ul>
+								<li>
+									[<code>SecretProvider</code>]: Main struct
+									implementing the trait
+								</li>
+								<li>Secret storage and retrieval methods</li>
+								<li>Encryption/decryption helpers</li>
+								<li>System keychain abstraction</li>
+								<li>Air service delegation logic</li>
+							</ul>
+							<h2 id="secretprovider-implementation">
+								<a
+									class="doc-anchor"
+									href="#secretprovider-implementation"
+									>§</a
+								>SecretProvider Implementation
+							</h2>
+							<p>
+								Implements the <code>SecretProvider</code> trait
+								for the <code>MountainEnvironment</code>. This
+								provider contains the core logic for secure
+								secret storage using the system keyring, powered
+								by the <code>keyring</code> crate.
+							</p>
+							<h3 id="keyring-integration">
+								<a
+									class="doc-anchor"
+									href="#keyring-integration"
+									>§</a
+								>Keyring Integration
+							</h3>
+							<p>
+								The <code>keyring</code> crate provides
+								cross-platform secure storage:
+							</p>
+							<ul>
+								<li>
+									<strong>macOS</strong>: Native Keychain
+									(OSXKeychain)
+								</li>
+								<li>
+									<strong>Windows</strong>: Windows Credential
+									Manager (WinCredential)
+								</li>
+								<li>
+									<strong>Linux</strong>: Secret Service API
+									(dbus-secret-service) or GNOME Keyring
+								</li>
+							</ul>
+							<p>Each secret is identified by:</p>
+							<ul>
+								<li>
+									<strong>Service Name</strong>: Application
+									identifier (e.g.,
+									<code>com.myapp.mountain</code>)
+								</li>
+								<li>
+									<strong>Key</strong>: Unique identifier
+									within the service (e.g.,
+									<code>github-token</code>)
+								</li>
+								<li>
+									<strong>Value</strong>: The secret data to
+									store
+								</li>
+							</ul>
+							<h3 id="security-considerations-1">
+								<a
+									class="doc-anchor"
+									href="#security-considerations-1"
+									>§</a
+								>Security Considerations
+							</h3>
+							<ol>
+								<li>
+									<strong>No Secret Logging</strong>: Secrets
+									are never logged or included in error
+									messages
+								</li>
+								<li>
+									<strong>Secure Storage</strong>: Keyring
+									handles encryption at the OS level
+								</li>
+								<li>
+									<strong>Access Control</strong>: OS keychain
+									manages access permissions and unlocking
+								</li>
+								<li>
+									<strong>Error Handling</strong>: Failed
+									operations don’t expose secret values
+								</li>
+								<li>
+									<strong>Input Validation</strong>: Extension
+									and key identifiers are validated
+								</li>
+							</ol>
+							<h3 id="air-integration-strategy">
+								<a
+									class="doc-anchor"
+									href="#air-integration-strategy"
+									>§</a
+								>Air Integration Strategy
+							</h3>
+							<p>
+								This provider supports delegation to the Air
+								service when available:
+							</p>
+							<ul>
+								<li>
+									If AirClient is provided, secrets are
+									stored/retrieved via Air service
+								</li>
+								<li>
+									If AirClient is unavailable, falls back to
+									local keyring implementation
+								</li>
+								<li>
+									This ensures backward compatibility while
+									enabling cloud sync
+								</li>
+								<li>
+									Health checks determine Air availability at
+									runtime
+								</li>
+							</ul>
+							<h3 id="secret-operations">
+								<a class="doc-anchor" href="#secret-operations"
+									>§</a
+								>Secret Operations
+							</h3>
+							<ul>
+								<li>
+									<p>
+										<strong>GetSecret</strong>: Retrieve a
+										secret from storage
+									</p>
+									<ul>
+										<li>
+											Returns <code>Some(Value)</code> if
+											found, <code>None</code> if not
+											found
+										</li>
+										<li>
+											Delegates to Air if available and
+											healthy
+										</li>
+										<li>
+											Falls back to local keyring
+											otherwise
+										</li>
+									</ul>
+								</li>
+								<li>
+									<p>
+										<strong>StoreSecret</strong>: Store or
+										update a secret
+									</p>
+									<ul>
+										<li>
+											Creates entry if it doesn’t exist
+										</li>
+										<li>
+											Updates entry if it already exists
+										</li>
+										<li>
+											Delegates to Air if available and
+											healthy
+										</li>
+										<li>
+											Falls back to local keyring
+											otherwise
+										</li>
+									</ul>
+								</li>
+								<li>
+									<p>
+										<strong>DeleteSecret</strong>: Remove a
+										secret from storage
+									</p>
+									<ul>
+										<li>
+											Succeeds even if secret doesn’t
+											exist
+										</li>
+										<li>
+											Delegates to Air if available and
+											healthy
+										</li>
+										<li>
+											Falls back to local keyring
+											otherwise
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</details>
+					<h2 class="section-header" id="functions">
+						Functions<a class="anchor" href="#functions">§</a>
+					</h2>
+					<dl class="item-table">
+						<dt>
+							<a
+								class="fn"
+								href="fn.DeleteSecretFromAir.html"
+								title="fn Mountain::Environment::SecretProvider::DeleteSecretFromAir"
+								>Delete<wbr />Secret<wbr />From<wbr />Air</a
+							><span title="Restricted Visibility">&nbsp;🔒</span>
+						</dt>
+						<dd>Deletes a secret from the Air service.</dd>
+						<dt>
+							<a
+								class="fn"
+								href="fn.GetKeyringServiceName.html"
+								title="fn Mountain::Environment::SecretProvider::GetKeyringServiceName"
+								>GetKeyring<wbr />Service<wbr />Name</a
+							><span title="Restricted Visibility">&nbsp;🔒</span>
+						</dt>
+						<dd>
+							Constructs the service name for the keyring entry.
+						</dd>
+						<dt>
+							<a
+								class="fn"
+								href="fn.GetSecretFromAir.html"
+								title="fn Mountain::Environment::SecretProvider::GetSecretFromAir"
+								>GetSecret<wbr />From<wbr />Air</a
+							><span title="Restricted Visibility">&nbsp;🔒</span>
+						</dt>
+						<dd>Retrieves a secret from the Air service.</dd>
+						<dt>
+							<a
+								class="fn"
+								href="fn.IsAirAvailable.html"
+								title="fn Mountain::Environment::SecretProvider::IsAirAvailable"
+								>IsAir<wbr />Available</a
+							><span title="Restricted Visibility">&nbsp;🔒</span>
+						</dt>
+						<dd>
+							Helper to check if Air client is available and
+							healthy.
+						</dd>
+						<dt>
+							<a
+								class="fn"
+								href="fn.StoreSecretToAir.html"
+								title="fn Mountain::Environment::SecretProvider::StoreSecretToAir"
+								>Store<wbr />Secret<wbr />ToAir</a
+							><span title="Restricted Visibility">&nbsp;🔒</span>
+						</dt>
+						<dd>Stores a secret in the Air service.</dd>
+					</dl>
+				</section>
+			</div>
+		</main>
+	</body>
+</html>

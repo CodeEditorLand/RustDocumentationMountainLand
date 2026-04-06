@@ -1,1 +1,3 @@
-window.SIDEBAR_ITEMS = {"mod":["FeatureMethods","ProviderLookup","Registration"]};
+window.SIDEBAR_ITEMS = {
+	"mod": ["FeatureMethods", "ProviderLookup", "Registration"],
+};

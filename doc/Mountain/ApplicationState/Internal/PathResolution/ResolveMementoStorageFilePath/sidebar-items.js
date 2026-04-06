@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["ResolveMementoStorageFilePath"]};
+window.SIDEBAR_ITEMS = { "fn": ["ResolveMementoStorageFilePath"] };

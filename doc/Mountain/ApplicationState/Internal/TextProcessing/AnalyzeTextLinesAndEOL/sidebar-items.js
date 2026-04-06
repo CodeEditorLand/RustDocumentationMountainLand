@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["AnalyzeTextLinesAndEOL"]};
+window.SIDEBAR_ITEMS = { "fn": ["AnalyzeTextLinesAndEOL"] };

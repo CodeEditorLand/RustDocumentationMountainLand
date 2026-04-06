@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["enable_tray"]};
+window.SIDEBAR_ITEMS = { "fn": ["enable_tray"] };

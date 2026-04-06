@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"struct":["OpenDialogOptionsDTO"]};
+window.SIDEBAR_ITEMS = { "struct": ["OpenDialogOptionsDTO"] };

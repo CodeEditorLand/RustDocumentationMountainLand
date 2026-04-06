@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":["FileSystemError"]};
+window.SIDEBAR_ITEMS = { "enum": ["FileSystemError"] };

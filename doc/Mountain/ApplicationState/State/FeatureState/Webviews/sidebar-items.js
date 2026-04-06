@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["WebviewState"]};
+window.SIDEBAR_ITEMS = { "mod": ["WebviewState"] };

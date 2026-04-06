@@ -1,1 +1,12 @@
-window.SIDEBAR_ITEMS = {"fn":["get_configuration_data","mountain_get_configuration_status","mountain_get_wind_desktop_configuration","mountain_synchronize_configuration","mountain_update_configuration_from_wind","save_configuration_data"],"struct":["ConfigurationBridge","ConfigurationStatus"],"type":["ConfigurationOverridesDTO","ConfigurationTarget"]};
+window.SIDEBAR_ITEMS = {
+	"fn": [
+		"get_configuration_data",
+		"mountain_get_configuration_status",
+		"mountain_get_wind_desktop_configuration",
+		"mountain_synchronize_configuration",
+		"mountain_update_configuration_from_wind",
+		"save_configuration_data",
+	],
+	"struct": ["ConfigurationBridge", "ConfigurationStatus"],
+	"type": ["ConfigurationOverridesDTO", "ConfigurationTarget"],
+};

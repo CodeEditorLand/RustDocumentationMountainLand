@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["SwitchTrayIcon"]};
+window.SIDEBAR_ITEMS = { "fn": ["SwitchTrayIcon"] };

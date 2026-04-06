@@ -1,1 +1,9 @@
-window.SIDEBAR_ITEMS = {"constant":["MAX_DOCUMENT_LINES","MAX_LANGUAGE_ID_LENGTH","MAX_LINE_LENGTH"],"fn":["ApplyDeltaChanges","CMP_Range_Position","PositionToOffset"],"struct":["DocumentStateDTO"]};
+window.SIDEBAR_ITEMS = {
+	"constant": [
+		"MAX_DOCUMENT_LINES",
+		"MAX_LANGUAGE_ID_LENGTH",
+		"MAX_LINE_LENGTH",
+	],
+	"fn": ["ApplyDeltaChanges", "CMP_Range_Position", "PositionToOffset"],
+	"struct": ["DocumentStateDTO"],
+};

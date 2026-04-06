@@ -1,1 +1,7 @@
-window.SIDEBAR_ITEMS = {"fn":["recover_state_with_backoff","safe_state_operation_with_timeout","validate_and_clean_state"]};
+window.SIDEBAR_ITEMS = {
+	"fn": [
+		"recover_state_with_backoff",
+		"safe_state_operation_with_timeout",
+		"validate_and_clean_state",
+	],
+};

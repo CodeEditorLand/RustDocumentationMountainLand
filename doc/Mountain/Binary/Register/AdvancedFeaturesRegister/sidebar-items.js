@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["AdvancedFeaturesRegister"]};
+window.SIDEBAR_ITEMS = { "fn": ["AdvancedFeaturesRegister"] };

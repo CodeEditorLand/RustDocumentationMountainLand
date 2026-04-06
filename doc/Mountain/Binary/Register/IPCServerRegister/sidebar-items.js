@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["IPCServerRegister"]};
+window.SIDEBAR_ITEMS = { "fn": ["IPCServerRegister"] };

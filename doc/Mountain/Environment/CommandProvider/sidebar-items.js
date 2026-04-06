@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":["CommandHandler"]};
+window.SIDEBAR_ITEMS = { "enum": ["CommandHandler"] };

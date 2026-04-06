@@ -1,1 +1,12 @@
-window.SIDEBAR_ITEMS = {"enum":["AlertSeverity","LogLevel","MetricType"],"struct":["DashboardConfig","DashboardStatistics","PerformanceAlert","PerformanceDashboard","PerformanceMetric","TraceLog","TraceSpan"]};
+window.SIDEBAR_ITEMS = {
+	"enum": ["AlertSeverity", "LogLevel", "MetricType"],
+	"struct": [
+		"DashboardConfig",
+		"DashboardStatistics",
+		"PerformanceAlert",
+		"PerformanceDashboard",
+		"PerformanceMetric",
+		"TraceLog",
+		"TraceSpan",
+	],
+};

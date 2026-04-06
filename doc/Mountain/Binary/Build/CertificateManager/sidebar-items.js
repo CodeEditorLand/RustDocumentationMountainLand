@@ -1,1 +1,8 @@
-window.SIDEBAR_ITEMS = {"struct":["CertValidityResult","CertificateInfo","CertificateManager","ServerCertData"]};
+window.SIDEBAR_ITEMS = {
+	"struct": [
+		"CertValidityResult",
+		"CertificateInfo",
+		"CertificateManager",
+		"ServerCertData",
+	],
+};

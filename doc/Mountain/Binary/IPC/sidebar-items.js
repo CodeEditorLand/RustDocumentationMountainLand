@@ -1,1 +1,21 @@
-window.SIDEBAR_ITEMS = {"mod":["CacheStatsCommand","CollaborationSessionCommand","ConfigurationDataCommand","ConfigurationStatusCommand","ConfigurationSyncCommand","ConfigurationUpdateCommand","DocumentSyncCommand","IPCStatusCommand","IPCStatusHistoryCommand","IPCStatusReportingStartCommand","InvokeCommand","MessageReceiveCommand","PerformanceStatsCommand","StatusGetCommand","UpdateSubscriptionCommand","WindConfigurationCommand","WorkbenchConfigurationCommand"]};
+window.SIDEBAR_ITEMS = {
+	"mod": [
+		"CacheStatsCommand",
+		"CollaborationSessionCommand",
+		"ConfigurationDataCommand",
+		"ConfigurationStatusCommand",
+		"ConfigurationSyncCommand",
+		"ConfigurationUpdateCommand",
+		"DocumentSyncCommand",
+		"IPCStatusCommand",
+		"IPCStatusHistoryCommand",
+		"IPCStatusReportingStartCommand",
+		"InvokeCommand",
+		"MessageReceiveCommand",
+		"PerformanceStatsCommand",
+		"StatusGetCommand",
+		"UpdateSubscriptionCommand",
+		"WindConfigurationCommand",
+		"WorkbenchConfigurationCommand",
+	],
+};

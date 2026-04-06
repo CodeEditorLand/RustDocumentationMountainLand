@@ -1,1 +1,4 @@
-window.SIDEBAR_ITEMS = {"enum":["VineServiceStatus"],"struct":["VineConnectionInfo"]};
+window.SIDEBAR_ITEMS = {
+	"enum": ["VineServiceStatus"],
+	"struct": ["VineConnectionInfo"],
+};

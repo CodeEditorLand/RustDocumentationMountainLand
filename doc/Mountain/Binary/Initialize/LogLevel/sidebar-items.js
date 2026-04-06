@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["GetDefault","Resolve"]};
+window.SIDEBAR_ITEMS = { "fn": ["GetDefault", "Resolve"] };

@@ -1,1 +1,5 @@
-window.SIDEBAR_ITEMS = {"constant":["SERVICE_NAME"],"struct":["MountainServiceServer"],"trait":["MountainService"]};
+window.SIDEBAR_ITEMS = {
+	"constant": ["SERVICE_NAME"],
+	"struct": ["MountainServiceServer"],
+	"trait": ["MountainService"],
+};

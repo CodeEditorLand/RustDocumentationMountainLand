@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["VineStart"]};
+window.SIDEBAR_ITEMS = { "fn": ["VineStart"] };

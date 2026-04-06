@@ -1,152 +1,660 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="StorageProvider (Environment)"><title>Mountain::Environment::StorageProvider - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-b7b9f40b.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-41dd4d93.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module StorageProvider</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Storage<wbr>Provider</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#storageprovider-environment" title="StorageProvider (Environment)">StorageProvider (Environment)</a><ul><li><a href="#responsibilities" title="RESPONSIBILITIES">RESPONSIBILITIES</a></li><li><a href="#architectural-role" title="ARCHITECTURAL ROLE">ARCHITECTURAL ROLE</a></li><li><a href="#storage-lifecycle" title="STORAGE LIFECYCLE">STORAGE LIFECYCLE</a></li><li><a href="#error-handling" title="ERROR HANDLING">ERROR HANDLING</a></li><li><a href="#performance" title="PERFORMANCE">PERFORMANCE</a></li><li><a href="#recovery-mechanisms" title="RECOVERY MECHANISMS">RECOVERY MECHANISMS</a></li><li><a href="#vs-code-reference" title="VS CODE REFERENCE">VS CODE REFERENCE</a></li><li><a href="#todo" title="TODO">TODO</a></li><li><a href="#module-contents" title="MODULE CONTENTS">MODULE CONTENTS</a></li></ul></li><li><a href="#storageprovider-implementation" title="StorageProvider Implementation">StorageProvider Implementation</a></li></ul><h3><a href="#functions">Module Items</a></h3><ul class="block"><li><a href="#functions" title="Functions">Functions</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Environment</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Environment</a></div><h1>Module <span>Storage<wbr>Provider</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Environment/StorageProvider.rs.html#1-429">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="storageprovider-environment"><a class="doc-anchor" href="#storageprovider-environment">§</a>StorageProvider (Environment)</h2>
-<p>Implements the <code>StorageProvider</code> trait for <code>MountainEnvironment</code>, providing
-persistent key-value storage for extensions and application components.</p>
-<h3 id="responsibilities"><a class="doc-anchor" href="#responsibilities">§</a>RESPONSIBILITIES</h3><h4 id="1-storage-management"><a class="doc-anchor" href="#1-storage-management">§</a>1. Storage Management</h4>
-<ul>
-<li>Provide global storage (shared across all workspaces)</li>
-<li>Provide workspace-scoped storage (per workspace)</li>
-<li>Support namespaced keys to avoid collisions</li>
-<li>Handle storage quota limits</li>
-</ul>
-<h4 id="2-crud-operations"><a class="doc-anchor" href="#2-crud-operations">§</a>2. CRUD Operations</h4>
-<ul>
-<li><code>Get(scope, key)</code>: Retrieve value by key</li>
-<li><code>Set(scope, key, value)</code>: Store value (create or update)</li>
-<li><code>Remove(scope, key)</code>: Delete key-value pair</li>
-<li><code>Clear(scope)</code>: Remove all keys in a scope</li>
-<li><code>Keys(scope)</code>: List all keys in a scope</li>
-</ul>
-<h4 id="3-data-persistence"><a class="doc-anchor" href="#3-data-persistence">§</a>3. Data Persistence</h4>
-<ul>
-<li>Write storage changes to disk immediately</li>
-<li>Load storage from disk on startup</li>
-<li>Handle corrupted storage files with recovery</li>
-<li>Backup storage before writes (optional)</li>
-</ul>
-<h4 id="4-type-safety"><a class="doc-anchor" href="#4-type-safety">§</a>4. Type Safety</h4>
-<ul>
-<li>Store and retrieve arbitrary JSON-serializable values</li>
-<li>Handle serialization/deserialization errors</li>
-<li>Support primitive types and complex objects</li>
-</ul>
-<h3 id="architectural-role"><a class="doc-anchor" href="#architectural-role">§</a>ARCHITECTURAL ROLE</h3>
-<p>StorageProvider is the <strong>persistent key-value store</strong> for Mountain:</p>
-<div class="example-wrap"><pre class="language-text"><code>Extension ──► StorageProvider ──► Disk (JSON files)
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+		<meta content="rustdoc" name="generator" />
+		<meta content="StorageProvider (Environment)" name="description" />
+		<title>Mountain::Environment::StorageProvider - Rust</title>
+		<script>
+			if (window.location.protocol !== "file:")
+				document.head.insertAdjacentHTML(
+					"beforeend",
+					"SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2"
+						.split(",")
+						.map(
+							(f) =>
+								`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`,
+						)
+						.join(""),
+				);
+		</script>
+		<link
+			href="../../../static.files/normalize-9960930a.css"
+			rel="stylesheet" />
+		<link
+			href="../../../static.files/rustdoc-b7b9f40b.css"
+			rel="stylesheet" />
+		<meta
+			name="rustdoc-vars"
+			data-channel="nightly"
+			data-current-crate="Mountain"
+			data-resource-suffix=""
+			data-root-path="../../../"
+			data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)"
+			data-search-js="search-63369b7b.js"
+			data-settings-js="settings-170eb4bf.js"
+			data-static-root-path="../../../static.files/"
+			data-stringdex-js="stringdex-b897f86f.js"
+			data-themes="" />
+		<script src="../../../static.files/storage-41dd4d93.js"></script>
+		<script defer src="../sidebar-items.js"></script>
+		<script defer src="../../../static.files/main-5013f961.js"></script>
+		<noscript
+			><link
+				href="../../../static.files/noscript-f7c3ffd8.css"
+				rel="stylesheet"
+		/></noscript>
+		<link
+			href="../../../static.files/favicon-32x32-eab170b8.png"
+			rel="alternate icon"
+			type="image/png" />
+		<link
+			href="../../../static.files/favicon-044be391.svg"
+			rel="icon"
+			type="image/svg+xml" />
+	</head>
+	<body class="rustdoc mod">
+		<a class="skip-main-content" href="#main-content"
+			>Skip to main content</a
+		><!--[if lte IE 11
+			]><div class="warning">
+				This old browser is unsupported and will most likely display
+				funky things.
+			</div><!
+		[endif]--><rustdoc-topbar
+			><h2><a href="#">Module StorageProvider</a></h2></rustdoc-topbar
+		>
+		<nav class="sidebar">
+			<div class="sidebar-crate">
+				<h2>
+					<a href="../../../Mountain/index.html">Mountain</a
+					><span class="version">0.0.1</span>
+				</h2>
+			</div>
+			<div class="sidebar-elems">
+				<section id="rustdoc-toc">
+					<h2 class="location">
+						<a href="#">Module Storage<wbr />Provider</a>
+					</h2>
+					<h3><a href="#">Sections</a></h3>
+					<ul class="top-toc block">
+						<li>
+							<a
+								href="#storageprovider-environment"
+								title="StorageProvider (Environment)"
+								>StorageProvider (Environment)</a
+							>
+							<ul>
+								<li>
+									<a
+										href="#responsibilities"
+										title="RESPONSIBILITIES"
+										>RESPONSIBILITIES</a
+									>
+								</li>
+								<li>
+									<a
+										href="#architectural-role"
+										title="ARCHITECTURAL ROLE"
+										>ARCHITECTURAL ROLE</a
+									>
+								</li>
+								<li>
+									<a
+										href="#storage-lifecycle"
+										title="STORAGE LIFECYCLE"
+										>STORAGE LIFECYCLE</a
+									>
+								</li>
+								<li>
+									<a
+										href="#error-handling"
+										title="ERROR HANDLING"
+										>ERROR HANDLING</a
+									>
+								</li>
+								<li>
+									<a href="#performance" title="PERFORMANCE"
+										>PERFORMANCE</a
+									>
+								</li>
+								<li>
+									<a
+										href="#recovery-mechanisms"
+										title="RECOVERY MECHANISMS"
+										>RECOVERY MECHANISMS</a
+									>
+								</li>
+								<li>
+									<a
+										href="#vs-code-reference"
+										title="VS CODE REFERENCE"
+										>VS CODE REFERENCE</a
+									>
+								</li>
+								<li><a href="#todo" title="TODO">TODO</a></li>
+								<li>
+									<a
+										href="#module-contents"
+										title="MODULE CONTENTS"
+										>MODULE CONTENTS</a
+									>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a
+								href="#storageprovider-implementation"
+								title="StorageProvider Implementation"
+								>StorageProvider Implementation</a
+							>
+						</li>
+					</ul>
+					<h3><a href="#functions">Module Items</a></h3>
+					<ul class="block">
+						<li>
+							<a href="#functions" title="Functions">Functions</a>
+						</li>
+					</ul>
+				</section>
+				<div id="rustdoc-modnav">
+					<h2>
+						<a href="../index.html"
+							>In Mountain::<wbr />Environment</a
+						>
+					</h2>
+				</div>
+			</div>
+		</nav>
+		<div class="sidebar-resizer" title="Drag to resize sidebar"></div>
+		<main>
+			<div class="width-limiter">
+				<section class="content" id="main-content" tabindex="-1">
+					<div class="main-heading">
+						<div class="rustdoc-breadcrumbs">
+							<a href="../../index.html">Mountain</a>::<wbr /><a
+								href="../index.html"
+								>Environment</a
+							>
+						</div>
+						<h1>
+							Module
+							<span>Storage<wbr />Provider</span>&nbsp;<button
+								id="copy-path"
+								title="Copy item path to clipboard">
+								Copy item path
+							</button>
+						</h1>
+						<rustdoc-toolbar></rustdoc-toolbar
+						><span class="sub-heading"
+							><a
+								class="src"
+								href="../../../src/Mountain/Environment/StorageProvider.rs.html#1-429"
+								>Source</a
+							>
+						</span>
+					</div>
+					<details class="toggle top-doc" open>
+						<summary class="hideme">
+							<span>Expand description</span>
+						</summary>
+						<div class="docblock">
+							<h2 id="storageprovider-environment">
+								<a
+									class="doc-anchor"
+									href="#storageprovider-environment"
+									>§</a
+								>StorageProvider (Environment)
+							</h2>
+							<p>
+								Implements the
+								<code>StorageProvider</code> trait for
+								<code>MountainEnvironment</code>, providing
+								persistent key-value storage for extensions and
+								application components.
+							</p>
+							<h3 id="responsibilities">
+								<a class="doc-anchor" href="#responsibilities"
+									>§</a
+								>RESPONSIBILITIES
+							</h3>
+							<h4 id="1-storage-management">
+								<a
+									class="doc-anchor"
+									href="#1-storage-management"
+									>§</a
+								>1. Storage Management
+							</h4>
+							<ul>
+								<li>
+									Provide global storage (shared across all
+									workspaces)
+								</li>
+								<li>
+									Provide workspace-scoped storage (per
+									workspace)
+								</li>
+								<li>
+									Support namespaced keys to avoid collisions
+								</li>
+								<li>Handle storage quota limits</li>
+							</ul>
+							<h4 id="2-crud-operations">
+								<a class="doc-anchor" href="#2-crud-operations"
+									>§</a
+								>2. CRUD Operations
+							</h4>
+							<ul>
+								<li>
+									<code>Get(scope, key)</code>: Retrieve value
+									by key
+								</li>
+								<li>
+									<code>Set(scope, key, value)</code>: Store
+									value (create or update)
+								</li>
+								<li>
+									<code>Remove(scope, key)</code>: Delete
+									key-value pair
+								</li>
+								<li>
+									<code>Clear(scope)</code>: Remove all keys
+									in a scope
+								</li>
+								<li>
+									<code>Keys(scope)</code>: List all keys in a
+									scope
+								</li>
+							</ul>
+							<h4 id="3-data-persistence">
+								<a class="doc-anchor" href="#3-data-persistence"
+									>§</a
+								>3. Data Persistence
+							</h4>
+							<ul>
+								<li>
+									Write storage changes to disk immediately
+								</li>
+								<li>Load storage from disk on startup</li>
+								<li>
+									Handle corrupted storage files with recovery
+								</li>
+								<li>Backup storage before writes (optional)</li>
+							</ul>
+							<h4 id="4-type-safety">
+								<a class="doc-anchor" href="#4-type-safety">§</a
+								>4. Type Safety
+							</h4>
+							<ul>
+								<li>
+									Store and retrieve arbitrary
+									JSON-serializable values
+								</li>
+								<li>
+									Handle serialization/deserialization errors
+								</li>
+								<li>
+									Support primitive types and complex objects
+								</li>
+							</ul>
+							<h3 id="architectural-role">
+								<a class="doc-anchor" href="#architectural-role"
+									>§</a
+								>ARCHITECTURAL ROLE
+							</h3>
+							<p>
+								StorageProvider is the
+								<strong>persistent key-value store</strong> for
+								Mountain:
+							</p>
+							<div class="example-wrap">
+								<pre
+									class="language-text"><code>Extension ──► StorageProvider ──► Disk (JSON files)
                      │
-                     └─► ApplicationState (Cache)</code></pre></div><h4 id="position-in-mountain"><a class="doc-anchor" href="#position-in-mountain">§</a>Position in Mountain</h4>
-<ul>
-<li><code>Environment</code> module: Persistence capability provider</li>
-<li>Implements <code>CommonLibrary::Storage::StorageProvider</code> trait</li>
-<li>Accessible via <code>Environment.Require&lt;dyn StorageProvider&gt;()</code></li>
-</ul>
-<h4 id="storage-scopes"><a class="doc-anchor" href="#storage-scopes">§</a>Storage Scopes</h4>
-<ul>
-<li><strong>Global</strong>: <code>{AppData}/User/globalStorage.json</code>
-<ul>
-<li>Shared across all workspaces</li>
-<li>Used for user preferences, extension state</li>
-</ul>
-</li>
-<li><strong>Workspace</strong>:
-<code>{AppData}/User/workspaceStorage/{workspace-id}/storage.json</code>
-<ul>
-<li>Specific to current workspace</li>
-<li>Used for workspace-specific settings and state</li>
-</ul>
-</li>
-</ul>
-<h4 id="storage-format"><a class="doc-anchor" href="#storage-format">§</a>Storage Format</h4>
-<ul>
-<li>JSON file with simple key-value pairs</li>
-<li>Values are <code>serde_json::Value</code> (any JSON type)</li>
-<li>Keys are strings with namespace prefix (e.g., “extensionId.setting”)</li>
-</ul>
-<h4 id="dependencies"><a class="doc-anchor" href="#dependencies">§</a>Dependencies</h4>
-<ul>
-<li><code>ApplicationState</code>: Access to global/workspace memento maps</li>
-<li><code>FileSystemWriter</code>: To persist storage to disk</li>
-<li><code>Log</code>: Storage change logging</li>
-</ul>
-<h4 id="dependents"><a class="doc-anchor" href="#dependents">§</a>Dependents</h4>
-<ul>
-<li>Extensions: Store extension-specific state</li>
-<li><code>ConfigurationProvider</code>: Uses global storage for user settings</li>
-<li><code>ExtensionManagement</code>: Store extension metadata</li>
-<li>Any component needing persistent settings</li>
-</ul>
-<h3 id="storage-lifecycle"><a class="doc-anchor" href="#storage-lifecycle">§</a>STORAGE LIFECYCLE</h3>
-<ol>
-<li><strong>App Start</strong>: <code>ApplicationState::default()</code> loads global and workspace
-memento</li>
-<li><strong>Workspace Change</strong>: <code>UpdateWorkspaceMementoPathAndReload()</code> loads new
-workspace storage</li>
-<li><strong>Runtime</strong>: Providers read/write to in-memory maps (<code>GlobalMemento</code>,
-<code>WorkspaceMemento</code>)</li>
-<li><strong>Shutdown</strong>: <code>ApplicationRunTime::SaveApplicationState()</code> writes memento
-to disk</li>
-<li><strong>Crash Recovery</strong>: <code>Internal::LoadInitialMementoFromDisk()</code> with
-backup/restore</li>
-</ol>
-<h3 id="error-handling"><a class="doc-anchor" href="#error-handling">§</a>ERROR HANDLING</h3>
-<ul>
-<li>Disk full: <code>CommonError::FileSystemIO</code></li>
-<li>Permission denied: <code>CommonError::FileSystemIO</code></li>
-<li>JSON parse error: <code>CommonError::SerializationError</code> (with recovery)</li>
-<li>Quota exceeded: <code>CommonError::StorageFull</code> (TODO)</li>
-</ul>
-<h3 id="performance"><a class="doc-anchor" href="#performance">§</a>PERFORMANCE</h3>
-<ul>
-<li>All storage operations are in-memory (fast)</li>
-<li>Disk writes are async and batched</li>
-<li>Consider size limits (configurable max per storage file)</li>
-<li>Large values (&gt;1MB) should be stored in files, not storage</li>
-</ul>
-<h3 id="recovery-mechanisms"><a class="doc-anchor" href="#recovery-mechanisms">§</a>RECOVERY MECHANISMS</h3>
-<ul>
-<li>Corrupted JSON files are backed up with timestamps</li>
-<li>On parse error, storage is reset to empty and continues</li>
-<li>Directories are created automatically</li>
-<li>Writes are atomic (write to temp, then rename)</li>
-</ul>
-<h3 id="vs-code-reference"><a class="doc-anchor" href="#vs-code-reference">§</a>VS CODE REFERENCE</h3>
-<p>Patterns from VS Code:</p>
-<ul>
-<li><code>vs/platform/storage/common/storageService.ts</code> - Storage service</li>
-<li><code>vs/platform/storage/common/memento.ts</code> - Memento pattern for state</li>
-</ul>
-<h3 id="todo"><a class="doc-anchor" href="#todo">§</a>TODO</h3>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Implement storage quotas (per-extension limits)</li>
-<li><input disabled="" type="checkbox"/>
-Add storage encryption for sensitive data</li>
-<li><input disabled="" type="checkbox"/>
-Support storage compression for large datasets</li>
-<li><input disabled="" type="checkbox"/>
-Implement storage migration/versioning</li>
-<li><input disabled="" type="checkbox"/>
-Add storage inspection and debugging tools</li>
-<li><input disabled="" type="checkbox"/>
-Support storage syncing across devices (via Air)</li>
-<li><input disabled="" type="checkbox"/>
-Implement storage TTL (time-to-live) for auto-expiring keys</li>
-<li><input disabled="" type="checkbox"/>
-Add storage subscriptions/notifications on change</li>
-<li><input disabled="" type="checkbox"/>
-Support binary data storage (not just JSON)</li>
-<li><input disabled="" type="checkbox"/>
-Implement storage transactions (batch operations with rollback)</li>
-</ul>
-<h3 id="module-contents"><a class="doc-anchor" href="#module-contents">§</a>MODULE CONTENTS</h3>
-<ul>
-<li>[<code>StorageProvider</code>]: Main struct implementing the trait</li>
-<li>Storage access methods (Get, Set, Remove, Clear, Keys)</li>
-<li>Memento loading and saving</li>
-<li>Recovery and backup logic</li>
-</ul>
-<h2 id="storageprovider-implementation"><a class="doc-anchor" href="#storageprovider-implementation">§</a>StorageProvider Implementation</h2>
-<p>Implements the <code>StorageProvider</code> trait for the <code>MountainEnvironment</code>. This
-provider contains the core logic for Memento storage operations, including
-reading from and writing to the appropriate JSON storage files on disk.</p>
-</div></details><h2 id="functions" class="section-header">Functions<a href="#functions" class="anchor">§</a></h2><dl class="item-table"><dt><a class="fn" href="fn.SaveStorageToDisk.html" title="fn Mountain::Environment::StorageProvider::SaveStorageToDisk">Save<wbr>Storage<wbr>ToDisk</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>An internal helper function to asynchronously write the storage map to a
-file.</dd></dl></section></div></main></body></html>
+                     └─► ApplicationState (Cache)</code></pre>
+							</div>
+							<h4 id="position-in-mountain">
+								<a
+									class="doc-anchor"
+									href="#position-in-mountain"
+									>§</a
+								>Position in Mountain
+							</h4>
+							<ul>
+								<li>
+									<code>Environment</code> module: Persistence
+									capability provider
+								</li>
+								<li>
+									Implements
+									<code
+										>CommonLibrary::Storage::StorageProvider</code
+									>
+									trait
+								</li>
+								<li>
+									Accessible via
+									<code
+										>Environment.Require&lt;dyn
+										StorageProvider&gt;()</code
+									>
+								</li>
+							</ul>
+							<h4 id="storage-scopes">
+								<a class="doc-anchor" href="#storage-scopes"
+									>§</a
+								>Storage Scopes
+							</h4>
+							<ul>
+								<li>
+									<strong>Global</strong>:
+									<code
+										>{AppData}/User/globalStorage.json</code
+									>
+									<ul>
+										<li>Shared across all workspaces</li>
+										<li>
+											Used for user preferences, extension
+											state
+										</li>
+									</ul>
+								</li>
+								<li>
+									<strong>Workspace</strong>:
+									<code
+										>{AppData}/User/workspaceStorage/{workspace-id}/storage.json</code
+									>
+									<ul>
+										<li>Specific to current workspace</li>
+										<li>
+											Used for workspace-specific settings
+											and state
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 id="storage-format">
+								<a class="doc-anchor" href="#storage-format"
+									>§</a
+								>Storage Format
+							</h4>
+							<ul>
+								<li>JSON file with simple key-value pairs</li>
+								<li>
+									Values are
+									<code>serde_json::Value</code> (any JSON
+									type)
+								</li>
+								<li>
+									Keys are strings with namespace prefix
+									(e.g., “extensionId.setting”)
+								</li>
+							</ul>
+							<h4 id="dependencies">
+								<a class="doc-anchor" href="#dependencies">§</a
+								>Dependencies
+							</h4>
+							<ul>
+								<li>
+									<code>ApplicationState</code>: Access to
+									global/workspace memento maps
+								</li>
+								<li>
+									<code>FileSystemWriter</code>: To persist
+									storage to disk
+								</li>
+								<li>
+									<code>Log</code>: Storage change logging
+								</li>
+							</ul>
+							<h4 id="dependents">
+								<a class="doc-anchor" href="#dependents">§</a
+								>Dependents
+							</h4>
+							<ul>
+								<li>
+									Extensions: Store extension-specific state
+								</li>
+								<li>
+									<code>ConfigurationProvider</code>: Uses
+									global storage for user settings
+								</li>
+								<li>
+									<code>ExtensionManagement</code>: Store
+									extension metadata
+								</li>
+								<li>
+									Any component needing persistent settings
+								</li>
+							</ul>
+							<h3 id="storage-lifecycle">
+								<a class="doc-anchor" href="#storage-lifecycle"
+									>§</a
+								>STORAGE LIFECYCLE
+							</h3>
+							<ol>
+								<li>
+									<strong>App Start</strong>:
+									<code>ApplicationState::default()</code>
+									loads global and workspace memento
+								</li>
+								<li>
+									<strong>Workspace Change</strong>:
+									<code
+										>UpdateWorkspaceMementoPathAndReload()</code
+									>
+									loads new workspace storage
+								</li>
+								<li>
+									<strong>Runtime</strong>: Providers
+									read/write to in-memory maps
+									(<code>GlobalMemento</code>,
+									<code>WorkspaceMemento</code>)
+								</li>
+								<li>
+									<strong>Shutdown</strong>:
+									<code
+										>ApplicationRunTime::SaveApplicationState()</code
+									>
+									writes memento to disk
+								</li>
+								<li>
+									<strong>Crash Recovery</strong>:
+									<code
+										>Internal::LoadInitialMementoFromDisk()</code
+									>
+									with backup/restore
+								</li>
+							</ol>
+							<h3 id="error-handling">
+								<a class="doc-anchor" href="#error-handling"
+									>§</a
+								>ERROR HANDLING
+							</h3>
+							<ul>
+								<li>
+									Disk full:
+									<code>CommonError::FileSystemIO</code>
+								</li>
+								<li>
+									Permission denied:
+									<code>CommonError::FileSystemIO</code>
+								</li>
+								<li>
+									JSON parse error:
+									<code>CommonError::SerializationError</code>
+									(with recovery)
+								</li>
+								<li>
+									Quota exceeded:
+									<code>CommonError::StorageFull</code> (TODO)
+								</li>
+							</ul>
+							<h3 id="performance">
+								<a class="doc-anchor" href="#performance">§</a
+								>PERFORMANCE
+							</h3>
+							<ul>
+								<li>
+									All storage operations are in-memory (fast)
+								</li>
+								<li>Disk writes are async and batched</li>
+								<li>
+									Consider size limits (configurable max per
+									storage file)
+								</li>
+								<li>
+									Large values (&gt;1MB) should be stored in
+									files, not storage
+								</li>
+							</ul>
+							<h3 id="recovery-mechanisms">
+								<a
+									class="doc-anchor"
+									href="#recovery-mechanisms"
+									>§</a
+								>RECOVERY MECHANISMS
+							</h3>
+							<ul>
+								<li>
+									Corrupted JSON files are backed up with
+									timestamps
+								</li>
+								<li>
+									On parse error, storage is reset to empty
+									and continues
+								</li>
+								<li>Directories are created automatically</li>
+								<li>
+									Writes are atomic (write to temp, then
+									rename)
+								</li>
+							</ul>
+							<h3 id="vs-code-reference">
+								<a class="doc-anchor" href="#vs-code-reference"
+									>§</a
+								>VS CODE REFERENCE
+							</h3>
+							<p>Patterns from VS Code:</p>
+							<ul>
+								<li>
+									<code
+										>vs/platform/storage/common/storageService.ts</code
+									>
+									- Storage service
+								</li>
+								<li>
+									<code
+										>vs/platform/storage/common/memento.ts</code
+									>
+									- Memento pattern for state
+								</li>
+							</ul>
+							<h3 id="todo">
+								<a class="doc-anchor" href="#todo">§</a>TODO
+							</h3>
+							<ul>
+								<li>
+									<input disabled="" type="checkbox" />
+									Implement storage quotas (per-extension
+									limits)
+								</li>
+								<li>
+									<input disabled="" type="checkbox" /> Add
+									storage encryption for sensitive data
+								</li>
+								<li>
+									<input disabled="" type="checkbox" />
+									Support storage compression for large
+									datasets
+								</li>
+								<li>
+									<input disabled="" type="checkbox" />
+									Implement storage migration/versioning
+								</li>
+								<li>
+									<input disabled="" type="checkbox" /> Add
+									storage inspection and debugging tools
+								</li>
+								<li>
+									<input disabled="" type="checkbox" />
+									Support storage syncing across devices (via
+									Air)
+								</li>
+								<li>
+									<input disabled="" type="checkbox" />
+									Implement storage TTL (time-to-live) for
+									auto-expiring keys
+								</li>
+								<li>
+									<input disabled="" type="checkbox" /> Add
+									storage subscriptions/notifications on
+									change
+								</li>
+								<li>
+									<input disabled="" type="checkbox" />
+									Support binary data storage (not just JSON)
+								</li>
+								<li>
+									<input disabled="" type="checkbox" />
+									Implement storage transactions (batch
+									operations with rollback)
+								</li>
+							</ul>
+							<h3 id="module-contents">
+								<a class="doc-anchor" href="#module-contents"
+									>§</a
+								>MODULE CONTENTS
+							</h3>
+							<ul>
+								<li>
+									[<code>StorageProvider</code>]: Main struct
+									implementing the trait
+								</li>
+								<li>
+									Storage access methods (Get, Set, Remove,
+									Clear, Keys)
+								</li>
+								<li>Memento loading and saving</li>
+								<li>Recovery and backup logic</li>
+							</ul>
+							<h2 id="storageprovider-implementation">
+								<a
+									class="doc-anchor"
+									href="#storageprovider-implementation"
+									>§</a
+								>StorageProvider Implementation
+							</h2>
+							<p>
+								Implements the
+								<code>StorageProvider</code> trait for the
+								<code>MountainEnvironment</code>. This provider
+								contains the core logic for Memento storage
+								operations, including reading from and writing
+								to the appropriate JSON storage files on disk.
+							</p>
+						</div>
+					</details>
+					<h2 class="section-header" id="functions">
+						Functions<a class="anchor" href="#functions">§</a>
+					</h2>
+					<dl class="item-table">
+						<dt>
+							<a
+								class="fn"
+								href="fn.SaveStorageToDisk.html"
+								title="fn Mountain::Environment::StorageProvider::SaveStorageToDisk"
+								>Save<wbr />Storage<wbr />ToDisk</a
+							><span title="Restricted Visibility">&nbsp;🔒</span>
+						</dt>
+						<dd>
+							An internal helper function to asynchronously write
+							the storage map to a file.
+						</dd>
+					</dl>
+				</section>
+			</div>
+		</main>
+	</body>
+</html>

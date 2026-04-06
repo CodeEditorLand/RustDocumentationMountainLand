@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["AnalyzeTextLinesAndEOL"]};
+window.SIDEBAR_ITEMS = { "mod": ["AnalyzeTextLinesAndEOL"] };

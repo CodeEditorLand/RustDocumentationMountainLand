@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["OutputChannelState"]};
+window.SIDEBAR_ITEMS = { "mod": ["OutputChannelState"] };

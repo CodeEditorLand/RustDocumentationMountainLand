@@ -1,1 +1,9 @@
-window.SIDEBAR_ITEMS = {"mod":["ConnectionStatus","HealthStatus","MessageType","PerformanceMetrics","ServiceInfo"]};
+window.SIDEBAR_ITEMS = {
+	"mod": [
+		"ConnectionStatus",
+		"HealthStatus",
+		"MessageType",
+		"PerformanceMetrics",
+		"ServiceInfo",
+	],
+};

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["ResolveUIRequest"]};
+window.SIDEBAR_ITEMS = { "mod": ["ResolveUIRequest"] };

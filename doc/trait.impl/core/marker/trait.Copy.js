@@ -1,9 +1,187 @@
-(function() {
-    const implementors = Object.fromEntries([["Mountain",[["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"enum\" href=\"Mountain/ApplicationState/DTO/MarkerSeverity/enum.MarkerSeverity.html\" title=\"enum Mountain::ApplicationState::DTO::MarkerSeverity::MarkerSeverity\">MarkerSeverity</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"enum\" href=\"Mountain/Environment/TestProvider/enum.TestRunStatus.html\" title=\"enum Mountain::Environment::TestProvider::TestRunStatus\">TestRunStatus</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"enum\" href=\"Mountain/Environment/WebviewProvider/enum.WebviewLifecycleState.html\" title=\"enum Mountain::Environment::WebviewProvider::WebviewLifecycleState\">WebviewLifecycleState</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"enum\" href=\"Mountain/Error/CoreError/enum.ErrorKind.html\" title=\"enum Mountain::Error::CoreError::ErrorKind\">ErrorKind</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"enum\" href=\"Mountain/Error/CoreError/enum.ErrorSeverity.html\" title=\"enum Mountain::Error::CoreError::ErrorSeverity\">ErrorSeverity</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"enum\" href=\"Mountain/IPC/Common/ConnectionStatus/enum.ConnectionState.html\" title=\"enum Mountain::IPC::Common::ConnectionStatus::ConnectionState\">ConnectionState</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"enum\" href=\"Mountain/IPC/Common/HealthStatus/enum.SeverityLevel.html\" title=\"enum Mountain::IPC::Common::HealthStatus::SeverityLevel\">SeverityLevel</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"enum\" href=\"Mountain/IPC/Common/MessageType/enum.MessagePriority.html\" title=\"enum Mountain::IPC::Common::MessageType::MessagePriority\">MessagePriority</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"enum\" href=\"Mountain/IPC/Common/ServiceInfo/enum.ServiceState.html\" title=\"enum Mountain::IPC::Common::ServiceInfo::ServiceState\">ServiceState</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"enum\" href=\"Mountain/IPC/Enhanced/ConnectionPool/enum.ConnectionHealth.html\" title=\"enum Mountain::IPC::Enhanced::ConnectionPool::ConnectionHealth\">ConnectionHealth</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"enum\" href=\"Mountain/IPC/Enhanced/MessageCompressor/enum.CompressionAlgorithm.html\" title=\"enum Mountain::IPC::Enhanced::MessageCompressor::CompressionAlgorithm\">CompressionAlgorithm</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"enum\" href=\"Mountain/IPC/Enhanced/MessageCompressor/enum.CompressionLevel.html\" title=\"enum Mountain::IPC::Enhanced::MessageCompressor::CompressionLevel\">CompressionLevel</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"enum\" href=\"Mountain/IPC/Permission/Audit/LogEvent/enum.SecurityEventType.html\" title=\"enum Mountain::IPC::Permission::Audit::LogEvent::SecurityEventType\">SecurityEventType</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"enum\" href=\"Mountain/IPC/WindAdvancedSync/enum.ChangeType.html\" title=\"enum Mountain::IPC::WindAdvancedSync::ChangeType\">ChangeType</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"enum\" href=\"Mountain/IPC/WindAdvancedSync/enum.SyncState.html\" title=\"enum Mountain::IPC::WindAdvancedSync::SyncState\">SyncState</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"enum\" href=\"Mountain/RPC/configuration/enum.ConfigurationScope.html\" title=\"enum Mountain::RPC::configuration::ConfigurationScope\">ConfigurationScope</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"enum\" href=\"Mountain/Vine/Generated/enum.ProgressLocation.html\" title=\"enum Mountain::Vine::Generated::ProgressLocation\">ProgressLocation</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"enum\" href=\"Mountain/Vine/Generated/enum.TextDocumentSaveReason.html\" title=\"enum Mountain::Vine::Generated::TextDocumentSaveReason\">TextDocumentSaveReason</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"enum\" href=\"Mountain/Vine/Generated/enum.ViewColumn.html\" title=\"enum Mountain::Vine::Generated::ViewColumn\">ViewColumn</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ApplyEditResponse.html\" title=\"struct Mountain::Vine::Generated::ApplyEditResponse\">ApplyEditResponse</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.CancelOperationRequest.html\" title=\"struct Mountain::Vine::Generated::CancelOperationRequest\">CancelOperationRequest</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.CloseTerminalRequest.html\" title=\"struct Mountain::Vine::Generated::CloseTerminalRequest\">CloseTerminalRequest</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.CreateWebviewPanelResponse.html\" title=\"struct Mountain::Vine::Generated::CreateWebviewPanelResponse\">CreateWebviewPanelResponse</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.DisposeWebviewPanelRequest.html\" title=\"struct Mountain::Vine::Generated::DisposeWebviewPanelRequest\">DisposeWebviewPanelRequest</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.DocumentHighlight.html\" title=\"struct Mountain::Vine::Generated::DocumentHighlight\">DocumentHighlight</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.Empty.html\" title=\"struct Mountain::Vine::Generated::Empty\">Empty</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ExecuteTaskResponse.html\" title=\"struct Mountain::Vine::Generated::ExecuteTaskResponse\">ExecuteTaskResponse</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.FoldingRange.html\" title=\"struct Mountain::Vine::Generated::FoldingRange\">FoldingRange</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.OpenDocumentResponse.html\" title=\"struct Mountain::Vine::Generated::OpenDocumentResponse\">OpenDocumentResponse</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.Position.html\" title=\"struct Mountain::Vine::Generated::Position\">Position</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.Range.html\" title=\"struct Mountain::Vine::Generated::Range\">Range</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ResizeTerminalRequest.html\" title=\"struct Mountain::Vine::Generated::ResizeTerminalRequest\">ResizeTerminalRequest</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.SaveAllRequest.html\" title=\"struct Mountain::Vine::Generated::SaveAllRequest\">SaveAllRequest</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.SaveAllResponse.html\" title=\"struct Mountain::Vine::Generated::SaveAllResponse\">SaveAllResponse</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.SelectionRange.html\" title=\"struct Mountain::Vine::Generated::SelectionRange\">SelectionRange</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ShowMessageResponse.html\" title=\"struct Mountain::Vine::Generated::ShowMessageResponse\">ShowMessageResponse</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ShowProgressResponse.html\" title=\"struct Mountain::Vine::Generated::ShowProgressResponse\">ShowProgressResponse</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ShowTextDocumentResponse.html\" title=\"struct Mountain::Vine::Generated::ShowTextDocumentResponse\">ShowTextDocumentResponse</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.StartDebuggingResponse.html\" title=\"struct Mountain::Vine::Generated::StartDebuggingResponse\">StartDebuggingResponse</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.StatResponse.html\" title=\"struct Mountain::Vine::Generated::StatResponse\">StatResponse</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.TerminalClosedNotification.html\" title=\"struct Mountain::Vine::Generated::TerminalClosedNotification\">TerminalClosedNotification</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.TerminalProcessIdNotification.html\" title=\"struct Mountain::Vine::Generated::TerminalProcessIdNotification\">TerminalProcessIdNotification</a>",0],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html\" title=\"trait core::marker::Copy\">Copy</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.TerminateTaskRequest.html\" title=\"struct Mountain::Vine::Generated::TerminateTaskRequest\">TerminateTaskRequest</a>",0]]]]);
-    if (window.register_implementors) {
-        window.register_implementors(implementors);
-    } else {
-        window.pending_implementors = implementors;
-    }
-})()
+(function () {
+	const implementors = Object.fromEntries([
+		[
+			"Mountain",
+			[
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="enum" href="Mountain/ApplicationState/DTO/MarkerSeverity/enum.MarkerSeverity.html" title="enum Mountain::ApplicationState::DTO::MarkerSeverity::MarkerSeverity">MarkerSeverity</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="enum" href="Mountain/Environment/TestProvider/enum.TestRunStatus.html" title="enum Mountain::Environment::TestProvider::TestRunStatus">TestRunStatus</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="enum" href="Mountain/Environment/WebviewProvider/enum.WebviewLifecycleState.html" title="enum Mountain::Environment::WebviewProvider::WebviewLifecycleState">WebviewLifecycleState</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="enum" href="Mountain/Error/CoreError/enum.ErrorKind.html" title="enum Mountain::Error::CoreError::ErrorKind">ErrorKind</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="enum" href="Mountain/Error/CoreError/enum.ErrorSeverity.html" title="enum Mountain::Error::CoreError::ErrorSeverity">ErrorSeverity</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="enum" href="Mountain/IPC/Common/ConnectionStatus/enum.ConnectionState.html" title="enum Mountain::IPC::Common::ConnectionStatus::ConnectionState">ConnectionState</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="enum" href="Mountain/IPC/Common/HealthStatus/enum.SeverityLevel.html" title="enum Mountain::IPC::Common::HealthStatus::SeverityLevel">SeverityLevel</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="enum" href="Mountain/IPC/Common/MessageType/enum.MessagePriority.html" title="enum Mountain::IPC::Common::MessageType::MessagePriority">MessagePriority</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="enum" href="Mountain/IPC/Common/ServiceInfo/enum.ServiceState.html" title="enum Mountain::IPC::Common::ServiceInfo::ServiceState">ServiceState</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="enum" href="Mountain/IPC/Enhanced/ConnectionPool/enum.ConnectionHealth.html" title="enum Mountain::IPC::Enhanced::ConnectionPool::ConnectionHealth">ConnectionHealth</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="enum" href="Mountain/IPC/Enhanced/MessageCompressor/enum.CompressionAlgorithm.html" title="enum Mountain::IPC::Enhanced::MessageCompressor::CompressionAlgorithm">CompressionAlgorithm</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="enum" href="Mountain/IPC/Enhanced/MessageCompressor/enum.CompressionLevel.html" title="enum Mountain::IPC::Enhanced::MessageCompressor::CompressionLevel">CompressionLevel</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="enum" href="Mountain/IPC/Permission/Audit/LogEvent/enum.SecurityEventType.html" title="enum Mountain::IPC::Permission::Audit::LogEvent::SecurityEventType">SecurityEventType</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="enum" href="Mountain/IPC/WindAdvancedSync/enum.ChangeType.html" title="enum Mountain::IPC::WindAdvancedSync::ChangeType">ChangeType</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="enum" href="Mountain/IPC/WindAdvancedSync/enum.SyncState.html" title="enum Mountain::IPC::WindAdvancedSync::SyncState">SyncState</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="enum" href="Mountain/RPC/configuration/enum.ConfigurationScope.html" title="enum Mountain::RPC::configuration::ConfigurationScope">ConfigurationScope</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="enum" href="Mountain/Vine/Generated/enum.ProgressLocation.html" title="enum Mountain::Vine::Generated::ProgressLocation">ProgressLocation</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="enum" href="Mountain/Vine/Generated/enum.TextDocumentSaveReason.html" title="enum Mountain::Vine::Generated::TextDocumentSaveReason">TextDocumentSaveReason</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="enum" href="Mountain/Vine/Generated/enum.ViewColumn.html" title="enum Mountain::Vine::Generated::ViewColumn">ViewColumn</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ApplyEditResponse.html" title="struct Mountain::Vine::Generated::ApplyEditResponse">ApplyEditResponse</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="struct" href="Mountain/Vine/Generated/struct.CancelOperationRequest.html" title="struct Mountain::Vine::Generated::CancelOperationRequest">CancelOperationRequest</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="struct" href="Mountain/Vine/Generated/struct.CloseTerminalRequest.html" title="struct Mountain::Vine::Generated::CloseTerminalRequest">CloseTerminalRequest</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="struct" href="Mountain/Vine/Generated/struct.CreateWebviewPanelResponse.html" title="struct Mountain::Vine::Generated::CreateWebviewPanelResponse">CreateWebviewPanelResponse</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="struct" href="Mountain/Vine/Generated/struct.DisposeWebviewPanelRequest.html" title="struct Mountain::Vine::Generated::DisposeWebviewPanelRequest">DisposeWebviewPanelRequest</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="struct" href="Mountain/Vine/Generated/struct.DocumentHighlight.html" title="struct Mountain::Vine::Generated::DocumentHighlight">DocumentHighlight</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="struct" href="Mountain/Vine/Generated/struct.Empty.html" title="struct Mountain::Vine::Generated::Empty">Empty</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ExecuteTaskResponse.html" title="struct Mountain::Vine::Generated::ExecuteTaskResponse">ExecuteTaskResponse</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="struct" href="Mountain/Vine/Generated/struct.FoldingRange.html" title="struct Mountain::Vine::Generated::FoldingRange">FoldingRange</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="struct" href="Mountain/Vine/Generated/struct.OpenDocumentResponse.html" title="struct Mountain::Vine::Generated::OpenDocumentResponse">OpenDocumentResponse</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="struct" href="Mountain/Vine/Generated/struct.Position.html" title="struct Mountain::Vine::Generated::Position">Position</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="struct" href="Mountain/Vine/Generated/struct.Range.html" title="struct Mountain::Vine::Generated::Range">Range</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ResizeTerminalRequest.html" title="struct Mountain::Vine::Generated::ResizeTerminalRequest">ResizeTerminalRequest</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="struct" href="Mountain/Vine/Generated/struct.SaveAllRequest.html" title="struct Mountain::Vine::Generated::SaveAllRequest">SaveAllRequest</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="struct" href="Mountain/Vine/Generated/struct.SaveAllResponse.html" title="struct Mountain::Vine::Generated::SaveAllResponse">SaveAllResponse</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="struct" href="Mountain/Vine/Generated/struct.SelectionRange.html" title="struct Mountain::Vine::Generated::SelectionRange">SelectionRange</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ShowMessageResponse.html" title="struct Mountain::Vine::Generated::ShowMessageResponse">ShowMessageResponse</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ShowProgressResponse.html" title="struct Mountain::Vine::Generated::ShowProgressResponse">ShowProgressResponse</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ShowTextDocumentResponse.html" title="struct Mountain::Vine::Generated::ShowTextDocumentResponse">ShowTextDocumentResponse</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="struct" href="Mountain/Vine/Generated/struct.StartDebuggingResponse.html" title="struct Mountain::Vine::Generated::StartDebuggingResponse">StartDebuggingResponse</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="struct" href="Mountain/Vine/Generated/struct.StatResponse.html" title="struct Mountain::Vine::Generated::StatResponse">StatResponse</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="struct" href="Mountain/Vine/Generated/struct.TerminalClosedNotification.html" title="struct Mountain::Vine::Generated::TerminalClosedNotification">TerminalClosedNotification</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="struct" href="Mountain/Vine/Generated/struct.TerminalProcessIdNotification.html" title="struct Mountain::Vine::Generated::TerminalProcessIdNotification">TerminalProcessIdNotification</a>',
+					0,
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="struct" href="Mountain/Vine/Generated/struct.TerminateTaskRequest.html" title="struct Mountain::Vine::Generated::TerminateTaskRequest">TerminateTaskRequest</a>',
+					0,
+				],
+			],
+		],
+	]);
+	if (window.register_implementors) {
+		window.register_implementors(implementors);
+	} else {
+		window.pending_implementors = implementors;
+	}
+})();
 //{"start":59,"fragment_lengths":[13759]}

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"struct":["KeybindingRule"]};
+window.SIDEBAR_ITEMS = { "struct": ["KeybindingRule"] };

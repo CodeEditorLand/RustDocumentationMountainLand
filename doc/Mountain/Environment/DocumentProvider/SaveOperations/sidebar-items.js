@@ -1,1 +1,3 @@
-window.SIDEBAR_ITEMS = {"fn":["save_all_documents","save_document","save_document_as"]};
+window.SIDEBAR_ITEMS = {
+	"fn": ["save_all_documents", "save_document", "save_document_as"],
+};

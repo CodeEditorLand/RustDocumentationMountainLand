@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":["MessageSeverity"]};
+window.SIDEBAR_ITEMS = { "enum": ["MessageSeverity"] };

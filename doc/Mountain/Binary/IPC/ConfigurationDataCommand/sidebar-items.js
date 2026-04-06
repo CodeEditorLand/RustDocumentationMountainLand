@@ -1,1 +1,3 @@
-window.SIDEBAR_ITEMS = {"fn":["GetConfigurationData","SaveConfigurationData"]};
+window.SIDEBAR_ITEMS = {
+	"fn": ["GetConfigurationData", "SaveConfigurationData"],
+};

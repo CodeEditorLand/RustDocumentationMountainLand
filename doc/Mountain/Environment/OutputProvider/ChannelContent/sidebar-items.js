@@ -1,1 +1,3 @@
-window.SIDEBAR_ITEMS = {"fn":["append_to_channel","clear_channel","replace_channel_content"]};
+window.SIDEBAR_ITEMS = {
+	"fn": ["append_to_channel", "clear_channel", "replace_channel_content"],
+};

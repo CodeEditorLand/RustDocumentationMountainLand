@@ -1,1 +1,6 @@
-window.SIDEBAR_ITEMS = {"fn":["MapApplicationStateLockErrorToCommonError","MapLockErrorToCommonError"]};
+window.SIDEBAR_ITEMS = {
+	"fn": [
+		"MapApplicationStateLockErrorToCommonError",
+		"MapLockErrorToCommonError",
+	],
+};

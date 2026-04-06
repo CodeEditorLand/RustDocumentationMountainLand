@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"struct":["TraceSpan"]};
+window.SIDEBAR_ITEMS = { "struct": ["TraceSpan"] };

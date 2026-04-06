@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["TreeViewState"]};
+window.SIDEBAR_ITEMS = { "mod": ["TreeViewState"] };

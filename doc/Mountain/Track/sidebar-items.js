@@ -1,1 +1,9 @@
-window.SIDEBAR_ITEMS = {"mod":["Effect","FrontendCommand","SideCarRequest","UIRequest","Webview"]};
+window.SIDEBAR_ITEMS = {
+	"mod": [
+		"Effect",
+		"FrontendCommand",
+		"SideCarRequest",
+		"UIRequest",
+		"Webview",
+	],
+};

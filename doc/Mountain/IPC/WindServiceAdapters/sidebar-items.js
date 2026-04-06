@@ -1,1 +1,21 @@
-window.SIDEBAR_ITEMS = {"struct":["FileToDiff","FileToOpenOrCreate","FilesToWait","Logger","MountainSandboxConfiguration","NLSConfiguration","OsInfo","ProductConfiguration","Profiles","Versions","WindConfigurationService","WindDesktopConfiguration","WindEnvironmentService","WindFileService","WindServiceAdapter","WindStorageService"],"type":["ConfigurationOverridesDTO","ConfigurationTarget"]};
+window.SIDEBAR_ITEMS = {
+	"struct": [
+		"FileToDiff",
+		"FileToOpenOrCreate",
+		"FilesToWait",
+		"Logger",
+		"MountainSandboxConfiguration",
+		"NLSConfiguration",
+		"OsInfo",
+		"ProductConfiguration",
+		"Profiles",
+		"Versions",
+		"WindConfigurationService",
+		"WindDesktopConfiguration",
+		"WindEnvironmentService",
+		"WindFileService",
+		"WindServiceAdapter",
+		"WindStorageService",
+	],
+	"type": ["ConfigurationOverridesDTO", "ConfigurationTarget"],
+};

@@ -1,1 +1,13 @@
-window.SIDEBAR_ITEMS = {"mod":["Debug","Diagnostics","Documents","Markers","OutputChannels","State","Terminals","TreeViews","Webviews"]};
+window.SIDEBAR_ITEMS = {
+	"mod": [
+		"Debug",
+		"Diagnostics",
+		"Documents",
+		"Markers",
+		"OutputChannels",
+		"State",
+		"Terminals",
+		"TreeViews",
+		"Webviews",
+	],
+};

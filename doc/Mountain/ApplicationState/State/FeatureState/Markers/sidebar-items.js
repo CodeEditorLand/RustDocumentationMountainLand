@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["MarkerState"]};
+window.SIDEBAR_ITEMS = { "mod": ["MarkerState"] };

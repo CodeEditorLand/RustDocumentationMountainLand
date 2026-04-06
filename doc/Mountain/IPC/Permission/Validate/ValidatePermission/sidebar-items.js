@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"struct":["PermissionValidator","SecurityContext"]};
+window.SIDEBAR_ITEMS = { "struct": ["PermissionValidator", "SecurityContext"] };

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["MountainStartIPCStatusReporting"]};
+window.SIDEBAR_ITEMS = { "fn": ["MountainStartIPCStatusReporting"] };

@@ -1,9 +1,3211 @@
-(function() {
-    const implementors = Object.fromEntries([["Mountain",[["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/Vine/Error/enum.VineError.html\" title=\"enum Mountain::Vine::Error::VineError\">VineError</a>",1,1,["Mountain::Vine::Error::VineError"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Air/AirClient/struct.AirClient.html\" title=\"struct Mountain::Air::AirClient::AirClient\">AirClient</a>",1,1,["Mountain::Air::AirClient::AirClient"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Air/AirClient/struct.DownloadStream.html\" title=\"struct Mountain::Air::AirClient::DownloadStream\">DownloadStream</a>",1,1,["Mountain::Air::AirClient::DownloadStream"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Air/AirServiceProvider/struct.AirServiceProvider.html\" title=\"struct Mountain::Air::AirServiceProvider::AirServiceProvider\">AirServiceProvider</a>",1,1,["Mountain::Air::AirServiceProvider::AirServiceProvider"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ApplicationState/DTO/TerminalStateDTO/struct.TerminalStateDTO.html\" title=\"struct Mountain::ApplicationState::DTO::TerminalStateDTO::TerminalStateDTO\">TerminalStateDTO</a>",1,1,["Mountain::ApplicationState::DTO::TerminalStateDTO::TerminalStateDTO"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ApplicationState/DTO/TreeViewStateDTO/struct.TreeViewStateDTO.html\" title=\"struct Mountain::ApplicationState::DTO::TreeViewStateDTO::TreeViewStateDTO\">TreeViewStateDTO</a>",1,1,["Mountain::ApplicationState::DTO::TreeViewStateDTO::TreeViewStateDTO"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ApplicationState/State/ApplicationState/struct.ApplicationState.html\" title=\"struct Mountain::ApplicationState::State::ApplicationState::ApplicationState\">ApplicationState</a>",1,1,["Mountain::ApplicationState::State::ApplicationState::ApplicationState"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Binary/Build/CertificateManager/struct.CertificateManager.html\" title=\"struct Mountain::Binary::Build::CertificateManager::CertificateManager\">CertificateManager</a>",1,1,["Mountain::Binary::Build::CertificateManager::CertificateManager"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Binary/Build/CertificateManager/struct.ServerCertData.html\" title=\"struct Mountain::Binary::Build::CertificateManager::ServerCertData\">ServerCertData</a>",1,1,["Mountain::Binary::Build::CertificateManager::ServerCertData"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Environment/MountainEnvironment/struct.MountainEnvironment.html\" title=\"struct Mountain::Environment::MountainEnvironment::MountainEnvironment\">MountainEnvironment</a>",1,1,["Mountain::Environment::MountainEnvironment::MountainEnvironment"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Environment/WebviewProvider/messaging/struct.WebviewMessageContext.html\" title=\"struct Mountain::Environment::WebviewProvider::messaging::WebviewMessageContext\">WebviewMessageContext</a>",1,1,["Mountain::Environment::WebviewProvider::messaging::WebviewMessageContext"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Environment/WebviewProvider/struct.WebviewMessageContext.html\" title=\"struct Mountain::Environment::WebviewProvider::WebviewMessageContext\">WebviewMessageContext</a>",1,1,["Mountain::Environment::WebviewProvider::WebviewMessageContext"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/FileSystem/FileExplorerViewProvider/struct.FileExplorerViewProvider.html\" title=\"struct Mountain::FileSystem::FileExplorerViewProvider::FileExplorerViewProvider\">FileExplorerViewProvider</a>",1,1,["Mountain::FileSystem::FileExplorerViewProvider::FileExplorerViewProvider"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/AdvancedFeatures/struct.AdvancedFeatures.html\" title=\"struct Mountain::IPC::AdvancedFeatures::AdvancedFeatures\">AdvancedFeatures</a>",1,1,["Mountain::IPC::AdvancedFeatures::AdvancedFeatures"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/ConfigurationBridge/struct.ConfigurationBridge.html\" title=\"struct Mountain::IPC::ConfigurationBridge::ConfigurationBridge\">ConfigurationBridge</a>",1,1,["Mountain::IPC::ConfigurationBridge::ConfigurationBridge"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Connection/Manager/struct.ConnectionPool.html\" title=\"struct Mountain::IPC::Connection::Manager::ConnectionPool\">ConnectionPool</a>",1,1,["Mountain::IPC::Connection::Manager::ConnectionPool"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Enhanced/ConnectionPool/struct.ConnectionPool.html\" title=\"struct Mountain::IPC::Enhanced::ConnectionPool::ConnectionPool\">ConnectionPool</a>",1,1,["Mountain::IPC::Enhanced::ConnectionPool::ConnectionPool"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Enhanced/PerformanceDashboard/struct.PerformanceDashboard.html\" title=\"struct Mountain::IPC::Enhanced::PerformanceDashboard::PerformanceDashboard\">PerformanceDashboard</a>",1,1,["Mountain::IPC::Enhanced::PerformanceDashboard::PerformanceDashboard"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Enhanced/SecureMessageChannel/struct.SecureMessageChannel.html\" title=\"struct Mountain::IPC::Enhanced::SecureMessageChannel::SecureMessageChannel\">SecureMessageChannel</a>",1,1,["Mountain::IPC::Enhanced::SecureMessageChannel::SecureMessageChannel"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Enhanced/struct.EnhancedIPCManager.html\" title=\"struct Mountain::IPC::Enhanced::EnhancedIPCManager\">EnhancedIPCManager</a>",1,1,["Mountain::IPC::Enhanced::EnhancedIPCManager"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Permission/Validate/ValidatePermission/struct.PermissionValidator.html\" title=\"struct Mountain::IPC::Permission::Validate::ValidatePermission::PermissionValidator\">PermissionValidator</a>",1,1,["Mountain::IPC::Permission::Validate::ValidatePermission::PermissionValidator"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Security/PermissionManager/struct.PermissionManager.html\" title=\"struct Mountain::IPC::Security::PermissionManager::PermissionManager\">PermissionManager</a>",1,1,["Mountain::IPC::Security::PermissionManager::PermissionManager"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/StatusReporter/struct.StatusReporter.html\" title=\"struct Mountain::IPC::StatusReporter::StatusReporter\">StatusReporter</a>",1,1,["Mountain::IPC::StatusReporter::StatusReporter"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/TauriIPCServer_Old/struct.ConnectionPool.html\" title=\"struct Mountain::IPC::TauriIPCServer_Old::ConnectionPool\">ConnectionPool</a>",1,1,["Mountain::IPC::TauriIPCServer_Old::ConnectionPool"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/TauriIPCServer_Old/struct.PermissionManager.html\" title=\"struct Mountain::IPC::TauriIPCServer_Old::PermissionManager\">PermissionManager</a>",1,1,["Mountain::IPC::TauriIPCServer_Old::PermissionManager"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/TauriIPCServer_Old/struct.TauriIPCServer.html\" title=\"struct Mountain::IPC::TauriIPCServer_Old::TauriIPCServer\">TauriIPCServer</a>",1,1,["Mountain::IPC::TauriIPCServer_Old::TauriIPCServer"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindAdvancedSync/struct.WindAdvancedSync.html\" title=\"struct Mountain::IPC::WindAdvancedSync::WindAdvancedSync\">WindAdvancedSync</a>",1,1,["Mountain::IPC::WindAdvancedSync::WindAdvancedSync"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindAirCommands/struct.AirClientWrapper.html\" title=\"struct Mountain::IPC::WindAirCommands::AirClientWrapper\">AirClientWrapper</a>",1,1,["Mountain::IPC::WindAirCommands::AirClientWrapper"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindServiceAdapters/struct.WindConfigurationService.html\" title=\"struct Mountain::IPC::WindServiceAdapters::WindConfigurationService\">WindConfigurationService</a>",1,1,["Mountain::IPC::WindServiceAdapters::WindConfigurationService"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindServiceAdapters/struct.WindFileService.html\" title=\"struct Mountain::IPC::WindServiceAdapters::WindFileService\">WindFileService</a>",1,1,["Mountain::IPC::WindServiceAdapters::WindFileService"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindServiceAdapters/struct.WindServiceAdapter.html\" title=\"struct Mountain::IPC::WindServiceAdapters::WindServiceAdapter\">WindServiceAdapter</a>",1,1,["Mountain::IPC::WindServiceAdapters::WindServiceAdapter"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindServiceAdapters/struct.WindStorageService.html\" title=\"struct Mountain::IPC::WindServiceAdapters::WindStorageService\">WindStorageService</a>",1,1,["Mountain::IPC::WindServiceAdapters::WindStorageService"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ProcessManagement/CocoonManagement/struct.CocoonProcessState.html\" title=\"struct Mountain::ProcessManagement::CocoonManagement::CocoonProcessState\">CocoonProcessState</a>",1,1,["Mountain::ProcessManagement::CocoonManagement::CocoonProcessState"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/RPC/CocoonService/struct.CocoonServiceImpl.html\" title=\"struct Mountain::RPC::CocoonService::CocoonServiceImpl\">CocoonServiceImpl</a>",1,1,["Mountain::RPC::CocoonService::CocoonServiceImpl"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/RPC/echo_action/struct.ExtensionHostRegistry.html\" title=\"struct Mountain::RPC::echo_action::ExtensionHostRegistry\">ExtensionHostRegistry</a>",1,1,["Mountain::RPC::echo_action::ExtensionHostRegistry"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/RPC/echo_action/struct.ExtensionRouter.html\" title=\"struct Mountain::RPC::echo_action::ExtensionRouter\">ExtensionRouter</a>",1,1,["Mountain::RPC::echo_action::ExtensionRouter"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/RunTime/ApplicationRunTime/RuntimeStruct/struct.ApplicationRunTime.html\" title=\"struct Mountain::RunTime::ApplicationRunTime::RuntimeStruct::ApplicationRunTime\">ApplicationRunTime</a>",1,1,["Mountain::RunTime::ApplicationRunTime::RuntimeStruct::ApplicationRunTime"]],["impl !<a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Server/MountainVinegRPCService/struct.MountainVinegRPCService.html\" title=\"struct Mountain::Vine::Server::MountainVinegRPCService::MountainVinegRPCService\">MountainVinegRPCService</a>",1,1,["Mountain::Vine::Server::MountainVinegRPCService::MountainVinegRPCService"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/ApplicationState/DTO/MarkerSeverity/enum.MarkerSeverity.html\" title=\"enum Mountain::ApplicationState::DTO::MarkerSeverity::MarkerSeverity\">MarkerSeverity</a>",0,1,["Mountain::ApplicationState::DTO::MarkerSeverity::MarkerSeverity"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/Command/Hover/Interface/enum.HoverContent.html\" title=\"enum Mountain::Command::Hover::Interface::HoverContent\">HoverContent</a>",0,1,["Mountain::Command::Hover::Interface::HoverContent"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/Environment/TestProvider/enum.TestRunStatus.html\" title=\"enum Mountain::Environment::TestProvider::TestRunStatus\">TestRunStatus</a>",0,1,["Mountain::Environment::TestProvider::TestRunStatus"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/Environment/WebviewProvider/enum.WebviewLifecycleState.html\" title=\"enum Mountain::Environment::WebviewProvider::WebviewLifecycleState\">WebviewLifecycleState</a>",0,1,["Mountain::Environment::WebviewProvider::WebviewLifecycleState"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/Error/ConfigurationError/enum.ConfigurationError.html\" title=\"enum Mountain::Error::ConfigurationError::ConfigurationError\">ConfigurationError</a>",0,1,["Mountain::Error::ConfigurationError::ConfigurationError"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/Error/CoreError/enum.ErrorKind.html\" title=\"enum Mountain::Error::CoreError::ErrorKind\">ErrorKind</a>",0,1,["Mountain::Error::CoreError::ErrorKind"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/Error/CoreError/enum.ErrorSeverity.html\" title=\"enum Mountain::Error::CoreError::ErrorSeverity\">ErrorSeverity</a>",0,1,["Mountain::Error::CoreError::ErrorSeverity"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/Error/FileSystemError/enum.FileSystemError.html\" title=\"enum Mountain::Error::FileSystemError::FileSystemError\">FileSystemError</a>",0,1,["Mountain::Error::FileSystemError::FileSystemError"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/Error/IPCError/enum.IPCError.html\" title=\"enum Mountain::Error::IPCError::IPCError\">IPCError</a>",0,1,["Mountain::Error::IPCError::IPCError"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/Error/ProviderError/enum.ProviderError.html\" title=\"enum Mountain::Error::ProviderError::ProviderError\">ProviderError</a>",0,1,["Mountain::Error::ProviderError::ProviderError"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/Error/ServiceError/enum.ServiceError.html\" title=\"enum Mountain::Error::ServiceError::ServiceError\">ServiceError</a>",0,1,["Mountain::Error::ServiceError::ServiceError"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/IPC/Common/ConnectionStatus/enum.ConnectionState.html\" title=\"enum Mountain::IPC::Common::ConnectionStatus::ConnectionState\">ConnectionState</a>",0,1,["Mountain::IPC::Common::ConnectionStatus::ConnectionState"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/IPC/Common/HealthStatus/enum.HealthIssue.html\" title=\"enum Mountain::IPC::Common::HealthStatus::HealthIssue\">HealthIssue</a>",0,1,["Mountain::IPC::Common::HealthStatus::HealthIssue"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/IPC/Common/HealthStatus/enum.SeverityLevel.html\" title=\"enum Mountain::IPC::Common::HealthStatus::SeverityLevel\">SeverityLevel</a>",0,1,["Mountain::IPC::Common::HealthStatus::SeverityLevel"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/IPC/Common/MessageType/enum.MessagePriority.html\" title=\"enum Mountain::IPC::Common::MessageType::MessagePriority\">MessagePriority</a>",0,1,["Mountain::IPC::Common::MessageType::MessagePriority"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/IPC/Common/ServiceInfo/enum.ServiceState.html\" title=\"enum Mountain::IPC::Common::ServiceInfo::ServiceState\">ServiceState</a>",0,1,["Mountain::IPC::Common::ServiceInfo::ServiceState"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/IPC/Connection/Types/enum.ConnectionStatus.html\" title=\"enum Mountain::IPC::Connection::Types::ConnectionStatus\">ConnectionStatus</a>",0,1,["Mountain::IPC::Connection::Types::ConnectionStatus"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/IPC/Enhanced/ConnectionPool/enum.ConnectionHealth.html\" title=\"enum Mountain::IPC::Enhanced::ConnectionPool::ConnectionHealth\">ConnectionHealth</a>",0,1,["Mountain::IPC::Enhanced::ConnectionPool::ConnectionHealth"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/IPC/Enhanced/MessageCompressor/enum.CompressionAlgorithm.html\" title=\"enum Mountain::IPC::Enhanced::MessageCompressor::CompressionAlgorithm\">CompressionAlgorithm</a>",0,1,["Mountain::IPC::Enhanced::MessageCompressor::CompressionAlgorithm"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/IPC/Enhanced/MessageCompressor/enum.CompressionLevel.html\" title=\"enum Mountain::IPC::Enhanced::MessageCompressor::CompressionLevel\">CompressionLevel</a>",0,1,["Mountain::IPC::Enhanced::MessageCompressor::CompressionLevel"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/IPC/Enhanced/PerformanceDashboard/enum.AlertSeverity.html\" title=\"enum Mountain::IPC::Enhanced::PerformanceDashboard::AlertSeverity\">AlertSeverity</a>",0,1,["Mountain::IPC::Enhanced::PerformanceDashboard::AlertSeverity"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/IPC/Enhanced/PerformanceDashboard/enum.LogLevel.html\" title=\"enum Mountain::IPC::Enhanced::PerformanceDashboard::LogLevel\">LogLevel</a>",0,1,["Mountain::IPC::Enhanced::PerformanceDashboard::LogLevel"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/IPC/Enhanced/PerformanceDashboard/enum.MetricType.html\" title=\"enum Mountain::IPC::Enhanced::PerformanceDashboard::MetricType\">MetricType</a>",0,1,["Mountain::IPC::Enhanced::PerformanceDashboard::MetricType"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/IPC/Permission/Audit/LogEvent/enum.SecurityEventType.html\" title=\"enum Mountain::IPC::Permission::Audit::LogEvent::SecurityEventType\">SecurityEventType</a>",0,1,["Mountain::IPC::Permission::Audit::LogEvent::SecurityEventType"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/IPC/Security/PermissionManager/enum.SecurityEventType.html\" title=\"enum Mountain::IPC::Security::PermissionManager::SecurityEventType\">SecurityEventType</a>",0,1,["Mountain::IPC::Security::PermissionManager::SecurityEventType"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/IPC/StatusReporter/enum.HealthIssueType.html\" title=\"enum Mountain::IPC::StatusReporter::HealthIssueType\">HealthIssueType</a>",0,1,["Mountain::IPC::StatusReporter::HealthIssueType"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/IPC/StatusReporter/enum.ServiceStatus.html\" title=\"enum Mountain::IPC::StatusReporter::ServiceStatus\">ServiceStatus</a>",0,1,["Mountain::IPC::StatusReporter::ServiceStatus"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/IPC/StatusReporter/enum.SeverityLevel.html\" title=\"enum Mountain::IPC::StatusReporter::SeverityLevel\">SeverityLevel</a>",0,1,["Mountain::IPC::StatusReporter::SeverityLevel"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/IPC/TauriIPCServer_Old/enum.SecurityEventType.html\" title=\"enum Mountain::IPC::TauriIPCServer_Old::SecurityEventType\">SecurityEventType</a>",0,1,["Mountain::IPC::TauriIPCServer_Old::SecurityEventType"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/IPC/WindAdvancedSync/enum.ChangeType.html\" title=\"enum Mountain::IPC::WindAdvancedSync::ChangeType\">ChangeType</a>",0,1,["Mountain::IPC::WindAdvancedSync::ChangeType"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/IPC/WindAdvancedSync/enum.SyncState.html\" title=\"enum Mountain::IPC::WindAdvancedSync::SyncState\">SyncState</a>",0,1,["Mountain::IPC::WindAdvancedSync::SyncState"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/RPC/configuration/enum.ConfigurationScope.html\" title=\"enum Mountain::RPC::configuration::ConfigurationScope\">ConfigurationScope</a>",0,1,["Mountain::RPC::configuration::ConfigurationScope"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/RPC/vine/enum.VineServiceStatus.html\" title=\"enum Mountain::RPC::vine::VineServiceStatus\">VineServiceStatus</a>",0,1,["Mountain::RPC::vine::VineServiceStatus"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/Vine/Generated/argument/enum.Value.html\" title=\"enum Mountain::Vine::Generated::argument::Value\">Value</a>",0,1,["Mountain::Vine::Generated::argument::Value"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/Vine/Generated/enum.ProgressLocation.html\" title=\"enum Mountain::Vine::Generated::ProgressLocation\">ProgressLocation</a>",0,1,["Mountain::Vine::Generated::ProgressLocation"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/Vine/Generated/enum.TextDocumentSaveReason.html\" title=\"enum Mountain::Vine::Generated::TextDocumentSaveReason\">TextDocumentSaveReason</a>",0,1,["Mountain::Vine::Generated::TextDocumentSaveReason"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/Vine/Generated/enum.ViewColumn.html\" title=\"enum Mountain::Vine::Generated::ViewColumn\">ViewColumn</a>",0,1,["Mountain::Vine::Generated::ViewColumn"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/Vine/Generated/execute_command_response/enum.Result.html\" title=\"enum Mountain::Vine::Generated::execute_command_response::Result\">Result</a>",0,1,["Mountain::Vine::Generated::execute_command_response::Result"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/Vine/Generated/on_did_receive_message_request/enum.Message.html\" title=\"enum Mountain::Vine::Generated::on_did_receive_message_request::Message\">Message</a>",0,1,["Mountain::Vine::Generated::on_did_receive_message_request::Message"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/Vine/Generated/post_webview_message_request/enum.Message.html\" title=\"enum Mountain::Vine::Generated::post_webview_message_request::Message\">Message</a>",0,1,["Mountain::Vine::Generated::post_webview_message_request::Message"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Air/AirClient/struct.AirMetrics.html\" title=\"struct Mountain::Air::AirClient::AirMetrics\">AirMetrics</a>",0,1,["Mountain::Air::AirClient::AirMetrics"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Air/AirClient/struct.AirStatus.html\" title=\"struct Mountain::Air::AirClient::AirStatus\">AirStatus</a>",0,1,["Mountain::Air::AirClient::AirStatus"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Air/AirClient/struct.DownloadStreamChunk.html\" title=\"struct Mountain::Air::AirClient::DownloadStreamChunk\">DownloadStreamChunk</a>",0,1,["Mountain::Air::AirClient::DownloadStreamChunk"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Air/AirClient/struct.ExtendedFileInfo.html\" title=\"struct Mountain::Air::AirClient::ExtendedFileInfo\">ExtendedFileInfo</a>",0,1,["Mountain::Air::AirClient::ExtendedFileInfo"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Air/AirClient/struct.FileInfo.html\" title=\"struct Mountain::Air::AirClient::FileInfo\">FileInfo</a>",0,1,["Mountain::Air::AirClient::FileInfo"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Air/AirClient/struct.FileResult.html\" title=\"struct Mountain::Air::AirClient::FileResult\">FileResult</a>",0,1,["Mountain::Air::AirClient::FileResult"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Air/AirClient/struct.IndexInfo.html\" title=\"struct Mountain::Air::AirClient::IndexInfo\">IndexInfo</a>",0,1,["Mountain::Air::AirClient::IndexInfo"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Air/AirClient/struct.ResourceUsage.html\" title=\"struct Mountain::Air::AirClient::ResourceUsage\">ResourceUsage</a>",0,1,["Mountain::Air::AirClient::ResourceUsage"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Air/AirClient/struct.UpdateInfo.html\" title=\"struct Mountain::Air::AirClient::UpdateInfo\">UpdateInfo</a>",0,1,["Mountain::Air::AirClient::UpdateInfo"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Air/AirServiceTypesStub/struct.AirClientType.html\" title=\"struct Mountain::Air::AirServiceTypesStub::AirClientType\">AirClientType</a>",0,1,["Mountain::Air::AirServiceTypesStub::AirClientType"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Air/AirServiceTypesStub/struct.AirMetricsProtoDTO.html\" title=\"struct Mountain::Air::AirServiceTypesStub::AirMetricsProtoDTO\">AirMetricsProtoDTO</a>",0,1,["Mountain::Air::AirServiceTypesStub::AirMetricsProtoDTO"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Air/AirServiceTypesStub/struct.ApplyUpdateRequest.html\" title=\"struct Mountain::Air::AirServiceTypesStub::ApplyUpdateRequest\">ApplyUpdateRequest</a>",0,1,["Mountain::Air::AirServiceTypesStub::ApplyUpdateRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Air/AirServiceTypesStub/struct.ApplyUpdateResponse.html\" title=\"struct Mountain::Air::AirServiceTypesStub::ApplyUpdateResponse\">ApplyUpdateResponse</a>",0,1,["Mountain::Air::AirServiceTypesStub::ApplyUpdateResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Air/AirServiceTypesStub/struct.AuthenticationRequest.html\" title=\"struct Mountain::Air::AirServiceTypesStub::AuthenticationRequest\">AuthenticationRequest</a>",0,1,["Mountain::Air::AirServiceTypesStub::AuthenticationRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Air/AirServiceTypesStub/struct.AuthenticationResponse.html\" title=\"struct Mountain::Air::AirServiceTypesStub::AuthenticationResponse\">AuthenticationResponse</a>",0,1,["Mountain::Air::AirServiceTypesStub::AuthenticationResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Air/AirServiceTypesStub/struct.DownloadFileResponse.html\" title=\"struct Mountain::Air::AirServiceTypesStub::DownloadFileResponse\">DownloadFileResponse</a>",0,1,["Mountain::Air::AirServiceTypesStub::DownloadFileResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Air/AirServiceTypesStub/struct.DownloadRequest.html\" title=\"struct Mountain::Air::AirServiceTypesStub::DownloadRequest\">DownloadRequest</a>",0,1,["Mountain::Air::AirServiceTypesStub::DownloadRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Air/AirServiceTypesStub/struct.FileResultProtoDTO.html\" title=\"struct Mountain::Air::AirServiceTypesStub::FileResultProtoDTO\">FileResultProtoDTO</a>",0,1,["Mountain::Air::AirServiceTypesStub::FileResultProtoDTO"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Air/AirServiceTypesStub/struct.IndexFilesResponse.html\" title=\"struct Mountain::Air::AirServiceTypesStub::IndexFilesResponse\">IndexFilesResponse</a>",0,1,["Mountain::Air::AirServiceTypesStub::IndexFilesResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Air/AirServiceTypesStub/struct.IndexRequest.html\" title=\"struct Mountain::Air::AirServiceTypesStub::IndexRequest\">IndexRequest</a>",0,1,["Mountain::Air::AirServiceTypesStub::IndexRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Air/AirServiceTypesStub/struct.MetricsRequest.html\" title=\"struct Mountain::Air::AirServiceTypesStub::MetricsRequest\">MetricsRequest</a>",0,1,["Mountain::Air::AirServiceTypesStub::MetricsRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Air/AirServiceTypesStub/struct.MetricsResponse.html\" title=\"struct Mountain::Air::AirServiceTypesStub::MetricsResponse\">MetricsResponse</a>",0,1,["Mountain::Air::AirServiceTypesStub::MetricsResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Air/AirServiceTypesStub/struct.SearchFilesResponse.html\" title=\"struct Mountain::Air::AirServiceTypesStub::SearchFilesResponse\">SearchFilesResponse</a>",0,1,["Mountain::Air::AirServiceTypesStub::SearchFilesResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Air/AirServiceTypesStub/struct.SearchRequest.html\" title=\"struct Mountain::Air::AirServiceTypesStub::SearchRequest\">SearchRequest</a>",0,1,["Mountain::Air::AirServiceTypesStub::SearchRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Air/AirServiceTypesStub/struct.StatusRequest.html\" title=\"struct Mountain::Air::AirServiceTypesStub::StatusRequest\">StatusRequest</a>",0,1,["Mountain::Air::AirServiceTypesStub::StatusRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Air/AirServiceTypesStub/struct.StatusResponse.html\" title=\"struct Mountain::Air::AirServiceTypesStub::StatusResponse\">StatusResponse</a>",0,1,["Mountain::Air::AirServiceTypesStub::StatusResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Air/AirServiceTypesStub/struct.UpdateCheckRequest.html\" title=\"struct Mountain::Air::AirServiceTypesStub::UpdateCheckRequest\">UpdateCheckRequest</a>",0,1,["Mountain::Air::AirServiceTypesStub::UpdateCheckRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Air/AirServiceTypesStub/struct.UpdateCheckResponse.html\" title=\"struct Mountain::Air::AirServiceTypesStub::UpdateCheckResponse\">UpdateCheckResponse</a>",0,1,["Mountain::Air::AirServiceTypesStub::UpdateCheckResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ApplicationState/DTO/CustomDocumentStateDTO/struct.CustomDocumentStateDTO.html\" title=\"struct Mountain::ApplicationState::DTO::CustomDocumentStateDTO::CustomDocumentStateDTO\">CustomDocumentStateDTO</a>",0,1,["Mountain::ApplicationState::DTO::CustomDocumentStateDTO::CustomDocumentStateDTO"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ApplicationState/DTO/DocumentStateDTO/struct.DocumentStateDTO.html\" title=\"struct Mountain::ApplicationState::DTO::DocumentStateDTO::DocumentStateDTO\">DocumentStateDTO</a>",0,1,["Mountain::ApplicationState::DTO::DocumentStateDTO::DocumentStateDTO"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ApplicationState/DTO/ExtensionDescriptionStateDTO/struct.ExtensionDescriptionStateDTO.html\" title=\"struct Mountain::ApplicationState::DTO::ExtensionDescriptionStateDTO::ExtensionDescriptionStateDTO\">ExtensionDescriptionStateDTO</a>",0,1,["Mountain::ApplicationState::DTO::ExtensionDescriptionStateDTO::ExtensionDescriptionStateDTO"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ApplicationState/DTO/MarkerDataDTO/struct.MarkerDataDTO.html\" title=\"struct Mountain::ApplicationState::DTO::MarkerDataDTO::MarkerDataDTO\">MarkerDataDTO</a>",0,1,["Mountain::ApplicationState::DTO::MarkerDataDTO::MarkerDataDTO"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ApplicationState/DTO/MergedConfigurationStateDTO/struct.MergedConfigurationStateDTO.html\" title=\"struct Mountain::ApplicationState::DTO::MergedConfigurationStateDTO::MergedConfigurationStateDTO\">MergedConfigurationStateDTO</a>",0,1,["Mountain::ApplicationState::DTO::MergedConfigurationStateDTO::MergedConfigurationStateDTO"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ApplicationState/DTO/OutputChannelStateDTO/struct.OutputChannelStateDTO.html\" title=\"struct Mountain::ApplicationState::DTO::OutputChannelStateDTO::OutputChannelStateDTO\">OutputChannelStateDTO</a>",0,1,["Mountain::ApplicationState::DTO::OutputChannelStateDTO::OutputChannelStateDTO"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ApplicationState/DTO/ProviderRegistrationDTO/struct.ProviderRegistrationDTO.html\" title=\"struct Mountain::ApplicationState::DTO::ProviderRegistrationDTO::ProviderRegistrationDTO\">ProviderRegistrationDTO</a>",0,1,["Mountain::ApplicationState::DTO::ProviderRegistrationDTO::ProviderRegistrationDTO"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ApplicationState/DTO/RPCModelContentChangeDTO/struct.RPCModelContentChangeDTO.html\" title=\"struct Mountain::ApplicationState::DTO::RPCModelContentChangeDTO::RPCModelContentChangeDTO\">RPCModelContentChangeDTO</a>",0,1,["Mountain::ApplicationState::DTO::RPCModelContentChangeDTO::RPCModelContentChangeDTO"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ApplicationState/DTO/RPCRangeDTO/struct.RPCRangeDTO.html\" title=\"struct Mountain::ApplicationState::DTO::RPCRangeDTO::RPCRangeDTO\">RPCRangeDTO</a>",0,1,["Mountain::ApplicationState::DTO::RPCRangeDTO::RPCRangeDTO"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ApplicationState/DTO/WebviewStateDTO/struct.WebviewStateDTO.html\" title=\"struct Mountain::ApplicationState::DTO::WebviewStateDTO::WebviewStateDTO\">WebviewStateDTO</a>",0,1,["Mountain::ApplicationState::DTO::WebviewStateDTO::WebviewStateDTO"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ApplicationState/DTO/WindowStateDTO/struct.WindowStateDTO.html\" title=\"struct Mountain::ApplicationState::DTO::WindowStateDTO::WindowStateDTO\">WindowStateDTO</a>",0,1,["Mountain::ApplicationState::DTO::WindowStateDTO::WindowStateDTO"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ApplicationState/DTO/WorkspaceFolderStateDTO/struct.WorkspaceFolderStateDTO.html\" title=\"struct Mountain::ApplicationState::DTO::WorkspaceFolderStateDTO::WorkspaceFolderStateDTO\">WorkspaceFolderStateDTO</a>",0,1,["Mountain::ApplicationState::DTO::WorkspaceFolderStateDTO::WorkspaceFolderStateDTO"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ApplicationState/State/ConfigurationState/ConfigurationState/struct.State.html\" title=\"struct Mountain::ApplicationState::State::ConfigurationState::ConfigurationState::State\">State</a>",0,1,["Mountain::ApplicationState::State::ConfigurationState::ConfigurationState::State"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ApplicationState/State/ExtensionState/ExtensionRegistry/ExtensionRegistry/struct.Registry.html\" title=\"struct Mountain::ApplicationState::State::ExtensionState::ExtensionRegistry::ExtensionRegistry::Registry\">Registry</a>",0,1,["Mountain::ApplicationState::State::ExtensionState::ExtensionRegistry::ExtensionRegistry::Registry"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ApplicationState/State/ExtensionState/ProviderRegistration/ProviderRegistration/struct.Registration.html\" title=\"struct Mountain::ApplicationState::State::ExtensionState::ProviderRegistration::ProviderRegistration::Registration\">Registration</a>",0,1,["Mountain::ApplicationState::State::ExtensionState::ProviderRegistration::ProviderRegistration::Registration"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ApplicationState/State/ExtensionState/ScannedExtensions/ScannedExtensions/struct.ScannedExtensionCollection.html\" title=\"struct Mountain::ApplicationState::State::ExtensionState::ScannedExtensions::ScannedExtensions::ScannedExtensionCollection\">ScannedExtensionCollection</a>",0,1,["Mountain::ApplicationState::State::ExtensionState::ScannedExtensions::ScannedExtensions::ScannedExtensionCollection"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ApplicationState/State/ExtensionState/State/struct.State.html\" title=\"struct Mountain::ApplicationState::State::ExtensionState::State::State\">State</a>",0,1,["Mountain::ApplicationState::State::ExtensionState::State::State"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ApplicationState/State/FeatureState/Debug/DebugState/struct.DebugAdapterDescriptorFactoryRegistration.html\" title=\"struct Mountain::ApplicationState::State::FeatureState::Debug::DebugState::DebugAdapterDescriptorFactoryRegistration\">DebugAdapterDescriptorFactoryRegistration</a>",0,1,["Mountain::ApplicationState::State::FeatureState::Debug::DebugState::DebugAdapterDescriptorFactoryRegistration"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ApplicationState/State/FeatureState/Debug/DebugState/struct.DebugConfigurationProviderRegistration.html\" title=\"struct Mountain::ApplicationState::State::FeatureState::Debug::DebugState::DebugConfigurationProviderRegistration\">DebugConfigurationProviderRegistration</a>",0,1,["Mountain::ApplicationState::State::FeatureState::Debug::DebugState::DebugConfigurationProviderRegistration"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ApplicationState/State/FeatureState/Debug/DebugState/struct.DebugState.html\" title=\"struct Mountain::ApplicationState::State::FeatureState::Debug::DebugState::DebugState\">DebugState</a>",0,1,["Mountain::ApplicationState::State::FeatureState::Debug::DebugState::DebugState"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ApplicationState/State/FeatureState/Diagnostics/DiagnosticsState/struct.DiagnosticsState.html\" title=\"struct Mountain::ApplicationState::State::FeatureState::Diagnostics::DiagnosticsState::DiagnosticsState\">DiagnosticsState</a>",0,1,["Mountain::ApplicationState::State::FeatureState::Diagnostics::DiagnosticsState::DiagnosticsState"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ApplicationState/State/FeatureState/Documents/DocumentState/struct.DocumentState.html\" title=\"struct Mountain::ApplicationState::State::FeatureState::Documents::DocumentState::DocumentState\">DocumentState</a>",0,1,["Mountain::ApplicationState::State::FeatureState::Documents::DocumentState::DocumentState"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ApplicationState/State/FeatureState/Markers/MarkerState/struct.MarkerState.html\" title=\"struct Mountain::ApplicationState::State::FeatureState::Markers::MarkerState::MarkerState\">MarkerState</a>",0,1,["Mountain::ApplicationState::State::FeatureState::Markers::MarkerState::MarkerState"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ApplicationState/State/FeatureState/OutputChannels/OutputChannelState/struct.OutputChannelState.html\" title=\"struct Mountain::ApplicationState::State::FeatureState::OutputChannels::OutputChannelState::OutputChannelState\">OutputChannelState</a>",0,1,["Mountain::ApplicationState::State::FeatureState::OutputChannels::OutputChannelState::OutputChannelState"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ApplicationState/State/FeatureState/State/struct.State.html\" title=\"struct Mountain::ApplicationState::State::FeatureState::State::State\">State</a>",0,1,["Mountain::ApplicationState::State::FeatureState::State::State"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ApplicationState/State/FeatureState/Terminals/TerminalState/struct.TerminalState.html\" title=\"struct Mountain::ApplicationState::State::FeatureState::Terminals::TerminalState::TerminalState\">TerminalState</a>",0,1,["Mountain::ApplicationState::State::FeatureState::Terminals::TerminalState::TerminalState"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ApplicationState/State/FeatureState/TreeViews/TreeViewState/struct.TreeViewState.html\" title=\"struct Mountain::ApplicationState::State::FeatureState::TreeViews::TreeViewState::TreeViewState\">TreeViewState</a>",0,1,["Mountain::ApplicationState::State::FeatureState::TreeViews::TreeViewState::TreeViewState"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ApplicationState/State/FeatureState/Webviews/WebviewState/struct.WebviewState.html\" title=\"struct Mountain::ApplicationState::State::FeatureState::Webviews::WebviewState::WebviewState\">WebviewState</a>",0,1,["Mountain::ApplicationState::State::FeatureState::Webviews::WebviewState::WebviewState"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ApplicationState/State/UIState/UIState/struct.State.html\" title=\"struct Mountain::ApplicationState::State::UIState::UIState::State\">State</a>",0,1,["Mountain::ApplicationState::State::UIState::UIState::State"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ApplicationState/State/WorkspaceState/WorkspaceState/struct.State.html\" title=\"struct Mountain::ApplicationState::State::WorkspaceState::WorkspaceState::State\">State</a>",0,1,["Mountain::ApplicationState::State::WorkspaceState::WorkspaceState::State"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Binary/Build/CertificateManager/struct.CertValidityResult.html\" title=\"struct Mountain::Binary::Build::CertificateManager::CertValidityResult\">CertValidityResult</a>",0,1,["Mountain::Binary::Build::CertificateManager::CertValidityResult"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Binary/Build/CertificateManager/struct.CertificateInfo.html\" title=\"struct Mountain::Binary::Build::CertificateManager::CertificateInfo\">CertificateInfo</a>",0,1,["Mountain::Binary::Build::CertificateManager::CertificateInfo"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Binary/Build/DnsCommands/struct.DnsHealthStatus.html\" title=\"struct Mountain::Binary::Build::DnsCommands::DnsHealthStatus\">DnsHealthStatus</a>",0,1,["Mountain::Binary::Build::DnsCommands::DnsHealthStatus"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Binary/Build/DnsCommands/struct.DnsResolutionResult.html\" title=\"struct Mountain::Binary::Build::DnsCommands::DnsResolutionResult\">DnsResolutionResult</a>",0,1,["Mountain::Binary::Build::DnsCommands::DnsResolutionResult"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Binary/Build/DnsCommands/struct.DnsServerInfo.html\" title=\"struct Mountain::Binary::Build::DnsCommands::DnsServerInfo\">DnsServerInfo</a>",0,1,["Mountain::Binary::Build::DnsCommands::DnsServerInfo"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Binary/Build/DnsCommands/struct.ForwardAllowList.html\" title=\"struct Mountain::Binary::Build::DnsCommands::ForwardAllowList\">ForwardAllowList</a>",0,1,["Mountain::Binary::Build::DnsCommands::ForwardAllowList"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Binary/Build/DnsCommands/struct.ZoneInfo.html\" title=\"struct Mountain::Binary::Build::DnsCommands::ZoneInfo\">ZoneInfo</a>",0,1,["Mountain::Binary::Build::DnsCommands::ZoneInfo"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Binary/Build/DnsCommands/struct.ZoneRecord.html\" title=\"struct Mountain::Binary::Build::DnsCommands::ZoneRecord\">ZoneRecord</a>",0,1,["Mountain::Binary::Build::DnsCommands::ZoneRecord"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Binary/Build/Scheme/struct.CacheEntry.html\" title=\"struct Mountain::Binary::Build::Scheme::CacheEntry\">CacheEntry</a>",0,1,["Mountain::Binary::Build::Scheme::CacheEntry"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Binary/Build/Scheme/struct.DnsPort.html\" title=\"struct Mountain::Binary::Build::Scheme::DnsPort\">DnsPort</a>",0,1,["Mountain::Binary::Build::Scheme::DnsPort"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Binary/Build/ServiceRegistry/struct.LocalService.html\" title=\"struct Mountain::Binary::Build::ServiceRegistry::LocalService\">LocalService</a>",0,1,["Mountain::Binary::Build::ServiceRegistry::LocalService"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Binary/Build/ServiceRegistry/struct.ServiceRegistry.html\" title=\"struct Mountain::Binary::Build::ServiceRegistry::ServiceRegistry\">ServiceRegistry</a>",0,1,["Mountain::Binary::Build::ServiceRegistry::ServiceRegistry"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Binary/Build/TlsCommands/struct.CertificateGenerationResult.html\" title=\"struct Mountain::Binary::Build::TlsCommands::CertificateGenerationResult\">CertificateGenerationResult</a>",0,1,["Mountain::Binary::Build::TlsCommands::CertificateGenerationResult"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Binary/Build/TlsCommands/struct.CertificateStatus.html\" title=\"struct Mountain::Binary::Build::TlsCommands::CertificateStatus\">CertificateStatus</a>",0,1,["Mountain::Binary::Build::TlsCommands::CertificateStatus"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Binary/Initialize/RuntimeBuild/struct.SchedulerConfig.html\" title=\"struct Mountain::Binary::Initialize::RuntimeBuild::SchedulerConfig\">SchedulerConfig</a>",0,1,["Mountain::Binary::Initialize::RuntimeBuild::SchedulerConfig"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Binary/Initialize/StateBuild/struct.StateBuildConfig.html\" title=\"struct Mountain::Binary::Initialize::StateBuild::StateBuildConfig\">StateBuildConfig</a>",0,1,["Mountain::Binary::Initialize::StateBuild::StateBuildConfig"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Command/Hover/Interface/struct.HoverRequest.html\" title=\"struct Mountain::Command::Hover::Interface::HoverRequest\">HoverRequest</a>",0,1,["Mountain::Command::Hover::Interface::HoverRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Command/Hover/Interface/struct.HoverResponse.html\" title=\"struct Mountain::Command::Hover::Interface::HoverResponse\">HoverResponse</a>",0,1,["Mountain::Command::Hover::Interface::HoverResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Command/Hover/Interface/struct.Position.html\" title=\"struct Mountain::Command::Hover::Interface::Position\">Position</a>",0,1,["Mountain::Command::Hover::Interface::Position"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Command/Hover/Interface/struct.Range.html\" title=\"struct Mountain::Command::Hover::Interface::Range\">Range</a>",0,1,["Mountain::Command::Hover::Interface::Range"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Environment/KeybindingProvider/struct.KeybindingRule.html\" title=\"struct Mountain::Environment::KeybindingProvider::KeybindingRule\">KeybindingRule</a>",0,1,["Mountain::Environment::KeybindingProvider::KeybindingRule"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Environment/SearchProvider/struct.FileMatch.html\" title=\"struct Mountain::Environment::SearchProvider::FileMatch\">FileMatch</a>",0,1,["Mountain::Environment::SearchProvider::FileMatch"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Environment/SearchProvider/struct.PerFileSink.html\" title=\"struct Mountain::Environment::SearchProvider::PerFileSink\">PerFileSink</a>",0,1,["Mountain::Environment::SearchProvider::PerFileSink"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Environment/SearchProvider/struct.TextMatch.html\" title=\"struct Mountain::Environment::SearchProvider::TextMatch\">TextMatch</a>",0,1,["Mountain::Environment::SearchProvider::TextMatch"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Environment/SearchProvider/struct.TextSearchQuery.html\" title=\"struct Mountain::Environment::SearchProvider::TextSearchQuery\">TextSearchQuery</a>",0,1,["Mountain::Environment::SearchProvider::TextSearchQuery"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Environment/TestProvider/struct.TestControllerState.html\" title=\"struct Mountain::Environment::TestProvider::TestControllerState\">TestControllerState</a>",0,1,["Mountain::Environment::TestProvider::TestControllerState"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Environment/TestProvider/struct.TestProviderState.html\" title=\"struct Mountain::Environment::TestProvider::TestProviderState\">TestProviderState</a>",0,1,["Mountain::Environment::TestProvider::TestProviderState"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Environment/TestProvider/struct.TestResult.html\" title=\"struct Mountain::Environment::TestProvider::TestResult\">TestResult</a>",0,1,["Mountain::Environment::TestProvider::TestResult"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Environment/TestProvider/struct.TestRun.html\" title=\"struct Mountain::Environment::TestProvider::TestRun\">TestRun</a>",0,1,["Mountain::Environment::TestProvider::TestRun"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Environment/WebviewProvider/messaging/struct.WebviewMessage.html\" title=\"struct Mountain::Environment::WebviewProvider::messaging::WebviewMessage\">WebviewMessage</a>",0,1,["Mountain::Environment::WebviewProvider::messaging::WebviewMessage"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Environment/WebviewProvider/struct.WebviewMessage.html\" title=\"struct Mountain::Environment::WebviewProvider::WebviewMessage\">WebviewMessage</a>",0,1,["Mountain::Environment::WebviewProvider::WebviewMessage"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Error/CoreError/struct.ErrorContext.html\" title=\"struct Mountain::Error::CoreError::ErrorContext\">ErrorContext</a>",0,1,["Mountain::Error::CoreError::ErrorContext"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Error/CoreError/struct.MountainError.html\" title=\"struct Mountain::Error::CoreError::MountainError\">MountainError</a>",0,1,["Mountain::Error::CoreError::MountainError"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/AdvancedFeatures/struct.CachedMessage.html\" title=\"struct Mountain::IPC::AdvancedFeatures::CachedMessage\">CachedMessage</a>",0,1,["Mountain::IPC::AdvancedFeatures::CachedMessage"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/AdvancedFeatures/struct.CollaborationPermissions.html\" title=\"struct Mountain::IPC::AdvancedFeatures::CollaborationPermissions\">CollaborationPermissions</a>",0,1,["Mountain::IPC::AdvancedFeatures::CollaborationPermissions"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/AdvancedFeatures/struct.CollaborationSession.html\" title=\"struct Mountain::IPC::AdvancedFeatures::CollaborationSession\">CollaborationSession</a>",0,1,["Mountain::IPC::AdvancedFeatures::CollaborationSession"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/AdvancedFeatures/struct.MessageCache.html\" title=\"struct Mountain::IPC::AdvancedFeatures::MessageCache\">MessageCache</a>",0,1,["Mountain::IPC::AdvancedFeatures::MessageCache"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/AdvancedFeatures/struct.PerformanceStats.html\" title=\"struct Mountain::IPC::AdvancedFeatures::PerformanceStats\">PerformanceStats</a>",0,1,["Mountain::IPC::AdvancedFeatures::PerformanceStats"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Common/ConnectionStatus/struct.ConnectionStatus.html\" title=\"struct Mountain::IPC::Common::ConnectionStatus::ConnectionStatus\">ConnectionStatus</a>",0,1,["Mountain::IPC::Common::ConnectionStatus::ConnectionStatus"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Common/HealthStatus/struct.HealthMonitor.html\" title=\"struct Mountain::IPC::Common::HealthStatus::HealthMonitor\">HealthMonitor</a>",0,1,["Mountain::IPC::Common::HealthStatus::HealthMonitor"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Common/MessageType/struct.IPCCommand.html\" title=\"struct Mountain::IPC::Common::MessageType::IPCCommand\">IPCCommand</a>",0,1,["Mountain::IPC::Common::MessageType::IPCCommand"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Common/MessageType/struct.IPCMessage.html\" title=\"struct Mountain::IPC::Common::MessageType::IPCMessage\">IPCMessage</a>",0,1,["Mountain::IPC::Common::MessageType::IPCMessage"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Common/MessageType/struct.IPCResponse.html\" title=\"struct Mountain::IPC::Common::MessageType::IPCResponse\">IPCResponse</a>",0,1,["Mountain::IPC::Common::MessageType::IPCResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Common/PerformanceMetrics/struct.PerformanceMetrics.html\" title=\"struct Mountain::IPC::Common::PerformanceMetrics::PerformanceMetrics\">PerformanceMetrics</a>",0,1,["Mountain::IPC::Common::PerformanceMetrics::PerformanceMetrics"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Common/PerformanceMetrics/struct.ThroughputMetrics.html\" title=\"struct Mountain::IPC::Common::PerformanceMetrics::ThroughputMetrics\">ThroughputMetrics</a>",0,1,["Mountain::IPC::Common::PerformanceMetrics::ThroughputMetrics"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Common/ServiceInfo/struct.ServiceEndpoint.html\" title=\"struct Mountain::IPC::Common::ServiceInfo::ServiceEndpoint\">ServiceEndpoint</a>",0,1,["Mountain::IPC::Common::ServiceInfo::ServiceEndpoint"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Common/ServiceInfo/struct.ServiceInfo.html\" title=\"struct Mountain::IPC::Common::ServiceInfo::ServiceInfo\">ServiceInfo</a>",0,1,["Mountain::IPC::Common::ServiceInfo::ServiceInfo"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Common/ServiceInfo/struct.ServicePerformance.html\" title=\"struct Mountain::IPC::Common::ServiceInfo::ServicePerformance\">ServicePerformance</a>",0,1,["Mountain::IPC::Common::ServiceInfo::ServicePerformance"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Common/ServiceInfo/struct.ServiceRegistry.html\" title=\"struct Mountain::IPC::Common::ServiceInfo::ServiceRegistry\">ServiceRegistry</a>",0,1,["Mountain::IPC::Common::ServiceInfo::ServiceRegistry"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/ConfigurationBridge/struct.ConfigurationStatus.html\" title=\"struct Mountain::IPC::ConfigurationBridge::ConfigurationStatus\">ConfigurationStatus</a>",0,1,["Mountain::IPC::ConfigurationBridge::ConfigurationStatus"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Connection/Health/struct.HealthChecker.html\" title=\"struct Mountain::IPC::Connection::Health::HealthChecker\">HealthChecker</a>",0,1,["Mountain::IPC::Connection::Health::HealthChecker"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Connection/Types/struct.ConnectionHandle.html\" title=\"struct Mountain::IPC::Connection::Types::ConnectionHandle\">ConnectionHandle</a>",0,1,["Mountain::IPC::Connection::Types::ConnectionHandle"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Connection/Types/struct.ConnectionStats.html\" title=\"struct Mountain::IPC::Connection::Types::ConnectionStats\">ConnectionStats</a>",0,1,["Mountain::IPC::Connection::Types::ConnectionStats"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Encryption/MessageCompressor/struct.MessageCompressor.html\" title=\"struct Mountain::IPC::Encryption::MessageCompressor::MessageCompressor\">MessageCompressor</a>",0,1,["Mountain::IPC::Encryption::MessageCompressor::MessageCompressor"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Encryption/SecureChannel/struct.EncryptedMessage.html\" title=\"struct Mountain::IPC::Encryption::SecureChannel::EncryptedMessage\">EncryptedMessage</a>",0,1,["Mountain::IPC::Encryption::SecureChannel::EncryptedMessage"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Encryption/SecureChannel/struct.SecureMessageChannel.html\" title=\"struct Mountain::IPC::Encryption::SecureChannel::SecureMessageChannel\">SecureMessageChannel</a>",0,1,["Mountain::IPC::Encryption::SecureChannel::SecureMessageChannel"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Enhanced/ConnectionPool/struct.ConnectionHandle.html\" title=\"struct Mountain::IPC::Enhanced::ConnectionPool::ConnectionHandle\">ConnectionHandle</a>",0,1,["Mountain::IPC::Enhanced::ConnectionPool::ConnectionHandle"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Enhanced/ConnectionPool/struct.ConnectionHealthChecker.html\" title=\"struct Mountain::IPC::Enhanced::ConnectionPool::ConnectionHealthChecker\">ConnectionHealthChecker</a>",0,1,["Mountain::IPC::Enhanced::ConnectionPool::ConnectionHealthChecker"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Enhanced/ConnectionPool/struct.PoolConfig.html\" title=\"struct Mountain::IPC::Enhanced::ConnectionPool::PoolConfig\">PoolConfig</a>",0,1,["Mountain::IPC::Enhanced::ConnectionPool::PoolConfig"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Enhanced/ConnectionPool/struct.PoolStats.html\" title=\"struct Mountain::IPC::Enhanced::ConnectionPool::PoolStats\">PoolStats</a>",0,1,["Mountain::IPC::Enhanced::ConnectionPool::PoolStats"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Enhanced/MessageCompressor/struct.BatchConfig.html\" title=\"struct Mountain::IPC::Enhanced::MessageCompressor::BatchConfig\">BatchConfig</a>",0,1,["Mountain::IPC::Enhanced::MessageCompressor::BatchConfig"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Enhanced/MessageCompressor/struct.BatchStats.html\" title=\"struct Mountain::IPC::Enhanced::MessageCompressor::BatchStats\">BatchStats</a>",0,1,["Mountain::IPC::Enhanced::MessageCompressor::BatchStats"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Enhanced/MessageCompressor/struct.CompressedBatch.html\" title=\"struct Mountain::IPC::Enhanced::MessageCompressor::CompressedBatch\">CompressedBatch</a>",0,1,["Mountain::IPC::Enhanced::MessageCompressor::CompressedBatch"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Enhanced/MessageCompressor/struct.CompressionInfo.html\" title=\"struct Mountain::IPC::Enhanced::MessageCompressor::CompressionInfo\">CompressionInfo</a>",0,1,["Mountain::IPC::Enhanced::MessageCompressor::CompressionInfo"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Enhanced/MessageCompressor/struct.MessageCompressor.html\" title=\"struct Mountain::IPC::Enhanced::MessageCompressor::MessageCompressor\">MessageCompressor</a>",0,1,["Mountain::IPC::Enhanced::MessageCompressor::MessageCompressor"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Enhanced/PerformanceDashboard/struct.DashboardConfig.html\" title=\"struct Mountain::IPC::Enhanced::PerformanceDashboard::DashboardConfig\">DashboardConfig</a>",0,1,["Mountain::IPC::Enhanced::PerformanceDashboard::DashboardConfig"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Enhanced/PerformanceDashboard/struct.DashboardStatistics.html\" title=\"struct Mountain::IPC::Enhanced::PerformanceDashboard::DashboardStatistics\">DashboardStatistics</a>",0,1,["Mountain::IPC::Enhanced::PerformanceDashboard::DashboardStatistics"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Enhanced/PerformanceDashboard/struct.PerformanceAlert.html\" title=\"struct Mountain::IPC::Enhanced::PerformanceDashboard::PerformanceAlert\">PerformanceAlert</a>",0,1,["Mountain::IPC::Enhanced::PerformanceDashboard::PerformanceAlert"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Enhanced/PerformanceDashboard/struct.PerformanceMetric.html\" title=\"struct Mountain::IPC::Enhanced::PerformanceDashboard::PerformanceMetric\">PerformanceMetric</a>",0,1,["Mountain::IPC::Enhanced::PerformanceDashboard::PerformanceMetric"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Enhanced/PerformanceDashboard/struct.TraceLog.html\" title=\"struct Mountain::IPC::Enhanced::PerformanceDashboard::TraceLog\">TraceLog</a>",0,1,["Mountain::IPC::Enhanced::PerformanceDashboard::TraceLog"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Enhanced/PerformanceDashboard/struct.TraceSpan.html\" title=\"struct Mountain::IPC::Enhanced::PerformanceDashboard::TraceSpan\">TraceSpan</a>",0,1,["Mountain::IPC::Enhanced::PerformanceDashboard::TraceSpan"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Enhanced/SecureMessageChannel/struct.EncryptedMessage.html\" title=\"struct Mountain::IPC::Enhanced::SecureMessageChannel::EncryptedMessage\">EncryptedMessage</a>",0,1,["Mountain::IPC::Enhanced::SecureMessageChannel::EncryptedMessage"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Enhanced/SecureMessageChannel/struct.EncryptionKey.html\" title=\"struct Mountain::IPC::Enhanced::SecureMessageChannel::EncryptionKey\">EncryptionKey</a>",0,1,["Mountain::IPC::Enhanced::SecureMessageChannel::EncryptionKey"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Enhanced/SecureMessageChannel/struct.SecurityConfig.html\" title=\"struct Mountain::IPC::Enhanced::SecureMessageChannel::SecurityConfig\">SecurityConfig</a>",0,1,["Mountain::IPC::Enhanced::SecureMessageChannel::SecurityConfig"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Enhanced/SecureMessageChannel/struct.SecurityStats.html\" title=\"struct Mountain::IPC::Enhanced::SecureMessageChannel::SecurityStats\">SecurityStats</a>",0,1,["Mountain::IPC::Enhanced::SecureMessageChannel::SecurityStats"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Enhanced/struct.EnhancedIPCStats.html\" title=\"struct Mountain::IPC::Enhanced::EnhancedIPCStats\">EnhancedIPCStats</a>",0,1,["Mountain::IPC::Enhanced::EnhancedIPCStats"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Message/Types/struct.SimpleConnectionStatus.html\" title=\"struct Mountain::IPC::Message::Types::SimpleConnectionStatus\">SimpleConnectionStatus</a>",0,1,["Mountain::IPC::Message::Types::SimpleConnectionStatus"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Message/Types/struct.TauriIPCMessage.html\" title=\"struct Mountain::IPC::Message::Types::TauriIPCMessage\">TauriIPCMessage</a>",0,1,["Mountain::IPC::Message::Types::TauriIPCMessage"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Permission/Role/ManageRole/struct.Permission.html\" title=\"struct Mountain::IPC::Permission::Role::ManageRole::Permission\">Permission</a>",0,1,["Mountain::IPC::Permission::Role::ManageRole::Permission"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Permission/Role/ManageRole/struct.Role.html\" title=\"struct Mountain::IPC::Permission::Role::ManageRole::Role\">Role</a>",0,1,["Mountain::IPC::Permission::Role::ManageRole::Role"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Permission/Validate/ValidatePermission/struct.SecurityContext.html\" title=\"struct Mountain::IPC::Permission::Validate::ValidatePermission::SecurityContext\">SecurityContext</a>",0,1,["Mountain::IPC::Permission::Validate::ValidatePermission::SecurityContext"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Security/Permission/struct.Permission.html\" title=\"struct Mountain::IPC::Security::Permission::Permission\">Permission</a>",0,1,["Mountain::IPC::Security::Permission::Permission"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Security/PermissionManager/struct.SecurityContext.html\" title=\"struct Mountain::IPC::Security::PermissionManager::SecurityContext\">SecurityContext</a>",0,1,["Mountain::IPC::Security::PermissionManager::SecurityContext"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Security/PermissionManager/struct.SecurityEvent.html\" title=\"struct Mountain::IPC::Security::PermissionManager::SecurityEvent\">SecurityEvent</a>",0,1,["Mountain::IPC::Security::PermissionManager::SecurityEvent"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Security/Role/struct.Role.html\" title=\"struct Mountain::IPC::Security::Role::Role\">Role</a>",0,1,["Mountain::IPC::Security::Role::Role"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/StatusReporter/struct.ComprehensiveStatusReport.html\" title=\"struct Mountain::IPC::StatusReporter::ComprehensiveStatusReport\">ComprehensiveStatusReport</a>",0,1,["Mountain::IPC::StatusReporter::ComprehensiveStatusReport"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/StatusReporter/struct.ConnectionStatus.html\" title=\"struct Mountain::IPC::StatusReporter::ConnectionStatus\">ConnectionStatus</a>",0,1,["Mountain::IPC::StatusReporter::ConnectionStatus"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/StatusReporter/struct.HealthIssue.html\" title=\"struct Mountain::IPC::StatusReporter::HealthIssue\">HealthIssue</a>",0,1,["Mountain::IPC::StatusReporter::HealthIssue"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/StatusReporter/struct.HealthMonitor.html\" title=\"struct Mountain::IPC::StatusReporter::HealthMonitor\">HealthMonitor</a>",0,1,["Mountain::IPC::StatusReporter::HealthMonitor"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/StatusReporter/struct.IPCStatusReport.html\" title=\"struct Mountain::IPC::StatusReporter::IPCStatusReport\">IPCStatusReport</a>",0,1,["Mountain::IPC::StatusReporter::IPCStatusReport"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/StatusReporter/struct.MessageStats.html\" title=\"struct Mountain::IPC::StatusReporter::MessageStats\">MessageStats</a>",0,1,["Mountain::IPC::StatusReporter::MessageStats"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/StatusReporter/struct.PerformanceMetrics.html\" title=\"struct Mountain::IPC::StatusReporter::PerformanceMetrics\">PerformanceMetrics</a>",0,1,["Mountain::IPC::StatusReporter::PerformanceMetrics"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/StatusReporter/struct.ServiceInfo.html\" title=\"struct Mountain::IPC::StatusReporter::ServiceInfo\">ServiceInfo</a>",0,1,["Mountain::IPC::StatusReporter::ServiceInfo"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/StatusReporter/struct.ServiceMetrics.html\" title=\"struct Mountain::IPC::StatusReporter::ServiceMetrics\">ServiceMetrics</a>",0,1,["Mountain::IPC::StatusReporter::ServiceMetrics"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/StatusReporter/struct.ServiceRegistry.html\" title=\"struct Mountain::IPC::StatusReporter::ServiceRegistry\">ServiceRegistry</a>",0,1,["Mountain::IPC::StatusReporter::ServiceRegistry"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/TauriIPCServer_Old/struct.ConnectionHandle.html\" title=\"struct Mountain::IPC::TauriIPCServer_Old::ConnectionHandle\">ConnectionHandle</a>",0,1,["Mountain::IPC::TauriIPCServer_Old::ConnectionHandle"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/TauriIPCServer_Old/struct.ConnectionHealthChecker.html\" title=\"struct Mountain::IPC::TauriIPCServer_Old::ConnectionHealthChecker\">ConnectionHealthChecker</a>",0,1,["Mountain::IPC::TauriIPCServer_Old::ConnectionHealthChecker"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/TauriIPCServer_Old/struct.ConnectionStats.html\" title=\"struct Mountain::IPC::TauriIPCServer_Old::ConnectionStats\">ConnectionStats</a>",0,1,["Mountain::IPC::TauriIPCServer_Old::ConnectionStats"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/TauriIPCServer_Old/struct.ConnectionStatus.html\" title=\"struct Mountain::IPC::TauriIPCServer_Old::ConnectionStatus\">ConnectionStatus</a>",0,1,["Mountain::IPC::TauriIPCServer_Old::ConnectionStatus"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/TauriIPCServer_Old/struct.EncryptedMessage.html\" title=\"struct Mountain::IPC::TauriIPCServer_Old::EncryptedMessage\">EncryptedMessage</a>",0,1,["Mountain::IPC::TauriIPCServer_Old::EncryptedMessage"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/TauriIPCServer_Old/struct.MessageCompressor.html\" title=\"struct Mountain::IPC::TauriIPCServer_Old::MessageCompressor\">MessageCompressor</a>",0,1,["Mountain::IPC::TauriIPCServer_Old::MessageCompressor"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/TauriIPCServer_Old/struct.Permission.html\" title=\"struct Mountain::IPC::TauriIPCServer_Old::Permission\">Permission</a>",0,1,["Mountain::IPC::TauriIPCServer_Old::Permission"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/TauriIPCServer_Old/struct.Role.html\" title=\"struct Mountain::IPC::TauriIPCServer_Old::Role\">Role</a>",0,1,["Mountain::IPC::TauriIPCServer_Old::Role"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/TauriIPCServer_Old/struct.SecureMessageChannel.html\" title=\"struct Mountain::IPC::TauriIPCServer_Old::SecureMessageChannel\">SecureMessageChannel</a>",0,1,["Mountain::IPC::TauriIPCServer_Old::SecureMessageChannel"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/TauriIPCServer_Old/struct.SecurityContext.html\" title=\"struct Mountain::IPC::TauriIPCServer_Old::SecurityContext\">SecurityContext</a>",0,1,["Mountain::IPC::TauriIPCServer_Old::SecurityContext"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/TauriIPCServer_Old/struct.SecurityEvent.html\" title=\"struct Mountain::IPC::TauriIPCServer_Old::SecurityEvent\">SecurityEvent</a>",0,1,["Mountain::IPC::TauriIPCServer_Old::SecurityEvent"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/TauriIPCServer_Old/struct.TauriIPCMessage.html\" title=\"struct Mountain::IPC::TauriIPCServer_Old::TauriIPCMessage\">TauriIPCMessage</a>",0,1,["Mountain::IPC::TauriIPCServer_Old::TauriIPCMessage"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindAdvancedSync/struct.DocumentChange.html\" title=\"struct Mountain::IPC::WindAdvancedSync::DocumentChange\">DocumentChange</a>",0,1,["Mountain::IPC::WindAdvancedSync::DocumentChange"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindAdvancedSync/struct.DocumentSynchronization.html\" title=\"struct Mountain::IPC::WindAdvancedSync::DocumentSynchronization\">DocumentSynchronization</a>",0,1,["Mountain::IPC::WindAdvancedSync::DocumentSynchronization"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindAdvancedSync/struct.GridLayout.html\" title=\"struct Mountain::IPC::WindAdvancedSync::GridLayout\">GridLayout</a>",0,1,["Mountain::IPC::WindAdvancedSync::GridLayout"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindAdvancedSync/struct.LayoutState.html\" title=\"struct Mountain::IPC::WindAdvancedSync::LayoutState\">LayoutState</a>",0,1,["Mountain::IPC::WindAdvancedSync::LayoutState"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindAdvancedSync/struct.RealTimeUpdate.html\" title=\"struct Mountain::IPC::WindAdvancedSync::RealTimeUpdate\">RealTimeUpdate</a>",0,1,["Mountain::IPC::WindAdvancedSync::RealTimeUpdate"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindAdvancedSync/struct.RealTimeUpdateManager.html\" title=\"struct Mountain::IPC::WindAdvancedSync::RealTimeUpdateManager\">RealTimeUpdateManager</a>",0,1,["Mountain::IPC::WindAdvancedSync::RealTimeUpdateManager"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindAdvancedSync/struct.SyncStatus.html\" title=\"struct Mountain::IPC::WindAdvancedSync::SyncStatus\">SyncStatus</a>",0,1,["Mountain::IPC::WindAdvancedSync::SyncStatus"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindAdvancedSync/struct.SynchronizedDocument.html\" title=\"struct Mountain::IPC::WindAdvancedSync::SynchronizedDocument\">SynchronizedDocument</a>",0,1,["Mountain::IPC::WindAdvancedSync::SynchronizedDocument"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindAdvancedSync/struct.UIStateSynchronization.html\" title=\"struct Mountain::IPC::WindAdvancedSync::UIStateSynchronization\">UIStateSynchronization</a>",0,1,["Mountain::IPC::WindAdvancedSync::UIStateSynchronization"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindAdvancedSync/struct.ViewState.html\" title=\"struct Mountain::IPC::WindAdvancedSync::ViewState\">ViewState</a>",0,1,["Mountain::IPC::WindAdvancedSync::ViewState"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindAirCommands/struct.AirMetricsDTO.html\" title=\"struct Mountain::IPC::WindAirCommands::AirMetricsDTO\">AirMetricsDTO</a>",0,1,["Mountain::IPC::WindAirCommands::AirMetricsDTO"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindAirCommands/struct.AirServiceStatusDTO.html\" title=\"struct Mountain::IPC::WindAirCommands::AirServiceStatusDTO\">AirServiceStatusDTO</a>",0,1,["Mountain::IPC::WindAirCommands::AirServiceStatusDTO"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindAirCommands/struct.AuthResponseDTO.html\" title=\"struct Mountain::IPC::WindAirCommands::AuthResponseDTO\">AuthResponseDTO</a>",0,1,["Mountain::IPC::WindAirCommands::AuthResponseDTO"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindAirCommands/struct.DownloadResultDTO.html\" title=\"struct Mountain::IPC::WindAirCommands::DownloadResultDTO\">DownloadResultDTO</a>",0,1,["Mountain::IPC::WindAirCommands::DownloadResultDTO"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindAirCommands/struct.FileResultDTO.html\" title=\"struct Mountain::IPC::WindAirCommands::FileResultDTO\">FileResultDTO</a>",0,1,["Mountain::IPC::WindAirCommands::FileResultDTO"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindAirCommands/struct.IndexResultDTO.html\" title=\"struct Mountain::IPC::WindAirCommands::IndexResultDTO\">IndexResultDTO</a>",0,1,["Mountain::IPC::WindAirCommands::IndexResultDTO"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindAirCommands/struct.SearchResultsDTO.html\" title=\"struct Mountain::IPC::WindAirCommands::SearchResultsDTO\">SearchResultsDTO</a>",0,1,["Mountain::IPC::WindAirCommands::SearchResultsDTO"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindAirCommands/struct.UpdateInfoDTO.html\" title=\"struct Mountain::IPC::WindAirCommands::UpdateInfoDTO\">UpdateInfoDTO</a>",0,1,["Mountain::IPC::WindAirCommands::UpdateInfoDTO"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindServiceAdapters/struct.FileToDiff.html\" title=\"struct Mountain::IPC::WindServiceAdapters::FileToDiff\">FileToDiff</a>",0,1,["Mountain::IPC::WindServiceAdapters::FileToDiff"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindServiceAdapters/struct.FileToOpenOrCreate.html\" title=\"struct Mountain::IPC::WindServiceAdapters::FileToOpenOrCreate\">FileToOpenOrCreate</a>",0,1,["Mountain::IPC::WindServiceAdapters::FileToOpenOrCreate"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindServiceAdapters/struct.FilesToWait.html\" title=\"struct Mountain::IPC::WindServiceAdapters::FilesToWait\">FilesToWait</a>",0,1,["Mountain::IPC::WindServiceAdapters::FilesToWait"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindServiceAdapters/struct.Logger.html\" title=\"struct Mountain::IPC::WindServiceAdapters::Logger\">Logger</a>",0,1,["Mountain::IPC::WindServiceAdapters::Logger"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindServiceAdapters/struct.MountainSandboxConfiguration.html\" title=\"struct Mountain::IPC::WindServiceAdapters::MountainSandboxConfiguration\">MountainSandboxConfiguration</a>",0,1,["Mountain::IPC::WindServiceAdapters::MountainSandboxConfiguration"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindServiceAdapters/struct.NLSConfiguration.html\" title=\"struct Mountain::IPC::WindServiceAdapters::NLSConfiguration\">NLSConfiguration</a>",0,1,["Mountain::IPC::WindServiceAdapters::NLSConfiguration"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindServiceAdapters/struct.OsInfo.html\" title=\"struct Mountain::IPC::WindServiceAdapters::OsInfo\">OsInfo</a>",0,1,["Mountain::IPC::WindServiceAdapters::OsInfo"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindServiceAdapters/struct.ProductConfiguration.html\" title=\"struct Mountain::IPC::WindServiceAdapters::ProductConfiguration\">ProductConfiguration</a>",0,1,["Mountain::IPC::WindServiceAdapters::ProductConfiguration"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindServiceAdapters/struct.Profiles.html\" title=\"struct Mountain::IPC::WindServiceAdapters::Profiles\">Profiles</a>",0,1,["Mountain::IPC::WindServiceAdapters::Profiles"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindServiceAdapters/struct.Versions.html\" title=\"struct Mountain::IPC::WindServiceAdapters::Versions\">Versions</a>",0,1,["Mountain::IPC::WindServiceAdapters::Versions"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindServiceAdapters/struct.WindDesktopConfiguration.html\" title=\"struct Mountain::IPC::WindServiceAdapters::WindDesktopConfiguration\">WindDesktopConfiguration</a>",0,1,["Mountain::IPC::WindServiceAdapters::WindDesktopConfiguration"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/WindServiceAdapters/struct.WindEnvironmentService.html\" title=\"struct Mountain::IPC::WindServiceAdapters::WindEnvironmentService\">WindEnvironmentService</a>",0,1,["Mountain::IPC::WindServiceAdapters::WindEnvironmentService"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ProcessManagement/CocoonManagement/struct.COCOON_HEALTH.html\" title=\"struct Mountain::ProcessManagement::CocoonManagement::COCOON_HEALTH\">COCOON_HEALTH</a>",0,1,["Mountain::ProcessManagement::CocoonManagement::COCOON_HEALTH"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ProcessManagement/CocoonManagement/struct.COCOON_STATE.html\" title=\"struct Mountain::ProcessManagement::CocoonManagement::COCOON_STATE\">COCOON_STATE</a>",0,1,["Mountain::ProcessManagement::CocoonManagement::COCOON_STATE"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/RPC/commands/struct.Command.html\" title=\"struct Mountain::RPC::commands::Command\">Command</a>",0,1,["Mountain::RPC::commands::Command"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/RPC/commands/struct.CommandService.html\" title=\"struct Mountain::RPC::commands::CommandService\">CommandService</a>",0,1,["Mountain::RPC::commands::CommandService"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/RPC/commands/struct.CommandValidation.html\" title=\"struct Mountain::RPC::commands::CommandValidation\">CommandValidation</a>",0,1,["Mountain::RPC::commands::CommandValidation"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/RPC/configuration/struct.ConfigurationService.html\" title=\"struct Mountain::RPC::configuration::ConfigurationService\">ConfigurationService</a>",0,1,["Mountain::RPC::configuration::ConfigurationService"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/RPC/configuration/struct.ConfigurationUpdate.html\" title=\"struct Mountain::RPC::configuration::ConfigurationUpdate\">ConfigurationUpdate</a>",0,1,["Mountain::RPC::configuration::ConfigurationUpdate"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/RPC/debug/struct.DebugService.html\" title=\"struct Mountain::RPC::debug::DebugService\">DebugService</a>",0,1,["Mountain::RPC::debug::DebugService"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/RPC/echo_action/struct.EchoActionServer.html\" title=\"struct Mountain::RPC::echo_action::EchoActionServer\">EchoActionServer</a>",0,1,["Mountain::RPC::echo_action::EchoActionServer"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/RPC/processes/struct.ProcessService.html\" title=\"struct Mountain::RPC::processes::ProcessService\">ProcessService</a>",0,1,["Mountain::RPC::processes::ProcessService"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/RPC/scm/struct.SCMService.html\" title=\"struct Mountain::RPC::scm::SCMService\">SCMService</a>",0,1,["Mountain::RPC::scm::SCMService"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/RPC/telemetry/metrics/struct.ServiceMetrics.html\" title=\"struct Mountain::RPC::telemetry::metrics::ServiceMetrics\">ServiceMetrics</a>",0,1,["Mountain::RPC::telemetry::metrics::ServiceMetrics"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/RPC/telemetry/spans/struct.TraceSpan.html\" title=\"struct Mountain::RPC::telemetry::spans::TraceSpan\">TraceSpan</a>",0,1,["Mountain::RPC::telemetry::spans::TraceSpan"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/RPC/telemetry/struct.TelemetryService.html\" title=\"struct Mountain::RPC::telemetry::TelemetryService\">TelemetryService</a>",0,1,["Mountain::RPC::telemetry::TelemetryService"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/RPC/terminals/struct.TerminalService.html\" title=\"struct Mountain::RPC::terminals::TerminalService\">TerminalService</a>",0,1,["Mountain::RPC::terminals::TerminalService"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/RPC/vine/struct.VineConnectionInfo.html\" title=\"struct Mountain::RPC::vine::VineConnectionInfo\">VineConnectionInfo</a>",0,1,["Mountain::RPC::vine::VineConnectionInfo"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/RPC/windows/struct.WindowService.html\" title=\"struct Mountain::RPC::windows::WindowService\">WindowService</a>",0,1,["Mountain::RPC::windows::WindowService"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/RPC/workspace/struct.TextDocumentInfo.html\" title=\"struct Mountain::RPC::workspace::TextDocumentInfo\">TextDocumentInfo</a>",0,1,["Mountain::RPC::workspace::TextDocumentInfo"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/RPC/workspace/struct.WorkspaceFolder.html\" title=\"struct Mountain::RPC::workspace::WorkspaceFolder\">WorkspaceFolder</a>",0,1,["Mountain::RPC::workspace::WorkspaceFolder"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/RPC/workspace/struct.WorkspaceService.html\" title=\"struct Mountain::RPC::workspace::WorkspaceService\">WorkspaceService</a>",0,1,["Mountain::RPC::workspace::WorkspaceService"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Client/struct.CONNECTION_METADATA.html\" title=\"struct Mountain::Vine::Client::CONNECTION_METADATA\">CONNECTION_METADATA</a>",0,1,["Mountain::Vine::Client::CONNECTION_METADATA"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Client/struct.ConnectionMetadata.html\" title=\"struct Mountain::Vine::Client::ConnectionMetadata\">ConnectionMetadata</a>",0,1,["Mountain::Vine::Client::ConnectionMetadata"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Client/struct.SIDECAR_CLIENTS.html\" title=\"struct Mountain::Vine::Client::SIDECAR_CLIENTS\">SIDECAR_CLIENTS</a>",0,1,["Mountain::Vine::Client::SIDECAR_CLIENTS"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.AppendOutputRequest.html\" title=\"struct Mountain::Vine::Generated::AppendOutputRequest\">AppendOutputRequest</a>",0,1,["Mountain::Vine::Generated::AppendOutputRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ApplyEditRequest.html\" title=\"struct Mountain::Vine::Generated::ApplyEditRequest\">ApplyEditRequest</a>",0,1,["Mountain::Vine::Generated::ApplyEditRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ApplyEditResponse.html\" title=\"struct Mountain::Vine::Generated::ApplyEditResponse\">ApplyEditResponse</a>",0,1,["Mountain::Vine::Generated::ApplyEditResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.Argument.html\" title=\"struct Mountain::Vine::Generated::Argument\">Argument</a>",0,1,["Mountain::Vine::Generated::Argument"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.CallHierarchyCall.html\" title=\"struct Mountain::Vine::Generated::CallHierarchyCall\">CallHierarchyCall</a>",0,1,["Mountain::Vine::Generated::CallHierarchyCall"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.CallHierarchyItem.html\" title=\"struct Mountain::Vine::Generated::CallHierarchyItem\">CallHierarchyItem</a>",0,1,["Mountain::Vine::Generated::CallHierarchyItem"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.CancelOperationRequest.html\" title=\"struct Mountain::Vine::Generated::CancelOperationRequest\">CancelOperationRequest</a>",0,1,["Mountain::Vine::Generated::CancelOperationRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ClearOutputRequest.html\" title=\"struct Mountain::Vine::Generated::ClearOutputRequest\">ClearOutputRequest</a>",0,1,["Mountain::Vine::Generated::ClearOutputRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.CloseTerminalRequest.html\" title=\"struct Mountain::Vine::Generated::CloseTerminalRequest\">CloseTerminalRequest</a>",0,1,["Mountain::Vine::Generated::CloseTerminalRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.CodeAction.html\" title=\"struct Mountain::Vine::Generated::CodeAction\">CodeAction</a>",0,1,["Mountain::Vine::Generated::CodeAction"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.CodeLens.html\" title=\"struct Mountain::Vine::Generated::CodeLens\">CodeLens</a>",0,1,["Mountain::Vine::Generated::CodeLens"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.CompletionItem.html\" title=\"struct Mountain::Vine::Generated::CompletionItem\">CompletionItem</a>",0,1,["Mountain::Vine::Generated::CompletionItem"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.CopyFileRequest.html\" title=\"struct Mountain::Vine::Generated::CopyFileRequest\">CopyFileRequest</a>",0,1,["Mountain::Vine::Generated::CopyFileRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.CreateDirectoryRequest.html\" title=\"struct Mountain::Vine::Generated::CreateDirectoryRequest\">CreateDirectoryRequest</a>",0,1,["Mountain::Vine::Generated::CreateDirectoryRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.CreateOutputChannelRequest.html\" title=\"struct Mountain::Vine::Generated::CreateOutputChannelRequest\">CreateOutputChannelRequest</a>",0,1,["Mountain::Vine::Generated::CreateOutputChannelRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.CreateOutputChannelResponse.html\" title=\"struct Mountain::Vine::Generated::CreateOutputChannelResponse\">CreateOutputChannelResponse</a>",0,1,["Mountain::Vine::Generated::CreateOutputChannelResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.CreateStatusBarItemRequest.html\" title=\"struct Mountain::Vine::Generated::CreateStatusBarItemRequest\">CreateStatusBarItemRequest</a>",0,1,["Mountain::Vine::Generated::CreateStatusBarItemRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.CreateStatusBarItemResponse.html\" title=\"struct Mountain::Vine::Generated::CreateStatusBarItemResponse\">CreateStatusBarItemResponse</a>",0,1,["Mountain::Vine::Generated::CreateStatusBarItemResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.CreateWebviewPanelRequest.html\" title=\"struct Mountain::Vine::Generated::CreateWebviewPanelRequest\">CreateWebviewPanelRequest</a>",0,1,["Mountain::Vine::Generated::CreateWebviewPanelRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.CreateWebviewPanelResponse.html\" title=\"struct Mountain::Vine::Generated::CreateWebviewPanelResponse\">CreateWebviewPanelResponse</a>",0,1,["Mountain::Vine::Generated::CreateWebviewPanelResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.DebugConfiguration.html\" title=\"struct Mountain::Vine::Generated::DebugConfiguration\">DebugConfiguration</a>",0,1,["Mountain::Vine::Generated::DebugConfiguration"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.DeleteFileRequest.html\" title=\"struct Mountain::Vine::Generated::DeleteFileRequest\">DeleteFileRequest</a>",0,1,["Mountain::Vine::Generated::DeleteFileRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.DeleteSecretRequest.html\" title=\"struct Mountain::Vine::Generated::DeleteSecretRequest\">DeleteSecretRequest</a>",0,1,["Mountain::Vine::Generated::DeleteSecretRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.DisposeOutputRequest.html\" title=\"struct Mountain::Vine::Generated::DisposeOutputRequest\">DisposeOutputRequest</a>",0,1,["Mountain::Vine::Generated::DisposeOutputRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.DisposeWebviewPanelRequest.html\" title=\"struct Mountain::Vine::Generated::DisposeWebviewPanelRequest\">DisposeWebviewPanelRequest</a>",0,1,["Mountain::Vine::Generated::DisposeWebviewPanelRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.DocumentFilter.html\" title=\"struct Mountain::Vine::Generated::DocumentFilter\">DocumentFilter</a>",0,1,["Mountain::Vine::Generated::DocumentFilter"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.DocumentHighlight.html\" title=\"struct Mountain::Vine::Generated::DocumentHighlight\">DocumentHighlight</a>",0,1,["Mountain::Vine::Generated::DocumentHighlight"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.DocumentSymbol.html\" title=\"struct Mountain::Vine::Generated::DocumentSymbol\">DocumentSymbol</a>",0,1,["Mountain::Vine::Generated::DocumentSymbol"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.Empty.html\" title=\"struct Mountain::Vine::Generated::Empty\">Empty</a>",0,1,["Mountain::Vine::Generated::Empty"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ExecuteCommandRequest.html\" title=\"struct Mountain::Vine::Generated::ExecuteCommandRequest\">ExecuteCommandRequest</a>",0,1,["Mountain::Vine::Generated::ExecuteCommandRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ExecuteCommandResponse.html\" title=\"struct Mountain::Vine::Generated::ExecuteCommandResponse\">ExecuteCommandResponse</a>",0,1,["Mountain::Vine::Generated::ExecuteCommandResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ExecuteTaskRequest.html\" title=\"struct Mountain::Vine::Generated::ExecuteTaskRequest\">ExecuteTaskRequest</a>",0,1,["Mountain::Vine::Generated::ExecuteTaskRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ExecuteTaskResponse.html\" title=\"struct Mountain::Vine::Generated::ExecuteTaskResponse\">ExecuteTaskResponse</a>",0,1,["Mountain::Vine::Generated::ExecuteTaskResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ExtensionInfo.html\" title=\"struct Mountain::Vine::Generated::ExtensionInfo\">ExtensionInfo</a>",0,1,["Mountain::Vine::Generated::ExtensionInfo"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.FindFilesRequest.html\" title=\"struct Mountain::Vine::Generated::FindFilesRequest\">FindFilesRequest</a>",0,1,["Mountain::Vine::Generated::FindFilesRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.FindFilesResponse.html\" title=\"struct Mountain::Vine::Generated::FindFilesResponse\">FindFilesResponse</a>",0,1,["Mountain::Vine::Generated::FindFilesResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.FindTextInFilesRequest.html\" title=\"struct Mountain::Vine::Generated::FindTextInFilesRequest\">FindTextInFilesRequest</a>",0,1,["Mountain::Vine::Generated::FindTextInFilesRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.FindTextInFilesResponse.html\" title=\"struct Mountain::Vine::Generated::FindTextInFilesResponse\">FindTextInFilesResponse</a>",0,1,["Mountain::Vine::Generated::FindTextInFilesResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.FoldingRange.html\" title=\"struct Mountain::Vine::Generated::FoldingRange\">FoldingRange</a>",0,1,["Mountain::Vine::Generated::FoldingRange"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.GenericNotification.html\" title=\"struct Mountain::Vine::Generated::GenericNotification\">GenericNotification</a>",0,1,["Mountain::Vine::Generated::GenericNotification"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.GenericRequest.html\" title=\"struct Mountain::Vine::Generated::GenericRequest\">GenericRequest</a>",0,1,["Mountain::Vine::Generated::GenericRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.GenericResponse.html\" title=\"struct Mountain::Vine::Generated::GenericResponse\">GenericResponse</a>",0,1,["Mountain::Vine::Generated::GenericResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.GetAllExtensionsResponse.html\" title=\"struct Mountain::Vine::Generated::GetAllExtensionsResponse\">GetAllExtensionsResponse</a>",0,1,["Mountain::Vine::Generated::GetAllExtensionsResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.GetAuthenticationSessionRequest.html\" title=\"struct Mountain::Vine::Generated::GetAuthenticationSessionRequest\">GetAuthenticationSessionRequest</a>",0,1,["Mountain::Vine::Generated::GetAuthenticationSessionRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.GetAuthenticationSessionResponse.html\" title=\"struct Mountain::Vine::Generated::GetAuthenticationSessionResponse\">GetAuthenticationSessionResponse</a>",0,1,["Mountain::Vine::Generated::GetAuthenticationSessionResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.GetConfigurationRequest.html\" title=\"struct Mountain::Vine::Generated::GetConfigurationRequest\">GetConfigurationRequest</a>",0,1,["Mountain::Vine::Generated::GetConfigurationRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.GetConfigurationResponse.html\" title=\"struct Mountain::Vine::Generated::GetConfigurationResponse\">GetConfigurationResponse</a>",0,1,["Mountain::Vine::Generated::GetConfigurationResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.GetExtensionRequest.html\" title=\"struct Mountain::Vine::Generated::GetExtensionRequest\">GetExtensionRequest</a>",0,1,["Mountain::Vine::Generated::GetExtensionRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.GetExtensionResponse.html\" title=\"struct Mountain::Vine::Generated::GetExtensionResponse\">GetExtensionResponse</a>",0,1,["Mountain::Vine::Generated::GetExtensionResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.GetSecretRequest.html\" title=\"struct Mountain::Vine::Generated::GetSecretRequest\">GetSecretRequest</a>",0,1,["Mountain::Vine::Generated::GetSecretRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.GetSecretResponse.html\" title=\"struct Mountain::Vine::Generated::GetSecretResponse\">GetSecretResponse</a>",0,1,["Mountain::Vine::Generated::GetSecretResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.GetTreeChildrenRequest.html\" title=\"struct Mountain::Vine::Generated::GetTreeChildrenRequest\">GetTreeChildrenRequest</a>",0,1,["Mountain::Vine::Generated::GetTreeChildrenRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.GetTreeChildrenResponse.html\" title=\"struct Mountain::Vine::Generated::GetTreeChildrenResponse\">GetTreeChildrenResponse</a>",0,1,["Mountain::Vine::Generated::GetTreeChildrenResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.GitExecRequest.html\" title=\"struct Mountain::Vine::Generated::GitExecRequest\">GitExecRequest</a>",0,1,["Mountain::Vine::Generated::GitExecRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.GitExecResponse.html\" title=\"struct Mountain::Vine::Generated::GitExecResponse\">GitExecResponse</a>",0,1,["Mountain::Vine::Generated::GitExecResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.InitExtensionHostRequest.html\" title=\"struct Mountain::Vine::Generated::InitExtensionHostRequest\">InitExtensionHostRequest</a>",0,1,["Mountain::Vine::Generated::InitExtensionHostRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.InlayHint.html\" title=\"struct Mountain::Vine::Generated::InlayHint\">InlayHint</a>",0,1,["Mountain::Vine::Generated::InlayHint"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.Location.html\" title=\"struct Mountain::Vine::Generated::Location\">Location</a>",0,1,["Mountain::Vine::Generated::Location"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.OnDidReceiveMessageRequest.html\" title=\"struct Mountain::Vine::Generated::OnDidReceiveMessageRequest\">OnDidReceiveMessageRequest</a>",0,1,["Mountain::Vine::Generated::OnDidReceiveMessageRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.OpenDocumentRequest.html\" title=\"struct Mountain::Vine::Generated::OpenDocumentRequest\">OpenDocumentRequest</a>",0,1,["Mountain::Vine::Generated::OpenDocumentRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.OpenDocumentResponse.html\" title=\"struct Mountain::Vine::Generated::OpenDocumentResponse\">OpenDocumentResponse</a>",0,1,["Mountain::Vine::Generated::OpenDocumentResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.OpenExternalRequest.html\" title=\"struct Mountain::Vine::Generated::OpenExternalRequest\">OpenExternalRequest</a>",0,1,["Mountain::Vine::Generated::OpenExternalRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.OpenTerminalRequest.html\" title=\"struct Mountain::Vine::Generated::OpenTerminalRequest\">OpenTerminalRequest</a>",0,1,["Mountain::Vine::Generated::OpenTerminalRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ParameterInformation.html\" title=\"struct Mountain::Vine::Generated::ParameterInformation\">ParameterInformation</a>",0,1,["Mountain::Vine::Generated::ParameterInformation"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ParticipateInSaveRequest.html\" title=\"struct Mountain::Vine::Generated::ParticipateInSaveRequest\">ParticipateInSaveRequest</a>",0,1,["Mountain::Vine::Generated::ParticipateInSaveRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ParticipateInSaveResponse.html\" title=\"struct Mountain::Vine::Generated::ParticipateInSaveResponse\">ParticipateInSaveResponse</a>",0,1,["Mountain::Vine::Generated::ParticipateInSaveResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.Position.html\" title=\"struct Mountain::Vine::Generated::Position\">Position</a>",0,1,["Mountain::Vine::Generated::Position"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.PostWebviewMessageRequest.html\" title=\"struct Mountain::Vine::Generated::PostWebviewMessageRequest\">PostWebviewMessageRequest</a>",0,1,["Mountain::Vine::Generated::PostWebviewMessageRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideCallHierarchyRequest.html\" title=\"struct Mountain::Vine::Generated::ProvideCallHierarchyRequest\">ProvideCallHierarchyRequest</a>",0,1,["Mountain::Vine::Generated::ProvideCallHierarchyRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideCallHierarchyResponse.html\" title=\"struct Mountain::Vine::Generated::ProvideCallHierarchyResponse\">ProvideCallHierarchyResponse</a>",0,1,["Mountain::Vine::Generated::ProvideCallHierarchyResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideCodeActionsRequest.html\" title=\"struct Mountain::Vine::Generated::ProvideCodeActionsRequest\">ProvideCodeActionsRequest</a>",0,1,["Mountain::Vine::Generated::ProvideCodeActionsRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideCodeActionsResponse.html\" title=\"struct Mountain::Vine::Generated::ProvideCodeActionsResponse\">ProvideCodeActionsResponse</a>",0,1,["Mountain::Vine::Generated::ProvideCodeActionsResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideCodeLensesRequest.html\" title=\"struct Mountain::Vine::Generated::ProvideCodeLensesRequest\">ProvideCodeLensesRequest</a>",0,1,["Mountain::Vine::Generated::ProvideCodeLensesRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideCodeLensesResponse.html\" title=\"struct Mountain::Vine::Generated::ProvideCodeLensesResponse\">ProvideCodeLensesResponse</a>",0,1,["Mountain::Vine::Generated::ProvideCodeLensesResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideCompletionItemsRequest.html\" title=\"struct Mountain::Vine::Generated::ProvideCompletionItemsRequest\">ProvideCompletionItemsRequest</a>",0,1,["Mountain::Vine::Generated::ProvideCompletionItemsRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideCompletionItemsResponse.html\" title=\"struct Mountain::Vine::Generated::ProvideCompletionItemsResponse\">ProvideCompletionItemsResponse</a>",0,1,["Mountain::Vine::Generated::ProvideCompletionItemsResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideDefinitionRequest.html\" title=\"struct Mountain::Vine::Generated::ProvideDefinitionRequest\">ProvideDefinitionRequest</a>",0,1,["Mountain::Vine::Generated::ProvideDefinitionRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideDefinitionResponse.html\" title=\"struct Mountain::Vine::Generated::ProvideDefinitionResponse\">ProvideDefinitionResponse</a>",0,1,["Mountain::Vine::Generated::ProvideDefinitionResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideDocumentFormattingRequest.html\" title=\"struct Mountain::Vine::Generated::ProvideDocumentFormattingRequest\">ProvideDocumentFormattingRequest</a>",0,1,["Mountain::Vine::Generated::ProvideDocumentFormattingRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideDocumentFormattingResponse.html\" title=\"struct Mountain::Vine::Generated::ProvideDocumentFormattingResponse\">ProvideDocumentFormattingResponse</a>",0,1,["Mountain::Vine::Generated::ProvideDocumentFormattingResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideDocumentHighlightsRequest.html\" title=\"struct Mountain::Vine::Generated::ProvideDocumentHighlightsRequest\">ProvideDocumentHighlightsRequest</a>",0,1,["Mountain::Vine::Generated::ProvideDocumentHighlightsRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideDocumentHighlightsResponse.html\" title=\"struct Mountain::Vine::Generated::ProvideDocumentHighlightsResponse\">ProvideDocumentHighlightsResponse</a>",0,1,["Mountain::Vine::Generated::ProvideDocumentHighlightsResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideDocumentRangeFormattingRequest.html\" title=\"struct Mountain::Vine::Generated::ProvideDocumentRangeFormattingRequest\">ProvideDocumentRangeFormattingRequest</a>",0,1,["Mountain::Vine::Generated::ProvideDocumentRangeFormattingRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideDocumentRangeFormattingResponse.html\" title=\"struct Mountain::Vine::Generated::ProvideDocumentRangeFormattingResponse\">ProvideDocumentRangeFormattingResponse</a>",0,1,["Mountain::Vine::Generated::ProvideDocumentRangeFormattingResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideDocumentSymbolsRequest.html\" title=\"struct Mountain::Vine::Generated::ProvideDocumentSymbolsRequest\">ProvideDocumentSymbolsRequest</a>",0,1,["Mountain::Vine::Generated::ProvideDocumentSymbolsRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideDocumentSymbolsResponse.html\" title=\"struct Mountain::Vine::Generated::ProvideDocumentSymbolsResponse\">ProvideDocumentSymbolsResponse</a>",0,1,["Mountain::Vine::Generated::ProvideDocumentSymbolsResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideFoldingRangesRequest.html\" title=\"struct Mountain::Vine::Generated::ProvideFoldingRangesRequest\">ProvideFoldingRangesRequest</a>",0,1,["Mountain::Vine::Generated::ProvideFoldingRangesRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideFoldingRangesResponse.html\" title=\"struct Mountain::Vine::Generated::ProvideFoldingRangesResponse\">ProvideFoldingRangesResponse</a>",0,1,["Mountain::Vine::Generated::ProvideFoldingRangesResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideHoverRequest.html\" title=\"struct Mountain::Vine::Generated::ProvideHoverRequest\">ProvideHoverRequest</a>",0,1,["Mountain::Vine::Generated::ProvideHoverRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideHoverResponse.html\" title=\"struct Mountain::Vine::Generated::ProvideHoverResponse\">ProvideHoverResponse</a>",0,1,["Mountain::Vine::Generated::ProvideHoverResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideInlayHintsRequest.html\" title=\"struct Mountain::Vine::Generated::ProvideInlayHintsRequest\">ProvideInlayHintsRequest</a>",0,1,["Mountain::Vine::Generated::ProvideInlayHintsRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideInlayHintsResponse.html\" title=\"struct Mountain::Vine::Generated::ProvideInlayHintsResponse\">ProvideInlayHintsResponse</a>",0,1,["Mountain::Vine::Generated::ProvideInlayHintsResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideLinkedEditingRangesRequest.html\" title=\"struct Mountain::Vine::Generated::ProvideLinkedEditingRangesRequest\">ProvideLinkedEditingRangesRequest</a>",0,1,["Mountain::Vine::Generated::ProvideLinkedEditingRangesRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideLinkedEditingRangesResponse.html\" title=\"struct Mountain::Vine::Generated::ProvideLinkedEditingRangesResponse\">ProvideLinkedEditingRangesResponse</a>",0,1,["Mountain::Vine::Generated::ProvideLinkedEditingRangesResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideOnTypeFormattingRequest.html\" title=\"struct Mountain::Vine::Generated::ProvideOnTypeFormattingRequest\">ProvideOnTypeFormattingRequest</a>",0,1,["Mountain::Vine::Generated::ProvideOnTypeFormattingRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideOnTypeFormattingResponse.html\" title=\"struct Mountain::Vine::Generated::ProvideOnTypeFormattingResponse\">ProvideOnTypeFormattingResponse</a>",0,1,["Mountain::Vine::Generated::ProvideOnTypeFormattingResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideReferencesRequest.html\" title=\"struct Mountain::Vine::Generated::ProvideReferencesRequest\">ProvideReferencesRequest</a>",0,1,["Mountain::Vine::Generated::ProvideReferencesRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideReferencesResponse.html\" title=\"struct Mountain::Vine::Generated::ProvideReferencesResponse\">ProvideReferencesResponse</a>",0,1,["Mountain::Vine::Generated::ProvideReferencesResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideRenameEditsRequest.html\" title=\"struct Mountain::Vine::Generated::ProvideRenameEditsRequest\">ProvideRenameEditsRequest</a>",0,1,["Mountain::Vine::Generated::ProvideRenameEditsRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideRenameEditsResponse.html\" title=\"struct Mountain::Vine::Generated::ProvideRenameEditsResponse\">ProvideRenameEditsResponse</a>",0,1,["Mountain::Vine::Generated::ProvideRenameEditsResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideSelectionRangesRequest.html\" title=\"struct Mountain::Vine::Generated::ProvideSelectionRangesRequest\">ProvideSelectionRangesRequest</a>",0,1,["Mountain::Vine::Generated::ProvideSelectionRangesRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideSelectionRangesResponse.html\" title=\"struct Mountain::Vine::Generated::ProvideSelectionRangesResponse\">ProvideSelectionRangesResponse</a>",0,1,["Mountain::Vine::Generated::ProvideSelectionRangesResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideSemanticTokensRequest.html\" title=\"struct Mountain::Vine::Generated::ProvideSemanticTokensRequest\">ProvideSemanticTokensRequest</a>",0,1,["Mountain::Vine::Generated::ProvideSemanticTokensRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideSemanticTokensResponse.html\" title=\"struct Mountain::Vine::Generated::ProvideSemanticTokensResponse\">ProvideSemanticTokensResponse</a>",0,1,["Mountain::Vine::Generated::ProvideSemanticTokensResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideSignatureHelpRequest.html\" title=\"struct Mountain::Vine::Generated::ProvideSignatureHelpRequest\">ProvideSignatureHelpRequest</a>",0,1,["Mountain::Vine::Generated::ProvideSignatureHelpRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideSignatureHelpResponse.html\" title=\"struct Mountain::Vine::Generated::ProvideSignatureHelpResponse\">ProvideSignatureHelpResponse</a>",0,1,["Mountain::Vine::Generated::ProvideSignatureHelpResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideTypeHierarchyRequest.html\" title=\"struct Mountain::Vine::Generated::ProvideTypeHierarchyRequest\">ProvideTypeHierarchyRequest</a>",0,1,["Mountain::Vine::Generated::ProvideTypeHierarchyRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideTypeHierarchyResponse.html\" title=\"struct Mountain::Vine::Generated::ProvideTypeHierarchyResponse\">ProvideTypeHierarchyResponse</a>",0,1,["Mountain::Vine::Generated::ProvideTypeHierarchyResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideWorkspaceSymbolsRequest.html\" title=\"struct Mountain::Vine::Generated::ProvideWorkspaceSymbolsRequest\">ProvideWorkspaceSymbolsRequest</a>",0,1,["Mountain::Vine::Generated::ProvideWorkspaceSymbolsRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ProvideWorkspaceSymbolsResponse.html\" title=\"struct Mountain::Vine::Generated::ProvideWorkspaceSymbolsResponse\">ProvideWorkspaceSymbolsResponse</a>",0,1,["Mountain::Vine::Generated::ProvideWorkspaceSymbolsResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.QuickPickItem.html\" title=\"struct Mountain::Vine::Generated::QuickPickItem\">QuickPickItem</a>",0,1,["Mountain::Vine::Generated::QuickPickItem"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.Range.html\" title=\"struct Mountain::Vine::Generated::Range\">Range</a>",0,1,["Mountain::Vine::Generated::Range"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ReadFileRequest.html\" title=\"struct Mountain::Vine::Generated::ReadFileRequest\">ReadFileRequest</a>",0,1,["Mountain::Vine::Generated::ReadFileRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ReadFileResponse.html\" title=\"struct Mountain::Vine::Generated::ReadFileResponse\">ReadFileResponse</a>",0,1,["Mountain::Vine::Generated::ReadFileResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ReaddirRequest.html\" title=\"struct Mountain::Vine::Generated::ReaddirRequest\">ReaddirRequest</a>",0,1,["Mountain::Vine::Generated::ReaddirRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ReaddirResponse.html\" title=\"struct Mountain::Vine::Generated::ReaddirResponse\">ReaddirResponse</a>",0,1,["Mountain::Vine::Generated::ReaddirResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.RegisterAuthenticationProviderRequest.html\" title=\"struct Mountain::Vine::Generated::RegisterAuthenticationProviderRequest\">RegisterAuthenticationProviderRequest</a>",0,1,["Mountain::Vine::Generated::RegisterAuthenticationProviderRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.RegisterCommandRequest.html\" title=\"struct Mountain::Vine::Generated::RegisterCommandRequest\">RegisterCommandRequest</a>",0,1,["Mountain::Vine::Generated::RegisterCommandRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.RegisterDebugAdapterRequest.html\" title=\"struct Mountain::Vine::Generated::RegisterDebugAdapterRequest\">RegisterDebugAdapterRequest</a>",0,1,["Mountain::Vine::Generated::RegisterDebugAdapterRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.RegisterOnTypeFormattingProviderRequest.html\" title=\"struct Mountain::Vine::Generated::RegisterOnTypeFormattingProviderRequest\">RegisterOnTypeFormattingProviderRequest</a>",0,1,["Mountain::Vine::Generated::RegisterOnTypeFormattingProviderRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.RegisterProviderRequest.html\" title=\"struct Mountain::Vine::Generated::RegisterProviderRequest\">RegisterProviderRequest</a>",0,1,["Mountain::Vine::Generated::RegisterProviderRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.RegisterScmProviderRequest.html\" title=\"struct Mountain::Vine::Generated::RegisterScmProviderRequest\">RegisterScmProviderRequest</a>",0,1,["Mountain::Vine::Generated::RegisterScmProviderRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.RegisterSemanticTokensProviderRequest.html\" title=\"struct Mountain::Vine::Generated::RegisterSemanticTokensProviderRequest\">RegisterSemanticTokensProviderRequest</a>",0,1,["Mountain::Vine::Generated::RegisterSemanticTokensProviderRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.RegisterSignatureHelpProviderRequest.html\" title=\"struct Mountain::Vine::Generated::RegisterSignatureHelpProviderRequest\">RegisterSignatureHelpProviderRequest</a>",0,1,["Mountain::Vine::Generated::RegisterSignatureHelpProviderRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.RegisterTaskProviderRequest.html\" title=\"struct Mountain::Vine::Generated::RegisterTaskProviderRequest\">RegisterTaskProviderRequest</a>",0,1,["Mountain::Vine::Generated::RegisterTaskProviderRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.RegisterTreeViewProviderRequest.html\" title=\"struct Mountain::Vine::Generated::RegisterTreeViewProviderRequest\">RegisterTreeViewProviderRequest</a>",0,1,["Mountain::Vine::Generated::RegisterTreeViewProviderRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.RenameFileRequest.html\" title=\"struct Mountain::Vine::Generated::RenameFileRequest\">RenameFileRequest</a>",0,1,["Mountain::Vine::Generated::RenameFileRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ReportProgressRequest.html\" title=\"struct Mountain::Vine::Generated::ReportProgressRequest\">ReportProgressRequest</a>",0,1,["Mountain::Vine::Generated::ReportProgressRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ResizeTerminalRequest.html\" title=\"struct Mountain::Vine::Generated::ResizeTerminalRequest\">ResizeTerminalRequest</a>",0,1,["Mountain::Vine::Generated::ResizeTerminalRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.RpcDataPayload.html\" title=\"struct Mountain::Vine::Generated::RpcDataPayload\">RpcDataPayload</a>",0,1,["Mountain::Vine::Generated::RpcDataPayload"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.RpcError.html\" title=\"struct Mountain::Vine::Generated::RpcError\">RpcError</a>",0,1,["Mountain::Vine::Generated::RpcError"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.SaveAllRequest.html\" title=\"struct Mountain::Vine::Generated::SaveAllRequest\">SaveAllRequest</a>",0,1,["Mountain::Vine::Generated::SaveAllRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.SaveAllResponse.html\" title=\"struct Mountain::Vine::Generated::SaveAllResponse\">SaveAllResponse</a>",0,1,["Mountain::Vine::Generated::SaveAllResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.SelectionRange.html\" title=\"struct Mountain::Vine::Generated::SelectionRange\">SelectionRange</a>",0,1,["Mountain::Vine::Generated::SelectionRange"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.SetStatusBarTextRequest.html\" title=\"struct Mountain::Vine::Generated::SetStatusBarTextRequest\">SetStatusBarTextRequest</a>",0,1,["Mountain::Vine::Generated::SetStatusBarTextRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.SetWebviewHtmlRequest.html\" title=\"struct Mountain::Vine::Generated::SetWebviewHtmlRequest\">SetWebviewHtmlRequest</a>",0,1,["Mountain::Vine::Generated::SetWebviewHtmlRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ShowInputBoxRequest.html\" title=\"struct Mountain::Vine::Generated::ShowInputBoxRequest\">ShowInputBoxRequest</a>",0,1,["Mountain::Vine::Generated::ShowInputBoxRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ShowInputBoxResponse.html\" title=\"struct Mountain::Vine::Generated::ShowInputBoxResponse\">ShowInputBoxResponse</a>",0,1,["Mountain::Vine::Generated::ShowInputBoxResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ShowMessageRequest.html\" title=\"struct Mountain::Vine::Generated::ShowMessageRequest\">ShowMessageRequest</a>",0,1,["Mountain::Vine::Generated::ShowMessageRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ShowMessageResponse.html\" title=\"struct Mountain::Vine::Generated::ShowMessageResponse\">ShowMessageResponse</a>",0,1,["Mountain::Vine::Generated::ShowMessageResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ShowOutputRequest.html\" title=\"struct Mountain::Vine::Generated::ShowOutputRequest\">ShowOutputRequest</a>",0,1,["Mountain::Vine::Generated::ShowOutputRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ShowProgressRequest.html\" title=\"struct Mountain::Vine::Generated::ShowProgressRequest\">ShowProgressRequest</a>",0,1,["Mountain::Vine::Generated::ShowProgressRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ShowProgressResponse.html\" title=\"struct Mountain::Vine::Generated::ShowProgressResponse\">ShowProgressResponse</a>",0,1,["Mountain::Vine::Generated::ShowProgressResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ShowQuickPickRequest.html\" title=\"struct Mountain::Vine::Generated::ShowQuickPickRequest\">ShowQuickPickRequest</a>",0,1,["Mountain::Vine::Generated::ShowQuickPickRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ShowQuickPickResponse.html\" title=\"struct Mountain::Vine::Generated::ShowQuickPickResponse\">ShowQuickPickResponse</a>",0,1,["Mountain::Vine::Generated::ShowQuickPickResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ShowTextDocumentRequest.html\" title=\"struct Mountain::Vine::Generated::ShowTextDocumentRequest\">ShowTextDocumentRequest</a>",0,1,["Mountain::Vine::Generated::ShowTextDocumentRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.ShowTextDocumentResponse.html\" title=\"struct Mountain::Vine::Generated::ShowTextDocumentResponse\">ShowTextDocumentResponse</a>",0,1,["Mountain::Vine::Generated::ShowTextDocumentResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.SignatureInformation.html\" title=\"struct Mountain::Vine::Generated::SignatureInformation\">SignatureInformation</a>",0,1,["Mountain::Vine::Generated::SignatureInformation"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.SourceControlResourceState.html\" title=\"struct Mountain::Vine::Generated::SourceControlResourceState\">SourceControlResourceState</a>",0,1,["Mountain::Vine::Generated::SourceControlResourceState"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.StartDebuggingRequest.html\" title=\"struct Mountain::Vine::Generated::StartDebuggingRequest\">StartDebuggingRequest</a>",0,1,["Mountain::Vine::Generated::StartDebuggingRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.StartDebuggingResponse.html\" title=\"struct Mountain::Vine::Generated::StartDebuggingResponse\">StartDebuggingResponse</a>",0,1,["Mountain::Vine::Generated::StartDebuggingResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.StatRequest.html\" title=\"struct Mountain::Vine::Generated::StatRequest\">StatRequest</a>",0,1,["Mountain::Vine::Generated::StatRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.StatResponse.html\" title=\"struct Mountain::Vine::Generated::StatResponse\">StatResponse</a>",0,1,["Mountain::Vine::Generated::StatResponse"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.StopDebuggingRequest.html\" title=\"struct Mountain::Vine::Generated::StopDebuggingRequest\">StopDebuggingRequest</a>",0,1,["Mountain::Vine::Generated::StopDebuggingRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.StoreSecretRequest.html\" title=\"struct Mountain::Vine::Generated::StoreSecretRequest\">StoreSecretRequest</a>",0,1,["Mountain::Vine::Generated::StoreSecretRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.TaskDefinition.html\" title=\"struct Mountain::Vine::Generated::TaskDefinition\">TaskDefinition</a>",0,1,["Mountain::Vine::Generated::TaskDefinition"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.TerminalClosedNotification.html\" title=\"struct Mountain::Vine::Generated::TerminalClosedNotification\">TerminalClosedNotification</a>",0,1,["Mountain::Vine::Generated::TerminalClosedNotification"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.TerminalDataNotification.html\" title=\"struct Mountain::Vine::Generated::TerminalDataNotification\">TerminalDataNotification</a>",0,1,["Mountain::Vine::Generated::TerminalDataNotification"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.TerminalInputRequest.html\" title=\"struct Mountain::Vine::Generated::TerminalInputRequest\">TerminalInputRequest</a>",0,1,["Mountain::Vine::Generated::TerminalInputRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.TerminalOpenedNotification.html\" title=\"struct Mountain::Vine::Generated::TerminalOpenedNotification\">TerminalOpenedNotification</a>",0,1,["Mountain::Vine::Generated::TerminalOpenedNotification"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.TerminalProcessIdNotification.html\" title=\"struct Mountain::Vine::Generated::TerminalProcessIdNotification\">TerminalProcessIdNotification</a>",0,1,["Mountain::Vine::Generated::TerminalProcessIdNotification"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.TerminateTaskRequest.html\" title=\"struct Mountain::Vine::Generated::TerminateTaskRequest\">TerminateTaskRequest</a>",0,1,["Mountain::Vine::Generated::TerminateTaskRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.TextEdit.html\" title=\"struct Mountain::Vine::Generated::TextEdit\">TextEdit</a>",0,1,["Mountain::Vine::Generated::TextEdit"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.TextEditForSave.html\" title=\"struct Mountain::Vine::Generated::TextEditForSave\">TextEditForSave</a>",0,1,["Mountain::Vine::Generated::TextEditForSave"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.TextMatch.html\" title=\"struct Mountain::Vine::Generated::TextMatch\">TextMatch</a>",0,1,["Mountain::Vine::Generated::TextMatch"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.TreeItem.html\" title=\"struct Mountain::Vine::Generated::TreeItem\">TreeItem</a>",0,1,["Mountain::Vine::Generated::TreeItem"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.TypeHierarchyItem.html\" title=\"struct Mountain::Vine::Generated::TypeHierarchyItem\">TypeHierarchyItem</a>",0,1,["Mountain::Vine::Generated::TypeHierarchyItem"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.UnregisterCommandRequest.html\" title=\"struct Mountain::Vine::Generated::UnregisterCommandRequest\">UnregisterCommandRequest</a>",0,1,["Mountain::Vine::Generated::UnregisterCommandRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.UpdateConfigurationRequest.html\" title=\"struct Mountain::Vine::Generated::UpdateConfigurationRequest\">UpdateConfigurationRequest</a>",0,1,["Mountain::Vine::Generated::UpdateConfigurationRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.UpdateScmGroupRequest.html\" title=\"struct Mountain::Vine::Generated::UpdateScmGroupRequest\">UpdateScmGroupRequest</a>",0,1,["Mountain::Vine::Generated::UpdateScmGroupRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.UpdateWorkspaceFoldersRequest.html\" title=\"struct Mountain::Vine::Generated::UpdateWorkspaceFoldersRequest\">UpdateWorkspaceFoldersRequest</a>",0,1,["Mountain::Vine::Generated::UpdateWorkspaceFoldersRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.Uri.html\" title=\"struct Mountain::Vine::Generated::Uri\">Uri</a>",0,1,["Mountain::Vine::Generated::Uri"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.WatchFileRequest.html\" title=\"struct Mountain::Vine::Generated::WatchFileRequest\">WatchFileRequest</a>",0,1,["Mountain::Vine::Generated::WatchFileRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.WorkspaceEdit.html\" title=\"struct Mountain::Vine::Generated::WorkspaceEdit\">WorkspaceEdit</a>",0,1,["Mountain::Vine::Generated::WorkspaceEdit"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.WorkspaceFolder.html\" title=\"struct Mountain::Vine::Generated::WorkspaceFolder\">WorkspaceFolder</a>",0,1,["Mountain::Vine::Generated::WorkspaceFolder"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.WorkspaceSymbol.html\" title=\"struct Mountain::Vine::Generated::WorkspaceSymbol\">WorkspaceSymbol</a>",0,1,["Mountain::Vine::Generated::WorkspaceSymbol"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/struct.WriteFileRequest.html\" title=\"struct Mountain::Vine::Generated::WriteFileRequest\">WriteFileRequest</a>",0,1,["Mountain::Vine::Generated::WriteFileRequest"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Workspace/WorkspaceFileService/struct.WorkspaceFile.html\" title=\"struct Mountain::Workspace::WorkspaceFileService::WorkspaceFile\">WorkspaceFile</a>",0,1,["Mountain::Workspace::WorkspaceFileService::WorkspaceFile"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Workspace/WorkspaceFileService/struct.WorkspaceFolderEntry.html\" title=\"struct Mountain::Workspace::WorkspaceFileService::WorkspaceFolderEntry\">WorkspaceFolderEntry</a>",0,1,["Mountain::Workspace::WorkspaceFileService::WorkspaceFolderEntry"]],["impl&lt;R&gt; <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"enum\" href=\"Mountain/Environment/CommandProvider/enum.CommandHandler.html\" title=\"enum Mountain::Environment::CommandProvider::CommandHandler\">CommandHandler</a>&lt;R&gt;",0,1,["Mountain::Environment::CommandProvider::CommandHandler"]],["impl&lt;T&gt; <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/ApplicationState/State/ApplicationState/struct.StateOperationResult.html\" title=\"struct Mountain::ApplicationState::State::ApplicationState::StateOperationResult\">StateOperationResult</a>&lt;T&gt;<div class=\"where\">where\n    T: <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a>,</div>",0,1,["Mountain::ApplicationState::State::ApplicationState::StateOperationResult"]],["impl&lt;T&gt; <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/IPC/Enhanced/SecureMessageChannel/struct.SecureMessage.html\" title=\"struct Mountain::IPC::Enhanced::SecureMessageChannel::SecureMessage\">SecureMessage</a>&lt;T&gt;<div class=\"where\">where\n    T: <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a>,</div>",0,1,["Mountain::IPC::Enhanced::SecureMessageChannel::SecureMessage"]],["impl&lt;T&gt; <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/RPC/types/common/struct.Request.html\" title=\"struct Mountain::RPC::types::common::Request\">Request</a>&lt;T&gt;<div class=\"where\">where\n    T: <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a>,</div>",0,1,["Mountain::RPC::types::common::Request"]],["impl&lt;T&gt; <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/RPC/types/common/struct.Response.html\" title=\"struct Mountain::RPC::types::common::Response\">Response</a>&lt;T&gt;<div class=\"where\">where\n    T: <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a>,</div>",0,1,["Mountain::RPC::types::common::Response"]],["impl&lt;T&gt; <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/cocoon_service_client/struct.CocoonServiceClient.html\" title=\"struct Mountain::Vine::Generated::cocoon_service_client::CocoonServiceClient\">CocoonServiceClient</a>&lt;T&gt;<div class=\"where\">where\n    T: <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a>,</div>",0,1,["Mountain::Vine::Generated::cocoon_service_client::CocoonServiceClient"]],["impl&lt;T&gt; <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/cocoon_service_server/struct.CocoonServiceServer.html\" title=\"struct Mountain::Vine::Generated::cocoon_service_server::CocoonServiceServer\">CocoonServiceServer</a>&lt;T&gt;<div class=\"where\">where\n    T: <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a>,</div>",0,1,["Mountain::Vine::Generated::cocoon_service_server::CocoonServiceServer"]],["impl&lt;T&gt; <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/mountain_service_client/struct.MountainServiceClient.html\" title=\"struct Mountain::Vine::Generated::mountain_service_client::MountainServiceClient\">MountainServiceClient</a>&lt;T&gt;<div class=\"where\">where\n    T: <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a>,</div>",0,1,["Mountain::Vine::Generated::mountain_service_client::MountainServiceClient"]],["impl&lt;T&gt; <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Vine/Generated/mountain_service_server/struct.MountainServiceServer.html\" title=\"struct Mountain::Vine::Generated::mountain_service_server::MountainServiceServer\">MountainServiceServer</a>&lt;T&gt;<div class=\"where\">where\n    T: <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a>,</div>",0,1,["Mountain::Vine::Generated::mountain_service_server::MountainServiceServer"]],["impl&lt;TPayload&gt; <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a> for <a class=\"struct\" href=\"Mountain/Environment/UserInterfaceProvider/struct.UserInterfaceRequest.html\" title=\"struct Mountain::Environment::UserInterfaceProvider::UserInterfaceRequest\">UserInterfaceRequest</a>&lt;TPayload&gt;<div class=\"where\">where\n    TPayload: <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html\" title=\"trait core::panic::unwind_safe::RefUnwindSafe\">RefUnwindSafe</a>,</div>",0,1,["Mountain::Environment::UserInterfaceProvider::UserInterfaceRequest"]]]]]);
-    if (window.register_implementors) {
-        window.register_implementors(implementors);
-    } else {
-        window.pending_implementors = implementors;
-    }
-})()
+(function () {
+	const implementors = Object.fromEntries([
+		[
+			"Mountain",
+			[
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/Vine/Error/enum.VineError.html" title="enum Mountain::Vine::Error::VineError">VineError</a>',
+					1,
+					1,
+					["Mountain::Vine::Error::VineError"],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Air/AirClient/struct.AirClient.html" title="struct Mountain::Air::AirClient::AirClient">AirClient</a>',
+					1,
+					1,
+					["Mountain::Air::AirClient::AirClient"],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Air/AirClient/struct.DownloadStream.html" title="struct Mountain::Air::AirClient::DownloadStream">DownloadStream</a>',
+					1,
+					1,
+					["Mountain::Air::AirClient::DownloadStream"],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Air/AirServiceProvider/struct.AirServiceProvider.html" title="struct Mountain::Air::AirServiceProvider::AirServiceProvider">AirServiceProvider</a>',
+					1,
+					1,
+					["Mountain::Air::AirServiceProvider::AirServiceProvider"],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ApplicationState/DTO/TerminalStateDTO/struct.TerminalStateDTO.html" title="struct Mountain::ApplicationState::DTO::TerminalStateDTO::TerminalStateDTO">TerminalStateDTO</a>',
+					1,
+					1,
+					[
+						"Mountain::ApplicationState::DTO::TerminalStateDTO::TerminalStateDTO",
+					],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ApplicationState/DTO/TreeViewStateDTO/struct.TreeViewStateDTO.html" title="struct Mountain::ApplicationState::DTO::TreeViewStateDTO::TreeViewStateDTO">TreeViewStateDTO</a>',
+					1,
+					1,
+					[
+						"Mountain::ApplicationState::DTO::TreeViewStateDTO::TreeViewStateDTO",
+					],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ApplicationState/State/ApplicationState/struct.ApplicationState.html" title="struct Mountain::ApplicationState::State::ApplicationState::ApplicationState">ApplicationState</a>',
+					1,
+					1,
+					[
+						"Mountain::ApplicationState::State::ApplicationState::ApplicationState",
+					],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Binary/Build/CertificateManager/struct.CertificateManager.html" title="struct Mountain::Binary::Build::CertificateManager::CertificateManager">CertificateManager</a>',
+					1,
+					1,
+					[
+						"Mountain::Binary::Build::CertificateManager::CertificateManager",
+					],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Binary/Build/CertificateManager/struct.ServerCertData.html" title="struct Mountain::Binary::Build::CertificateManager::ServerCertData">ServerCertData</a>',
+					1,
+					1,
+					[
+						"Mountain::Binary::Build::CertificateManager::ServerCertData",
+					],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Environment/MountainEnvironment/struct.MountainEnvironment.html" title="struct Mountain::Environment::MountainEnvironment::MountainEnvironment">MountainEnvironment</a>',
+					1,
+					1,
+					[
+						"Mountain::Environment::MountainEnvironment::MountainEnvironment",
+					],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Environment/WebviewProvider/messaging/struct.WebviewMessageContext.html" title="struct Mountain::Environment::WebviewProvider::messaging::WebviewMessageContext">WebviewMessageContext</a>',
+					1,
+					1,
+					[
+						"Mountain::Environment::WebviewProvider::messaging::WebviewMessageContext",
+					],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Environment/WebviewProvider/struct.WebviewMessageContext.html" title="struct Mountain::Environment::WebviewProvider::WebviewMessageContext">WebviewMessageContext</a>',
+					1,
+					1,
+					[
+						"Mountain::Environment::WebviewProvider::WebviewMessageContext",
+					],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/FileSystem/FileExplorerViewProvider/struct.FileExplorerViewProvider.html" title="struct Mountain::FileSystem::FileExplorerViewProvider::FileExplorerViewProvider">FileExplorerViewProvider</a>',
+					1,
+					1,
+					[
+						"Mountain::FileSystem::FileExplorerViewProvider::FileExplorerViewProvider",
+					],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/AdvancedFeatures/struct.AdvancedFeatures.html" title="struct Mountain::IPC::AdvancedFeatures::AdvancedFeatures">AdvancedFeatures</a>',
+					1,
+					1,
+					["Mountain::IPC::AdvancedFeatures::AdvancedFeatures"],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/ConfigurationBridge/struct.ConfigurationBridge.html" title="struct Mountain::IPC::ConfigurationBridge::ConfigurationBridge">ConfigurationBridge</a>',
+					1,
+					1,
+					["Mountain::IPC::ConfigurationBridge::ConfigurationBridge"],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Connection/Manager/struct.ConnectionPool.html" title="struct Mountain::IPC::Connection::Manager::ConnectionPool">ConnectionPool</a>',
+					1,
+					1,
+					["Mountain::IPC::Connection::Manager::ConnectionPool"],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Enhanced/ConnectionPool/struct.ConnectionPool.html" title="struct Mountain::IPC::Enhanced::ConnectionPool::ConnectionPool">ConnectionPool</a>',
+					1,
+					1,
+					["Mountain::IPC::Enhanced::ConnectionPool::ConnectionPool"],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Enhanced/PerformanceDashboard/struct.PerformanceDashboard.html" title="struct Mountain::IPC::Enhanced::PerformanceDashboard::PerformanceDashboard">PerformanceDashboard</a>',
+					1,
+					1,
+					[
+						"Mountain::IPC::Enhanced::PerformanceDashboard::PerformanceDashboard",
+					],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Enhanced/SecureMessageChannel/struct.SecureMessageChannel.html" title="struct Mountain::IPC::Enhanced::SecureMessageChannel::SecureMessageChannel">SecureMessageChannel</a>',
+					1,
+					1,
+					[
+						"Mountain::IPC::Enhanced::SecureMessageChannel::SecureMessageChannel",
+					],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Enhanced/struct.EnhancedIPCManager.html" title="struct Mountain::IPC::Enhanced::EnhancedIPCManager">EnhancedIPCManager</a>',
+					1,
+					1,
+					["Mountain::IPC::Enhanced::EnhancedIPCManager"],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Permission/Validate/ValidatePermission/struct.PermissionValidator.html" title="struct Mountain::IPC::Permission::Validate::ValidatePermission::PermissionValidator">PermissionValidator</a>',
+					1,
+					1,
+					[
+						"Mountain::IPC::Permission::Validate::ValidatePermission::PermissionValidator",
+					],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Security/PermissionManager/struct.PermissionManager.html" title="struct Mountain::IPC::Security::PermissionManager::PermissionManager">PermissionManager</a>',
+					1,
+					1,
+					[
+						"Mountain::IPC::Security::PermissionManager::PermissionManager",
+					],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/StatusReporter/struct.StatusReporter.html" title="struct Mountain::IPC::StatusReporter::StatusReporter">StatusReporter</a>',
+					1,
+					1,
+					["Mountain::IPC::StatusReporter::StatusReporter"],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/TauriIPCServer_Old/struct.ConnectionPool.html" title="struct Mountain::IPC::TauriIPCServer_Old::ConnectionPool">ConnectionPool</a>',
+					1,
+					1,
+					["Mountain::IPC::TauriIPCServer_Old::ConnectionPool"],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/TauriIPCServer_Old/struct.PermissionManager.html" title="struct Mountain::IPC::TauriIPCServer_Old::PermissionManager">PermissionManager</a>',
+					1,
+					1,
+					["Mountain::IPC::TauriIPCServer_Old::PermissionManager"],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/TauriIPCServer_Old/struct.TauriIPCServer.html" title="struct Mountain::IPC::TauriIPCServer_Old::TauriIPCServer">TauriIPCServer</a>',
+					1,
+					1,
+					["Mountain::IPC::TauriIPCServer_Old::TauriIPCServer"],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindAdvancedSync/struct.WindAdvancedSync.html" title="struct Mountain::IPC::WindAdvancedSync::WindAdvancedSync">WindAdvancedSync</a>',
+					1,
+					1,
+					["Mountain::IPC::WindAdvancedSync::WindAdvancedSync"],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindAirCommands/struct.AirClientWrapper.html" title="struct Mountain::IPC::WindAirCommands::AirClientWrapper">AirClientWrapper</a>',
+					1,
+					1,
+					["Mountain::IPC::WindAirCommands::AirClientWrapper"],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindServiceAdapters/struct.WindConfigurationService.html" title="struct Mountain::IPC::WindServiceAdapters::WindConfigurationService">WindConfigurationService</a>',
+					1,
+					1,
+					[
+						"Mountain::IPC::WindServiceAdapters::WindConfigurationService",
+					],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindServiceAdapters/struct.WindFileService.html" title="struct Mountain::IPC::WindServiceAdapters::WindFileService">WindFileService</a>',
+					1,
+					1,
+					["Mountain::IPC::WindServiceAdapters::WindFileService"],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindServiceAdapters/struct.WindServiceAdapter.html" title="struct Mountain::IPC::WindServiceAdapters::WindServiceAdapter">WindServiceAdapter</a>',
+					1,
+					1,
+					["Mountain::IPC::WindServiceAdapters::WindServiceAdapter"],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindServiceAdapters/struct.WindStorageService.html" title="struct Mountain::IPC::WindServiceAdapters::WindStorageService">WindStorageService</a>',
+					1,
+					1,
+					["Mountain::IPC::WindServiceAdapters::WindStorageService"],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ProcessManagement/CocoonManagement/struct.CocoonProcessState.html" title="struct Mountain::ProcessManagement::CocoonManagement::CocoonProcessState">CocoonProcessState</a>',
+					1,
+					1,
+					[
+						"Mountain::ProcessManagement::CocoonManagement::CocoonProcessState",
+					],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/RPC/CocoonService/struct.CocoonServiceImpl.html" title="struct Mountain::RPC::CocoonService::CocoonServiceImpl">CocoonServiceImpl</a>',
+					1,
+					1,
+					["Mountain::RPC::CocoonService::CocoonServiceImpl"],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/RPC/echo_action/struct.ExtensionHostRegistry.html" title="struct Mountain::RPC::echo_action::ExtensionHostRegistry">ExtensionHostRegistry</a>',
+					1,
+					1,
+					["Mountain::RPC::echo_action::ExtensionHostRegistry"],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/RPC/echo_action/struct.ExtensionRouter.html" title="struct Mountain::RPC::echo_action::ExtensionRouter">ExtensionRouter</a>',
+					1,
+					1,
+					["Mountain::RPC::echo_action::ExtensionRouter"],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/RunTime/ApplicationRunTime/RuntimeStruct/struct.ApplicationRunTime.html" title="struct Mountain::RunTime::ApplicationRunTime::RuntimeStruct::ApplicationRunTime">ApplicationRunTime</a>',
+					1,
+					1,
+					[
+						"Mountain::RunTime::ApplicationRunTime::RuntimeStruct::ApplicationRunTime",
+					],
+				],
+				[
+					'impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Server/MountainVinegRPCService/struct.MountainVinegRPCService.html" title="struct Mountain::Vine::Server::MountainVinegRPCService::MountainVinegRPCService">MountainVinegRPCService</a>',
+					1,
+					1,
+					[
+						"Mountain::Vine::Server::MountainVinegRPCService::MountainVinegRPCService",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/ApplicationState/DTO/MarkerSeverity/enum.MarkerSeverity.html" title="enum Mountain::ApplicationState::DTO::MarkerSeverity::MarkerSeverity">MarkerSeverity</a>',
+					0,
+					1,
+					[
+						"Mountain::ApplicationState::DTO::MarkerSeverity::MarkerSeverity",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/Command/Hover/Interface/enum.HoverContent.html" title="enum Mountain::Command::Hover::Interface::HoverContent">HoverContent</a>',
+					0,
+					1,
+					["Mountain::Command::Hover::Interface::HoverContent"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/Environment/TestProvider/enum.TestRunStatus.html" title="enum Mountain::Environment::TestProvider::TestRunStatus">TestRunStatus</a>',
+					0,
+					1,
+					["Mountain::Environment::TestProvider::TestRunStatus"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/Environment/WebviewProvider/enum.WebviewLifecycleState.html" title="enum Mountain::Environment::WebviewProvider::WebviewLifecycleState">WebviewLifecycleState</a>',
+					0,
+					1,
+					[
+						"Mountain::Environment::WebviewProvider::WebviewLifecycleState",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/Error/ConfigurationError/enum.ConfigurationError.html" title="enum Mountain::Error::ConfigurationError::ConfigurationError">ConfigurationError</a>',
+					0,
+					1,
+					["Mountain::Error::ConfigurationError::ConfigurationError"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/Error/CoreError/enum.ErrorKind.html" title="enum Mountain::Error::CoreError::ErrorKind">ErrorKind</a>',
+					0,
+					1,
+					["Mountain::Error::CoreError::ErrorKind"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/Error/CoreError/enum.ErrorSeverity.html" title="enum Mountain::Error::CoreError::ErrorSeverity">ErrorSeverity</a>',
+					0,
+					1,
+					["Mountain::Error::CoreError::ErrorSeverity"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/Error/FileSystemError/enum.FileSystemError.html" title="enum Mountain::Error::FileSystemError::FileSystemError">FileSystemError</a>',
+					0,
+					1,
+					["Mountain::Error::FileSystemError::FileSystemError"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/Error/IPCError/enum.IPCError.html" title="enum Mountain::Error::IPCError::IPCError">IPCError</a>',
+					0,
+					1,
+					["Mountain::Error::IPCError::IPCError"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/Error/ProviderError/enum.ProviderError.html" title="enum Mountain::Error::ProviderError::ProviderError">ProviderError</a>',
+					0,
+					1,
+					["Mountain::Error::ProviderError::ProviderError"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/Error/ServiceError/enum.ServiceError.html" title="enum Mountain::Error::ServiceError::ServiceError">ServiceError</a>',
+					0,
+					1,
+					["Mountain::Error::ServiceError::ServiceError"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/IPC/Common/ConnectionStatus/enum.ConnectionState.html" title="enum Mountain::IPC::Common::ConnectionStatus::ConnectionState">ConnectionState</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::Common::ConnectionStatus::ConnectionState",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/IPC/Common/HealthStatus/enum.HealthIssue.html" title="enum Mountain::IPC::Common::HealthStatus::HealthIssue">HealthIssue</a>',
+					0,
+					1,
+					["Mountain::IPC::Common::HealthStatus::HealthIssue"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/IPC/Common/HealthStatus/enum.SeverityLevel.html" title="enum Mountain::IPC::Common::HealthStatus::SeverityLevel">SeverityLevel</a>',
+					0,
+					1,
+					["Mountain::IPC::Common::HealthStatus::SeverityLevel"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/IPC/Common/MessageType/enum.MessagePriority.html" title="enum Mountain::IPC::Common::MessageType::MessagePriority">MessagePriority</a>',
+					0,
+					1,
+					["Mountain::IPC::Common::MessageType::MessagePriority"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/IPC/Common/ServiceInfo/enum.ServiceState.html" title="enum Mountain::IPC::Common::ServiceInfo::ServiceState">ServiceState</a>',
+					0,
+					1,
+					["Mountain::IPC::Common::ServiceInfo::ServiceState"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/IPC/Connection/Types/enum.ConnectionStatus.html" title="enum Mountain::IPC::Connection::Types::ConnectionStatus">ConnectionStatus</a>',
+					0,
+					1,
+					["Mountain::IPC::Connection::Types::ConnectionStatus"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/IPC/Enhanced/ConnectionPool/enum.ConnectionHealth.html" title="enum Mountain::IPC::Enhanced::ConnectionPool::ConnectionHealth">ConnectionHealth</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::Enhanced::ConnectionPool::ConnectionHealth",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/IPC/Enhanced/MessageCompressor/enum.CompressionAlgorithm.html" title="enum Mountain::IPC::Enhanced::MessageCompressor::CompressionAlgorithm">CompressionAlgorithm</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::Enhanced::MessageCompressor::CompressionAlgorithm",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/IPC/Enhanced/MessageCompressor/enum.CompressionLevel.html" title="enum Mountain::IPC::Enhanced::MessageCompressor::CompressionLevel">CompressionLevel</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::Enhanced::MessageCompressor::CompressionLevel",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/IPC/Enhanced/PerformanceDashboard/enum.AlertSeverity.html" title="enum Mountain::IPC::Enhanced::PerformanceDashboard::AlertSeverity">AlertSeverity</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::Enhanced::PerformanceDashboard::AlertSeverity",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/IPC/Enhanced/PerformanceDashboard/enum.LogLevel.html" title="enum Mountain::IPC::Enhanced::PerformanceDashboard::LogLevel">LogLevel</a>',
+					0,
+					1,
+					["Mountain::IPC::Enhanced::PerformanceDashboard::LogLevel"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/IPC/Enhanced/PerformanceDashboard/enum.MetricType.html" title="enum Mountain::IPC::Enhanced::PerformanceDashboard::MetricType">MetricType</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::Enhanced::PerformanceDashboard::MetricType",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/IPC/Permission/Audit/LogEvent/enum.SecurityEventType.html" title="enum Mountain::IPC::Permission::Audit::LogEvent::SecurityEventType">SecurityEventType</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::Permission::Audit::LogEvent::SecurityEventType",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/IPC/Security/PermissionManager/enum.SecurityEventType.html" title="enum Mountain::IPC::Security::PermissionManager::SecurityEventType">SecurityEventType</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::Security::PermissionManager::SecurityEventType",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/IPC/StatusReporter/enum.HealthIssueType.html" title="enum Mountain::IPC::StatusReporter::HealthIssueType">HealthIssueType</a>',
+					0,
+					1,
+					["Mountain::IPC::StatusReporter::HealthIssueType"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/IPC/StatusReporter/enum.ServiceStatus.html" title="enum Mountain::IPC::StatusReporter::ServiceStatus">ServiceStatus</a>',
+					0,
+					1,
+					["Mountain::IPC::StatusReporter::ServiceStatus"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/IPC/StatusReporter/enum.SeverityLevel.html" title="enum Mountain::IPC::StatusReporter::SeverityLevel">SeverityLevel</a>',
+					0,
+					1,
+					["Mountain::IPC::StatusReporter::SeverityLevel"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/IPC/TauriIPCServer_Old/enum.SecurityEventType.html" title="enum Mountain::IPC::TauriIPCServer_Old::SecurityEventType">SecurityEventType</a>',
+					0,
+					1,
+					["Mountain::IPC::TauriIPCServer_Old::SecurityEventType"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/IPC/WindAdvancedSync/enum.ChangeType.html" title="enum Mountain::IPC::WindAdvancedSync::ChangeType">ChangeType</a>',
+					0,
+					1,
+					["Mountain::IPC::WindAdvancedSync::ChangeType"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/IPC/WindAdvancedSync/enum.SyncState.html" title="enum Mountain::IPC::WindAdvancedSync::SyncState">SyncState</a>',
+					0,
+					1,
+					["Mountain::IPC::WindAdvancedSync::SyncState"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/RPC/configuration/enum.ConfigurationScope.html" title="enum Mountain::RPC::configuration::ConfigurationScope">ConfigurationScope</a>',
+					0,
+					1,
+					["Mountain::RPC::configuration::ConfigurationScope"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/RPC/vine/enum.VineServiceStatus.html" title="enum Mountain::RPC::vine::VineServiceStatus">VineServiceStatus</a>',
+					0,
+					1,
+					["Mountain::RPC::vine::VineServiceStatus"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/Vine/Generated/argument/enum.Value.html" title="enum Mountain::Vine::Generated::argument::Value">Value</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::argument::Value"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/Vine/Generated/enum.ProgressLocation.html" title="enum Mountain::Vine::Generated::ProgressLocation">ProgressLocation</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ProgressLocation"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/Vine/Generated/enum.TextDocumentSaveReason.html" title="enum Mountain::Vine::Generated::TextDocumentSaveReason">TextDocumentSaveReason</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::TextDocumentSaveReason"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/Vine/Generated/enum.ViewColumn.html" title="enum Mountain::Vine::Generated::ViewColumn">ViewColumn</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ViewColumn"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/Vine/Generated/execute_command_response/enum.Result.html" title="enum Mountain::Vine::Generated::execute_command_response::Result">Result</a>',
+					0,
+					1,
+					[
+						"Mountain::Vine::Generated::execute_command_response::Result",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/Vine/Generated/on_did_receive_message_request/enum.Message.html" title="enum Mountain::Vine::Generated::on_did_receive_message_request::Message">Message</a>',
+					0,
+					1,
+					[
+						"Mountain::Vine::Generated::on_did_receive_message_request::Message",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/Vine/Generated/post_webview_message_request/enum.Message.html" title="enum Mountain::Vine::Generated::post_webview_message_request::Message">Message</a>',
+					0,
+					1,
+					[
+						"Mountain::Vine::Generated::post_webview_message_request::Message",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Air/AirClient/struct.AirMetrics.html" title="struct Mountain::Air::AirClient::AirMetrics">AirMetrics</a>',
+					0,
+					1,
+					["Mountain::Air::AirClient::AirMetrics"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Air/AirClient/struct.AirStatus.html" title="struct Mountain::Air::AirClient::AirStatus">AirStatus</a>',
+					0,
+					1,
+					["Mountain::Air::AirClient::AirStatus"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Air/AirClient/struct.DownloadStreamChunk.html" title="struct Mountain::Air::AirClient::DownloadStreamChunk">DownloadStreamChunk</a>',
+					0,
+					1,
+					["Mountain::Air::AirClient::DownloadStreamChunk"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Air/AirClient/struct.ExtendedFileInfo.html" title="struct Mountain::Air::AirClient::ExtendedFileInfo">ExtendedFileInfo</a>',
+					0,
+					1,
+					["Mountain::Air::AirClient::ExtendedFileInfo"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Air/AirClient/struct.FileInfo.html" title="struct Mountain::Air::AirClient::FileInfo">FileInfo</a>',
+					0,
+					1,
+					["Mountain::Air::AirClient::FileInfo"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Air/AirClient/struct.FileResult.html" title="struct Mountain::Air::AirClient::FileResult">FileResult</a>',
+					0,
+					1,
+					["Mountain::Air::AirClient::FileResult"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Air/AirClient/struct.IndexInfo.html" title="struct Mountain::Air::AirClient::IndexInfo">IndexInfo</a>',
+					0,
+					1,
+					["Mountain::Air::AirClient::IndexInfo"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Air/AirClient/struct.ResourceUsage.html" title="struct Mountain::Air::AirClient::ResourceUsage">ResourceUsage</a>',
+					0,
+					1,
+					["Mountain::Air::AirClient::ResourceUsage"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Air/AirClient/struct.UpdateInfo.html" title="struct Mountain::Air::AirClient::UpdateInfo">UpdateInfo</a>',
+					0,
+					1,
+					["Mountain::Air::AirClient::UpdateInfo"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Air/AirServiceTypesStub/struct.AirClientType.html" title="struct Mountain::Air::AirServiceTypesStub::AirClientType">AirClientType</a>',
+					0,
+					1,
+					["Mountain::Air::AirServiceTypesStub::AirClientType"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Air/AirServiceTypesStub/struct.AirMetricsProtoDTO.html" title="struct Mountain::Air::AirServiceTypesStub::AirMetricsProtoDTO">AirMetricsProtoDTO</a>',
+					0,
+					1,
+					["Mountain::Air::AirServiceTypesStub::AirMetricsProtoDTO"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Air/AirServiceTypesStub/struct.ApplyUpdateRequest.html" title="struct Mountain::Air::AirServiceTypesStub::ApplyUpdateRequest">ApplyUpdateRequest</a>',
+					0,
+					1,
+					["Mountain::Air::AirServiceTypesStub::ApplyUpdateRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Air/AirServiceTypesStub/struct.ApplyUpdateResponse.html" title="struct Mountain::Air::AirServiceTypesStub::ApplyUpdateResponse">ApplyUpdateResponse</a>',
+					0,
+					1,
+					["Mountain::Air::AirServiceTypesStub::ApplyUpdateResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Air/AirServiceTypesStub/struct.AuthenticationRequest.html" title="struct Mountain::Air::AirServiceTypesStub::AuthenticationRequest">AuthenticationRequest</a>',
+					0,
+					1,
+					[
+						"Mountain::Air::AirServiceTypesStub::AuthenticationRequest",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Air/AirServiceTypesStub/struct.AuthenticationResponse.html" title="struct Mountain::Air::AirServiceTypesStub::AuthenticationResponse">AuthenticationResponse</a>',
+					0,
+					1,
+					[
+						"Mountain::Air::AirServiceTypesStub::AuthenticationResponse",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Air/AirServiceTypesStub/struct.DownloadFileResponse.html" title="struct Mountain::Air::AirServiceTypesStub::DownloadFileResponse">DownloadFileResponse</a>',
+					0,
+					1,
+					[
+						"Mountain::Air::AirServiceTypesStub::DownloadFileResponse",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Air/AirServiceTypesStub/struct.DownloadRequest.html" title="struct Mountain::Air::AirServiceTypesStub::DownloadRequest">DownloadRequest</a>',
+					0,
+					1,
+					["Mountain::Air::AirServiceTypesStub::DownloadRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Air/AirServiceTypesStub/struct.FileResultProtoDTO.html" title="struct Mountain::Air::AirServiceTypesStub::FileResultProtoDTO">FileResultProtoDTO</a>',
+					0,
+					1,
+					["Mountain::Air::AirServiceTypesStub::FileResultProtoDTO"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Air/AirServiceTypesStub/struct.IndexFilesResponse.html" title="struct Mountain::Air::AirServiceTypesStub::IndexFilesResponse">IndexFilesResponse</a>',
+					0,
+					1,
+					["Mountain::Air::AirServiceTypesStub::IndexFilesResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Air/AirServiceTypesStub/struct.IndexRequest.html" title="struct Mountain::Air::AirServiceTypesStub::IndexRequest">IndexRequest</a>',
+					0,
+					1,
+					["Mountain::Air::AirServiceTypesStub::IndexRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Air/AirServiceTypesStub/struct.MetricsRequest.html" title="struct Mountain::Air::AirServiceTypesStub::MetricsRequest">MetricsRequest</a>',
+					0,
+					1,
+					["Mountain::Air::AirServiceTypesStub::MetricsRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Air/AirServiceTypesStub/struct.MetricsResponse.html" title="struct Mountain::Air::AirServiceTypesStub::MetricsResponse">MetricsResponse</a>',
+					0,
+					1,
+					["Mountain::Air::AirServiceTypesStub::MetricsResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Air/AirServiceTypesStub/struct.SearchFilesResponse.html" title="struct Mountain::Air::AirServiceTypesStub::SearchFilesResponse">SearchFilesResponse</a>',
+					0,
+					1,
+					["Mountain::Air::AirServiceTypesStub::SearchFilesResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Air/AirServiceTypesStub/struct.SearchRequest.html" title="struct Mountain::Air::AirServiceTypesStub::SearchRequest">SearchRequest</a>',
+					0,
+					1,
+					["Mountain::Air::AirServiceTypesStub::SearchRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Air/AirServiceTypesStub/struct.StatusRequest.html" title="struct Mountain::Air::AirServiceTypesStub::StatusRequest">StatusRequest</a>',
+					0,
+					1,
+					["Mountain::Air::AirServiceTypesStub::StatusRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Air/AirServiceTypesStub/struct.StatusResponse.html" title="struct Mountain::Air::AirServiceTypesStub::StatusResponse">StatusResponse</a>',
+					0,
+					1,
+					["Mountain::Air::AirServiceTypesStub::StatusResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Air/AirServiceTypesStub/struct.UpdateCheckRequest.html" title="struct Mountain::Air::AirServiceTypesStub::UpdateCheckRequest">UpdateCheckRequest</a>',
+					0,
+					1,
+					["Mountain::Air::AirServiceTypesStub::UpdateCheckRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Air/AirServiceTypesStub/struct.UpdateCheckResponse.html" title="struct Mountain::Air::AirServiceTypesStub::UpdateCheckResponse">UpdateCheckResponse</a>',
+					0,
+					1,
+					["Mountain::Air::AirServiceTypesStub::UpdateCheckResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ApplicationState/DTO/CustomDocumentStateDTO/struct.CustomDocumentStateDTO.html" title="struct Mountain::ApplicationState::DTO::CustomDocumentStateDTO::CustomDocumentStateDTO">CustomDocumentStateDTO</a>',
+					0,
+					1,
+					[
+						"Mountain::ApplicationState::DTO::CustomDocumentStateDTO::CustomDocumentStateDTO",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ApplicationState/DTO/DocumentStateDTO/struct.DocumentStateDTO.html" title="struct Mountain::ApplicationState::DTO::DocumentStateDTO::DocumentStateDTO">DocumentStateDTO</a>',
+					0,
+					1,
+					[
+						"Mountain::ApplicationState::DTO::DocumentStateDTO::DocumentStateDTO",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ApplicationState/DTO/ExtensionDescriptionStateDTO/struct.ExtensionDescriptionStateDTO.html" title="struct Mountain::ApplicationState::DTO::ExtensionDescriptionStateDTO::ExtensionDescriptionStateDTO">ExtensionDescriptionStateDTO</a>',
+					0,
+					1,
+					[
+						"Mountain::ApplicationState::DTO::ExtensionDescriptionStateDTO::ExtensionDescriptionStateDTO",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ApplicationState/DTO/MarkerDataDTO/struct.MarkerDataDTO.html" title="struct Mountain::ApplicationState::DTO::MarkerDataDTO::MarkerDataDTO">MarkerDataDTO</a>',
+					0,
+					1,
+					[
+						"Mountain::ApplicationState::DTO::MarkerDataDTO::MarkerDataDTO",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ApplicationState/DTO/MergedConfigurationStateDTO/struct.MergedConfigurationStateDTO.html" title="struct Mountain::ApplicationState::DTO::MergedConfigurationStateDTO::MergedConfigurationStateDTO">MergedConfigurationStateDTO</a>',
+					0,
+					1,
+					[
+						"Mountain::ApplicationState::DTO::MergedConfigurationStateDTO::MergedConfigurationStateDTO",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ApplicationState/DTO/OutputChannelStateDTO/struct.OutputChannelStateDTO.html" title="struct Mountain::ApplicationState::DTO::OutputChannelStateDTO::OutputChannelStateDTO">OutputChannelStateDTO</a>',
+					0,
+					1,
+					[
+						"Mountain::ApplicationState::DTO::OutputChannelStateDTO::OutputChannelStateDTO",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ApplicationState/DTO/ProviderRegistrationDTO/struct.ProviderRegistrationDTO.html" title="struct Mountain::ApplicationState::DTO::ProviderRegistrationDTO::ProviderRegistrationDTO">ProviderRegistrationDTO</a>',
+					0,
+					1,
+					[
+						"Mountain::ApplicationState::DTO::ProviderRegistrationDTO::ProviderRegistrationDTO",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ApplicationState/DTO/RPCModelContentChangeDTO/struct.RPCModelContentChangeDTO.html" title="struct Mountain::ApplicationState::DTO::RPCModelContentChangeDTO::RPCModelContentChangeDTO">RPCModelContentChangeDTO</a>',
+					0,
+					1,
+					[
+						"Mountain::ApplicationState::DTO::RPCModelContentChangeDTO::RPCModelContentChangeDTO",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ApplicationState/DTO/RPCRangeDTO/struct.RPCRangeDTO.html" title="struct Mountain::ApplicationState::DTO::RPCRangeDTO::RPCRangeDTO">RPCRangeDTO</a>',
+					0,
+					1,
+					[
+						"Mountain::ApplicationState::DTO::RPCRangeDTO::RPCRangeDTO",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ApplicationState/DTO/WebviewStateDTO/struct.WebviewStateDTO.html" title="struct Mountain::ApplicationState::DTO::WebviewStateDTO::WebviewStateDTO">WebviewStateDTO</a>',
+					0,
+					1,
+					[
+						"Mountain::ApplicationState::DTO::WebviewStateDTO::WebviewStateDTO",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ApplicationState/DTO/WindowStateDTO/struct.WindowStateDTO.html" title="struct Mountain::ApplicationState::DTO::WindowStateDTO::WindowStateDTO">WindowStateDTO</a>',
+					0,
+					1,
+					[
+						"Mountain::ApplicationState::DTO::WindowStateDTO::WindowStateDTO",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ApplicationState/DTO/WorkspaceFolderStateDTO/struct.WorkspaceFolderStateDTO.html" title="struct Mountain::ApplicationState::DTO::WorkspaceFolderStateDTO::WorkspaceFolderStateDTO">WorkspaceFolderStateDTO</a>',
+					0,
+					1,
+					[
+						"Mountain::ApplicationState::DTO::WorkspaceFolderStateDTO::WorkspaceFolderStateDTO",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ApplicationState/State/ConfigurationState/ConfigurationState/struct.State.html" title="struct Mountain::ApplicationState::State::ConfigurationState::ConfigurationState::State">State</a>',
+					0,
+					1,
+					[
+						"Mountain::ApplicationState::State::ConfigurationState::ConfigurationState::State",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ApplicationState/State/ExtensionState/ExtensionRegistry/ExtensionRegistry/struct.Registry.html" title="struct Mountain::ApplicationState::State::ExtensionState::ExtensionRegistry::ExtensionRegistry::Registry">Registry</a>',
+					0,
+					1,
+					[
+						"Mountain::ApplicationState::State::ExtensionState::ExtensionRegistry::ExtensionRegistry::Registry",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ApplicationState/State/ExtensionState/ProviderRegistration/ProviderRegistration/struct.Registration.html" title="struct Mountain::ApplicationState::State::ExtensionState::ProviderRegistration::ProviderRegistration::Registration">Registration</a>',
+					0,
+					1,
+					[
+						"Mountain::ApplicationState::State::ExtensionState::ProviderRegistration::ProviderRegistration::Registration",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ApplicationState/State/ExtensionState/ScannedExtensions/ScannedExtensions/struct.ScannedExtensionCollection.html" title="struct Mountain::ApplicationState::State::ExtensionState::ScannedExtensions::ScannedExtensions::ScannedExtensionCollection">ScannedExtensionCollection</a>',
+					0,
+					1,
+					[
+						"Mountain::ApplicationState::State::ExtensionState::ScannedExtensions::ScannedExtensions::ScannedExtensionCollection",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ApplicationState/State/ExtensionState/State/struct.State.html" title="struct Mountain::ApplicationState::State::ExtensionState::State::State">State</a>',
+					0,
+					1,
+					[
+						"Mountain::ApplicationState::State::ExtensionState::State::State",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ApplicationState/State/FeatureState/Debug/DebugState/struct.DebugAdapterDescriptorFactoryRegistration.html" title="struct Mountain::ApplicationState::State::FeatureState::Debug::DebugState::DebugAdapterDescriptorFactoryRegistration">DebugAdapterDescriptorFactoryRegistration</a>',
+					0,
+					1,
+					[
+						"Mountain::ApplicationState::State::FeatureState::Debug::DebugState::DebugAdapterDescriptorFactoryRegistration",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ApplicationState/State/FeatureState/Debug/DebugState/struct.DebugConfigurationProviderRegistration.html" title="struct Mountain::ApplicationState::State::FeatureState::Debug::DebugState::DebugConfigurationProviderRegistration">DebugConfigurationProviderRegistration</a>',
+					0,
+					1,
+					[
+						"Mountain::ApplicationState::State::FeatureState::Debug::DebugState::DebugConfigurationProviderRegistration",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ApplicationState/State/FeatureState/Debug/DebugState/struct.DebugState.html" title="struct Mountain::ApplicationState::State::FeatureState::Debug::DebugState::DebugState">DebugState</a>',
+					0,
+					1,
+					[
+						"Mountain::ApplicationState::State::FeatureState::Debug::DebugState::DebugState",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ApplicationState/State/FeatureState/Diagnostics/DiagnosticsState/struct.DiagnosticsState.html" title="struct Mountain::ApplicationState::State::FeatureState::Diagnostics::DiagnosticsState::DiagnosticsState">DiagnosticsState</a>',
+					0,
+					1,
+					[
+						"Mountain::ApplicationState::State::FeatureState::Diagnostics::DiagnosticsState::DiagnosticsState",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ApplicationState/State/FeatureState/Documents/DocumentState/struct.DocumentState.html" title="struct Mountain::ApplicationState::State::FeatureState::Documents::DocumentState::DocumentState">DocumentState</a>',
+					0,
+					1,
+					[
+						"Mountain::ApplicationState::State::FeatureState::Documents::DocumentState::DocumentState",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ApplicationState/State/FeatureState/Markers/MarkerState/struct.MarkerState.html" title="struct Mountain::ApplicationState::State::FeatureState::Markers::MarkerState::MarkerState">MarkerState</a>',
+					0,
+					1,
+					[
+						"Mountain::ApplicationState::State::FeatureState::Markers::MarkerState::MarkerState",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ApplicationState/State/FeatureState/OutputChannels/OutputChannelState/struct.OutputChannelState.html" title="struct Mountain::ApplicationState::State::FeatureState::OutputChannels::OutputChannelState::OutputChannelState">OutputChannelState</a>',
+					0,
+					1,
+					[
+						"Mountain::ApplicationState::State::FeatureState::OutputChannels::OutputChannelState::OutputChannelState",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ApplicationState/State/FeatureState/State/struct.State.html" title="struct Mountain::ApplicationState::State::FeatureState::State::State">State</a>',
+					0,
+					1,
+					[
+						"Mountain::ApplicationState::State::FeatureState::State::State",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ApplicationState/State/FeatureState/Terminals/TerminalState/struct.TerminalState.html" title="struct Mountain::ApplicationState::State::FeatureState::Terminals::TerminalState::TerminalState">TerminalState</a>',
+					0,
+					1,
+					[
+						"Mountain::ApplicationState::State::FeatureState::Terminals::TerminalState::TerminalState",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ApplicationState/State/FeatureState/TreeViews/TreeViewState/struct.TreeViewState.html" title="struct Mountain::ApplicationState::State::FeatureState::TreeViews::TreeViewState::TreeViewState">TreeViewState</a>',
+					0,
+					1,
+					[
+						"Mountain::ApplicationState::State::FeatureState::TreeViews::TreeViewState::TreeViewState",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ApplicationState/State/FeatureState/Webviews/WebviewState/struct.WebviewState.html" title="struct Mountain::ApplicationState::State::FeatureState::Webviews::WebviewState::WebviewState">WebviewState</a>',
+					0,
+					1,
+					[
+						"Mountain::ApplicationState::State::FeatureState::Webviews::WebviewState::WebviewState",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ApplicationState/State/UIState/UIState/struct.State.html" title="struct Mountain::ApplicationState::State::UIState::UIState::State">State</a>',
+					0,
+					1,
+					[
+						"Mountain::ApplicationState::State::UIState::UIState::State",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ApplicationState/State/WorkspaceState/WorkspaceState/struct.State.html" title="struct Mountain::ApplicationState::State::WorkspaceState::WorkspaceState::State">State</a>',
+					0,
+					1,
+					[
+						"Mountain::ApplicationState::State::WorkspaceState::WorkspaceState::State",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Binary/Build/CertificateManager/struct.CertValidityResult.html" title="struct Mountain::Binary::Build::CertificateManager::CertValidityResult">CertValidityResult</a>',
+					0,
+					1,
+					[
+						"Mountain::Binary::Build::CertificateManager::CertValidityResult",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Binary/Build/CertificateManager/struct.CertificateInfo.html" title="struct Mountain::Binary::Build::CertificateManager::CertificateInfo">CertificateInfo</a>',
+					0,
+					1,
+					[
+						"Mountain::Binary::Build::CertificateManager::CertificateInfo",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Binary/Build/DnsCommands/struct.DnsHealthStatus.html" title="struct Mountain::Binary::Build::DnsCommands::DnsHealthStatus">DnsHealthStatus</a>',
+					0,
+					1,
+					["Mountain::Binary::Build::DnsCommands::DnsHealthStatus"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Binary/Build/DnsCommands/struct.DnsResolutionResult.html" title="struct Mountain::Binary::Build::DnsCommands::DnsResolutionResult">DnsResolutionResult</a>',
+					0,
+					1,
+					[
+						"Mountain::Binary::Build::DnsCommands::DnsResolutionResult",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Binary/Build/DnsCommands/struct.DnsServerInfo.html" title="struct Mountain::Binary::Build::DnsCommands::DnsServerInfo">DnsServerInfo</a>',
+					0,
+					1,
+					["Mountain::Binary::Build::DnsCommands::DnsServerInfo"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Binary/Build/DnsCommands/struct.ForwardAllowList.html" title="struct Mountain::Binary::Build::DnsCommands::ForwardAllowList">ForwardAllowList</a>',
+					0,
+					1,
+					["Mountain::Binary::Build::DnsCommands::ForwardAllowList"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Binary/Build/DnsCommands/struct.ZoneInfo.html" title="struct Mountain::Binary::Build::DnsCommands::ZoneInfo">ZoneInfo</a>',
+					0,
+					1,
+					["Mountain::Binary::Build::DnsCommands::ZoneInfo"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Binary/Build/DnsCommands/struct.ZoneRecord.html" title="struct Mountain::Binary::Build::DnsCommands::ZoneRecord">ZoneRecord</a>',
+					0,
+					1,
+					["Mountain::Binary::Build::DnsCommands::ZoneRecord"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Binary/Build/Scheme/struct.CacheEntry.html" title="struct Mountain::Binary::Build::Scheme::CacheEntry">CacheEntry</a>',
+					0,
+					1,
+					["Mountain::Binary::Build::Scheme::CacheEntry"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Binary/Build/Scheme/struct.DnsPort.html" title="struct Mountain::Binary::Build::Scheme::DnsPort">DnsPort</a>',
+					0,
+					1,
+					["Mountain::Binary::Build::Scheme::DnsPort"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Binary/Build/ServiceRegistry/struct.LocalService.html" title="struct Mountain::Binary::Build::ServiceRegistry::LocalService">LocalService</a>',
+					0,
+					1,
+					["Mountain::Binary::Build::ServiceRegistry::LocalService"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Binary/Build/ServiceRegistry/struct.ServiceRegistry.html" title="struct Mountain::Binary::Build::ServiceRegistry::ServiceRegistry">ServiceRegistry</a>',
+					0,
+					1,
+					[
+						"Mountain::Binary::Build::ServiceRegistry::ServiceRegistry",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Binary/Build/TlsCommands/struct.CertificateGenerationResult.html" title="struct Mountain::Binary::Build::TlsCommands::CertificateGenerationResult">CertificateGenerationResult</a>',
+					0,
+					1,
+					[
+						"Mountain::Binary::Build::TlsCommands::CertificateGenerationResult",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Binary/Build/TlsCommands/struct.CertificateStatus.html" title="struct Mountain::Binary::Build::TlsCommands::CertificateStatus">CertificateStatus</a>',
+					0,
+					1,
+					["Mountain::Binary::Build::TlsCommands::CertificateStatus"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Binary/Initialize/RuntimeBuild/struct.SchedulerConfig.html" title="struct Mountain::Binary::Initialize::RuntimeBuild::SchedulerConfig">SchedulerConfig</a>',
+					0,
+					1,
+					[
+						"Mountain::Binary::Initialize::RuntimeBuild::SchedulerConfig",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Binary/Initialize/StateBuild/struct.StateBuildConfig.html" title="struct Mountain::Binary::Initialize::StateBuild::StateBuildConfig">StateBuildConfig</a>',
+					0,
+					1,
+					[
+						"Mountain::Binary::Initialize::StateBuild::StateBuildConfig",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Command/Hover/Interface/struct.HoverRequest.html" title="struct Mountain::Command::Hover::Interface::HoverRequest">HoverRequest</a>',
+					0,
+					1,
+					["Mountain::Command::Hover::Interface::HoverRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Command/Hover/Interface/struct.HoverResponse.html" title="struct Mountain::Command::Hover::Interface::HoverResponse">HoverResponse</a>',
+					0,
+					1,
+					["Mountain::Command::Hover::Interface::HoverResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Command/Hover/Interface/struct.Position.html" title="struct Mountain::Command::Hover::Interface::Position">Position</a>',
+					0,
+					1,
+					["Mountain::Command::Hover::Interface::Position"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Command/Hover/Interface/struct.Range.html" title="struct Mountain::Command::Hover::Interface::Range">Range</a>',
+					0,
+					1,
+					["Mountain::Command::Hover::Interface::Range"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Environment/KeybindingProvider/struct.KeybindingRule.html" title="struct Mountain::Environment::KeybindingProvider::KeybindingRule">KeybindingRule</a>',
+					0,
+					1,
+					[
+						"Mountain::Environment::KeybindingProvider::KeybindingRule",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Environment/SearchProvider/struct.FileMatch.html" title="struct Mountain::Environment::SearchProvider::FileMatch">FileMatch</a>',
+					0,
+					1,
+					["Mountain::Environment::SearchProvider::FileMatch"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Environment/SearchProvider/struct.PerFileSink.html" title="struct Mountain::Environment::SearchProvider::PerFileSink">PerFileSink</a>',
+					0,
+					1,
+					["Mountain::Environment::SearchProvider::PerFileSink"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Environment/SearchProvider/struct.TextMatch.html" title="struct Mountain::Environment::SearchProvider::TextMatch">TextMatch</a>',
+					0,
+					1,
+					["Mountain::Environment::SearchProvider::TextMatch"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Environment/SearchProvider/struct.TextSearchQuery.html" title="struct Mountain::Environment::SearchProvider::TextSearchQuery">TextSearchQuery</a>',
+					0,
+					1,
+					["Mountain::Environment::SearchProvider::TextSearchQuery"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Environment/TestProvider/struct.TestControllerState.html" title="struct Mountain::Environment::TestProvider::TestControllerState">TestControllerState</a>',
+					0,
+					1,
+					[
+						"Mountain::Environment::TestProvider::TestControllerState",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Environment/TestProvider/struct.TestProviderState.html" title="struct Mountain::Environment::TestProvider::TestProviderState">TestProviderState</a>',
+					0,
+					1,
+					["Mountain::Environment::TestProvider::TestProviderState"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Environment/TestProvider/struct.TestResult.html" title="struct Mountain::Environment::TestProvider::TestResult">TestResult</a>',
+					0,
+					1,
+					["Mountain::Environment::TestProvider::TestResult"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Environment/TestProvider/struct.TestRun.html" title="struct Mountain::Environment::TestProvider::TestRun">TestRun</a>',
+					0,
+					1,
+					["Mountain::Environment::TestProvider::TestRun"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Environment/WebviewProvider/messaging/struct.WebviewMessage.html" title="struct Mountain::Environment::WebviewProvider::messaging::WebviewMessage">WebviewMessage</a>',
+					0,
+					1,
+					[
+						"Mountain::Environment::WebviewProvider::messaging::WebviewMessage",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Environment/WebviewProvider/struct.WebviewMessage.html" title="struct Mountain::Environment::WebviewProvider::WebviewMessage">WebviewMessage</a>',
+					0,
+					1,
+					["Mountain::Environment::WebviewProvider::WebviewMessage"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Error/CoreError/struct.ErrorContext.html" title="struct Mountain::Error::CoreError::ErrorContext">ErrorContext</a>',
+					0,
+					1,
+					["Mountain::Error::CoreError::ErrorContext"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Error/CoreError/struct.MountainError.html" title="struct Mountain::Error::CoreError::MountainError">MountainError</a>',
+					0,
+					1,
+					["Mountain::Error::CoreError::MountainError"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/AdvancedFeatures/struct.CachedMessage.html" title="struct Mountain::IPC::AdvancedFeatures::CachedMessage">CachedMessage</a>',
+					0,
+					1,
+					["Mountain::IPC::AdvancedFeatures::CachedMessage"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/AdvancedFeatures/struct.CollaborationPermissions.html" title="struct Mountain::IPC::AdvancedFeatures::CollaborationPermissions">CollaborationPermissions</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::AdvancedFeatures::CollaborationPermissions",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/AdvancedFeatures/struct.CollaborationSession.html" title="struct Mountain::IPC::AdvancedFeatures::CollaborationSession">CollaborationSession</a>',
+					0,
+					1,
+					["Mountain::IPC::AdvancedFeatures::CollaborationSession"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/AdvancedFeatures/struct.MessageCache.html" title="struct Mountain::IPC::AdvancedFeatures::MessageCache">MessageCache</a>',
+					0,
+					1,
+					["Mountain::IPC::AdvancedFeatures::MessageCache"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/AdvancedFeatures/struct.PerformanceStats.html" title="struct Mountain::IPC::AdvancedFeatures::PerformanceStats">PerformanceStats</a>',
+					0,
+					1,
+					["Mountain::IPC::AdvancedFeatures::PerformanceStats"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Common/ConnectionStatus/struct.ConnectionStatus.html" title="struct Mountain::IPC::Common::ConnectionStatus::ConnectionStatus">ConnectionStatus</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::Common::ConnectionStatus::ConnectionStatus",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Common/HealthStatus/struct.HealthMonitor.html" title="struct Mountain::IPC::Common::HealthStatus::HealthMonitor">HealthMonitor</a>',
+					0,
+					1,
+					["Mountain::IPC::Common::HealthStatus::HealthMonitor"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Common/MessageType/struct.IPCCommand.html" title="struct Mountain::IPC::Common::MessageType::IPCCommand">IPCCommand</a>',
+					0,
+					1,
+					["Mountain::IPC::Common::MessageType::IPCCommand"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Common/MessageType/struct.IPCMessage.html" title="struct Mountain::IPC::Common::MessageType::IPCMessage">IPCMessage</a>',
+					0,
+					1,
+					["Mountain::IPC::Common::MessageType::IPCMessage"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Common/MessageType/struct.IPCResponse.html" title="struct Mountain::IPC::Common::MessageType::IPCResponse">IPCResponse</a>',
+					0,
+					1,
+					["Mountain::IPC::Common::MessageType::IPCResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Common/PerformanceMetrics/struct.PerformanceMetrics.html" title="struct Mountain::IPC::Common::PerformanceMetrics::PerformanceMetrics">PerformanceMetrics</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::Common::PerformanceMetrics::PerformanceMetrics",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Common/PerformanceMetrics/struct.ThroughputMetrics.html" title="struct Mountain::IPC::Common::PerformanceMetrics::ThroughputMetrics">ThroughputMetrics</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::Common::PerformanceMetrics::ThroughputMetrics",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Common/ServiceInfo/struct.ServiceEndpoint.html" title="struct Mountain::IPC::Common::ServiceInfo::ServiceEndpoint">ServiceEndpoint</a>',
+					0,
+					1,
+					["Mountain::IPC::Common::ServiceInfo::ServiceEndpoint"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Common/ServiceInfo/struct.ServiceInfo.html" title="struct Mountain::IPC::Common::ServiceInfo::ServiceInfo">ServiceInfo</a>',
+					0,
+					1,
+					["Mountain::IPC::Common::ServiceInfo::ServiceInfo"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Common/ServiceInfo/struct.ServicePerformance.html" title="struct Mountain::IPC::Common::ServiceInfo::ServicePerformance">ServicePerformance</a>',
+					0,
+					1,
+					["Mountain::IPC::Common::ServiceInfo::ServicePerformance"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Common/ServiceInfo/struct.ServiceRegistry.html" title="struct Mountain::IPC::Common::ServiceInfo::ServiceRegistry">ServiceRegistry</a>',
+					0,
+					1,
+					["Mountain::IPC::Common::ServiceInfo::ServiceRegistry"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/ConfigurationBridge/struct.ConfigurationStatus.html" title="struct Mountain::IPC::ConfigurationBridge::ConfigurationStatus">ConfigurationStatus</a>',
+					0,
+					1,
+					["Mountain::IPC::ConfigurationBridge::ConfigurationStatus"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Connection/Health/struct.HealthChecker.html" title="struct Mountain::IPC::Connection::Health::HealthChecker">HealthChecker</a>',
+					0,
+					1,
+					["Mountain::IPC::Connection::Health::HealthChecker"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Connection/Types/struct.ConnectionHandle.html" title="struct Mountain::IPC::Connection::Types::ConnectionHandle">ConnectionHandle</a>',
+					0,
+					1,
+					["Mountain::IPC::Connection::Types::ConnectionHandle"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Connection/Types/struct.ConnectionStats.html" title="struct Mountain::IPC::Connection::Types::ConnectionStats">ConnectionStats</a>',
+					0,
+					1,
+					["Mountain::IPC::Connection::Types::ConnectionStats"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Encryption/MessageCompressor/struct.MessageCompressor.html" title="struct Mountain::IPC::Encryption::MessageCompressor::MessageCompressor">MessageCompressor</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::Encryption::MessageCompressor::MessageCompressor",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Encryption/SecureChannel/struct.EncryptedMessage.html" title="struct Mountain::IPC::Encryption::SecureChannel::EncryptedMessage">EncryptedMessage</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::Encryption::SecureChannel::EncryptedMessage",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Encryption/SecureChannel/struct.SecureMessageChannel.html" title="struct Mountain::IPC::Encryption::SecureChannel::SecureMessageChannel">SecureMessageChannel</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::Encryption::SecureChannel::SecureMessageChannel",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Enhanced/ConnectionPool/struct.ConnectionHandle.html" title="struct Mountain::IPC::Enhanced::ConnectionPool::ConnectionHandle">ConnectionHandle</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::Enhanced::ConnectionPool::ConnectionHandle",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Enhanced/ConnectionPool/struct.ConnectionHealthChecker.html" title="struct Mountain::IPC::Enhanced::ConnectionPool::ConnectionHealthChecker">ConnectionHealthChecker</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::Enhanced::ConnectionPool::ConnectionHealthChecker",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Enhanced/ConnectionPool/struct.PoolConfig.html" title="struct Mountain::IPC::Enhanced::ConnectionPool::PoolConfig">PoolConfig</a>',
+					0,
+					1,
+					["Mountain::IPC::Enhanced::ConnectionPool::PoolConfig"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Enhanced/ConnectionPool/struct.PoolStats.html" title="struct Mountain::IPC::Enhanced::ConnectionPool::PoolStats">PoolStats</a>',
+					0,
+					1,
+					["Mountain::IPC::Enhanced::ConnectionPool::PoolStats"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Enhanced/MessageCompressor/struct.BatchConfig.html" title="struct Mountain::IPC::Enhanced::MessageCompressor::BatchConfig">BatchConfig</a>',
+					0,
+					1,
+					["Mountain::IPC::Enhanced::MessageCompressor::BatchConfig"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Enhanced/MessageCompressor/struct.BatchStats.html" title="struct Mountain::IPC::Enhanced::MessageCompressor::BatchStats">BatchStats</a>',
+					0,
+					1,
+					["Mountain::IPC::Enhanced::MessageCompressor::BatchStats"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Enhanced/MessageCompressor/struct.CompressedBatch.html" title="struct Mountain::IPC::Enhanced::MessageCompressor::CompressedBatch">CompressedBatch</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::Enhanced::MessageCompressor::CompressedBatch",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Enhanced/MessageCompressor/struct.CompressionInfo.html" title="struct Mountain::IPC::Enhanced::MessageCompressor::CompressionInfo">CompressionInfo</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::Enhanced::MessageCompressor::CompressionInfo",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Enhanced/MessageCompressor/struct.MessageCompressor.html" title="struct Mountain::IPC::Enhanced::MessageCompressor::MessageCompressor">MessageCompressor</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::Enhanced::MessageCompressor::MessageCompressor",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Enhanced/PerformanceDashboard/struct.DashboardConfig.html" title="struct Mountain::IPC::Enhanced::PerformanceDashboard::DashboardConfig">DashboardConfig</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::Enhanced::PerformanceDashboard::DashboardConfig",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Enhanced/PerformanceDashboard/struct.DashboardStatistics.html" title="struct Mountain::IPC::Enhanced::PerformanceDashboard::DashboardStatistics">DashboardStatistics</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::Enhanced::PerformanceDashboard::DashboardStatistics",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Enhanced/PerformanceDashboard/struct.PerformanceAlert.html" title="struct Mountain::IPC::Enhanced::PerformanceDashboard::PerformanceAlert">PerformanceAlert</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::Enhanced::PerformanceDashboard::PerformanceAlert",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Enhanced/PerformanceDashboard/struct.PerformanceMetric.html" title="struct Mountain::IPC::Enhanced::PerformanceDashboard::PerformanceMetric">PerformanceMetric</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::Enhanced::PerformanceDashboard::PerformanceMetric",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Enhanced/PerformanceDashboard/struct.TraceLog.html" title="struct Mountain::IPC::Enhanced::PerformanceDashboard::TraceLog">TraceLog</a>',
+					0,
+					1,
+					["Mountain::IPC::Enhanced::PerformanceDashboard::TraceLog"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Enhanced/PerformanceDashboard/struct.TraceSpan.html" title="struct Mountain::IPC::Enhanced::PerformanceDashboard::TraceSpan">TraceSpan</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::Enhanced::PerformanceDashboard::TraceSpan",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Enhanced/SecureMessageChannel/struct.EncryptedMessage.html" title="struct Mountain::IPC::Enhanced::SecureMessageChannel::EncryptedMessage">EncryptedMessage</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::Enhanced::SecureMessageChannel::EncryptedMessage",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Enhanced/SecureMessageChannel/struct.EncryptionKey.html" title="struct Mountain::IPC::Enhanced::SecureMessageChannel::EncryptionKey">EncryptionKey</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::Enhanced::SecureMessageChannel::EncryptionKey",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Enhanced/SecureMessageChannel/struct.SecurityConfig.html" title="struct Mountain::IPC::Enhanced::SecureMessageChannel::SecurityConfig">SecurityConfig</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::Enhanced::SecureMessageChannel::SecurityConfig",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Enhanced/SecureMessageChannel/struct.SecurityStats.html" title="struct Mountain::IPC::Enhanced::SecureMessageChannel::SecurityStats">SecurityStats</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::Enhanced::SecureMessageChannel::SecurityStats",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Enhanced/struct.EnhancedIPCStats.html" title="struct Mountain::IPC::Enhanced::EnhancedIPCStats">EnhancedIPCStats</a>',
+					0,
+					1,
+					["Mountain::IPC::Enhanced::EnhancedIPCStats"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Message/Types/struct.SimpleConnectionStatus.html" title="struct Mountain::IPC::Message::Types::SimpleConnectionStatus">SimpleConnectionStatus</a>',
+					0,
+					1,
+					["Mountain::IPC::Message::Types::SimpleConnectionStatus"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Message/Types/struct.TauriIPCMessage.html" title="struct Mountain::IPC::Message::Types::TauriIPCMessage">TauriIPCMessage</a>',
+					0,
+					1,
+					["Mountain::IPC::Message::Types::TauriIPCMessage"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Permission/Role/ManageRole/struct.Permission.html" title="struct Mountain::IPC::Permission::Role::ManageRole::Permission">Permission</a>',
+					0,
+					1,
+					["Mountain::IPC::Permission::Role::ManageRole::Permission"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Permission/Role/ManageRole/struct.Role.html" title="struct Mountain::IPC::Permission::Role::ManageRole::Role">Role</a>',
+					0,
+					1,
+					["Mountain::IPC::Permission::Role::ManageRole::Role"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Permission/Validate/ValidatePermission/struct.SecurityContext.html" title="struct Mountain::IPC::Permission::Validate::ValidatePermission::SecurityContext">SecurityContext</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::Permission::Validate::ValidatePermission::SecurityContext",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Security/Permission/struct.Permission.html" title="struct Mountain::IPC::Security::Permission::Permission">Permission</a>',
+					0,
+					1,
+					["Mountain::IPC::Security::Permission::Permission"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Security/PermissionManager/struct.SecurityContext.html" title="struct Mountain::IPC::Security::PermissionManager::SecurityContext">SecurityContext</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::Security::PermissionManager::SecurityContext",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Security/PermissionManager/struct.SecurityEvent.html" title="struct Mountain::IPC::Security::PermissionManager::SecurityEvent">SecurityEvent</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::Security::PermissionManager::SecurityEvent",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Security/Role/struct.Role.html" title="struct Mountain::IPC::Security::Role::Role">Role</a>',
+					0,
+					1,
+					["Mountain::IPC::Security::Role::Role"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/StatusReporter/struct.ComprehensiveStatusReport.html" title="struct Mountain::IPC::StatusReporter::ComprehensiveStatusReport">ComprehensiveStatusReport</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::StatusReporter::ComprehensiveStatusReport",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/StatusReporter/struct.ConnectionStatus.html" title="struct Mountain::IPC::StatusReporter::ConnectionStatus">ConnectionStatus</a>',
+					0,
+					1,
+					["Mountain::IPC::StatusReporter::ConnectionStatus"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/StatusReporter/struct.HealthIssue.html" title="struct Mountain::IPC::StatusReporter::HealthIssue">HealthIssue</a>',
+					0,
+					1,
+					["Mountain::IPC::StatusReporter::HealthIssue"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/StatusReporter/struct.HealthMonitor.html" title="struct Mountain::IPC::StatusReporter::HealthMonitor">HealthMonitor</a>',
+					0,
+					1,
+					["Mountain::IPC::StatusReporter::HealthMonitor"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/StatusReporter/struct.IPCStatusReport.html" title="struct Mountain::IPC::StatusReporter::IPCStatusReport">IPCStatusReport</a>',
+					0,
+					1,
+					["Mountain::IPC::StatusReporter::IPCStatusReport"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/StatusReporter/struct.MessageStats.html" title="struct Mountain::IPC::StatusReporter::MessageStats">MessageStats</a>',
+					0,
+					1,
+					["Mountain::IPC::StatusReporter::MessageStats"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/StatusReporter/struct.PerformanceMetrics.html" title="struct Mountain::IPC::StatusReporter::PerformanceMetrics">PerformanceMetrics</a>',
+					0,
+					1,
+					["Mountain::IPC::StatusReporter::PerformanceMetrics"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/StatusReporter/struct.ServiceInfo.html" title="struct Mountain::IPC::StatusReporter::ServiceInfo">ServiceInfo</a>',
+					0,
+					1,
+					["Mountain::IPC::StatusReporter::ServiceInfo"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/StatusReporter/struct.ServiceMetrics.html" title="struct Mountain::IPC::StatusReporter::ServiceMetrics">ServiceMetrics</a>',
+					0,
+					1,
+					["Mountain::IPC::StatusReporter::ServiceMetrics"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/StatusReporter/struct.ServiceRegistry.html" title="struct Mountain::IPC::StatusReporter::ServiceRegistry">ServiceRegistry</a>',
+					0,
+					1,
+					["Mountain::IPC::StatusReporter::ServiceRegistry"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/TauriIPCServer_Old/struct.ConnectionHandle.html" title="struct Mountain::IPC::TauriIPCServer_Old::ConnectionHandle">ConnectionHandle</a>',
+					0,
+					1,
+					["Mountain::IPC::TauriIPCServer_Old::ConnectionHandle"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/TauriIPCServer_Old/struct.ConnectionHealthChecker.html" title="struct Mountain::IPC::TauriIPCServer_Old::ConnectionHealthChecker">ConnectionHealthChecker</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::TauriIPCServer_Old::ConnectionHealthChecker",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/TauriIPCServer_Old/struct.ConnectionStats.html" title="struct Mountain::IPC::TauriIPCServer_Old::ConnectionStats">ConnectionStats</a>',
+					0,
+					1,
+					["Mountain::IPC::TauriIPCServer_Old::ConnectionStats"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/TauriIPCServer_Old/struct.ConnectionStatus.html" title="struct Mountain::IPC::TauriIPCServer_Old::ConnectionStatus">ConnectionStatus</a>',
+					0,
+					1,
+					["Mountain::IPC::TauriIPCServer_Old::ConnectionStatus"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/TauriIPCServer_Old/struct.EncryptedMessage.html" title="struct Mountain::IPC::TauriIPCServer_Old::EncryptedMessage">EncryptedMessage</a>',
+					0,
+					1,
+					["Mountain::IPC::TauriIPCServer_Old::EncryptedMessage"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/TauriIPCServer_Old/struct.MessageCompressor.html" title="struct Mountain::IPC::TauriIPCServer_Old::MessageCompressor">MessageCompressor</a>',
+					0,
+					1,
+					["Mountain::IPC::TauriIPCServer_Old::MessageCompressor"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/TauriIPCServer_Old/struct.Permission.html" title="struct Mountain::IPC::TauriIPCServer_Old::Permission">Permission</a>',
+					0,
+					1,
+					["Mountain::IPC::TauriIPCServer_Old::Permission"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/TauriIPCServer_Old/struct.Role.html" title="struct Mountain::IPC::TauriIPCServer_Old::Role">Role</a>',
+					0,
+					1,
+					["Mountain::IPC::TauriIPCServer_Old::Role"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/TauriIPCServer_Old/struct.SecureMessageChannel.html" title="struct Mountain::IPC::TauriIPCServer_Old::SecureMessageChannel">SecureMessageChannel</a>',
+					0,
+					1,
+					["Mountain::IPC::TauriIPCServer_Old::SecureMessageChannel"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/TauriIPCServer_Old/struct.SecurityContext.html" title="struct Mountain::IPC::TauriIPCServer_Old::SecurityContext">SecurityContext</a>',
+					0,
+					1,
+					["Mountain::IPC::TauriIPCServer_Old::SecurityContext"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/TauriIPCServer_Old/struct.SecurityEvent.html" title="struct Mountain::IPC::TauriIPCServer_Old::SecurityEvent">SecurityEvent</a>',
+					0,
+					1,
+					["Mountain::IPC::TauriIPCServer_Old::SecurityEvent"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/TauriIPCServer_Old/struct.TauriIPCMessage.html" title="struct Mountain::IPC::TauriIPCServer_Old::TauriIPCMessage">TauriIPCMessage</a>',
+					0,
+					1,
+					["Mountain::IPC::TauriIPCServer_Old::TauriIPCMessage"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindAdvancedSync/struct.DocumentChange.html" title="struct Mountain::IPC::WindAdvancedSync::DocumentChange">DocumentChange</a>',
+					0,
+					1,
+					["Mountain::IPC::WindAdvancedSync::DocumentChange"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindAdvancedSync/struct.DocumentSynchronization.html" title="struct Mountain::IPC::WindAdvancedSync::DocumentSynchronization">DocumentSynchronization</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::WindAdvancedSync::DocumentSynchronization",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindAdvancedSync/struct.GridLayout.html" title="struct Mountain::IPC::WindAdvancedSync::GridLayout">GridLayout</a>',
+					0,
+					1,
+					["Mountain::IPC::WindAdvancedSync::GridLayout"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindAdvancedSync/struct.LayoutState.html" title="struct Mountain::IPC::WindAdvancedSync::LayoutState">LayoutState</a>',
+					0,
+					1,
+					["Mountain::IPC::WindAdvancedSync::LayoutState"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindAdvancedSync/struct.RealTimeUpdate.html" title="struct Mountain::IPC::WindAdvancedSync::RealTimeUpdate">RealTimeUpdate</a>',
+					0,
+					1,
+					["Mountain::IPC::WindAdvancedSync::RealTimeUpdate"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindAdvancedSync/struct.RealTimeUpdateManager.html" title="struct Mountain::IPC::WindAdvancedSync::RealTimeUpdateManager">RealTimeUpdateManager</a>',
+					0,
+					1,
+					["Mountain::IPC::WindAdvancedSync::RealTimeUpdateManager"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindAdvancedSync/struct.SyncStatus.html" title="struct Mountain::IPC::WindAdvancedSync::SyncStatus">SyncStatus</a>',
+					0,
+					1,
+					["Mountain::IPC::WindAdvancedSync::SyncStatus"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindAdvancedSync/struct.SynchronizedDocument.html" title="struct Mountain::IPC::WindAdvancedSync::SynchronizedDocument">SynchronizedDocument</a>',
+					0,
+					1,
+					["Mountain::IPC::WindAdvancedSync::SynchronizedDocument"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindAdvancedSync/struct.UIStateSynchronization.html" title="struct Mountain::IPC::WindAdvancedSync::UIStateSynchronization">UIStateSynchronization</a>',
+					0,
+					1,
+					["Mountain::IPC::WindAdvancedSync::UIStateSynchronization"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindAdvancedSync/struct.ViewState.html" title="struct Mountain::IPC::WindAdvancedSync::ViewState">ViewState</a>',
+					0,
+					1,
+					["Mountain::IPC::WindAdvancedSync::ViewState"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindAirCommands/struct.AirMetricsDTO.html" title="struct Mountain::IPC::WindAirCommands::AirMetricsDTO">AirMetricsDTO</a>',
+					0,
+					1,
+					["Mountain::IPC::WindAirCommands::AirMetricsDTO"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindAirCommands/struct.AirServiceStatusDTO.html" title="struct Mountain::IPC::WindAirCommands::AirServiceStatusDTO">AirServiceStatusDTO</a>',
+					0,
+					1,
+					["Mountain::IPC::WindAirCommands::AirServiceStatusDTO"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindAirCommands/struct.AuthResponseDTO.html" title="struct Mountain::IPC::WindAirCommands::AuthResponseDTO">AuthResponseDTO</a>',
+					0,
+					1,
+					["Mountain::IPC::WindAirCommands::AuthResponseDTO"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindAirCommands/struct.DownloadResultDTO.html" title="struct Mountain::IPC::WindAirCommands::DownloadResultDTO">DownloadResultDTO</a>',
+					0,
+					1,
+					["Mountain::IPC::WindAirCommands::DownloadResultDTO"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindAirCommands/struct.FileResultDTO.html" title="struct Mountain::IPC::WindAirCommands::FileResultDTO">FileResultDTO</a>',
+					0,
+					1,
+					["Mountain::IPC::WindAirCommands::FileResultDTO"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindAirCommands/struct.IndexResultDTO.html" title="struct Mountain::IPC::WindAirCommands::IndexResultDTO">IndexResultDTO</a>',
+					0,
+					1,
+					["Mountain::IPC::WindAirCommands::IndexResultDTO"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindAirCommands/struct.SearchResultsDTO.html" title="struct Mountain::IPC::WindAirCommands::SearchResultsDTO">SearchResultsDTO</a>',
+					0,
+					1,
+					["Mountain::IPC::WindAirCommands::SearchResultsDTO"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindAirCommands/struct.UpdateInfoDTO.html" title="struct Mountain::IPC::WindAirCommands::UpdateInfoDTO">UpdateInfoDTO</a>',
+					0,
+					1,
+					["Mountain::IPC::WindAirCommands::UpdateInfoDTO"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindServiceAdapters/struct.FileToDiff.html" title="struct Mountain::IPC::WindServiceAdapters::FileToDiff">FileToDiff</a>',
+					0,
+					1,
+					["Mountain::IPC::WindServiceAdapters::FileToDiff"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindServiceAdapters/struct.FileToOpenOrCreate.html" title="struct Mountain::IPC::WindServiceAdapters::FileToOpenOrCreate">FileToOpenOrCreate</a>',
+					0,
+					1,
+					["Mountain::IPC::WindServiceAdapters::FileToOpenOrCreate"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindServiceAdapters/struct.FilesToWait.html" title="struct Mountain::IPC::WindServiceAdapters::FilesToWait">FilesToWait</a>',
+					0,
+					1,
+					["Mountain::IPC::WindServiceAdapters::FilesToWait"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindServiceAdapters/struct.Logger.html" title="struct Mountain::IPC::WindServiceAdapters::Logger">Logger</a>',
+					0,
+					1,
+					["Mountain::IPC::WindServiceAdapters::Logger"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindServiceAdapters/struct.MountainSandboxConfiguration.html" title="struct Mountain::IPC::WindServiceAdapters::MountainSandboxConfiguration">MountainSandboxConfiguration</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::WindServiceAdapters::MountainSandboxConfiguration",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindServiceAdapters/struct.NLSConfiguration.html" title="struct Mountain::IPC::WindServiceAdapters::NLSConfiguration">NLSConfiguration</a>',
+					0,
+					1,
+					["Mountain::IPC::WindServiceAdapters::NLSConfiguration"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindServiceAdapters/struct.OsInfo.html" title="struct Mountain::IPC::WindServiceAdapters::OsInfo">OsInfo</a>',
+					0,
+					1,
+					["Mountain::IPC::WindServiceAdapters::OsInfo"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindServiceAdapters/struct.ProductConfiguration.html" title="struct Mountain::IPC::WindServiceAdapters::ProductConfiguration">ProductConfiguration</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::WindServiceAdapters::ProductConfiguration",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindServiceAdapters/struct.Profiles.html" title="struct Mountain::IPC::WindServiceAdapters::Profiles">Profiles</a>',
+					0,
+					1,
+					["Mountain::IPC::WindServiceAdapters::Profiles"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindServiceAdapters/struct.Versions.html" title="struct Mountain::IPC::WindServiceAdapters::Versions">Versions</a>',
+					0,
+					1,
+					["Mountain::IPC::WindServiceAdapters::Versions"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindServiceAdapters/struct.WindDesktopConfiguration.html" title="struct Mountain::IPC::WindServiceAdapters::WindDesktopConfiguration">WindDesktopConfiguration</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::WindServiceAdapters::WindDesktopConfiguration",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/WindServiceAdapters/struct.WindEnvironmentService.html" title="struct Mountain::IPC::WindServiceAdapters::WindEnvironmentService">WindEnvironmentService</a>',
+					0,
+					1,
+					[
+						"Mountain::IPC::WindServiceAdapters::WindEnvironmentService",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ProcessManagement/CocoonManagement/struct.COCOON_HEALTH.html" title="struct Mountain::ProcessManagement::CocoonManagement::COCOON_HEALTH">COCOON_HEALTH</a>',
+					0,
+					1,
+					[
+						"Mountain::ProcessManagement::CocoonManagement::COCOON_HEALTH",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ProcessManagement/CocoonManagement/struct.COCOON_STATE.html" title="struct Mountain::ProcessManagement::CocoonManagement::COCOON_STATE">COCOON_STATE</a>',
+					0,
+					1,
+					[
+						"Mountain::ProcessManagement::CocoonManagement::COCOON_STATE",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/RPC/commands/struct.Command.html" title="struct Mountain::RPC::commands::Command">Command</a>',
+					0,
+					1,
+					["Mountain::RPC::commands::Command"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/RPC/commands/struct.CommandService.html" title="struct Mountain::RPC::commands::CommandService">CommandService</a>',
+					0,
+					1,
+					["Mountain::RPC::commands::CommandService"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/RPC/commands/struct.CommandValidation.html" title="struct Mountain::RPC::commands::CommandValidation">CommandValidation</a>',
+					0,
+					1,
+					["Mountain::RPC::commands::CommandValidation"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/RPC/configuration/struct.ConfigurationService.html" title="struct Mountain::RPC::configuration::ConfigurationService">ConfigurationService</a>',
+					0,
+					1,
+					["Mountain::RPC::configuration::ConfigurationService"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/RPC/configuration/struct.ConfigurationUpdate.html" title="struct Mountain::RPC::configuration::ConfigurationUpdate">ConfigurationUpdate</a>',
+					0,
+					1,
+					["Mountain::RPC::configuration::ConfigurationUpdate"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/RPC/debug/struct.DebugService.html" title="struct Mountain::RPC::debug::DebugService">DebugService</a>',
+					0,
+					1,
+					["Mountain::RPC::debug::DebugService"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/RPC/echo_action/struct.EchoActionServer.html" title="struct Mountain::RPC::echo_action::EchoActionServer">EchoActionServer</a>',
+					0,
+					1,
+					["Mountain::RPC::echo_action::EchoActionServer"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/RPC/processes/struct.ProcessService.html" title="struct Mountain::RPC::processes::ProcessService">ProcessService</a>',
+					0,
+					1,
+					["Mountain::RPC::processes::ProcessService"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/RPC/scm/struct.SCMService.html" title="struct Mountain::RPC::scm::SCMService">SCMService</a>',
+					0,
+					1,
+					["Mountain::RPC::scm::SCMService"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/RPC/telemetry/metrics/struct.ServiceMetrics.html" title="struct Mountain::RPC::telemetry::metrics::ServiceMetrics">ServiceMetrics</a>',
+					0,
+					1,
+					["Mountain::RPC::telemetry::metrics::ServiceMetrics"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/RPC/telemetry/spans/struct.TraceSpan.html" title="struct Mountain::RPC::telemetry::spans::TraceSpan">TraceSpan</a>',
+					0,
+					1,
+					["Mountain::RPC::telemetry::spans::TraceSpan"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/RPC/telemetry/struct.TelemetryService.html" title="struct Mountain::RPC::telemetry::TelemetryService">TelemetryService</a>',
+					0,
+					1,
+					["Mountain::RPC::telemetry::TelemetryService"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/RPC/terminals/struct.TerminalService.html" title="struct Mountain::RPC::terminals::TerminalService">TerminalService</a>',
+					0,
+					1,
+					["Mountain::RPC::terminals::TerminalService"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/RPC/vine/struct.VineConnectionInfo.html" title="struct Mountain::RPC::vine::VineConnectionInfo">VineConnectionInfo</a>',
+					0,
+					1,
+					["Mountain::RPC::vine::VineConnectionInfo"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/RPC/windows/struct.WindowService.html" title="struct Mountain::RPC::windows::WindowService">WindowService</a>',
+					0,
+					1,
+					["Mountain::RPC::windows::WindowService"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/RPC/workspace/struct.TextDocumentInfo.html" title="struct Mountain::RPC::workspace::TextDocumentInfo">TextDocumentInfo</a>',
+					0,
+					1,
+					["Mountain::RPC::workspace::TextDocumentInfo"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/RPC/workspace/struct.WorkspaceFolder.html" title="struct Mountain::RPC::workspace::WorkspaceFolder">WorkspaceFolder</a>',
+					0,
+					1,
+					["Mountain::RPC::workspace::WorkspaceFolder"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/RPC/workspace/struct.WorkspaceService.html" title="struct Mountain::RPC::workspace::WorkspaceService">WorkspaceService</a>',
+					0,
+					1,
+					["Mountain::RPC::workspace::WorkspaceService"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Client/struct.CONNECTION_METADATA.html" title="struct Mountain::Vine::Client::CONNECTION_METADATA">CONNECTION_METADATA</a>',
+					0,
+					1,
+					["Mountain::Vine::Client::CONNECTION_METADATA"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Client/struct.ConnectionMetadata.html" title="struct Mountain::Vine::Client::ConnectionMetadata">ConnectionMetadata</a>',
+					0,
+					1,
+					["Mountain::Vine::Client::ConnectionMetadata"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Client/struct.SIDECAR_CLIENTS.html" title="struct Mountain::Vine::Client::SIDECAR_CLIENTS">SIDECAR_CLIENTS</a>',
+					0,
+					1,
+					["Mountain::Vine::Client::SIDECAR_CLIENTS"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.AppendOutputRequest.html" title="struct Mountain::Vine::Generated::AppendOutputRequest">AppendOutputRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::AppendOutputRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ApplyEditRequest.html" title="struct Mountain::Vine::Generated::ApplyEditRequest">ApplyEditRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ApplyEditRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ApplyEditResponse.html" title="struct Mountain::Vine::Generated::ApplyEditResponse">ApplyEditResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ApplyEditResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.Argument.html" title="struct Mountain::Vine::Generated::Argument">Argument</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::Argument"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.CallHierarchyCall.html" title="struct Mountain::Vine::Generated::CallHierarchyCall">CallHierarchyCall</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::CallHierarchyCall"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.CallHierarchyItem.html" title="struct Mountain::Vine::Generated::CallHierarchyItem">CallHierarchyItem</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::CallHierarchyItem"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.CancelOperationRequest.html" title="struct Mountain::Vine::Generated::CancelOperationRequest">CancelOperationRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::CancelOperationRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ClearOutputRequest.html" title="struct Mountain::Vine::Generated::ClearOutputRequest">ClearOutputRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ClearOutputRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.CloseTerminalRequest.html" title="struct Mountain::Vine::Generated::CloseTerminalRequest">CloseTerminalRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::CloseTerminalRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.CodeAction.html" title="struct Mountain::Vine::Generated::CodeAction">CodeAction</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::CodeAction"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.CodeLens.html" title="struct Mountain::Vine::Generated::CodeLens">CodeLens</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::CodeLens"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.CompletionItem.html" title="struct Mountain::Vine::Generated::CompletionItem">CompletionItem</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::CompletionItem"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.CopyFileRequest.html" title="struct Mountain::Vine::Generated::CopyFileRequest">CopyFileRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::CopyFileRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.CreateDirectoryRequest.html" title="struct Mountain::Vine::Generated::CreateDirectoryRequest">CreateDirectoryRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::CreateDirectoryRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.CreateOutputChannelRequest.html" title="struct Mountain::Vine::Generated::CreateOutputChannelRequest">CreateOutputChannelRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::CreateOutputChannelRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.CreateOutputChannelResponse.html" title="struct Mountain::Vine::Generated::CreateOutputChannelResponse">CreateOutputChannelResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::CreateOutputChannelResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.CreateStatusBarItemRequest.html" title="struct Mountain::Vine::Generated::CreateStatusBarItemRequest">CreateStatusBarItemRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::CreateStatusBarItemRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.CreateStatusBarItemResponse.html" title="struct Mountain::Vine::Generated::CreateStatusBarItemResponse">CreateStatusBarItemResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::CreateStatusBarItemResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.CreateWebviewPanelRequest.html" title="struct Mountain::Vine::Generated::CreateWebviewPanelRequest">CreateWebviewPanelRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::CreateWebviewPanelRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.CreateWebviewPanelResponse.html" title="struct Mountain::Vine::Generated::CreateWebviewPanelResponse">CreateWebviewPanelResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::CreateWebviewPanelResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.DebugConfiguration.html" title="struct Mountain::Vine::Generated::DebugConfiguration">DebugConfiguration</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::DebugConfiguration"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.DeleteFileRequest.html" title="struct Mountain::Vine::Generated::DeleteFileRequest">DeleteFileRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::DeleteFileRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.DeleteSecretRequest.html" title="struct Mountain::Vine::Generated::DeleteSecretRequest">DeleteSecretRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::DeleteSecretRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.DisposeOutputRequest.html" title="struct Mountain::Vine::Generated::DisposeOutputRequest">DisposeOutputRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::DisposeOutputRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.DisposeWebviewPanelRequest.html" title="struct Mountain::Vine::Generated::DisposeWebviewPanelRequest">DisposeWebviewPanelRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::DisposeWebviewPanelRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.DocumentFilter.html" title="struct Mountain::Vine::Generated::DocumentFilter">DocumentFilter</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::DocumentFilter"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.DocumentHighlight.html" title="struct Mountain::Vine::Generated::DocumentHighlight">DocumentHighlight</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::DocumentHighlight"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.DocumentSymbol.html" title="struct Mountain::Vine::Generated::DocumentSymbol">DocumentSymbol</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::DocumentSymbol"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.Empty.html" title="struct Mountain::Vine::Generated::Empty">Empty</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::Empty"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ExecuteCommandRequest.html" title="struct Mountain::Vine::Generated::ExecuteCommandRequest">ExecuteCommandRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ExecuteCommandRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ExecuteCommandResponse.html" title="struct Mountain::Vine::Generated::ExecuteCommandResponse">ExecuteCommandResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ExecuteCommandResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ExecuteTaskRequest.html" title="struct Mountain::Vine::Generated::ExecuteTaskRequest">ExecuteTaskRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ExecuteTaskRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ExecuteTaskResponse.html" title="struct Mountain::Vine::Generated::ExecuteTaskResponse">ExecuteTaskResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ExecuteTaskResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ExtensionInfo.html" title="struct Mountain::Vine::Generated::ExtensionInfo">ExtensionInfo</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ExtensionInfo"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.FindFilesRequest.html" title="struct Mountain::Vine::Generated::FindFilesRequest">FindFilesRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::FindFilesRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.FindFilesResponse.html" title="struct Mountain::Vine::Generated::FindFilesResponse">FindFilesResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::FindFilesResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.FindTextInFilesRequest.html" title="struct Mountain::Vine::Generated::FindTextInFilesRequest">FindTextInFilesRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::FindTextInFilesRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.FindTextInFilesResponse.html" title="struct Mountain::Vine::Generated::FindTextInFilesResponse">FindTextInFilesResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::FindTextInFilesResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.FoldingRange.html" title="struct Mountain::Vine::Generated::FoldingRange">FoldingRange</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::FoldingRange"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.GenericNotification.html" title="struct Mountain::Vine::Generated::GenericNotification">GenericNotification</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::GenericNotification"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.GenericRequest.html" title="struct Mountain::Vine::Generated::GenericRequest">GenericRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::GenericRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.GenericResponse.html" title="struct Mountain::Vine::Generated::GenericResponse">GenericResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::GenericResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.GetAllExtensionsResponse.html" title="struct Mountain::Vine::Generated::GetAllExtensionsResponse">GetAllExtensionsResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::GetAllExtensionsResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.GetAuthenticationSessionRequest.html" title="struct Mountain::Vine::Generated::GetAuthenticationSessionRequest">GetAuthenticationSessionRequest</a>',
+					0,
+					1,
+					[
+						"Mountain::Vine::Generated::GetAuthenticationSessionRequest",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.GetAuthenticationSessionResponse.html" title="struct Mountain::Vine::Generated::GetAuthenticationSessionResponse">GetAuthenticationSessionResponse</a>',
+					0,
+					1,
+					[
+						"Mountain::Vine::Generated::GetAuthenticationSessionResponse",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.GetConfigurationRequest.html" title="struct Mountain::Vine::Generated::GetConfigurationRequest">GetConfigurationRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::GetConfigurationRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.GetConfigurationResponse.html" title="struct Mountain::Vine::Generated::GetConfigurationResponse">GetConfigurationResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::GetConfigurationResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.GetExtensionRequest.html" title="struct Mountain::Vine::Generated::GetExtensionRequest">GetExtensionRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::GetExtensionRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.GetExtensionResponse.html" title="struct Mountain::Vine::Generated::GetExtensionResponse">GetExtensionResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::GetExtensionResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.GetSecretRequest.html" title="struct Mountain::Vine::Generated::GetSecretRequest">GetSecretRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::GetSecretRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.GetSecretResponse.html" title="struct Mountain::Vine::Generated::GetSecretResponse">GetSecretResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::GetSecretResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.GetTreeChildrenRequest.html" title="struct Mountain::Vine::Generated::GetTreeChildrenRequest">GetTreeChildrenRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::GetTreeChildrenRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.GetTreeChildrenResponse.html" title="struct Mountain::Vine::Generated::GetTreeChildrenResponse">GetTreeChildrenResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::GetTreeChildrenResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.GitExecRequest.html" title="struct Mountain::Vine::Generated::GitExecRequest">GitExecRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::GitExecRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.GitExecResponse.html" title="struct Mountain::Vine::Generated::GitExecResponse">GitExecResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::GitExecResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.InitExtensionHostRequest.html" title="struct Mountain::Vine::Generated::InitExtensionHostRequest">InitExtensionHostRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::InitExtensionHostRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.InlayHint.html" title="struct Mountain::Vine::Generated::InlayHint">InlayHint</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::InlayHint"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.Location.html" title="struct Mountain::Vine::Generated::Location">Location</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::Location"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.OnDidReceiveMessageRequest.html" title="struct Mountain::Vine::Generated::OnDidReceiveMessageRequest">OnDidReceiveMessageRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::OnDidReceiveMessageRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.OpenDocumentRequest.html" title="struct Mountain::Vine::Generated::OpenDocumentRequest">OpenDocumentRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::OpenDocumentRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.OpenDocumentResponse.html" title="struct Mountain::Vine::Generated::OpenDocumentResponse">OpenDocumentResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::OpenDocumentResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.OpenExternalRequest.html" title="struct Mountain::Vine::Generated::OpenExternalRequest">OpenExternalRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::OpenExternalRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.OpenTerminalRequest.html" title="struct Mountain::Vine::Generated::OpenTerminalRequest">OpenTerminalRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::OpenTerminalRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ParameterInformation.html" title="struct Mountain::Vine::Generated::ParameterInformation">ParameterInformation</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ParameterInformation"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ParticipateInSaveRequest.html" title="struct Mountain::Vine::Generated::ParticipateInSaveRequest">ParticipateInSaveRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ParticipateInSaveRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ParticipateInSaveResponse.html" title="struct Mountain::Vine::Generated::ParticipateInSaveResponse">ParticipateInSaveResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ParticipateInSaveResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.Position.html" title="struct Mountain::Vine::Generated::Position">Position</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::Position"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.PostWebviewMessageRequest.html" title="struct Mountain::Vine::Generated::PostWebviewMessageRequest">PostWebviewMessageRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::PostWebviewMessageRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideCallHierarchyRequest.html" title="struct Mountain::Vine::Generated::ProvideCallHierarchyRequest">ProvideCallHierarchyRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ProvideCallHierarchyRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideCallHierarchyResponse.html" title="struct Mountain::Vine::Generated::ProvideCallHierarchyResponse">ProvideCallHierarchyResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ProvideCallHierarchyResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideCodeActionsRequest.html" title="struct Mountain::Vine::Generated::ProvideCodeActionsRequest">ProvideCodeActionsRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ProvideCodeActionsRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideCodeActionsResponse.html" title="struct Mountain::Vine::Generated::ProvideCodeActionsResponse">ProvideCodeActionsResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ProvideCodeActionsResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideCodeLensesRequest.html" title="struct Mountain::Vine::Generated::ProvideCodeLensesRequest">ProvideCodeLensesRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ProvideCodeLensesRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideCodeLensesResponse.html" title="struct Mountain::Vine::Generated::ProvideCodeLensesResponse">ProvideCodeLensesResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ProvideCodeLensesResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideCompletionItemsRequest.html" title="struct Mountain::Vine::Generated::ProvideCompletionItemsRequest">ProvideCompletionItemsRequest</a>',
+					0,
+					1,
+					[
+						"Mountain::Vine::Generated::ProvideCompletionItemsRequest",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideCompletionItemsResponse.html" title="struct Mountain::Vine::Generated::ProvideCompletionItemsResponse">ProvideCompletionItemsResponse</a>',
+					0,
+					1,
+					[
+						"Mountain::Vine::Generated::ProvideCompletionItemsResponse",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideDefinitionRequest.html" title="struct Mountain::Vine::Generated::ProvideDefinitionRequest">ProvideDefinitionRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ProvideDefinitionRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideDefinitionResponse.html" title="struct Mountain::Vine::Generated::ProvideDefinitionResponse">ProvideDefinitionResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ProvideDefinitionResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideDocumentFormattingRequest.html" title="struct Mountain::Vine::Generated::ProvideDocumentFormattingRequest">ProvideDocumentFormattingRequest</a>',
+					0,
+					1,
+					[
+						"Mountain::Vine::Generated::ProvideDocumentFormattingRequest",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideDocumentFormattingResponse.html" title="struct Mountain::Vine::Generated::ProvideDocumentFormattingResponse">ProvideDocumentFormattingResponse</a>',
+					0,
+					1,
+					[
+						"Mountain::Vine::Generated::ProvideDocumentFormattingResponse",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideDocumentHighlightsRequest.html" title="struct Mountain::Vine::Generated::ProvideDocumentHighlightsRequest">ProvideDocumentHighlightsRequest</a>',
+					0,
+					1,
+					[
+						"Mountain::Vine::Generated::ProvideDocumentHighlightsRequest",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideDocumentHighlightsResponse.html" title="struct Mountain::Vine::Generated::ProvideDocumentHighlightsResponse">ProvideDocumentHighlightsResponse</a>',
+					0,
+					1,
+					[
+						"Mountain::Vine::Generated::ProvideDocumentHighlightsResponse",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideDocumentRangeFormattingRequest.html" title="struct Mountain::Vine::Generated::ProvideDocumentRangeFormattingRequest">ProvideDocumentRangeFormattingRequest</a>',
+					0,
+					1,
+					[
+						"Mountain::Vine::Generated::ProvideDocumentRangeFormattingRequest",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideDocumentRangeFormattingResponse.html" title="struct Mountain::Vine::Generated::ProvideDocumentRangeFormattingResponse">ProvideDocumentRangeFormattingResponse</a>',
+					0,
+					1,
+					[
+						"Mountain::Vine::Generated::ProvideDocumentRangeFormattingResponse",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideDocumentSymbolsRequest.html" title="struct Mountain::Vine::Generated::ProvideDocumentSymbolsRequest">ProvideDocumentSymbolsRequest</a>',
+					0,
+					1,
+					[
+						"Mountain::Vine::Generated::ProvideDocumentSymbolsRequest",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideDocumentSymbolsResponse.html" title="struct Mountain::Vine::Generated::ProvideDocumentSymbolsResponse">ProvideDocumentSymbolsResponse</a>',
+					0,
+					1,
+					[
+						"Mountain::Vine::Generated::ProvideDocumentSymbolsResponse",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideFoldingRangesRequest.html" title="struct Mountain::Vine::Generated::ProvideFoldingRangesRequest">ProvideFoldingRangesRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ProvideFoldingRangesRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideFoldingRangesResponse.html" title="struct Mountain::Vine::Generated::ProvideFoldingRangesResponse">ProvideFoldingRangesResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ProvideFoldingRangesResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideHoverRequest.html" title="struct Mountain::Vine::Generated::ProvideHoverRequest">ProvideHoverRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ProvideHoverRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideHoverResponse.html" title="struct Mountain::Vine::Generated::ProvideHoverResponse">ProvideHoverResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ProvideHoverResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideInlayHintsRequest.html" title="struct Mountain::Vine::Generated::ProvideInlayHintsRequest">ProvideInlayHintsRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ProvideInlayHintsRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideInlayHintsResponse.html" title="struct Mountain::Vine::Generated::ProvideInlayHintsResponse">ProvideInlayHintsResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ProvideInlayHintsResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideLinkedEditingRangesRequest.html" title="struct Mountain::Vine::Generated::ProvideLinkedEditingRangesRequest">ProvideLinkedEditingRangesRequest</a>',
+					0,
+					1,
+					[
+						"Mountain::Vine::Generated::ProvideLinkedEditingRangesRequest",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideLinkedEditingRangesResponse.html" title="struct Mountain::Vine::Generated::ProvideLinkedEditingRangesResponse">ProvideLinkedEditingRangesResponse</a>',
+					0,
+					1,
+					[
+						"Mountain::Vine::Generated::ProvideLinkedEditingRangesResponse",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideOnTypeFormattingRequest.html" title="struct Mountain::Vine::Generated::ProvideOnTypeFormattingRequest">ProvideOnTypeFormattingRequest</a>',
+					0,
+					1,
+					[
+						"Mountain::Vine::Generated::ProvideOnTypeFormattingRequest",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideOnTypeFormattingResponse.html" title="struct Mountain::Vine::Generated::ProvideOnTypeFormattingResponse">ProvideOnTypeFormattingResponse</a>',
+					0,
+					1,
+					[
+						"Mountain::Vine::Generated::ProvideOnTypeFormattingResponse",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideReferencesRequest.html" title="struct Mountain::Vine::Generated::ProvideReferencesRequest">ProvideReferencesRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ProvideReferencesRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideReferencesResponse.html" title="struct Mountain::Vine::Generated::ProvideReferencesResponse">ProvideReferencesResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ProvideReferencesResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideRenameEditsRequest.html" title="struct Mountain::Vine::Generated::ProvideRenameEditsRequest">ProvideRenameEditsRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ProvideRenameEditsRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideRenameEditsResponse.html" title="struct Mountain::Vine::Generated::ProvideRenameEditsResponse">ProvideRenameEditsResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ProvideRenameEditsResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideSelectionRangesRequest.html" title="struct Mountain::Vine::Generated::ProvideSelectionRangesRequest">ProvideSelectionRangesRequest</a>',
+					0,
+					1,
+					[
+						"Mountain::Vine::Generated::ProvideSelectionRangesRequest",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideSelectionRangesResponse.html" title="struct Mountain::Vine::Generated::ProvideSelectionRangesResponse">ProvideSelectionRangesResponse</a>',
+					0,
+					1,
+					[
+						"Mountain::Vine::Generated::ProvideSelectionRangesResponse",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideSemanticTokensRequest.html" title="struct Mountain::Vine::Generated::ProvideSemanticTokensRequest">ProvideSemanticTokensRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ProvideSemanticTokensRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideSemanticTokensResponse.html" title="struct Mountain::Vine::Generated::ProvideSemanticTokensResponse">ProvideSemanticTokensResponse</a>',
+					0,
+					1,
+					[
+						"Mountain::Vine::Generated::ProvideSemanticTokensResponse",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideSignatureHelpRequest.html" title="struct Mountain::Vine::Generated::ProvideSignatureHelpRequest">ProvideSignatureHelpRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ProvideSignatureHelpRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideSignatureHelpResponse.html" title="struct Mountain::Vine::Generated::ProvideSignatureHelpResponse">ProvideSignatureHelpResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ProvideSignatureHelpResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideTypeHierarchyRequest.html" title="struct Mountain::Vine::Generated::ProvideTypeHierarchyRequest">ProvideTypeHierarchyRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ProvideTypeHierarchyRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideTypeHierarchyResponse.html" title="struct Mountain::Vine::Generated::ProvideTypeHierarchyResponse">ProvideTypeHierarchyResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ProvideTypeHierarchyResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideWorkspaceSymbolsRequest.html" title="struct Mountain::Vine::Generated::ProvideWorkspaceSymbolsRequest">ProvideWorkspaceSymbolsRequest</a>',
+					0,
+					1,
+					[
+						"Mountain::Vine::Generated::ProvideWorkspaceSymbolsRequest",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ProvideWorkspaceSymbolsResponse.html" title="struct Mountain::Vine::Generated::ProvideWorkspaceSymbolsResponse">ProvideWorkspaceSymbolsResponse</a>',
+					0,
+					1,
+					[
+						"Mountain::Vine::Generated::ProvideWorkspaceSymbolsResponse",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.QuickPickItem.html" title="struct Mountain::Vine::Generated::QuickPickItem">QuickPickItem</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::QuickPickItem"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.Range.html" title="struct Mountain::Vine::Generated::Range">Range</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::Range"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ReadFileRequest.html" title="struct Mountain::Vine::Generated::ReadFileRequest">ReadFileRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ReadFileRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ReadFileResponse.html" title="struct Mountain::Vine::Generated::ReadFileResponse">ReadFileResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ReadFileResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ReaddirRequest.html" title="struct Mountain::Vine::Generated::ReaddirRequest">ReaddirRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ReaddirRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ReaddirResponse.html" title="struct Mountain::Vine::Generated::ReaddirResponse">ReaddirResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ReaddirResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.RegisterAuthenticationProviderRequest.html" title="struct Mountain::Vine::Generated::RegisterAuthenticationProviderRequest">RegisterAuthenticationProviderRequest</a>',
+					0,
+					1,
+					[
+						"Mountain::Vine::Generated::RegisterAuthenticationProviderRequest",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.RegisterCommandRequest.html" title="struct Mountain::Vine::Generated::RegisterCommandRequest">RegisterCommandRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::RegisterCommandRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.RegisterDebugAdapterRequest.html" title="struct Mountain::Vine::Generated::RegisterDebugAdapterRequest">RegisterDebugAdapterRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::RegisterDebugAdapterRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.RegisterOnTypeFormattingProviderRequest.html" title="struct Mountain::Vine::Generated::RegisterOnTypeFormattingProviderRequest">RegisterOnTypeFormattingProviderRequest</a>',
+					0,
+					1,
+					[
+						"Mountain::Vine::Generated::RegisterOnTypeFormattingProviderRequest",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.RegisterProviderRequest.html" title="struct Mountain::Vine::Generated::RegisterProviderRequest">RegisterProviderRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::RegisterProviderRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.RegisterScmProviderRequest.html" title="struct Mountain::Vine::Generated::RegisterScmProviderRequest">RegisterScmProviderRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::RegisterScmProviderRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.RegisterSemanticTokensProviderRequest.html" title="struct Mountain::Vine::Generated::RegisterSemanticTokensProviderRequest">RegisterSemanticTokensProviderRequest</a>',
+					0,
+					1,
+					[
+						"Mountain::Vine::Generated::RegisterSemanticTokensProviderRequest",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.RegisterSignatureHelpProviderRequest.html" title="struct Mountain::Vine::Generated::RegisterSignatureHelpProviderRequest">RegisterSignatureHelpProviderRequest</a>',
+					0,
+					1,
+					[
+						"Mountain::Vine::Generated::RegisterSignatureHelpProviderRequest",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.RegisterTaskProviderRequest.html" title="struct Mountain::Vine::Generated::RegisterTaskProviderRequest">RegisterTaskProviderRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::RegisterTaskProviderRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.RegisterTreeViewProviderRequest.html" title="struct Mountain::Vine::Generated::RegisterTreeViewProviderRequest">RegisterTreeViewProviderRequest</a>',
+					0,
+					1,
+					[
+						"Mountain::Vine::Generated::RegisterTreeViewProviderRequest",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.RenameFileRequest.html" title="struct Mountain::Vine::Generated::RenameFileRequest">RenameFileRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::RenameFileRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ReportProgressRequest.html" title="struct Mountain::Vine::Generated::ReportProgressRequest">ReportProgressRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ReportProgressRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ResizeTerminalRequest.html" title="struct Mountain::Vine::Generated::ResizeTerminalRequest">ResizeTerminalRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ResizeTerminalRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.RpcDataPayload.html" title="struct Mountain::Vine::Generated::RpcDataPayload">RpcDataPayload</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::RpcDataPayload"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.RpcError.html" title="struct Mountain::Vine::Generated::RpcError">RpcError</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::RpcError"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.SaveAllRequest.html" title="struct Mountain::Vine::Generated::SaveAllRequest">SaveAllRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::SaveAllRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.SaveAllResponse.html" title="struct Mountain::Vine::Generated::SaveAllResponse">SaveAllResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::SaveAllResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.SelectionRange.html" title="struct Mountain::Vine::Generated::SelectionRange">SelectionRange</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::SelectionRange"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.SetStatusBarTextRequest.html" title="struct Mountain::Vine::Generated::SetStatusBarTextRequest">SetStatusBarTextRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::SetStatusBarTextRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.SetWebviewHtmlRequest.html" title="struct Mountain::Vine::Generated::SetWebviewHtmlRequest">SetWebviewHtmlRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::SetWebviewHtmlRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ShowInputBoxRequest.html" title="struct Mountain::Vine::Generated::ShowInputBoxRequest">ShowInputBoxRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ShowInputBoxRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ShowInputBoxResponse.html" title="struct Mountain::Vine::Generated::ShowInputBoxResponse">ShowInputBoxResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ShowInputBoxResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ShowMessageRequest.html" title="struct Mountain::Vine::Generated::ShowMessageRequest">ShowMessageRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ShowMessageRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ShowMessageResponse.html" title="struct Mountain::Vine::Generated::ShowMessageResponse">ShowMessageResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ShowMessageResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ShowOutputRequest.html" title="struct Mountain::Vine::Generated::ShowOutputRequest">ShowOutputRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ShowOutputRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ShowProgressRequest.html" title="struct Mountain::Vine::Generated::ShowProgressRequest">ShowProgressRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ShowProgressRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ShowProgressResponse.html" title="struct Mountain::Vine::Generated::ShowProgressResponse">ShowProgressResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ShowProgressResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ShowQuickPickRequest.html" title="struct Mountain::Vine::Generated::ShowQuickPickRequest">ShowQuickPickRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ShowQuickPickRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ShowQuickPickResponse.html" title="struct Mountain::Vine::Generated::ShowQuickPickResponse">ShowQuickPickResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ShowQuickPickResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ShowTextDocumentRequest.html" title="struct Mountain::Vine::Generated::ShowTextDocumentRequest">ShowTextDocumentRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ShowTextDocumentRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.ShowTextDocumentResponse.html" title="struct Mountain::Vine::Generated::ShowTextDocumentResponse">ShowTextDocumentResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::ShowTextDocumentResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.SignatureInformation.html" title="struct Mountain::Vine::Generated::SignatureInformation">SignatureInformation</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::SignatureInformation"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.SourceControlResourceState.html" title="struct Mountain::Vine::Generated::SourceControlResourceState">SourceControlResourceState</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::SourceControlResourceState"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.StartDebuggingRequest.html" title="struct Mountain::Vine::Generated::StartDebuggingRequest">StartDebuggingRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::StartDebuggingRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.StartDebuggingResponse.html" title="struct Mountain::Vine::Generated::StartDebuggingResponse">StartDebuggingResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::StartDebuggingResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.StatRequest.html" title="struct Mountain::Vine::Generated::StatRequest">StatRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::StatRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.StatResponse.html" title="struct Mountain::Vine::Generated::StatResponse">StatResponse</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::StatResponse"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.StopDebuggingRequest.html" title="struct Mountain::Vine::Generated::StopDebuggingRequest">StopDebuggingRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::StopDebuggingRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.StoreSecretRequest.html" title="struct Mountain::Vine::Generated::StoreSecretRequest">StoreSecretRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::StoreSecretRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.TaskDefinition.html" title="struct Mountain::Vine::Generated::TaskDefinition">TaskDefinition</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::TaskDefinition"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.TerminalClosedNotification.html" title="struct Mountain::Vine::Generated::TerminalClosedNotification">TerminalClosedNotification</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::TerminalClosedNotification"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.TerminalDataNotification.html" title="struct Mountain::Vine::Generated::TerminalDataNotification">TerminalDataNotification</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::TerminalDataNotification"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.TerminalInputRequest.html" title="struct Mountain::Vine::Generated::TerminalInputRequest">TerminalInputRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::TerminalInputRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.TerminalOpenedNotification.html" title="struct Mountain::Vine::Generated::TerminalOpenedNotification">TerminalOpenedNotification</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::TerminalOpenedNotification"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.TerminalProcessIdNotification.html" title="struct Mountain::Vine::Generated::TerminalProcessIdNotification">TerminalProcessIdNotification</a>',
+					0,
+					1,
+					[
+						"Mountain::Vine::Generated::TerminalProcessIdNotification",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.TerminateTaskRequest.html" title="struct Mountain::Vine::Generated::TerminateTaskRequest">TerminateTaskRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::TerminateTaskRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.TextEdit.html" title="struct Mountain::Vine::Generated::TextEdit">TextEdit</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::TextEdit"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.TextEditForSave.html" title="struct Mountain::Vine::Generated::TextEditForSave">TextEditForSave</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::TextEditForSave"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.TextMatch.html" title="struct Mountain::Vine::Generated::TextMatch">TextMatch</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::TextMatch"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.TreeItem.html" title="struct Mountain::Vine::Generated::TreeItem">TreeItem</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::TreeItem"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.TypeHierarchyItem.html" title="struct Mountain::Vine::Generated::TypeHierarchyItem">TypeHierarchyItem</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::TypeHierarchyItem"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.UnregisterCommandRequest.html" title="struct Mountain::Vine::Generated::UnregisterCommandRequest">UnregisterCommandRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::UnregisterCommandRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.UpdateConfigurationRequest.html" title="struct Mountain::Vine::Generated::UpdateConfigurationRequest">UpdateConfigurationRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::UpdateConfigurationRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.UpdateScmGroupRequest.html" title="struct Mountain::Vine::Generated::UpdateScmGroupRequest">UpdateScmGroupRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::UpdateScmGroupRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.UpdateWorkspaceFoldersRequest.html" title="struct Mountain::Vine::Generated::UpdateWorkspaceFoldersRequest">UpdateWorkspaceFoldersRequest</a>',
+					0,
+					1,
+					[
+						"Mountain::Vine::Generated::UpdateWorkspaceFoldersRequest",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.Uri.html" title="struct Mountain::Vine::Generated::Uri">Uri</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::Uri"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.WatchFileRequest.html" title="struct Mountain::Vine::Generated::WatchFileRequest">WatchFileRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::WatchFileRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.WorkspaceEdit.html" title="struct Mountain::Vine::Generated::WorkspaceEdit">WorkspaceEdit</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::WorkspaceEdit"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.WorkspaceFolder.html" title="struct Mountain::Vine::Generated::WorkspaceFolder">WorkspaceFolder</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::WorkspaceFolder"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.WorkspaceSymbol.html" title="struct Mountain::Vine::Generated::WorkspaceSymbol">WorkspaceSymbol</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::WorkspaceSymbol"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/struct.WriteFileRequest.html" title="struct Mountain::Vine::Generated::WriteFileRequest">WriteFileRequest</a>',
+					0,
+					1,
+					["Mountain::Vine::Generated::WriteFileRequest"],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Workspace/WorkspaceFileService/struct.WorkspaceFile.html" title="struct Mountain::Workspace::WorkspaceFileService::WorkspaceFile">WorkspaceFile</a>',
+					0,
+					1,
+					[
+						"Mountain::Workspace::WorkspaceFileService::WorkspaceFile",
+					],
+				],
+				[
+					'impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Workspace/WorkspaceFileService/struct.WorkspaceFolderEntry.html" title="struct Mountain::Workspace::WorkspaceFileService::WorkspaceFolderEntry">WorkspaceFolderEntry</a>',
+					0,
+					1,
+					[
+						"Mountain::Workspace::WorkspaceFileService::WorkspaceFolderEntry",
+					],
+				],
+				[
+					'impl&lt;R&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="enum" href="Mountain/Environment/CommandProvider/enum.CommandHandler.html" title="enum Mountain::Environment::CommandProvider::CommandHandler">CommandHandler</a>&lt;R&gt;',
+					0,
+					1,
+					["Mountain::Environment::CommandProvider::CommandHandler"],
+				],
+				[
+					'impl&lt;T&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/ApplicationState/State/ApplicationState/struct.StateOperationResult.html" title="struct Mountain::ApplicationState::State::ApplicationState::StateOperationResult">StateOperationResult</a>&lt;T&gt;<div class="where">where\n    T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a>,</div>',
+					0,
+					1,
+					[
+						"Mountain::ApplicationState::State::ApplicationState::StateOperationResult",
+					],
+				],
+				[
+					'impl&lt;T&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/IPC/Enhanced/SecureMessageChannel/struct.SecureMessage.html" title="struct Mountain::IPC::Enhanced::SecureMessageChannel::SecureMessage">SecureMessage</a>&lt;T&gt;<div class="where">where\n    T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a>,</div>',
+					0,
+					1,
+					[
+						"Mountain::IPC::Enhanced::SecureMessageChannel::SecureMessage",
+					],
+				],
+				[
+					'impl&lt;T&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/RPC/types/common/struct.Request.html" title="struct Mountain::RPC::types::common::Request">Request</a>&lt;T&gt;<div class="where">where\n    T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a>,</div>',
+					0,
+					1,
+					["Mountain::RPC::types::common::Request"],
+				],
+				[
+					'impl&lt;T&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/RPC/types/common/struct.Response.html" title="struct Mountain::RPC::types::common::Response">Response</a>&lt;T&gt;<div class="where">where\n    T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a>,</div>',
+					0,
+					1,
+					["Mountain::RPC::types::common::Response"],
+				],
+				[
+					'impl&lt;T&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/cocoon_service_client/struct.CocoonServiceClient.html" title="struct Mountain::Vine::Generated::cocoon_service_client::CocoonServiceClient">CocoonServiceClient</a>&lt;T&gt;<div class="where">where\n    T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a>,</div>',
+					0,
+					1,
+					[
+						"Mountain::Vine::Generated::cocoon_service_client::CocoonServiceClient",
+					],
+				],
+				[
+					'impl&lt;T&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/cocoon_service_server/struct.CocoonServiceServer.html" title="struct Mountain::Vine::Generated::cocoon_service_server::CocoonServiceServer">CocoonServiceServer</a>&lt;T&gt;<div class="where">where\n    T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a>,</div>',
+					0,
+					1,
+					[
+						"Mountain::Vine::Generated::cocoon_service_server::CocoonServiceServer",
+					],
+				],
+				[
+					'impl&lt;T&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/mountain_service_client/struct.MountainServiceClient.html" title="struct Mountain::Vine::Generated::mountain_service_client::MountainServiceClient">MountainServiceClient</a>&lt;T&gt;<div class="where">where\n    T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a>,</div>',
+					0,
+					1,
+					[
+						"Mountain::Vine::Generated::mountain_service_client::MountainServiceClient",
+					],
+				],
+				[
+					'impl&lt;T&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Vine/Generated/mountain_service_server/struct.MountainServiceServer.html" title="struct Mountain::Vine::Generated::mountain_service_server::MountainServiceServer">MountainServiceServer</a>&lt;T&gt;<div class="where">where\n    T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a>,</div>',
+					0,
+					1,
+					[
+						"Mountain::Vine::Generated::mountain_service_server::MountainServiceServer",
+					],
+				],
+				[
+					'impl&lt;TPayload&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="Mountain/Environment/UserInterfaceProvider/struct.UserInterfaceRequest.html" title="struct Mountain::Environment::UserInterfaceProvider::UserInterfaceRequest">UserInterfaceRequest</a>&lt;TPayload&gt;<div class="where">where\n    TPayload: <a class="trait" href="https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe">RefUnwindSafe</a>,</div>',
+					0,
+					1,
+					[
+						"Mountain::Environment::UserInterfaceProvider::UserInterfaceRequest",
+					],
+				],
+			],
+		],
+	]);
+	if (window.register_implementors) {
+		window.register_implementors(implementors);
+	} else {
+		window.pending_implementors = implementors;
+	}
+})();
 //{"start":59,"fragment_lengths":[216166]}

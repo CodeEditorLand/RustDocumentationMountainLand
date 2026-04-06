@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["open_document"]};
+window.SIDEBAR_ITEMS = { "fn": ["open_document"] };

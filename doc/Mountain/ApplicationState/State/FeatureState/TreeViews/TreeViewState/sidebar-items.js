@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"struct":["TreeViewState"]};
+window.SIDEBAR_ITEMS = { "struct": ["TreeViewState"] };

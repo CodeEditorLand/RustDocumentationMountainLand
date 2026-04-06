@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["IsPathAllowedForAccess"]};
+window.SIDEBAR_ITEMS = { "fn": ["IsPathAllowedForAccess"] };

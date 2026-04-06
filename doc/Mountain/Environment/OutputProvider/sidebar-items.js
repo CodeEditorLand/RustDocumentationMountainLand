@@ -1,1 +1,3 @@
-window.SIDEBAR_ITEMS = {"mod":["ChannelContent","ChannelLifecycle","ChannelVisibility"]};
+window.SIDEBAR_ITEMS = {
+	"mod": ["ChannelContent", "ChannelLifecycle", "ChannelVisibility"],
+};

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["MessageCompressor","SecureChannel"]};
+window.SIDEBAR_ITEMS = { "mod": ["MessageCompressor", "SecureChannel"] };

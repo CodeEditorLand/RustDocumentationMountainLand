@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["ExtensionPopulate","ScanPathConfigure"]};
+window.SIDEBAR_ITEMS = { "mod": ["ExtensionPopulate", "ScanPathConfigure"] };

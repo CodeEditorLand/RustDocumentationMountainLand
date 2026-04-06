@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["dispose_channel","register_channel"]};
+window.SIDEBAR_ITEMS = { "fn": ["dispose_channel", "register_channel"] };

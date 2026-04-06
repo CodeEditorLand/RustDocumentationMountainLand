@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"struct":["Permission"]};
+window.SIDEBAR_ITEMS = { "struct": ["Permission"] };

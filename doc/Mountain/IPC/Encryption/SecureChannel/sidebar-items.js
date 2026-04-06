@@ -1,1 +1,3 @@
-window.SIDEBAR_ITEMS = {"struct":["EncryptedMessage","SecureMessageChannel"]};
+window.SIDEBAR_ITEMS = {
+	"struct": ["EncryptedMessage", "SecureMessageChannel"],
+};

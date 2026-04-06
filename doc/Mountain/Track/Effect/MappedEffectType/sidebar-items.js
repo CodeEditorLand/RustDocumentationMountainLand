@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"type":["MappedEffect"]};
+window.SIDEBAR_ITEMS = { "type": ["MappedEffect"] };

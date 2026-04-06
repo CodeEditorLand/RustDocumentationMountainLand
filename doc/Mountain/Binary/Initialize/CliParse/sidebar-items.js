@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["HasWorkspaceArgument","Parse"]};
+window.SIDEBAR_ITEMS = { "fn": ["HasWorkspaceArgument", "Parse"] };

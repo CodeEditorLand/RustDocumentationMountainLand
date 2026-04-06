@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["register_provider","unregister_provider"]};
+window.SIDEBAR_ITEMS = { "fn": ["register_provider", "unregister_provider"] };

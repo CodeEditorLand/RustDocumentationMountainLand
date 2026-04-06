@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"struct":["FileFilterDTO"]};
+window.SIDEBAR_ITEMS = { "struct": ["FileFilterDTO"] };

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["LocalhostPlugin"]};
+window.SIDEBAR_ITEMS = { "fn": ["LocalhostPlugin"] };

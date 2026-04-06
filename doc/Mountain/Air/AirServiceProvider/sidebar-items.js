@@ -1,1 +1,4 @@
-window.SIDEBAR_ITEMS = {"fn":["generate_request_id"],"struct":["AirServiceProvider"]};
+window.SIDEBAR_ITEMS = {
+	"fn": ["generate_request_id"],
+	"struct": ["AirServiceProvider"],
+};

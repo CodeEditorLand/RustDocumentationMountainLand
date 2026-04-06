@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"struct":["MountainServiceClient"]};
+window.SIDEBAR_ITEMS = { "struct": ["MountainServiceClient"] };

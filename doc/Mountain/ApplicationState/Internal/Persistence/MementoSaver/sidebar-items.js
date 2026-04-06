@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["SaveMementoToDisk"]};
+window.SIDEBAR_ITEMS = { "fn": ["SaveMementoToDisk"] };

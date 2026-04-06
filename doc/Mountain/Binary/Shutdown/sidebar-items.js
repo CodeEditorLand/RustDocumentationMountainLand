@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["RuntimeShutdown","SchedulerShutdown"]};
+window.SIDEBAR_ITEMS = { "mod": ["RuntimeShutdown", "SchedulerShutdown"] };

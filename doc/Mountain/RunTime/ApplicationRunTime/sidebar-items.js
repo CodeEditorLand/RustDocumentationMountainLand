@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["RuntimeStruct"]};
+window.SIDEBAR_ITEMS = { "mod": ["RuntimeStruct"] };

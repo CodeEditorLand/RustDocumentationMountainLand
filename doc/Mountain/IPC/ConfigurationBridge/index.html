@@ -1,28 +1,218 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Configuration synchronization bridge."><title>Mountain::IPC::ConfigurationBridge - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-b7b9f40b.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-41dd4d93.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module ConfigurationBridge</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Configuration<wbr>Bridge</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#configuration-bridge---bidirectional-configuration-synchronization" title="Configuration Bridge - Bidirectional Configuration Synchronization">Configuration Bridge - Bidirectional Configuration Synchronization</a></li></ul><h3><a href="#structs">Module Items</a></h3><ul class="block"><li><a href="#structs" title="Structs">Structs</a></li><li><a href="#functions" title="Functions">Functions</a></li><li><a href="#types" title="Type Aliases">Type Aliases</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>IPC</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">IPC</a></div><h1>Module <span>Configuration<wbr>Bridge</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/IPC/ConfigurationBridge.rs.html#1-718">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Configuration synchronization bridge.</p>
-<h2 id="configuration-bridge---bidirectional-configuration-synchronization"><a class="doc-anchor" href="#configuration-bridge---bidirectional-configuration-synchronization">§</a>Configuration Bridge - Bidirectional Configuration Synchronization</h2>
-<p><strong>File Responsibilities:</strong>
-This module manages bidirectional synchronization of configuration between
-Mountain’s Rust backend and Wind’s TypeScript frontend. It ensures
-configuration consistency across the entire CodeEditorLand ecosystem while
-handling conflicts and updates gracefully.</p>
-<p><strong>Architectural Role in Wind-Mountain Connection:</strong></p>
-<p>The ConfigurationBridge is the synchronization layer that:</p>
-<ol>
-<li><strong>Translates Configuration Formats:</strong> Converts between Mountain’s
-internal config structure and Wind’s desktop configuration interface</li>
-<li><strong>Bidirectional Sync:</strong> Maintains consistency in both directions
-(Wind→Mountain and Mountain→Wind)</li>
-<li><strong>Conflict Resolution:</strong> Handles merge conflicts when multiple sources
-update configuration simultaneously</li>
-<li><strong>Validation:</strong> Ensures all configuration changes are valid before
-applying</li>
-<li><strong>Identity Management:</strong> Generates unique machine and session IDs for
-multi- instance scenarios</li>
-</ol>
-<p><strong>Bidirectional Synchronization Flow:</strong></p>
-<p><strong>Mountain → Wind Sync:</strong></p>
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+		<meta content="rustdoc" name="generator" />
+		<meta
+			content="Configuration synchronization bridge."
+			name="description" />
+		<title>Mountain::IPC::ConfigurationBridge - Rust</title>
+		<script>
+			if (window.location.protocol !== "file:")
+				document.head.insertAdjacentHTML(
+					"beforeend",
+					"SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2"
+						.split(",")
+						.map(
+							(f) =>
+								`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`,
+						)
+						.join(""),
+				);
+		</script>
+		<link
+			href="../../../static.files/normalize-9960930a.css"
+			rel="stylesheet" />
+		<link
+			href="../../../static.files/rustdoc-b7b9f40b.css"
+			rel="stylesheet" />
+		<meta
+			name="rustdoc-vars"
+			data-channel="nightly"
+			data-current-crate="Mountain"
+			data-resource-suffix=""
+			data-root-path="../../../"
+			data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)"
+			data-search-js="search-63369b7b.js"
+			data-settings-js="settings-170eb4bf.js"
+			data-static-root-path="../../../static.files/"
+			data-stringdex-js="stringdex-b897f86f.js"
+			data-themes="" />
+		<script src="../../../static.files/storage-41dd4d93.js"></script>
+		<script defer src="../sidebar-items.js"></script>
+		<script defer src="../../../static.files/main-5013f961.js"></script>
+		<noscript
+			><link
+				href="../../../static.files/noscript-f7c3ffd8.css"
+				rel="stylesheet"
+		/></noscript>
+		<link
+			href="../../../static.files/favicon-32x32-eab170b8.png"
+			rel="alternate icon"
+			type="image/png" />
+		<link
+			href="../../../static.files/favicon-044be391.svg"
+			rel="icon"
+			type="image/svg+xml" />
+	</head>
+	<body class="rustdoc mod">
+		<a class="skip-main-content" href="#main-content"
+			>Skip to main content</a
+		><!--[if lte IE 11
+			]><div class="warning">
+				This old browser is unsupported and will most likely display
+				funky things.
+			</div><!
+		[endif]--><rustdoc-topbar
+			><h2><a href="#">Module ConfigurationBridge</a></h2></rustdoc-topbar
+		>
+		<nav class="sidebar">
+			<div class="sidebar-crate">
+				<h2>
+					<a href="../../../Mountain/index.html">Mountain</a
+					><span class="version">0.0.1</span>
+				</h2>
+			</div>
+			<div class="sidebar-elems">
+				<section id="rustdoc-toc">
+					<h2 class="location">
+						<a href="#">Module Configuration<wbr />Bridge</a>
+					</h2>
+					<h3><a href="#">Sections</a></h3>
+					<ul class="top-toc block">
+						<li>
+							<a
+								href="#configuration-bridge---bidirectional-configuration-synchronization"
+								title="Configuration Bridge - Bidirectional Configuration Synchronization"
+								>Configuration Bridge - Bidirectional
+								Configuration Synchronization</a
+							>
+						</li>
+					</ul>
+					<h3><a href="#structs">Module Items</a></h3>
+					<ul class="block">
+						<li><a href="#structs" title="Structs">Structs</a></li>
+						<li>
+							<a href="#functions" title="Functions">Functions</a>
+						</li>
+						<li>
+							<a href="#types" title="Type Aliases"
+								>Type Aliases</a
+							>
+						</li>
+					</ul>
+				</section>
+				<div id="rustdoc-modnav">
+					<h2>
+						<a href="../index.html">In Mountain::<wbr />IPC</a>
+					</h2>
+				</div>
+			</div>
+		</nav>
+		<div class="sidebar-resizer" title="Drag to resize sidebar"></div>
+		<main>
+			<div class="width-limiter">
+				<section class="content" id="main-content" tabindex="-1">
+					<div class="main-heading">
+						<div class="rustdoc-breadcrumbs">
+							<a href="../../index.html">Mountain</a>::<wbr /><a
+								href="../index.html"
+								>IPC</a
+							>
+						</div>
+						<h1>
+							Module
+							<span>Configuration<wbr />Bridge</span>&nbsp;<button
+								id="copy-path"
+								title="Copy item path to clipboard">
+								Copy item path
+							</button>
+						</h1>
+						<rustdoc-toolbar></rustdoc-toolbar
+						><span class="sub-heading"
+							><a
+								class="src"
+								href="../../../src/Mountain/IPC/ConfigurationBridge.rs.html#1-718"
+								>Source</a
+							>
+						</span>
+					</div>
+					<details class="toggle top-doc" open>
+						<summary class="hideme">
+							<span>Expand description</span>
+						</summary>
+						<div class="docblock">
+							<p>Configuration synchronization bridge.</p>
+							<h2
+								id="configuration-bridge---bidirectional-configuration-synchronization">
+								<a
+									class="doc-anchor"
+									href="#configuration-bridge---bidirectional-configuration-synchronization"
+									>§</a
+								>Configuration Bridge - Bidirectional
+								Configuration Synchronization
+							</h2>
+							<p>
+								<strong>File Responsibilities:</strong> This
+								module manages bidirectional synchronization of
+								configuration between Mountain’s Rust backend
+								and Wind’s TypeScript frontend. It ensures
+								configuration consistency across the entire
+								CodeEditorLand ecosystem while handling
+								conflicts and updates gracefully.
+							</p>
+							<p>
+								<strong
+									>Architectural Role in Wind-Mountain
+									Connection:</strong
+								>
+							</p>
+							<p>
+								The ConfigurationBridge is the synchronization
+								layer that:
+							</p>
+							<ol>
+								<li>
+									<strong
+										>Translates Configuration
+										Formats:</strong
+									>
+									Converts between Mountain’s internal config
+									structure and Wind’s desktop configuration
+									interface
+								</li>
+								<li>
+									<strong>Bidirectional Sync:</strong>
+									Maintains consistency in both directions
+									(Wind→Mountain and Mountain→Wind)
+								</li>
+								<li>
+									<strong>Conflict Resolution:</strong>
+									Handles merge conflicts when multiple
+									sources update configuration simultaneously
+								</li>
+								<li>
+									<strong>Validation:</strong> Ensures all
+									configuration changes are valid before
+									applying
+								</li>
+								<li>
+									<strong>Identity Management:</strong>
+									Generates unique machine and session IDs for
+									multi- instance scenarios
+								</li>
+							</ol>
+							<p>
+								<strong
+									>Bidirectional Synchronization Flow:</strong
+								>
+							</p>
+							<p><strong>Mountain → Wind Sync:</strong></p>
 
-<div class="example-wrap"><pre class="rust rust-example-rendered"><code>Mountain Services (Internal Config)
+							<div class="example-wrap">
+								<pre
+									class="rust rust-example-rendered"><code>Mountain Services (Internal Config)
       |
       | get_mountain_configuration()
       v
@@ -34,10 +224,13 @@ Wind Desktop Configuration Format
       |
       | send_configuration_to_wind()
       v
-Wind Frontend (via IPC)</code></pre></div>
-<p><strong>Wind → Mountain Sync:</strong></p>
+Wind Frontend (via IPC)</code></pre>
+							</div>
+							<p><strong>Wind → Mountain Sync:</strong></p>
 
-<div class="example-wrap"><pre class="rust rust-example-rendered"><code>Wind Frontend (User Changes)
+							<div class="example-wrap">
+								<pre
+									class="rust rust-example-rendered"><code>Wind Frontend (User Changes)
       |
       | handle_wind_configuration_change()
       v
@@ -49,168 +242,510 @@ Mountain Configuration Format
       |
       | update_mountain_configuration()
       v
-Mountain Services (Internal Config)</code></pre></div>
-<p><strong>Configuration Bridge Features:</strong></p>
-<p><strong>1. Format Translation:</strong></p>
-<ul>
-<li>Mountain’s internal JSON structure → Wind’s desktop configuration
-interface</li>
-<li>Handles nested configuration objects</li>
-<li>Type conversion between TypeScript and Rust types</li>
-</ul>
-<p><strong>2. Conflict Resolution Strategy:</strong></p>
-<p><strong>Current Implementation (Basic):</strong></p>
-<ul>
-<li>Last-write-wins (most recent update takes precedence)</li>
-<li>Configuration is validated before applying</li>
-<li>Invalid changes are rejected entirely</li>
-</ul>
-<p><strong>Advanced Conflict Resolution (Future Enhancement):</strong></p>
-<ul>
-<li>Detect conflicts based on modification timestamps</li>
-<li>Provide conflict metadata (source, timestamp, value)</li>
-<li>Support three-way merge strategies:
-<ul>
-<li><strong>Ours:</strong> Keep Mountain’s version</li>
-<li><strong>Theirs:</strong> Use Wind’s version</li>
-<li><strong>Merge:</strong> Attempt intelligent merge</li>
-</ul>
-</li>
-<li>Conflict UI prompts in Wind for user resolution</li>
-</ul>
-<p><strong>3. Validation Rules:</strong></p>
-<p><strong>Type Validation:</strong></p>
-<ul>
-<li><code>zoom_level</code>: Number, range -8.0 to 9.0</li>
-<li><code>font_size</code>: Number, range 6.0 to 100.0</li>
-<li><code>is_packaged</code>: Boolean</li>
-<li><code>theme</code>, <code>platform</code>, <code>arch</code>: String, non-empty</li>
-<li>All other values: Not null</li>
-</ul>
-<p><strong>Key Validation:</strong></p>
-<ul>
-<li>Configuration keys must not be empty or whitespace</li>
-<li>Reserved keys cannot be modified</li>
-<li>Nested paths use dot notation (e.g., “editor.theme”)</li>
-</ul>
-<p><strong>Value Validation:</strong></p>
-<ul>
-<li>Ranges checked for numeric values</li>
-<li>Enum validation for predefined options</li>
-<li>Pattern validation for string values (URLs, paths)</li>
-</ul>
-<p><strong>4. Identity Management:</strong></p>
-<p><strong>Machine ID Generation (Microsoft-Inspired):</strong></p>
-<ul>
-<li><strong>macOS:</strong> Get system serial number via <code>system_profiler</code></li>
-<li><strong>Windows:</strong> Get machine UUID via <code>wmic csproduct get UUID</code></li>
-<li><strong>Linux:</strong> Read from <code>/etc/machine-id</code> or <code>/var/lib/dbus/machine-id</code></li>
-<li><strong>Fallback:</strong> Hash hostname + timestamp</li>
-</ul>
-<p><strong>Session ID Generation (Secure):</strong></p>
-<ul>
-<li>Combine timestamp, random number, and process ID</li>
-<li>Hash with SHA-256</li>
-<li>Use first 16 characters of hex digest</li>
-<li>Format: <code>session-{16-char-hash}</code></li>
-</ul>
-<p><strong>5. Bidirectional Sync Triggers:</strong></p>
-<p><strong>Triggers for Mountain → Wind:</strong></p>
-<ul>
-<li>Configuration changes from Mountain services</li>
-<li>Periodic sync interval (configurable)</li>
-<li>Manual sync request from Mountain</li>
-</ul>
-<p><strong>Triggers for Wind → Mountain:</strong></p>
-<ul>
-<li>User changes configuration in Wind UI</li>
-<li>Settings panel updates</li>
-<li>Extension configuration changes</li>
-<li>Command palette configuration commands</li>
-</ul>
-<p><strong>Key Structures:</strong></p>
-<p><strong>ConfigurationBridge:</strong>
-Main synchronization orchestrator</p>
-<ul>
-<li><code>get_wind_desktop_configuration()</code> - Get config in Wind format</li>
-<li><code>update_configuration_from_wind()</code> - Apply Wind’s config changes</li>
-<li><code>synchronize_configuration()</code> - Force bidirectional sync</li>
-<li><code>get_configuration_status()</code> - Get sync status info</li>
-</ul>
-<p><strong>ConfigurationStatus:</strong>
-Current synchronization state</p>
-<ul>
-<li><code>is_valid</code> - Whether configuration is valid</li>
-<li><code>last_sync</code> - Timestamp of last successful sync</li>
-<li><code>configuration_keys</code> - List of all configuration keys</li>
-</ul>
-<p><strong>Tauri Commands:</strong></p>
-<p>The module provides Tauri commands for Wind to invoke:</p>
-<ul>
-<li><code>mountain_get_wind_desktop_configuration</code> - Get config for Wind UI</li>
-<li><code>get_configuration_data</code> - Get all configuration data</li>
-<li><code>save_configuration_data</code> - Save configuration from Wind</li>
-<li><code>mountain_update_configuration_from_wind</code> - Update config from Wind</li>
-<li><code>mountain_synchronize_configuration</code> - Force sync</li>
-<li><code>mountain_get_configuration_status</code> - Get sync status</li>
-</ul>
-<p><strong>Configuration Flow Examples:</strong></p>
-<p><strong>Example 1: Wind Initializing</strong></p>
-<div class="example-wrap"><pre class="language-typescript"><code>// Wind startup
+Mountain Services (Internal Config)</code></pre>
+							</div>
+							<p>
+								<strong>Configuration Bridge Features:</strong>
+							</p>
+							<p><strong>1. Format Translation:</strong></p>
+							<ul>
+								<li>
+									Mountain’s internal JSON structure → Wind’s
+									desktop configuration interface
+								</li>
+								<li>Handles nested configuration objects</li>
+								<li>
+									Type conversion between TypeScript and Rust
+									types
+								</li>
+							</ul>
+							<p>
+								<strong
+									>2. Conflict Resolution Strategy:</strong
+								>
+							</p>
+							<p>
+								<strong>Current Implementation (Basic):</strong>
+							</p>
+							<ul>
+								<li>
+									Last-write-wins (most recent update takes
+									precedence)
+								</li>
+								<li>
+									Configuration is validated before applying
+								</li>
+								<li>Invalid changes are rejected entirely</li>
+							</ul>
+							<p>
+								<strong
+									>Advanced Conflict Resolution (Future
+									Enhancement):</strong
+								>
+							</p>
+							<ul>
+								<li>
+									Detect conflicts based on modification
+									timestamps
+								</li>
+								<li>
+									Provide conflict metadata (source,
+									timestamp, value)
+								</li>
+								<li>
+									Support three-way merge strategies:
+									<ul>
+										<li>
+											<strong>Ours:</strong> Keep
+											Mountain’s version
+										</li>
+										<li>
+											<strong>Theirs:</strong> Use Wind’s
+											version
+										</li>
+										<li>
+											<strong>Merge:</strong> Attempt
+											intelligent merge
+										</li>
+									</ul>
+								</li>
+								<li>
+									Conflict UI prompts in Wind for user
+									resolution
+								</li>
+							</ul>
+							<p><strong>3. Validation Rules:</strong></p>
+							<p><strong>Type Validation:</strong></p>
+							<ul>
+								<li>
+									<code>zoom_level</code>: Number, range -8.0
+									to 9.0
+								</li>
+								<li>
+									<code>font_size</code>: Number, range 6.0 to
+									100.0
+								</li>
+								<li><code>is_packaged</code>: Boolean</li>
+								<li>
+									<code>theme</code>, <code>platform</code>,
+									<code>arch</code>: String, non-empty
+								</li>
+								<li>All other values: Not null</li>
+							</ul>
+							<p><strong>Key Validation:</strong></p>
+							<ul>
+								<li>
+									Configuration keys must not be empty or
+									whitespace
+								</li>
+								<li>Reserved keys cannot be modified</li>
+								<li>
+									Nested paths use dot notation (e.g.,
+									“editor.theme”)
+								</li>
+							</ul>
+							<p><strong>Value Validation:</strong></p>
+							<ul>
+								<li>Ranges checked for numeric values</li>
+								<li>Enum validation for predefined options</li>
+								<li>
+									Pattern validation for string values (URLs,
+									paths)
+								</li>
+							</ul>
+							<p><strong>4. Identity Management:</strong></p>
+							<p>
+								<strong
+									>Machine ID Generation
+									(Microsoft-Inspired):</strong
+								>
+							</p>
+							<ul>
+								<li>
+									<strong>macOS:</strong> Get system serial
+									number via <code>system_profiler</code>
+								</li>
+								<li>
+									<strong>Windows:</strong> Get machine UUID
+									via <code>wmic csproduct get UUID</code>
+								</li>
+								<li>
+									<strong>Linux:</strong> Read from
+									<code>/etc/machine-id</code> or
+									<code>/var/lib/dbus/machine-id</code>
+								</li>
+								<li>
+									<strong>Fallback:</strong> Hash hostname +
+									timestamp
+								</li>
+							</ul>
+							<p>
+								<strong>Session ID Generation (Secure):</strong>
+							</p>
+							<ul>
+								<li>
+									Combine timestamp, random number, and
+									process ID
+								</li>
+								<li>Hash with SHA-256</li>
+								<li>Use first 16 characters of hex digest</li>
+								<li>
+									Format: <code>session-{16-char-hash}</code>
+								</li>
+							</ul>
+							<p>
+								<strong>5. Bidirectional Sync Triggers:</strong>
+							</p>
+							<p>
+								<strong>Triggers for Mountain → Wind:</strong>
+							</p>
+							<ul>
+								<li>
+									Configuration changes from Mountain services
+								</li>
+								<li>Periodic sync interval (configurable)</li>
+								<li>Manual sync request from Mountain</li>
+							</ul>
+							<p>
+								<strong>Triggers for Wind → Mountain:</strong>
+							</p>
+							<ul>
+								<li>User changes configuration in Wind UI</li>
+								<li>Settings panel updates</li>
+								<li>Extension configuration changes</li>
+								<li>Command palette configuration commands</li>
+							</ul>
+							<p><strong>Key Structures:</strong></p>
+							<p>
+								<strong>ConfigurationBridge:</strong> Main
+								synchronization orchestrator
+							</p>
+							<ul>
+								<li>
+									<code
+										>get_wind_desktop_configuration()</code
+									>
+									- Get config in Wind format
+								</li>
+								<li>
+									<code
+										>update_configuration_from_wind()</code
+									>
+									- Apply Wind’s config changes
+								</li>
+								<li>
+									<code>synchronize_configuration()</code> -
+									Force bidirectional sync
+								</li>
+								<li>
+									<code>get_configuration_status()</code> -
+									Get sync status info
+								</li>
+							</ul>
+							<p>
+								<strong>ConfigurationStatus:</strong> Current
+								synchronization state
+							</p>
+							<ul>
+								<li>
+									<code>is_valid</code> - Whether
+									configuration is valid
+								</li>
+								<li>
+									<code>last_sync</code> - Timestamp of last
+									successful sync
+								</li>
+								<li>
+									<code>configuration_keys</code> - List of
+									all configuration keys
+								</li>
+							</ul>
+							<p><strong>Tauri Commands:</strong></p>
+							<p>
+								The module provides Tauri commands for Wind to
+								invoke:
+							</p>
+							<ul>
+								<li>
+									<code
+										>mountain_get_wind_desktop_configuration</code
+									>
+									- Get config for Wind UI
+								</li>
+								<li>
+									<code>get_configuration_data</code> - Get
+									all configuration data
+								</li>
+								<li>
+									<code>save_configuration_data</code> - Save
+									configuration from Wind
+								</li>
+								<li>
+									<code
+										>mountain_update_configuration_from_wind</code
+									>
+									- Update config from Wind
+								</li>
+								<li>
+									<code
+										>mountain_synchronize_configuration</code
+									>
+									- Force sync
+								</li>
+								<li>
+									<code
+										>mountain_get_configuration_status</code
+									>
+									- Get sync status
+								</li>
+							</ul>
+							<p><strong>Configuration Flow Examples:</strong></p>
+							<p><strong>Example 1: Wind Initializing</strong></p>
+							<div class="example-wrap">
+								<pre
+									class="language-typescript"><code>// Wind startup
 const config = await invoke(&#39;mountain_get_wind_desktop_configuration&#39;);
-applyConfiguration(config);</code></pre></div>
-<p><strong>Example 2: User Changes Theme</strong></p>
-<div class="example-wrap"><pre class="language-typescript"><code>// User changes theme in Wind UI
+applyConfiguration(config);</code></pre>
+							</div>
+							<p>
+								<strong>Example 2: User Changes Theme</strong>
+							</p>
+							<div class="example-wrap">
+								<pre
+									class="language-typescript"><code>// User changes theme in Wind UI
 const newConfig = { theme: &#39;dark&#39;, &#39;editor.fontSize&#39;: 14 };
-await invoke(&#39;save_configuration_data&#39;, newConfig);</code></pre></div>
-<p><strong>Example 3: Mountain Updates Setting</strong></p>
-<div class="example-wrap"><pre class="language-text"><code>// Mountain service updates configuration
+await invoke(&#39;save_configuration_data&#39;, newConfig);</code></pre>
+							</div>
+							<p>
+								<strong
+									>Example 3: Mountain Updates Setting</strong
+								>
+							</p>
+							<div class="example-wrap">
+								<pre
+									class="language-text"><code>// Mountain service updates configuration
 let bridge = ConfigurationBridge::new(runtime);
 bridge.synchronize_configuration().await?;
 
-// Result: Wind UI automatically updates via IPC event</code></pre></div>
-<p><strong>Error Handling Strategy:</strong></p>
-<p><strong>Configuration Validation Errors:</strong></p>
-<ul>
-<li>Reject entire invalid configuration</li>
-<li>Return detailed validation error messages</li>
-<li>List which keys/values failed validation</li>
-</ul>
-<p><strong>Format Conversion Errors:</strong></p>
-<ul>
-<li>Log conversion errors with field names</li>
-<li>Attempt graceful fallback for missing fields</li>
-<li>Use defaults for conversion failures</li>
-</ul>
-<p><strong>Sync Errors:</strong></p>
-<ul>
-<li>Log sync failures with timestamps</li>
-<li>Queue sync for retry on transient errors</li>
-<li>Alert monitoring system on persistent failures</li>
-</ul>
-<p><strong>Integration with Other Modules:</strong></p>
-<p><strong>WindServiceAdapters:</strong></p>
-<ul>
-<li>Uses <code>WindServiceAdapter.convert_to_wind_configuration()</code></li>
-<li>Depends on <code>WindDesktopConfiguration</code> structure</li>
-</ul>
-<p><strong>TauriIPCServer:</strong></p>
-<ul>
-<li>Sends configuration updates via IPC events</li>
-<li>Receives configuration changes from Wind</li>
-</ul>
-<p><strong>Mountain Configuration Service:</strong></p>
-<ul>
-<li>Delegates to <code>ConfigurationProvider</code> trait</li>
-<li>Uses <code>ConfigurationTarget</code> for scoping</li>
-</ul>
-<p><strong>Best Practices:</strong></p>
-<ol>
-<li><strong>Always Validate:</strong> Never apply configuration without validation</li>
-<li><strong>Atomic Updates:</strong> Apply entire configuration atomically</li>
-<li><strong>Versioning:</strong> Consider adding configuration versioning</li>
-<li><strong>Change Logging:</strong> Log all configuration changes for audit</li>
-<li><strong>Fallback Support:</strong> Provide sensible defaults for all settings</li>
-<li><strong>Conflict Detection:</strong> Implement proper conflict detection before merges</li>
-</ol>
-</div></details><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.ConfigurationBridge.html" title="struct Mountain::IPC::ConfigurationBridge::ConfigurationBridge">Configuration<wbr>Bridge</a></dt><dd>Configuration bridge that handles Wind’s desktop configuration needs</dd><dt><a class="struct" href="struct.ConfigurationStatus.html" title="struct Mountain::IPC::ConfigurationBridge::ConfigurationStatus">Configuration<wbr>Status</a></dt><dd>Configuration status structure</dd></dl><h2 id="functions" class="section-header">Functions<a href="#functions" class="anchor">§</a></h2><dl class="item-table"><dt><a class="fn" href="fn.get_configuration_data.html" title="fn Mountain::IPC::ConfigurationBridge::get_configuration_data">get_<wbr>configuration_<wbr>data</a></dt><dd>Tauri command to get configuration data for Wind frontend</dd><dt><a class="fn" href="fn.mountain_get_configuration_status.html" title="fn Mountain::IPC::ConfigurationBridge::mountain_get_configuration_status">mountain_<wbr>get_<wbr>configuration_<wbr>status</a></dt><dd>Tauri command to get configuration status</dd><dt><a class="fn" href="fn.mountain_get_wind_desktop_configuration.html" title="fn Mountain::IPC::ConfigurationBridge::mountain_get_wind_desktop_configuration">mountain_<wbr>get_<wbr>wind_<wbr>desktop_<wbr>configuration</a></dt><dd>Tauri command to get Wind desktop configuration</dd><dt><a class="fn" href="fn.mountain_synchronize_configuration.html" title="fn Mountain::IPC::ConfigurationBridge::mountain_synchronize_configuration">mountain_<wbr>synchronize_<wbr>configuration</a></dt><dd>Tauri command to synchronize configuration</dd><dt><a class="fn" href="fn.mountain_update_configuration_from_wind.html" title="fn Mountain::IPC::ConfigurationBridge::mountain_update_configuration_from_wind">mountain_<wbr>update_<wbr>configuration_<wbr>from_<wbr>wind</a></dt><dd>Tauri command to update configuration from Wind</dd><dt><a class="fn" href="fn.save_configuration_data.html" title="fn Mountain::IPC::ConfigurationBridge::save_configuration_data">save_<wbr>configuration_<wbr>data</a></dt><dd>Tauri command to save configuration data from Wind frontend</dd></dl><h2 id="types" class="section-header">Type Aliases<a href="#types" class="anchor">§</a></h2><dl class="item-table"><dt><a class="type" href="type.ConfigurationOverridesDTO.html" title="type Mountain::IPC::ConfigurationBridge::ConfigurationOverridesDTO">Configuration<wbr>OverridesDTO</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dt><a class="type" href="type.ConfigurationTarget.html" title="type Mountain::IPC::ConfigurationBridge::ConfigurationTarget">Configuration<wbr>Target</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt></dl></section></div></main></body></html>
+// Result: Wind UI automatically updates via IPC event</code></pre>
+							</div>
+							<p><strong>Error Handling Strategy:</strong></p>
+							<p>
+								<strong
+									>Configuration Validation Errors:</strong
+								>
+							</p>
+							<ul>
+								<li>Reject entire invalid configuration</li>
+								<li>
+									Return detailed validation error messages
+								</li>
+								<li>
+									List which keys/values failed validation
+								</li>
+							</ul>
+							<p><strong>Format Conversion Errors:</strong></p>
+							<ul>
+								<li>Log conversion errors with field names</li>
+								<li>
+									Attempt graceful fallback for missing fields
+								</li>
+								<li>Use defaults for conversion failures</li>
+							</ul>
+							<p><strong>Sync Errors:</strong></p>
+							<ul>
+								<li>Log sync failures with timestamps</li>
+								<li>
+									Queue sync for retry on transient errors
+								</li>
+								<li>
+									Alert monitoring system on persistent
+									failures
+								</li>
+							</ul>
+							<p>
+								<strong>Integration with Other Modules:</strong>
+							</p>
+							<p><strong>WindServiceAdapters:</strong></p>
+							<ul>
+								<li>
+									Uses
+									<code
+										>WindServiceAdapter.convert_to_wind_configuration()</code
+									>
+								</li>
+								<li>
+									Depends on
+									<code>WindDesktopConfiguration</code>
+									structure
+								</li>
+							</ul>
+							<p><strong>TauriIPCServer:</strong></p>
+							<ul>
+								<li>
+									Sends configuration updates via IPC events
+								</li>
+								<li>
+									Receives configuration changes from Wind
+								</li>
+							</ul>
+							<p>
+								<strong>Mountain Configuration Service:</strong>
+							</p>
+							<ul>
+								<li>
+									Delegates to
+									<code>ConfigurationProvider</code> trait
+								</li>
+								<li>
+									Uses <code>ConfigurationTarget</code> for
+									scoping
+								</li>
+							</ul>
+							<p><strong>Best Practices:</strong></p>
+							<ol>
+								<li>
+									<strong>Always Validate:</strong> Never
+									apply configuration without validation
+								</li>
+								<li>
+									<strong>Atomic Updates:</strong> Apply
+									entire configuration atomically
+								</li>
+								<li>
+									<strong>Versioning:</strong> Consider adding
+									configuration versioning
+								</li>
+								<li>
+									<strong>Change Logging:</strong> Log all
+									configuration changes for audit
+								</li>
+								<li>
+									<strong>Fallback Support:</strong> Provide
+									sensible defaults for all settings
+								</li>
+								<li>
+									<strong>Conflict Detection:</strong>
+									Implement proper conflict detection before
+									merges
+								</li>
+							</ol>
+						</div>
+					</details>
+					<h2 class="section-header" id="structs">
+						Structs<a class="anchor" href="#structs">§</a>
+					</h2>
+					<dl class="item-table">
+						<dt>
+							<a
+								class="struct"
+								href="struct.ConfigurationBridge.html"
+								title="struct Mountain::IPC::ConfigurationBridge::ConfigurationBridge"
+								>Configuration<wbr />Bridge</a
+							>
+						</dt>
+						<dd>
+							Configuration bridge that handles Wind’s desktop
+							configuration needs
+						</dd>
+						<dt>
+							<a
+								class="struct"
+								href="struct.ConfigurationStatus.html"
+								title="struct Mountain::IPC::ConfigurationBridge::ConfigurationStatus"
+								>Configuration<wbr />Status</a
+							>
+						</dt>
+						<dd>Configuration status structure</dd>
+					</dl>
+					<h2 class="section-header" id="functions">
+						Functions<a class="anchor" href="#functions">§</a>
+					</h2>
+					<dl class="item-table">
+						<dt>
+							<a
+								class="fn"
+								href="fn.get_configuration_data.html"
+								title="fn Mountain::IPC::ConfigurationBridge::get_configuration_data"
+								>get_<wbr />configuration_<wbr />data</a
+							>
+						</dt>
+						<dd>
+							Tauri command to get configuration data for Wind
+							frontend
+						</dd>
+						<dt>
+							<a
+								class="fn"
+								href="fn.mountain_get_configuration_status.html"
+								title="fn Mountain::IPC::ConfigurationBridge::mountain_get_configuration_status"
+								>mountain_<wbr />get_<wbr />configuration_<wbr />status</a
+							>
+						</dt>
+						<dd>Tauri command to get configuration status</dd>
+						<dt>
+							<a
+								class="fn"
+								href="fn.mountain_get_wind_desktop_configuration.html"
+								title="fn Mountain::IPC::ConfigurationBridge::mountain_get_wind_desktop_configuration"
+								>mountain_<wbr />get_<wbr />wind_<wbr />desktop_<wbr />configuration</a
+							>
+						</dt>
+						<dd>Tauri command to get Wind desktop configuration</dd>
+						<dt>
+							<a
+								class="fn"
+								href="fn.mountain_synchronize_configuration.html"
+								title="fn Mountain::IPC::ConfigurationBridge::mountain_synchronize_configuration"
+								>mountain_<wbr />synchronize_<wbr />configuration</a
+							>
+						</dt>
+						<dd>Tauri command to synchronize configuration</dd>
+						<dt>
+							<a
+								class="fn"
+								href="fn.mountain_update_configuration_from_wind.html"
+								title="fn Mountain::IPC::ConfigurationBridge::mountain_update_configuration_from_wind"
+								>mountain_<wbr />update_<wbr />configuration_<wbr />from_<wbr />wind</a
+							>
+						</dt>
+						<dd>Tauri command to update configuration from Wind</dd>
+						<dt>
+							<a
+								class="fn"
+								href="fn.save_configuration_data.html"
+								title="fn Mountain::IPC::ConfigurationBridge::save_configuration_data"
+								>save_<wbr />configuration_<wbr />data</a
+							>
+						</dt>
+						<dd>
+							Tauri command to save configuration data from Wind
+							frontend
+						</dd>
+					</dl>
+					<h2 class="section-header" id="types">
+						Type Aliases<a class="anchor" href="#types">§</a>
+					</h2>
+					<dl class="item-table">
+						<dt>
+							<a
+								class="type"
+								href="type.ConfigurationOverridesDTO.html"
+								title="type Mountain::IPC::ConfigurationBridge::ConfigurationOverridesDTO"
+								>Configuration<wbr />OverridesDTO</a
+							><span title="Restricted Visibility">&nbsp;🔒</span>
+						</dt>
+						<dt>
+							<a
+								class="type"
+								href="type.ConfigurationTarget.html"
+								title="type Mountain::IPC::ConfigurationBridge::ConfigurationTarget"
+								>Configuration<wbr />Target</a
+							><span title="Restricted Visibility">&nbsp;🔒</span>
+						</dt>
+					</dl>
+				</section>
+			</div>
+		</main>
+	</body>
+</html>

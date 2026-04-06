@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["WindSyncRegister"]};
+window.SIDEBAR_ITEMS = { "fn": ["WindSyncRegister"] };

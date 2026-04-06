@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["ScanPathConfigure"]};
+window.SIDEBAR_ITEMS = { "fn": ["ScanPathConfigure"] };

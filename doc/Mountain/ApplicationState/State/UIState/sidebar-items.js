@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["UIState"]};
+window.SIDEBAR_ITEMS = { "mod": ["UIState"] };

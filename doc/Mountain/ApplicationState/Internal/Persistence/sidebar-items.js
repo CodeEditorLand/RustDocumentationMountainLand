@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["MementoLoader","MementoSaver"]};
+window.SIDEBAR_ITEMS = { "mod": ["MementoLoader", "MementoSaver"] };

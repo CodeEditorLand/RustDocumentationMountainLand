@@ -1,1 +1,4 @@
-window.SIDEBAR_ITEMS = {"enum":["ConnectionState"],"struct":["ConnectionStatus"]};
+window.SIDEBAR_ITEMS = {
+	"enum": ["ConnectionState"],
+	"struct": ["ConnectionStatus"],
+};

@@ -1,1 +1,3 @@
-window.SIDEBAR_ITEMS = {"fn":["read_directory_impl","read_file_impl","stat_file_impl"]};
+window.SIDEBAR_ITEMS = {
+	"fn": ["read_directory_impl", "read_file_impl", "stat_file_impl"],
+};

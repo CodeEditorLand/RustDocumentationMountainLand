@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["URLDeserializer","URLSerializer"]};
+window.SIDEBAR_ITEMS = { "mod": ["URLDeserializer", "URLSerializer"] };

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["DTO","Internal","State"]};
+window.SIDEBAR_ITEMS = { "mod": ["DTO", "Internal", "State"] };
