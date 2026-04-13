@@ -1,4 +1,1 @@
-window.SIDEBAR_ITEMS = {
-	"constant": ["MAX_COLUMN_NUMBER", "MAX_LINE_NUMBER"],
-	"struct": ["RPCRangeDTO"],
-};
+window.SIDEBAR_ITEMS = {"constant":["MAX_COLUMN_NUMBER","MAX_LINE_NUMBER"],"struct":["RPCRangeDTO"]};

@@ -1,3 +1,1 @@
-window.SIDEBAR_ITEMS = {
-	"mod": ["GetValue", "InspectValue", "Loading", "UpdateValue"],
-};
+window.SIDEBAR_ITEMS = {"mod":["GetValue","InspectValue","Loading","UpdateValue"]};

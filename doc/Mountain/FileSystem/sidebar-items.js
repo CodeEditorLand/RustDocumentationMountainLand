@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "mod": ["FileExplorerViewProvider"] };
+window.SIDEBAR_ITEMS = {"mod":["FileExplorerViewProvider"]};

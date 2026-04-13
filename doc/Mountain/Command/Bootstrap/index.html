@@ -1,642 +1,112 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
-		<meta content="rustdoc" name="generator" />
-		<meta content="Bootstrap (Command)" name="description" />
-		<title>Mountain::Command::Bootstrap - Rust</title>
-		<script>
-			if (window.location.protocol !== "file:")
-				document.head.insertAdjacentHTML(
-					"beforeend",
-					"SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2"
-						.split(",")
-						.map(
-							(f) =>
-								`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`,
-						)
-						.join(""),
-				);
-		</script>
-		<link
-			href="../../../static.files/normalize-9960930a.css"
-			rel="stylesheet" />
-		<link
-			href="../../../static.files/rustdoc-b7b9f40b.css"
-			rel="stylesheet" />
-		<meta
-			name="rustdoc-vars"
-			data-channel="nightly"
-			data-current-crate="Mountain"
-			data-resource-suffix=""
-			data-root-path="../../../"
-			data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)"
-			data-search-js="search-63369b7b.js"
-			data-settings-js="settings-170eb4bf.js"
-			data-static-root-path="../../../static.files/"
-			data-stringdex-js="stringdex-b897f86f.js"
-			data-themes="" />
-		<script src="../../../static.files/storage-41dd4d93.js"></script>
-		<script defer src="../sidebar-items.js"></script>
-		<script defer src="../../../static.files/main-5013f961.js"></script>
-		<noscript
-			><link
-				href="../../../static.files/noscript-f7c3ffd8.css"
-				rel="stylesheet"
-		/></noscript>
-		<link
-			href="../../../static.files/favicon-32x32-eab170b8.png"
-			rel="alternate icon"
-			type="image/png" />
-		<link
-			href="../../../static.files/favicon-044be391.svg"
-			rel="icon"
-			type="image/svg+xml" />
-	</head>
-	<body class="rustdoc mod">
-		<a class="skip-main-content" href="#main-content"
-			>Skip to main content</a
-		><!--[if lte IE 11
-			]><div class="warning">
-				This old browser is unsupported and will most likely display
-				funky things.
-			</div><!
-		[endif]--><rustdoc-topbar
-			><h2><a href="#">Module Bootstrap</a></h2></rustdoc-topbar
-		>
-		<nav class="sidebar">
-			<div class="sidebar-crate">
-				<h2>
-					<a href="../../../Mountain/index.html">Mountain</a
-					><span class="version">0.0.1</span>
-				</h2>
-			</div>
-			<div class="sidebar-elems">
-				<section id="rustdoc-toc">
-					<h2 class="location"><a href="#">Module Bootstrap</a></h2>
-					<h3><a href="#">Sections</a></h3>
-					<ul class="top-toc block">
-						<li>
-							<a
-								href="#bootstrap-command"
-								title="Bootstrap (Command)"
-								>Bootstrap (Command)</a
-							>
-							<ul>
-								<li>
-									<a
-										href="#responsibilities"
-										title="RESPONSIBILITIES"
-										>RESPONSIBILITIES</a
-									>
-								</li>
-								<li>
-									<a
-										href="#architectural-role"
-										title="ARCHITECTURAL ROLE"
-										>ARCHITECTURAL ROLE</a
-									>
-								</li>
-								<li>
-									<a
-										href="#registration-process"
-										title="REGISTRATION PROCESS"
-										>REGISTRATION PROCESS</a
-									>
-								</li>
-								<li>
-									<a
-										href="#command-registration"
-										title="COMMAND REGISTRATION"
-										>COMMAND REGISTRATION</a
-									>
-								</li>
-								<li>
-									<a
-										href="#tree-view-providers"
-										title="TREE VIEW PROVIDERS"
-										>TREE VIEW PROVIDERS</a
-									>
-								</li>
-								<li>
-									<a href="#performance" title="PERFORMANCE"
-										>PERFORMANCE</a
-									>
-								</li>
-								<li>
-									<a
-										href="#error-handling"
-										title="ERROR HANDLING"
-										>ERROR HANDLING</a
-									>
-								</li>
-								<li><a href="#todo" title="TODO">TODO</a></li>
-								<li>
-									<a
-										href="#module-contents"
-										title="MODULE CONTENTS"
-										>MODULE CONTENTS</a
-									>
-								</li>
-							</ul>
-						</li>
-					</ul>
-					<h3><a href="#functions">Module Items</a></h3>
-					<ul class="block">
-						<li>
-							<a href="#functions" title="Functions">Functions</a>
-						</li>
-					</ul>
-				</section>
-				<div id="rustdoc-modnav">
-					<h2>
-						<a href="../index.html">In Mountain::<wbr />Command</a>
-					</h2>
-				</div>
-			</div>
-		</nav>
-		<div class="sidebar-resizer" title="Drag to resize sidebar"></div>
-		<main>
-			<div class="width-limiter">
-				<section class="content" id="main-content" tabindex="-1">
-					<div class="main-heading">
-						<div class="rustdoc-breadcrumbs">
-							<a href="../../index.html">Mountain</a>::<wbr /><a
-								href="../index.html"
-								>Command</a
-							>
-						</div>
-						<h1>
-							Module <span>Bootstrap</span>&nbsp;<button
-								id="copy-path"
-								title="Copy item path to clipboard">
-								Copy item path
-							</button>
-						</h1>
-						<rustdoc-toolbar></rustdoc-toolbar
-						><span class="sub-heading"
-							><a
-								class="src"
-								href="../../../src/Mountain/Command/Bootstrap.rs.html#1-476"
-								>Source</a
-							>
-						</span>
-					</div>
-					<details class="toggle top-doc" open>
-						<summary class="hideme">
-							<span>Expand description</span>
-						</summary>
-						<div class="docblock">
-							<h2 id="bootstrap-command">
-								<a class="doc-anchor" href="#bootstrap-command"
-									>§</a
-								>Bootstrap (Command)
-							</h2>
-							<p>
-								Registers all native, Rust-implemented commands
-								and providers into the application’s state at
-								startup. This module ensures all core
-								functionality is available as soon as the
-								application initializes.
-							</p>
-							<h3 id="responsibilities">
-								<a class="doc-anchor" href="#responsibilities"
-									>§</a
-								>RESPONSIBILITIES
-							</h3>
-							<h4 id="1-command-registration">
-								<a
-									class="doc-anchor"
-									href="#1-command-registration"
-									>§</a
-								>1. Command Registration
-							</h4>
-							<ul>
-								<li>
-									Register all Tauri command handlers from
-									<code>Command::</code> module
-								</li>
-								<li>
-									Register core IPC command handlers from
-									<code>Track::</code> module
-								</li>
-								<li>
-									Build the complete
-									<code>invoke_handler</code> vector for Tauri
-									builder
-								</li>
-								<li>
-									Ensure all commands are available before UI
-									starts
-								</li>
-							</ul>
-							<h4 id="2-tree-view-provider-registration">
-								<a
-									class="doc-anchor"
-									href="#2-tree-view-provider-registration"
-									>§</a
-								>2. Tree View Provider Registration
-							</h4>
-							<ul>
-								<li>
-									Register native tree view providers
-									(FileExplorer, etc.)
-								</li>
-								<li>
-									Create provider instances and store in
-									<code
-										>ApplicationState::ActiveTreeViews</code
-									>
-								</li>
-								<li>
-									Associate view identifiers with provider
-									implementations
-								</li>
-							</ul>
-							<h4 id="3-provider-registration">
-								<a
-									class="doc-anchor"
-									href="#3-provider-registration"
-									>§</a
-								>3. Provider Registration
-							</h4>
-							<ul>
-								<li>
-									Initialize Environment providers that need
-									early setup
-								</li>
-								<li>
-									Register command executors and configuration
-									providers
-								</li>
-								<li>Set up document and workspace providers</li>
-							</ul>
-							<h3 id="architectural-role">
-								<a class="doc-anchor" href="#architectural-role"
-									>§</a
-								>ARCHITECTURAL ROLE
-							</h3>
-							<p>
-								Bootstrap is the
-								<strong>registration orchestrator</strong> for
-								Mountain’s startup:
-							</p>
-							<div class="example-wrap">
-								<pre
-									class="language-text"><code>Binary::Main ──► Bootstrap::RegisterAll ──► Tauri Builder ──► App Ready
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Bootstrap (Command)"><title>Mountain::Command::Bootstrap - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-b7b9f40b.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-41dd4d93.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module Bootstrap</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Bootstrap</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#bootstrap-command" title="Bootstrap (Command)">Bootstrap (Command)</a><ul><li><a href="#responsibilities" title="RESPONSIBILITIES">RESPONSIBILITIES</a></li><li><a href="#architectural-role" title="ARCHITECTURAL ROLE">ARCHITECTURAL ROLE</a></li><li><a href="#registration-process" title="REGISTRATION PROCESS">REGISTRATION PROCESS</a></li><li><a href="#command-registration" title="COMMAND REGISTRATION">COMMAND REGISTRATION</a></li><li><a href="#tree-view-providers" title="TREE VIEW PROVIDERS">TREE VIEW PROVIDERS</a></li><li><a href="#performance" title="PERFORMANCE">PERFORMANCE</a></li><li><a href="#error-handling" title="ERROR HANDLING">ERROR HANDLING</a></li><li><a href="#todo" title="TODO">TODO</a></li><li><a href="#module-contents" title="MODULE CONTENTS">MODULE CONTENTS</a></li></ul></li></ul><h3><a href="#functions">Module Items</a></h3><ul class="block"><li><a href="#functions" title="Functions">Functions</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Command</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Command</a></div><h1>Module <span>Bootstrap</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Command/Bootstrap.rs.html#1-476">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="bootstrap-command"><a class="doc-anchor" href="#bootstrap-command">§</a>Bootstrap (Command)</h2>
+<p>Registers all native, Rust-implemented commands and providers into the
+application’s state at startup. This module ensures all core functionality
+is available as soon as the application initializes.</p>
+<h3 id="responsibilities"><a class="doc-anchor" href="#responsibilities">§</a>RESPONSIBILITIES</h3><h4 id="1-command-registration"><a class="doc-anchor" href="#1-command-registration">§</a>1. Command Registration</h4>
+<ul>
+<li>Register all Tauri command handlers from <code>Command::</code> module</li>
+<li>Register core IPC command handlers from <code>Track::</code> module</li>
+<li>Build the complete <code>invoke_handler</code> vector for Tauri builder</li>
+<li>Ensure all commands are available before UI starts</li>
+</ul>
+<h4 id="2-tree-view-provider-registration"><a class="doc-anchor" href="#2-tree-view-provider-registration">§</a>2. Tree View Provider Registration</h4>
+<ul>
+<li>Register native tree view providers (FileExplorer, etc.)</li>
+<li>Create provider instances and store in <code>ApplicationState::ActiveTreeViews</code></li>
+<li>Associate view identifiers with provider implementations</li>
+</ul>
+<h4 id="3-provider-registration"><a class="doc-anchor" href="#3-provider-registration">§</a>3. Provider Registration</h4>
+<ul>
+<li>Initialize Environment providers that need early setup</li>
+<li>Register command executors and configuration providers</li>
+<li>Set up document and workspace providers</li>
+</ul>
+<h3 id="architectural-role"><a class="doc-anchor" href="#architectural-role">§</a>ARCHITECTURAL ROLE</h3>
+<p>Bootstrap is the <strong>registration orchestrator</strong> for Mountain’s startup:</p>
+<div class="example-wrap"><pre class="language-text"><code>Binary::Main ──► Bootstrap::RegisterAll ──► Tauri Builder ──► App Ready
                      │
                      ├─► Command Handlers Registered
                      ├─► Tree View Providers Registered
-                     └─► ApplicationState Populated</code></pre>
-							</div>
-							<h4 id="position-in-mountain">
-								<a
-									class="doc-anchor"
-									href="#position-in-mountain"
-									>§</a
-								>Position in Mountain
-							</h4>
-							<ul>
-								<li>
-									<code>Command</code> module: Command system
-									initialization
-								</li>
-								<li>
-									Called from
-									<code>Binary::Main::Fn</code> during Tauri
-									builder setup
-								</li>
-								<li>
-									Must complete before <code>.run()</code> is
-									called on Tauri app
-								</li>
-							</ul>
-							<h4 id="key-functions">
-								<a class="doc-anchor" href="#key-functions">§</a
-								>Key Functions
-							</h4>
-							<ul>
-								<li>
-									<code>RegisterAll</code>: Main entry point
-									that registers everything
-								</li>
-								<li>
-									<code>RegisterCommands</code>: Adds all
-									Tauri command handlers
-								</li>
-								<li>
-									<code>RegisterTreeViewProviders</code>:
-									Registers native tree view providers
-								</li>
-							</ul>
-							<h3 id="registration-process">
-								<a
-									class="doc-anchor"
-									href="#registration-process"
-									>§</a
-								>REGISTRATION PROCESS
-							</h3>
-							<ol>
-								<li>
-									<strong>Commands</strong>: All command
-									functions are added to Tauri’s
-									<code>invoke_handler</code> via
-									<code>tauri::generate_handler![]</code>
-									macro
-								</li>
-								<li>
-									<strong>Tree Views</strong>: Native
-									providers are instantiated and stored in
-									state
-								</li>
-								<li>
-									<strong>Error Handling</strong>:
-									Registration failures are logged but don’t
-									stop startup
-								</li>
-							</ol>
-							<h3 id="command-registration">
-								<a
-									class="doc-anchor"
-									href="#command-registration"
-									>§</a
-								>COMMAND REGISTRATION
-							</h3>
-							<p>The following command modules are registered:</p>
-							<ul>
-								<li>
-									<code
-										>Command::TreeView::GetTreeViewChildren</code
-									>
-								</li>
-								<li>
-									<code
-										>Command::LanguageFeature::MountainProvideHover</code
-									>
-								</li>
-								<li>
-									<code
-										>Command::LanguageFeature::MountainProvideCompletions</code
-									>
-								</li>
-								<li>
-									<code
-										>Command::LanguageFeature::MountainProvideDefinition</code
-									>
-								</li>
-								<li>
-									<code
-										>Command::LanguageFeature::MountainProvideReferences</code
-									>
-								</li>
-								<li>
-									<code
-										>Command::SourceControlManagement::GetAllSourceControlManagementState</code
-									>
-								</li>
-								<li>
-									<code
-										>Command::Keybinding::GetResolvedKeybinding</code
-									>
-								</li>
-								<li>
-									<code
-										>Track::DispatchLogic::DispatchFrontendCommand</code
-									>
-								</li>
-								<li>
-									<code
-										>Track::DispatchLogic::ResolveUIRequest</code
-									>
-								</li>
-								<li>
-									<code
-										>IPC::TauriIPCServer::mountain_ipc_receive_message</code
-									>
-								</li>
-								<li>
-									<code
-										>IPC::TauriIPCServer::mountain_ipc_get_status</code
-									>
-								</li>
-								<li>
-									<code>Binary::Main::SwitchTrayIcon</code>
-								</li>
-								<li>
-									<code
-										>Binary::Main::MountainGetWorkbenchConfiguration</code
-									>
-								</li>
-								<li>(and more…)</li>
-							</ul>
-							<h3 id="tree-view-providers">
-								<a
-									class="doc-anchor"
-									href="#tree-view-providers"
-									>§</a
-								>TREE VIEW PROVIDERS
-							</h3>
-							<p>Currently registered native providers:</p>
-							<ul>
-								<li>
-									<code>FileExplorerViewProvider</code>: File
-									system tree view
-									<ul>
-										<li>
-											View ID: <code>"fileExplorer"</code>
-										</li>
-										<li>
-											Provides workspace folders and file
-											listings
-										</li>
-									</ul>
-								</li>
-							</ul>
-							<h3 id="performance">
-								<a class="doc-anchor" href="#performance">§</a
-								>PERFORMANCE
-							</h3>
-							<ul>
-								<li>
-									Registration is synchronous and fast (no
-									async allowed in registration)
-								</li>
-								<li>
-									All commands are registered up-front; no
-									lazy loading
-								</li>
-								<li>
-									Tree view providers are created once at
-									startup
-								</li>
-							</ul>
-							<h3 id="error-handling">
-								<a class="doc-anchor" href="#error-handling"
-									>§</a
-								>ERROR HANDLING
-							</h3>
-							<ul>
-								<li>
-									Command registration errors are logged as
-									errors
-								</li>
-								<li>
-									Tree view provider errors are logged as
-									warnings
-								</li>
-								<li>
-									Registration continues even if some
-									components fail
-								</li>
-							</ul>
-							<h3 id="todo">
-								<a class="doc-anchor" href="#todo">§</a>TODO
-							</h3>
-							<ul>
-								<li>
-									<input disabled="" type="checkbox" /> Add
-									command registration metrics (count,
-									duplicates detection)
-								</li>
-								<li>
-									<input disabled="" type="checkbox" />
-									Implement command dependency ordering
-								</li>
-								<li>
-									<input disabled="" type="checkbox" /> Add
-									command validation (duplicate names,
-									signature checking)
-								</li>
-								<li>
-									<input disabled="" type="checkbox" />
-									Support dynamic command registration after
-									startup
-								</li>
-								<li>
-									<input disabled="" type="checkbox" /> Add
-									command unregistration for hot-reload
-									scenarios
-								</li>
-								<li>
-									<input disabled="" type="checkbox" />
-									Implement command permission system
-								</li>
-							</ul>
-							<h3 id="module-contents">
-								<a class="doc-anchor" href="#module-contents"
-									>§</a
-								>MODULE CONTENTS
-							</h3>
-							<ul>
-								<li>
-									<code>RegisterAll</code>: Main registration
-									function called from Binary::Main
-								</li>
-								<li>
-									<code>RegisterCommands</code>: Internal
-									function to register all command handlers
-								</li>
-								<li>
-									<code>RegisterTreeViewProviders</code>:
-									Internal function to register tree view
-									providers
-								</li>
-							</ul>
-						</div>
-					</details>
-					<h2 class="section-header" id="functions">
-						Functions<a class="anchor" href="#functions">§</a>
-					</h2>
-					<dl class="item-table">
-						<dt>
-							<a
-								class="fn"
-								href="fn.CommandCloseDocument.html"
-								title="fn Mountain::Command::Bootstrap::CommandCloseDocument"
-								>Command<wbr />Close<wbr />Document</a
-							><span title="Restricted Visibility">&nbsp;🔒</span>
-						</dt>
-						<dd>
-							A native command for closing the current document.
-						</dd>
-						<dt>
-							<a
-								class="fn"
-								href="fn.CommandFormatDocument.html"
-								title="fn Mountain::Command::Bootstrap::CommandFormatDocument"
-								>Command<wbr />Format<wbr />Document</a
-							><span title="Restricted Visibility">&nbsp;🔒</span>
-						</dt>
-						<dd>
-							A native command that orchestrates the “Format
-							Document” action.
-						</dd>
-						<dt>
-							<a
-								class="fn"
-								href="fn.CommandHelloWorld.html"
-								title="fn Mountain::Command::Bootstrap::CommandHelloWorld"
-								>Command<wbr />Hello<wbr />World</a
-							><span title="Restricted Visibility">&nbsp;🔒</span>
-						</dt>
-						<dd>A simple native command that logs a message.</dd>
-						<dt>
-							<a
-								class="fn"
-								href="fn.CommandOpenFile.html"
-								title="fn Mountain::Command::Bootstrap::CommandOpenFile"
-								>Command<wbr />Open<wbr />File</a
-							><span title="Restricted Visibility">&nbsp;🔒</span>
-						</dt>
-						<dd>
-							A native command that orchestrates the “Open File”
-							dialog flow.
-						</dd>
-						<dt>
-							<a
-								class="fn"
-								href="fn.CommandReloadWindow.html"
-								title="fn Mountain::Command::Bootstrap::CommandReloadWindow"
-								>Command<wbr />Reload<wbr />Window</a
-							><span title="Restricted Visibility">&nbsp;🔒</span>
-						</dt>
-						<dd>A native command for reloading the window.</dd>
-						<dt>
-							<a
-								class="fn"
-								href="fn.CommandSaveDocument.html"
-								title="fn Mountain::Command::Bootstrap::CommandSaveDocument"
-								>Command<wbr />Save<wbr />Document</a
-							><span title="Restricted Visibility">&nbsp;🔒</span>
-						</dt>
-						<dd>
-							A native command for saving the current document.
-						</dd>
-						<dt>
-							<a
-								class="fn"
-								href="fn.RegisterNativeCommands.html"
-								title="fn Mountain::Command::Bootstrap::RegisterNativeCommands"
-								>Register<wbr />Native<wbr />Commands</a
-							>
-						</dt>
-						<dd>
-							Registers all native commands and providers with the
-							application state.
-						</dd>
-						<dt>
-							<a
-								class="fn"
-								href="fn.ValidateCommandParameters.html"
-								title="fn Mountain::Command::Bootstrap::ValidateCommandParameters"
-								>Validate<wbr />Command<wbr />Parameters</a
-							><span title="Restricted Visibility">&nbsp;🔒</span>
-						</dt>
-						<dd>Validates command parameters before execution.</dd>
-					</dl>
-				</section>
-			</div>
-		</main>
-	</body>
-</html>
+                     └─► ApplicationState Populated</code></pre></div><h4 id="position-in-mountain"><a class="doc-anchor" href="#position-in-mountain">§</a>Position in Mountain</h4>
+<ul>
+<li><code>Command</code> module: Command system initialization</li>
+<li>Called from <code>Binary::Main::Fn</code> during Tauri builder setup</li>
+<li>Must complete before <code>.run()</code> is called on Tauri app</li>
+</ul>
+<h4 id="key-functions"><a class="doc-anchor" href="#key-functions">§</a>Key Functions</h4>
+<ul>
+<li><code>RegisterAll</code>: Main entry point that registers everything</li>
+<li><code>RegisterCommands</code>: Adds all Tauri command handlers</li>
+<li><code>RegisterTreeViewProviders</code>: Registers native tree view providers</li>
+</ul>
+<h3 id="registration-process"><a class="doc-anchor" href="#registration-process">§</a>REGISTRATION PROCESS</h3>
+<ol>
+<li><strong>Commands</strong>: All command functions are added to Tauri’s <code>invoke_handler</code>
+via <code>tauri::generate_handler![]</code> macro</li>
+<li><strong>Tree Views</strong>: Native providers are instantiated and stored in state</li>
+<li><strong>Error Handling</strong>: Registration failures are logged but don’t stop
+startup</li>
+</ol>
+<h3 id="command-registration"><a class="doc-anchor" href="#command-registration">§</a>COMMAND REGISTRATION</h3>
+<p>The following command modules are registered:</p>
+<ul>
+<li><code>Command::TreeView::GetTreeViewChildren</code></li>
+<li><code>Command::LanguageFeature::MountainProvideHover</code></li>
+<li><code>Command::LanguageFeature::MountainProvideCompletions</code></li>
+<li><code>Command::LanguageFeature::MountainProvideDefinition</code></li>
+<li><code>Command::LanguageFeature::MountainProvideReferences</code></li>
+<li><code>Command::SourceControlManagement::GetAllSourceControlManagementState</code></li>
+<li><code>Command::Keybinding::GetResolvedKeybinding</code></li>
+<li><code>Track::DispatchLogic::DispatchFrontendCommand</code></li>
+<li><code>Track::DispatchLogic::ResolveUIRequest</code></li>
+<li><code>IPC::TauriIPCServer::mountain_ipc_receive_message</code></li>
+<li><code>IPC::TauriIPCServer::mountain_ipc_get_status</code></li>
+<li><code>Binary::Main::SwitchTrayIcon</code></li>
+<li><code>Binary::Main::MountainGetWorkbenchConfiguration</code></li>
+<li>(and more…)</li>
+</ul>
+<h3 id="tree-view-providers"><a class="doc-anchor" href="#tree-view-providers">§</a>TREE VIEW PROVIDERS</h3>
+<p>Currently registered native providers:</p>
+<ul>
+<li><code>FileExplorerViewProvider</code>: File system tree view
+<ul>
+<li>View ID: <code>"fileExplorer"</code></li>
+<li>Provides workspace folders and file listings</li>
+</ul>
+</li>
+</ul>
+<h3 id="performance"><a class="doc-anchor" href="#performance">§</a>PERFORMANCE</h3>
+<ul>
+<li>Registration is synchronous and fast (no async allowed in registration)</li>
+<li>All commands are registered up-front; no lazy loading</li>
+<li>Tree view providers are created once at startup</li>
+</ul>
+<h3 id="error-handling"><a class="doc-anchor" href="#error-handling">§</a>ERROR HANDLING</h3>
+<ul>
+<li>Command registration errors are logged as errors</li>
+<li>Tree view provider errors are logged as warnings</li>
+<li>Registration continues even if some components fail</li>
+</ul>
+<h3 id="todo"><a class="doc-anchor" href="#todo">§</a>TODO</h3>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Add command registration metrics (count, duplicates detection)</li>
+<li><input disabled="" type="checkbox"/>
+Implement command dependency ordering</li>
+<li><input disabled="" type="checkbox"/>
+Add command validation (duplicate names, signature checking)</li>
+<li><input disabled="" type="checkbox"/>
+Support dynamic command registration after startup</li>
+<li><input disabled="" type="checkbox"/>
+Add command unregistration for hot-reload scenarios</li>
+<li><input disabled="" type="checkbox"/>
+Implement command permission system</li>
+</ul>
+<h3 id="module-contents"><a class="doc-anchor" href="#module-contents">§</a>MODULE CONTENTS</h3>
+<ul>
+<li><code>RegisterAll</code>: Main registration function called from Binary::Main</li>
+<li><code>RegisterCommands</code>: Internal function to register all command handlers</li>
+<li><code>RegisterTreeViewProviders</code>: Internal function to register tree view
+providers</li>
+</ul>
+</div></details><h2 id="functions" class="section-header">Functions<a href="#functions" class="anchor">§</a></h2><dl class="item-table"><dt><a class="fn" href="fn.CommandCloseDocument.html" title="fn Mountain::Command::Bootstrap::CommandCloseDocument">Command<wbr>Close<wbr>Document</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>A native command for closing the current document.</dd><dt><a class="fn" href="fn.CommandFormatDocument.html" title="fn Mountain::Command::Bootstrap::CommandFormatDocument">Command<wbr>Format<wbr>Document</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>A native command that orchestrates the “Format Document” action.</dd><dt><a class="fn" href="fn.CommandHelloWorld.html" title="fn Mountain::Command::Bootstrap::CommandHelloWorld">Command<wbr>Hello<wbr>World</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>A simple native command that logs a message.</dd><dt><a class="fn" href="fn.CommandOpenFile.html" title="fn Mountain::Command::Bootstrap::CommandOpenFile">Command<wbr>Open<wbr>File</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>A native command that orchestrates the “Open File” dialog flow.</dd><dt><a class="fn" href="fn.CommandReloadWindow.html" title="fn Mountain::Command::Bootstrap::CommandReloadWindow">Command<wbr>Reload<wbr>Window</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>A native command for reloading the window.</dd><dt><a class="fn" href="fn.CommandSaveDocument.html" title="fn Mountain::Command::Bootstrap::CommandSaveDocument">Command<wbr>Save<wbr>Document</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>A native command for saving the current document.</dd><dt><a class="fn" href="fn.RegisterNativeCommands.html" title="fn Mountain::Command::Bootstrap::RegisterNativeCommands">Register<wbr>Native<wbr>Commands</a></dt><dd>Registers all native commands and providers with the application state.</dd><dt><a class="fn" href="fn.ValidateCommandParameters.html" title="fn Mountain::Command::Bootstrap::ValidateCommandParameters">Validate<wbr>Command<wbr>Parameters</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Validates command parameters before execution.</dd></dl></section></div></main></body></html>

@@ -1,89 +1,4 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
-		<meta content="rustdoc" name="generator" />
-		<meta
-			content="Source of the Rust file `Element/Mountain/Source/IPC/AdvancedFeatures.rs`."
-			name="description" />
-		<title>AdvancedFeatures.rs - source</title>
-		<script>
-			if (window.location.protocol !== "file:")
-				document.head.insertAdjacentHTML(
-					"beforeend",
-					"SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2"
-						.split(",")
-						.map(
-							(f) =>
-								`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`,
-						)
-						.join(""),
-				);
-		</script>
-		<link
-			href="../../../static.files/normalize-9960930a.css"
-			rel="stylesheet" />
-		<link
-			href="../../../static.files/rustdoc-b7b9f40b.css"
-			rel="stylesheet" />
-		<meta
-			name="rustdoc-vars"
-			data-channel="nightly"
-			data-current-crate="Mountain"
-			data-resource-suffix=""
-			data-root-path="../../../"
-			data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)"
-			data-search-js="search-63369b7b.js"
-			data-settings-js="settings-170eb4bf.js"
-			data-static-root-path="../../../static.files/"
-			data-stringdex-js="stringdex-b897f86f.js"
-			data-themes="" />
-		<script src="../../../static.files/storage-41dd4d93.js"></script>
-		<script
-			defer
-			src="../../../static.files/src-script-813739b1.js"></script>
-		<script defer src="../../../src-files.js"></script>
-		<script defer src="../../../static.files/main-5013f961.js"></script>
-		<noscript
-			><link
-				href="../../../static.files/noscript-f7c3ffd8.css"
-				rel="stylesheet"
-		/></noscript>
-		<link
-			href="../../../static.files/favicon-32x32-eab170b8.png"
-			rel="alternate icon"
-			type="image/png" />
-		<link
-			href="../../../static.files/favicon-044be391.svg"
-			rel="icon"
-			type="image/svg+xml" />
-	</head>
-	<body class="rustdoc src">
-		<a class="skip-main-content" href="#main-content"
-			>Skip to main content</a
-		><!--[if lte IE 11
-			]><div class="warning">
-				This old browser is unsupported and will most likely display
-				funky things.
-			</div><!
-		[endif]-->
-		<nav class="sidebar">
-			<div class="src-sidebar-title"><h2>Files</h2></div>
-		</nav>
-		<div class="sidebar-resizer" title="Drag to resize sidebar"></div>
-		<main>
-			<section class="content" id="main-content" tabindex="-1">
-				<div class="main-heading">
-					<h1>
-						<div class="sub-heading">Mountain/IPC/</div>
-						AdvancedFeatures.rs
-					</h1>
-					<rustdoc-toolbar></rustdoc-toolbar>
-				</div>
-				<div class="example-wrap digits-3">
-					<pre
-						class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="doccomment">//! # Advanced IPC Features - Enhanced Synchronization &amp; Collaboration
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `Element/Mountain/Source/IPC/AdvancedFeatures.rs`."><title>AdvancedFeatures.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-b7b9f40b.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-41dd4d93.js"></script><script defer src="../../../static.files/src-script-813739b1.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><h1><div class="sub-heading">Mountain/IPC/</div>AdvancedFeatures.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="doccomment">//! # Advanced IPC Features - Enhanced Synchronization &amp; Collaboration
 <a href=#2 id=2 data-nosnippet>2</a>//!
 <a href=#3 id=3 data-nosnippet>3</a>//! **File Responsibilities:**
 <a href=#4 id=4 data-nosnippet>4</a>//! This module provides advanced features for the IPC layer that go beyond
@@ -299,7 +214,7 @@
 <a href=#214 id=214 data-nosnippet>214</a><span class="kw">use </span>tokio::time::interval;
 <a href=#215 id=215 data-nosnippet>215</a><span class="kw">use </span>tauri::{Emitter, Manager};
 <a href=#216 id=216 data-nosnippet>216</a>
-<a href=#217 id=217 data-nosnippet>217</a><span class="kw">use </span><a href="../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55"><span class="kw">crate</span>::RunTime::ApplicationRunTime::ApplicationRunTime</a>;
+<a href=#217 id=217 data-nosnippet>217</a><span class="kw">use </span>crate::{<a href="../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">RunTime::ApplicationRunTime::ApplicationRunTime</a>, <a href="DevLog.rs.html#150-185">dev_log</a>};
 <a href=#218 id=218 data-nosnippet>218</a>
 <a href=#219 id=219 data-nosnippet>219</a><span class="doccomment">/// Advanced IPC features for enhanced Mountain-Wind synchronization
 <a href=#220 id=220 data-nosnippet>220</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>)]
@@ -363,7 +278,7 @@
 <a href=#278 id=278 data-nosnippet>278</a><span class="kw">impl </span><a href="#221-226">AdvancedFeatures</a> {
 <a href=#279 id=279 data-nosnippet>279</a>	<span class="doccomment">/// Create new advanced features instance
 <a href=#280 id=280 data-nosnippet>280</a>	</span><span class="kw">pub fn </span>new(runtime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">ApplicationRunTime</a>&gt;) -&gt; <span class="self">Self </span>{
-<a href=#281 id=281 data-nosnippet>281</a>		<a href="https://docs.rs/log/0.4.29/log/macro.info.html">info!</a>(<span class="string">"[AdvancedFeatures] Initializing advanced IPC features"</span>);
+<a href=#281 id=281 data-nosnippet>281</a>		<a href="DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"Initializing advanced IPC features"</span>);
 <a href=#282 id=282 data-nosnippet>282</a>
 <a href=#283 id=283 data-nosnippet>283</a>		<span class="self">Self </span>{
 <a href=#284 id=284 data-nosnippet>284</a>			<a href="#280">runtime</a>,
@@ -391,7 +306,7 @@
 <a href=#306 id=306 data-nosnippet>306</a>
 <a href=#307 id=307 data-nosnippet>307</a>	<span class="doccomment">/// Start advanced monitoring
 <a href=#308 id=308 data-nosnippet>308</a>	</span><span class="kw">pub async fn </span>start_monitoring(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
-<a href=#309 id=309 data-nosnippet>309</a>		<span class="macro">info!</span>(<span class="string">"[AdvancedFeatures] Starting advanced monitoring"</span>);
+<a href=#309 id=309 data-nosnippet>309</a>		<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Starting advanced monitoring"</span>);
 <a href=#310 id=310 data-nosnippet>310</a>
 <a href=#311 id=311 data-nosnippet>311</a>		<span class="kw">let </span>features1 = <span class="self">self</span>.clone_features();
 <a href=#312 id=312 data-nosnippet>312</a>		<span class="kw">let </span>features2 = <span class="self">self</span>.clone_features();
@@ -429,7 +344,7 @@
 <a href=#344 id=344 data-nosnippet>344</a>				<span class="macro">error!</span>(<span class="string">"[AdvancedFeatures] Failed to emit performance stats: {}"</span>, e);
 <a href=#345 id=345 data-nosnippet>345</a>			}
 <a href=#346 id=346 data-nosnippet>346</a>
-<a href=#347 id=347 data-nosnippet>347</a>			<span class="macro">debug!</span>(<span class="string">"[AdvancedFeatures] Performance stats updated"</span>);
+<a href=#347 id=347 data-nosnippet>347</a>			<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Performance stats updated"</span>);
 <a href=#348 id=348 data-nosnippet>348</a>		}
 <a href=#349 id=349 data-nosnippet>349</a>	}
 <a href=#350 id=350 data-nosnippet>350</a>
@@ -472,7 +387,7 @@
 <a href=#387 id=387 data-nosnippet>387</a>
 <a href=#388 id=388 data-nosnippet>388</a>			cache.cache_size = cache.cached_messages.len();
 <a href=#389 id=389 data-nosnippet>389</a>
-<a href=#390 id=390 data-nosnippet>390</a>			<span class="macro">debug!</span>(<span class="string">"[AdvancedFeatures] Cache cleaned, {} entries remaining"</span>, cache.cache_size);
+<a href=#390 id=390 data-nosnippet>390</a>			<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Cache cleaned, {} entries remaining"</span>, cache.cache_size);
 <a href=#391 id=391 data-nosnippet>391</a>		}
 <a href=#392 id=392 data-nosnippet>392</a>	}
 <a href=#393 id=393 data-nosnippet>393</a>
@@ -507,7 +422,7 @@
 <a href=#422 id=422 data-nosnippet>422</a>				<span class="macro">error!</span>(<span class="string">"[AdvancedFeatures] Failed to emit collaboration sessions: {}"</span>, e);
 <a href=#423 id=423 data-nosnippet>423</a>			}
 <a href=#424 id=424 data-nosnippet>424</a>
-<a href=#425 id=425 data-nosnippet>425</a>			<span class="macro">debug!</span>(<span class="string">"[AdvancedFeatures] Collaboration sessions monitored, {} active"</span>, sessions.len());
+<a href=#425 id=425 data-nosnippet>425</a>			<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Collaboration sessions monitored, {} active"</span>, sessions.len());
 <a href=#426 id=426 data-nosnippet>426</a>		}
 <a href=#427 id=427 data-nosnippet>427</a>	}
 <a href=#428 id=428 data-nosnippet>428</a>
@@ -530,7 +445,7 @@
 <a href=#445 id=445 data-nosnippet>445</a>		cache.cached_messages.insert(message_id.clone(), cached_message);
 <a href=#446 id=446 data-nosnippet>446</a>		cache.cache_size = cache.cached_messages.len();
 <a href=#447 id=447 data-nosnippet>447</a>
-<a href=#448 id=448 data-nosnippet>448</a>		<span class="macro">debug!</span>(<span class="string">"[AdvancedFeatures] Message cached: {}, TTL: {}s"</span>, message_id, ttl);
+<a href=#448 id=448 data-nosnippet>448</a>		<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Message cached: {}, TTL: {}s"</span>, message_id, ttl);
 <a href=#449 id=449 data-nosnippet>449</a>		<span class="prelude-val">Ok</span>(())
 <a href=#450 id=450 data-nosnippet>450</a>	}
 <a href=#451 id=451 data-nosnippet>451</a>
@@ -577,7 +492,7 @@
 <a href=#492 id=492 data-nosnippet>492</a>
 <a href=#493 id=493 data-nosnippet>493</a>		sessions.insert(session_id, session);
 <a href=#494 id=494 data-nosnippet>494</a>
-<a href=#495 id=495 data-nosnippet>495</a>		<span class="macro">info!</span>(<span class="string">"[AdvancedFeatures] Collaboration session created"</span>);
+<a href=#495 id=495 data-nosnippet>495</a>		<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Collaboration session created"</span>);
 <a href=#496 id=496 data-nosnippet>496</a>		<span class="prelude-val">Ok</span>(())
 <a href=#497 id=497 data-nosnippet>497</a>	}
 <a href=#498 id=498 data-nosnippet>498</a>
@@ -596,7 +511,7 @@
 <a href=#511 id=511 data-nosnippet>511</a>					.unwrap_or_default()
 <a href=#512 id=512 data-nosnippet>512</a>					.as_secs();
 <a href=#513 id=513 data-nosnippet>513</a>
-<a href=#514 id=514 data-nosnippet>514</a>				<span class="macro">debug!</span>(<span class="string">"[AdvancedFeatures] Participant added to session: {}"</span>, session_id);
+<a href=#514 id=514 data-nosnippet>514</a>				<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Participant added to session: {}"</span>, session_id);
 <a href=#515 id=515 data-nosnippet>515</a>			}
 <a href=#516 id=516 data-nosnippet>516</a>		} <span class="kw">else </span>{
 <a href=#517 id=517 data-nosnippet>517</a>			<span class="kw">return </span><span class="prelude-val">Err</span>(<span class="macro">format!</span>(<span class="string">"Session not found: {}"</span>, session_id));
@@ -659,7 +574,7 @@
 <a href=#574 id=574 data-nosnippet>574</a><span class="doccomment">/// Tauri command to get performance statistics
 <a href=#575 id=575 data-nosnippet>575</a></span><span class="attr">#[tauri::command]
 <a href=#576 id=576 data-nosnippet>576</a></span><span class="kw">pub async fn </span><a href="#575">mountain_get_performance_stats</a>(app_handle:tauri::AppHandle) -&gt; <span class="prelude-ty">Result</span>&lt;PerformanceStats, String&gt; {
-<a href=#577 id=577 data-nosnippet>577</a>	<span class="macro">debug!</span>(<span class="string">"[AdvancedFeatures] Tauri command: get_performance_stats"</span>);
+<a href=#577 id=577 data-nosnippet>577</a>	<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Tauri command: get_performance_stats"</span>);
 <a href=#578 id=578 data-nosnippet>578</a>
 <a href=#579 id=579 data-nosnippet>579</a>	<span class="kw">if let </span><span class="prelude-val">Some</span>(features) = app_handle.try_state::&lt;AdvancedFeatures&gt;() {
 <a href=#580 id=580 data-nosnippet>580</a>		<span class="prelude-val">Ok</span>(features.get_performance_stats().<span class="kw">await</span><span class="question-mark">?</span>)
@@ -671,7 +586,7 @@
 <a href=#586 id=586 data-nosnippet>586</a><span class="doccomment">/// Tauri command to get cache statistics
 <a href=#587 id=587 data-nosnippet>587</a></span><span class="attr">#[tauri::command]
 <a href=#588 id=588 data-nosnippet>588</a></span><span class="kw">pub async fn </span><a href="#587">mountain_get_cache_stats</a>(app_handle:tauri::AppHandle) -&gt; <span class="prelude-ty">Result</span>&lt;MessageCache, String&gt; {
-<a href=#589 id=589 data-nosnippet>589</a>	<span class="macro">debug!</span>(<span class="string">"[AdvancedFeatures] Tauri command: get_cache_stats"</span>);
+<a href=#589 id=589 data-nosnippet>589</a>	<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Tauri command: get_cache_stats"</span>);
 <a href=#590 id=590 data-nosnippet>590</a>
 <a href=#591 id=591 data-nosnippet>591</a>	<span class="kw">if let </span><span class="prelude-val">Some</span>(features) = app_handle.try_state::&lt;AdvancedFeatures&gt;() {
 <a href=#592 id=592 data-nosnippet>592</a>		<span class="prelude-val">Ok</span>(features.get_cache_stats().<span class="kw">await</span><span class="question-mark">?</span>)
@@ -687,7 +602,7 @@
 <a href=#602 id=602 data-nosnippet>602</a>	session_id:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#603 id=603 data-nosnippet>603</a>	permissions:<a href="#252-257">CollaborationPermissions</a>,
 <a href=#604 id=604 data-nosnippet>604</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
-<a href=#605 id=605 data-nosnippet>605</a>	<span class="macro">debug!</span>(<span class="string">"[AdvancedFeatures] Tauri command: create_collaboration_session"</span>);
+<a href=#605 id=605 data-nosnippet>605</a>	<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Tauri command: create_collaboration_session"</span>);
 <a href=#606 id=606 data-nosnippet>606</a>
 <a href=#607 id=607 data-nosnippet>607</a>	<span class="kw">if let </span><span class="prelude-val">Some</span>(features) = app_handle.try_state::&lt;AdvancedFeatures&gt;() {
 <a href=#608 id=608 data-nosnippet>608</a>		features.create_collaboration_session(session_id, permissions).<span class="kw">await
@@ -701,7 +616,7 @@
 <a href=#616 id=616 data-nosnippet>616</a></span><span class="kw">pub async fn </span><a href="#615">mountain_get_collaboration_sessions</a>(
 <a href=#617 id=617 data-nosnippet>617</a>	app_handle:tauri::AppHandle,
 <a href=#618 id=618 data-nosnippet>618</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;CollaborationSession&gt;, String&gt; {
-<a href=#619 id=619 data-nosnippet>619</a>	<span class="macro">debug!</span>(<span class="string">"[AdvancedFeatures] Tauri command: get_collaboration_sessions"</span>);
+<a href=#619 id=619 data-nosnippet>619</a>	<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Tauri command: get_collaboration_sessions"</span>);
 <a href=#620 id=620 data-nosnippet>620</a>
 <a href=#621 id=621 data-nosnippet>621</a>	<span class="kw">if let </span><span class="prelude-val">Some</span>(features) = app_handle.try_state::&lt;AdvancedFeatures&gt;() {
 <a href=#622 id=622 data-nosnippet>622</a>		<span class="prelude-val">Ok</span>(features.get_collaboration_sessions().<span class="kw">await</span>)
@@ -715,7 +630,7 @@
 <a href=#630 id=630 data-nosnippet>630</a>	app_handle:<span class="kw-2">&amp;</span>tauri::AppHandle,
 <a href=#631 id=631 data-nosnippet>631</a>	runtime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">ApplicationRunTime</a>&gt;,
 <a href=#632 id=632 data-nosnippet>632</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
-<a href=#633 id=633 data-nosnippet>633</a>	<a href="https://docs.rs/log/0.4.29/log/macro.info.html">info!</a>(<span class="string">"[AdvancedFeatures] Initializing advanced IPC features"</span>);
+<a href=#633 id=633 data-nosnippet>633</a>	<a href="DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"Initializing advanced IPC features"</span>);
 <a href=#634 id=634 data-nosnippet>634</a>
 <a href=#635 id=635 data-nosnippet>635</a>	<span class="kw">let </span>features = <a href="#221-226">AdvancedFeatures</a>::<a href="#280-305">new</a>(<a href="#631">runtime</a>);
 <a href=#636 id=636 data-nosnippet>636</a>
@@ -732,9 +647,4 @@
 <a href=#647 id=647 data-nosnippet>647</a>
 <a href=#648 id=648 data-nosnippet>648</a>	<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#649 id=649 data-nosnippet>649</a>}
-</code></pre>
-				</div>
-			</section>
-		</main>
-	</body>
-</html>
+</code></pre></div></section></main></body></html>

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "fn": ["MountainUpdateConfigurationFromWind"] };
+window.SIDEBAR_ITEMS = {"fn":["MountainUpdateConfigurationFromWind"]};

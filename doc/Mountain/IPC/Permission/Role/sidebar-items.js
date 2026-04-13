@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "mod": ["ManageRole"] };
+window.SIDEBAR_ITEMS = {"mod":["ManageRole"]};

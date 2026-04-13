@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "fn": ["CreateEffectForRequest"] };
+window.SIDEBAR_ITEMS = {"fn":["CreateEffectForRequest"]};

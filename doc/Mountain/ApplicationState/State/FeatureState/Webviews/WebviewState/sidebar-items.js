@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "struct": ["WebviewState"] };
+window.SIDEBAR_ITEMS = {"struct":["WebviewState"]};

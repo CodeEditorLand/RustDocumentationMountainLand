@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "mod": ["DispatchSideCarRequest"] };
+window.SIDEBAR_ITEMS = {"mod":["DispatchSideCarRequest"]};

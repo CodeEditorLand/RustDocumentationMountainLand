@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "struct": ["SaveDialogOptionsDTO"] };
+window.SIDEBAR_ITEMS = {"struct":["SaveDialogOptionsDTO"]};

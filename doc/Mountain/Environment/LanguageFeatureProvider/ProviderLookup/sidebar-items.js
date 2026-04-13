@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "fn": ["get_matching_provider"] };
+window.SIDEBAR_ITEMS = {"fn":["get_matching_provider"]};

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "mod": ["LogEvent"] };
+window.SIDEBAR_ITEMS = {"mod":["LogEvent"]};

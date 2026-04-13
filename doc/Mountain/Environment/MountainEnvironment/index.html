@@ -1,786 +1,179 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
-		<meta content="rustdoc" name="generator" />
-		<meta content="Main DI container struct." name="description" />
-		<title>Mountain::Environment::MountainEnvironment - Rust</title>
-		<script>
-			if (window.location.protocol !== "file:")
-				document.head.insertAdjacentHTML(
-					"beforeend",
-					"SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2"
-						.split(",")
-						.map(
-							(f) =>
-								`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`,
-						)
-						.join(""),
-				);
-		</script>
-		<link
-			href="../../../static.files/normalize-9960930a.css"
-			rel="stylesheet" />
-		<link
-			href="../../../static.files/rustdoc-b7b9f40b.css"
-			rel="stylesheet" />
-		<meta
-			name="rustdoc-vars"
-			data-channel="nightly"
-			data-current-crate="Mountain"
-			data-resource-suffix=""
-			data-root-path="../../../"
-			data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)"
-			data-search-js="search-63369b7b.js"
-			data-settings-js="settings-170eb4bf.js"
-			data-static-root-path="../../../static.files/"
-			data-stringdex-js="stringdex-b897f86f.js"
-			data-themes="" />
-		<script src="../../../static.files/storage-41dd4d93.js"></script>
-		<script defer src="../sidebar-items.js"></script>
-		<script defer src="../../../static.files/main-5013f961.js"></script>
-		<noscript
-			><link
-				href="../../../static.files/noscript-f7c3ffd8.css"
-				rel="stylesheet"
-		/></noscript>
-		<link
-			href="../../../static.files/favicon-32x32-eab170b8.png"
-			rel="alternate icon"
-			type="image/png" />
-		<link
-			href="../../../static.files/favicon-044be391.svg"
-			rel="icon"
-			type="image/svg+xml" />
-	</head>
-	<body class="rustdoc mod">
-		<a class="skip-main-content" href="#main-content"
-			>Skip to main content</a
-		><!--[if lte IE 11
-			]><div class="warning">
-				This old browser is unsupported and will most likely display
-				funky things.
-			</div><!
-		[endif]--><rustdoc-topbar
-			><h2><a href="#">Module MountainEnvironment</a></h2></rustdoc-topbar
-		>
-		<nav class="sidebar">
-			<div class="sidebar-crate">
-				<h2>
-					<a href="../../../Mountain/index.html">Mountain</a
-					><span class="version">0.0.1</span>
-				</h2>
-			</div>
-			<div class="sidebar-elems">
-				<section id="rustdoc-toc">
-					<h2 class="location">
-						<a href="#">Module Mountain<wbr />Environment</a>
-					</h2>
-					<h3><a href="#">Sections</a></h3>
-					<ul class="top-toc block">
-						<li>
-							<a
-								href="#mountainenvironment-environment"
-								title="MountainEnvironment (Environment)"
-								>MountainEnvironment (Environment)</a
-							>
-							<ul>
-								<li>
-									<a
-										href="#responsibilities"
-										title="RESPONSIBILITIES"
-										>RESPONSIBILITIES</a
-									>
-								</li>
-								<li>
-									<a
-										href="#architectural-role"
-										title="ARCHITECTURAL ROLE"
-										>ARCHITECTURAL ROLE</a
-									>
-								</li>
-								<li>
-									<a
-										href="#dependency-injection-pattern"
-										title="DEPENDENCY INJECTION PATTERN"
-										>DEPENDENCY INJECTION PATTERN</a
-									>
-								</li>
-								<li>
-									<a
-										href="#initialization-sequence"
-										title="INITIALIZATION SEQUENCE"
-										>INITIALIZATION SEQUENCE</a
-									>
-								</li>
-								<li>
-									<a
-										href="#air-integration"
-										title="AIR INTEGRATION"
-										>AIR INTEGRATION</a
-									>
-								</li>
-								<li>
-									<a
-										href="#vs-code-reference"
-										title="VS CODE REFERENCE"
-										>VS CODE REFERENCE</a
-									>
-								</li>
-								<li>
-									<a
-										href="#provider-traits-implemented"
-										title="PROVIDER TRAITS IMPLEMENTED"
-										>PROVIDER TRAITS IMPLEMENTED</a
-									>
-								</li>
-								<li><a href="#todo" title="TODO">TODO</a></li>
-							</ul>
-						</li>
-					</ul>
-					<h3><a href="#structs">Module Items</a></h3>
-					<ul class="block">
-						<li><a href="#structs" title="Structs">Structs</a></li>
-					</ul>
-				</section>
-				<div id="rustdoc-modnav">
-					<h2>
-						<a href="../index.html"
-							>In Mountain::<wbr />Environment</a
-						>
-					</h2>
-				</div>
-			</div>
-		</nav>
-		<div class="sidebar-resizer" title="Drag to resize sidebar"></div>
-		<main>
-			<div class="width-limiter">
-				<section class="content" id="main-content" tabindex="-1">
-					<div class="main-heading">
-						<div class="rustdoc-breadcrumbs">
-							<a href="../../index.html">Mountain</a>::<wbr /><a
-								href="../index.html"
-								>Environment</a
-							>
-						</div>
-						<h1>
-							Module
-							<span>Mountain<wbr />Environment</span>&nbsp;<button
-								id="copy-path"
-								title="Copy item path to clipboard">
-								Copy item path
-							</button>
-						</h1>
-						<rustdoc-toolbar></rustdoc-toolbar
-						><span class="sub-heading"
-							><a
-								class="src"
-								href="../../../src/Mountain/Environment/MountainEnvironment.rs.html#1-559"
-								>Source</a
-							>
-						</span>
-					</div>
-					<details class="toggle top-doc" open>
-						<summary class="hideme">
-							<span>Expand description</span>
-						</summary>
-						<div class="docblock">
-							<p>Main DI container struct.</p>
-							<h2 id="mountainenvironment-environment">
-								<a
-									class="doc-anchor"
-									href="#mountainenvironment-environment"
-									>§</a
-								>MountainEnvironment (Environment)
-							</h2>
-							<p>
-								The primary dependency injection (DI) container
-								for the Mountain application. It implements all
-								provider traits defined in the Common crate,
-								acting as the central orchestrator that provides
-								access to all platform services.
-							</p>
-							<h3 id="responsibilities">
-								<a class="doc-anchor" href="#responsibilities"
-									>§</a
-								>RESPONSIBILITIES
-							</h3>
-							<h4 id="1-dependency-injection-container">
-								<a
-									class="doc-anchor"
-									href="#1-dependency-injection-container"
-									>§</a
-								>1. Dependency Injection Container
-							</h4>
-							<ul>
-								<li>
-									Implements
-									<code>Requires&lt;T&gt;</code> for all 25+
-									provider traits via macro
-								</li>
-								<li>
-									Enable other components to request
-									dependencies through
-									<code>Require()</code> method
-								</li>
-								<li>
-									Provide lazy initialization with proper
-									lifetime management
-								</li>
-								<li>
-									Support circular dependencies via
-									<code>Arc</code>-wrapped self-references
-								</li>
-							</ul>
-							<h4 id="2-application-lifecycle-management">
-								<a
-									class="doc-anchor"
-									href="#2-application-lifecycle-management"
-									>§</a
-								>2. Application Lifecycle Management
-							</h4>
-							<ul>
-								<li>
-									Hold references to Tauri
-									<code>AppHandle</code> and
-									<code>ApplicationState</code>
-								</li>
-								<li>
-									Manage the core application context and
-									state
-								</li>
-								<li>
-									Coordinate initialization sequence for all
-									providers
-								</li>
-								<li>Support graceful shutdown and cleanup</li>
-							</ul>
-							<h4 id="3-air-integration-optional">
-								<a
-									class="doc-anchor"
-									href="#3-air-integration-optional"
-									>§</a
-								>3. Air Integration (Optional)
-							</h4>
-							<ul>
-								<li>
-									Manage the Air gRPC client for cloud-based
-									services when
-									<code>AirIntegration</code> feature enabled
-								</li>
-								<li>
-									Enable dynamic switching between local and
-									cloud services
-								</li>
-								<li>
-									Provide health checking for Air daemon
-									availability
-								</li>
-								<li>
-									Support fallback to local services when Air
-									unavailable
-								</li>
-							</ul>
-							<h4 id="4-extension-management">
-								<a
-									class="doc-anchor"
-									href="#4-extension-management"
-									>§</a
-								>4. Extension Management
-							</h4>
-							<ul>
-								<li>
-									Implement
-									<code>ExtensionManagementService</code> for
-									discovering extensions
-								</li>
-								<li>
-									Scan registered paths for valid extensions
-								</li>
-								<li>
-									Manage extension metadata in
-									<code>ApplicationState</code>
-								</li>
-								<li>
-									Provide extension list to extension host
-									(Cocoon)
-								</li>
-							</ul>
-							<h4 id="5-service-orchestration">
-								<a
-									class="doc-anchor"
-									href="#5-service-orchestration"
-									>§</a
-								>5. Service Orchestration
-							</h4>
-							<ul>
-								<li>
-									Act as central coordinator between all
-									providers (FileSystem, Document, Command,
-									etc.)
-								</li>
-								<li>
-									Ensure proper initialization order and
-									dependency resolution
-								</li>
-								<li>
-									Facilitate inter-provider communication via
-									IPC or direct calls
-								</li>
-								<li>
-									Provide capability resolution through
-									<code>Requires&lt;T&gt;</code> trait
-								</li>
-							</ul>
-							<h3 id="architectural-role">
-								<a class="doc-anchor" href="#architectural-role"
-									>§</a
-								>ARCHITECTURAL ROLE
-							</h3>
-							<p>
-								MountainEnvironment is the
-								<strong
-									>central DI container and service
-									locator</strong
-								>
-								for the entire application:
-							</p>
-							<div class="example-wrap">
-								<pre
-									class="language-text"><code>Component ──► Requires&lt;T&gt; ──► MountainEnvironment ──► Arc&lt;dyn T&gt;</code></pre>
-							</div>
-							<h4 id="position-in-mountain">
-								<a
-									class="doc-anchor"
-									href="#position-in-mountain"
-									>§</a
-								>Position in Mountain
-							</h4>
-							<ul>
-								<li>
-									<code>Environment</code> module: Root of the
-									dependency injection system
-								</li>
-								<li>
-									Implements Common crate’s
-									<code>Environment</code> and
-									<code>Requires</code> traits
-								</li>
-								<li>
-									All providers accessed through
-									capability-based lookups
-								</li>
-								<li>
-									Created early in startup and shared via
-									<code>Arc&lt;MountainEnvironment&gt;</code>
-								</li>
-							</ul>
-							<h4 id="dependencies-incoming">
-								<a
-									class="doc-anchor"
-									href="#dependencies-incoming"
-									>§</a
-								>Dependencies (Incoming)
-							</h4>
-							<ul>
-								<li>
-									<code>CommonLibrary::*</code> provider
-									traits (25+ interfaces)
-								</li>
-								<li>
-									<code>tauri::AppHandle</code>: UI and
-									platform integration
-								</li>
-								<li>
-									<code>ApplicationState</code>: Shared
-									application state
-								</li>
-								<li>
-									<code>AirServiceClient</code> (optional):
-									Cloud service integration
-								</li>
-							</ul>
-							<h4 id="dependents-outgoing">
-								<a
-									class="doc-anchor"
-									href="#dependents-outgoing"
-									>§</a
-								>Dependents (Outgoing)
-							</h4>
-							<ul>
-								<li>
-									All command handlers: Require capabilities
-									from environment
-								</li>
-								<li>
-									<code>ApplicationRunTime</code>: Uses
-									environment for effect execution
-								</li>
-								<li>
-									Provider implementations: self-referencing
-									via <code>Arc&lt;dyn Trait&gt;</code>
-								</li>
-								<li>
-									<code>InitializationData</code>: Uses
-									environment to gather extensions and
-									workspace data
-								</li>
-							</ul>
-							<h3 id="dependency-injection-pattern">
-								<a
-									class="doc-anchor"
-									href="#dependency-injection-pattern"
-									>§</a
-								>DEPENDENCY INJECTION PATTERN
-							</h3>
-							<p>
-								Mountain uses a
-								<strong>service locator pattern</strong> with
-								trait-based lookup:
-							</p>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Main DI container struct."><title>Mountain::Environment::MountainEnvironment - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-b7b9f40b.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-41dd4d93.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module MountainEnvironment</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Mountain<wbr>Environment</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#mountainenvironment-environment" title="MountainEnvironment (Environment)">MountainEnvironment (Environment)</a><ul><li><a href="#responsibilities" title="RESPONSIBILITIES">RESPONSIBILITIES</a></li><li><a href="#architectural-role" title="ARCHITECTURAL ROLE">ARCHITECTURAL ROLE</a></li><li><a href="#dependency-injection-pattern" title="DEPENDENCY INJECTION PATTERN">DEPENDENCY INJECTION PATTERN</a></li><li><a href="#initialization-sequence" title="INITIALIZATION SEQUENCE">INITIALIZATION SEQUENCE</a></li><li><a href="#air-integration" title="AIR INTEGRATION">AIR INTEGRATION</a></li><li><a href="#vs-code-reference" title="VS CODE REFERENCE">VS CODE REFERENCE</a></li><li><a href="#provider-traits-implemented" title="PROVIDER TRAITS IMPLEMENTED">PROVIDER TRAITS IMPLEMENTED</a></li><li><a href="#todo" title="TODO">TODO</a></li></ul></li></ul><h3><a href="#structs">Module Items</a></h3><ul class="block"><li><a href="#structs" title="Structs">Structs</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Environment</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Environment</a></div><h1>Module <span>Mountain<wbr>Environment</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Environment/MountainEnvironment.rs.html#1-552">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Main DI container struct.</p>
+<h2 id="mountainenvironment-environment"><a class="doc-anchor" href="#mountainenvironment-environment">§</a>MountainEnvironment (Environment)</h2>
+<p>The primary dependency injection (DI) container for the Mountain
+application. It implements all provider traits defined in the Common crate,
+acting as the central orchestrator that provides access to all platform
+services.</p>
+<h3 id="responsibilities"><a class="doc-anchor" href="#responsibilities">§</a>RESPONSIBILITIES</h3><h4 id="1-dependency-injection-container"><a class="doc-anchor" href="#1-dependency-injection-container">§</a>1. Dependency Injection Container</h4>
+<ul>
+<li>Implements <code>Requires&lt;T&gt;</code> for all 25+ provider traits via macro</li>
+<li>Enable other components to request dependencies through <code>Require()</code> method</li>
+<li>Provide lazy initialization with proper lifetime management</li>
+<li>Support circular dependencies via <code>Arc</code>-wrapped self-references</li>
+</ul>
+<h4 id="2-application-lifecycle-management"><a class="doc-anchor" href="#2-application-lifecycle-management">§</a>2. Application Lifecycle Management</h4>
+<ul>
+<li>Hold references to Tauri <code>AppHandle</code> and <code>ApplicationState</code></li>
+<li>Manage the core application context and state</li>
+<li>Coordinate initialization sequence for all providers</li>
+<li>Support graceful shutdown and cleanup</li>
+</ul>
+<h4 id="3-air-integration-optional"><a class="doc-anchor" href="#3-air-integration-optional">§</a>3. Air Integration (Optional)</h4>
+<ul>
+<li>Manage the Air gRPC client for cloud-based services when <code>AirIntegration</code>
+feature enabled</li>
+<li>Enable dynamic switching between local and cloud services</li>
+<li>Provide health checking for Air daemon availability</li>
+<li>Support fallback to local services when Air unavailable</li>
+</ul>
+<h4 id="4-extension-management"><a class="doc-anchor" href="#4-extension-management">§</a>4. Extension Management</h4>
+<ul>
+<li>Implement <code>ExtensionManagementService</code> for discovering extensions</li>
+<li>Scan registered paths for valid extensions</li>
+<li>Manage extension metadata in <code>ApplicationState</code></li>
+<li>Provide extension list to extension host (Cocoon)</li>
+</ul>
+<h4 id="5-service-orchestration"><a class="doc-anchor" href="#5-service-orchestration">§</a>5. Service Orchestration</h4>
+<ul>
+<li>Act as central coordinator between all providers (FileSystem, Document,
+Command, etc.)</li>
+<li>Ensure proper initialization order and dependency resolution</li>
+<li>Facilitate inter-provider communication via IPC or direct calls</li>
+<li>Provide capability resolution through <code>Requires&lt;T&gt;</code> trait</li>
+</ul>
+<h3 id="architectural-role"><a class="doc-anchor" href="#architectural-role">§</a>ARCHITECTURAL ROLE</h3>
+<p>MountainEnvironment is the <strong>central DI container and service locator</strong> for
+the entire application:</p>
+<div class="example-wrap"><pre class="language-text"><code>Component ──► Requires&lt;T&gt; ──► MountainEnvironment ──► Arc&lt;dyn T&gt;</code></pre></div><h4 id="position-in-mountain"><a class="doc-anchor" href="#position-in-mountain">§</a>Position in Mountain</h4>
+<ul>
+<li><code>Environment</code> module: Root of the dependency injection system</li>
+<li>Implements Common crate’s <code>Environment</code> and <code>Requires</code> traits</li>
+<li>All providers accessed through capability-based lookups</li>
+<li>Created early in startup and shared via <code>Arc&lt;MountainEnvironment&gt;</code></li>
+</ul>
+<h4 id="dependencies-incoming"><a class="doc-anchor" href="#dependencies-incoming">§</a>Dependencies (Incoming)</h4>
+<ul>
+<li><code>CommonLibrary::*</code> provider traits (25+ interfaces)</li>
+<li><code>tauri::AppHandle</code>: UI and platform integration</li>
+<li><code>ApplicationState</code>: Shared application state</li>
+<li><code>AirServiceClient</code> (optional): Cloud service integration</li>
+</ul>
+<h4 id="dependents-outgoing"><a class="doc-anchor" href="#dependents-outgoing">§</a>Dependents (Outgoing)</h4>
+<ul>
+<li>All command handlers: Require capabilities from environment</li>
+<li><code>ApplicationRunTime</code>: Uses environment for effect execution</li>
+<li>Provider implementations: self-referencing via <code>Arc&lt;dyn Trait&gt;</code></li>
+<li><code>InitializationData</code>: Uses environment to gather extensions and workspace
+data</li>
+</ul>
+<h3 id="dependency-injection-pattern"><a class="doc-anchor" href="#dependency-injection-pattern">§</a>DEPENDENCY INJECTION PATTERN</h3>
+<p>Mountain uses a <strong>service locator pattern</strong> with trait-based lookup:</p>
 
-							<div class="example-wrap ignore">
-								<a
-									class="tooltip"
-									href="#"
-									title="This example is not tested"
-									>ⓘ</a
-								>
-								<pre
-									class="rust rust-example-rendered"><code><span class="kw">impl </span>Requires&lt;<span class="kw">dyn </span>FileSystemReader&gt; <span class="kw">for </span>MountainEnvironment {
+<div class="example-wrap ignore"><a href="#" class="tooltip" title="This example is not tested">ⓘ</a><pre class="rust rust-example-rendered"><code><span class="kw">impl </span>Requires&lt;<span class="kw">dyn </span>FileSystemReader&gt; <span class="kw">for </span>MountainEnvironment {
     <span class="kw">fn </span>Require(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Arc&lt;<span class="kw">dyn </span>FileSystemReader&gt; {
         Arc::new(<span class="self">self</span>.clone()) <span class="comment">// Self implements FileSystemReader
     </span>}
-}</code></pre>
-							</div>
-							<p>This enables:</p>
-							<ul>
-								<li>
-									<strong>Loose coupling</strong>: Components
-									depend on traits, not concrete types
-								</li>
-								<li>
-									<strong>Circular dependencies</strong>: All
-									providers can require each other through
-									Environment
-								</li>
-								<li>
-									<strong>Testability</strong>: Environment
-									can be mocked or stubbed for tests
-								</li>
-								<li>
-									<strong>Flexibility</strong>: New providers
-									added without changing dependents
-								</li>
-							</ul>
-							<h3 id="initialization-sequence">
-								<a
-									class="doc-anchor"
-									href="#initialization-sequence"
-									>§</a
-								>INITIALIZATION SEQUENCE
-							</h3>
-							<ol>
-								<li>
-									<strong>Create Environment</strong>:
-									<code
-										>MountainEnvironment::Create(app_handle,
-										app_state)</code
-									>
-								</li>
-								<li>
-									<strong>Provider Instantiation</strong>:
-									Lazy through
-									<code>Requires&lt;T&gt;</code> trait calls
-								</li>
-								<li>
-									<strong>State Access</strong>: Each provider
-									can access <code>ApplicationState</code> and
-									<code>AppHandle</code> via self
-								</li>
-								<li>
-									<strong>Inter-Provider Communication</strong
-									>: Via trait methods (direct Rust calls) or
-									IPC
-								</li>
-							</ol>
-							<p>
-								Note: Provider implementations are separate
-								modules in <code>Environment/</code> directory.
-								Each module implements a specific trait and can
-								be included/excluded via feature flags.
-							</p>
-							<h3 id="air-integration">
-								<a class="doc-anchor" href="#air-integration"
-									>§</a
-								>AIR INTEGRATION
-							</h3>
-							<p>
-								When <code>AirIntegration</code> feature is
-								enabled:
-							</p>
-							<ul>
-								<li>
-									<code>AirClient</code> field is
-									<code
-										>Option&lt;Arc&lt;AirServiceClient&lt;tonic::transport::Channel&gt;&gt;&gt;</code
-									>
-								</li>
-								<li>
-									<code>CreateWithAir()</code> allows passing
-									pre-configured Air client
-								</li>
-								<li>
-									<code>SetAirClient()</code> allows dynamic
-									switching at runtime
-								</li>
-								<li>
-									<code>IsAirAvailable()</code> performs
-									health check on Air daemon
-								</li>
-								<li>
-									Providers like
-									<code>SecretProvider</code> and
-									<code>UpdateService</code> can delegate to
-									Air
-								</li>
-							</ul>
-							<p>When feature is disabled:</p>
-							<ul>
-								<li><code>AirClient</code> field is absent</li>
-								<li>
-									<code>IsAirAvailable()</code> always returns
-									<code>false</code>
-								</li>
-								<li>
-									Local-only service implementations are used
-								</li>
-							</ul>
-							<h3 id="vs-code-reference">
-								<a class="doc-anchor" href="#vs-code-reference"
-									>§</a
-								>VS CODE REFERENCE
-							</h3>
-							<p>
-								Patterns borrowed from VS Code’s service
-								architecture:
-							</p>
-							<ul>
-								<li>
-									<code
-										>vs/platform/instantiation/common/instantiation.ts</code
-									>
-									- Service collection and instantiation
-								</li>
-								<li>
-									<code
-										>vs/platform/workspace/common/workspace.ts</code
-									>
-									- Service locator pattern
-								</li>
-								<li>
-									<code
-										>vs/workbench/services/extensions/common/extensions.ts</code
-									>
-									- Extension point management
-								</li>
-							</ul>
-							<p>Key concepts:</p>
-							<ul>
-								<li>
-									Service lifetime management through
-									<code>Arc</code> reference counting
-								</li>
-								<li>
-									Trait-based service definitions for loose
-									coupling
-								</li>
-								<li>Lazy initialization on first use</li>
-								<li>Thread-safe service access</li>
-							</ul>
-							<h3 id="provider-traits-implemented">
-								<a
-									class="doc-anchor"
-									href="#provider-traits-implemented"
-									>§</a
-								>PROVIDER TRAITS IMPLEMENTED
-							</h3>
-							<p>
-								The following 25+ provider traits are
-								implemented using the
-								<code>impl_provider!</code> macro:
-							</p>
-							<ul>
-								<li>
-									<code>CommandExecutor</code> - Execute
-									commands and actions
-								</li>
-								<li>
-									<code>ConfigurationProvider</code> - Access
-									application configuration
-								</li>
-								<li>
-									<code>ConfigurationInspector</code> -
-									Inspect configuration values
-								</li>
-								<li>
-									<code>CustomEditorProvider</code> - Custom
-									document editor support
-								</li>
-								<li>
-									<code>DebugService</code> - Debug adapter
-									protocol integration
-								</li>
-								<li>
-									<code>DiagnosticManager</code> -
-									Diagnostic/lint/error management
-								</li>
-								<li>
-									<code>DocumentProvider</code> - Document
-									lifecycle and content access
-								</li>
-								<li>
-									<code>FileSystemReader</code> /
-									<code>FileSystemWriter</code> - File system
-									operations
-								</li>
-								<li>
-									<code>IPCProvider</code> - Inter-process
-									communication
-								</li>
-								<li>
-									<code>KeybindingProvider</code> - Keybinding
-									resolution and execution
-								</li>
-								<li>
-									<code>LanguageFeatureProviderRegistry</code>
-									- LSP and language features
-								</li>
-								<li>
-									<code>OutputChannelManager</code> - Output
-									panel channel management
-								</li>
-								<li>
-									<code>SecretProvider</code> - Credential and
-									secret storage
-								</li>
-								<li>
-									<code>SourceControlManagementProvider</code>
-									- Git/SCM integration
-								</li>
-								<li>
-									<code>StatusBarProvider</code> - Status bar
-									item management
-								</li>
-								<li>
-									<code>StorageProvider</code> - Key-value
-									storage
-								</li>
-								<li>
-									<code>SynchronizationProvider</code> -
-									Remote sync and collaboration
-								</li>
-								<li>
-									<code>TerminalProvider</code> - Integrated
-									terminal management
-								</li>
-								<li>
-									<code>TestController</code> - Test discovery
-									and execution
-								</li>
-								<li>
-									<code>TreeViewProvider</code> - Tree view UI
-									components
-								</li>
-								<li>
-									<code>UserInterfaceProvider</code> - UI
-									dialog and interaction services
-								</li>
-								<li>
-									<code>WebviewProvider</code> - Webview panel
-									management
-								</li>
-								<li>
-									<code>WorkspaceProvider</code> - Workspace
-									and folder management
-								</li>
-								<li>
-									<code>WorkspaceEditApplier</code> -
-									Workspace edit application (text changes)
-								</li>
-								<li>
-									<code>ExtensionManagementService</code> -
-									Extension scanning and metadata
-								</li>
-								<li>
-									<code>SearchProvider</code> - Search and
-									replace functionality
-								</li>
-							</ul>
-							<h3 id="todo">
-								<a class="doc-anchor" href="#todo">§</a>TODO
-							</h3>
-							<ul>
-								<li>
-									<input disabled="" type="checkbox" /> Add
-									telemetry integration for performance
-									monitoring
-								</li>
-								<li>
-									<input disabled="" type="checkbox" />
-									Implement proper provider health checking
-								</li>
-								<li>
-									<input disabled="" type="checkbox" /> Add
-									provider dependency validation on
-									initialization
-								</li>
-								<li>
-									<input disabled="" type="checkbox" />
-									Consider async initialization for providers
-								</li>
-								<li>
-									<input disabled="" type="checkbox" /> Add
-									circuit breaker pattern for external service
-									calls (Air)
-								</li>
-								<li>
-									<input disabled="" type="checkbox" />
-									Implement graceful degradation when
-									providers fail
-								</li>
-								<li>
-									<input disabled="" type="checkbox" /> Add
-									metrics collection for provider usage
-								</li>
-								<li>
-									<input disabled="" type="checkbox" />
-									Consider provider initialization order
-									dependencies
-								</li>
-							</ul>
-						</div>
-					</details>
-					<h2 class="section-header" id="structs">
-						Structs<a class="anchor" href="#structs">§</a>
-					</h2>
-					<dl class="item-table">
-						<dt>
-							<a
-								class="struct"
-								href="struct.MountainEnvironment.html"
-								title="struct Mountain::Environment::MountainEnvironment::MountainEnvironment"
-								>Mountain<wbr />Environment</a
-							>
-						</dt>
-						<dd>
-							The concrete <code>Environment</code> for the
-							Mountain application.
-						</dd>
-					</dl>
-				</section>
-			</div>
-		</main>
-	</body>
-</html>
+}</code></pre></div>
+<p>This enables:</p>
+<ul>
+<li><strong>Loose coupling</strong>: Components depend on traits, not concrete types</li>
+<li><strong>Circular dependencies</strong>: All providers can require each other through
+Environment</li>
+<li><strong>Testability</strong>: Environment can be mocked or stubbed for tests</li>
+<li><strong>Flexibility</strong>: New providers added without changing dependents</li>
+</ul>
+<h3 id="initialization-sequence"><a class="doc-anchor" href="#initialization-sequence">§</a>INITIALIZATION SEQUENCE</h3>
+<ol>
+<li><strong>Create Environment</strong>: <code>MountainEnvironment::Create(app_handle, app_state)</code></li>
+<li><strong>Provider Instantiation</strong>: Lazy through <code>Requires&lt;T&gt;</code> trait calls</li>
+<li><strong>State Access</strong>: Each provider can access <code>ApplicationState</code> and
+<code>AppHandle</code> via self</li>
+<li><strong>Inter-Provider Communication</strong>: Via trait methods (direct Rust calls)
+or IPC</li>
+</ol>
+<p>Note: Provider implementations are separate modules in <code>Environment/</code>
+directory. Each module implements a specific trait and can be
+included/excluded via feature flags.</p>
+<h3 id="air-integration"><a class="doc-anchor" href="#air-integration">§</a>AIR INTEGRATION</h3>
+<p>When <code>AirIntegration</code> feature is enabled:</p>
+<ul>
+<li><code>AirClient</code> field is
+<code>Option&lt;Arc&lt;AirServiceClient&lt;tonic::transport::Channel&gt;&gt;&gt;</code></li>
+<li><code>CreateWithAir()</code> allows passing pre-configured Air client</li>
+<li><code>SetAirClient()</code> allows dynamic switching at runtime</li>
+<li><code>IsAirAvailable()</code> performs health check on Air daemon</li>
+<li>Providers like <code>SecretProvider</code> and <code>UpdateService</code> can delegate to Air</li>
+</ul>
+<p>When feature is disabled:</p>
+<ul>
+<li><code>AirClient</code> field is absent</li>
+<li><code>IsAirAvailable()</code> always returns <code>false</code></li>
+<li>Local-only service implementations are used</li>
+</ul>
+<h3 id="vs-code-reference"><a class="doc-anchor" href="#vs-code-reference">§</a>VS CODE REFERENCE</h3>
+<p>Patterns borrowed from VS Code’s service architecture:</p>
+<ul>
+<li><code>vs/platform/instantiation/common/instantiation.ts</code> - Service collection
+and instantiation</li>
+<li><code>vs/platform/workspace/common/workspace.ts</code> - Service locator pattern</li>
+<li><code>vs/workbench/services/extensions/common/extensions.ts</code> - Extension point
+management</li>
+</ul>
+<p>Key concepts:</p>
+<ul>
+<li>Service lifetime management through <code>Arc</code> reference counting</li>
+<li>Trait-based service definitions for loose coupling</li>
+<li>Lazy initialization on first use</li>
+<li>Thread-safe service access</li>
+</ul>
+<h3 id="provider-traits-implemented"><a class="doc-anchor" href="#provider-traits-implemented">§</a>PROVIDER TRAITS IMPLEMENTED</h3>
+<p>The following 25+ provider traits are implemented using the
+<code>impl_provider!</code> macro:</p>
+<ul>
+<li><code>CommandExecutor</code> - Execute commands and actions</li>
+<li><code>ConfigurationProvider</code> - Access application configuration</li>
+<li><code>ConfigurationInspector</code> - Inspect configuration values</li>
+<li><code>CustomEditorProvider</code> - Custom document editor support</li>
+<li><code>DebugService</code> - Debug adapter protocol integration</li>
+<li><code>DiagnosticManager</code> - Diagnostic/lint/error management</li>
+<li><code>DocumentProvider</code> - Document lifecycle and content access</li>
+<li><code>FileSystemReader</code> / <code>FileSystemWriter</code> - File system operations</li>
+<li><code>IPCProvider</code> - Inter-process communication</li>
+<li><code>KeybindingProvider</code> - Keybinding resolution and execution</li>
+<li><code>LanguageFeatureProviderRegistry</code> - LSP and language features</li>
+<li><code>OutputChannelManager</code> - Output panel channel management</li>
+<li><code>SecretProvider</code> - Credential and secret storage</li>
+<li><code>SourceControlManagementProvider</code> - Git/SCM integration</li>
+<li><code>StatusBarProvider</code> - Status bar item management</li>
+<li><code>StorageProvider</code> - Key-value storage</li>
+<li><code>SynchronizationProvider</code> - Remote sync and collaboration</li>
+<li><code>TerminalProvider</code> - Integrated terminal management</li>
+<li><code>TestController</code> - Test discovery and execution</li>
+<li><code>TreeViewProvider</code> - Tree view UI components</li>
+<li><code>UserInterfaceProvider</code> - UI dialog and interaction services</li>
+<li><code>WebviewProvider</code> - Webview panel management</li>
+<li><code>WorkspaceProvider</code> - Workspace and folder management</li>
+<li><code>WorkspaceEditApplier</code> - Workspace edit application (text changes)</li>
+<li><code>ExtensionManagementService</code> - Extension scanning and metadata</li>
+<li><code>SearchProvider</code> - Search and replace functionality</li>
+</ul>
+<h3 id="todo"><a class="doc-anchor" href="#todo">§</a>TODO</h3>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Add telemetry integration for performance monitoring</li>
+<li><input disabled="" type="checkbox"/>
+Implement proper provider health checking</li>
+<li><input disabled="" type="checkbox"/>
+Add provider dependency validation on initialization</li>
+<li><input disabled="" type="checkbox"/>
+Consider async initialization for providers</li>
+<li><input disabled="" type="checkbox"/>
+Add circuit breaker pattern for external service calls (Air)</li>
+<li><input disabled="" type="checkbox"/>
+Implement graceful degradation when providers fail</li>
+<li><input disabled="" type="checkbox"/>
+Add metrics collection for provider usage</li>
+<li><input disabled="" type="checkbox"/>
+Consider provider initialization order dependencies</li>
+</ul>
+</div></details><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.MountainEnvironment.html" title="struct Mountain::Environment::MountainEnvironment::MountainEnvironment">Mountain<wbr>Environment</a></dt><dd>The concrete <code>Environment</code> for the Mountain application.</dd></dl></section></div></main></body></html>

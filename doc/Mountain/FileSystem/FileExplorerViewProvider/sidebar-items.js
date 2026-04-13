@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "struct": ["FileExplorerViewProvider"] };
+window.SIDEBAR_ITEMS = {"struct":["FileExplorerViewProvider"]};

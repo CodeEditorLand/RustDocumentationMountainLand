@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "fn": ["SchedulerShutdown"] };
+window.SIDEBAR_ITEMS = {"fn":["SchedulerShutdown"]};

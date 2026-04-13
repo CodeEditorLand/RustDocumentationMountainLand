@@ -1,7 +1,1 @@
-window.SIDEBAR_ITEMS = {
-	"struct": [
-		"DebugAdapterDescriptorFactoryRegistration",
-		"DebugConfigurationProviderRegistration",
-		"DebugState",
-	],
-};
+window.SIDEBAR_ITEMS = {"struct":["DebugAdapterDescriptorFactoryRegistration","DebugConfigurationProviderRegistration","DebugState"]};

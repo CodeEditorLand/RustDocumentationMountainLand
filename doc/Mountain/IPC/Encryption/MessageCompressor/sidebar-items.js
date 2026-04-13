@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "struct": ["MessageCompressor"] };
+window.SIDEBAR_ITEMS = {"struct":["MessageCompressor"]};

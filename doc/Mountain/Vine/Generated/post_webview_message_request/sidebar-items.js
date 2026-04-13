@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "enum": ["Message"] };
+window.SIDEBAR_ITEMS = {"enum":["Message"]};

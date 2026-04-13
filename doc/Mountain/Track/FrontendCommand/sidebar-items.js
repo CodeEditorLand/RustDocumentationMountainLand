@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "mod": ["DispatchFrontendCommand"] };
+window.SIDEBAR_ITEMS = {"mod":["DispatchFrontendCommand"]};

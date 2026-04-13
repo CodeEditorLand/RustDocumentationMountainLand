@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "fn": ["ResolveUIRequest"] };
+window.SIDEBAR_ITEMS = {"fn":["ResolveUIRequest"]};

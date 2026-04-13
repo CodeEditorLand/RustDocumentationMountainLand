@@ -1,5 +1,1 @@
-window.SIDEBAR_ITEMS = {
-	"enum": ["ConnectionStatus"],
-	"struct": ["ConnectionHandle", "ConnectionStats"],
-	"trait": ["SystemTimeExt"],
-};
+window.SIDEBAR_ITEMS = {"enum":["ConnectionStatus"],"struct":["ConnectionHandle","ConnectionStats"],"trait":["SystemTimeExt"]};

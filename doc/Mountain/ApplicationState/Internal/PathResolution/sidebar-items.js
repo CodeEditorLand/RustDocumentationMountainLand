@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "mod": ["ResolveMementoStorageFilePath"] };
+window.SIDEBAR_ITEMS = {"mod":["ResolveMementoStorageFilePath"]};

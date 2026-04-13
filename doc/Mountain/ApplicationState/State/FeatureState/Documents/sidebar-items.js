@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "mod": ["DocumentState"] };
+window.SIDEBAR_ITEMS = {"mod":["DocumentState"]};

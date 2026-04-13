@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "fn": ["ShowSaveDialog"] };
+window.SIDEBAR_ITEMS = {"fn":["ShowSaveDialog"]};

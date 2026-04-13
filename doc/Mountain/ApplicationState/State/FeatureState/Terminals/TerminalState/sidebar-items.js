@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "struct": ["TerminalState"] };
+window.SIDEBAR_ITEMS = {"struct":["TerminalState"]};

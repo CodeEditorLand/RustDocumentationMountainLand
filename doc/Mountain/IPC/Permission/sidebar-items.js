@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "mod": ["Audit", "Role", "Validate"] };
+window.SIDEBAR_ITEMS = {"mod":["Audit","Role","Validate"]};

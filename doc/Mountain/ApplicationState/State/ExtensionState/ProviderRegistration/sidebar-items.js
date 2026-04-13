@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "mod": ["ProviderRegistration"] };
+window.SIDEBAR_ITEMS = {"mod":["ProviderRegistration"]};

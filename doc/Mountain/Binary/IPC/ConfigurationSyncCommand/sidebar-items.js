@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "fn": ["MountainSynchronizeConfiguration"] };
+window.SIDEBAR_ITEMS = {"fn":["MountainSynchronizeConfiguration"]};

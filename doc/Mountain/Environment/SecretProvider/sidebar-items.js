@@ -1,9 +1,1 @@
-window.SIDEBAR_ITEMS = {
-	"fn": [
-		"DeleteSecretFromAir",
-		"GetKeyringServiceName",
-		"GetSecretFromAir",
-		"IsAirAvailable",
-		"StoreSecretToAir",
-	],
-};
+window.SIDEBAR_ITEMS = {"fn":["DeleteSecretFromAir","GetKeyringServiceName","GetSecretFromAir","IsAirAvailable","StoreSecretToAir"]};

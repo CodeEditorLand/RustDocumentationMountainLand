@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "mod": ["RecoverState"] };
+window.SIDEBAR_ITEMS = {"mod":["RecoverState"]};

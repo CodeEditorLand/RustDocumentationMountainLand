@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "mod": ["ValidatePermission"] };
+window.SIDEBAR_ITEMS = {"mod":["ValidatePermission"]};

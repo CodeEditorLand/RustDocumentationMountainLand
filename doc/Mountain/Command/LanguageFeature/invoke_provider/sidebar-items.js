@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "fn": ["invoke_provider"] };
+window.SIDEBAR_ITEMS = {"fn":["invoke_provider"]};

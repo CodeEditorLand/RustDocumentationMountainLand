@@ -1,4 +1,1 @@
-window.SIDEBAR_ITEMS = {
-	"enum": ["ConfigurationScope"],
-	"struct": ["ConfigurationService", "ConfigurationUpdate"],
-};
+window.SIDEBAR_ITEMS = {"enum":["ConfigurationScope"],"struct":["ConfigurationService","ConfigurationUpdate"]};

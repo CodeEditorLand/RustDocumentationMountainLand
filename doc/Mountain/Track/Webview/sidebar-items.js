@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "mod": ["MountainWebviewPostMessageFromGuest"] };
+window.SIDEBAR_ITEMS = {"mod":["MountainWebviewPostMessageFromGuest"]};

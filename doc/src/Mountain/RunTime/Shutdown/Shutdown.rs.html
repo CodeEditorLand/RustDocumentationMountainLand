@@ -1,91 +1,4 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
-		<meta content="rustdoc" name="generator" />
-		<meta
-			content="Source of the Rust file `Element/Mountain/Source/RunTime/Shutdown/Shutdown.rs`."
-			name="description" />
-		<title>Shutdown.rs - source</title>
-		<script>
-			if (window.location.protocol !== "file:")
-				document.head.insertAdjacentHTML(
-					"beforeend",
-					"SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2"
-						.split(",")
-						.map(
-							(f) =>
-								`<link rel="preload" as="font" type="font/woff2"href="../../../../static.files/${f}">`,
-						)
-						.join(""),
-				);
-		</script>
-		<link
-			href="../../../../static.files/normalize-9960930a.css"
-			rel="stylesheet" />
-		<link
-			href="../../../../static.files/rustdoc-b7b9f40b.css"
-			rel="stylesheet" />
-		<meta
-			name="rustdoc-vars"
-			data-channel="nightly"
-			data-current-crate="Mountain"
-			data-resource-suffix=""
-			data-root-path="../../../../"
-			data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)"
-			data-search-js="search-63369b7b.js"
-			data-settings-js="settings-170eb4bf.js"
-			data-static-root-path="../../../../static.files/"
-			data-stringdex-js="stringdex-b897f86f.js"
-			data-themes="" />
-		<script src="../../../../static.files/storage-41dd4d93.js"></script>
-		<script
-			defer
-			src="../../../../static.files/src-script-813739b1.js"></script>
-		<script defer src="../../../../src-files.js"></script>
-		<script defer src="../../../../static.files/main-5013f961.js"></script>
-		<noscript
-			><link
-				href="../../../../static.files/noscript-f7c3ffd8.css"
-				rel="stylesheet"
-		/></noscript>
-		<link
-			href="../../../../static.files/favicon-32x32-eab170b8.png"
-			rel="alternate icon"
-			type="image/png" />
-		<link
-			href="../../../../static.files/favicon-044be391.svg"
-			rel="icon"
-			type="image/svg+xml" />
-	</head>
-	<body class="rustdoc src">
-		<a class="skip-main-content" href="#main-content"
-			>Skip to main content</a
-		><!--[if lte IE 11
-			]><div class="warning">
-				This old browser is unsupported and will most likely display
-				funky things.
-			</div><!
-		[endif]-->
-		<nav class="sidebar">
-			<div class="src-sidebar-title"><h2>Files</h2></div>
-		</nav>
-		<div class="sidebar-resizer" title="Drag to resize sidebar"></div>
-		<main>
-			<section class="content" id="main-content" tabindex="-1">
-				<div class="main-heading">
-					<h1>
-						<div class="sub-heading">
-							Mountain/RunTime/Shutdown/
-						</div>
-						Shutdown.rs
-					</h1>
-					<rustdoc-toolbar></rustdoc-toolbar>
-				</div>
-				<div class="example-wrap digits-3">
-					<pre
-						class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="doccomment">//! # Shutdown (RunTime::Shutdown)
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `Element/Mountain/Source/RunTime/Shutdown/Shutdown.rs`."><title>Shutdown.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../../static.files/rustdoc-b7b9f40b.css"><meta name="rustdoc-vars" data-root-path="../../../../" data-static-root-path="../../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../../static.files/storage-41dd4d93.js"></script><script defer src="../../../../static.files/src-script-813739b1.js"></script><script defer src="../../../../src-files.js"></script><script defer src="../../../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><h1><div class="sub-heading">Mountain/RunTime/Shutdown/</div>Shutdown.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="doccomment">//! # Shutdown (RunTime::Shutdown)
 <a href=#2 id=2 data-nosnippet>2</a>//!
 <a href=#3 id=3 data-nosnippet>3</a>//! ## RESPONSIBILITIES
 <a href=#4 id=4 data-nosnippet>4</a>//!
@@ -297,50 +210,51 @@
 <a href=#210 id=210 data-nosnippet>210</a>			.lock()
 <a href=#211 id=211 data-nosnippet>211</a>			.map_err(|e| CommonError::StateLockPoisoned { Context:e.to_string() })<span class="question-mark">?</span>;
 <a href=#212 id=212 data-nosnippet>212</a>
-<a href=#213 id=213 data-nosnippet>213</a>		<span class="kw">let </span>global_memento_path = <span class="kw-2">&amp;</span><span class="self">self</span>.Environment.ApplicationState.GlobalMementoPath;
-<a href=#214 id=214 data-nosnippet>214</a>
-<a href=#215 id=215 data-nosnippet>215</a>		<span class="kw">if let </span><span class="prelude-val">Some</span>(parent) = global_memento_path.parent() {
-<a href=#216 id=216 data-nosnippet>216</a>			<span class="kw">if </span>!parent.exists() {
-<a href=#217 id=217 data-nosnippet>217</a>				std::fs::create_dir_all(parent)
-<a href=#218 id=218 data-nosnippet>218</a>					.map_err(|e| CommonError::FileSystemIO { Path:parent.to_path_buf(), Description:e.to_string() })<span class="question-mark">?</span>;
-<a href=#219 id=219 data-nosnippet>219</a>			}
-<a href=#220 id=220 data-nosnippet>220</a>		}
-<a href=#221 id=221 data-nosnippet>221</a>
-<a href=#222 id=222 data-nosnippet>222</a>		<span class="kw">let </span>memento_json = serde_json::to_string_pretty(<span class="kw-2">&amp;*</span>global_memento_guard)
-<a href=#223 id=223 data-nosnippet>223</a>			.map_err(|e| CommonError::SerializationError { Description:e.to_string() })<span class="question-mark">?</span>;
-<a href=#224 id=224 data-nosnippet>224</a>
-<a href=#225 id=225 data-nosnippet>225</a>		std::fs::write(global_memento_path, memento_json)
-<a href=#226 id=226 data-nosnippet>226</a>			.map_err(|e| CommonError::FileSystemIO { Path:global_memento_path.clone(), Description:e.to_string() })
-<a href=#227 id=227 data-nosnippet>227</a>	}
-<a href=#228 id=228 data-nosnippet>228</a>
-<a href=#229 id=229 data-nosnippet>229</a>	<span class="doccomment">/// Flush any pending operations.
-<a href=#230 id=230 data-nosnippet>230</a>	</span><span class="kw">pub async fn </span>FlushPendingOperations(<span class="kw-2">&amp;</span><span class="self">self</span>) {
-<a href=#231 id=231 data-nosnippet>231</a>		<span class="macro">debug!</span>(<span class="string">"[ApplicationRunTime] Flushing pending operations..."</span>);
-<a href=#232 id=232 data-nosnippet>232</a>
-<a href=#233 id=233 data-nosnippet>233</a>		<span class="comment">// Flush pending UI requests
-<a href=#234 id=234 data-nosnippet>234</a>		</span><span class="kw">let </span><span class="kw-2">mut </span>pending_requests_guard = <span class="self">self
-<a href=#235 id=235 data-nosnippet>235</a>			</span>.Environment
-<a href=#236 id=236 data-nosnippet>236</a>			.ApplicationState
-<a href=#237 id=237 data-nosnippet>237</a>			.UI
-<a href=#238 id=238 data-nosnippet>238</a>			.PendingUserInterfaceRequest
-<a href=#239 id=239 data-nosnippet>239</a>			.lock()
-<a href=#240 id=240 data-nosnippet>240</a>			.unwrap_or_else(|e| {
-<a href=#241 id=241 data-nosnippet>241</a>				<span class="macro">error!</span>(<span class="string">"[ApplicationRunTime] Failed to lock pending UI requests: {}"</span>, e);
-<a href=#242 id=242 data-nosnippet>242</a>				e.into_inner()
-<a href=#243 id=243 data-nosnippet>243</a>			});
-<a href=#244 id=244 data-nosnippet>244</a>
-<a href=#245 id=245 data-nosnippet>245</a>		<span class="kw">for </span>(_request_id, sender) <span class="kw">in </span>pending_requests_guard.drain() {
-<a href=#246 id=246 data-nosnippet>246</a>			<span class="kw">let _ </span>= sender.send(<span class="prelude-val">Err</span>(CommonError::Unknown {
-<a href=#247 id=247 data-nosnippet>247</a>				Description:<span class="string">"Application shutting down"</span>.to_string(),
-<a href=#248 id=248 data-nosnippet>248</a>			}));
-<a href=#249 id=249 data-nosnippet>249</a>		}
+<a href=#213 id=213 data-nosnippet>213</a>		<span class="kw">let </span>global_memento_path = <span class="self">self
+<a href=#214 id=214 data-nosnippet>214</a>			</span>.Environment
+<a href=#215 id=215 data-nosnippet>215</a>			.ApplicationState
+<a href=#216 id=216 data-nosnippet>216</a>			.GlobalMementoPath
+<a href=#217 id=217 data-nosnippet>217</a>			.lock()
+<a href=#218 id=218 data-nosnippet>218</a>			.map_err(|e| CommonError::StateLockPoisoned { Context:e.to_string() })<span class="question-mark">?
+<a href=#219 id=219 data-nosnippet>219</a>			</span>.clone();
+<a href=#220 id=220 data-nosnippet>220</a>
+<a href=#221 id=221 data-nosnippet>221</a>		<span class="kw">if let </span><span class="prelude-val">Some</span>(parent) = global_memento_path.parent() {
+<a href=#222 id=222 data-nosnippet>222</a>			<span class="kw">if </span>!parent.exists() {
+<a href=#223 id=223 data-nosnippet>223</a>				std::fs::create_dir_all(parent)
+<a href=#224 id=224 data-nosnippet>224</a>					.map_err(|e| CommonError::FileSystemIO { Path:parent.to_path_buf(), Description:e.to_string() })<span class="question-mark">?</span>;
+<a href=#225 id=225 data-nosnippet>225</a>			}
+<a href=#226 id=226 data-nosnippet>226</a>		}
+<a href=#227 id=227 data-nosnippet>227</a>
+<a href=#228 id=228 data-nosnippet>228</a>		<span class="kw">let </span>memento_json = serde_json::to_string_pretty(<span class="kw-2">&amp;*</span>global_memento_guard)
+<a href=#229 id=229 data-nosnippet>229</a>			.map_err(|e| CommonError::SerializationError { Description:e.to_string() })<span class="question-mark">?</span>;
+<a href=#230 id=230 data-nosnippet>230</a>
+<a href=#231 id=231 data-nosnippet>231</a>		std::fs::write(<span class="kw-2">&amp;</span>global_memento_path, memento_json)
+<a href=#232 id=232 data-nosnippet>232</a>			.map_err(|e| CommonError::FileSystemIO { Path:global_memento_path.clone(), Description:e.to_string() })
+<a href=#233 id=233 data-nosnippet>233</a>	}
+<a href=#234 id=234 data-nosnippet>234</a>
+<a href=#235 id=235 data-nosnippet>235</a>	<span class="doccomment">/// Flush any pending operations.
+<a href=#236 id=236 data-nosnippet>236</a>	</span><span class="kw">pub async fn </span>FlushPendingOperations(<span class="kw-2">&amp;</span><span class="self">self</span>) {
+<a href=#237 id=237 data-nosnippet>237</a>		<span class="macro">debug!</span>(<span class="string">"[ApplicationRunTime] Flushing pending operations..."</span>);
+<a href=#238 id=238 data-nosnippet>238</a>
+<a href=#239 id=239 data-nosnippet>239</a>		<span class="comment">// Flush pending UI requests
+<a href=#240 id=240 data-nosnippet>240</a>		</span><span class="kw">let </span><span class="kw-2">mut </span>pending_requests_guard = <span class="self">self
+<a href=#241 id=241 data-nosnippet>241</a>			</span>.Environment
+<a href=#242 id=242 data-nosnippet>242</a>			.ApplicationState
+<a href=#243 id=243 data-nosnippet>243</a>			.UI
+<a href=#244 id=244 data-nosnippet>244</a>			.PendingUserInterfaceRequest
+<a href=#245 id=245 data-nosnippet>245</a>			.lock()
+<a href=#246 id=246 data-nosnippet>246</a>			.unwrap_or_else(|e| {
+<a href=#247 id=247 data-nosnippet>247</a>				<span class="macro">error!</span>(<span class="string">"[ApplicationRunTime] Failed to lock pending UI requests: {}"</span>, e);
+<a href=#248 id=248 data-nosnippet>248</a>				e.into_inner()
+<a href=#249 id=249 data-nosnippet>249</a>			});
 <a href=#250 id=250 data-nosnippet>250</a>
-<a href=#251 id=251 data-nosnippet>251</a>		<span class="macro">debug!</span>(<span class="string">"[ApplicationRunTime] Pending operations flushed"</span>);
-<a href=#252 id=252 data-nosnippet>252</a>	}
-<a href=#253 id=253 data-nosnippet>253</a>}
-</code></pre>
-				</div>
-			</section>
-		</main>
-	</body>
-</html>
+<a href=#251 id=251 data-nosnippet>251</a>		<span class="kw">for </span>(_request_id, sender) <span class="kw">in </span>pending_requests_guard.drain() {
+<a href=#252 id=252 data-nosnippet>252</a>			<span class="kw">let _ </span>= sender.send(<span class="prelude-val">Err</span>(CommonError::Unknown {
+<a href=#253 id=253 data-nosnippet>253</a>				Description:<span class="string">"Application shutting down"</span>.to_string(),
+<a href=#254 id=254 data-nosnippet>254</a>			}));
+<a href=#255 id=255 data-nosnippet>255</a>		}
+<a href=#256 id=256 data-nosnippet>256</a>
+<a href=#257 id=257 data-nosnippet>257</a>		<span class="macro">debug!</span>(<span class="string">"[ApplicationRunTime] Pending operations flushed"</span>);
+<a href=#258 id=258 data-nosnippet>258</a>	}
+<a href=#259 id=259 data-nosnippet>259</a>}
+</code></pre></div></section></main></body></html>

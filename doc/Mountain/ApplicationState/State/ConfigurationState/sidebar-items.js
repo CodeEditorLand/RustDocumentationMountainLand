@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "mod": ["ConfigurationState"] };
+window.SIDEBAR_ITEMS = {"mod":["ConfigurationState"]};

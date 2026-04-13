@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "fn": ["get_configuration_value"] };
+window.SIDEBAR_ITEMS = {"fn":["get_configuration_value"]};

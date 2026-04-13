@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "mod": ["ExtensionRegistry"] };
+window.SIDEBAR_ITEMS = {"mod":["ExtensionRegistry"]};

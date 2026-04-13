@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "enum": ["ServiceError"] };
+window.SIDEBAR_ITEMS = {"enum":["ServiceError"]};

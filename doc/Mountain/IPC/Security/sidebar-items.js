@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "mod": ["Permission", "PermissionManager", "Role"] };
+window.SIDEBAR_ITEMS = {"mod":["Permission","PermissionManager","Role"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["POSTHOG_API_KEY","POSTHOG_HOST"],"fn":["CaptureError","CaptureEvent","CaptureIPC","DistinctId","Initialize"],"static":["CLIENT"]};

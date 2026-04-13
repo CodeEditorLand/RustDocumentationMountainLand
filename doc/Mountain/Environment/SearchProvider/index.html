@@ -1,722 +1,156 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
-		<meta content="rustdoc" name="generator" />
-		<meta content="SearchProvider (Environment)" name="description" />
-		<title>Mountain::Environment::SearchProvider - Rust</title>
-		<script>
-			if (window.location.protocol !== "file:")
-				document.head.insertAdjacentHTML(
-					"beforeend",
-					"SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2"
-						.split(",")
-						.map(
-							(f) =>
-								`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`,
-						)
-						.join(""),
-				);
-		</script>
-		<link
-			href="../../../static.files/normalize-9960930a.css"
-			rel="stylesheet" />
-		<link
-			href="../../../static.files/rustdoc-b7b9f40b.css"
-			rel="stylesheet" />
-		<meta
-			name="rustdoc-vars"
-			data-channel="nightly"
-			data-current-crate="Mountain"
-			data-resource-suffix=""
-			data-root-path="../../../"
-			data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)"
-			data-search-js="search-63369b7b.js"
-			data-settings-js="settings-170eb4bf.js"
-			data-static-root-path="../../../static.files/"
-			data-stringdex-js="stringdex-b897f86f.js"
-			data-themes="" />
-		<script src="../../../static.files/storage-41dd4d93.js"></script>
-		<script defer src="../sidebar-items.js"></script>
-		<script defer src="../../../static.files/main-5013f961.js"></script>
-		<noscript
-			><link
-				href="../../../static.files/noscript-f7c3ffd8.css"
-				rel="stylesheet"
-		/></noscript>
-		<link
-			href="../../../static.files/favicon-32x32-eab170b8.png"
-			rel="alternate icon"
-			type="image/png" />
-		<link
-			href="../../../static.files/favicon-044be391.svg"
-			rel="icon"
-			type="image/svg+xml" />
-	</head>
-	<body class="rustdoc mod">
-		<a class="skip-main-content" href="#main-content"
-			>Skip to main content</a
-		><!--[if lte IE 11
-			]><div class="warning">
-				This old browser is unsupported and will most likely display
-				funky things.
-			</div><!
-		[endif]--><rustdoc-topbar
-			><h2><a href="#">Module SearchProvider</a></h2></rustdoc-topbar
-		>
-		<nav class="sidebar">
-			<div class="sidebar-crate">
-				<h2>
-					<a href="../../../Mountain/index.html">Mountain</a
-					><span class="version">0.0.1</span>
-				</h2>
-			</div>
-			<div class="sidebar-elems">
-				<section id="rustdoc-toc">
-					<h2 class="location">
-						<a href="#">Module Search<wbr />Provider</a>
-					</h2>
-					<h3><a href="#">Sections</a></h3>
-					<ul class="top-toc block">
-						<li>
-							<a
-								href="#searchprovider-environment"
-								title="SearchProvider (Environment)"
-								>SearchProvider (Environment)</a
-							>
-							<ul>
-								<li>
-									<a
-										href="#responsibilities"
-										title="RESPONSIBILITIES"
-										>RESPONSIBILITIES</a
-									>
-								</li>
-								<li>
-									<a
-										href="#architectural-role"
-										title="ARCHITECTURAL ROLE"
-										>ARCHITECTURAL ROLE</a
-									>
-								</li>
-								<li>
-									<a
-										href="#search-process"
-										title="SEARCH PROCESS"
-										>SEARCH PROCESS</a
-									>
-								</li>
-								<li>
-									<a
-										href="#performance-considerations"
-										title="PERFORMANCE CONSIDERATIONS"
-										>PERFORMANCE CONSIDERATIONS</a
-									>
-								</li>
-								<li>
-									<a
-										href="#error-handling"
-										title="ERROR HANDLING"
-										>ERROR HANDLING</a
-									>
-								</li>
-								<li>
-									<a
-										href="#vs-code-reference"
-										title="VS CODE REFERENCE"
-										>VS CODE REFERENCE</a
-									>
-								</li>
-								<li><a href="#todo" title="TODO">TODO</a></li>
-								<li>
-									<a
-										href="#module-contents"
-										title="MODULE CONTENTS"
-										>MODULE CONTENTS</a
-									>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<a
-								href="#searchprovider-implementation"
-								title="SearchProvider Implementation"
-								>SearchProvider Implementation</a
-							>
-							<ul>
-								<li>
-									<a
-										href="#search-architecture"
-										title="Search Architecture"
-										>Search Architecture</a
-									>
-								</li>
-								<li>
-									<a
-										href="#search-features"
-										title="Search Features"
-										>Search Features</a
-									>
-								</li>
-								<li>
-									<a
-										href="#search-result-format"
-										title="Search Result Format"
-										>Search Result Format</a
-									>
-								</li>
-							</ul>
-						</li>
-					</ul>
-					<h3><a href="#structs">Module Items</a></h3>
-					<ul class="block">
-						<li><a href="#structs" title="Structs">Structs</a></li>
-					</ul>
-				</section>
-				<div id="rustdoc-modnav">
-					<h2>
-						<a href="../index.html"
-							>In Mountain::<wbr />Environment</a
-						>
-					</h2>
-				</div>
-			</div>
-		</nav>
-		<div class="sidebar-resizer" title="Drag to resize sidebar"></div>
-		<main>
-			<div class="width-limiter">
-				<section class="content" id="main-content" tabindex="-1">
-					<div class="main-heading">
-						<div class="rustdoc-breadcrumbs">
-							<a href="../../index.html">Mountain</a>::<wbr /><a
-								href="../index.html"
-								>Environment</a
-							>
-						</div>
-						<h1>
-							Module
-							<span>Search<wbr />Provider</span>&nbsp;<button
-								id="copy-path"
-								title="Copy item path to clipboard">
-								Copy item path
-							</button>
-						</h1>
-						<rustdoc-toolbar></rustdoc-toolbar
-						><span class="sub-heading"
-							><a
-								class="src"
-								href="../../../src/Mountain/Environment/SearchProvider.rs.html#1-357"
-								>Source</a
-							>
-						</span>
-					</div>
-					<details class="toggle top-doc" open>
-						<summary class="hideme">
-							<span>Expand description</span>
-						</summary>
-						<div class="docblock">
-							<h2 id="searchprovider-environment">
-								<a
-									class="doc-anchor"
-									href="#searchprovider-environment"
-									>§</a
-								>SearchProvider (Environment)
-							</h2>
-							<p>
-								Implements the <code>SearchProvider</code> trait
-								for <code>MountainEnvironment</code>, providing
-								text search capabilities across files and
-								content within the workspace.
-							</p>
-							<h3 id="responsibilities">
-								<a class="doc-anchor" href="#responsibilities"
-									>§</a
-								>RESPONSIBILITIES
-							</h3>
-							<h4 id="1-search-execution">
-								<a class="doc-anchor" href="#1-search-execution"
-									>§</a
-								>1. Search Execution
-							</h4>
-							<ul>
-								<li>
-									Search for text patterns in files using glob
-									patterns
-								</li>
-								<li>Support regular expression search</li>
-								<li>Search file contents and/or file names</li>
-								<li>Handle large result sets efficiently</li>
-							</ul>
-							<h4 id="2-search-results">
-								<a class="doc-anchor" href="#2-search-results"
-									>§</a
-								>2. Search Results
-							</h4>
-							<ul>
-								<li>
-									Return structured search results with
-									matches
-								</li>
-								<li>
-									Include file URI, line number, column, and
-									matching text
-								</li>
-								<li>Support paging and result limiting</li>
-								<li>Sort results by relevance or file order</li>
-							</ul>
-							<h4 id="3-search-configuration">
-								<a
-									class="doc-anchor"
-									href="#3-search-configuration"
-									>§</a
-								>3. Search Configuration
-							</h4>
-							<ul>
-								<li>
-									Respect workspace file exclusion patterns
-									(.gitignore)
-								</li>
-								<li>Honor file size limits for search</li>
-								<li>
-									Support case-sensitive and whole-word
-									matching
-								</li>
-								<li>Handle symbolic links appropriately</li>
-							</ul>
-							<h4 id="4-search-cancellation">
-								<a
-									class="doc-anchor"
-									href="#4-search-cancellation"
-									>§</a
-								>4. Search Cancellation
-							</h4>
-							<ul>
-								<li>
-									Support cancellation of long-running
-									searches
-								</li>
-								<li>Clean up resources on cancellation</li>
-								<li>Provide progress feedback (optional)</li>
-							</ul>
-							<h3 id="architectural-role">
-								<a class="doc-anchor" href="#architectural-role"
-									>§</a
-								>ARCHITECTURAL ROLE
-							</h3>
-							<p>
-								SearchProvider is the
-								<strong>workspace search engine</strong>:
-							</p>
-							<div class="example-wrap">
-								<pre
-									class="language-text"><code>Search Request ──► SearchProvider ──► FileSystem Scan ──► Results</code></pre>
-							</div>
-							<h4 id="position-in-mountain">
-								<a
-									class="doc-anchor"
-									href="#position-in-mountain"
-									>§</a
-								>Position in Mountain
-							</h4>
-							<ul>
-								<li>
-									<code>Environment</code> module: Search
-									capability provider
-								</li>
-								<li>
-									Implements
-									<code
-										>CommonLibrary::Search::SearchProvider</code
-									>
-									trait
-								</li>
-								<li>
-									Accessible via
-									<code
-										>Environment.Require&lt;dyn
-										SearchProvider&gt;()</code
-									>
-								</li>
-							</ul>
-							<h4 id="search-types-supported">
-								<a
-									class="doc-anchor"
-									href="#search-types-supported"
-									>§</a
-								>Search Types Supported
-							</h4>
-							<ul>
-								<li>
-									<strong>Text search</strong>: Find files
-									containing text pattern
-								</li>
-								<li>
-									<strong>File search</strong>: Find files by
-									name/glob pattern
-								</li>
-								<li>
-									<strong>Replace</strong>: (Future) Search
-									and replace operations
-								</li>
-								<li>
-									<strong>Context search</strong>: (Future)
-									Search with surrounding context
-								</li>
-							</ul>
-							<h4 id="dependencies">
-								<a class="doc-anchor" href="#dependencies">§</a
-								>Dependencies
-							</h4>
-							<ul>
-								<li>
-									<code>FileSystemReader</code>: Read file
-									contents for searching
-								</li>
-								<li>
-									<code>WorkspaceProvider</code>: Get
-									workspace folders to search
-								</li>
-								<li>
-									<code>Log</code>: Search progress and errors
-								</li>
-							</ul>
-							<h4 id="dependents">
-								<a class="doc-anchor" href="#dependents">§</a
-								>Dependents
-							</h4>
-							<ul>
-								<li>
-									Search UI panel: User-initiated searches
-								</li>
-								<li>Find/Replace dialogs: In-editor search</li>
-								<li>Grep-like command-line operations</li>
-								<li>Code navigation (symbol search)</li>
-							</ul>
-							<h3 id="search-process">
-								<a class="doc-anchor" href="#search-process"
-									>§</a
-								>SEARCH PROCESS
-							</h3>
-							<ol>
-								<li>
-									<strong>File Discovery</strong>: Walk
-									workspace directories, respecting exclusions
-								</li>
-								<li>
-									<strong>File Filtering</strong>: Match
-									filenames against include/exclude patterns
-								</li>
-								<li>
-									<strong>Content Search</strong>: For each
-									file, search for pattern in content
-								</li>
-								<li>
-									<strong>Match Collection</strong>: Record
-									matches with position information
-								</li>
-								<li>
-									<strong>Result Formatting</strong>: Return
-									structured search results
-								</li>
-							</ol>
-							<h3 id="performance-considerations">
-								<a
-									class="doc-anchor"
-									href="#performance-considerations"
-									>§</a
-								>PERFORMANCE CONSIDERATIONS
-							</h3>
-							<ul>
-								<li>
-									Search is I/O bound; consider async and
-									parallel processing
-								</li>
-								<li>
-									Large workspaces may have thousands of files
-								</li>
-								<li>
-									Use file size limits to prevent memory
-									exhaustion
-								</li>
-								<li>
-									Implement result paging for UI
-									responsiveness
-								</li>
-								<li>
-									Consider background search indexing for
-									faster repeated searches
-								</li>
-							</ul>
-							<h3 id="error-handling">
-								<a class="doc-anchor" href="#error-handling"
-									>§</a
-								>ERROR HANDLING
-							</h3>
-							<ul>
-								<li>
-									Permission denied: Skip file, log warning
-								</li>
-								<li>
-									File not found: Skip file (may have been
-									deleted)
-								</li>
-								<li>
-									Encoding errors: Try default encoding, skip
-									on failure
-								</li>
-								<li>
-									Search cancelled: Stop immediately, return
-									partial results
-								</li>
-							</ul>
-							<h3 id="vs-code-reference">
-								<a class="doc-anchor" href="#vs-code-reference"
-									>§</a
-								>VS CODE REFERENCE
-							</h3>
-							<p>Patterns from VS Code:</p>
-							<ul>
-								<li>
-									<code
-										>vs/workbench/contrib/search/browser/searchWidget.ts</code
-									>
-									- Search UI
-								</li>
-								<li>
-									<code
-										>vs/platform/search/common/search.ts</code
-									>
-									- Search service API
-								</li>
-								<li>
-									<code
-										>vs/platform/search/common/fileSearch.ts</code
-									>
-									- File system search
-								</li>
-							</ul>
-							<h3 id="todo">
-								<a class="doc-anchor" href="#todo">§</a>TODO
-							</h3>
-							<ul>
-								<li>
-									<input disabled="" type="checkbox" />
-									Implement file content indexing for faster
-									searches
-								</li>
-								<li>
-									<input disabled="" type="checkbox" /> Add
-									regular expression support with PCRE or
-									regex engine
-								</li>
-								<li>
-									<input disabled="" type="checkbox" />
-									Support search result paging and streaming
-								</li>
-								<li>
-									<input disabled="" type="checkbox" /> Add
-									search cancellation with proper cleanup
-								</li>
-								<li>
-									<input disabled="" type="checkbox" />
-									Implement search result highlighting in UI
-								</li>
-								<li>
-									<input disabled="" type="checkbox" />
-									Support search in compressed/archive files
-								</li>
-								<li>
-									<input disabled="" type="checkbox" /> Add
-									search across multiple workspaces
-								</li>
-								<li>
-									<input disabled="" type="checkbox" />
-									Implement search history and persistence
-								</li>
-								<li>
-									<input disabled="" type="checkbox" /> Add
-									search filters (by language, by file size,
-									etc.)
-								</li>
-								<li>
-									<input disabled="" type="checkbox" />
-									Support search templates and saved searches
-								</li>
-								<li>
-									<input disabled="" type="checkbox" />
-									Implement search result grouping (by folder,
-									by file)
-								</li>
-								<li>
-									<input disabled="" type="checkbox" /> Add
-									search performance metrics and logging
-								</li>
-								<li>
-									<input disabled="" type="checkbox" />
-									Support search result export (to file,
-									clipboard)
-								</li>
-							</ul>
-							<h3 id="module-contents">
-								<a class="doc-anchor" href="#module-contents"
-									>§</a
-								>MODULE CONTENTS
-							</h3>
-							<ul>
-								<li>
-									[<code>SearchProvider</code>]: Main struct
-									implementing the trait
-								</li>
-								<li>Search execution methods</li>
-								<li>File walking and filtering logic</li>
-								<li>Match extraction and formatting</li>
-								<li>Search cancellation support</li>
-							</ul>
-							<h2 id="searchprovider-implementation">
-								<a
-									class="doc-anchor"
-									href="#searchprovider-implementation"
-									>§</a
-								>SearchProvider Implementation
-							</h2>
-							<p>
-								Implements the <code>SearchProvider</code> trait
-								using the <code>grep-searcher</code> crate,
-								which is a library for the
-								<code>ripgrep</code> search tool.
-							</p>
-							<h3 id="search-architecture">
-								<a
-									class="doc-anchor"
-									href="#search-architecture"
-									>§</a
-								>Search Architecture
-							</h3>
-							<p>
-								The search implementation uses a multi-threaded
-								approach:
-							</p>
-							<ol>
-								<li>
-									<strong>Pattern Compilation</strong>: Regex
-									pattern is compiled with modifiers
-								</li>
-								<li>
-									<strong>Parallel Walking</strong>: Files in
-									workspace are walked in parallel
-								</li>
-								<li>
-									<strong>Per-File Search</strong>: Each file
-									is searched individually using a sink
-									pattern
-								</li>
-								<li>
-									<strong>Result Aggregation</strong>: Matches
-									are collected in a shared thread-safe vector
-								</li>
-							</ol>
-							<h3 id="search-features">
-								<a class="doc-anchor" href="#search-features"
-									>§</a
-								>Search Features
-							</h3>
-							<ul>
-								<li>
-									<strong>Case Sensitivity</strong>:
-									Controlled by
-									<code>is_case_sensitive</code> option
-								</li>
-								<li>
-									<strong>Word Matching</strong>: Controlled
-									by <code>is_word_match</code> option
-								</li>
-								<li>
-									<strong>Regex Support</strong>: Full regex
-									pattern matching via <code>grep-regex</code>
-								</li>
-								<li>
-									<strong>Ignore Files</strong>: Respects
-									<code>.gitignore</code>,
-									<code>.ignore</code>, and other ignore files
-								</li>
-								<li>
-									<strong>Parallel Search</strong>: Uses
-									<code>WalkBuilder::build_parallel()</code>
-									for performance
-								</li>
-								<li>
-									<strong>Memory Efficient</strong>: Streams
-									results to avoid loading entire files
-								</li>
-							</ul>
-							<h3 id="search-result-format">
-								<a
-									class="doc-anchor"
-									href="#search-result-format"
-									>§</a
-								>Search Result Format
-							</h3>
-							<p>Each match includes:</p>
-							<ul>
-								<li>
-									<strong>File URI</strong>: Valid URL
-									pointing to the file
-								</li>
-								<li>
-									<strong>Line Number</strong>: Zero-indexed
-									line number of the match
-								</li>
-								<li>
-									<strong>Preview</strong>: The matched text
-									line
-								</li>
-							</ul>
-							<p>
-								Results are grouped by file, with each file
-								containing multiple matches.
-							</p>
-						</div>
-					</details>
-					<h2 class="section-header" id="structs">
-						Structs<a class="anchor" href="#structs">§</a>
-					</h2>
-					<dl class="item-table">
-						<dt>
-							<a
-								class="struct"
-								href="struct.FileMatch.html"
-								title="struct Mountain::Environment::SearchProvider::FileMatch"
-								>File<wbr />Match</a
-							><span title="Restricted Visibility">&nbsp;🔒</span>
-						</dt>
-						<dt>
-							<a
-								class="struct"
-								href="struct.PerFileSink.html"
-								title="struct Mountain::Environment::SearchProvider::PerFileSink"
-								>PerFile<wbr />Sink</a
-							><span title="Restricted Visibility">&nbsp;🔒</span>
-						</dt>
-						<dt>
-							<a
-								class="struct"
-								href="struct.TextMatch.html"
-								title="struct Mountain::Environment::SearchProvider::TextMatch"
-								>Text<wbr />Match</a
-							><span title="Restricted Visibility">&nbsp;🔒</span>
-						</dt>
-						<dt>
-							<a
-								class="struct"
-								href="struct.TextSearchQuery.html"
-								title="struct Mountain::Environment::SearchProvider::TextSearchQuery"
-								>Text<wbr />Search<wbr />Query</a
-							><span title="Restricted Visibility">&nbsp;🔒</span>
-						</dt>
-					</dl>
-				</section>
-			</div>
-		</main>
-	</body>
-</html>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="SearchProvider (Environment)"><title>Mountain::Environment::SearchProvider - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-b7b9f40b.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-41dd4d93.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module SearchProvider</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Search<wbr>Provider</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#searchprovider-environment" title="SearchProvider (Environment)">SearchProvider (Environment)</a><ul><li><a href="#responsibilities" title="RESPONSIBILITIES">RESPONSIBILITIES</a></li><li><a href="#architectural-role" title="ARCHITECTURAL ROLE">ARCHITECTURAL ROLE</a></li><li><a href="#search-process" title="SEARCH PROCESS">SEARCH PROCESS</a></li><li><a href="#performance-considerations" title="PERFORMANCE CONSIDERATIONS">PERFORMANCE CONSIDERATIONS</a></li><li><a href="#error-handling" title="ERROR HANDLING">ERROR HANDLING</a></li><li><a href="#vs-code-reference" title="VS CODE REFERENCE">VS CODE REFERENCE</a></li><li><a href="#todo" title="TODO">TODO</a></li><li><a href="#module-contents" title="MODULE CONTENTS">MODULE CONTENTS</a></li></ul></li><li><a href="#searchprovider-implementation" title="SearchProvider Implementation">SearchProvider Implementation</a><ul><li><a href="#search-architecture" title="Search Architecture">Search Architecture</a></li><li><a href="#search-features" title="Search Features">Search Features</a></li><li><a href="#search-result-format" title="Search Result Format">Search Result Format</a></li></ul></li></ul><h3><a href="#structs">Module Items</a></h3><ul class="block"><li><a href="#structs" title="Structs">Structs</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Environment</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Environment</a></div><h1>Module <span>Search<wbr>Provider</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Environment/SearchProvider.rs.html#1-357">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="searchprovider-environment"><a class="doc-anchor" href="#searchprovider-environment">§</a>SearchProvider (Environment)</h2>
+<p>Implements the <code>SearchProvider</code> trait for <code>MountainEnvironment</code>, providing
+text search capabilities across files and content within the workspace.</p>
+<h3 id="responsibilities"><a class="doc-anchor" href="#responsibilities">§</a>RESPONSIBILITIES</h3><h4 id="1-search-execution"><a class="doc-anchor" href="#1-search-execution">§</a>1. Search Execution</h4>
+<ul>
+<li>Search for text patterns in files using glob patterns</li>
+<li>Support regular expression search</li>
+<li>Search file contents and/or file names</li>
+<li>Handle large result sets efficiently</li>
+</ul>
+<h4 id="2-search-results"><a class="doc-anchor" href="#2-search-results">§</a>2. Search Results</h4>
+<ul>
+<li>Return structured search results with matches</li>
+<li>Include file URI, line number, column, and matching text</li>
+<li>Support paging and result limiting</li>
+<li>Sort results by relevance or file order</li>
+</ul>
+<h4 id="3-search-configuration"><a class="doc-anchor" href="#3-search-configuration">§</a>3. Search Configuration</h4>
+<ul>
+<li>Respect workspace file exclusion patterns (.gitignore)</li>
+<li>Honor file size limits for search</li>
+<li>Support case-sensitive and whole-word matching</li>
+<li>Handle symbolic links appropriately</li>
+</ul>
+<h4 id="4-search-cancellation"><a class="doc-anchor" href="#4-search-cancellation">§</a>4. Search Cancellation</h4>
+<ul>
+<li>Support cancellation of long-running searches</li>
+<li>Clean up resources on cancellation</li>
+<li>Provide progress feedback (optional)</li>
+</ul>
+<h3 id="architectural-role"><a class="doc-anchor" href="#architectural-role">§</a>ARCHITECTURAL ROLE</h3>
+<p>SearchProvider is the <strong>workspace search engine</strong>:</p>
+<div class="example-wrap"><pre class="language-text"><code>Search Request ──► SearchProvider ──► FileSystem Scan ──► Results</code></pre></div><h4 id="position-in-mountain"><a class="doc-anchor" href="#position-in-mountain">§</a>Position in Mountain</h4>
+<ul>
+<li><code>Environment</code> module: Search capability provider</li>
+<li>Implements <code>CommonLibrary::Search::SearchProvider</code> trait</li>
+<li>Accessible via <code>Environment.Require&lt;dyn SearchProvider&gt;()</code></li>
+</ul>
+<h4 id="search-types-supported"><a class="doc-anchor" href="#search-types-supported">§</a>Search Types Supported</h4>
+<ul>
+<li><strong>Text search</strong>: Find files containing text pattern</li>
+<li><strong>File search</strong>: Find files by name/glob pattern</li>
+<li><strong>Replace</strong>: (Future) Search and replace operations</li>
+<li><strong>Context search</strong>: (Future) Search with surrounding context</li>
+</ul>
+<h4 id="dependencies"><a class="doc-anchor" href="#dependencies">§</a>Dependencies</h4>
+<ul>
+<li><code>FileSystemReader</code>: Read file contents for searching</li>
+<li><code>WorkspaceProvider</code>: Get workspace folders to search</li>
+<li><code>Log</code>: Search progress and errors</li>
+</ul>
+<h4 id="dependents"><a class="doc-anchor" href="#dependents">§</a>Dependents</h4>
+<ul>
+<li>Search UI panel: User-initiated searches</li>
+<li>Find/Replace dialogs: In-editor search</li>
+<li>Grep-like command-line operations</li>
+<li>Code navigation (symbol search)</li>
+</ul>
+<h3 id="search-process"><a class="doc-anchor" href="#search-process">§</a>SEARCH PROCESS</h3>
+<ol>
+<li><strong>File Discovery</strong>: Walk workspace directories, respecting exclusions</li>
+<li><strong>File Filtering</strong>: Match filenames against include/exclude patterns</li>
+<li><strong>Content Search</strong>: For each file, search for pattern in content</li>
+<li><strong>Match Collection</strong>: Record matches with position information</li>
+<li><strong>Result Formatting</strong>: Return structured search results</li>
+</ol>
+<h3 id="performance-considerations"><a class="doc-anchor" href="#performance-considerations">§</a>PERFORMANCE CONSIDERATIONS</h3>
+<ul>
+<li>Search is I/O bound; consider async and parallel processing</li>
+<li>Large workspaces may have thousands of files</li>
+<li>Use file size limits to prevent memory exhaustion</li>
+<li>Implement result paging for UI responsiveness</li>
+<li>Consider background search indexing for faster repeated searches</li>
+</ul>
+<h3 id="error-handling"><a class="doc-anchor" href="#error-handling">§</a>ERROR HANDLING</h3>
+<ul>
+<li>Permission denied: Skip file, log warning</li>
+<li>File not found: Skip file (may have been deleted)</li>
+<li>Encoding errors: Try default encoding, skip on failure</li>
+<li>Search cancelled: Stop immediately, return partial results</li>
+</ul>
+<h3 id="vs-code-reference"><a class="doc-anchor" href="#vs-code-reference">§</a>VS CODE REFERENCE</h3>
+<p>Patterns from VS Code:</p>
+<ul>
+<li><code>vs/workbench/contrib/search/browser/searchWidget.ts</code> - Search UI</li>
+<li><code>vs/platform/search/common/search.ts</code> - Search service API</li>
+<li><code>vs/platform/search/common/fileSearch.ts</code> - File system search</li>
+</ul>
+<h3 id="todo"><a class="doc-anchor" href="#todo">§</a>TODO</h3>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Implement file content indexing for faster searches</li>
+<li><input disabled="" type="checkbox"/>
+Add regular expression support with PCRE or regex engine</li>
+<li><input disabled="" type="checkbox"/>
+Support search result paging and streaming</li>
+<li><input disabled="" type="checkbox"/>
+Add search cancellation with proper cleanup</li>
+<li><input disabled="" type="checkbox"/>
+Implement search result highlighting in UI</li>
+<li><input disabled="" type="checkbox"/>
+Support search in compressed/archive files</li>
+<li><input disabled="" type="checkbox"/>
+Add search across multiple workspaces</li>
+<li><input disabled="" type="checkbox"/>
+Implement search history and persistence</li>
+<li><input disabled="" type="checkbox"/>
+Add search filters (by language, by file size, etc.)</li>
+<li><input disabled="" type="checkbox"/>
+Support search templates and saved searches</li>
+<li><input disabled="" type="checkbox"/>
+Implement search result grouping (by folder, by file)</li>
+<li><input disabled="" type="checkbox"/>
+Add search performance metrics and logging</li>
+<li><input disabled="" type="checkbox"/>
+Support search result export (to file, clipboard)</li>
+</ul>
+<h3 id="module-contents"><a class="doc-anchor" href="#module-contents">§</a>MODULE CONTENTS</h3>
+<ul>
+<li>[<code>SearchProvider</code>]: Main struct implementing the trait</li>
+<li>Search execution methods</li>
+<li>File walking and filtering logic</li>
+<li>Match extraction and formatting</li>
+<li>Search cancellation support</li>
+</ul>
+<h2 id="searchprovider-implementation"><a class="doc-anchor" href="#searchprovider-implementation">§</a>SearchProvider Implementation</h2>
+<p>Implements the <code>SearchProvider</code> trait using the <code>grep-searcher</code> crate, which
+is a library for the <code>ripgrep</code> search tool.</p>
+<h3 id="search-architecture"><a class="doc-anchor" href="#search-architecture">§</a>Search Architecture</h3>
+<p>The search implementation uses a multi-threaded approach:</p>
+<ol>
+<li><strong>Pattern Compilation</strong>: Regex pattern is compiled with modifiers</li>
+<li><strong>Parallel Walking</strong>: Files in workspace are walked in parallel</li>
+<li><strong>Per-File Search</strong>: Each file is searched individually using a sink
+pattern</li>
+<li><strong>Result Aggregation</strong>: Matches are collected in a shared thread-safe
+vector</li>
+</ol>
+<h3 id="search-features"><a class="doc-anchor" href="#search-features">§</a>Search Features</h3>
+<ul>
+<li><strong>Case Sensitivity</strong>: Controlled by <code>is_case_sensitive</code> option</li>
+<li><strong>Word Matching</strong>: Controlled by <code>is_word_match</code> option</li>
+<li><strong>Regex Support</strong>: Full regex pattern matching via <code>grep-regex</code></li>
+<li><strong>Ignore Files</strong>: Respects <code>.gitignore</code>, <code>.ignore</code>, and other ignore files</li>
+<li><strong>Parallel Search</strong>: Uses <code>WalkBuilder::build_parallel()</code> for performance</li>
+<li><strong>Memory Efficient</strong>: Streams results to avoid loading entire files</li>
+</ul>
+<h3 id="search-result-format"><a class="doc-anchor" href="#search-result-format">§</a>Search Result Format</h3>
+<p>Each match includes:</p>
+<ul>
+<li><strong>File URI</strong>: Valid URL pointing to the file</li>
+<li><strong>Line Number</strong>: Zero-indexed line number of the match</li>
+<li><strong>Preview</strong>: The matched text line</li>
+</ul>
+<p>Results are grouped by file, with each file containing multiple matches.</p>
+</div></details><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.FileMatch.html" title="struct Mountain::Environment::SearchProvider::FileMatch">File<wbr>Match</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dt><a class="struct" href="struct.PerFileSink.html" title="struct Mountain::Environment::SearchProvider::PerFileSink">PerFile<wbr>Sink</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dt><a class="struct" href="struct.TextMatch.html" title="struct Mountain::Environment::SearchProvider::TextMatch">Text<wbr>Match</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dt><a class="struct" href="struct.TextSearchQuery.html" title="struct Mountain::Environment::SearchProvider::TextSearchQuery">Text<wbr>Search<wbr>Query</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt></dl></section></div></main></body></html>

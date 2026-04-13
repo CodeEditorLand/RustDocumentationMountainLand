@@ -1,89 +1,4 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
-		<meta content="rustdoc" name="generator" />
-		<meta
-			content="Source of the Rust file `Element/Mountain/Source/IPC/WindAdvancedSync.rs`."
-			name="description" />
-		<title>WindAdvancedSync.rs - source</title>
-		<script>
-			if (window.location.protocol !== "file:")
-				document.head.insertAdjacentHTML(
-					"beforeend",
-					"SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2"
-						.split(",")
-						.map(
-							(f) =>
-								`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`,
-						)
-						.join(""),
-				);
-		</script>
-		<link
-			href="../../../static.files/normalize-9960930a.css"
-			rel="stylesheet" />
-		<link
-			href="../../../static.files/rustdoc-b7b9f40b.css"
-			rel="stylesheet" />
-		<meta
-			name="rustdoc-vars"
-			data-channel="nightly"
-			data-current-crate="Mountain"
-			data-resource-suffix=""
-			data-root-path="../../../"
-			data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)"
-			data-search-js="search-63369b7b.js"
-			data-settings-js="settings-170eb4bf.js"
-			data-static-root-path="../../../static.files/"
-			data-stringdex-js="stringdex-b897f86f.js"
-			data-themes="" />
-		<script src="../../../static.files/storage-41dd4d93.js"></script>
-		<script
-			defer
-			src="../../../static.files/src-script-813739b1.js"></script>
-		<script defer src="../../../src-files.js"></script>
-		<script defer src="../../../static.files/main-5013f961.js"></script>
-		<noscript
-			><link
-				href="../../../static.files/noscript-f7c3ffd8.css"
-				rel="stylesheet"
-		/></noscript>
-		<link
-			href="../../../static.files/favicon-32x32-eab170b8.png"
-			rel="alternate icon"
-			type="image/png" />
-		<link
-			href="../../../static.files/favicon-044be391.svg"
-			rel="icon"
-			type="image/svg+xml" />
-	</head>
-	<body class="rustdoc src">
-		<a class="skip-main-content" href="#main-content"
-			>Skip to main content</a
-		><!--[if lte IE 11
-			]><div class="warning">
-				This old browser is unsupported and will most likely display
-				funky things.
-			</div><!
-		[endif]-->
-		<nav class="sidebar">
-			<div class="src-sidebar-title"><h2>Files</h2></div>
-		</nav>
-		<div class="sidebar-resizer" title="Drag to resize sidebar"></div>
-		<main>
-			<section class="content" id="main-content" tabindex="-1">
-				<div class="main-heading">
-					<h1>
-						<div class="sub-heading">Mountain/IPC/</div>
-						WindAdvancedSync.rs
-					</h1>
-					<rustdoc-toolbar></rustdoc-toolbar>
-				</div>
-				<div class="example-wrap digits-4">
-					<pre
-						class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="doccomment">//! # Wind Advanced Synchronization - Real-time Document &amp; UI Sync
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `Element/Mountain/Source/IPC/WindAdvancedSync.rs`."><title>WindAdvancedSync.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-b7b9f40b.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-41dd4d93.js"></script><script defer src="../../../static.files/src-script-813739b1.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><h1><div class="sub-heading">Mountain/IPC/</div>WindAdvancedSync.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-4"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="doccomment">//! # Wind Advanced Synchronization - Real-time Document &amp; UI Sync
 <a href=#2 id=2 data-nosnippet>2</a>//!
 <a href=#3 id=3 data-nosnippet>3</a>//! **File Responsibilities:**
 <a href=#4 id=4 data-nosnippet>4</a>//! This module implements advanced synchronization features that keep Wind's
@@ -369,7 +284,7 @@
 <a href=#284 id=284 data-nosnippet>284</a><span class="kw">use </span>tokio::time::interval;
 <a href=#285 id=285 data-nosnippet>285</a><span class="kw">use </span>tauri::{Emitter, Manager};
 <a href=#286 id=286 data-nosnippet>286</a>
-<a href=#287 id=287 data-nosnippet>287</a><span class="kw">use </span>crate::{<a href="AdvancedFeatures.rs.html#230-238">IPC::AdvancedFeatures::PerformanceStats</a>, <a href="../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">RunTime::ApplicationRunTime::ApplicationRunTime</a>};
+<a href=#287 id=287 data-nosnippet>287</a><span class="kw">use </span>crate::{<a href="AdvancedFeatures.rs.html#230-238">IPC::AdvancedFeatures::PerformanceStats</a>, <a href="../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">RunTime::ApplicationRunTime::ApplicationRunTime</a>, <a href="DevLog.rs.html#150-185">dev_log</a>};
 <a href=#288 id=288 data-nosnippet>288</a>
 <a href=#289 id=289 data-nosnippet>289</a><span class="comment">// TEMPORARY: MountainIPC module not yet implemented
 <a href=#290 id=290 data-nosnippet>290</a>// This import is needed for full document synchronization with Mountain
@@ -657,7 +572,7 @@
 <a href=#572 id=572 data-nosnippet>572</a><span class="kw">impl </span><a href="#406-413">WindAdvancedSync</a> {
 <a href=#573 id=573 data-nosnippet>573</a>	<span class="doccomment">/// Start advanced synchronization
 <a href=#574 id=574 data-nosnippet>574</a>	</span><span class="kw">pub async fn </span>start_synchronization(<span class="self">self</span>: <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<span class="self">Self</span>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
-<a href=#575 id=575 data-nosnippet>575</a>		<span class="macro">info!</span>(<span class="string">"[WindAdvancedSync] Starting advanced synchronization"</span>);
+<a href=#575 id=575 data-nosnippet>575</a>		<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Starting advanced synchronization"</span>);
 <a href=#576 id=576 data-nosnippet>576</a>
 <a href=#577 id=577 data-nosnippet>577</a>		<span class="comment">// Start document synchronization
 <a href=#578 id=578 data-nosnippet>578</a>		</span><span class="kw">let </span>sync1 = <span class="self">self</span>.clone();
@@ -689,7 +604,7 @@
 <a href=#604 id=604 data-nosnippet>604</a>		<span class="kw">loop </span>{
 <a href=#605 id=605 data-nosnippet>605</a>			interval.tick().<span class="kw">await</span>;
 <a href=#606 id=606 data-nosnippet>606</a>
-<a href=#607 id=607 data-nosnippet>607</a>			<span class="macro">debug!</span>(<span class="string">"[WindAdvancedSync] Synchronizing documents"</span>);
+<a href=#607 id=607 data-nosnippet>607</a>			<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Synchronizing documents"</span>);
 <a href=#608 id=608 data-nosnippet>608</a>
 <a href=#609 id=609 data-nosnippet>609</a>			<span class="comment">// ERROR RECOVERY: Microsoft-inspired circuit breaker pattern
 <a href=#610 id=610 data-nosnippet>610</a>			</span><span class="kw">let </span>sync_start = std::time::Instant::now();
@@ -710,7 +625,7 @@
 <a href=#625 id=625 data-nosnippet>625</a>						<span class="comment">// ERROR HANDLING: Exponential backoff on consecutive failures
 <a href=#626 id=626 data-nosnippet>626</a>						</span>consecutive_failures += <span class="number">1</span>;
 <a href=#627 id=627 data-nosnippet>627</a>						<span class="kw">if </span>consecutive_failures &gt;= max_consecutive_failures {
-<a href=#628 id=628 data-nosnippet>628</a>							<span class="macro">warn!</span>(<span class="string">"[WindAdvancedSync] Too many consecutive failures, slowing sync interval"</span>);
+<a href=#628 id=628 data-nosnippet>628</a>							<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Too many consecutive failures, slowing sync interval"</span>);
 <a href=#629 id=629 data-nosnippet>629</a>							<span class="comment">// Reduce sync frequency to 30-second interval to prevent system overload
 <a href=#630 id=630 data-nosnippet>630</a>							// during persistent error conditions (circuit breaker pattern).
 <a href=#631 id=631 data-nosnippet>631</a>							</span>interval = tokio::time::interval(Duration::from_secs(<span class="number">30</span>));
@@ -785,14 +700,14 @@
 <a href=#700 id=700 data-nosnippet>700</a>
 <a href=#701 id=701 data-nosnippet>701</a>	<span class="doccomment">/// Apply document change
 <a href=#702 id=702 data-nosnippet>702</a>	</span><span class="kw">async fn </span>apply_document_change(<span class="kw-2">&amp;</span><span class="self">self</span>, change:<a href="#336-342">DocumentChange</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
-<a href=#703 id=703 data-nosnippet>703</a>		<span class="macro">debug!</span>(<span class="string">"[WindAdvancedSync] Applying document change: {}"</span>, change.change_id);
+<a href=#703 id=703 data-nosnippet>703</a>		<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Applying document change: {}"</span>, change.change_id);
 <a href=#704 id=704 data-nosnippet>704</a>
 <a href=#705 id=705 data-nosnippet>705</a>		<span class="comment">// CONFLICT RESOLUTION: Microsoft-inspired conflict handling
 <a href=#706 id=706 data-nosnippet>706</a>		</span><span class="kw">let </span>change_start = std::time::Instant::now();
 <a href=#707 id=707 data-nosnippet>707</a>
 <a href=#708 id=708 data-nosnippet>708</a>		<span class="comment">// Check for conflicts before applying changes
 <a href=#709 id=709 data-nosnippet>709</a>		</span><span class="kw">if let </span><span class="prelude-val">Err</span>(conflict) = <span class="self">self</span>.check_for_conflicts(<span class="kw-2">&amp;</span>change).<span class="kw">await </span>{
-<a href=#710 id=710 data-nosnippet>710</a>			<span class="macro">warn!</span>(<span class="string">"[WindAdvancedSync] Conflict detected: {}"</span>, conflict);
+<a href=#710 id=710 data-nosnippet>710</a>			<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Conflict detected: {}"</span>, conflict);
 <a href=#711 id=711 data-nosnippet>711</a>			<span class="kw">return </span><span class="prelude-val">Err</span>(<span class="macro">format!</span>(<span class="string">"Conflict detected: {}"</span>, conflict));
 <a href=#712 id=712 data-nosnippet>712</a>		}
 <a href=#713 id=713 data-nosnippet>713</a>
@@ -835,7 +750,7 @@
 <a href=#750 id=750 data-nosnippet>750</a>				// IPC: {}", e))?;
 <a href=#751 id=751 data-nosnippet>751</a>			</span>},
 <a href=#752 id=752 data-nosnippet>752</a>			<span class="kw">_ </span>=&gt; {
-<a href=#753 id=753 data-nosnippet>753</a>				<span class="macro">warn!</span>(<span class="string">"[WindAdvancedSync] Unsupported change type: {:?}"</span>, change.change_type);
+<a href=#753 id=753 data-nosnippet>753</a>				<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Unsupported change type: {:?}"</span>, change.change_type);
 <a href=#754 id=754 data-nosnippet>754</a>			},
 <a href=#755 id=755 data-nosnippet>755</a>		}
 <a href=#756 id=756 data-nosnippet>756</a>
@@ -987,7 +902,7 @@
 <a href=#902 id=902 data-nosnippet>902</a>
 <a href=#903 id=903 data-nosnippet>903</a>		sync.synchronized_documents.insert(document_id, document);
 <a href=#904 id=904 data-nosnippet>904</a>
-<a href=#905 id=905 data-nosnippet>905</a>		<span class="macro">debug!</span>(<span class="string">"[WindAdvancedSync] Document added for synchronization"</span>);
+<a href=#905 id=905 data-nosnippet>905</a>		<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Document added for synchronization"</span>);
 <a href=#906 id=906 data-nosnippet>906</a>		<span class="prelude-val">Ok</span>(())
 <a href=#907 id=907 data-nosnippet>907</a>	}
 <a href=#908 id=908 data-nosnippet>908</a>
@@ -1002,7 +917,7 @@
 <a href=#917 id=917 data-nosnippet>917</a>			.or_insert_with(Vec::new)
 <a href=#918 id=918 data-nosnippet>918</a>			.push(subscriber);
 <a href=#919 id=919 data-nosnippet>919</a>
-<a href=#920 id=920 data-nosnippet>920</a>		<span class="macro">debug!</span>(<span class="string">"[WindAdvancedSync] Subscriber added for target: {}"</span>, target_clone);
+<a href=#920 id=920 data-nosnippet>920</a>		<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Subscriber added for target: {}"</span>, target_clone);
 <a href=#921 id=921 data-nosnippet>921</a>		<span class="prelude-val">Ok</span>(())
 <a href=#922 id=922 data-nosnippet>922</a>	}
 <a href=#923 id=923 data-nosnippet>923</a>
@@ -1049,7 +964,7 @@
 <a href=#964 id=964 data-nosnippet>964</a>	document_id:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#965 id=965 data-nosnippet>965</a>	file_path:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#966 id=966 data-nosnippet>966</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
-<a href=#967 id=967 data-nosnippet>967</a>	<span class="macro">debug!</span>(<span class="string">"[WindAdvancedSync] Tauri command: add_document_for_sync"</span>);
+<a href=#967 id=967 data-nosnippet>967</a>	<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Tauri command: add_document_for_sync"</span>);
 <a href=#968 id=968 data-nosnippet>968</a>
 <a href=#969 id=969 data-nosnippet>969</a>	<span class="kw">if let </span><span class="prelude-val">Some</span>(sync) = app_handle.try_state::&lt;WindAdvancedSync&gt;() {
 <a href=#970 id=970 data-nosnippet>970</a>		sync.add_document(document_id, file_path).<span class="kw">await
@@ -1061,7 +976,7 @@
 <a href=#976 id=976 data-nosnippet>976</a><span class="doccomment">/// Tauri command to get sync status
 <a href=#977 id=977 data-nosnippet>977</a></span><span class="attr">#[tauri::command]
 <a href=#978 id=978 data-nosnippet>978</a></span><span class="kw">pub async fn </span><a href="#977">mountain_get_sync_status</a>(app_handle:tauri::AppHandle) -&gt; <span class="prelude-ty">Result</span>&lt;SyncStatus, String&gt; {
-<a href=#979 id=979 data-nosnippet>979</a>	<span class="macro">debug!</span>(<span class="string">"[WindAdvancedSync] Tauri command: get_sync_status"</span>);
+<a href=#979 id=979 data-nosnippet>979</a>	<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Tauri command: get_sync_status"</span>);
 <a href=#980 id=980 data-nosnippet>980</a>
 <a href=#981 id=981 data-nosnippet>981</a>	<span class="kw">if let </span><span class="prelude-val">Some</span>(sync) = app_handle.try_state::&lt;WindAdvancedSync&gt;() {
 <a href=#982 id=982 data-nosnippet>982</a>		<span class="prelude-val">Ok</span>(sync.get_sync_status().<span class="kw">await</span>)
@@ -1077,7 +992,7 @@
 <a href=#992 id=992 data-nosnippet>992</a>	target:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#993 id=993 data-nosnippet>993</a>	subscriber:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#994 id=994 data-nosnippet>994</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
-<a href=#995 id=995 data-nosnippet>995</a>	<span class="macro">debug!</span>(<span class="string">"[WindAdvancedSync] Tauri command: subscribe_to_updates"</span>);
+<a href=#995 id=995 data-nosnippet>995</a>	<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Tauri command: subscribe_to_updates"</span>);
 <a href=#996 id=996 data-nosnippet>996</a>
 <a href=#997 id=997 data-nosnippet>997</a>	<span class="kw">if let </span><span class="prelude-val">Some</span>(sync) = app_handle.try_state::&lt;WindAdvancedSync&gt;() {
 <a href=#998 id=998 data-nosnippet>998</a>		sync.subscribe_to_updates(target, subscriber).<span class="kw">await
@@ -1091,7 +1006,7 @@
 <a href=#1006 id=1006 data-nosnippet>1006</a>	app_handle:<span class="kw-2">&amp;</span>tauri::AppHandle,
 <a href=#1007 id=1007 data-nosnippet>1007</a>	runtime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">ApplicationRunTime</a>&gt;,
 <a href=#1008 id=1008 data-nosnippet>1008</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
-<a href=#1009 id=1009 data-nosnippet>1009</a>	<a href="https://docs.rs/log/0.4.29/log/macro.info.html">info!</a>(<span class="string">"[WindAdvancedSync] Initializing Wind advanced synchronization"</span>);
+<a href=#1009 id=1009 data-nosnippet>1009</a>	<a href="DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"Initializing Wind advanced synchronization"</span>);
 <a href=#1010 id=1010 data-nosnippet>1010</a>
 <a href=#1011 id=1011 data-nosnippet>1011</a>	<span class="kw">let </span>sync = <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(<a href="#406-413">WindAdvancedSync</a>::<a href="#417-466">new</a>(<a href="#1007">runtime</a>));
 <a href=#1012 id=1012 data-nosnippet>1012</a>
@@ -1108,9 +1023,4 @@
 <a href=#1023 id=1023 data-nosnippet>1023</a>
 <a href=#1024 id=1024 data-nosnippet>1024</a>	<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#1025 id=1025 data-nosnippet>1025</a>}
-</code></pre>
-				</div>
-			</section>
-		</main>
-	</body>
-</html>
+</code></pre></div></section></main></body></html>

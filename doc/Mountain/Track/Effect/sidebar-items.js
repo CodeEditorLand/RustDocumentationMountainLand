@@ -1,5 +1,1 @@
-window.SIDEBAR_ITEMS = {
-	"fn": ["CreateEffectForRequest", "Fn"],
-	"mod": ["CreateEffectForRequest", "MappedEffectType"],
-	"type": ["MappedEffect"],
-};
+window.SIDEBAR_ITEMS = {"fn":["CreateEffectForRequest","Fn"],"mod":["CreateEffectForRequest","MappedEffectType"],"type":["MappedEffect"]};

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "enum": ["MarkerSeverity"] };
+window.SIDEBAR_ITEMS = {"enum":["MarkerSeverity"]};

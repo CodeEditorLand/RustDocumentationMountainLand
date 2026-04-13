@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "fn": ["CommandRegister"] };
+window.SIDEBAR_ITEMS = {"fn":["CommandRegister"]};

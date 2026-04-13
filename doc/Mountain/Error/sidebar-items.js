@@ -1,10 +1,1 @@
-window.SIDEBAR_ITEMS = {
-	"mod": [
-		"ConfigurationError",
-		"CoreError",
-		"FileSystemError",
-		"IPCError",
-		"ProviderError",
-		"ServiceError",
-	],
-};
+window.SIDEBAR_ITEMS = {"mod":["ConfigurationError","CoreError","FileSystemError","IPCError","ProviderError","ServiceError"]};

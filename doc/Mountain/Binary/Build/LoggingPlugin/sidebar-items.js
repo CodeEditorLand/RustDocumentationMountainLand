@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "fn": ["LoggingPlugin"] };
+window.SIDEBAR_ITEMS = {"fn":["CompressTarget","LoggingPlugin"]};

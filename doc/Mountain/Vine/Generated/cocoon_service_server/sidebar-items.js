@@ -1,5 +1,1 @@
-window.SIDEBAR_ITEMS = {
-	"constant": ["SERVICE_NAME"],
-	"struct": ["CocoonServiceServer"],
-	"trait": ["CocoonService"],
-};
+window.SIDEBAR_ITEMS = {"constant":["SERVICE_NAME"],"struct":["CocoonServiceServer"],"trait":["CocoonService"]};

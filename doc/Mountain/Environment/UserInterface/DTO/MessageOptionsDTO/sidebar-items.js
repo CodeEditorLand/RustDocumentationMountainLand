@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "struct": ["MessageOptionsDTO"] };
+window.SIDEBAR_ITEMS = {"struct":["MessageOptionsDTO"]};

@@ -1,3 +1,0 @@
-rn_(
-	"BQHBAAAkR+zj7lbvBcHtcXNDAISwYOxGAw+wcOi0AAGgQAAA7IAggAU6MAAAAQAAAAAACwAQAAAAFM6n2qjaqdpv2+jhN+c45znn4+fk5+Xn",
-);

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "fn": ["Fn"], "macro": ["TraceStep"] };
+window.SIDEBAR_ITEMS = {"fn":["Fn"],"macro":["TraceStep"]};

@@ -1,3 +1,1 @@
-window.SIDEBAR_ITEMS = {
-	"mod": ["CocoonStart", "ConfigurationInitialize", "VineStart"],
-};
+window.SIDEBAR_ITEMS = {"mod":["CocoonStart","ConfigurationInitialize","VineStart"]};

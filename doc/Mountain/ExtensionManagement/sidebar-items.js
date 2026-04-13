@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "mod": ["Scanner"] };
+window.SIDEBAR_ITEMS = {"mod":["Scanner"]};

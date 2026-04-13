@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "fn": ["refresh_tree_view", "reveal_tree_item"] };
+window.SIDEBAR_ITEMS = {"fn":["refresh_tree_view","reveal_tree_item"]};

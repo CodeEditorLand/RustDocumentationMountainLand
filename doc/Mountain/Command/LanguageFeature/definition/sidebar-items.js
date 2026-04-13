@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "fn": ["provide_definition_impl"] };
+window.SIDEBAR_ITEMS = {"fn":["provide_definition_impl"]};

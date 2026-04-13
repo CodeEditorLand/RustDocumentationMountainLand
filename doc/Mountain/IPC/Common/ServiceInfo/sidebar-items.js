@@ -1,9 +1,1 @@
-window.SIDEBAR_ITEMS = {
-	"enum": ["ServiceState"],
-	"struct": [
-		"ServiceEndpoint",
-		"ServiceInfo",
-		"ServicePerformance",
-		"ServiceRegistry",
-	],
-};
+window.SIDEBAR_ITEMS = {"enum":["ServiceState"],"struct":["ServiceEndpoint","ServiceInfo","ServicePerformance","ServiceRegistry"]};

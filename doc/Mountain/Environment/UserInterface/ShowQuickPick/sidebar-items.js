@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "fn": ["ShowQuickPick"] };
+window.SIDEBAR_ITEMS = {"fn":["ShowQuickPick"]};

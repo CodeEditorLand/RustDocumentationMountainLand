@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "enum": ["ProviderError"] };
+window.SIDEBAR_ITEMS = {"enum":["ProviderError"]};

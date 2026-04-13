@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "fn": ["TauriBuild"] };
+window.SIDEBAR_ITEMS = {"fn":["TauriBuild"]};

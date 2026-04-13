@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "trait": ["UserInterfaceProvider"] };
+window.SIDEBAR_ITEMS = {"trait":["UserInterfaceProvider"]};

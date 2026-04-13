@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "struct": ["InputBoxOptionsDTO"] };
+window.SIDEBAR_ITEMS = {"struct":["InputBoxOptionsDTO"]};

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "struct": ["MarkerState"] };
+window.SIDEBAR_ITEMS = {"struct":["MarkerState"]};

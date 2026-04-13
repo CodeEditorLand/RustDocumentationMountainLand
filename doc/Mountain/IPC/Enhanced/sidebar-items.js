@@ -1,10 +1,1 @@
-window.SIDEBAR_ITEMS = {
-	"fn": ["initialize_enhanced_ipc"],
-	"mod": [
-		"ConnectionPool",
-		"MessageCompressor",
-		"PerformanceDashboard",
-		"SecureMessageChannel",
-	],
-	"struct": ["EnhancedIPCManager", "EnhancedIPCStats"],
-};
+window.SIDEBAR_ITEMS = {"fn":["initialize_enhanced_ipc"],"mod":["ConnectionPool","MessageCompressor","PerformanceDashboard","SecureMessageChannel"],"struct":["EnhancedIPCManager","EnhancedIPCStats"]};

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "fn": ["ConfigurationInitialize"] };
+window.SIDEBAR_ITEMS = {"fn":["ConfigurationInitialize"]};

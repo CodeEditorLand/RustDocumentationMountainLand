@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "struct": ["CocoonServiceClient"] };
+window.SIDEBAR_ITEMS = {"struct":["CocoonServiceClient"]};

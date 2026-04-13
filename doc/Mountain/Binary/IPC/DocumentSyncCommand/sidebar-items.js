@@ -1,3 +1,1 @@
-window.SIDEBAR_ITEMS = {
-	"fn": ["MountainAddDocumentForSync", "MountainGetSyncStatus"],
-};
+window.SIDEBAR_ITEMS = {"fn":["MountainAddDocumentForSync","MountainGetSyncStatus"]};

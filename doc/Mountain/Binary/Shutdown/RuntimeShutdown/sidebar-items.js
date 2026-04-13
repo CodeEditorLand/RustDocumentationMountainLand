@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "fn": ["RuntimeShutdown"] };
+window.SIDEBAR_ITEMS = {"fn":["RuntimeShutdown"]};

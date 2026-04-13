@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "mod": ["EnableTray", "SwitchTrayIcon"] };
+window.SIDEBAR_ITEMS = {"mod":["EnableTray","SwitchTrayIcon"]};

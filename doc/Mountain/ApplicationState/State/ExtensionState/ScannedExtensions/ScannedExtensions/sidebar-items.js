@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "struct": ["ScannedExtensionCollection"] };
+window.SIDEBAR_ITEMS = {"struct":["ScannedExtensionCollection"]};

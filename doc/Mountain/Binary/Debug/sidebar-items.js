@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "mod": ["TraceLog"] };
+window.SIDEBAR_ITEMS = {"mod":["TraceLog"]};

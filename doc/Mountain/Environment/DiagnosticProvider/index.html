@@ -1,658 +1,153 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
-		<meta content="rustdoc" name="generator" />
-		<meta content="DiagnosticProvider (Environment)" name="description" />
-		<title>Mountain::Environment::DiagnosticProvider - Rust</title>
-		<script>
-			if (window.location.protocol !== "file:")
-				document.head.insertAdjacentHTML(
-					"beforeend",
-					"SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2"
-						.split(",")
-						.map(
-							(f) =>
-								`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`,
-						)
-						.join(""),
-				);
-		</script>
-		<link
-			href="../../../static.files/normalize-9960930a.css"
-			rel="stylesheet" />
-		<link
-			href="../../../static.files/rustdoc-b7b9f40b.css"
-			rel="stylesheet" />
-		<meta
-			name="rustdoc-vars"
-			data-channel="nightly"
-			data-current-crate="Mountain"
-			data-resource-suffix=""
-			data-root-path="../../../"
-			data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)"
-			data-search-js="search-63369b7b.js"
-			data-settings-js="settings-170eb4bf.js"
-			data-static-root-path="../../../static.files/"
-			data-stringdex-js="stringdex-b897f86f.js"
-			data-themes="" />
-		<script src="../../../static.files/storage-41dd4d93.js"></script>
-		<script defer src="../sidebar-items.js"></script>
-		<script defer src="../../../static.files/main-5013f961.js"></script>
-		<noscript
-			><link
-				href="../../../static.files/noscript-f7c3ffd8.css"
-				rel="stylesheet"
-		/></noscript>
-		<link
-			href="../../../static.files/favicon-32x32-eab170b8.png"
-			rel="alternate icon"
-			type="image/png" />
-		<link
-			href="../../../static.files/favicon-044be391.svg"
-			rel="icon"
-			type="image/svg+xml" />
-	</head>
-	<body class="rustdoc mod">
-		<a class="skip-main-content" href="#main-content"
-			>Skip to main content</a
-		><!--[if lte IE 11
-			]><div class="warning">
-				This old browser is unsupported and will most likely display
-				funky things.
-			</div><!
-		[endif]--><rustdoc-topbar
-			><h2><a href="#">Module DiagnosticProvider</a></h2></rustdoc-topbar
-		>
-		<nav class="sidebar">
-			<div class="sidebar-crate">
-				<h2>
-					<a href="../../../Mountain/index.html">Mountain</a
-					><span class="version">0.0.1</span>
-				</h2>
-			</div>
-			<div class="sidebar-elems">
-				<section id="rustdoc-toc">
-					<h2 class="location">
-						<a href="#">Module Diagnostic<wbr />Provider</a>
-					</h2>
-					<h3><a href="#">Sections</a></h3>
-					<ul class="top-toc block">
-						<li>
-							<a
-								href="#diagnosticprovider-environment"
-								title="DiagnosticProvider (Environment)"
-								>DiagnosticProvider (Environment)</a
-							>
-							<ul>
-								<li>
-									<a
-										href="#responsibilities"
-										title="RESPONSIBILITIES"
-										>RESPONSIBILITIES</a
-									>
-								</li>
-								<li>
-									<a
-										href="#architectural-role"
-										title="ARCHITECTURAL ROLE"
-										>ARCHITECTURAL ROLE</a
-									>
-								</li>
-								<li>
-									<a
-										href="#diagnostic-data-model"
-										title="DIAGNOSTIC DATA MODEL"
-										>DIAGNOSTIC DATA MODEL</a
-									>
-								</li>
-								<li>
-									<a
-										href="#notification-flow"
-										title="NOTIFICATION FLOW"
-										>NOTIFICATION FLOW</a
-									>
-								</li>
-								<li>
-									<a
-										href="#error-handling"
-										title="ERROR HANDLING"
-										>ERROR HANDLING</a
-									>
-								</li>
-								<li>
-									<a href="#performance" title="PERFORMANCE"
-										>PERFORMANCE</a
-									>
-								</li>
-								<li>
-									<a
-										href="#vs-code-reference"
-										title="VS CODE REFERENCE"
-										>VS CODE REFERENCE</a
-									>
-								</li>
-								<li><a href="#todo" title="TODO">TODO</a></li>
-								<li>
-									<a
-										href="#module-contents"
-										title="MODULE CONTENTS"
-										>MODULE CONTENTS</a
-									>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</section>
-				<div id="rustdoc-modnav">
-					<h2>
-						<a href="../index.html"
-							>In Mountain::<wbr />Environment</a
-						>
-					</h2>
-				</div>
-			</div>
-		</nav>
-		<div class="sidebar-resizer" title="Drag to resize sidebar"></div>
-		<main>
-			<div class="width-limiter">
-				<section class="content" id="main-content" tabindex="-1">
-					<div class="main-heading">
-						<div class="rustdoc-breadcrumbs">
-							<a href="../../index.html">Mountain</a>::<wbr /><a
-								href="../index.html"
-								>Environment</a
-							>
-						</div>
-						<h1>
-							Module
-							<span>Diagnostic<wbr />Provider</span>&nbsp;<button
-								id="copy-path"
-								title="Copy item path to clipboard">
-								Copy item path
-							</button>
-						</h1>
-						<rustdoc-toolbar></rustdoc-toolbar
-						><span class="sub-heading"
-							><a
-								class="src"
-								href="../../../src/Mountain/Environment/DiagnosticProvider.rs.html#1-346"
-								>Source</a
-							>
-						</span>
-					</div>
-					<details class="toggle top-doc" open>
-						<summary class="hideme">
-							<span>Expand description</span>
-						</summary>
-						<div class="docblock">
-							<h2 id="diagnosticprovider-environment">
-								<a
-									class="doc-anchor"
-									href="#diagnosticprovider-environment"
-									>§</a
-								>DiagnosticProvider (Environment)
-							</h2>
-							<p>
-								Implements the
-								<code>DiagnosticManager</code> trait, managing
-								diagnostic information from multiple sources
-								(language servers, extensions, built-in
-								providers). It aggregates diagnostics by owner,
-								file URI, and severity, notifying the UI when
-								changes occur.
-							</p>
-							<h3 id="responsibilities">
-								<a class="doc-anchor" href="#responsibilities"
-									>§</a
-								>RESPONSIBILITIES
-							</h3>
-							<h4 id="1-diagnostic-collection">
-								<a
-									class="doc-anchor"
-									href="#1-diagnostic-collection"
-									>§</a
-								>1. Diagnostic Collection
-							</h4>
-							<ul>
-								<li>
-									Maintain collections of diagnostics
-									organized by owner (TypeScript, Rust,
-									ESLint)
-								</li>
-								<li>
-									Store diagnostics per resource URI for
-									efficient lookup
-								</li>
-								<li>
-									Support multiple severity levels (Error,
-									Warning, Info, Hint)
-								</li>
-								<li>
-									Track diagnostic source and code for quick
-									fixes
-								</li>
-							</ul>
-							<h4 id="2-diagnostic-aggregation">
-								<a
-									class="doc-anchor"
-									href="#2-diagnostic-aggregation"
-									>§</a
-								>2. Diagnostic Aggregation
-							</h4>
-							<ul>
-								<li>
-									Combine diagnostics from multiple sources
-									into unified view
-								</li>
-								<li>
-									Merge diagnostics for same location from
-									different owners
-								</li>
-								<li>
-									Sort diagnostics by severity and position
-								</li>
-								<li>De-duplicate identical diagnostics</li>
-							</ul>
-							<h4 id="3-change-notification">
-								<a
-									class="doc-anchor"
-									href="#3-change-notification"
-									>§</a
-								>3. Change Notification
-							</h4>
-							<ul>
-								<li>
-									Emit events to UI (Sky) when diagnostics
-									change
-								</li>
-								<li>
-									Identify changed URIs efficiently for
-									incremental updates
-								</li>
-								<li>
-									Format diagnostic collections for IPC
-									transmission
-								</li>
-								<li>Support diagnostic refresh requests</li>
-							</ul>
-							<h4 id="4-owner-management">
-								<a class="doc-anchor" href="#4-owner-management"
-									>§</a
-								>4. Owner Management
-							</h4>
-							<ul>
-								<li>
-									Allow independent language servers to manage
-									their diagnostics
-								</li>
-								<li>
-									Support adding/removing diagnostic owners
-								</li>
-								<li>
-									Prevent interference between different
-									diagnostic sources
-								</li>
-								<li>
-									Track owner metadata (name, version, etc.)
-								</li>
-							</ul>
-							<h4 id="5-diagnostic-lifecycle">
-								<a
-									class="doc-anchor"
-									href="#5-diagnostic-lifecycle"
-									>§</a
-								>5. Diagnostic Lifecycle
-							</h4>
-							<ul>
-								<li>
-									<code
-										>SetDiagnostics(owner, uri,
-										entries)</code
-									>: Set diagnostics for owner+URI
-								</li>
-								<li>
-									<code>ClearDiagnostics(owner, uri)</code>:
-									Remove diagnostics
-								</li>
-								<li>
-									<code>RemoveOwner(owner)</code>: Remove all
-									diagnostics from an owner
-								</li>
-								<li>
-									<code>GetDiagnostics(uri)</code>: Retrieve
-									all diagnostics for a URI
-								</li>
-							</ul>
-							<h3 id="architectural-role">
-								<a class="doc-anchor" href="#architectural-role"
-									>§</a
-								>ARCHITECTURAL ROLE
-							</h3>
-							<p>
-								DiagnosticProvider is the
-								<strong>diagnostic aggregation hub</strong>:
-							</p>
-							<div class="example-wrap">
-								<pre
-									class="language-text"><code>Language Server ──► SetDiagnostics ──► DiagnosticProvider ──► UI Event ──► Sky
-Extension ──► SetDiagnostics ──► DiagnosticProvider ──► UI Event ──► Sky</code></pre>
-							</div>
-							<h4 id="position-in-mountain">
-								<a
-									class="doc-anchor"
-									href="#position-in-mountain"
-									>§</a
-								>Position in Mountain
-							</h4>
-							<ul>
-								<li>
-									<code>Environment</code> module: Error and
-									diagnostic management
-								</li>
-								<li>
-									Implements
-									<code
-										>CommonLibrary::Diagnostic::DiagnosticManager</code
-									>
-									trait
-								</li>
-								<li>
-									Accessible via
-									<code
-										>Environment.Require&lt;dyn
-										DiagnosticManager&gt;()</code
-									>
-								</li>
-							</ul>
-							<h4 id="data-storage">
-								<a class="doc-anchor" href="#data-storage">§</a
-								>Data Storage
-							</h4>
-							<ul>
-								<li>
-									<code
-										>ApplicationState.Feature.Diagnostics</code
-									>: HashMap&lt;String, HashMap&lt;String,
-									<code>Vec&lt;MarkerDataDTO&gt;</code
-									>&gt;&gt;
-									<ul>
-										<li>
-											Outer key: Owner (e.g.,
-											“typescript”, “rust-analyzer”)
-										</li>
-										<li>Inner key: URI string</li>
-										<li>
-											Value: Vector of diagnostic markers
-										</li>
-									</ul>
-								</li>
-							</ul>
-							<h4 id="dependencies">
-								<a class="doc-anchor" href="#dependencies">§</a
-								>Dependencies
-							</h4>
-							<ul>
-								<li>
-									<code>ApplicationState</code>: Diagnostic
-									storage
-								</li>
-								<li>
-									<code>Log</code>: Diagnostic change logging
-								</li>
-								<li>
-									<code>IPCProvider</code>: To emit diagnostic
-									change events
-								</li>
-							</ul>
-							<h4 id="dependents">
-								<a class="doc-anchor" href="#dependents">§</a
-								>Dependents
-							</h4>
-							<ul>
-								<li>
-									Language servers: Report diagnostics via
-									provider
-								</li>
-								<li>
-									<code>DispatchLogic</code>: Route
-									diagnostic-related commands
-								</li>
-								<li>
-									UI components: Display diagnostics in editor
-								</li>
-							</ul>
-							<h3 id="diagnostic-data-model">
-								<a
-									class="doc-anchor"
-									href="#diagnostic-data-model"
-									>§</a
-								>DIAGNOSTIC DATA MODEL
-							</h3>
-							<p>
-								Each diagnostic is a <code>MarkerDataDTO</code>:
-							</p>
-							<ul>
-								<li>
-									<code>Severity</code>: Error(8), Warning(4),
-									Information(2), Hint(1)
-								</li>
-								<li>
-									<code>Message</code>: Human-readable
-									description
-								</li>
-								<li>
-									<code>StartLineNumber</code
-									>/<code>StartColumn</code>: Start position
-									(0-based)
-								</li>
-								<li>
-									<code>EndLineNumber</code
-									>/<code>EndColumn</code>: End position
-								</li>
-								<li>
-									<code>Source</code>: Diagnostic source
-									string (e.g., “tslint”)
-								</li>
-								<li>
-									<code>Code</code>: Diagnostic code for quick
-									fix lookup
-								</li>
-								<li>
-									<code>ModelVersionIdentifier</code>:
-									Document version for tracking
-								</li>
-							</ul>
-							<h3 id="notification-flow">
-								<a class="doc-anchor" href="#notification-flow"
-									>§</a
-								>NOTIFICATION FLOW
-							</h3>
-							<ol>
-								<li>
-									Language server calls
-									<code
-										>SetDiagnostics(owner, uri,
-										entries)</code
-									>
-								</li>
-								<li>
-									Provider validates and stores in
-									<code
-										>ApplicationState.Feature.Diagnostics</code
-									>
-								</li>
-								<li>
-									Provider identifies which URIs changed in
-									this update
-								</li>
-								<li>
-									Provider emits
-									<code>sky://diagnostics/changed</code> event
-									with:
-									<ul>
-										<li>
-											<code>owner</code>: Diagnostic
-											source
-										</li>
-										<li>
-											<code>uris</code>: List of changed
-											file URIs
-										</li>
-									</ul>
-								</li>
-								<li>
-									Sky receives event and requests updated
-									diagnostics for those URIs
-								</li>
-								<li>
-									Sky updates UI (squiggles, Problems panel,
-									etc.)
-								</li>
-							</ol>
-							<h3 id="error-handling">
-								<a class="doc-anchor" href="#error-handling"
-									>§</a
-								>ERROR HANDLING
-							</h3>
-							<ul>
-								<li>
-									Invalid owner/uri: Logged but operation
-									continues
-								</li>
-								<li>
-									Empty diagnostic list: Treated as “clear”
-									operation
-								</li>
-								<li>
-									Serialization errors: Logged and skipped
-								</li>
-								<li>
-									State lock errors:
-									<code>CommonError::StateLockPoisoned</code>
-								</li>
-							</ul>
-							<h3 id="performance">
-								<a class="doc-anchor" href="#performance">§</a
-								>PERFORMANCE
-							</h3>
-							<ul>
-								<li>
-									Diagnostic storage uses nested HashMaps for
-									O(1) lookup
-								</li>
-								<li>
-									Change detection compares old vs new URI
-									sets
-								</li>
-								<li>
-									Events are debounced to prevent spam
-									(configurable)
-								</li>
-								<li>
-									Large diagnostic sets may impact UI
-									responsiveness (consider paging)
-								</li>
-							</ul>
-							<h3 id="vs-code-reference">
-								<a class="doc-anchor" href="#vs-code-reference"
-									>§</a
-								>VS CODE REFERENCE
-							</h3>
-							<p>Patterns from VS Code:</p>
-							<ul>
-								<li>
-									<code
-										>vs/workbench/services/diagnostic/common/diagnosticCollection.ts</code
-									>
-									- Collection management
-								</li>
-								<li>
-									<code
-										>vs/platform/diagnostics/common/diagnostics.ts</code
-									>
-									- Diagnostic data model
-								</li>
-								<li>
-									<code
-										>vs/workbench/services/diagnostic/common/diagnosticService.ts</code
-									>
-									- Aggregation and events
-								</li>
-							</ul>
-							<h3 id="todo">
-								<a class="doc-anchor" href="#todo">§</a>TODO
-							</h3>
-							<ul>
-								<li>
-									<input disabled="" type="checkbox" />
-									Implement diagnostic severity filtering
-									(hide certain levels)
-								</li>
-								<li>
-									<input disabled="" type="checkbox" /> Add
-									diagnostic code actions/quick fixes
-									integration
-								</li>
-								<li>
-									<input disabled="" type="checkbox" />
-									Support diagnostic inline messages and hover
-								</li>
-								<li>
-									<input disabled="" type="checkbox" />
-									Implement diagnostic history and undo/redo
-								</li>
-								<li>
-									<input disabled="" type="checkbox" /> Add
-									diagnostic export (to file, clipboard)
-								</li>
-								<li>
-									<input disabled="" type="checkbox" />
-									Support diagnostic linting and rule
-									configuration
-								</li>
-								<li>
-									<input disabled="" type="checkbox" />
-									Implement diagnostic suppression comments
-								</li>
-								<li>
-									<input disabled="" type="checkbox" /> Add
-									diagnostic telemetry (frequency, severity
-									distribution)
-								</li>
-								<li>
-									<input disabled="" type="checkbox" />
-									Support remote diagnostics (from cloud
-									services)
-								</li>
-								<li>
-									<input disabled="" type="checkbox" />
-									Implement diagnostic caching for offline
-									scenarios
-								</li>
-							</ul>
-							<h3 id="module-contents">
-								<a class="doc-anchor" href="#module-contents"
-									>§</a
-								>MODULE CONTENTS
-							</h3>
-							<ul>
-								<li>
-									<code>DiagnosticProvider</code>: Main struct
-									implementing <code>DiagnosticManager</code>
-								</li>
-								<li>
-									Diagnostic storage and retrieval methods
-								</li>
-								<li>Change notification and event emission</li>
-								<li>Owner management functions</li>
-								<li>Diagnostic validation helpers</li>
-							</ul>
-						</div>
-					</details>
-				</section>
-			</div>
-		</main>
-	</body>
-</html>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="DiagnosticProvider (Environment)"><title>Mountain::Environment::DiagnosticProvider - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-b7b9f40b.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-41dd4d93.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module DiagnosticProvider</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Diagnostic<wbr>Provider</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#diagnosticprovider-environment" title="DiagnosticProvider (Environment)">DiagnosticProvider (Environment)</a><ul><li><a href="#responsibilities" title="RESPONSIBILITIES">RESPONSIBILITIES</a></li><li><a href="#architectural-role" title="ARCHITECTURAL ROLE">ARCHITECTURAL ROLE</a></li><li><a href="#diagnostic-data-model" title="DIAGNOSTIC DATA MODEL">DIAGNOSTIC DATA MODEL</a></li><li><a href="#notification-flow" title="NOTIFICATION FLOW">NOTIFICATION FLOW</a></li><li><a href="#error-handling" title="ERROR HANDLING">ERROR HANDLING</a></li><li><a href="#performance" title="PERFORMANCE">PERFORMANCE</a></li><li><a href="#vs-code-reference" title="VS CODE REFERENCE">VS CODE REFERENCE</a></li><li><a href="#todo" title="TODO">TODO</a></li><li><a href="#module-contents" title="MODULE CONTENTS">MODULE CONTENTS</a></li></ul></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Environment</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Environment</a></div><h1>Module <span>Diagnostic<wbr>Provider</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Environment/DiagnosticProvider.rs.html#1-346">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="diagnosticprovider-environment"><a class="doc-anchor" href="#diagnosticprovider-environment">§</a>DiagnosticProvider (Environment)</h2>
+<p>Implements the <code>DiagnosticManager</code> trait, managing diagnostic information
+from multiple sources (language servers, extensions, built-in providers). It
+aggregates diagnostics by owner, file URI, and severity, notifying the UI
+when changes occur.</p>
+<h3 id="responsibilities"><a class="doc-anchor" href="#responsibilities">§</a>RESPONSIBILITIES</h3><h4 id="1-diagnostic-collection"><a class="doc-anchor" href="#1-diagnostic-collection">§</a>1. Diagnostic Collection</h4>
+<ul>
+<li>Maintain collections of diagnostics organized by owner (TypeScript, Rust,
+ESLint)</li>
+<li>Store diagnostics per resource URI for efficient lookup</li>
+<li>Support multiple severity levels (Error, Warning, Info, Hint)</li>
+<li>Track diagnostic source and code for quick fixes</li>
+</ul>
+<h4 id="2-diagnostic-aggregation"><a class="doc-anchor" href="#2-diagnostic-aggregation">§</a>2. Diagnostic Aggregation</h4>
+<ul>
+<li>Combine diagnostics from multiple sources into unified view</li>
+<li>Merge diagnostics for same location from different owners</li>
+<li>Sort diagnostics by severity and position</li>
+<li>De-duplicate identical diagnostics</li>
+</ul>
+<h4 id="3-change-notification"><a class="doc-anchor" href="#3-change-notification">§</a>3. Change Notification</h4>
+<ul>
+<li>Emit events to UI (Sky) when diagnostics change</li>
+<li>Identify changed URIs efficiently for incremental updates</li>
+<li>Format diagnostic collections for IPC transmission</li>
+<li>Support diagnostic refresh requests</li>
+</ul>
+<h4 id="4-owner-management"><a class="doc-anchor" href="#4-owner-management">§</a>4. Owner Management</h4>
+<ul>
+<li>Allow independent language servers to manage their diagnostics</li>
+<li>Support adding/removing diagnostic owners</li>
+<li>Prevent interference between different diagnostic sources</li>
+<li>Track owner metadata (name, version, etc.)</li>
+</ul>
+<h4 id="5-diagnostic-lifecycle"><a class="doc-anchor" href="#5-diagnostic-lifecycle">§</a>5. Diagnostic Lifecycle</h4>
+<ul>
+<li><code>SetDiagnostics(owner, uri, entries)</code>: Set diagnostics for owner+URI</li>
+<li><code>ClearDiagnostics(owner, uri)</code>: Remove diagnostics</li>
+<li><code>RemoveOwner(owner)</code>: Remove all diagnostics from an owner</li>
+<li><code>GetDiagnostics(uri)</code>: Retrieve all diagnostics for a URI</li>
+</ul>
+<h3 id="architectural-role"><a class="doc-anchor" href="#architectural-role">§</a>ARCHITECTURAL ROLE</h3>
+<p>DiagnosticProvider is the <strong>diagnostic aggregation hub</strong>:</p>
+<div class="example-wrap"><pre class="language-text"><code>Language Server ──► SetDiagnostics ──► DiagnosticProvider ──► UI Event ──► Sky
+Extension ──► SetDiagnostics ──► DiagnosticProvider ──► UI Event ──► Sky</code></pre></div><h4 id="position-in-mountain"><a class="doc-anchor" href="#position-in-mountain">§</a>Position in Mountain</h4>
+<ul>
+<li><code>Environment</code> module: Error and diagnostic management</li>
+<li>Implements <code>CommonLibrary::Diagnostic::DiagnosticManager</code> trait</li>
+<li>Accessible via <code>Environment.Require&lt;dyn DiagnosticManager&gt;()</code></li>
+</ul>
+<h4 id="data-storage"><a class="doc-anchor" href="#data-storage">§</a>Data Storage</h4>
+<ul>
+<li><code>ApplicationState.Feature.Diagnostics</code>: HashMap&lt;String, HashMap&lt;String,
+<code>Vec&lt;MarkerDataDTO&gt;</code>&gt;&gt;
+<ul>
+<li>Outer key: Owner (e.g., “typescript”, “rust-analyzer”)</li>
+<li>Inner key: URI string</li>
+<li>Value: Vector of diagnostic markers</li>
+</ul>
+</li>
+</ul>
+<h4 id="dependencies"><a class="doc-anchor" href="#dependencies">§</a>Dependencies</h4>
+<ul>
+<li><code>ApplicationState</code>: Diagnostic storage</li>
+<li><code>Log</code>: Diagnostic change logging</li>
+<li><code>IPCProvider</code>: To emit diagnostic change events</li>
+</ul>
+<h4 id="dependents"><a class="doc-anchor" href="#dependents">§</a>Dependents</h4>
+<ul>
+<li>Language servers: Report diagnostics via provider</li>
+<li><code>DispatchLogic</code>: Route diagnostic-related commands</li>
+<li>UI components: Display diagnostics in editor</li>
+</ul>
+<h3 id="diagnostic-data-model"><a class="doc-anchor" href="#diagnostic-data-model">§</a>DIAGNOSTIC DATA MODEL</h3>
+<p>Each diagnostic is a <code>MarkerDataDTO</code>:</p>
+<ul>
+<li><code>Severity</code>: Error(8), Warning(4), Information(2), Hint(1)</li>
+<li><code>Message</code>: Human-readable description</li>
+<li><code>StartLineNumber</code>/<code>StartColumn</code>: Start position (0-based)</li>
+<li><code>EndLineNumber</code>/<code>EndColumn</code>: End position</li>
+<li><code>Source</code>: Diagnostic source string (e.g., “tslint”)</li>
+<li><code>Code</code>: Diagnostic code for quick fix lookup</li>
+<li><code>ModelVersionIdentifier</code>: Document version for tracking</li>
+</ul>
+<h3 id="notification-flow"><a class="doc-anchor" href="#notification-flow">§</a>NOTIFICATION FLOW</h3>
+<ol>
+<li>Language server calls <code>SetDiagnostics(owner, uri, entries)</code></li>
+<li>Provider validates and stores in <code>ApplicationState.Feature.Diagnostics</code></li>
+<li>Provider identifies which URIs changed in this update</li>
+<li>Provider emits <code>sky://diagnostics/changed</code> event with:
+<ul>
+<li><code>owner</code>: Diagnostic source</li>
+<li><code>uris</code>: List of changed file URIs</li>
+</ul>
+</li>
+<li>Sky receives event and requests updated diagnostics for those URIs</li>
+<li>Sky updates UI (squiggles, Problems panel, etc.)</li>
+</ol>
+<h3 id="error-handling"><a class="doc-anchor" href="#error-handling">§</a>ERROR HANDLING</h3>
+<ul>
+<li>Invalid owner/uri: Logged but operation continues</li>
+<li>Empty diagnostic list: Treated as “clear” operation</li>
+<li>Serialization errors: Logged and skipped</li>
+<li>State lock errors: <code>CommonError::StateLockPoisoned</code></li>
+</ul>
+<h3 id="performance"><a class="doc-anchor" href="#performance">§</a>PERFORMANCE</h3>
+<ul>
+<li>Diagnostic storage uses nested HashMaps for O(1) lookup</li>
+<li>Change detection compares old vs new URI sets</li>
+<li>Events are debounced to prevent spam (configurable)</li>
+<li>Large diagnostic sets may impact UI responsiveness (consider paging)</li>
+</ul>
+<h3 id="vs-code-reference"><a class="doc-anchor" href="#vs-code-reference">§</a>VS CODE REFERENCE</h3>
+<p>Patterns from VS Code:</p>
+<ul>
+<li><code>vs/workbench/services/diagnostic/common/diagnosticCollection.ts</code> -
+Collection management</li>
+<li><code>vs/platform/diagnostics/common/diagnostics.ts</code> - Diagnostic data model</li>
+<li><code>vs/workbench/services/diagnostic/common/diagnosticService.ts</code> -
+Aggregation and events</li>
+</ul>
+<h3 id="todo"><a class="doc-anchor" href="#todo">§</a>TODO</h3>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Implement diagnostic severity filtering (hide certain levels)</li>
+<li><input disabled="" type="checkbox"/>
+Add diagnostic code actions/quick fixes integration</li>
+<li><input disabled="" type="checkbox"/>
+Support diagnostic inline messages and hover</li>
+<li><input disabled="" type="checkbox"/>
+Implement diagnostic history and undo/redo</li>
+<li><input disabled="" type="checkbox"/>
+Add diagnostic export (to file, clipboard)</li>
+<li><input disabled="" type="checkbox"/>
+Support diagnostic linting and rule configuration</li>
+<li><input disabled="" type="checkbox"/>
+Implement diagnostic suppression comments</li>
+<li><input disabled="" type="checkbox"/>
+Add diagnostic telemetry (frequency, severity distribution)</li>
+<li><input disabled="" type="checkbox"/>
+Support remote diagnostics (from cloud services)</li>
+<li><input disabled="" type="checkbox"/>
+Implement diagnostic caching for offline scenarios</li>
+</ul>
+<h3 id="module-contents"><a class="doc-anchor" href="#module-contents">§</a>MODULE CONTENTS</h3>
+<ul>
+<li><code>DiagnosticProvider</code>: Main struct implementing <code>DiagnosticManager</code></li>
+<li>Diagnostic storage and retrieval methods</li>
+<li>Change notification and event emission</li>
+<li>Owner management functions</li>
+<li>Diagnostic validation helpers</li>
+</ul>
+</div></details></section></div></main></body></html>

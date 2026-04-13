@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "fn": ["provide_hover_impl"] };
+window.SIDEBAR_ITEMS = {"fn":["provide_hover_impl"]};

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "struct": ["OutputChannelState"] };
+window.SIDEBAR_ITEMS = {"struct":["OutputChannelState"]};

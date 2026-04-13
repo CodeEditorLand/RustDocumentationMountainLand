@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "fn": ["ExtensionPopulate"] };
+window.SIDEBAR_ITEMS = {"fn":["ExtensionPopulate"]};

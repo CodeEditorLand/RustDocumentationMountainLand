@@ -1,3 +1,1 @@
-window.SIDEBAR_ITEMS = {
-	"fn": ["ScanAndPopulateExtensions", "ScanExtensionsWithRecovery"],
-};
+window.SIDEBAR_ITEMS = {"fn":["ScanAndPopulateExtensions","ScanExtensionsWithRecovery"]};

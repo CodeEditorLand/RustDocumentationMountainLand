@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "mod": ["DebugState"] };
+window.SIDEBAR_ITEMS = {"mod":["DebugState"]};

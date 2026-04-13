@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "fn": ["GetURLFromURIComponentsDTO"] };
+window.SIDEBAR_ITEMS = {"fn":["GetURLFromURIComponentsDTO"]};

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "fn": ["MountainGetIPCStatusHistory"] };
+window.SIDEBAR_ITEMS = {"fn":["MountainGetIPCStatusHistory"]};

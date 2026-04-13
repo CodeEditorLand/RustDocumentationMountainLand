@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "fn": ["MountainSubscribeToUpdates"] };
+window.SIDEBAR_ITEMS = {"fn":["MountainSubscribeToUpdates"]};

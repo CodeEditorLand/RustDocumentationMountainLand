@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "fn": ["DispatchSideCarRequest"] };
+window.SIDEBAR_ITEMS = {"fn":["DispatchSideCarRequest"]};

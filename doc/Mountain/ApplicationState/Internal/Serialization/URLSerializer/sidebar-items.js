@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "fn": ["SerializeURL"] };
+window.SIDEBAR_ITEMS = {"fn":["SerializeURL"]};

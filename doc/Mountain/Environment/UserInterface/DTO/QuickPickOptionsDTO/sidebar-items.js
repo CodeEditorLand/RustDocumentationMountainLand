@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "struct": ["QuickPickOptionsDTO"] };
+window.SIDEBAR_ITEMS = {"struct":["QuickPickOptionsDTO"]};

@@ -1,4 +1,1 @@
-window.SIDEBAR_ITEMS = {
-	"struct": ["SimpleConnectionStatus", "TauriIPCMessage"],
-	"type": ["ListenerCallback"],
-};
+window.SIDEBAR_ITEMS = {"struct":["SimpleConnectionStatus","TauriIPCMessage"],"type":["ListenerCallback"]};

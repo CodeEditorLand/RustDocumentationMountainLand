@@ -1,4 +1,1 @@
-window.SIDEBAR_ITEMS = {
-	"fn": ["ParseWorkspaceFile"],
-	"struct": ["WorkspaceFile", "WorkspaceFolderEntry"],
-};
+window.SIDEBAR_ITEMS = {"fn":["ParseWorkspaceFile"],"struct":["WorkspaceFile","WorkspaceFolderEntry"]};

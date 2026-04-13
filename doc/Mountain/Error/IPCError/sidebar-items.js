@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = { "enum": ["IPCError"] };
+window.SIDEBAR_ITEMS = {"enum":["IPCError"]};

@@ -1,10 +1,1 @@
-window.SIDEBAR_ITEMS = {
-	"mod": [
-		"ApplicationState",
-		"ConfigurationState",
-		"ExtensionState",
-		"FeatureState",
-		"UIState",
-		"WorkspaceState",
-	],
-};
+window.SIDEBAR_ITEMS = {"mod":["ApplicationState","ConfigurationState","ExtensionState","FeatureState","UIState","WorkspaceState"]};
