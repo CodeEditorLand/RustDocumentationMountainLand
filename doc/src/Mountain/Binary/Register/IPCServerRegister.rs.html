@@ -2,39 +2,38 @@
 <a href=#2 id=2 data-nosnippet>2</a>//!
 <a href=#3 id=3 data-nosnippet>3</a>//! Initializes and manages the IPC server in Tauri state.
 <a href=#4 id=4 data-nosnippet>4</a>
-<a href=#5 id=5 data-nosnippet>5</a></span><span class="kw">use </span><a href="https://docs.rs/log/0.4.29/log/macro.info.html">log::info</a>;
-<a href=#6 id=6 data-nosnippet>6</a><span class="kw">use </span>tauri::Manager;
-<a href=#7 id=7 data-nosnippet>7</a>
-<a href=#8 id=8 data-nosnippet>8</a><span class="kw">use </span><a href="../../IPC/TauriIPCServer.rs.html#191-196"><span class="kw">crate</span>::IPC::TauriIPCServer::TauriIPCServer</a>;
-<a href=#9 id=9 data-nosnippet>9</a>
-<a href=#10 id=10 data-nosnippet>10</a><span class="doccomment">/// Creates and initializes the Tauri IPC server, storing it in Tauri state.
-<a href=#11 id=11 data-nosnippet>11</a>///
-<a href=#12 id=12 data-nosnippet>12</a>/// # Arguments
-<a href=#13 id=13 data-nosnippet>13</a>///
-<a href=#14 id=14 data-nosnippet>14</a>/// * `ApplicationHandle` - The Tauri application handle
-<a href=#15 id=15 data-nosnippet>15</a>///
-<a href=#16 id=16 data-nosnippet>16</a>/// # Returns
-<a href=#17 id=17 data-nosnippet>17</a>///
-<a href=#18 id=18 data-nosnippet>18</a>/// A `Result` indicating success or failure.
-<a href=#19 id=19 data-nosnippet>19</a>///
-<a href=#20 id=20 data-nosnippet>20</a>/// # IPC Server Functionality
-<a href=#21 id=21 data-nosnippet>21</a>///
-<a href=#22 id=22 data-nosnippet>22</a>/// The Tauri IPC server provides:
-<a href=#23 id=23 data-nosnippet>23</a>/// - Message routing between Wind and native code
-<a href=#24 id=24 data-nosnippet>24</a>/// - Status reporting for IPC operations
-<a href=#25 id=25 data-nosnippet>25</a>/// - Command invocation for frontend communication
-<a href=#26 id=26 data-nosnippet>26</a>/// - Configuration synchronization
-<a href=#27 id=27 data-nosnippet>27</a>///
-<a href=#28 id=28 data-nosnippet>28</a>/// # Errors
-<a href=#29 id=29 data-nosnippet>29</a>///
-<a href=#30 id=30 data-nosnippet>30</a>/// Returns an error if IPC server initialization or state management fails.
-<a href=#31 id=31 data-nosnippet>31</a></span><span class="kw">pub fn </span><a href="../../../../Mountain/Binary/Register/IPCServerRegister/fn.IPCServerRegister.html">IPCServerRegister</a>(ApplicationHandle:<span class="kw-2">&amp;</span>tauri::AppHandle) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="../../IPC/TauriIPCServer.rs.html#191-196">TauriIPCServer</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
-<a href=#32 id=32 data-nosnippet>32</a>	<span class="kw">let </span>ipc_server = <a href="../../IPC/TauriIPCServer.rs.html#191-196">TauriIPCServer</a>::<a href="../../IPC/TauriIPCServer.rs.html#238-247">new</a>(<a href="#31">ApplicationHandle</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>());
-<a href=#33 id=33 data-nosnippet>33</a>
-<a href=#34 id=34 data-nosnippet>34</a>	<a href="#31">ApplicationHandle</a>.manage(<a href="#32">ipc_server</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>());
-<a href=#35 id=35 data-nosnippet>35</a>
-<a href=#36 id=36 data-nosnippet>36</a>	<a href="https://docs.rs/log/0.4.29/log/macro.info.html">info!</a>(<span class="string">"[IPC] [Server] IPC server initialized and managed."</span>);
-<a href=#37 id=37 data-nosnippet>37</a>
-<a href=#38 id=38 data-nosnippet>38</a>	<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="#32">ipc_server</a>)
-<a href=#39 id=39 data-nosnippet>39</a>}
+<a href=#5 id=5 data-nosnippet>5</a></span><span class="kw">use </span>tauri::Manager;
+<a href=#6 id=6 data-nosnippet>6</a>
+<a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span>crate::{<a href="../../IPC/TauriIPCServer.rs.html#192-197">IPC::TauriIPCServer::TauriIPCServer</a>, <a href="../../IPC/DevLog.rs.html#150-185">dev_log</a>};
+<a href=#8 id=8 data-nosnippet>8</a>
+<a href=#9 id=9 data-nosnippet>9</a><span class="doccomment">/// Creates and initializes the Tauri IPC server, storing it in Tauri state.
+<a href=#10 id=10 data-nosnippet>10</a>///
+<a href=#11 id=11 data-nosnippet>11</a>/// # Arguments
+<a href=#12 id=12 data-nosnippet>12</a>///
+<a href=#13 id=13 data-nosnippet>13</a>/// * `ApplicationHandle` - The Tauri application handle
+<a href=#14 id=14 data-nosnippet>14</a>///
+<a href=#15 id=15 data-nosnippet>15</a>/// # Returns
+<a href=#16 id=16 data-nosnippet>16</a>///
+<a href=#17 id=17 data-nosnippet>17</a>/// A `Result` indicating success or failure.
+<a href=#18 id=18 data-nosnippet>18</a>///
+<a href=#19 id=19 data-nosnippet>19</a>/// # IPC Server Functionality
+<a href=#20 id=20 data-nosnippet>20</a>///
+<a href=#21 id=21 data-nosnippet>21</a>/// The Tauri IPC server provides:
+<a href=#22 id=22 data-nosnippet>22</a>/// - Message routing between Wind and native code
+<a href=#23 id=23 data-nosnippet>23</a>/// - Status reporting for IPC operations
+<a href=#24 id=24 data-nosnippet>24</a>/// - Command invocation for frontend communication
+<a href=#25 id=25 data-nosnippet>25</a>/// - Configuration synchronization
+<a href=#26 id=26 data-nosnippet>26</a>///
+<a href=#27 id=27 data-nosnippet>27</a>/// # Errors
+<a href=#28 id=28 data-nosnippet>28</a>///
+<a href=#29 id=29 data-nosnippet>29</a>/// Returns an error if IPC server initialization or state management fails.
+<a href=#30 id=30 data-nosnippet>30</a></span><span class="kw">pub fn </span><a href="../../../../Mountain/Binary/Register/IPCServerRegister/fn.IPCServerRegister.html">IPCServerRegister</a>(ApplicationHandle:<span class="kw-2">&amp;</span>tauri::AppHandle) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="../../IPC/TauriIPCServer.rs.html#192-197">TauriIPCServer</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
+<a href=#31 id=31 data-nosnippet>31</a>	<span class="kw">let </span>ipc_server = <a href="../../IPC/TauriIPCServer.rs.html#192-197">TauriIPCServer</a>::<a href="../../IPC/TauriIPCServer.rs.html#239-248">new</a>(<a href="#30">ApplicationHandle</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>());
+<a href=#32 id=32 data-nosnippet>32</a>
+<a href=#33 id=33 data-nosnippet>33</a>	<a href="#30">ApplicationHandle</a>.manage(<a href="#31">ipc_server</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>());
+<a href=#34 id=34 data-nosnippet>34</a>
+<a href=#35 id=35 data-nosnippet>35</a>	<a href="../../IPC/DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[IPC] [Server] IPC server initialized and managed."</span>);
+<a href=#36 id=36 data-nosnippet>36</a>
+<a href=#37 id=37 data-nosnippet>37</a>	<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="#31">ipc_server</a>)
+<a href=#38 id=38 data-nosnippet>38</a>}
 </code></pre></div></section></main></body></html>

@@ -25,8 +25,8 @@
 <a href=#25 id=25 data-nosnippet>25</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#26 id=26 data-nosnippet>26</a><span class="kw">use </span><a href="https://docs.rs/url/2.5.7/url/struct.Url.html">url::Url</a>;
 <a href=#27 id=27 data-nosnippet>27</a>
-<a href=#28 id=28 data-nosnippet>28</a><span class="kw">use </span>super::{<a href="RPCModelContentChangeDTO.rs.html#22-28">RPCModelContentChangeDTO::RPCModelContentChangeDTO</a>, <a href="RPCRangeDTO.rs.html#26-38">RPCRangeDTO::RPCRangeDTO</a>};
-<a href=#29 id=29 data-nosnippet>29</a><span class="kw">use </span><a href="../Internal/TextProcessing/AnalyzeTextLinesAndEOL.rs.html#45-63"><span class="kw">crate</span>::ApplicationState::Internal::AnalyzeTextLinesAndEOL</a>;
+<a href=#28 id=28 data-nosnippet>28</a><span class="kw">use </span>crate::{<a href="../Internal/TextProcessing/AnalyzeTextLinesAndEOL.rs.html#43-62">ApplicationState::Internal::AnalyzeTextLinesAndEOL</a>, <a href="../../IPC/DevLog.rs.html#150-185">dev_log</a>};
+<a href=#29 id=29 data-nosnippet>29</a><span class="kw">use </span>super::{<a href="RPCModelContentChangeDTO.rs.html#22-28">RPCModelContentChangeDTO::RPCModelContentChangeDTO</a>, <a href="RPCRangeDTO.rs.html#26-38">RPCRangeDTO::RPCRangeDTO</a>};
 <a href=#30 id=30 data-nosnippet>30</a>
 <a href=#31 id=31 data-nosnippet>31</a><span class="doccomment">/// Maximum line count for a document to prevent memory exhaustion
 <a href=#32 id=32 data-nosnippet>32</a></span><span class="kw">const </span><a href="../../../../Mountain/ApplicationState/DTO/DocumentStateDTO/constant.MAX_DOCUMENT_LINES.html">MAX_DOCUMENT_LINES</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> = <span class="number">1_000_000</span>;
@@ -105,7 +105,7 @@
 <a href=#105 id=105 data-nosnippet>105</a>			});
 <a href=#106 id=106 data-nosnippet>106</a>		}
 <a href=#107 id=107 data-nosnippet>107</a>
-<a href=#108 id=108 data-nosnippet>108</a>		<span class="kw">let </span>(Lines, EOL) = <a href="../Internal/TextProcessing/AnalyzeTextLinesAndEOL.rs.html#45-63">AnalyzeTextLinesAndEOL</a>(<span class="kw-2">&amp;</span><a href="#89">Content</a>);
+<a href=#108 id=108 data-nosnippet>108</a>		<span class="kw">let </span>(Lines, EOL) = <a href="../Internal/TextProcessing/AnalyzeTextLinesAndEOL.rs.html#43-62">AnalyzeTextLinesAndEOL</a>(<span class="kw-2">&amp;</span><a href="#89">Content</a>);
 <a href=#109 id=109 data-nosnippet>109</a>
 <a href=#110 id=110 data-nosnippet>110</a>		<span class="comment">// Validate document line count
 <a href=#111 id=111 data-nosnippet>111</a>		</span><span class="kw">if </span><a href="#108">Lines</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.len">len</a>() &gt; <a href="#32">MAX_DOCUMENT_LINES</a> {
@@ -188,12 +188,12 @@
 <a href=#188 id=188 data-nosnippet>188</a>
 <a href=#189 id=189 data-nosnippet>189</a>		<span class="comment">// Attempt to deserialize as an array of delta changes first.
 <a href=#190 id=190 data-nosnippet>190</a>		</span><span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(RPCChange) = serde_json::from_value::&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="RPCModelContentChangeDTO.rs.html#22-28">RPCModelContentChangeDTO</a>&gt;&gt;(<a href="#183">ChangesValue</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>()) {
-<a href=#191 id=191 data-nosnippet>191</a>			<a href="https://docs.rs/log/0.4.29/log/macro.trace.html">log::trace!</a>(<span class="string">"Applying {} delta change(s) to document {}"</span>, RPCChange.len(), <span class="self">self</span>.URI);
+<a href=#191 id=191 data-nosnippet>191</a>			<a href="../../IPC/DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"model"</span>, <span class="string">"applying {} delta change(s) to document {}"</span>, RPCChange.len(), <span class="self">self</span>.URI);
 <a href=#192 id=192 data-nosnippet>192</a>
-<a href=#193 id=193 data-nosnippet>193</a>			<a class="self" href="#183">self</a>.Lines = <a href="#239-292">ApplyDeltaChanges</a>(<span class="kw-2">&amp;</span><a class="self" href="#183">self</a>.Lines, <span class="kw-2">&amp;</span><a class="self" href="#183">self</a>.EOL, <span class="kw-2">&amp;</span><a href="#190">RPCChange</a>);
+<a href=#193 id=193 data-nosnippet>193</a>			<a class="self" href="#183">self</a>.Lines = <a href="#239-294">ApplyDeltaChanges</a>(<span class="kw-2">&amp;</span><a class="self" href="#183">self</a>.Lines, <span class="kw-2">&amp;</span><a class="self" href="#183">self</a>.EOL, <span class="kw-2">&amp;</span><a href="#190">RPCChange</a>);
 <a href=#194 id=194 data-nosnippet>194</a>		} <span class="kw">else if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(FullText) = <a href="#183">ChangesValue</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#method.as_str">as_str</a>() {
 <a href=#195 id=195 data-nosnippet>195</a>			<span class="comment">// If it's not deltas, check if it's a full text replacement.
-<a href=#196 id=196 data-nosnippet>196</a>			</span><span class="kw">let </span>(NewLines, NewEOL) = <a href="../Internal/TextProcessing/AnalyzeTextLinesAndEOL.rs.html#45-63">AnalyzeTextLinesAndEOL</a>(<a href="#194">FullText</a>);
+<a href=#196 id=196 data-nosnippet>196</a>			</span><span class="kw">let </span>(NewLines, NewEOL) = <a href="../Internal/TextProcessing/AnalyzeTextLinesAndEOL.rs.html#43-62">AnalyzeTextLinesAndEOL</a>(<a href="#194">FullText</a>);
 <a href=#197 id=197 data-nosnippet>197</a>
 <a href=#198 id=198 data-nosnippet>198</a>			<a class="self" href="#183">self</a>.Lines = <a href="#196">NewLines</a>;
 <a href=#199 id=199 data-nosnippet>199</a>
@@ -249,7 +249,7 @@
 <a href=#249 id=249 data-nosnippet>249</a>	// When applying multiple changes, earlier changes shift positions for later
 <a href=#250 id=250 data-nosnippet>250</a>	// changes. By applying from end to beginning, all offsets remain valid.
 <a href=#251 id=251 data-nosnippet>251</a>	</span><span class="kw">let </span><span class="kw-2">mut </span>SortedChanges:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<span class="kw-2">&amp;</span><a href="RPCModelContentChangeDTO.rs.html#22-28">RPCModelContentChangeDTO</a>&gt; = <a href="#239">RPCChange</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.iter">iter</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.collect">collect</a>();
-<a href=#252 id=252 data-nosnippet>252</a>	<a href="#251">SortedChanges</a>.<a href="https://doc.rust-lang.org/nightly/alloc/foreigntype.slice.html#method.sort_by">sort_by</a>(|a, b| <a href="#328-332">CMP_Range_Position</a>(<span class="kw-2">&amp;</span><a href="#252">b</a>.Range, <span class="kw-2">&amp;</span><a href="#252">a</a>.Range));
+<a href=#252 id=252 data-nosnippet>252</a>	<a href="#251">SortedChanges</a>.<a href="https://doc.rust-lang.org/nightly/alloc/foreigntype.slice.html#method.sort_by">sort_by</a>(|a, b| <a href="#330-334">CMP_Range_Position</a>(<span class="kw-2">&amp;</span><a href="#252">b</a>.Range, <span class="kw-2">&amp;</span><a href="#252">a</a>.Range));
 <a href=#253 id=253 data-nosnippet>253</a>
 <a href=#254 id=254 data-nosnippet>254</a>	<span class="comment">// Apply each change to the text
 <a href=#255 id=255 data-nosnippet>255</a>	</span><span class="kw">for </span>Change <span class="kw">in </span>SortedChanges {
@@ -259,75 +259,77 @@
 <a href=#259 id=259 data-nosnippet>259</a>
 <a href=#260 id=260 data-nosnippet>260</a>		<span class="comment">// Validate offsets
 <a href=#261 id=261 data-nosnippet>261</a>		</span><span class="kw">if </span>StartOffset &gt; EndOffset {
-<a href=#262 id=262 data-nosnippet>262</a>			<span class="macro">log::error!</span>(
-<a href=#263 id=263 data-nosnippet>263</a>				<span class="string">"[ApplyDeltaChanges] Invalid range: start ({}) &gt; end ({}) for text length {}"</span>,
-<a href=#264 id=264 data-nosnippet>264</a>				StartOffset,
-<a href=#265 id=265 data-nosnippet>265</a>				EndOffset,
-<a href=#266 id=266 data-nosnippet>266</a>				ResultText.len()
-<a href=#267 id=267 data-nosnippet>267</a>			);
-<a href=#268 id=268 data-nosnippet>268</a>			<span class="kw">continue</span>;
-<a href=#269 id=269 data-nosnippet>269</a>		}
-<a href=#270 id=270 data-nosnippet>270</a>
-<a href=#271 id=271 data-nosnippet>271</a>		<span class="kw">let </span>TextLength = ResultText.len();
-<a href=#272 id=272 data-nosnippet>272</a>		<span class="kw">if </span>StartOffset &gt; TextLength || EndOffset &gt; TextLength {
-<a href=#273 id=273 data-nosnippet>273</a>			<span class="macro">log::error!</span>(
-<a href=#274 id=274 data-nosnippet>274</a>				<span class="string">"[ApplyDeltaChanges] Out of bounds: start ({}) or end ({}) exceeds text length {}"</span>,
-<a href=#275 id=275 data-nosnippet>275</a>				StartOffset,
-<a href=#276 id=276 data-nosnippet>276</a>				EndOffset,
-<a href=#277 id=277 data-nosnippet>277</a>				TextLength
-<a href=#278 id=278 data-nosnippet>278</a>			);
-<a href=#279 id=279 data-nosnippet>279</a>			<span class="kw">continue</span>;
-<a href=#280 id=280 data-nosnippet>280</a>		}
-<a href=#281 id=281 data-nosnippet>281</a>
-<a href=#282 id=282 data-nosnippet>282</a>		<span class="comment">// Remove old text and insert new text
-<a href=#283 id=283 data-nosnippet>283</a>		// Safe slice operation: validated offsets above
-<a href=#284 id=284 data-nosnippet>284</a>		</span><span class="kw">let </span>OldText = ResultText.as_bytes();
-<a href=#285 id=285 data-nosnippet>285</a>		ResultText =
-<a href=#286 id=286 data-nosnippet>286</a>			String::from_utf8_lossy(<span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span>OldText[..StartOffset], Change.Text.as_bytes(), <span class="kw-2">&amp;</span>OldText[EndOffset..]].concat())
-<a href=#287 id=287 data-nosnippet>287</a>				.into_owned();
-<a href=#288 id=288 data-nosnippet>288</a>	}
-<a href=#289 id=289 data-nosnippet>289</a>
-<a href=#290 id=290 data-nosnippet>290</a>	<span class="comment">// Re-split the result into lines
-<a href=#291 id=291 data-nosnippet>291</a>	</span><a href="../Internal/TextProcessing/AnalyzeTextLinesAndEOL.rs.html#45-63">AnalyzeTextLinesAndEOL</a>(<span class="kw-2">&amp;</span><a href="#241">ResultText</a>).<span class="number">0
-<a href=#292 id=292 data-nosnippet>292</a></span>}
-<a href=#293 id=293 data-nosnippet>293</a>
-<a href=#294 id=294 data-nosnippet>294</a><span class="doccomment">/// Converts line/column position to byte offset in text.
-<a href=#295 id=295 data-nosnippet>295</a>///
-<a href=#296 id=296 data-nosnippet>296</a>/// VSCode LSP uses 0-based line numbers and 0-based column numbers.
-<a href=#297 id=297 data-nosnippet>297</a>/// This function matches that convention.
-<a href=#298 id=298 data-nosnippet>298</a></span><span class="kw">fn </span><a href="../../../../Mountain/ApplicationState/DTO/DocumentStateDTO/fn.PositionToOffset.html">PositionToOffset</a>(Text:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, EOL:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, LineNumber:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, Column:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> {
-<a href=#299 id=299 data-nosnippet>299</a>	<span class="kw">let </span>Lines:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt; = <a href="#298">Text</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.split">split</a>(<a href="#298">EOL</a>).<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.collect">collect</a>();
-<a href=#300 id=300 data-nosnippet>300</a>	<span class="kw">let </span>EOLLength = <a href="#298">EOL</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.len">len</a>();
-<a href=#301 id=301 data-nosnippet>301</a>
-<a href=#302 id=302 data-nosnippet>302</a>	<span class="kw">let </span><span class="kw-2">mut </span>Offset = <span class="number">0</span>;
+<a href=#262 id=262 data-nosnippet>262</a>			<span class="macro">dev_log!</span>(
+<a href=#263 id=263 data-nosnippet>263</a>				<span class="string">"model"</span>,
+<a href=#264 id=264 data-nosnippet>264</a>				<span class="string">"error: invalid range: start ({}) &gt; end ({}) for text length {}"</span>,
+<a href=#265 id=265 data-nosnippet>265</a>				StartOffset,
+<a href=#266 id=266 data-nosnippet>266</a>				EndOffset,
+<a href=#267 id=267 data-nosnippet>267</a>				ResultText.len()
+<a href=#268 id=268 data-nosnippet>268</a>			);
+<a href=#269 id=269 data-nosnippet>269</a>			<span class="kw">continue</span>;
+<a href=#270 id=270 data-nosnippet>270</a>		}
+<a href=#271 id=271 data-nosnippet>271</a>
+<a href=#272 id=272 data-nosnippet>272</a>		<span class="kw">let </span>TextLength = ResultText.len();
+<a href=#273 id=273 data-nosnippet>273</a>		<span class="kw">if </span>StartOffset &gt; TextLength || EndOffset &gt; TextLength {
+<a href=#274 id=274 data-nosnippet>274</a>			<span class="macro">dev_log!</span>(
+<a href=#275 id=275 data-nosnippet>275</a>				<span class="string">"model"</span>,
+<a href=#276 id=276 data-nosnippet>276</a>				<span class="string">"error: out of bounds: start ({}) or end ({}) exceeds text length {}"</span>,
+<a href=#277 id=277 data-nosnippet>277</a>				StartOffset,
+<a href=#278 id=278 data-nosnippet>278</a>				EndOffset,
+<a href=#279 id=279 data-nosnippet>279</a>				TextLength
+<a href=#280 id=280 data-nosnippet>280</a>			);
+<a href=#281 id=281 data-nosnippet>281</a>			<span class="kw">continue</span>;
+<a href=#282 id=282 data-nosnippet>282</a>		}
+<a href=#283 id=283 data-nosnippet>283</a>
+<a href=#284 id=284 data-nosnippet>284</a>		<span class="comment">// Remove old text and insert new text
+<a href=#285 id=285 data-nosnippet>285</a>		// Safe slice operation: validated offsets above
+<a href=#286 id=286 data-nosnippet>286</a>		</span><span class="kw">let </span>OldText = ResultText.as_bytes();
+<a href=#287 id=287 data-nosnippet>287</a>		ResultText =
+<a href=#288 id=288 data-nosnippet>288</a>			String::from_utf8_lossy(<span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span>OldText[..StartOffset], Change.Text.as_bytes(), <span class="kw-2">&amp;</span>OldText[EndOffset..]].concat())
+<a href=#289 id=289 data-nosnippet>289</a>				.into_owned();
+<a href=#290 id=290 data-nosnippet>290</a>	}
+<a href=#291 id=291 data-nosnippet>291</a>
+<a href=#292 id=292 data-nosnippet>292</a>	<span class="comment">// Re-split the result into lines
+<a href=#293 id=293 data-nosnippet>293</a>	</span><a href="../Internal/TextProcessing/AnalyzeTextLinesAndEOL.rs.html#43-62">AnalyzeTextLinesAndEOL</a>(<span class="kw-2">&amp;</span><a href="#241">ResultText</a>).<span class="number">0
+<a href=#294 id=294 data-nosnippet>294</a></span>}
+<a href=#295 id=295 data-nosnippet>295</a>
+<a href=#296 id=296 data-nosnippet>296</a><span class="doccomment">/// Converts line/column position to byte offset in text.
+<a href=#297 id=297 data-nosnippet>297</a>///
+<a href=#298 id=298 data-nosnippet>298</a>/// VSCode LSP uses 0-based line numbers and 0-based column numbers.
+<a href=#299 id=299 data-nosnippet>299</a>/// This function matches that convention.
+<a href=#300 id=300 data-nosnippet>300</a></span><span class="kw">fn </span><a href="../../../../Mountain/ApplicationState/DTO/DocumentStateDTO/fn.PositionToOffset.html">PositionToOffset</a>(Text:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, EOL:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, LineNumber:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, Column:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> {
+<a href=#301 id=301 data-nosnippet>301</a>	<span class="kw">let </span>Lines:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt; = <a href="#300">Text</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.split">split</a>(<a href="#300">EOL</a>).<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.collect">collect</a>();
+<a href=#302 id=302 data-nosnippet>302</a>	<span class="kw">let </span>EOLLength = <a href="#300">EOL</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.len">len</a>();
 <a href=#303 id=303 data-nosnippet>303</a>
-<a href=#304 id=304 data-nosnippet>304</a>	<span class="comment">// Add length of all preceding lines plus their EOL markers
-<a href=#305 id=305 data-nosnippet>305</a>	</span><span class="kw">for </span>LineIndex <span class="kw">in </span><span class="number">0</span>..<span class="kw-2">*</span>LineNumber {
-<a href=#306 id=306 data-nosnippet>306</a>		<span class="kw">if </span>LineIndex &lt; Lines.len() {
-<a href=#307 id=307 data-nosnippet>307</a>			Offset += Lines[LineIndex].len() + EOLLength;
-<a href=#308 id=308 data-nosnippet>308</a>		}
-<a href=#309 id=309 data-nosnippet>309</a>	}
-<a href=#310 id=310 data-nosnippet>310</a>
-<a href=#311 id=311 data-nosnippet>311</a>	<span class="comment">// Add column offset within the current line
-<a href=#312 id=312 data-nosnippet>312</a>	</span><span class="kw">if </span><span class="kw-2">*</span><a href="#298">LineNumber</a> &lt; <a href="#299">Lines</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.len">len</a>() {
-<a href=#313 id=313 data-nosnippet>313</a>		<span class="comment">// Column is in character positions, convert to byte offset
-<a href=#314 id=314 data-nosnippet>314</a>		</span><span class="kw">let </span>CurrentLine = <a href="#299">Lines</a>[<span class="kw-2">*</span><a href="#298">LineNumber</a>];
-<a href=#315 id=315 data-nosnippet>315</a>		<span class="kw">let </span>CharOffset = <a href="#314">CurrentLine</a>
-<a href=#316 id=316 data-nosnippet>316</a>			.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.char_indices">char_indices</a>()
-<a href=#317 id=317 data-nosnippet>317</a>			.<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.nth">nth</a>(<span class="kw-2">*</span><a href="#298">Column</a>)
-<a href=#318 id=318 data-nosnippet>318</a>			.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map_or">map_or</a>(<a href="#314">CurrentLine</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.len">len</a>(), |(offset, <span class="kw">_</span>)| <a href="#318">offset</a>);
-<a href=#319 id=319 data-nosnippet>319</a>		<a href="#302">Offset</a> += <a href="#315">CharOffset</a>;
-<a href=#320 id=320 data-nosnippet>320</a>	}
-<a href=#321 id=321 data-nosnippet>321</a>
-<a href=#322 id=322 data-nosnippet>322</a>	<a href="#302">Offset</a>
-<a href=#323 id=323 data-nosnippet>323</a>}
-<a href=#324 id=324 data-nosnippet>324</a>
-<a href=#325 id=325 data-nosnippet>325</a><span class="doccomment">/// Compares two RPC ranges to determine their order in the document.
-<a href=#326 id=326 data-nosnippet>326</a>/// Returns negative if a comes before b, zero if equal, positive if a comes
-<a href=#327 id=327 data-nosnippet>327</a>/// after b.
-<a href=#328 id=328 data-nosnippet>328</a></span><span class="kw">fn </span><a href="../../../../Mountain/ApplicationState/DTO/DocumentStateDTO/fn.CMP_Range_Position.html">CMP_Range_Position</a>(A:<span class="kw-2">&amp;</span><a href="RPCRangeDTO.rs.html#26-38">RPCRangeDTO</a>, B:<span class="kw-2">&amp;</span><a href="RPCRangeDTO.rs.html#26-38">RPCRangeDTO</a>) -&gt; std::cmp::<a href="https://doc.rust-lang.org/nightly/core/cmp/enum.Ordering.html">Ordering</a> {
-<a href=#329 id=329 data-nosnippet>329</a>	<a href="#328">A</a>.StartLineNumber
-<a href=#330 id=330 data-nosnippet>330</a>		.<a href="https://doc.rust-lang.org/nightly/core/cmp/trait.Ord.html#tymethod.cmp">cmp</a>(<span class="kw-2">&amp;</span><a href="#328">B</a>.StartLineNumber)
-<a href=#331 id=331 data-nosnippet>331</a>		.<a href="https://doc.rust-lang.org/nightly/core/cmp/enum.Ordering.html#method.then_with">then_with</a>(|| <a href="#328">A</a>.StartColumn.<a href="https://doc.rust-lang.org/nightly/core/cmp/trait.Ord.html#tymethod.cmp">cmp</a>(<span class="kw-2">&amp;</span><a href="#328">B</a>.StartColumn))
-<a href=#332 id=332 data-nosnippet>332</a>}
+<a href=#304 id=304 data-nosnippet>304</a>	<span class="kw">let </span><span class="kw-2">mut </span>Offset = <span class="number">0</span>;
+<a href=#305 id=305 data-nosnippet>305</a>
+<a href=#306 id=306 data-nosnippet>306</a>	<span class="comment">// Add length of all preceding lines plus their EOL markers
+<a href=#307 id=307 data-nosnippet>307</a>	</span><span class="kw">for </span>LineIndex <span class="kw">in </span><span class="number">0</span>..<span class="kw-2">*</span>LineNumber {
+<a href=#308 id=308 data-nosnippet>308</a>		<span class="kw">if </span>LineIndex &lt; Lines.len() {
+<a href=#309 id=309 data-nosnippet>309</a>			Offset += Lines[LineIndex].len() + EOLLength;
+<a href=#310 id=310 data-nosnippet>310</a>		}
+<a href=#311 id=311 data-nosnippet>311</a>	}
+<a href=#312 id=312 data-nosnippet>312</a>
+<a href=#313 id=313 data-nosnippet>313</a>	<span class="comment">// Add column offset within the current line
+<a href=#314 id=314 data-nosnippet>314</a>	</span><span class="kw">if </span><span class="kw-2">*</span><a href="#300">LineNumber</a> &lt; <a href="#301">Lines</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.len">len</a>() {
+<a href=#315 id=315 data-nosnippet>315</a>		<span class="comment">// Column is in character positions, convert to byte offset
+<a href=#316 id=316 data-nosnippet>316</a>		</span><span class="kw">let </span>CurrentLine = <a href="#301">Lines</a>[<span class="kw-2">*</span><a href="#300">LineNumber</a>];
+<a href=#317 id=317 data-nosnippet>317</a>		<span class="kw">let </span>CharOffset = <a href="#316">CurrentLine</a>
+<a href=#318 id=318 data-nosnippet>318</a>			.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.char_indices">char_indices</a>()
+<a href=#319 id=319 data-nosnippet>319</a>			.<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.nth">nth</a>(<span class="kw-2">*</span><a href="#300">Column</a>)
+<a href=#320 id=320 data-nosnippet>320</a>			.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map_or">map_or</a>(<a href="#316">CurrentLine</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.len">len</a>(), |(offset, <span class="kw">_</span>)| <a href="#320">offset</a>);
+<a href=#321 id=321 data-nosnippet>321</a>		<a href="#304">Offset</a> += <a href="#317">CharOffset</a>;
+<a href=#322 id=322 data-nosnippet>322</a>	}
+<a href=#323 id=323 data-nosnippet>323</a>
+<a href=#324 id=324 data-nosnippet>324</a>	<a href="#304">Offset</a>
+<a href=#325 id=325 data-nosnippet>325</a>}
+<a href=#326 id=326 data-nosnippet>326</a>
+<a href=#327 id=327 data-nosnippet>327</a><span class="doccomment">/// Compares two RPC ranges to determine their order in the document.
+<a href=#328 id=328 data-nosnippet>328</a>/// Returns negative if a comes before b, zero if equal, positive if a comes
+<a href=#329 id=329 data-nosnippet>329</a>/// after b.
+<a href=#330 id=330 data-nosnippet>330</a></span><span class="kw">fn </span><a href="../../../../Mountain/ApplicationState/DTO/DocumentStateDTO/fn.CMP_Range_Position.html">CMP_Range_Position</a>(A:<span class="kw-2">&amp;</span><a href="RPCRangeDTO.rs.html#26-38">RPCRangeDTO</a>, B:<span class="kw-2">&amp;</span><a href="RPCRangeDTO.rs.html#26-38">RPCRangeDTO</a>) -&gt; std::cmp::<a href="https://doc.rust-lang.org/nightly/core/cmp/enum.Ordering.html">Ordering</a> {
+<a href=#331 id=331 data-nosnippet>331</a>	<a href="#330">A</a>.StartLineNumber
+<a href=#332 id=332 data-nosnippet>332</a>		.<a href="https://doc.rust-lang.org/nightly/core/cmp/trait.Ord.html#tymethod.cmp">cmp</a>(<span class="kw-2">&amp;</span><a href="#330">B</a>.StartLineNumber)
+<a href=#333 id=333 data-nosnippet>333</a>		.<a href="https://doc.rust-lang.org/nightly/core/cmp/enum.Ordering.html#method.then_with">then_with</a>(|| <a href="#330">A</a>.StartColumn.<a href="https://doc.rust-lang.org/nightly/core/cmp/trait.Ord.html#tymethod.cmp">cmp</a>(<span class="kw-2">&amp;</span><a href="#330">B</a>.StartColumn))
+<a href=#334 id=334 data-nosnippet>334</a>}
 </code></pre></div></section></main></body></html>

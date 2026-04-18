@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["CollectDefaultConfigurations","ScanDirectoryForExtensions","process_configuration_properties"]};
+window.SIDEBAR_ITEMS = {"fn":["CollectDefaultConfigurations","LoadNLSBundle","ResolveNLSPlaceholders","ResolveNLSPlaceholdersInner","ScanDirectoryForExtensions","process_configuration_properties"]};

@@ -51,115 +51,120 @@
 <a href=#51 id=51 data-nosnippet>51</a>};
 <a href=#52 id=52 data-nosnippet>52</a><span class="kw">use </span>Echo::Task::Priority::Priority;
 <a href=#53 id=53 data-nosnippet>53</a><span class="kw">use </span><a href="https://docs.rs/async-trait/0.1.89/async_trait/attr.async_trait.html">async_trait::async_trait</a>;
-<a href=#54 id=54 data-nosnippet>54</a><span class="kw">use </span>log::{<a href="https://docs.rs/log/0.4.29/log/macro.error.html">error</a>, <a href="https://docs.rs/log/0.4.29/log/macro.warn.html">warn</a>};
-<a href=#55 id=55 data-nosnippet>55</a>
-<a href=#56 id=56 data-nosnippet>56</a><span class="kw">use </span><a href="../ApplicationRunTime/RuntimeStruct.rs.html#48-55"><span class="kw">crate</span>::RunTime::ApplicationRunTime::ApplicationRunTime</a>;
-<a href=#57 id=57 data-nosnippet>57</a>
-<a href=#58 id=58 data-nosnippet>58</a><span class="doccomment">/// The core integration logic between `Common::ActionEffect` and
-<a href=#59 id=59 data-nosnippet>59</a>/// `Echo::Scheduler`.
-<a href=#60 id=60 data-nosnippet>60</a></span><span class="attr">#[async_trait]
-<a href=#61 id=61 data-nosnippet>61</a></span><span class="kw">impl </span>ApplicationRunTimeTrait <span class="kw">for </span><a href="../ApplicationRunTime/RuntimeStruct.rs.html#48-55">ApplicationRunTime</a> {
-<a href=#62 id=62 data-nosnippet>62</a>	<span class="kw">async fn </span>Run&lt;TCapabilityProvider, TError, TOutput&gt;(
-<a href=#63 id=63 data-nosnippet>63</a>		<span class="kw-2">&amp;</span><a class="self" href="#63">self</a>,
-<a href=#64 id=64 data-nosnippet>64</a>		<a href="#64">Effect</a>:ActionEffect&lt;<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;TCapabilityProvider&gt;, TError, TOutput&gt;,
-<a href=#65 id=65 data-nosnippet>65</a>	) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;TOutput, TError&gt;
-<a href=#66 id=66 data-nosnippet>66</a>	<span class="kw">where
-<a href=#67 id=67 data-nosnippet>67</a>		</span>TCapabilityProvider: <span class="question-mark">?</span><a href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html">Sized</a> + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a> + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html">Sync</a> + <span class="lifetime">'static</span>,
-<a href=#68 id=68 data-nosnippet>68</a>		&lt;<span class="self">Self </span><span class="kw">as </span>CommonLibrary::Environment::HasEnvironment::HasEnvironment&gt;::EnvironmentType:
-<a href=#69 id=69 data-nosnippet>69</a>			Requires&lt;TCapabilityProvider&gt;,
-<a href=#70 id=70 data-nosnippet>70</a>		TError: <a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html">From</a>&lt;CommonError&gt; + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a> + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html">Sync</a> + <span class="lifetime">'static</span>,
-<a href=#71 id=71 data-nosnippet>71</a>		TOutput: <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a> + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html">Sync</a> + <span class="lifetime">'static</span>, {
-<a href=#72 id=72 data-nosnippet>72</a>		<span class="kw">let </span>(ResultSender, ResultReceiver) = tokio::sync::oneshot::channel::&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;TOutput, TError&gt;&gt;();
-<a href=#73 id=73 data-nosnippet>73</a>
-<a href=#74 id=74 data-nosnippet>74</a>		<span class="kw">let </span>CapabilityProvider:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;TCapabilityProvider&gt; = <a class="self" href="#63">self</a>.Environment.Require();
-<a href=#75 id=75 data-nosnippet>75</a>
-<a href=#76 id=76 data-nosnippet>76</a>		<span class="kw">let </span>Task = <span class="kw">async move </span>{
-<a href=#77 id=77 data-nosnippet>77</a>			<span class="kw">let </span><span class="prelude-ty">Result </span>= <a href="#64">Effect</a>.Apply(<a href="#74">CapabilityProvider</a>).<span class="kw">await</span>;
-<a href=#78 id=78 data-nosnippet>78</a>
-<a href=#79 id=79 data-nosnippet>79</a>			<span class="kw">if </span><a href="#72">ResultSender</a>.send(<a class="prelude-ty" href="#77">Result</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.is_err">is_err</a>() {
-<a href=#80 id=80 data-nosnippet>80</a>				<a href="https://docs.rs/log/0.4.29/log/macro.error.html">error!</a>(<span class="string">"[ApplicationRunTime] Failed to send effect result; receiver was dropped."</span>);
-<a href=#81 id=81 data-nosnippet>81</a>			}
-<a href=#82 id=82 data-nosnippet>82</a>		};
-<a href=#83 id=83 data-nosnippet>83</a>
-<a href=#84 id=84 data-nosnippet>84</a>		<a class="self" href="#63">self</a>.Scheduler.Submit(<a href="#76">Task</a>, Priority::Normal);
+<a href=#54 id=54 data-nosnippet>54</a>
+<a href=#55 id=55 data-nosnippet>55</a><span class="kw">use </span>crate::{<a href="../ApplicationRunTime/RuntimeStruct.rs.html#48-55">RunTime::ApplicationRunTime::ApplicationRunTime</a>, <a href="../../IPC/DevLog.rs.html#150-185">dev_log</a>};
+<a href=#56 id=56 data-nosnippet>56</a>
+<a href=#57 id=57 data-nosnippet>57</a><span class="doccomment">/// The core integration logic between `Common::ActionEffect` and
+<a href=#58 id=58 data-nosnippet>58</a>/// `Echo::Scheduler`.
+<a href=#59 id=59 data-nosnippet>59</a></span><span class="attr">#[async_trait]
+<a href=#60 id=60 data-nosnippet>60</a></span><span class="kw">impl </span>ApplicationRunTimeTrait <span class="kw">for </span><a href="../ApplicationRunTime/RuntimeStruct.rs.html#48-55">ApplicationRunTime</a> {
+<a href=#61 id=61 data-nosnippet>61</a>	<span class="kw">async fn </span>Run&lt;TCapabilityProvider, TError, TOutput&gt;(
+<a href=#62 id=62 data-nosnippet>62</a>		<span class="kw-2">&amp;</span><a class="self" href="#62">self</a>,
+<a href=#63 id=63 data-nosnippet>63</a>		<a href="#63">Effect</a>:ActionEffect&lt;<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;TCapabilityProvider&gt;, TError, TOutput&gt;,
+<a href=#64 id=64 data-nosnippet>64</a>	) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;TOutput, TError&gt;
+<a href=#65 id=65 data-nosnippet>65</a>	<span class="kw">where
+<a href=#66 id=66 data-nosnippet>66</a>		</span>TCapabilityProvider: <span class="question-mark">?</span><a href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html">Sized</a> + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a> + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html">Sync</a> + <span class="lifetime">'static</span>,
+<a href=#67 id=67 data-nosnippet>67</a>		&lt;<span class="self">Self </span><span class="kw">as </span>CommonLibrary::Environment::HasEnvironment::HasEnvironment&gt;::EnvironmentType:
+<a href=#68 id=68 data-nosnippet>68</a>			Requires&lt;TCapabilityProvider&gt;,
+<a href=#69 id=69 data-nosnippet>69</a>		TError: <a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html">From</a>&lt;CommonError&gt; + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a> + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html">Sync</a> + <span class="lifetime">'static</span>,
+<a href=#70 id=70 data-nosnippet>70</a>		TOutput: <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a> + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html">Sync</a> + <span class="lifetime">'static</span>, {
+<a href=#71 id=71 data-nosnippet>71</a>		<span class="kw">let </span>(ResultSender, ResultReceiver) = tokio::sync::oneshot::channel::&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;TOutput, TError&gt;&gt;();
+<a href=#72 id=72 data-nosnippet>72</a>
+<a href=#73 id=73 data-nosnippet>73</a>		<span class="kw">let </span>CapabilityProvider:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;TCapabilityProvider&gt; = <a class="self" href="#62">self</a>.Environment.Require();
+<a href=#74 id=74 data-nosnippet>74</a>
+<a href=#75 id=75 data-nosnippet>75</a>		<span class="kw">let </span>Task = <span class="kw">async move </span>{
+<a href=#76 id=76 data-nosnippet>76</a>			<span class="kw">let </span><span class="prelude-ty">Result </span>= <a href="#63">Effect</a>.Apply(<a href="#73">CapabilityProvider</a>).<span class="kw">await</span>;
+<a href=#77 id=77 data-nosnippet>77</a>
+<a href=#78 id=78 data-nosnippet>78</a>			<span class="kw">if </span><a href="#71">ResultSender</a>.send(<a class="prelude-ty" href="#76">Result</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.is_err">is_err</a>() {
+<a href=#79 id=79 data-nosnippet>79</a>				<a href="../../IPC/DevLog.rs.html#150-185">dev_log!</a>(
+<a href=#80 id=80 data-nosnippet>80</a>					<span class="string">"lifecycle"</span>,
+<a href=#81 id=81 data-nosnippet>81</a>					<span class="string">"error: [ApplicationRunTime] Failed to send effect result; receiver was dropped."
+<a href=#82 id=82 data-nosnippet>82</a>				</span>);
+<a href=#83 id=83 data-nosnippet>83</a>			}
+<a href=#84 id=84 data-nosnippet>84</a>		};
 <a href=#85 id=85 data-nosnippet>85</a>
-<a href=#86 id=86 data-nosnippet>86</a>		<span class="kw">match </span><a href="#72">ResultReceiver</a>.<span class="kw">await </span>{
-<a href=#87 id=87 data-nosnippet>87</a>			<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="prelude-ty">Result</span>) =&gt; <a class="prelude-ty" href="#87">Result</a>,
-<a href=#88 id=88 data-nosnippet>88</a>
-<a href=#89 id=89 data-nosnippet>89</a>			<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(_RecvError) =&gt; {
-<a href=#90 id=90 data-nosnippet>90</a>				<span class="kw">let </span>Message = <span class="string">"Effect execution canceled; oneshot channel closed."</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>();
-<a href=#91 id=91 data-nosnippet>91</a>
-<a href=#92 id=92 data-nosnippet>92</a>				<a href="https://docs.rs/log/0.4.29/log/macro.error.html">error!</a>(<span class="string">"{}"</span>, Message);
+<a href=#86 id=86 data-nosnippet>86</a>		<a class="self" href="#62">self</a>.Scheduler.Submit(<a href="#75">Task</a>, Priority::Normal);
+<a href=#87 id=87 data-nosnippet>87</a>
+<a href=#88 id=88 data-nosnippet>88</a>		<span class="kw">match </span><a href="#71">ResultReceiver</a>.<span class="kw">await </span>{
+<a href=#89 id=89 data-nosnippet>89</a>			<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="prelude-ty">Result</span>) =&gt; <a class="prelude-ty" href="#89">Result</a>,
+<a href=#90 id=90 data-nosnippet>90</a>
+<a href=#91 id=91 data-nosnippet>91</a>			<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(_RecvError) =&gt; {
+<a href=#92 id=92 data-nosnippet>92</a>				<span class="kw">let </span>Message = <span class="string">"Effect execution canceled; oneshot channel closed."</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>();
 <a href=#93 id=93 data-nosnippet>93</a>
-<a href=#94 id=94 data-nosnippet>94</a>				<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(CommonError::IPCError { Description:<a href="#90">Message</a> }.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into">into</a>())
-<a href=#95 id=95 data-nosnippet>95</a>			},
-<a href=#96 id=96 data-nosnippet>96</a>		}
-<a href=#97 id=97 data-nosnippet>97</a>	}
-<a href=#98 id=98 data-nosnippet>98</a>}
-<a href=#99 id=99 data-nosnippet>99</a>
-<a href=#100 id=100 data-nosnippet>100</a><span class="kw">impl </span><a href="../ApplicationRunTime/RuntimeStruct.rs.html#48-55">ApplicationRunTime</a> {
-<a href=#101 id=101 data-nosnippet>101</a>	<span class="doccomment">/// Enhanced effect execution with timeout and recovery.
-<a href=#102 id=102 data-nosnippet>102</a>	</span><span class="kw">pub async fn </span>RunWithTimeout&lt;TCapabilityProvider, TError, TOutput&gt;(
-<a href=#103 id=103 data-nosnippet>103</a>		<span class="kw-2">&amp;</span><span class="self">self</span>,
-<a href=#104 id=104 data-nosnippet>104</a>		Effect:ActionEffect&lt;<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;TCapabilityProvider&gt;, TError, TOutput&gt;,
-<a href=#105 id=105 data-nosnippet>105</a>		timeout:std::time::<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html">Duration</a>,
-<a href=#106 id=106 data-nosnippet>106</a>	) -&gt; <span class="prelude-ty">Result</span>&lt;TOutput, TError&gt;
-<a href=#107 id=107 data-nosnippet>107</a>	<span class="kw">where
-<a href=#108 id=108 data-nosnippet>108</a>		</span>TCapabilityProvider: <span class="question-mark">?</span><a href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html">Sized</a> + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a> + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html">Sync</a> + <span class="lifetime">'static</span>,
-<a href=#109 id=109 data-nosnippet>109</a>		&lt;<span class="self">Self </span><span class="kw">as </span>CommonLibrary::Environment::HasEnvironment::HasEnvironment&gt;::EnvironmentType:
-<a href=#110 id=110 data-nosnippet>110</a>			Requires&lt;TCapabilityProvider&gt;,
-<a href=#111 id=111 data-nosnippet>111</a>		TError: <a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html">From</a>&lt;CommonError&gt; + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a> + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html">Sync</a> + <span class="lifetime">'static</span>,
-<a href=#112 id=112 data-nosnippet>112</a>		TOutput: <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a> + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html">Sync</a> + <span class="lifetime">'static</span>, {
-<a href=#113 id=113 data-nosnippet>113</a>		tokio::time::timeout(timeout, ApplicationRunTimeTrait::Run(<span class="self">self</span>, Effect))
-<a href=#114 id=114 data-nosnippet>114</a>			.<span class="kw">await
-<a href=#115 id=115 data-nosnippet>115</a>			</span>.map_err(|<span class="kw">_</span>| {
-<a href=#116 id=116 data-nosnippet>116</a>				CommonError::Unknown { Description:<span class="macro">format!</span>(<span class="string">"Effect execution timed out after {:?}"</span>, timeout) }.into()
-<a href=#117 id=117 data-nosnippet>117</a>			})<span class="question-mark">?
-<a href=#118 id=118 data-nosnippet>118</a>	</span>}
-<a href=#119 id=119 data-nosnippet>119</a>
-<a href=#120 id=120 data-nosnippet>120</a>	<span class="doccomment">/// Execute effect with retry mechanism.
-<a href=#121 id=121 data-nosnippet>121</a>	</span><span class="kw">pub async fn </span>RunWithRetry&lt;TCapabilityProvider, TError, TOutput&gt;(
-<a href=#122 id=122 data-nosnippet>122</a>		<span class="kw-2">&amp;</span><span class="self">self</span>,
-<a href=#123 id=123 data-nosnippet>123</a>		Effect:ActionEffect&lt;<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;TCapabilityProvider&gt;, TError, TOutput&gt;,
-<a href=#124 id=124 data-nosnippet>124</a>		max_retries:<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
-<a href=#125 id=125 data-nosnippet>125</a>		initial_delay:std::time::<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html">Duration</a>,
-<a href=#126 id=126 data-nosnippet>126</a>	) -&gt; <span class="prelude-ty">Result</span>&lt;TOutput, TError&gt;
-<a href=#127 id=127 data-nosnippet>127</a>	<span class="kw">where
-<a href=#128 id=128 data-nosnippet>128</a>		</span>TCapabilityProvider: <span class="question-mark">?</span><a href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html">Sized</a> + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a> + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html">Sync</a> + <span class="lifetime">'static</span>,
-<a href=#129 id=129 data-nosnippet>129</a>		&lt;<span class="self">Self </span><span class="kw">as </span>CommonLibrary::Environment::HasEnvironment::HasEnvironment&gt;::EnvironmentType:
-<a href=#130 id=130 data-nosnippet>130</a>			Requires&lt;TCapabilityProvider&gt;,
-<a href=#131 id=131 data-nosnippet>131</a>		TError: <a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html">From</a>&lt;CommonError&gt; + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a> + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html">Sync</a> + <span class="lifetime">'static </span>+ <a href="https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html">std::fmt::Display</a>,
-<a href=#132 id=132 data-nosnippet>132</a>		TOutput: <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a> + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html">Sync</a> + <span class="lifetime">'static</span>, {
-<a href=#133 id=133 data-nosnippet>133</a>		<span class="kw">let </span><span class="kw-2">mut </span>retry_count = <span class="number">0</span>;
-<a href=#134 id=134 data-nosnippet>134</a>		<span class="kw">let </span><span class="kw-2">mut </span>current_delay = initial_delay;
-<a href=#135 id=135 data-nosnippet>135</a>
-<a href=#136 id=136 data-nosnippet>136</a>		<span class="kw">while </span>retry_count &lt;= max_retries {
-<a href=#137 id=137 data-nosnippet>137</a>			<span class="kw">match </span>ApplicationRunTimeTrait::Run(<span class="self">self</span>, Effect.clone()).<span class="kw">await </span>{
-<a href=#138 id=138 data-nosnippet>138</a>				<span class="prelude-val">Ok</span>(result) =&gt; <span class="kw">return </span><span class="prelude-val">Ok</span>(result),
-<a href=#139 id=139 data-nosnippet>139</a>				<span class="prelude-val">Err</span>(error) =&gt; {
-<a href=#140 id=140 data-nosnippet>140</a>					<span class="kw">if </span>retry_count == max_retries {
-<a href=#141 id=141 data-nosnippet>141</a>						<span class="kw">return </span><span class="prelude-val">Err</span>(error);
-<a href=#142 id=142 data-nosnippet>142</a>					}
-<a href=#143 id=143 data-nosnippet>143</a>
-<a href=#144 id=144 data-nosnippet>144</a>					retry_count += <span class="number">1</span>;
-<a href=#145 id=145 data-nosnippet>145</a>					<span class="macro">warn!</span>(
-<a href=#146 id=146 data-nosnippet>146</a>						<span class="string">"[ApplicationRunTime] Effect execution failed (attempt {}): {}. Retrying in {:?}..."</span>,
-<a href=#147 id=147 data-nosnippet>147</a>						retry_count, error, current_delay
-<a href=#148 id=148 data-nosnippet>148</a>					);
-<a href=#149 id=149 data-nosnippet>149</a>
-<a href=#150 id=150 data-nosnippet>150</a>					tokio::time::sleep(current_delay).<span class="kw">await</span>;
-<a href=#151 id=151 data-nosnippet>151</a>
-<a href=#152 id=152 data-nosnippet>152</a>					<span class="comment">// Apply exponential backoff by doubling the delay after each failure
-<a href=#153 id=153 data-nosnippet>153</a>					// to prevent overwhelming the system during recovery attempts.
-<a href=#154 id=154 data-nosnippet>154</a>					</span>current_delay <span class="kw-2">*</span>= <span class="number">2</span>;
-<a href=#155 id=155 data-nosnippet>155</a>				},
-<a href=#156 id=156 data-nosnippet>156</a>			}
-<a href=#157 id=157 data-nosnippet>157</a>		}
-<a href=#158 id=158 data-nosnippet>158</a>
-<a href=#159 id=159 data-nosnippet>159</a>		<span class="prelude-val">Err</span>(
-<a href=#160 id=160 data-nosnippet>160</a>			CommonError::Unknown { Description:<span class="macro">format!</span>(<span class="string">"Effect execution failed after {} retries"</span>, max_retries) }
-<a href=#161 id=161 data-nosnippet>161</a>				.into(),
-<a href=#162 id=162 data-nosnippet>162</a>		)
-<a href=#163 id=163 data-nosnippet>163</a>	}
-<a href=#164 id=164 data-nosnippet>164</a>}
+<a href=#94 id=94 data-nosnippet>94</a>				<a href="../../IPC/DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"error: {}"</span>, Message);
+<a href=#95 id=95 data-nosnippet>95</a>
+<a href=#96 id=96 data-nosnippet>96</a>				<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(CommonError::IPCError { Description:<a href="#92">Message</a> }.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into">into</a>())
+<a href=#97 id=97 data-nosnippet>97</a>			},
+<a href=#98 id=98 data-nosnippet>98</a>		}
+<a href=#99 id=99 data-nosnippet>99</a>	}
+<a href=#100 id=100 data-nosnippet>100</a>}
+<a href=#101 id=101 data-nosnippet>101</a>
+<a href=#102 id=102 data-nosnippet>102</a><span class="kw">impl </span><a href="../ApplicationRunTime/RuntimeStruct.rs.html#48-55">ApplicationRunTime</a> {
+<a href=#103 id=103 data-nosnippet>103</a>	<span class="doccomment">/// Enhanced effect execution with timeout and recovery.
+<a href=#104 id=104 data-nosnippet>104</a>	</span><span class="kw">pub async fn </span>RunWithTimeout&lt;TCapabilityProvider, TError, TOutput&gt;(
+<a href=#105 id=105 data-nosnippet>105</a>		<span class="kw-2">&amp;</span><span class="self">self</span>,
+<a href=#106 id=106 data-nosnippet>106</a>		Effect:ActionEffect&lt;<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;TCapabilityProvider&gt;, TError, TOutput&gt;,
+<a href=#107 id=107 data-nosnippet>107</a>		timeout:std::time::<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html">Duration</a>,
+<a href=#108 id=108 data-nosnippet>108</a>	) -&gt; <span class="prelude-ty">Result</span>&lt;TOutput, TError&gt;
+<a href=#109 id=109 data-nosnippet>109</a>	<span class="kw">where
+<a href=#110 id=110 data-nosnippet>110</a>		</span>TCapabilityProvider: <span class="question-mark">?</span><a href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html">Sized</a> + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a> + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html">Sync</a> + <span class="lifetime">'static</span>,
+<a href=#111 id=111 data-nosnippet>111</a>		&lt;<span class="self">Self </span><span class="kw">as </span>CommonLibrary::Environment::HasEnvironment::HasEnvironment&gt;::EnvironmentType:
+<a href=#112 id=112 data-nosnippet>112</a>			Requires&lt;TCapabilityProvider&gt;,
+<a href=#113 id=113 data-nosnippet>113</a>		TError: <a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html">From</a>&lt;CommonError&gt; + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a> + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html">Sync</a> + <span class="lifetime">'static</span>,
+<a href=#114 id=114 data-nosnippet>114</a>		TOutput: <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a> + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html">Sync</a> + <span class="lifetime">'static</span>, {
+<a href=#115 id=115 data-nosnippet>115</a>		tokio::time::timeout(timeout, ApplicationRunTimeTrait::Run(<span class="self">self</span>, Effect))
+<a href=#116 id=116 data-nosnippet>116</a>			.<span class="kw">await
+<a href=#117 id=117 data-nosnippet>117</a>			</span>.map_err(|<span class="kw">_</span>| {
+<a href=#118 id=118 data-nosnippet>118</a>				CommonError::Unknown { Description:<span class="macro">format!</span>(<span class="string">"Effect execution timed out after {:?}"</span>, timeout) }.into()
+<a href=#119 id=119 data-nosnippet>119</a>			})<span class="question-mark">?
+<a href=#120 id=120 data-nosnippet>120</a>	</span>}
+<a href=#121 id=121 data-nosnippet>121</a>
+<a href=#122 id=122 data-nosnippet>122</a>	<span class="doccomment">/// Execute effect with retry mechanism.
+<a href=#123 id=123 data-nosnippet>123</a>	</span><span class="kw">pub async fn </span>RunWithRetry&lt;TCapabilityProvider, TError, TOutput&gt;(
+<a href=#124 id=124 data-nosnippet>124</a>		<span class="kw-2">&amp;</span><span class="self">self</span>,
+<a href=#125 id=125 data-nosnippet>125</a>		Effect:ActionEffect&lt;<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;TCapabilityProvider&gt;, TError, TOutput&gt;,
+<a href=#126 id=126 data-nosnippet>126</a>		max_retries:<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+<a href=#127 id=127 data-nosnippet>127</a>		initial_delay:std::time::<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html">Duration</a>,
+<a href=#128 id=128 data-nosnippet>128</a>	) -&gt; <span class="prelude-ty">Result</span>&lt;TOutput, TError&gt;
+<a href=#129 id=129 data-nosnippet>129</a>	<span class="kw">where
+<a href=#130 id=130 data-nosnippet>130</a>		</span>TCapabilityProvider: <span class="question-mark">?</span><a href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html">Sized</a> + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a> + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html">Sync</a> + <span class="lifetime">'static</span>,
+<a href=#131 id=131 data-nosnippet>131</a>		&lt;<span class="self">Self </span><span class="kw">as </span>CommonLibrary::Environment::HasEnvironment::HasEnvironment&gt;::EnvironmentType:
+<a href=#132 id=132 data-nosnippet>132</a>			Requires&lt;TCapabilityProvider&gt;,
+<a href=#133 id=133 data-nosnippet>133</a>		TError: <a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html">From</a>&lt;CommonError&gt; + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a> + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html">Sync</a> + <span class="lifetime">'static </span>+ <a href="https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html">std::fmt::Display</a>,
+<a href=#134 id=134 data-nosnippet>134</a>		TOutput: <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a> + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html">Sync</a> + <span class="lifetime">'static</span>, {
+<a href=#135 id=135 data-nosnippet>135</a>		<span class="kw">let </span><span class="kw-2">mut </span>retry_count = <span class="number">0</span>;
+<a href=#136 id=136 data-nosnippet>136</a>		<span class="kw">let </span><span class="kw-2">mut </span>current_delay = initial_delay;
+<a href=#137 id=137 data-nosnippet>137</a>
+<a href=#138 id=138 data-nosnippet>138</a>		<span class="kw">while </span>retry_count &lt;= max_retries {
+<a href=#139 id=139 data-nosnippet>139</a>			<span class="kw">match </span>ApplicationRunTimeTrait::Run(<span class="self">self</span>, Effect.clone()).<span class="kw">await </span>{
+<a href=#140 id=140 data-nosnippet>140</a>				<span class="prelude-val">Ok</span>(result) =&gt; <span class="kw">return </span><span class="prelude-val">Ok</span>(result),
+<a href=#141 id=141 data-nosnippet>141</a>				<span class="prelude-val">Err</span>(error) =&gt; {
+<a href=#142 id=142 data-nosnippet>142</a>					<span class="kw">if </span>retry_count == max_retries {
+<a href=#143 id=143 data-nosnippet>143</a>						<span class="kw">return </span><span class="prelude-val">Err</span>(error);
+<a href=#144 id=144 data-nosnippet>144</a>					}
+<a href=#145 id=145 data-nosnippet>145</a>
+<a href=#146 id=146 data-nosnippet>146</a>					retry_count += <span class="number">1</span>;
+<a href=#147 id=147 data-nosnippet>147</a>					<span class="macro">dev_log!</span>(
+<a href=#148 id=148 data-nosnippet>148</a>						<span class="string">"lifecycle"</span>,
+<a href=#149 id=149 data-nosnippet>149</a>						<span class="string">"warn: [ApplicationRunTime] Effect execution failed (attempt {}): {}. Retrying in {:?}..."</span>,
+<a href=#150 id=150 data-nosnippet>150</a>						retry_count,
+<a href=#151 id=151 data-nosnippet>151</a>						error,
+<a href=#152 id=152 data-nosnippet>152</a>						current_delay
+<a href=#153 id=153 data-nosnippet>153</a>					);
+<a href=#154 id=154 data-nosnippet>154</a>
+<a href=#155 id=155 data-nosnippet>155</a>					tokio::time::sleep(current_delay).<span class="kw">await</span>;
+<a href=#156 id=156 data-nosnippet>156</a>
+<a href=#157 id=157 data-nosnippet>157</a>					<span class="comment">// Apply exponential backoff by doubling the delay after each failure
+<a href=#158 id=158 data-nosnippet>158</a>					// to prevent overwhelming the system during recovery attempts.
+<a href=#159 id=159 data-nosnippet>159</a>					</span>current_delay <span class="kw-2">*</span>= <span class="number">2</span>;
+<a href=#160 id=160 data-nosnippet>160</a>				},
+<a href=#161 id=161 data-nosnippet>161</a>			}
+<a href=#162 id=162 data-nosnippet>162</a>		}
+<a href=#163 id=163 data-nosnippet>163</a>
+<a href=#164 id=164 data-nosnippet>164</a>		<span class="prelude-val">Err</span>(
+<a href=#165 id=165 data-nosnippet>165</a>			CommonError::Unknown { Description:<span class="macro">format!</span>(<span class="string">"Effect execution failed after {} retries"</span>, max_retries) }
+<a href=#166 id=166 data-nosnippet>166</a>				.into(),
+<a href=#167 id=167 data-nosnippet>167</a>		)
+<a href=#168 id=168 data-nosnippet>168</a>	}
+<a href=#169 id=169 data-nosnippet>169</a>}
 </code></pre></div></section></main></body></html>

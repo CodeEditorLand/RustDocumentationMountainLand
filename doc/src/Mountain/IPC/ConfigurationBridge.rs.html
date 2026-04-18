@@ -220,23 +220,23 @@
 <a href=#220 id=220 data-nosnippet>220</a>
 <a href=#221 id=221 data-nosnippet>221</a></span><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">std::sync::Arc</a>;
 <a href=#222 id=222 data-nosnippet>222</a>
-<a href=#223 id=223 data-nosnippet>223</a><span class="kw">use </span>log::{<a href="https://docs.rs/log/0.4.29/log/macro.debug.html">debug</a>, <a href="https://docs.rs/log/0.4.29/log/macro.info.html">info</a>, <a href="https://docs.rs/log/0.4.29/log/macro.warn.html">warn</a>};
-<a href=#224 id=224 data-nosnippet>224</a><span class="kw">use </span>serde::{<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>};
-<a href=#225 id=225 data-nosnippet>225</a><span class="kw">use </span>tauri::Manager;
-<a href=#226 id=226 data-nosnippet>226</a><span class="comment">// Type aliases for Configuration DTOs to simplify usage
-<a href=#227 id=227 data-nosnippet>227</a></span><span class="kw">use </span>CommonLibrary::Configuration::DTO::{
-<a href=#228 id=228 data-nosnippet>228</a>	ConfigurationOverridesDTO <span class="kw">as </span>ConfigurationOverridesDTOModule,
-<a href=#229 id=229 data-nosnippet>229</a>	ConfigurationTarget <span class="kw">as </span>ConfigurationTargetModule,
-<a href=#230 id=230 data-nosnippet>230</a>};
-<a href=#231 id=231 data-nosnippet>231</a><span class="kw">type </span><a href="../../../Mountain/IPC/ConfigurationBridge/type.ConfigurationOverridesDTO.html">ConfigurationOverridesDTO</a> = ConfigurationOverridesDTOModule::ConfigurationOverridesDTO;
-<a href=#232 id=232 data-nosnippet>232</a><span class="kw">type </span><a href="../../../Mountain/IPC/ConfigurationBridge/type.ConfigurationTarget.html">ConfigurationTarget</a> = ConfigurationTargetModule::ConfigurationTarget;
-<a href=#233 id=233 data-nosnippet>233</a>
-<a href=#234 id=234 data-nosnippet>234</a><span class="kw">use </span>CommonLibrary::{Configuration::ConfigurationProvider::ConfigurationProvider, Environment::Requires::Requires};
-<a href=#235 id=235 data-nosnippet>235</a><span class="kw">use </span>sha2::Digest;
-<a href=#236 id=236 data-nosnippet>236</a>
-<a href=#237 id=237 data-nosnippet>237</a><span class="kw">use </span>crate::{
-<a href=#238 id=238 data-nosnippet>238</a>	IPC::WindServiceAdapters::{<a href="WindServiceAdapters.rs.html#172-195">WindDesktopConfiguration</a>, <a href="WindServiceAdapters.rs.html#237-239">WindServiceAdapter</a>},
-<a href=#239 id=239 data-nosnippet>239</a>	<a href="../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">RunTime::ApplicationRunTime::ApplicationRunTime</a>,
+<a href=#223 id=223 data-nosnippet>223</a><span class="kw">use </span>serde::{<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>};
+<a href=#224 id=224 data-nosnippet>224</a><span class="kw">use </span>tauri::Manager;
+<a href=#225 id=225 data-nosnippet>225</a><span class="comment">// Type aliases for Configuration DTOs to simplify usage
+<a href=#226 id=226 data-nosnippet>226</a></span><span class="kw">use </span>CommonLibrary::Configuration::DTO::{
+<a href=#227 id=227 data-nosnippet>227</a>	ConfigurationOverridesDTO <span class="kw">as </span>ConfigurationOverridesDTOModule,
+<a href=#228 id=228 data-nosnippet>228</a>	ConfigurationTarget <span class="kw">as </span>ConfigurationTargetModule,
+<a href=#229 id=229 data-nosnippet>229</a>};
+<a href=#230 id=230 data-nosnippet>230</a><span class="kw">type </span><a href="../../../Mountain/IPC/ConfigurationBridge/type.ConfigurationOverridesDTO.html">ConfigurationOverridesDTO</a> = ConfigurationOverridesDTOModule::<a href="../../../Mountain/IPC/WindServiceHandler/struct.ConfigurationOverridesDTO.html">ConfigurationOverridesDTO</a>;
+<a href=#231 id=231 data-nosnippet>231</a><span class="kw">type </span><a href="../../../Mountain/IPC/ConfigurationBridge/type.ConfigurationTarget.html">ConfigurationTarget</a> = ConfigurationTargetModule::<a href="../../../Mountain/IPC/WindServiceHandler/enum.ConfigurationTarget.html">ConfigurationTarget</a>;
+<a href=#232 id=232 data-nosnippet>232</a>
+<a href=#233 id=233 data-nosnippet>233</a><span class="kw">use </span>CommonLibrary::{Configuration::ConfigurationProvider::ConfigurationProvider, Environment::Requires::Requires};
+<a href=#234 id=234 data-nosnippet>234</a><span class="kw">use </span>sha2::Digest;
+<a href=#235 id=235 data-nosnippet>235</a>
+<a href=#236 id=236 data-nosnippet>236</a><span class="kw">use </span>crate::{
+<a href=#237 id=237 data-nosnippet>237</a>	IPC::WindServiceAdapters::{<a href="WindServiceAdapters.rs.html#171-194">WindDesktopConfiguration</a>, <a href="WindServiceAdapters.rs.html#236-238">WindServiceAdapter</a>},
+<a href=#238 id=238 data-nosnippet>238</a>	<a href="../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">RunTime::ApplicationRunTime::ApplicationRunTime</a>,
+<a href=#239 id=239 data-nosnippet>239</a>	<a href="DevLog.rs.html#150-185">dev_log</a>,
 <a href=#240 id=240 data-nosnippet>240</a>};
 <a href=#241 id=241 data-nosnippet>241</a>
 <a href=#242 id=242 data-nosnippet>242</a><span class="doccomment">/// Configuration bridge that handles Wind's desktop configuration needs
@@ -247,13 +247,13 @@
 <a href=#247 id=247 data-nosnippet>247</a><span class="kw">impl </span><a href="#243-245">ConfigurationBridge</a> {
 <a href=#248 id=248 data-nosnippet>248</a>	<span class="doccomment">/// Create a new configuration bridge
 <a href=#249 id=249 data-nosnippet>249</a>	</span><span class="kw">pub fn </span>new(runtime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">ApplicationRunTime</a>&gt;) -&gt; <span class="self">Self </span>{
-<a href=#250 id=250 data-nosnippet>250</a>		<a href="https://docs.rs/log/0.4.29/log/macro.info.html">info!</a>(<span class="string">"[ConfigurationBridge] Creating configuration bridge"</span>);
+<a href=#250 id=250 data-nosnippet>250</a>		<a href="DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"config"</span>, <span class="string">"[ConfigurationBridge] Creating configuration bridge"</span>);
 <a href=#251 id=251 data-nosnippet>251</a>		<span class="self">Self </span>{ <a href="#249">runtime</a> }
 <a href=#252 id=252 data-nosnippet>252</a>	}
 <a href=#253 id=253 data-nosnippet>253</a>
 <a href=#254 id=254 data-nosnippet>254</a>	<span class="doccomment">/// Get Wind-compatible desktop configuration
 <a href=#255 id=255 data-nosnippet>255</a>	</span><span class="kw">pub async fn </span>get_wind_desktop_configuration(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;WindDesktopConfiguration, String&gt; {
-<a href=#256 id=256 data-nosnippet>256</a>		<span class="macro">debug!</span>(<span class="string">"[ConfigurationBridge] Getting Wind desktop configuration"</span>);
+<a href=#256 id=256 data-nosnippet>256</a>		<span class="macro">dev_log!</span>(<span class="string">"config"</span>, <span class="string">"[ConfigurationBridge] Getting Wind desktop configuration"</span>);
 <a href=#257 id=257 data-nosnippet>257</a>
 <a href=#258 id=258 data-nosnippet>258</a>		<span class="comment">// Get the current Mountain configuration
 <a href=#259 id=259 data-nosnippet>259</a>		</span><span class="kw">let </span>mountain_config = <span class="self">self</span>.get_mountain_configuration().<span class="kw">await</span><span class="question-mark">?</span>;
@@ -262,13 +262,13 @@
 <a href=#262 id=262 data-nosnippet>262</a>		</span><span class="kw">let </span>service_adapter = WindServiceAdapter::new(<span class="self">self</span>.runtime.clone());
 <a href=#263 id=263 data-nosnippet>263</a>		<span class="kw">let </span>wind_config = service_adapter.convert_to_wind_configuration(mountain_config).<span class="kw">await</span><span class="question-mark">?</span>;
 <a href=#264 id=264 data-nosnippet>264</a>
-<a href=#265 id=265 data-nosnippet>265</a>		<span class="macro">debug!</span>(<span class="string">"[ConfigurationBridge] Wind configuration ready"</span>);
+<a href=#265 id=265 data-nosnippet>265</a>		<span class="macro">dev_log!</span>(<span class="string">"config"</span>, <span class="string">"[ConfigurationBridge] Wind configuration ready"</span>);
 <a href=#266 id=266 data-nosnippet>266</a>		<span class="prelude-val">Ok</span>(wind_config)
 <a href=#267 id=267 data-nosnippet>267</a>	}
 <a href=#268 id=268 data-nosnippet>268</a>
 <a href=#269 id=269 data-nosnippet>269</a>	<span class="doccomment">/// Update configuration from Wind frontend
-<a href=#270 id=270 data-nosnippet>270</a>	</span><span class="kw">pub async fn </span>update_configuration_from_wind(<span class="kw-2">&amp;</span><span class="self">self</span>, wind_config:<a href="WindServiceAdapters.rs.html#172-195">WindDesktopConfiguration</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
-<a href=#271 id=271 data-nosnippet>271</a>		<span class="macro">debug!</span>(<span class="string">"[ConfigurationBridge] Updating configuration from Wind"</span>);
+<a href=#270 id=270 data-nosnippet>270</a>	</span><span class="kw">pub async fn </span>update_configuration_from_wind(<span class="kw-2">&amp;</span><span class="self">self</span>, wind_config:<a href="WindServiceAdapters.rs.html#171-194">WindDesktopConfiguration</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
+<a href=#271 id=271 data-nosnippet>271</a>		<span class="macro">dev_log!</span>(<span class="string">"config"</span>, <span class="string">"[ConfigurationBridge] Updating configuration from Wind"</span>);
 <a href=#272 id=272 data-nosnippet>272</a>
 <a href=#273 id=273 data-nosnippet>273</a>		<span class="comment">// Convert Wind configuration to Mountain format
 <a href=#274 id=274 data-nosnippet>274</a>		</span><span class="kw">let </span>mountain_config = <span class="self">self</span>.convert_to_mountain_configuration(wind_config).<span class="kw">await</span><span class="question-mark">?</span>;
@@ -276,13 +276,13 @@
 <a href=#276 id=276 data-nosnippet>276</a>		<span class="comment">// Update Mountain's configuration system
 <a href=#277 id=277 data-nosnippet>277</a>		</span><span class="self">self</span>.update_mountain_configuration(mountain_config).<span class="kw">await</span><span class="question-mark">?</span>;
 <a href=#278 id=278 data-nosnippet>278</a>
-<a href=#279 id=279 data-nosnippet>279</a>		<span class="macro">debug!</span>(<span class="string">"[ConfigurationBridge] Configuration updated successfully"</span>);
+<a href=#279 id=279 data-nosnippet>279</a>		<span class="macro">dev_log!</span>(<span class="string">"config"</span>, <span class="string">"[ConfigurationBridge] Configuration updated successfully"</span>);
 <a href=#280 id=280 data-nosnippet>280</a>		<span class="prelude-val">Ok</span>(())
 <a href=#281 id=281 data-nosnippet>281</a>	}
 <a href=#282 id=282 data-nosnippet>282</a>
 <a href=#283 id=283 data-nosnippet>283</a>	<span class="doccomment">/// Get Mountain's current configuration
 <a href=#284 id=284 data-nosnippet>284</a>	</span><span class="kw">async fn </span>get_mountain_configuration(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;serde_json::Value, String&gt; {
-<a href=#285 id=285 data-nosnippet>285</a>		<span class="macro">debug!</span>(<span class="string">"[ConfigurationBridge] Getting Mountain configuration"</span>);
+<a href=#285 id=285 data-nosnippet>285</a>		<span class="macro">dev_log!</span>(<span class="string">"config"</span>, <span class="string">"[ConfigurationBridge] Getting Mountain configuration"</span>);
 <a href=#286 id=286 data-nosnippet>286</a>
 <a href=#287 id=287 data-nosnippet>287</a>		<span class="kw">let </span>config_provider:Arc&lt;<span class="kw">dyn </span>ConfigurationProvider&gt; = <span class="self">self</span>.runtime.Environment.Require();
 <a href=#288 id=288 data-nosnippet>288</a>
@@ -296,7 +296,7 @@
 <a href=#296 id=296 data-nosnippet>296</a>
 <a href=#297 id=297 data-nosnippet>297</a>	<span class="doccomment">/// Update Mountain's configuration
 <a href=#298 id=298 data-nosnippet>298</a>	</span><span class="kw">async fn </span>update_mountain_configuration(<span class="kw-2">&amp;</span><span class="self">self</span>, config:serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
-<a href=#299 id=299 data-nosnippet>299</a>		<span class="macro">debug!</span>(<span class="string">"[ConfigurationBridge] Updating Mountain configuration"</span>);
+<a href=#299 id=299 data-nosnippet>299</a>		<span class="macro">dev_log!</span>(<span class="string">"config"</span>, <span class="string">"[ConfigurationBridge] Updating Mountain configuration"</span>);
 <a href=#300 id=300 data-nosnippet>300</a>
 <a href=#301 id=301 data-nosnippet>301</a>		<span class="comment">// Validate configuration before updating
 <a href=#302 id=302 data-nosnippet>302</a>		</span><span class="kw">if </span>!<span class="self">self</span>.validate_configuration(<span class="kw-2">&amp;</span>config) {
@@ -379,17 +379,17 @@
 <a href=#379 id=379 data-nosnippet>379</a>	<span class="doccomment">/// Convert Wind configuration to Mountain format
 <a href=#380 id=380 data-nosnippet>380</a>	</span><span class="kw">async fn </span>convert_to_mountain_configuration(
 <a href=#381 id=381 data-nosnippet>381</a>		<span class="kw-2">&amp;</span><span class="self">self</span>,
-<a href=#382 id=382 data-nosnippet>382</a>		wind_config:<a href="WindServiceAdapters.rs.html#172-195">WindDesktopConfiguration</a>,
+<a href=#382 id=382 data-nosnippet>382</a>		wind_config:<a href="WindServiceAdapters.rs.html#171-194">WindDesktopConfiguration</a>,
 <a href=#383 id=383 data-nosnippet>383</a>	) -&gt; <span class="prelude-ty">Result</span>&lt;serde_json::Value, String&gt; {
-<a href=#384 id=384 data-nosnippet>384</a>		<span class="macro">debug!</span>(<span class="string">"[ConfigurationBridge] Converting Wind config to Mountain format"</span>);
+<a href=#384 id=384 data-nosnippet>384</a>		<span class="macro">dev_log!</span>(<span class="string">"config"</span>, <span class="string">"[ConfigurationBridge] Converting Wind config to Mountain format"</span>);
 <a href=#385 id=385 data-nosnippet>385</a>
 <a href=#386 id=386 data-nosnippet>386</a>		<span class="kw">let </span>machine_id = <span class="self">self</span>.generate_machine_id().<span class="kw">await</span>.unwrap_or_else(|e| {
-<a href=#387 id=387 data-nosnippet>387</a>			<span class="macro">warn!</span>(<span class="string">"[ConfigurationBridge] Failed to generate machine ID: {}"</span>, e);
+<a href=#387 id=387 data-nosnippet>387</a>			<span class="macro">dev_log!</span>(<span class="string">"config"</span>, <span class="string">"warn: [ConfigurationBridge] Failed to generate machine ID: {}"</span>, e);
 <a href=#388 id=388 data-nosnippet>388</a>			<span class="string">"wind-machine-fallback"</span>.to_string()
 <a href=#389 id=389 data-nosnippet>389</a>		});
 <a href=#390 id=390 data-nosnippet>390</a>
 <a href=#391 id=391 data-nosnippet>391</a>		<span class="kw">let </span>session_id = <span class="self">self</span>.generate_session_id().<span class="kw">await</span>.unwrap_or_else(|e| {
-<a href=#392 id=392 data-nosnippet>392</a>			<span class="macro">warn!</span>(<span class="string">"[ConfigurationBridge] Failed to generate session ID: {}"</span>, e);
+<a href=#392 id=392 data-nosnippet>392</a>			<span class="macro">dev_log!</span>(<span class="string">"config"</span>, <span class="string">"warn: [ConfigurationBridge] Failed to generate session ID: {}"</span>, e);
 <a href=#393 id=393 data-nosnippet>393</a>			<span class="string">"wind-session-fallback"</span>.to_string()
 <a href=#394 id=394 data-nosnippet>394</a>		});
 <a href=#395 id=395 data-nosnippet>395</a>
@@ -414,7 +414,7 @@
 <a href=#414 id=414 data-nosnippet>414</a>
 <a href=#415 id=415 data-nosnippet>415</a>	<span class="doccomment">/// Synchronize configuration between Mountain and Wind
 <a href=#416 id=416 data-nosnippet>416</a>	</span><span class="kw">pub async fn </span>synchronize_configuration(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
-<a href=#417 id=417 data-nosnippet>417</a>		<span class="macro">debug!</span>(<span class="string">"[ConfigurationBridge] Synchronizing configuration"</span>);
+<a href=#417 id=417 data-nosnippet>417</a>		<span class="macro">dev_log!</span>(<span class="string">"config"</span>, <span class="string">"[ConfigurationBridge] Synchronizing configuration"</span>);
 <a href=#418 id=418 data-nosnippet>418</a>
 <a href=#419 id=419 data-nosnippet>419</a>		<span class="comment">// Get Mountain's current configuration
 <a href=#420 id=420 data-nosnippet>420</a>		</span><span class="kw">let </span>mountain_config = <span class="self">self</span>.get_mountain_configuration().<span class="kw">await</span><span class="question-mark">?</span>;
@@ -426,13 +426,13 @@
 <a href=#426 id=426 data-nosnippet>426</a>		<span class="comment">// Send configuration to Wind via IPC
 <a href=#427 id=427 data-nosnippet>427</a>		</span><span class="self">self</span>.send_configuration_to_wind(wind_config).<span class="kw">await</span><span class="question-mark">?</span>;
 <a href=#428 id=428 data-nosnippet>428</a>
-<a href=#429 id=429 data-nosnippet>429</a>		<span class="macro">debug!</span>(<span class="string">"[ConfigurationBridge] Configuration synchronized"</span>);
+<a href=#429 id=429 data-nosnippet>429</a>		<span class="macro">dev_log!</span>(<span class="string">"config"</span>, <span class="string">"[ConfigurationBridge] Configuration synchronized"</span>);
 <a href=#430 id=430 data-nosnippet>430</a>		<span class="prelude-val">Ok</span>(())
 <a href=#431 id=431 data-nosnippet>431</a>	}
 <a href=#432 id=432 data-nosnippet>432</a>
 <a href=#433 id=433 data-nosnippet>433</a>	<span class="doccomment">/// Send configuration to Wind frontend via IPC
-<a href=#434 id=434 data-nosnippet>434</a>	</span><span class="kw">async fn </span>send_configuration_to_wind(<span class="kw-2">&amp;</span><span class="self">self</span>, config:<a href="WindServiceAdapters.rs.html#172-195">WindDesktopConfiguration</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
-<a href=#435 id=435 data-nosnippet>435</a>		<span class="macro">debug!</span>(<span class="string">"[ConfigurationBridge] Sending configuration to Wind"</span>);
+<a href=#434 id=434 data-nosnippet>434</a>	</span><span class="kw">async fn </span>send_configuration_to_wind(<span class="kw-2">&amp;</span><span class="self">self</span>, config:<a href="WindServiceAdapters.rs.html#171-194">WindDesktopConfiguration</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
+<a href=#435 id=435 data-nosnippet>435</a>		<span class="macro">dev_log!</span>(<span class="string">"config"</span>, <span class="string">"[ConfigurationBridge] Sending configuration to Wind"</span>);
 <a href=#436 id=436 data-nosnippet>436</a>
 <a href=#437 id=437 data-nosnippet>437</a>		<span class="comment">// Get the IPC server
 <a href=#438 id=438 data-nosnippet>438</a>		</span><span class="kw">if let </span><span class="prelude-val">Some</span>(ipc_server) = <span class="self">self
@@ -457,7 +457,7 @@
 <a href=#457 id=457 data-nosnippet>457</a>
 <a href=#458 id=458 data-nosnippet>458</a>	<span class="doccomment">/// Handle configuration changes from Wind
 <a href=#459 id=459 data-nosnippet>459</a>	</span><span class="kw">pub async fn </span>handle_wind_configuration_change(<span class="kw-2">&amp;</span><span class="self">self</span>, new_config:serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
-<a href=#460 id=460 data-nosnippet>460</a>		<span class="macro">debug!</span>(<span class="string">"[ConfigurationBridge] Handling Wind configuration change"</span>);
+<a href=#460 id=460 data-nosnippet>460</a>		<span class="macro">dev_log!</span>(<span class="string">"config"</span>, <span class="string">"[ConfigurationBridge] Handling Wind configuration change"</span>);
 <a href=#461 id=461 data-nosnippet>461</a>
 <a href=#462 id=462 data-nosnippet>462</a>		<span class="comment">// Parse Wind configuration
 <a href=#463 id=463 data-nosnippet>463</a>		</span><span class="kw">let </span>wind_config:WindDesktopConfiguration =
@@ -466,13 +466,13 @@
 <a href=#466 id=466 data-nosnippet>466</a>		<span class="comment">// Update Mountain configuration
 <a href=#467 id=467 data-nosnippet>467</a>		</span><span class="self">self</span>.update_configuration_from_wind(wind_config).<span class="kw">await</span><span class="question-mark">?</span>;
 <a href=#468 id=468 data-nosnippet>468</a>
-<a href=#469 id=469 data-nosnippet>469</a>		<span class="macro">debug!</span>(<span class="string">"[ConfigurationBridge] Wind configuration change handled"</span>);
+<a href=#469 id=469 data-nosnippet>469</a>		<span class="macro">dev_log!</span>(<span class="string">"config"</span>, <span class="string">"[ConfigurationBridge] Wind configuration change handled"</span>);
 <a href=#470 id=470 data-nosnippet>470</a>		<span class="prelude-val">Ok</span>(())
 <a href=#471 id=471 data-nosnippet>471</a>	}
 <a href=#472 id=472 data-nosnippet>472</a>
 <a href=#473 id=473 data-nosnippet>473</a>	<span class="doccomment">/// Get configuration status
 <a href=#474 id=474 data-nosnippet>474</a>	</span><span class="kw">pub async fn </span>get_configuration_status(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;ConfigurationStatus, String&gt; {
-<a href=#475 id=475 data-nosnippet>475</a>		<span class="macro">debug!</span>(<span class="string">"[ConfigurationBridge] Getting configuration status"</span>);
+<a href=#475 id=475 data-nosnippet>475</a>		<span class="macro">dev_log!</span>(<span class="string">"config"</span>, <span class="string">"[ConfigurationBridge] Getting configuration status"</span>);
 <a href=#476 id=476 data-nosnippet>476</a>
 <a href=#477 id=477 data-nosnippet>477</a>		<span class="kw">let </span>mountain_config = <span class="self">self</span>.get_mountain_configuration().<span class="kw">await</span><span class="question-mark">?</span>;
 <a href=#478 id=478 data-nosnippet>478</a>		<span class="kw">let </span>is_valid = !mountain_config.is_null();
@@ -598,7 +598,7 @@
 <a href=#598 id=598 data-nosnippet>598</a>		</span><span class="kw">let </span>hex_string = <span class="macro">format!</span>(<span class="string">"{:x}"</span>, result);
 <a href=#599 id=599 data-nosnippet>599</a>		<span class="kw">let </span>session_id = hex_string.chars().take(<span class="number">16</span>).collect::&lt;String&gt;();
 <a href=#600 id=600 data-nosnippet>600</a>
-<a href=#601 id=601 data-nosnippet>601</a>		<span class="macro">info!</span>(<span class="string">"[ConfigurationBridge] Generated session ID: {}"</span>, session_id);
+<a href=#601 id=601 data-nosnippet>601</a>		<span class="macro">dev_log!</span>(<span class="string">"config"</span>, <span class="string">"[ConfigurationBridge] Generated session ID: {}"</span>, session_id);
 <a href=#602 id=602 data-nosnippet>602</a>		<span class="prelude-val">Ok</span>(<span class="macro">format!</span>(<span class="string">"session-{}"</span>, session_id))
 <a href=#603 id=603 data-nosnippet>603</a>	}
 <a href=#604 id=604 data-nosnippet>604</a>}
@@ -616,7 +616,7 @@
 <a href=#616 id=616 data-nosnippet>616</a></span><span class="kw">pub async fn </span><a href="#615">mountain_get_wind_desktop_configuration</a>(
 <a href=#617 id=617 data-nosnippet>617</a>	app_handle:tauri::AppHandle,
 <a href=#618 id=618 data-nosnippet>618</a>) -&gt; <span class="prelude-ty">Result</span>&lt;WindDesktopConfiguration, String&gt; {
-<a href=#619 id=619 data-nosnippet>619</a>	<span class="macro">debug!</span>(<span class="string">"[ConfigurationBridge] Tauri command: get_wind_desktop_configuration"</span>);
+<a href=#619 id=619 data-nosnippet>619</a>	<span class="macro">dev_log!</span>(<span class="string">"config"</span>, <span class="string">"[ConfigurationBridge] Tauri command: get_wind_desktop_configuration"</span>);
 <a href=#620 id=620 data-nosnippet>620</a>
 <a href=#621 id=621 data-nosnippet>621</a>	<span class="kw">if let </span><span class="prelude-val">Some</span>(runtime) = app_handle.try_state::&lt;Arc&lt;ApplicationRunTime&gt;&gt;() {
 <a href=#622 id=622 data-nosnippet>622</a>		<span class="kw">let </span>bridge = ConfigurationBridge::new(runtime.inner().clone());
@@ -629,7 +629,7 @@
 <a href=#629 id=629 data-nosnippet>629</a><span class="doccomment">/// Tauri command to get configuration data for Wind frontend
 <a href=#630 id=630 data-nosnippet>630</a></span><span class="attr">#[tauri::command]
 <a href=#631 id=631 data-nosnippet>631</a></span><span class="kw">pub async fn </span><a href="#630">get_configuration_data</a>(app_handle:tauri::AppHandle) -&gt; <span class="prelude-ty">Result</span>&lt;serde_json::Value, String&gt; {
-<a href=#632 id=632 data-nosnippet>632</a>	<span class="macro">debug!</span>(<span class="string">"[ConfigurationBridge] Tauri command: get_configuration_data"</span>);
+<a href=#632 id=632 data-nosnippet>632</a>	<span class="macro">dev_log!</span>(<span class="string">"config"</span>, <span class="string">"[ConfigurationBridge] Tauri command: get_configuration_data"</span>);
 <a href=#633 id=633 data-nosnippet>633</a>
 <a href=#634 id=634 data-nosnippet>634</a>	<span class="kw">if let </span><span class="prelude-val">Some</span>(runtime) = app_handle.try_state::&lt;Arc&lt;ApplicationRunTime&gt;&gt;() {
 <a href=#635 id=635 data-nosnippet>635</a>		<span class="kw">let </span>bridge = ConfigurationBridge::new(runtime.inner().clone());
@@ -644,7 +644,7 @@
 <a href=#644 id=644 data-nosnippet>644</a>			<span class="string">"profile"</span>: mountain_config.clone()
 <a href=#645 id=645 data-nosnippet>645</a>		});
 <a href=#646 id=646 data-nosnippet>646</a>
-<a href=#647 id=647 data-nosnippet>647</a>		<span class="macro">debug!</span>(<span class="string">"[ConfigurationBridge] Configuration data retrieved successfully"</span>);
+<a href=#647 id=647 data-nosnippet>647</a>		<span class="macro">dev_log!</span>(<span class="string">"config"</span>, <span class="string">"[ConfigurationBridge] Configuration data retrieved successfully"</span>);
 <a href=#648 id=648 data-nosnippet>648</a>		<span class="prelude-val">Ok</span>(config_data)
 <a href=#649 id=649 data-nosnippet>649</a>	} <span class="kw">else </span>{
 <a href=#650 id=650 data-nosnippet>650</a>		<span class="prelude-val">Err</span>(<span class="string">"ApplicationRunTime not found"</span>.to_string())
@@ -654,7 +654,7 @@
 <a href=#654 id=654 data-nosnippet>654</a><span class="doccomment">/// Tauri command to save configuration data from Wind frontend
 <a href=#655 id=655 data-nosnippet>655</a></span><span class="attr">#[tauri::command]
 <a href=#656 id=656 data-nosnippet>656</a></span><span class="kw">pub async fn </span><a href="#655">save_configuration_data</a>(app_handle:tauri::AppHandle, config_data:serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
-<a href=#657 id=657 data-nosnippet>657</a>	<span class="macro">debug!</span>(<span class="string">"[ConfigurationBridge] Tauri command: save_configuration_data"</span>);
+<a href=#657 id=657 data-nosnippet>657</a>	<span class="macro">dev_log!</span>(<span class="string">"config"</span>, <span class="string">"[ConfigurationBridge] Tauri command: save_configuration_data"</span>);
 <a href=#658 id=658 data-nosnippet>658</a>
 <a href=#659 id=659 data-nosnippet>659</a>	<span class="kw">if let </span><span class="prelude-val">Some</span>(runtime) = app_handle.try_state::&lt;Arc&lt;ApplicationRunTime&gt;&gt;() {
 <a href=#660 id=660 data-nosnippet>660</a>		<span class="kw">let </span>bridge = ConfigurationBridge::new(runtime.inner().clone());
@@ -662,7 +662,7 @@
 <a href=#662 id=662 data-nosnippet>662</a>		<span class="comment">// Update Mountain configuration with the new data
 <a href=#663 id=663 data-nosnippet>663</a>		</span>bridge.update_mountain_configuration(config_data).<span class="kw">await</span><span class="question-mark">?</span>;
 <a href=#664 id=664 data-nosnippet>664</a>
-<a href=#665 id=665 data-nosnippet>665</a>		<span class="macro">debug!</span>(<span class="string">"[ConfigurationBridge] Configuration data saved successfully"</span>);
+<a href=#665 id=665 data-nosnippet>665</a>		<span class="macro">dev_log!</span>(<span class="string">"config"</span>, <span class="string">"[ConfigurationBridge] Configuration data saved successfully"</span>);
 <a href=#666 id=666 data-nosnippet>666</a>		<span class="prelude-val">Ok</span>(())
 <a href=#667 id=667 data-nosnippet>667</a>	} <span class="kw">else </span>{
 <a href=#668 id=668 data-nosnippet>668</a>		<span class="prelude-val">Err</span>(<span class="string">"ApplicationRunTime not found"</span>.to_string())
@@ -675,7 +675,7 @@
 <a href=#675 id=675 data-nosnippet>675</a>	app_handle:tauri::AppHandle,
 <a href=#676 id=676 data-nosnippet>676</a>	config:serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#677 id=677 data-nosnippet>677</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
-<a href=#678 id=678 data-nosnippet>678</a>	<span class="macro">debug!</span>(<span class="string">"[ConfigurationBridge] Tauri command: update_configuration_from_wind"</span>);
+<a href=#678 id=678 data-nosnippet>678</a>	<span class="macro">dev_log!</span>(<span class="string">"config"</span>, <span class="string">"[ConfigurationBridge] Tauri command: update_configuration_from_wind"</span>);
 <a href=#679 id=679 data-nosnippet>679</a>
 <a href=#680 id=680 data-nosnippet>680</a>	<span class="kw">if let </span><span class="prelude-val">Some</span>(runtime) = app_handle.try_state::&lt;Arc&lt;ApplicationRunTime&gt;&gt;() {
 <a href=#681 id=681 data-nosnippet>681</a>		<span class="kw">let </span>bridge = ConfigurationBridge::new(runtime.inner().clone());
@@ -688,7 +688,7 @@
 <a href=#688 id=688 data-nosnippet>688</a><span class="doccomment">/// Tauri command to synchronize configuration
 <a href=#689 id=689 data-nosnippet>689</a></span><span class="attr">#[tauri::command]
 <a href=#690 id=690 data-nosnippet>690</a></span><span class="kw">pub async fn </span><a href="#689">mountain_synchronize_configuration</a>(app_handle:tauri::AppHandle) -&gt; <span class="prelude-ty">Result</span>&lt;serde_json::Value, String&gt; {
-<a href=#691 id=691 data-nosnippet>691</a>	<span class="macro">debug!</span>(<span class="string">"[ConfigurationBridge] Tauri command: synchronize_configuration"</span>);
+<a href=#691 id=691 data-nosnippet>691</a>	<span class="macro">dev_log!</span>(<span class="string">"config"</span>, <span class="string">"[ConfigurationBridge] Tauri command: synchronize_configuration"</span>);
 <a href=#692 id=692 data-nosnippet>692</a>
 <a href=#693 id=693 data-nosnippet>693</a>	<span class="kw">if let </span><span class="prelude-val">Some</span>(runtime) = app_handle.try_state::&lt;Arc&lt;ApplicationRunTime&gt;&gt;() {
 <a href=#694 id=694 data-nosnippet>694</a>		<span class="kw">let </span>bridge = ConfigurationBridge::new(runtime.inner().clone());
@@ -704,7 +704,7 @@
 <a href=#704 id=704 data-nosnippet>704</a><span class="doccomment">/// Tauri command to get configuration status
 <a href=#705 id=705 data-nosnippet>705</a></span><span class="attr">#[tauri::command]
 <a href=#706 id=706 data-nosnippet>706</a></span><span class="kw">pub async fn </span><a href="#705">mountain_get_configuration_status</a>(app_handle:tauri::AppHandle) -&gt; <span class="prelude-ty">Result</span>&lt;serde_json::Value, String&gt; {
-<a href=#707 id=707 data-nosnippet>707</a>	<span class="macro">debug!</span>(<span class="string">"[ConfigurationBridge] Tauri command: get_configuration_status"</span>);
+<a href=#707 id=707 data-nosnippet>707</a>	<span class="macro">dev_log!</span>(<span class="string">"config"</span>, <span class="string">"[ConfigurationBridge] Tauri command: get_configuration_status"</span>);
 <a href=#708 id=708 data-nosnippet>708</a>
 <a href=#709 id=709 data-nosnippet>709</a>	<span class="kw">if let </span><span class="prelude-val">Some</span>(runtime) = app_handle.try_state::&lt;Arc&lt;ApplicationRunTime&gt;&gt;() {
 <a href=#710 id=710 data-nosnippet>710</a>		<span class="kw">let </span>bridge = ConfigurationBridge::new(runtime.inner().clone());

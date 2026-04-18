@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["handle_search_find_files","handle_search_find_in_files"]};

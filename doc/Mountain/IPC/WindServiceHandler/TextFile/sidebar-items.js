@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["handle_textfile_read","handle_textfile_save","handle_textfile_write"]};

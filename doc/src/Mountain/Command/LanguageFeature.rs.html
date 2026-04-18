@@ -70,35 +70,35 @@
 <a href=#70 id=70 data-nosnippet>70</a>//! - Support selection range provider
 <a href=#71 id=71 data-nosnippet>71</a>//!
 <a href=#72 id=72 data-nosnippet>72</a>//! MODULE STRUCTURE:
-<a href=#73 id=73 data-nosnippet>73</a>//! - [`validation.rs`](validation.rs) - request validation helper
-<a href=#74 id=74 data-nosnippet>74</a>//! - [`invoke_provider.rs`](invoke_provider.rs) - generic provider invoker
+<a href=#73 id=73 data-nosnippet>73</a>//! - [`Validation.rs`](Validation.rs) - request validation helper
+<a href=#74 id=74 data-nosnippet>74</a>//! - [`InvokeProvider.rs`](InvokeProvider.rs) - generic provider invoker
 <a href=#75 id=75 data-nosnippet>75</a>//! - Individual command modules for each language feature (containing impls
 <a href=#76 id=76 data-nosnippet>76</a>//!   only)
 <a href=#77 id=77 data-nosnippet>77</a>
-<a href=#78 id=78 data-nosnippet>78</a></span><span class="kw">use </span><a href="https://docs.rs/log/0.4.29/log/macro.debug.html">log::debug</a>;
-<a href=#79 id=79 data-nosnippet>79</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
-<a href=#80 id=80 data-nosnippet>80</a><span class="kw">use </span>tauri::{AppHandle, Wry, command};
-<a href=#81 id=81 data-nosnippet>81</a><span class="kw">use </span><a href="https://docs.rs/url/2.5.7/url/struct.Url.html">url::Url</a>;
-<a href=#82 id=82 data-nosnippet>82</a>
-<a href=#83 id=83 data-nosnippet>83</a><span class="kw">use </span><a href="../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55"><span class="kw">crate</span>::RunTime::ApplicationRunTime::ApplicationRunTime</a>;
+<a href=#78 id=78 data-nosnippet>78</a></span><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
+<a href=#79 id=79 data-nosnippet>79</a><span class="kw">use </span>tauri::{AppHandle, Wry, command};
+<a href=#80 id=80 data-nosnippet>80</a><span class="kw">use </span><a href="https://docs.rs/url/2.5.7/url/struct.Url.html">url::Url</a>;
+<a href=#81 id=81 data-nosnippet>81</a>
+<a href=#82 id=82 data-nosnippet>82</a><span class="kw">use </span><a href="../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55"><span class="kw">crate</span>::RunTime::ApplicationRunTime::ApplicationRunTime</a>;
+<a href=#83 id=83 data-nosnippet>83</a><span class="kw">use </span><a href="../IPC/DevLog.rs.html#150-185"><span class="kw">crate</span>::dev_log</a>;
 <a href=#84 id=84 data-nosnippet>84</a>
 <a href=#85 id=85 data-nosnippet>85</a><span class="comment">// Private submodules containing implementation (without #[command] attributes)
-<a href=#86 id=86 data-nosnippet>86</a></span><span class="attr">#[path = <span class="string">"LanguageFeature/validation.rs"</span>]
-<a href=#87 id=87 data-nosnippet>87</a></span><span class="kw">mod </span><a href="LanguageFeature/validation.rs.html#1-35">validation</a>;
-<a href=#88 id=88 data-nosnippet>88</a><span class="attr">#[path = <span class="string">"LanguageFeature/invoke_provider.rs"</span>]
-<a href=#89 id=89 data-nosnippet>89</a></span><span class="kw">mod </span><a href="LanguageFeature/invoke_provider.rs.html#1-33">invoke_provider</a>;
-<a href=#90 id=90 data-nosnippet>90</a><span class="attr">#[path = <span class="string">"LanguageFeature/hover.rs"</span>]
-<a href=#91 id=91 data-nosnippet>91</a></span><span class="kw">mod </span><a href="LanguageFeature/hover.rs.html#1-43">hover</a>;
-<a href=#92 id=92 data-nosnippet>92</a><span class="attr">#[path = <span class="string">"LanguageFeature/code_actions.rs"</span>]
-<a href=#93 id=93 data-nosnippet>93</a></span><span class="kw">mod </span><a href="LanguageFeature/code_actions.rs.html#1-41">code_actions</a>;
-<a href=#94 id=94 data-nosnippet>94</a><span class="attr">#[path = <span class="string">"LanguageFeature/highlights.rs"</span>]
-<a href=#95 id=95 data-nosnippet>95</a></span><span class="kw">mod </span><a href="LanguageFeature/highlights.rs.html#1-46">highlights</a>;
-<a href=#96 id=96 data-nosnippet>96</a><span class="attr">#[path = <span class="string">"LanguageFeature/completions.rs"</span>]
-<a href=#97 id=97 data-nosnippet>97</a></span><span class="kw">mod </span><a href="LanguageFeature/completions.rs.html#1-50">completions</a>;
-<a href=#98 id=98 data-nosnippet>98</a><span class="attr">#[path = <span class="string">"LanguageFeature/definition.rs"</span>]
-<a href=#99 id=99 data-nosnippet>99</a></span><span class="kw">mod </span><a href="LanguageFeature/definition.rs.html#1-43">definition</a>;
-<a href=#100 id=100 data-nosnippet>100</a><span class="attr">#[path = <span class="string">"LanguageFeature/references.rs"</span>]
-<a href=#101 id=101 data-nosnippet>101</a></span><span class="kw">mod </span><a href="LanguageFeature/references.rs.html#1-45">references</a>;
+<a href=#86 id=86 data-nosnippet>86</a></span><span class="attr">#[path = <span class="string">"LanguageFeature/Validation.rs"</span>]
+<a href=#87 id=87 data-nosnippet>87</a></span><span class="kw">mod </span><a href="LanguageFeature/Validation.rs.html#1-35">Validation</a>;
+<a href=#88 id=88 data-nosnippet>88</a><span class="attr">#[path = <span class="string">"LanguageFeature/InvokeProvider.rs"</span>]
+<a href=#89 id=89 data-nosnippet>89</a></span><span class="kw">mod </span><a href="LanguageFeature/InvokeProvider.rs.html#1-33">InvokeProvider</a>;
+<a href=#90 id=90 data-nosnippet>90</a><span class="attr">#[path = <span class="string">"LanguageFeature/Hover.rs"</span>]
+<a href=#91 id=91 data-nosnippet>91</a></span><span class="kw">mod </span><a href="LanguageFeature/Hover.rs.html#1-43">Hover</a>;
+<a href=#92 id=92 data-nosnippet>92</a><span class="attr">#[path = <span class="string">"LanguageFeature/CodeActions.rs"</span>]
+<a href=#93 id=93 data-nosnippet>93</a></span><span class="kw">mod </span><a href="LanguageFeature/CodeActions.rs.html#1-41">CodeActions</a>;
+<a href=#94 id=94 data-nosnippet>94</a><span class="attr">#[path = <span class="string">"LanguageFeature/Highlights.rs"</span>]
+<a href=#95 id=95 data-nosnippet>95</a></span><span class="kw">mod </span><a href="LanguageFeature/Highlights.rs.html#1-46">Highlights</a>;
+<a href=#96 id=96 data-nosnippet>96</a><span class="attr">#[path = <span class="string">"LanguageFeature/Completions.rs"</span>]
+<a href=#97 id=97 data-nosnippet>97</a></span><span class="kw">mod </span><a href="LanguageFeature/Completions.rs.html#1-50">Completions</a>;
+<a href=#98 id=98 data-nosnippet>98</a><span class="attr">#[path = <span class="string">"LanguageFeature/Definition.rs"</span>]
+<a href=#99 id=99 data-nosnippet>99</a></span><span class="kw">mod </span><a href="LanguageFeature/Definition.rs.html#1-43">Definition</a>;
+<a href=#100 id=100 data-nosnippet>100</a><span class="attr">#[path = <span class="string">"LanguageFeature/References.rs"</span>]
+<a href=#101 id=101 data-nosnippet>101</a></span><span class="kw">mod </span><a href="LanguageFeature/References.rs.html#1-45">References</a>;
 <a href=#102 id=102 data-nosnippet>102</a>
 <a href=#103 id=103 data-nosnippet>103</a><span class="doccomment">/// Provides hover information at cursor position
 <a href=#104 id=104 data-nosnippet>104</a></span><span class="attr">#[command]
@@ -107,8 +107,8 @@
 <a href=#107 id=107 data-nosnippet>107</a>	uri:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#108 id=108 data-nosnippet>108</a>	position:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#109 id=109 data-nosnippet>109</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
-<a href=#110 id=110 data-nosnippet>110</a>	<span class="macro">debug!</span>(<span class="string">"[Language Feature] Providing hover for: {} at {:?}"</span>, uri, position);
-<a href=#111 id=111 data-nosnippet>111</a>	hover::provide_hover_impl(application_handle, uri, position).<span class="kw">await
+<a href=#110 id=110 data-nosnippet>110</a>	<span class="macro">dev_log!</span>(<span class="string">"commands"</span>, <span class="string">"[Language Feature] Providing hover for: {} at {:?}"</span>, uri, position);
+<a href=#111 id=111 data-nosnippet>111</a>	Hover::provide_hover_impl(application_handle, uri, position).<span class="kw">await
 <a href=#112 id=112 data-nosnippet>112</a></span>}
 <a href=#113 id=113 data-nosnippet>113</a>
 <a href=#114 id=114 data-nosnippet>114</a><span class="doccomment">/// Provides code actions (quick fixes and refactorings) for a code range
@@ -119,8 +119,8 @@
 <a href=#119 id=119 data-nosnippet>119</a>	position:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#120 id=120 data-nosnippet>120</a>	context:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#121 id=121 data-nosnippet>121</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
-<a href=#122 id=122 data-nosnippet>122</a>	<span class="macro">debug!</span>(<span class="string">"[Language Feature] Providing code actions for: {} at {:?}"</span>, uri, position);
-<a href=#123 id=123 data-nosnippet>123</a>	code_actions::provide_code_actions_impl(application_handle, uri, position, context).<span class="kw">await
+<a href=#122 id=122 data-nosnippet>122</a>	<span class="macro">dev_log!</span>(<span class="string">"commands"</span>, <span class="string">"[Language Feature] Providing code actions for: {} at {:?}"</span>, uri, position);
+<a href=#123 id=123 data-nosnippet>123</a>	CodeActions::provide_code_actions_impl(application_handle, uri, position, context).<span class="kw">await
 <a href=#124 id=124 data-nosnippet>124</a></span>}
 <a href=#125 id=125 data-nosnippet>125</a>
 <a href=#126 id=126 data-nosnippet>126</a><span class="doccomment">/// Finds symbol occurrences (document highlights) in a document
@@ -130,11 +130,11 @@
 <a href=#130 id=130 data-nosnippet>130</a>	uri:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#131 id=131 data-nosnippet>131</a>	position:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#132 id=132 data-nosnippet>132</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
-<a href=#133 id=133 data-nosnippet>133</a>	<span class="macro">debug!</span>(
+<a href=#133 id=133 data-nosnippet>133</a>	<span class="macro">dev_log!</span>(<span class="string">"commands"</span>, 
 <a href=#134 id=134 data-nosnippet>134</a>		<span class="string">"[Language Feature] Providing document highlights for: {} at {:?}"</span>,
 <a href=#135 id=135 data-nosnippet>135</a>		uri, position
 <a href=#136 id=136 data-nosnippet>136</a>	);
-<a href=#137 id=137 data-nosnippet>137</a>	highlights::provide_document_highlights_impl(application_handle, uri, position).<span class="kw">await
+<a href=#137 id=137 data-nosnippet>137</a>	Highlights::provide_document_highlights_impl(application_handle, uri, position).<span class="kw">await
 <a href=#138 id=138 data-nosnippet>138</a></span>}
 <a href=#139 id=139 data-nosnippet>139</a>
 <a href=#140 id=140 data-nosnippet>140</a><span class="doccomment">/// Provides code completion suggestions
@@ -145,8 +145,8 @@
 <a href=#145 id=145 data-nosnippet>145</a>	position:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#146 id=146 data-nosnippet>146</a>	context:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#147 id=147 data-nosnippet>147</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
-<a href=#148 id=148 data-nosnippet>148</a>	<span class="macro">debug!</span>(<span class="string">"[Language Feature] Providing completions for: {} at {:?}"</span>, uri, position);
-<a href=#149 id=149 data-nosnippet>149</a>	completions::provide_completions_impl(application_handle, uri, position, context).<span class="kw">await
+<a href=#148 id=148 data-nosnippet>148</a>	<span class="macro">dev_log!</span>(<span class="string">"commands"</span>, <span class="string">"[Language Feature] Providing completions for: {} at {:?}"</span>, uri, position);
+<a href=#149 id=149 data-nosnippet>149</a>	Completions::provide_completions_impl(application_handle, uri, position, context).<span class="kw">await
 <a href=#150 id=150 data-nosnippet>150</a></span>}
 <a href=#151 id=151 data-nosnippet>151</a>
 <a href=#152 id=152 data-nosnippet>152</a><span class="doccomment">/// Provides go-to-definition functionality
@@ -156,8 +156,8 @@
 <a href=#156 id=156 data-nosnippet>156</a>	uri:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#157 id=157 data-nosnippet>157</a>	position:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#158 id=158 data-nosnippet>158</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
-<a href=#159 id=159 data-nosnippet>159</a>	<span class="macro">debug!</span>(<span class="string">"[Language Feature] Providing definition for: {} at {:?}"</span>, uri, position);
-<a href=#160 id=160 data-nosnippet>160</a>	definition::provide_definition_impl(application_handle, uri, position).<span class="kw">await
+<a href=#159 id=159 data-nosnippet>159</a>	<span class="macro">dev_log!</span>(<span class="string">"commands"</span>, <span class="string">"[Language Feature] Providing definition for: {} at {:?}"</span>, uri, position);
+<a href=#160 id=160 data-nosnippet>160</a>	Definition::provide_definition_impl(application_handle, uri, position).<span class="kw">await
 <a href=#161 id=161 data-nosnippet>161</a></span>}
 <a href=#162 id=162 data-nosnippet>162</a>
 <a href=#163 id=163 data-nosnippet>163</a><span class="doccomment">/// Finds all references to a symbol
@@ -168,7 +168,7 @@
 <a href=#168 id=168 data-nosnippet>168</a>	position:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#169 id=169 data-nosnippet>169</a>	context:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#170 id=170 data-nosnippet>170</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
-<a href=#171 id=171 data-nosnippet>171</a>	<span class="macro">debug!</span>(<span class="string">"[Language Feature] Providing references for: {} at {:?}"</span>, uri, position);
-<a href=#172 id=172 data-nosnippet>172</a>	references::provide_references_impl(application_handle, uri, position, context).<span class="kw">await
+<a href=#171 id=171 data-nosnippet>171</a>	<span class="macro">dev_log!</span>(<span class="string">"commands"</span>, <span class="string">"[Language Feature] Providing references for: {} at {:?}"</span>, uri, position);
+<a href=#172 id=172 data-nosnippet>172</a>	References::provide_references_impl(application_handle, uri, position, context).<span class="kw">await
 <a href=#173 id=173 data-nosnippet>173</a></span>}
 </code></pre></div></section></main></body></html>

@@ -59,11 +59,11 @@
 <a href=#59 id=59 data-nosnippet>59</a><span class="kw">use </span><a href="https://docs.rs/async-trait/0.1.89/async_trait/attr.async_trait.html">async_trait::async_trait</a>;
 <a href=#60 id=60 data-nosnippet>60</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#61 id=61 data-nosnippet>61</a>
-<a href=#62 id=62 data-nosnippet>62</a><span class="kw">use </span><a href="MountainEnvironment.rs.html#219-229"><span class="kw">super</span>::MountainEnvironment::MountainEnvironment</a>;
+<a href=#62 id=62 data-nosnippet>62</a><span class="kw">use </span><a href="MountainEnvironment.rs.html#221-231"><span class="kw">super</span>::MountainEnvironment::MountainEnvironment</a>;
 <a href=#63 id=63 data-nosnippet>63</a><span class="kw">use </span><a href="../Vine/mod.rs.html#86"><span class="kw">crate</span>::Vine::Client</a>;
 <a href=#64 id=64 data-nosnippet>64</a>
 <a href=#65 id=65 data-nosnippet>65</a><span class="attr">#[async_trait]
-<a href=#66 id=66 data-nosnippet>66</a></span><span class="kw">impl </span>IPCProvider <span class="kw">for </span><a href="MountainEnvironment.rs.html#219-229">MountainEnvironment</a> {
+<a href=#66 id=66 data-nosnippet>66</a></span><span class="kw">impl </span>IPCProvider <span class="kw">for </span><a href="MountainEnvironment.rs.html#221-231">MountainEnvironment</a> {
 <a href=#67 id=67 data-nosnippet>67</a>	<span class="doccomment">/// Sends a fire-and-forget notification to a specified sidecar.
 <a href=#68 id=68 data-nosnippet>68</a>	</span><span class="kw">async fn </span>SendNotificationToSideCar(
 <a href=#69 id=69 data-nosnippet>69</a>		<span class="kw-2">&amp;</span><a class="self" href="#69">self</a>,
@@ -74,7 +74,7 @@
 <a href=#74 id=74 data-nosnippet>74</a>
 <a href=#75 id=75 data-nosnippet>75</a>		<a href="#75">Parameters</a>:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#76 id=76 data-nosnippet>76</a>	) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
-<a href=#77 id=77 data-nosnippet>77</a>		Client::<a href="../Vine/Client.rs.html#441-478">SendNotification</a>(<a href="#71">SideCarIdentifier</a>, <a href="#73">Method</a>, <a href="#75">Parameters</a>)
+<a href=#77 id=77 data-nosnippet>77</a>		Client::<a href="../Vine/Client.rs.html#448-491">SendNotification</a>(<a href="#71">SideCarIdentifier</a>, <a href="#73">Method</a>, <a href="#75">Parameters</a>)
 <a href=#78 id=78 data-nosnippet>78</a>			.<span class="kw">await
 <a href=#79 id=79 data-nosnippet>79</a>			</span>.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| CommonError::IPCError { Description:<a href="#79">Error</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>() })
 <a href=#80 id=80 data-nosnippet>80</a>	}
@@ -91,7 +91,7 @@
 <a href=#91 id=91 data-nosnippet>91</a>
 <a href=#92 id=92 data-nosnippet>92</a>		<a href="#92">TimeoutMilliseconds</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
 <a href=#93 id=93 data-nosnippet>93</a>	) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, CommonError&gt; {
-<a href=#94 id=94 data-nosnippet>94</a>		Client::<a href="../Vine/Client.rs.html#339-422">SendRequest</a>(<span class="kw-2">&amp;</span><a href="#86">SideCarIdentifier</a>, <a href="#88">Method</a>, <a href="#90">Parameters</a>, <a href="#92">TimeoutMilliseconds</a>)
+<a href=#94 id=94 data-nosnippet>94</a>		Client::<a href="../Vine/Client.rs.html#344-429">SendRequest</a>(<span class="kw-2">&amp;</span><a href="#86">SideCarIdentifier</a>, <a href="#88">Method</a>, <a href="#90">Parameters</a>, <a href="#92">TimeoutMilliseconds</a>)
 <a href=#95 id=95 data-nosnippet>95</a>			.<span class="kw">await
 <a href=#96 id=96 data-nosnippet>96</a>			</span>.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| CommonError::IPCError { Description:<a href="#96">Error</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>() })
 <a href=#97 id=97 data-nosnippet>97</a>	}

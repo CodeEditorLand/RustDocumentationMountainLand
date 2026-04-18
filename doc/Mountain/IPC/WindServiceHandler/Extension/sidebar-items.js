@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["handle_extensions_get","handle_extensions_get_all","handle_extensions_is_active"]};

@@ -53,11 +53,11 @@
 <a href=#53 id=53 data-nosnippet>53</a>
 <a href=#54 id=54 data-nosnippet>54</a></span><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">std::sync::Arc</a>;
 <a href=#55 id=55 data-nosnippet>55</a>
-<a href=#56 id=56 data-nosnippet>56</a><span class="kw">use </span>log::{<a href="https://docs.rs/log/0.4.29/log/macro.debug.html">debug</a>, <a href="https://docs.rs/log/0.4.29/log/macro.error.html">error</a>};
-<a href=#57 id=57 data-nosnippet>57</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
-<a href=#58 id=58 data-nosnippet>58</a><span class="kw">use </span>tauri::{AppHandle, Manager, Runtime, State, command};
-<a href=#59 id=59 data-nosnippet>59</a>
-<a href=#60 id=60 data-nosnippet>60</a><span class="kw">use </span>crate::{<a href="../../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">RunTime::ApplicationRunTime::ApplicationRunTime</a>, <a href="../Effect/CreateEffectForRequest.rs.html#154-867">Track::Effect::CreateEffectForRequest</a>};
+<a href=#56 id=56 data-nosnippet>56</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
+<a href=#57 id=57 data-nosnippet>57</a><span class="kw">use </span>tauri::{AppHandle, Manager, Runtime, State, command};
+<a href=#58 id=58 data-nosnippet>58</a>
+<a href=#59 id=59 data-nosnippet>59</a><span class="kw">use </span>crate::{<a href="../../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">RunTime::ApplicationRunTime::ApplicationRunTime</a>, <a href="../Effect/CreateEffectForRequest.rs.html#154-1084">Track::Effect::CreateEffectForRequest</a>};
+<a href=#60 id=60 data-nosnippet>60</a><span class="kw">use </span><a href="../../IPC/DevLog.rs.html#150-185"><span class="kw">crate</span>::dev_log</a>;
 <a href=#61 id=61 data-nosnippet>61</a>
 <a href=#62 id=62 data-nosnippet>62</a><span class="doccomment">/// The primary Tauri command handler for requests originating from the `Sky`
 <a href=#63 id=63 data-nosnippet>63</a>/// frontend. This is the general-purpose entry point for commands that are
@@ -72,7 +72,7 @@
 <a href=#72 id=72 data-nosnippet>72</a>
 <a href=#73 id=73 data-nosnippet>73</a>	Argument:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#74 id=74 data-nosnippet>74</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
-<a href=#75 id=75 data-nosnippet>75</a>	<span class="macro">debug!</span>(<span class="string">"[Track/FrontendCommand] Dispatching frontend command: {}"</span>, Command);
+<a href=#75 id=75 data-nosnippet>75</a>	<span class="macro">dev_log!</span>(<span class="string">"ipc"</span>, <span class="string">"[Track/FrontendCommand] Dispatching frontend command: {}"</span>, Command);
 <a href=#76 id=76 data-nosnippet>76</a>
 <a href=#77 id=77 data-nosnippet>77</a>	<span class="kw">match </span>CreateEffectForRequest(<span class="kw-2">&amp;</span>ApplicationHandle, <span class="kw-2">&amp;</span>Command, Argument) {
 <a href=#78 id=78 data-nosnippet>78</a>		<span class="prelude-val">Ok</span>(EffectFn) =&gt; {
@@ -82,13 +82,11 @@
 <a href=#82 id=82 data-nosnippet>82</a>		</span>},
 <a href=#83 id=83 data-nosnippet>83</a>
 <a href=#84 id=84 data-nosnippet>84</a>		<span class="prelude-val">Err</span>(Error) =&gt; {
-<a href=#85 id=85 data-nosnippet>85</a>			<span class="macro">error!</span>(
-<a href=#86 id=86 data-nosnippet>86</a>				<span class="string">"[Track/FrontendCommand] Failed to create effect for command '{}': {}"</span>,
-<a href=#87 id=87 data-nosnippet>87</a>				Command, Error
-<a href=#88 id=88 data-nosnippet>88</a>			);
-<a href=#89 id=89 data-nosnippet>89</a>
-<a href=#90 id=90 data-nosnippet>90</a>			<span class="prelude-val">Err</span>(Error)
-<a href=#91 id=91 data-nosnippet>91</a>		},
-<a href=#92 id=92 data-nosnippet>92</a>	}
-<a href=#93 id=93 data-nosnippet>93</a>}
+<a href=#85 id=85 data-nosnippet>85</a>			<span class="macro">dev_log!</span>(<span class="string">"ipc"</span>, <span class="string">"error: [Track/FrontendCommand] Failed to create effect for command '{}': {}"</span>,
+<a href=#86 id=86 data-nosnippet>86</a>				Command, Error);
+<a href=#87 id=87 data-nosnippet>87</a>
+<a href=#88 id=88 data-nosnippet>88</a>			<span class="prelude-val">Err</span>(Error)
+<a href=#89 id=89 data-nosnippet>89</a>		},
+<a href=#90 id=90 data-nosnippet>90</a>	}
+<a href=#91 id=91 data-nosnippet>91</a>}
 </code></pre></div></section></main></body></html>

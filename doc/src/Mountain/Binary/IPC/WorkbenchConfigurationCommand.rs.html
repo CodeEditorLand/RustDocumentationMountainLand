@@ -43,52 +43,51 @@
 <a href=#43 id=43 data-nosnippet>43</a>
 <a href=#44 id=44 data-nosnippet>44</a></span><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">std::sync::Arc</a>;
 <a href=#45 id=45 data-nosnippet>45</a>
-<a href=#46 id=46 data-nosnippet>46</a><span class="kw">use </span><a href="https://docs.rs/log/0.4.29/log/macro.debug.html">log::debug</a>;
-<a href=#47 id=47 data-nosnippet>47</a><span class="kw">use </span>tauri::{AppHandle, State};
-<a href=#48 id=48 data-nosnippet>48</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
-<a href=#49 id=49 data-nosnippet>49</a>
-<a href=#50 id=50 data-nosnippet>50</a><span class="kw">use </span>crate::{<a href="../../ApplicationState/State/ApplicationState.rs.html#65-88">ApplicationState::ApplicationState</a>, <a href="../../ProcessManagement/mod.rs.html#56">ProcessManagement::InitializationData</a>};
-<a href=#51 id=51 data-nosnippet>51</a>
-<a href=#52 id=52 data-nosnippet>52</a><span class="doccomment">/// Provides the initial workbench configuration to the Sky frontend.
-<a href=#53 id=53 data-nosnippet>53</a>///
-<a href=#54 id=54 data-nosnippet>54</a>/// This command is called by the frontend during initialization to receive
-<a href=#55 id=55 data-nosnippet>55</a>/// the sandbox configuration including workspace folders, settings, and
-<a href=#56 id=56 data-nosnippet>56</a>/// other application state needed to bootstrap the UI.
-<a href=#57 id=57 data-nosnippet>57</a>///
-<a href=#58 id=58 data-nosnippet>58</a>/// # Arguments
-<a href=#59 id=59 data-nosnippet>59</a>///
-<a href=#60 id=60 data-nosnippet>60</a>/// * `ApplicationHandle` - Tauri application handle for accessing system
-<a href=#61 id=61 data-nosnippet>61</a>///   resources
-<a href=#62 id=62 data-nosnippet>62</a>/// * `State` - Global application state containing workspace information
-<a href=#63 id=63 data-nosnippet>63</a>///
-<a href=#64 id=64 data-nosnippet>64</a>/// # Returns
-<a href=#65 id=65 data-nosnippet>65</a>///
-<a href=#66 id=66 data-nosnippet>66</a>/// Returns a JSON object containing the workbench configuration on success,
-<a href=#67 id=67 data-nosnippet>67</a>/// or a string error message on failure.
-<a href=#68 id=68 data-nosnippet>68</a>///
-<a href=#69 id=69 data-nosnippet>69</a>/// # Errors
-<a href=#70 id=70 data-nosnippet>70</a>///
-<a href=#71 id=71 data-nosnippet>71</a>/// Returns an error string if:
-<a href=#72 id=72 data-nosnippet>72</a>/// - Configuration construction fails (file system errors, JSON parsing)
-<a href=#73 id=73 data-nosnippet>73</a>/// - State locking fails (concurrent access issues)
-<a href=#74 id=74 data-nosnippet>74</a></span><span class="attr">#[tauri::command]
-<a href=#75 id=75 data-nosnippet>75</a></span><span class="kw">pub async fn </span><a href="#74">MountainGetWorkbenchConfiguration</a>(
-<a href=#76 id=76 data-nosnippet>76</a>	ApplicationHandle:AppHandle,
-<a href=#77 id=77 data-nosnippet>77</a>	State:State&lt;<span class="lifetime">'_</span>, <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../../ApplicationState/State/ApplicationState.rs.html#65-88">ApplicationState</a>&gt;&gt;,
-<a href=#78 id=78 data-nosnippet>78</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
-<a href=#79 id=79 data-nosnippet>79</a>	<span class="macro">debug!</span>(<span class="string">"[IPC] [WorkbenchConfig] Request received."</span>);
-<a href=#80 id=80 data-nosnippet>80</a>
-<a href=#81 id=81 data-nosnippet>81</a>	<span class="macro">debug!</span>(<span class="string">"[IPC] [WorkbenchConfig] Constructing sandbox configuration..."</span>);
-<a href=#82 id=82 data-nosnippet>82</a>
-<a href=#83 id=83 data-nosnippet>83</a>	<span class="kw">let </span>Config = InitializationData::ConstructSandboxConfiguration(<span class="kw-2">&amp;</span>ApplicationHandle, State.inner())
-<a href=#84 id=84 data-nosnippet>84</a>		.<span class="kw">await
-<a href=#85 id=85 data-nosnippet>85</a>		</span>.map_err(|Error| {
-<a href=#86 id=86 data-nosnippet>86</a>			<span class="macro">debug!</span>(<span class="string">"[IPC] [WorkbenchConfig] Failed: {}"</span>, Error);
-<a href=#87 id=87 data-nosnippet>87</a>			Error.to_string()
-<a href=#88 id=88 data-nosnippet>88</a>		})<span class="question-mark">?</span>;
-<a href=#89 id=89 data-nosnippet>89</a>
-<a href=#90 id=90 data-nosnippet>90</a>	<span class="macro">debug!</span>(<span class="string">"[IPC] [WorkbenchConfig] Success. Returning payload."</span>);
-<a href=#91 id=91 data-nosnippet>91</a>
-<a href=#92 id=92 data-nosnippet>92</a>	<span class="prelude-val">Ok</span>(Config)
-<a href=#93 id=93 data-nosnippet>93</a>}
+<a href=#46 id=46 data-nosnippet>46</a><span class="kw">use </span>tauri::{AppHandle, State};
+<a href=#47 id=47 data-nosnippet>47</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
+<a href=#48 id=48 data-nosnippet>48</a>
+<a href=#49 id=49 data-nosnippet>49</a><span class="kw">use </span>crate::{<a href="../../ApplicationState/State/ApplicationState.rs.html#64-87">ApplicationState::ApplicationState</a>, <a href="../../ProcessManagement/mod.rs.html#56">ProcessManagement::InitializationData</a>, <a href="../../IPC/DevLog.rs.html#150-185">dev_log</a>};
+<a href=#50 id=50 data-nosnippet>50</a>
+<a href=#51 id=51 data-nosnippet>51</a><span class="doccomment">/// Provides the initial workbench configuration to the Sky frontend.
+<a href=#52 id=52 data-nosnippet>52</a>///
+<a href=#53 id=53 data-nosnippet>53</a>/// This command is called by the frontend during initialization to receive
+<a href=#54 id=54 data-nosnippet>54</a>/// the sandbox configuration including workspace folders, settings, and
+<a href=#55 id=55 data-nosnippet>55</a>/// other application state needed to bootstrap the UI.
+<a href=#56 id=56 data-nosnippet>56</a>///
+<a href=#57 id=57 data-nosnippet>57</a>/// # Arguments
+<a href=#58 id=58 data-nosnippet>58</a>///
+<a href=#59 id=59 data-nosnippet>59</a>/// * `ApplicationHandle` - Tauri application handle for accessing system
+<a href=#60 id=60 data-nosnippet>60</a>///   resources
+<a href=#61 id=61 data-nosnippet>61</a>/// * `State` - Global application state containing workspace information
+<a href=#62 id=62 data-nosnippet>62</a>///
+<a href=#63 id=63 data-nosnippet>63</a>/// # Returns
+<a href=#64 id=64 data-nosnippet>64</a>///
+<a href=#65 id=65 data-nosnippet>65</a>/// Returns a JSON object containing the workbench configuration on success,
+<a href=#66 id=66 data-nosnippet>66</a>/// or a string error message on failure.
+<a href=#67 id=67 data-nosnippet>67</a>///
+<a href=#68 id=68 data-nosnippet>68</a>/// # Errors
+<a href=#69 id=69 data-nosnippet>69</a>///
+<a href=#70 id=70 data-nosnippet>70</a>/// Returns an error string if:
+<a href=#71 id=71 data-nosnippet>71</a>/// - Configuration construction fails (file system errors, JSON parsing)
+<a href=#72 id=72 data-nosnippet>72</a>/// - State locking fails (concurrent access issues)
+<a href=#73 id=73 data-nosnippet>73</a></span><span class="attr">#[tauri::command]
+<a href=#74 id=74 data-nosnippet>74</a></span><span class="kw">pub async fn </span><a href="#73">MountainGetWorkbenchConfiguration</a>(
+<a href=#75 id=75 data-nosnippet>75</a>	ApplicationHandle:AppHandle,
+<a href=#76 id=76 data-nosnippet>76</a>	State:State&lt;<span class="lifetime">'_</span>, <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../../ApplicationState/State/ApplicationState.rs.html#64-87">ApplicationState</a>&gt;&gt;,
+<a href=#77 id=77 data-nosnippet>77</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
+<a href=#78 id=78 data-nosnippet>78</a>	<span class="macro">dev_log!</span>(<span class="string">"ipc"</span>, <span class="string">"[IPC] [WorkbenchConfig] Request received."</span>);
+<a href=#79 id=79 data-nosnippet>79</a>
+<a href=#80 id=80 data-nosnippet>80</a>	<span class="macro">dev_log!</span>(<span class="string">"ipc"</span>, <span class="string">"[IPC] [WorkbenchConfig] Constructing sandbox configuration..."</span>);
+<a href=#81 id=81 data-nosnippet>81</a>
+<a href=#82 id=82 data-nosnippet>82</a>	<span class="kw">let </span>Config = InitializationData::ConstructSandboxConfiguration(<span class="kw-2">&amp;</span>ApplicationHandle, State.inner())
+<a href=#83 id=83 data-nosnippet>83</a>		.<span class="kw">await
+<a href=#84 id=84 data-nosnippet>84</a>		</span>.map_err(|Error| {
+<a href=#85 id=85 data-nosnippet>85</a>			<span class="macro">dev_log!</span>(<span class="string">"ipc"</span>, <span class="string">"[IPC] [WorkbenchConfig] Failed: {}"</span>, Error);
+<a href=#86 id=86 data-nosnippet>86</a>			Error.to_string()
+<a href=#87 id=87 data-nosnippet>87</a>		})<span class="question-mark">?</span>;
+<a href=#88 id=88 data-nosnippet>88</a>
+<a href=#89 id=89 data-nosnippet>89</a>	<span class="macro">dev_log!</span>(<span class="string">"ipc"</span>, <span class="string">"[IPC] [WorkbenchConfig] Success. Returning payload."</span>);
+<a href=#90 id=90 data-nosnippet>90</a>
+<a href=#91 id=91 data-nosnippet>91</a>	<span class="prelude-val">Ok</span>(Config)
+<a href=#92 id=92 data-nosnippet>92</a>}
 </code></pre></div></section></main></body></html>

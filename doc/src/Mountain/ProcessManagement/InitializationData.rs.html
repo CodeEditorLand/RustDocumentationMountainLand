@@ -140,12 +140,12 @@
 <a href=#140 id=140 data-nosnippet>140</a>	ExtensionManagement::ExtensionManagementService::ExtensionManagementService,
 <a href=#141 id=141 data-nosnippet>141</a>	Workspace::WorkspaceProvider::WorkspaceProvider,
 <a href=#142 id=142 data-nosnippet>142</a>};
-<a href=#143 id=143 data-nosnippet>143</a><span class="kw">use </span><a href="https://docs.rs/log/0.4.29/log/macro.info.html">log::info</a>;
-<a href=#144 id=144 data-nosnippet>144</a><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json</a>};
-<a href=#145 id=145 data-nosnippet>145</a><span class="kw">use </span>tauri::{AppHandle, Manager, Wry};
-<a href=#146 id=146 data-nosnippet>146</a><span class="kw">use </span><a href="https://docs.rs/uuid/1.23.0/uuid/struct.Uuid.html">uuid::Uuid</a>;
-<a href=#147 id=147 data-nosnippet>147</a>
-<a href=#148 id=148 data-nosnippet>148</a><span class="kw">use </span>crate::{<a href="../ApplicationState/State/ApplicationState.rs.html#65-88">ApplicationState::ApplicationState</a>, <a href="../Environment/MountainEnvironment.rs.html#219-229">Environment::MountainEnvironment::MountainEnvironment</a>};
+<a href=#143 id=143 data-nosnippet>143</a><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json</a>};
+<a href=#144 id=144 data-nosnippet>144</a><span class="kw">use </span>tauri::{AppHandle, Manager, Wry};
+<a href=#145 id=145 data-nosnippet>145</a><span class="kw">use </span><a href="https://docs.rs/uuid/1.23.0/uuid/struct.Uuid.html">uuid::Uuid</a>;
+<a href=#146 id=146 data-nosnippet>146</a>
+<a href=#147 id=147 data-nosnippet>147</a><span class="kw">use </span>crate::{<a href="../ApplicationState/State/ApplicationState.rs.html#64-87">ApplicationState::ApplicationState</a>, <a href="../Environment/MountainEnvironment.rs.html#221-231">Environment::MountainEnvironment::MountainEnvironment</a>};
+<a href=#148 id=148 data-nosnippet>148</a><span class="kw">use </span><a href="../IPC/DevLog.rs.html#150-185"><span class="kw">crate</span>::dev_log</a>;
 <a href=#149 id=149 data-nosnippet>149</a>
 <a href=#150 id=150 data-nosnippet>150</a><span class="doccomment">/// Loads or generates a persistent machine ID.
 <a href=#151 id=151 data-nosnippet>151</a>///
@@ -164,7 +164,7 @@
 <a href=#164 id=164 data-nosnippet>164</a>	</span><span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(content) = fs::<a href="https://doc.rust-lang.org/nightly/std/fs/fn.read_to_string.html">read_to_string</a>(<span class="kw-2">&amp;</span><a href="#161">machine_id_path</a>) {
 <a href=#165 id=165 data-nosnippet>165</a>		<span class="kw">let </span>trimmed = <a href="#164">content</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.trim">trim</a>();
 <a href=#166 id=166 data-nosnippet>166</a>		<span class="kw">if </span>!<a href="#165">trimmed</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.is_empty">is_empty</a>() {
-<a href=#167 id=167 data-nosnippet>167</a>			<a href="https://docs.rs/log/0.4.29/log/macro.info.html">log::info!</a>(<span class="string">"[InitializationData] Loaded existing machine ID from disk"</span>);
+<a href=#167 id=167 data-nosnippet>167</a>			<a href="../IPC/DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"cocoon"</span>, <span class="string">"[InitializationData] Loaded existing machine ID from disk"</span>);
 <a href=#168 id=168 data-nosnippet>168</a>			<span class="kw">return </span><a href="#165">trimmed</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>();
 <a href=#169 id=169 data-nosnippet>169</a>		}
 <a href=#170 id=170 data-nosnippet>170</a>	}
@@ -175,15 +175,15 @@
 <a href=#175 id=175 data-nosnippet>175</a>	<span class="comment">// Ensure directory exists
 <a href=#176 id=176 data-nosnippet>176</a>	</span><span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(parent) = <a href="#161">machine_id_path</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.parent">parent</a>() {
 <a href=#177 id=177 data-nosnippet>177</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(e) = fs::<a href="https://doc.rust-lang.org/nightly/std/fs/fn.create_dir_all.html">create_dir_all</a>(<a href="#176">parent</a>) {
-<a href=#178 id=178 data-nosnippet>178</a>			<a href="https://docs.rs/log/0.4.29/log/macro.warn.html">log::warn!</a>(<span class="string">"[InitializationData] Failed to create machine ID directory: {}"</span>, e);
+<a href=#178 id=178 data-nosnippet>178</a>			<a href="../IPC/DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"cocoon"</span>, <span class="string">"warn: [InitializationData] Failed to create machine ID directory: {}"</span>, e);
 <a href=#179 id=179 data-nosnippet>179</a>		}
 <a href=#180 id=180 data-nosnippet>180</a>	}
 <a href=#181 id=181 data-nosnippet>181</a>
 <a href=#182 id=182 data-nosnippet>182</a>	<span class="comment">// Save to disk
 <a href=#183 id=183 data-nosnippet>183</a>	</span><span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(e) = fs::<a href="https://doc.rust-lang.org/nightly/std/fs/fn.write.html">write</a>(<span class="kw-2">&amp;</span><a href="#161">machine_id_path</a>, <span class="kw-2">&amp;</span><a href="#173">new_machine_id</a>) {
-<a href=#184 id=184 data-nosnippet>184</a>		<a href="https://docs.rs/log/0.4.29/log/macro.warn.html">log::warn!</a>(<span class="string">"[InitializationData] Failed to persist machine ID to disk: {}"</span>, e);
+<a href=#184 id=184 data-nosnippet>184</a>		<a href="../IPC/DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"cocoon"</span>, <span class="string">"warn: [InitializationData] Failed to persist machine ID to disk: {}"</span>, e);
 <a href=#185 id=185 data-nosnippet>185</a>	} <span class="kw">else </span>{
-<a href=#186 id=186 data-nosnippet>186</a>		<a href="https://docs.rs/log/0.4.29/log/macro.info.html">log::info!</a>(<span class="string">"[InitializationData] Generated and persisted new machine ID"</span>);
+<a href=#186 id=186 data-nosnippet>186</a>		<a href="../IPC/DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"cocoon"</span>, <span class="string">"[InitializationData] Generated and persisted new machine ID"</span>);
 <a href=#187 id=187 data-nosnippet>187</a>	}
 <a href=#188 id=188 data-nosnippet>188</a>
 <a href=#189 id=189 data-nosnippet>189</a>	<a href="#173">new_machine_id</a>
@@ -193,9 +193,9 @@
 <a href=#193 id=193 data-nosnippet>193</a></span><span class="kw">pub async fn </span><a href="../../../Mountain/ProcessManagement/InitializationData/fn.ConstructSandboxConfiguration.html">ConstructSandboxConfiguration</a>(
 <a href=#194 id=194 data-nosnippet>194</a>	ApplicationHandle:<span class="kw-2">&amp;</span>AppHandle&lt;Wry&gt;,
 <a href=#195 id=195 data-nosnippet>195</a>
-<a href=#196 id=196 data-nosnippet>196</a>	ApplicationState:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../ApplicationState/State/ApplicationState.rs.html#65-88">ApplicationState</a>&gt;,
+<a href=#196 id=196 data-nosnippet>196</a>	ApplicationState:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../ApplicationState/State/ApplicationState.rs.html#64-87">ApplicationState</a>&gt;,
 <a href=#197 id=197 data-nosnippet>197</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Value, CommonError&gt; {
-<a href=#198 id=198 data-nosnippet>198</a>	<span class="macro">info!</span>(<span class="string">"[InitializationData] Constructing ISandboxConfiguration for Sky."</span>);
+<a href=#198 id=198 data-nosnippet>198</a>	<span class="macro">dev_log!</span>(<span class="string">"cocoon"</span>, <span class="string">"[InitializationData] Constructing ISandboxConfiguration for Sky."</span>);
 <a href=#199 id=199 data-nosnippet>199</a>
 <a href=#200 id=200 data-nosnippet>200</a>	<span class="kw">let </span>PathResolver = ApplicationHandle.path();
 <a href=#201 id=201 data-nosnippet>201</a>
@@ -314,8 +314,8 @@
 <a href=#314 id=314 data-nosnippet>314</a>}
 <a href=#315 id=315 data-nosnippet>315</a>
 <a href=#316 id=316 data-nosnippet>316</a><span class="doccomment">/// Constructs the `IExtensionHostInitData` payload sent to `Cocoon`.
-<a href=#317 id=317 data-nosnippet>317</a></span><span class="kw">pub async fn </span><a href="../../../Mountain/ProcessManagement/InitializationData/fn.ConstructExtensionHostInitializationData.html">ConstructExtensionHostInitializationData</a>(Environment:<span class="kw-2">&amp;</span><a href="../Environment/MountainEnvironment.rs.html#219-229">MountainEnvironment</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Value, CommonError&gt; {
-<a href=#318 id=318 data-nosnippet>318</a>	<span class="macro">info!</span>(<span class="string">"[InitializationData] Constructing IExtensionHostInitData for Cocoon."</span>);
+<a href=#317 id=317 data-nosnippet>317</a></span><span class="kw">pub async fn </span><a href="../../../Mountain/ProcessManagement/InitializationData/fn.ConstructExtensionHostInitializationData.html">ConstructExtensionHostInitializationData</a>(Environment:<span class="kw-2">&amp;</span><a href="../Environment/MountainEnvironment.rs.html#221-231">MountainEnvironment</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Value, CommonError&gt; {
+<a href=#318 id=318 data-nosnippet>318</a>	<span class="macro">dev_log!</span>(<span class="string">"cocoon"</span>, <span class="string">"[InitializationData] Constructing IExtensionHostInitData for Cocoon."</span>);
 <a href=#319 id=319 data-nosnippet>319</a>
 <a href=#320 id=320 data-nosnippet>320</a>	<span class="kw">let </span>ApplicationState = <span class="kw-2">&amp;</span>Environment.ApplicationState;
 <a href=#321 id=321 data-nosnippet>321</a>
@@ -355,93 +355,111 @@
 <a href=#355 id=355 data-nosnippet>355</a>
 <a href=#356 id=356 data-nosnippet>356</a>	<span class="kw">let </span>AppRoot = PathResolver
 <a href=#357 id=357 data-nosnippet>357</a>		.resource_dir()
-<a href=#358 id=358 data-nosnippet>358</a>		.map_err(|Error| CommonError::ConfigurationLoad { Description:Error.to_string() })<span class="question-mark">?</span>;
-<a href=#359 id=359 data-nosnippet>359</a>
-<a href=#360 id=360 data-nosnippet>360</a>	<span class="kw">let </span>AppData = PathResolver
-<a href=#361 id=361 data-nosnippet>361</a>		.app_data_dir()
-<a href=#362 id=362 data-nosnippet>362</a>		.map_err(|Error| CommonError::ConfigurationLoad { Description:Error.to_string() })<span class="question-mark">?</span>;
-<a href=#363 id=363 data-nosnippet>363</a>
-<a href=#364 id=364 data-nosnippet>364</a>	<span class="kw">let </span>LogsLocation = PathResolver
-<a href=#365 id=365 data-nosnippet>365</a>		.app_log_dir()
-<a href=#366 id=366 data-nosnippet>366</a>		.map_err(|Error| CommonError::ConfigurationLoad { Description:Error.to_string() })<span class="question-mark">?</span>;
-<a href=#367 id=367 data-nosnippet>367</a>
-<a href=#368 id=368 data-nosnippet>368</a>	<span class="kw">let </span>GlobalStorage = AppData.join(<span class="string">"User/globalStorage"</span>);
-<a href=#369 id=369 data-nosnippet>369</a>
-<a href=#370 id=370 data-nosnippet>370</a>	<span class="kw">let </span>WorkspaceStorage = AppData.join(<span class="string">"User/workspaceStorage"</span>);
-<a href=#371 id=371 data-nosnippet>371</a>
-<a href=#372 id=372 data-nosnippet>372</a>	<span class="prelude-val">Ok</span>(<span class="macro">json!</span>({
-<a href=#373 id=373 data-nosnippet>373</a>
-<a href=#374 id=374 data-nosnippet>374</a>		<span class="string">"commit"</span>: <span class="string">"dev-commit-hash"</span>,
-<a href=#375 id=375 data-nosnippet>375</a>
-<a href=#376 id=376 data-nosnippet>376</a>		<span class="string">"version"</span>: ApplicationHandle.package_info().version.to_string(),
+<a href=#358 id=358 data-nosnippet>358</a>		.or_else(|<span class="kw">_</span>| {
+<a href=#359 id=359 data-nosnippet>359</a>			<span class="comment">// Debug builds: resource_dir() fails because the binary runs
+<a href=#360 id=360 data-nosnippet>360</a>			// outside a proper Tauri bundle. Fall back to the exe-relative
+<a href=#361 id=361 data-nosnippet>361</a>			// Sky Target directory (same path used for STATIC_APPLICATION_ROOT).
+<a href=#362 id=362 data-nosnippet>362</a>			</span><span class="kw">let </span>ExeDir = std::env::current_exe()
+<a href=#363 id=363 data-nosnippet>363</a>				.ok()
+<a href=#364 id=364 data-nosnippet>364</a>				.and_then(|P| P.parent().map(|D| D.to_path_buf()))
+<a href=#365 id=365 data-nosnippet>365</a>				.unwrap_or_default();
+<a href=#366 id=366 data-nosnippet>366</a>			<span class="comment">// Exe at Element/Mountain/Target/debug/ — ../../../ lands in
+<a href=#367 id=367 data-nosnippet>367</a>			// Element/, so join "Sky/Target" (not "Element/Sky/Target"
+<a href=#368 id=368 data-nosnippet>368</a>			// which would create a bogus Element/Element/Sky/ path).
+<a href=#369 id=369 data-nosnippet>369</a>			</span><span class="kw">let </span>SkyTarget = ExeDir.join(<span class="string">"../../../Sky/Target"</span>);
+<a href=#370 id=370 data-nosnippet>370</a>			<span class="kw">if </span>SkyTarget.exists() {
+<a href=#371 id=371 data-nosnippet>371</a>				<span class="prelude-val">Ok</span>(SkyTarget.canonicalize().unwrap_or(SkyTarget))
+<a href=#372 id=372 data-nosnippet>372</a>			} <span class="kw">else </span>{
+<a href=#373 id=373 data-nosnippet>373</a>				<span class="prelude-val">Err</span>(tauri::Error::UnknownPath)
+<a href=#374 id=374 data-nosnippet>374</a>			}
+<a href=#375 id=375 data-nosnippet>375</a>		})
+<a href=#376 id=376 data-nosnippet>376</a>		.map_err(|Error| CommonError::ConfigurationLoad { Description:Error.to_string() })<span class="question-mark">?</span>;
 <a href=#377 id=377 data-nosnippet>377</a>
-<a href=#378 id=378 data-nosnippet>378</a>		<span class="string">"quality"</span>: <span class="string">"development"</span>,
-<a href=#379 id=379 data-nosnippet>379</a>
-<a href=#380 id=380 data-nosnippet>380</a>		<span class="string">"parentPid"</span>: std::process::id(),
+<a href=#378 id=378 data-nosnippet>378</a>	<span class="kw">let </span>AppData = PathResolver
+<a href=#379 id=379 data-nosnippet>379</a>		.app_data_dir()
+<a href=#380 id=380 data-nosnippet>380</a>		.map_err(|Error| CommonError::ConfigurationLoad { Description:Error.to_string() })<span class="question-mark">?</span>;
 <a href=#381 id=381 data-nosnippet>381</a>
-<a href=#382 id=382 data-nosnippet>382</a>		<span class="string">"environment"</span>: {
-<a href=#383 id=383 data-nosnippet>383</a>
-<a href=#384 id=384 data-nosnippet>384</a>			<span class="string">"isExtensionDevelopmentDebug"</span>: <span class="bool-val">false</span>,
+<a href=#382 id=382 data-nosnippet>382</a>	<span class="kw">let </span>LogsLocation = PathResolver
+<a href=#383 id=383 data-nosnippet>383</a>		.app_log_dir()
+<a href=#384 id=384 data-nosnippet>384</a>		.map_err(|Error| CommonError::ConfigurationLoad { Description:Error.to_string() })<span class="question-mark">?</span>;
 <a href=#385 id=385 data-nosnippet>385</a>
-<a href=#386 id=386 data-nosnippet>386</a>			<span class="string">"appName"</span>: <span class="string">"Mountain"</span>,
+<a href=#386 id=386 data-nosnippet>386</a>	<span class="kw">let </span>GlobalStorage = AppData.join(<span class="string">"User/globalStorage"</span>);
 <a href=#387 id=387 data-nosnippet>387</a>
-<a href=#388 id=388 data-nosnippet>388</a>			<span class="string">"appHost"</span>: <span class="string">"desktop"</span>,
+<a href=#388 id=388 data-nosnippet>388</a>	<span class="kw">let </span>WorkspaceStorage = AppData.join(<span class="string">"User/workspaceStorage"</span>);
 <a href=#389 id=389 data-nosnippet>389</a>
-<a href=#390 id=390 data-nosnippet>390</a>			<span class="string">"appUriScheme"</span>: <span class="string">"mountain"</span>,
+<a href=#390 id=390 data-nosnippet>390</a>	<span class="prelude-val">Ok</span>(<span class="macro">json!</span>({
 <a href=#391 id=391 data-nosnippet>391</a>
-<a href=#392 id=392 data-nosnippet>392</a>			<span class="string">"appLanguage"</span>: <span class="string">"en"</span>,
+<a href=#392 id=392 data-nosnippet>392</a>		<span class="string">"commit"</span>: <span class="string">"dev-commit-hash"</span>,
 <a href=#393 id=393 data-nosnippet>393</a>
-<a href=#394 id=394 data-nosnippet>394</a>			<span class="string">"isExtensionTelemetryLoggingOnly"</span>: <span class="bool-val">true</span>,
+<a href=#394 id=394 data-nosnippet>394</a>		<span class="string">"version"</span>: ApplicationHandle.package_info().version.to_string(),
 <a href=#395 id=395 data-nosnippet>395</a>
-<a href=#396 id=396 data-nosnippet>396</a>			<span class="string">"appRoot"</span>: url::Url::from_directory_path(AppRoot.clone()).unwrap(),
+<a href=#396 id=396 data-nosnippet>396</a>		<span class="string">"quality"</span>: <span class="string">"development"</span>,
 <a href=#397 id=397 data-nosnippet>397</a>
-<a href=#398 id=398 data-nosnippet>398</a>			<span class="string">"globalStorageHome"</span>: url::Url::from_directory_path(GlobalStorage).unwrap(),
+<a href=#398 id=398 data-nosnippet>398</a>		<span class="string">"parentPid"</span>: std::process::id(),
 <a href=#399 id=399 data-nosnippet>399</a>
-<a href=#400 id=400 data-nosnippet>400</a>			<span class="string">"workspaceStorageHome"</span>: url::Url::from_directory_path(WorkspaceStorage).unwrap(),
+<a href=#400 id=400 data-nosnippet>400</a>		<span class="string">"environment"</span>: {
 <a href=#401 id=401 data-nosnippet>401</a>
-<a href=#402 id=402 data-nosnippet>402</a>			<span class="string">"extensionDevelopmentLocationURI"</span>: [],
+<a href=#402 id=402 data-nosnippet>402</a>			<span class="string">"isExtensionDevelopmentDebug"</span>: <span class="bool-val">false</span>,
 <a href=#403 id=403 data-nosnippet>403</a>
-<a href=#404 id=404 data-nosnippet>404</a>			<span class="string">"extensionTestsLocationURI"</span>: Value::Null,
+<a href=#404 id=404 data-nosnippet>404</a>			<span class="string">"appName"</span>: <span class="string">"Mountain"</span>,
 <a href=#405 id=405 data-nosnippet>405</a>
-<a href=#406 id=406 data-nosnippet>406</a>			<span class="string">"extensionLogLevel"</span>: [[<span class="string">"info"</span>, <span class="string">"Default"</span>]],
+<a href=#406 id=406 data-nosnippet>406</a>			<span class="string">"appHost"</span>: <span class="string">"desktop"</span>,
 <a href=#407 id=407 data-nosnippet>407</a>
-<a href=#408 id=408 data-nosnippet>408</a>		},
+<a href=#408 id=408 data-nosnippet>408</a>			<span class="string">"appUriScheme"</span>: <span class="string">"mountain"</span>,
 <a href=#409 id=409 data-nosnippet>409</a>
-<a href=#410 id=410 data-nosnippet>410</a>		<span class="string">"workspace"</span>: WorkspaceDTO,
+<a href=#410 id=410 data-nosnippet>410</a>			<span class="string">"appLanguage"</span>: <span class="string">"en"</span>,
 <a href=#411 id=411 data-nosnippet>411</a>
-<a href=#412 id=412 data-nosnippet>412</a>		<span class="string">"remote"</span>: {
+<a href=#412 id=412 data-nosnippet>412</a>			<span class="string">"isExtensionTelemetryLoggingOnly"</span>: <span class="bool-val">true</span>,
 <a href=#413 id=413 data-nosnippet>413</a>
-<a href=#414 id=414 data-nosnippet>414</a>			<span class="string">"isRemote"</span>: <span class="bool-val">false</span>,
+<a href=#414 id=414 data-nosnippet>414</a>			<span class="string">"appRoot"</span>: url::Url::from_directory_path(AppRoot.clone()).unwrap(),
 <a href=#415 id=415 data-nosnippet>415</a>
-<a href=#416 id=416 data-nosnippet>416</a>			<span class="string">"authority"</span>: Value::Null,
+<a href=#416 id=416 data-nosnippet>416</a>			<span class="string">"globalStorageHome"</span>: url::Url::from_directory_path(GlobalStorage).unwrap(),
 <a href=#417 id=417 data-nosnippet>417</a>
-<a href=#418 id=418 data-nosnippet>418</a>			<span class="string">"connectionData"</span>: Value::Null,
+<a href=#418 id=418 data-nosnippet>418</a>			<span class="string">"workspaceStorageHome"</span>: url::Url::from_directory_path(WorkspaceStorage).unwrap(),
 <a href=#419 id=419 data-nosnippet>419</a>
-<a href=#420 id=420 data-nosnippet>420</a>		},
+<a href=#420 id=420 data-nosnippet>420</a>			<span class="string">"extensionDevelopmentLocationURI"</span>: [],
 <a href=#421 id=421 data-nosnippet>421</a>
-<a href=#422 id=422 data-nosnippet>422</a>		<span class="string">"consoleForward"</span>: { <span class="string">"includeStack"</span>: <span class="bool-val">true</span>, <span class="string">"logNative"</span>: <span class="bool-val">true </span>},
+<a href=#422 id=422 data-nosnippet>422</a>			<span class="string">"extensionTestsLocationURI"</span>: Value::Null,
 <a href=#423 id=423 data-nosnippet>423</a>
-<a href=#424 id=424 data-nosnippet>424</a>		<span class="string">"logLevel"</span>: log::max_level() <span class="kw">as </span>i32,
+<a href=#424 id=424 data-nosnippet>424</a>			<span class="string">"extensionLogLevel"</span>: [[<span class="string">"info"</span>, <span class="string">"Default"</span>]],
 <a href=#425 id=425 data-nosnippet>425</a>
-<a href=#426 id=426 data-nosnippet>426</a>		<span class="string">"logsLocation"</span>: url::Url::from_directory_path(LogsLocation).unwrap(),
+<a href=#426 id=426 data-nosnippet>426</a>		},
 <a href=#427 id=427 data-nosnippet>427</a>
-<a href=#428 id=428 data-nosnippet>428</a>		<span class="string">"telemetryInfo"</span>: {
+<a href=#428 id=428 data-nosnippet>428</a>		<span class="string">"workspace"</span>: WorkspaceDTO,
 <a href=#429 id=429 data-nosnippet>429</a>
-<a href=#430 id=430 data-nosnippet>430</a>			<span class="string">"sessionId"</span>: Uuid::new_v4().to_string(),
+<a href=#430 id=430 data-nosnippet>430</a>		<span class="string">"remote"</span>: {
 <a href=#431 id=431 data-nosnippet>431</a>
-<a href=#432 id=432 data-nosnippet>432</a>			<span class="string">"machineId"</span>: get_or_generate_machine_id(<span class="kw-2">&amp;</span>AppData),
+<a href=#432 id=432 data-nosnippet>432</a>			<span class="string">"isRemote"</span>: <span class="bool-val">false</span>,
 <a href=#433 id=433 data-nosnippet>433</a>
-<a href=#434 id=434 data-nosnippet>434</a>			<span class="string">"firstSessionDate"</span>: <span class="string">"2024-01-01T00:00:00.000Z"</span>,
+<a href=#434 id=434 data-nosnippet>434</a>			<span class="string">"authority"</span>: Value::Null,
 <a href=#435 id=435 data-nosnippet>435</a>
-<a href=#436 id=436 data-nosnippet>436</a>			<span class="string">"msftInternal"</span>: <span class="bool-val">false
-<a href=#437 id=437 data-nosnippet>437</a>		</span>},
-<a href=#438 id=438 data-nosnippet>438</a>
-<a href=#439 id=439 data-nosnippet>439</a>		<span class="string">"extensions"</span>: ExtensionsDTO,
-<a href=#440 id=440 data-nosnippet>440</a>
-<a href=#441 id=441 data-nosnippet>441</a>		<span class="string">"autoStart"</span>: <span class="bool-val">true</span>,
-<a href=#442 id=442 data-nosnippet>442</a>
-<a href=#443 id=443 data-nosnippet>443</a>		<span class="comment">// UIKind.Desktop
-<a href=#444 id=444 data-nosnippet>444</a>		</span><span class="string">"uiKind"</span>: <span class="number">1</span>,
-<a href=#445 id=445 data-nosnippet>445</a>	}))
-<a href=#446 id=446 data-nosnippet>446</a>}
+<a href=#436 id=436 data-nosnippet>436</a>			<span class="string">"connectionData"</span>: Value::Null,
+<a href=#437 id=437 data-nosnippet>437</a>
+<a href=#438 id=438 data-nosnippet>438</a>		},
+<a href=#439 id=439 data-nosnippet>439</a>
+<a href=#440 id=440 data-nosnippet>440</a>		<span class="string">"consoleForward"</span>: { <span class="string">"includeStack"</span>: <span class="bool-val">true</span>, <span class="string">"logNative"</span>: <span class="bool-val">true </span>},
+<a href=#441 id=441 data-nosnippet>441</a>
+<a href=#442 id=442 data-nosnippet>442</a>		<span class="string">"logLevel"</span>: log::max_level() <span class="kw">as </span>i32,
+<a href=#443 id=443 data-nosnippet>443</a>
+<a href=#444 id=444 data-nosnippet>444</a>		<span class="string">"logsLocation"</span>: url::Url::from_directory_path(LogsLocation).unwrap(),
+<a href=#445 id=445 data-nosnippet>445</a>
+<a href=#446 id=446 data-nosnippet>446</a>		<span class="string">"telemetryInfo"</span>: {
+<a href=#447 id=447 data-nosnippet>447</a>
+<a href=#448 id=448 data-nosnippet>448</a>			<span class="string">"sessionId"</span>: Uuid::new_v4().to_string(),
+<a href=#449 id=449 data-nosnippet>449</a>
+<a href=#450 id=450 data-nosnippet>450</a>			<span class="string">"machineId"</span>: get_or_generate_machine_id(<span class="kw-2">&amp;</span>AppData),
+<a href=#451 id=451 data-nosnippet>451</a>
+<a href=#452 id=452 data-nosnippet>452</a>			<span class="string">"firstSessionDate"</span>: <span class="string">"2024-01-01T00:00:00.000Z"</span>,
+<a href=#453 id=453 data-nosnippet>453</a>
+<a href=#454 id=454 data-nosnippet>454</a>			<span class="string">"msftInternal"</span>: <span class="bool-val">false
+<a href=#455 id=455 data-nosnippet>455</a>		</span>},
+<a href=#456 id=456 data-nosnippet>456</a>
+<a href=#457 id=457 data-nosnippet>457</a>		<span class="string">"extensions"</span>: ExtensionsDTO,
+<a href=#458 id=458 data-nosnippet>458</a>
+<a href=#459 id=459 data-nosnippet>459</a>		<span class="string">"autoStart"</span>: <span class="bool-val">true</span>,
+<a href=#460 id=460 data-nosnippet>460</a>
+<a href=#461 id=461 data-nosnippet>461</a>		<span class="comment">// UIKind.Desktop
+<a href=#462 id=462 data-nosnippet>462</a>		</span><span class="string">"uiKind"</span>: <span class="number">1</span>,
+<a href=#463 id=463 data-nosnippet>463</a>	}))
+<a href=#464 id=464 data-nosnippet>464</a>}
 </code></pre></div></section></main></body></html>

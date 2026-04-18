@@ -26,7 +26,7 @@ if let Some(update) =
 
 # Ok(())
 # }</code></pre></div></div></details><h2 id="fields" class="fields section-header">Fields<a href="#fields" class="anchor">§</a></h2><span id="structfield.client" class="structfield section-header"><a href="#structfield.client" class="anchor field">§</a><code>client: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html" title="struct alloc::sync::Arc">Arc</a>&lt;<a class="struct" href="../AirClient/struct.AirClient.html" title="struct Mountain::Air::AirClient::AirClient">AirClient</a>&gt;</code></span><div class="docblock"><p>The underlying Air client wrapped in Arc for thread safety</p>
-</div><h2 id="implementations" class="section-header">Implementations<a href="#implementations" class="anchor">§</a></h2><div id="implementations-list"><details class="toggle implementors-toggle" open><summary><section id="impl-AirServiceProvider" class="impl"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#132-703">Source</a><a href="#impl-AirServiceProvider" class="anchor">§</a><h3 class="code-header">impl <a class="struct" href="struct.AirServiceProvider.html" title="struct Mountain::Air::AirServiceProvider::AirServiceProvider">AirServiceProvider</a></h3></section></summary><div class="impl-items"><details class="toggle method-toggle" open><summary><section id="method.new" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#154-162">Source</a><h4 class="code-header">pub async fn <a href="#method.new" class="fn">new</a>(address: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;Self, CommonError&gt;</h4></section></summary><div class="docblock"><p>Creates a new AirServiceProvider and connects to the Air daemon.</p>
+</div><h2 id="implementations" class="section-header">Implementations<a href="#implementations" class="anchor">§</a></h2><div id="implementations-list"><details class="toggle implementors-toggle" open><summary><section id="impl-AirServiceProvider" class="impl"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#132-718">Source</a><a href="#impl-AirServiceProvider" class="anchor">§</a><h3 class="code-header">impl <a class="struct" href="struct.AirServiceProvider.html" title="struct Mountain::Air::AirServiceProvider::AirServiceProvider">AirServiceProvider</a></h3></section></summary><div class="impl-items"><details class="toggle method-toggle" open><summary><section id="method.new" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#154-162">Source</a><h4 class="code-header">pub async fn <a href="#method.new" class="fn">new</a>(address: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;Self, CommonError&gt;</h4></section></summary><div class="docblock"><p>Creates a new AirServiceProvider and connects to the Air daemon.</p>
 <h5 id="arguments"><a class="doc-anchor" href="#arguments">§</a>Arguments</h5>
 <ul>
 <li><code>address</code> - The gRPC server address (defaults to <code>[::1]:50053</code>)</li>
@@ -188,7 +188,7 @@ if let Some(update) =
 <li><code>Ok(file_info)</code> - Downloaded file information</li>
 <li><code>Err(CommonError)</code> - Download error</li>
 </ul>
-</div></details><details class="toggle method-toggle" open><summary><section id="method.download_stream" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#418-430">Source</a><h4 class="code-header">pub async fn <a href="#method.download_stream" class="fn">download_stream</a>(
+</div></details><details class="toggle method-toggle" open><summary><section id="method.download_stream" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#418-432">Source</a><h4 class="code-header">pub async fn <a href="#method.download_stream" class="fn">download_stream</a>(
     &amp;self,
     url: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>,
     headers: <a class="struct" href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html" title="struct std::collections::hash::map::HashMap">HashMap</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;,
@@ -228,7 +228,7 @@ while let Some(chunk) = stream.next().await {
 	}
 }
 # Ok(())
-# }</code></pre></div></div></details><details class="toggle method-toggle" open><summary><section id="method.index_files" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#469-482">Source</a><h4 class="code-header">pub async fn <a href="#method.index_files" class="fn">index_files</a>(
+# }</code></pre></div></div></details><details class="toggle method-toggle" open><summary><section id="method.index_files" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#471-489">Source</a><h4 class="code-header">pub async fn <a href="#method.index_files" class="fn">index_files</a>(
     &amp;self,
     path: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>,
     patterns: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;,
@@ -263,7 +263,7 @@ let info = provider
 	.await?;
 println!(&quot;Indexed {} files ({} bytes)&quot;, info.files_indexed, info.total_size);
 # Ok(())
-# }</code></pre></div></div></details><details class="toggle method-toggle" open><summary><section id="method.search_files" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#512-525">Source</a><h4 class="code-header">pub async fn <a href="#method.search_files" class="fn">search_files</a>(
+# }</code></pre></div></div></details><details class="toggle method-toggle" open><summary><section id="method.search_files" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#519-534">Source</a><h4 class="code-header">pub async fn <a href="#method.search_files" class="fn">search_files</a>(
     &amp;self,
     query: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>,
     path: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>,
@@ -292,7 +292,7 @@ for result in results {
 	println!(&quot;Found: {} at line {}&quot;, result.path, result.line_number);
 }
 # Ok(())
-# }</code></pre></div></div></details><details class="toggle method-toggle" open><summary><section id="method.get_file_info" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#535-543">Source</a><h4 class="code-header">pub async fn <a href="#method.get_file_info" class="fn">get_file_info</a>(
+# }</code></pre></div></div></details><details class="toggle method-toggle" open><summary><section id="method.get_file_info" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#544-554">Source</a><h4 class="code-header">pub async fn <a href="#method.get_file_info" class="fn">get_file_info</a>(
     &amp;self,
     path: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>,
 ) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="../AirClient/struct.ExtendedFileInfo.html" title="struct Mountain::Air::AirClient::ExtendedFileInfo">ExtendedFileInfo</a>, CommonError&gt;</h4></section></summary><div class="docblock"><p>Gets file information.</p>
@@ -305,13 +305,13 @@ for result in results {
 <li><code>Ok(file_info)</code> - Extended file information</li>
 <li><code>Err(CommonError)</code> - Request error</li>
 </ul>
-</div></details><details class="toggle method-toggle" open><summary><section id="method.get_status" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#554-559">Source</a><h4 class="code-header">pub async fn <a href="#method.get_status" class="fn">get_status</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="../AirClient/struct.AirStatus.html" title="struct Mountain::Air::AirClient::AirStatus">AirStatus</a>, CommonError&gt;</h4></section></summary><div class="docblock"><p>Gets the status of the Air daemon.</p>
+</div></details><details class="toggle method-toggle" open><summary><section id="method.get_status" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#565-570">Source</a><h4 class="code-header">pub async fn <a href="#method.get_status" class="fn">get_status</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="../AirClient/struct.AirStatus.html" title="struct Mountain::Air::AirClient::AirStatus">AirStatus</a>, CommonError&gt;</h4></section></summary><div class="docblock"><p>Gets the status of the Air daemon.</p>
 <h5 id="returns-15"><a class="doc-anchor" href="#returns-15">§</a>Returns</h5>
 <ul>
 <li><code>Ok(status)</code> - Air daemon status information</li>
 <li><code>Err(CommonError)</code> - Request error</li>
 </ul>
-</div></details><details class="toggle method-toggle" open><summary><section id="method.health_check" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#581-584">Source</a><h4 class="code-header">pub async fn <a href="#method.health_check" class="fn">health_check</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>, CommonError&gt;</h4></section></summary><div class="docblock"><p>Performs a health check on the Air daemon.</p>
+</div></details><details class="toggle method-toggle" open><summary><section id="method.health_check" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#592-595">Source</a><h4 class="code-header">pub async fn <a href="#method.health_check" class="fn">health_check</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>, CommonError&gt;</h4></section></summary><div class="docblock"><p>Performs a health check on the Air daemon.</p>
 <h5 id="returns-16"><a class="doc-anchor" href="#returns-16">§</a>Returns</h5>
 <ul>
 <li><code>Ok(healthy)</code> - Health status (true if healthy)</li>
@@ -326,7 +326,7 @@ if provider.health_check().await? {
 	println!(&quot;Air service is healthy&quot;);
 }
 # Ok(())
-# }</code></pre></div></div></details><details class="toggle method-toggle" open><summary><section id="method.get_metrics" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#595-600">Source</a><h4 class="code-header">pub async fn <a href="#method.get_metrics" class="fn">get_metrics</a>(
+# }</code></pre></div></div></details><details class="toggle method-toggle" open><summary><section id="method.get_metrics" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#606-611">Source</a><h4 class="code-header">pub async fn <a href="#method.get_metrics" class="fn">get_metrics</a>(
     &amp;self,
     metric_type: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;,
 ) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="../AirClient/struct.AirMetrics.html" title="struct Mountain::Air::AirClient::AirMetrics">AirMetrics</a>, CommonError&gt;</h4></section></summary><div class="docblock"><p>Gets metrics from the Air daemon.</p>
@@ -340,13 +340,13 @@ if provider.health_check().await? {
 <li><code>Ok(metrics)</code> - Metrics data</li>
 <li><code>Err(CommonError)</code> - Request error</li>
 </ul>
-</div></details><details class="toggle method-toggle" open><summary><section id="method.get_resource_usage" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#611-616">Source</a><h4 class="code-header">pub async fn <a href="#method.get_resource_usage" class="fn">get_resource_usage</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="../AirClient/struct.ResourceUsage.html" title="struct Mountain::Air::AirClient::ResourceUsage">ResourceUsage</a>, CommonError&gt;</h4></section></summary><div class="docblock"><p>Gets resource usage information.</p>
+</div></details><details class="toggle method-toggle" open><summary><section id="method.get_resource_usage" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#622-627">Source</a><h4 class="code-header">pub async fn <a href="#method.get_resource_usage" class="fn">get_resource_usage</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="../AirClient/struct.ResourceUsage.html" title="struct Mountain::Air::AirClient::ResourceUsage">ResourceUsage</a>, CommonError&gt;</h4></section></summary><div class="docblock"><p>Gets resource usage information.</p>
 <h5 id="returns-18"><a class="doc-anchor" href="#returns-18">§</a>Returns</h5>
 <ul>
 <li><code>Ok(usage)</code> - Resource usage data</li>
 <li><code>Err(CommonError)</code> - Request error</li>
 </ul>
-</div></details><details class="toggle method-toggle" open><summary><section id="method.set_resource_limits" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#628-640">Source</a><h4 class="code-header">pub async fn <a href="#method.set_resource_limits" class="fn">set_resource_limits</a>(
+</div></details><details class="toggle method-toggle" open><summary><section id="method.set_resource_limits" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#639-651">Source</a><h4 class="code-header">pub async fn <a href="#method.set_resource_limits" class="fn">set_resource_limits</a>(
     &amp;self,
     memory_limit_mb: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
     cpu_limit_percent: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
@@ -363,7 +363,7 @@ if provider.health_check().await? {
 <li><code>Ok(())</code> - Limits set successfully</li>
 <li><code>Err(CommonError)</code> - Set error</li>
 </ul>
-</div></details><details class="toggle method-toggle" open><summary><section id="method.get_configuration" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#671-679">Source</a><h4 class="code-header">pub async fn <a href="#method.get_configuration" class="fn">get_configuration</a>(
+</div></details><details class="toggle method-toggle" open><summary><section id="method.get_configuration" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#682-692">Source</a><h4 class="code-header">pub async fn <a href="#method.get_configuration" class="fn">get_configuration</a>(
     &amp;self,
     section: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>,
 ) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html" title="struct std::collections::hash::map::HashMap">HashMap</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;, CommonError&gt;</h4></section></summary><div class="docblock"><p>Gets configuration.</p>
@@ -387,7 +387,7 @@ for (key, value) in config {
 	println!(&quot;{} = {}&quot;, key, value);
 }
 # Ok(())
-# }</code></pre></div></div></details><details class="toggle method-toggle" open><summary><section id="method.update_configuration" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#690-702">Source</a><h4 class="code-header">pub async fn <a href="#method.update_configuration" class="fn">update_configuration</a>(
+# }</code></pre></div></div></details><details class="toggle method-toggle" open><summary><section id="method.update_configuration" class="method"><a class="src rightside" href="../../../src/Mountain/Air/AirServiceProvider.rs.html#703-717">Source</a><h4 class="code-header">pub async fn <a href="#method.update_configuration" class="fn">update_configuration</a>(
     &amp;self,
     section: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>,
     updates: <a class="struct" href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html" title="struct std::collections::hash::map::HashMap">HashMap</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;,

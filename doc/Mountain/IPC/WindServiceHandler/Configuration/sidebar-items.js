@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["handle_configuration_get","handle_configuration_update","handle_workbench_configuration"]};

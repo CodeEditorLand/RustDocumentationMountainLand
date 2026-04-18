@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["handle_lifecycle_get_phase","handle_lifecycle_request_shutdown","handle_lifecycle_when_phase"]};

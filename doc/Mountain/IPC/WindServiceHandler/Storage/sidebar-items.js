@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["handle_storage_delete","handle_storage_get","handle_storage_get_items","handle_storage_keys","handle_storage_set","handle_storage_update_items"]};

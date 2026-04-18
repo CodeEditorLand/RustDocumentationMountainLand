@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["handle_keybinding_add","handle_keybinding_get_all","handle_keybinding_lookup","handle_keybinding_remove"]};

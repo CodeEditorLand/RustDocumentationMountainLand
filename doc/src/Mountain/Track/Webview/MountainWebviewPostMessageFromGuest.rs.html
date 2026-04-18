@@ -49,11 +49,11 @@
 <a href=#49 id=49 data-nosnippet>49</a></span><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">std::sync::Arc</a>;
 <a href=#50 id=50 data-nosnippet>50</a>
 <a href=#51 id=51 data-nosnippet>51</a><span class="kw">use </span>CommonLibrary::{Environment::Requires::Requires, IPC::IPCProvider::IPCProvider};
-<a href=#52 id=52 data-nosnippet>52</a><span class="kw">use </span><a href="https://docs.rs/log/0.4.29/log/macro.error.html">log::error</a>;
-<a href=#53 id=53 data-nosnippet>53</a><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json</a>};
-<a href=#54 id=54 data-nosnippet>54</a><span class="kw">use </span>tauri::{AppHandle, Manager, command};
-<a href=#55 id=55 data-nosnippet>55</a>
-<a href=#56 id=56 data-nosnippet>56</a><span class="kw">use </span>crate::{<a href="../../ApplicationState/State/ApplicationState.rs.html#65-88">ApplicationState::ApplicationState</a>, <a href="../../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">RunTime::ApplicationRunTime::ApplicationRunTime</a>};
+<a href=#52 id=52 data-nosnippet>52</a><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json</a>};
+<a href=#53 id=53 data-nosnippet>53</a><span class="kw">use </span>tauri::{AppHandle, Manager, command};
+<a href=#54 id=54 data-nosnippet>54</a>
+<a href=#55 id=55 data-nosnippet>55</a><span class="kw">use </span>crate::{<a href="../../ApplicationState/State/ApplicationState.rs.html#64-87">ApplicationState::ApplicationState</a>, <a href="../../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">RunTime::ApplicationRunTime::ApplicationRunTime</a>};
+<a href=#56 id=56 data-nosnippet>56</a><span class="kw">use </span><a href="../../IPC/DevLog.rs.html#150-185"><span class="kw">crate</span>::dev_log</a>;
 <a href=#57 id=57 data-nosnippet>57</a>
 <a href=#58 id=58 data-nosnippet>58</a><span class="doccomment">/// A specific Tauri command handler for a Webview guest to post a message back
 <a href=#59 id=59 data-nosnippet>59</a>/// to the extension host.
@@ -76,7 +76,7 @@
 <a href=#76 id=76 data-nosnippet>76</a>		.<span class="kw">await</span>;
 <a href=#77 id=77 data-nosnippet>77</a>
 <a href=#78 id=78 data-nosnippet>78</a>	<span class="kw">if let </span><span class="prelude-val">Err</span>(Error) = RPCResult {
-<a href=#79 id=79 data-nosnippet>79</a>		<span class="macro">error!</span>(<span class="string">"[Track/Webview] Failed to forward webview message to Cocoon: {}"</span>, Error);
+<a href=#79 id=79 data-nosnippet>79</a>		<span class="macro">dev_log!</span>(<span class="string">"ipc"</span>, <span class="string">"error: [Track/Webview] Failed to forward webview message to Cocoon: {}"</span>, Error);
 <a href=#80 id=80 data-nosnippet>80</a>
 <a href=#81 id=81 data-nosnippet>81</a>		<span class="kw">return </span><span class="prelude-val">Err</span>(Error.to_string());
 <a href=#82 id=82 data-nosnippet>82</a>	}
