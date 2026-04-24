@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"struct":["CocoonServiceImpl"]};
+window.SIDEBAR_ITEMS = {"mod":["Auth","Command","Debug","Extension","FileSystem","Initialization","Output","Provider","SCM","Save","Secret","Task","Terminal","TreeView","Window","Workspace"],"struct":["CocoonServiceImpl"]};

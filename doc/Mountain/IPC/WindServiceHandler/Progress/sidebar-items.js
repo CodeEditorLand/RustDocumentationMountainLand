@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["handle_progress_begin","handle_progress_end","handle_progress_report"]};

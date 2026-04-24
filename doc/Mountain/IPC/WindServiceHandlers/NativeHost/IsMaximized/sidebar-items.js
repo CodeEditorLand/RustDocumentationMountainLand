@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["handle_native_is_maximized"]};

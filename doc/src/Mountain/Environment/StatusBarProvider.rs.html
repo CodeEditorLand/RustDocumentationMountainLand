@@ -12,26 +12,26 @@
 <a href=#12 id=12 data-nosnippet>12</a><span class="kw">use </span><a href="https://docs.rs/async-trait/0.1.89/async_trait/attr.async_trait.html">async_trait::async_trait</a>;
 <a href=#13 id=13 data-nosnippet>13</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#14 id=14 data-nosnippet>14</a>
-<a href=#15 id=15 data-nosnippet>15</a><span class="kw">use </span><a href="MountainEnvironment.rs.html#221-231"><span class="kw">super</span>::MountainEnvironment::MountainEnvironment</a>;
+<a href=#15 id=15 data-nosnippet>15</a><span class="kw">use </span><a href="MountainEnvironment.rs.html#225-235"><span class="kw">super</span>::MountainEnvironment::MountainEnvironment</a>;
 <a href=#16 id=16 data-nosnippet>16</a>
 <a href=#17 id=17 data-nosnippet>17</a><span class="comment">// Private submodules containing the actual implementation
 <a href=#18 id=18 data-nosnippet>18</a></span><span class="attr">#[path = <span class="string">"StatusBarProvider/EntryManagement.rs"</span>]
-<a href=#19 id=19 data-nosnippet>19</a></span><span class="kw">mod </span><a href="StatusBarProvider/EntryManagement.rs.html#1-55">EntryManagement</a>;
+<a href=#19 id=19 data-nosnippet>19</a></span><span class="kw">mod </span><a href="StatusBarProvider/EntryManagement.rs.html#1-59">EntryManagement</a>;
 <a href=#20 id=20 data-nosnippet>20</a><span class="attr">#[path = <span class="string">"StatusBarProvider/MessageManagement.rs"</span>]
 <a href=#21 id=21 data-nosnippet>21</a></span><span class="kw">mod </span><a href="StatusBarProvider/MessageManagement.rs.html#1-45">MessageManagement</a>;
 <a href=#22 id=22 data-nosnippet>22</a><span class="attr">#[path = <span class="string">"StatusBarProvider/Tooltip.rs"</span>]
 <a href=#23 id=23 data-nosnippet>23</a></span><span class="kw">mod </span><a href="StatusBarProvider/Tooltip.rs.html#1-40">Tooltip</a>;
 <a href=#24 id=24 data-nosnippet>24</a>
 <a href=#25 id=25 data-nosnippet>25</a><span class="attr">#[async_trait]
-<a href=#26 id=26 data-nosnippet>26</a></span><span class="kw">impl </span>StatusBarProvider <span class="kw">for </span><a href="MountainEnvironment.rs.html#221-231">MountainEnvironment</a> {
+<a href=#26 id=26 data-nosnippet>26</a></span><span class="kw">impl </span>StatusBarProvider <span class="kw">for </span><a href="MountainEnvironment.rs.html#225-235">MountainEnvironment</a> {
 <a href=#27 id=27 data-nosnippet>27</a>	<span class="doccomment">/// Creates a new status bar entry or updates an existing one.
 <a href=#28 id=28 data-nosnippet>28</a>	</span><span class="kw">async fn </span>SetStatusBarEntry(<span class="kw-2">&amp;</span><a class="self" href="#28">self</a>, <a href="#28">entry</a>:StatusBarEntryDTO) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
-<a href=#29 id=29 data-nosnippet>29</a>		EntryManagement::<a href="StatusBarProvider/EntryManagement.rs.html#14-35">set_status_bar_entry_impl</a>(<a class="self" href="#28">self</a>, <a href="#28">entry</a>).<span class="kw">await
+<a href=#29 id=29 data-nosnippet>29</a>		EntryManagement::<a href="StatusBarProvider/EntryManagement.rs.html#18-39">set_status_bar_entry_impl</a>(<a class="self" href="#28">self</a>, <a href="#28">entry</a>).<span class="kw">await
 <a href=#30 id=30 data-nosnippet>30</a>	</span>}
 <a href=#31 id=31 data-nosnippet>31</a>
 <a href=#32 id=32 data-nosnippet>32</a>	<span class="doccomment">/// Removes a status bar item from the UI.
 <a href=#33 id=33 data-nosnippet>33</a>	</span><span class="kw">async fn </span>DisposeStatusBarEntry(<span class="kw-2">&amp;</span><a class="self" href="#33">self</a>, <a href="#33">entry_identifier</a>:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
-<a href=#34 id=34 data-nosnippet>34</a>		EntryManagement::<a href="StatusBarProvider/EntryManagement.rs.html#38-55">dispose_status_bar_entry_impl</a>(<a class="self" href="#33">self</a>, <a href="#33">entry_identifier</a>).<span class="kw">await
+<a href=#34 id=34 data-nosnippet>34</a>		EntryManagement::<a href="StatusBarProvider/EntryManagement.rs.html#42-59">dispose_status_bar_entry_impl</a>(<a class="self" href="#33">self</a>, <a href="#33">entry_identifier</a>).<span class="kw">await
 <a href=#35 id=35 data-nosnippet>35</a>	</span>}
 <a href=#36 id=36 data-nosnippet>36</a>
 <a href=#37 id=37 data-nosnippet>37</a>	<span class="doccomment">/// Shows a temporary message in the status bar.

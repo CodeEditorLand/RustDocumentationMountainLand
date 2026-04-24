@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["handle_model_close","handle_model_get","handle_model_get_all","handle_model_open","handle_model_update_content"]};

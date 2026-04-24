@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["CreateStatusBarItem","CreateWebviewPanel","DisposeWebviewPanel","OnDidReceiveMessage","OpenExternal","PostWebviewMessage","ReportProgress","SetStatusBarText","SetWebviewHtml","ShowErrorMessage","ShowInformationMessage","ShowInputBox","ShowProgress","ShowQuickPick","ShowTextDocument","ShowWarningMessage"]};

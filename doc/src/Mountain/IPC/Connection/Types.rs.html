@@ -145,7 +145,7 @@
 <a href=#145 id=145 data-nosnippet>145</a>	</span><span class="kw">pub fn </span>new() -&gt; <span class="self">Self </span>{
 <a href=#146 id=146 data-nosnippet>146</a>		<span class="kw">let </span>now = std::time::<a href="https://doc.rust-lang.org/nightly/std/time/struct.SystemTime.html">SystemTime</a>::<a href="https://doc.rust-lang.org/nightly/std/time/struct.SystemTime.html#method.now">now</a>();
 <a href=#147 id=147 data-nosnippet>147</a>		<span class="self">Self </span>{
-<a href=#148 id=148 data-nosnippet>148</a>			id:uuid::<a href="https://docs.rs/uuid/1.23.0/uuid/struct.Uuid.html">Uuid</a>::<a href="https://docs.rs/uuid/1.23.0/uuid/struct.Uuid.html#method.new_v4">new_v4</a>().<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
+<a href=#148 id=148 data-nosnippet>148</a>			id:uuid::<a href="https://docs.rs/uuid/1.23.1/uuid/struct.Uuid.html">Uuid</a>::<a href="https://docs.rs/uuid/1.23.1/uuid/struct.Uuid.html#method.new_v4">new_v4</a>().<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
 <a href=#149 id=149 data-nosnippet>149</a>			created_at:<a href="#146">now</a>,
 <a href=#150 id=150 data-nosnippet>150</a>			last_used:<a href="#146">now</a>,
 <a href=#151 id=151 data-nosnippet>151</a>			health_score:<span class="number">100.0</span>,

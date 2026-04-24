@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["AcceptTerminalClosed","AcceptTerminalOpened","AcceptTerminalProcessData","AcceptTerminalProcessId","CloseTerminal","OpenTerminal","ResizeTerminal","TerminalInput"]};

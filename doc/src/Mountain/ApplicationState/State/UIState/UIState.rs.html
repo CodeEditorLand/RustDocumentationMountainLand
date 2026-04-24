@@ -39,7 +39,7 @@
 <a href=#39 id=39 data-nosnippet>39</a>
 <a href=#40 id=40 data-nosnippet>40</a><span class="kw">use </span>CommonLibrary::Error::CommonError::CommonError;
 <a href=#41 id=41 data-nosnippet>41</a>
-<a href=#42 id=42 data-nosnippet>42</a><span class="kw">use </span><a href="../../../IPC/DevLog.rs.html#150-185"><span class="kw">crate</span>::dev_log</a>;
+<a href=#42 id=42 data-nosnippet>42</a><span class="kw">use </span><a href="../../../IPC/DevLog.rs.html#589-630"><span class="kw">crate</span>::dev_log</a>;
 <a href=#43 id=43 data-nosnippet>43</a>
 <a href=#44 id=44 data-nosnippet>44</a><span class="doccomment">/// User interface request state containing pending UI interactions.
 <a href=#45 id=45 data-nosnippet>45</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>)]
@@ -53,7 +53,7 @@
 <a href=#53 id=53 data-nosnippet>53</a>
 <a href=#54 id=54 data-nosnippet>54</a><span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a> <span class="kw">for </span><a href="#46-52">State</a> {
 <a href=#55 id=55 data-nosnippet>55</a>	<span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{
-<a href=#56 id=56 data-nosnippet>56</a>		<a href="../../../IPC/DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"window"</span>, <span class="string">"[UIState] Initializing default UI state..."</span>);
+<a href=#56 id=56 data-nosnippet>56</a>		<a href="../../../IPC/DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"window"</span>, <span class="string">"[UIState] Initializing default UI state..."</span>);
 <a href=#57 id=57 data-nosnippet>57</a>
 <a href=#58 id=58 data-nosnippet>58</a>		<span class="self">Self </span>{ PendingUserInterfaceRequest:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">StandardMutex</a>::<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.new">new</a>(<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>::<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.new">new</a>())) }
 <a href=#59 id=59 data-nosnippet>59</a>	}
@@ -78,7 +78,7 @@
 <a href=#78 id=78 data-nosnippet>78</a>	) {
 <a href=#79 id=79 data-nosnippet>79</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="kw-2">mut </span>guard) = <a class="self" href="#75">self</a>.PendingUserInterfaceRequest.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>() {
 <a href=#80 id=80 data-nosnippet>80</a>			<a href="#79">guard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(<a href="#76">id</a>, <a href="#77">sender</a>);
-<a href=#81 id=81 data-nosnippet>81</a>			<a href="../../../IPC/DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"window"</span>, <span class="string">"[UIState] Pending UI request added"</span>);
+<a href=#81 id=81 data-nosnippet>81</a>			<a href="../../../IPC/DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"window"</span>, <span class="string">"[UIState] Pending UI request added"</span>);
 <a href=#82 id=82 data-nosnippet>82</a>		}
 <a href=#83 id=83 data-nosnippet>83</a>	}
 <a href=#84 id=84 data-nosnippet>84</a>
@@ -89,7 +89,7 @@
 <a href=#89 id=89 data-nosnippet>89</a>	) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;tokio::sync::oneshot::Sender&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, CommonError&gt;&gt;&gt; {
 <a href=#90 id=90 data-nosnippet>90</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="kw-2">mut </span>guard) = <a class="self" href="#87">self</a>.PendingUserInterfaceRequest.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>() {
 <a href=#91 id=91 data-nosnippet>91</a>			<span class="kw">let </span>sender = <a href="#90">guard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.remove">remove</a>(<a href="#88">id</a>);
-<a href=#92 id=92 data-nosnippet>92</a>			<a href="../../../IPC/DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"window"</span>, <span class="string">"[UIState] Pending UI request removed: {}"</span>, id);
+<a href=#92 id=92 data-nosnippet>92</a>			<a href="../../../IPC/DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"window"</span>, <span class="string">"[UIState] Pending UI request removed: {}"</span>, id);
 <a href=#93 id=93 data-nosnippet>93</a>			<a href="#91">sender</a>
 <a href=#94 id=94 data-nosnippet>94</a>		} <span class="kw">else </span>{
 <a href=#95 id=95 data-nosnippet>95</a>			<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>
@@ -100,7 +100,7 @@
 <a href=#100 id=100 data-nosnippet>100</a>	</span><span class="kw">pub fn </span>ClearAll(<span class="kw-2">&amp;</span><span class="self">self</span>) {
 <a href=#101 id=101 data-nosnippet>101</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="kw-2">mut </span>guard) = <a class="self" href="#100">self</a>.PendingUserInterfaceRequest.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>() {
 <a href=#102 id=102 data-nosnippet>102</a>			<a href="#101">guard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.clear">clear</a>();
-<a href=#103 id=103 data-nosnippet>103</a>			<a href="../../../IPC/DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"window"</span>, <span class="string">"[UIState] All pending UI requests cleared"</span>);
+<a href=#103 id=103 data-nosnippet>103</a>			<a href="../../../IPC/DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"window"</span>, <span class="string">"[UIState] All pending UI requests cleared"</span>);
 <a href=#104 id=104 data-nosnippet>104</a>		}
 <a href=#105 id=105 data-nosnippet>105</a>	}
 <a href=#106 id=106 data-nosnippet>106</a>

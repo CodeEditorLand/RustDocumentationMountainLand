@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["handle_label_get_base","handle_label_get_uri","handle_label_get_workspace"]};

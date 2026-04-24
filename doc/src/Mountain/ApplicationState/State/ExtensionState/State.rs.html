@@ -32,7 +32,7 @@
 <a href=#32 id=32 data-nosnippet>32</a>//! - [ ] Add extension state metrics collection
 <a href=#33 id=33 data-nosnippet>33</a>
 <a href=#34 id=34 data-nosnippet>34</a></span><span class="kw">use </span>super::{<a href="mod.rs.html#33">ExtensionRegistry</a>, <a href="mod.rs.html#34">ProviderRegistration</a>, <a href="mod.rs.html#35">ScannedExtensions</a>};
-<a href=#35 id=35 data-nosnippet>35</a><span class="kw">use </span><a href="../../../IPC/DevLog.rs.html#150-185"><span class="kw">crate</span>::dev_log</a>;
+<a href=#35 id=35 data-nosnippet>35</a><span class="kw">use </span><a href="../../../IPC/DevLog.rs.html#589-630"><span class="kw">crate</span>::dev_log</a>;
 <a href=#36 id=36 data-nosnippet>36</a>
 <a href=#37 id=37 data-nosnippet>37</a><span class="doccomment">/// Extension state combining all extension-related components.
 <a href=#38 id=38 data-nosnippet>38</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>)]
@@ -49,7 +49,7 @@
 <a href=#49 id=49 data-nosnippet>49</a>
 <a href=#50 id=50 data-nosnippet>50</a><span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a> <span class="kw">for </span><a href="#39-48">State</a> {
 <a href=#51 id=51 data-nosnippet>51</a>	<span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{
-<a href=#52 id=52 data-nosnippet>52</a>		<a href="../../../IPC/DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[ExtensionState::State] Initializing default extension state..."</span>);
+<a href=#52 id=52 data-nosnippet>52</a>		<a href="../../../IPC/DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[ExtensionState::State] Initializing default extension state..."</span>);
 <a href=#53 id=53 data-nosnippet>53</a>
 <a href=#54 id=54 data-nosnippet>54</a>		<span class="self">Self </span>{
 <a href=#55 id=55 data-nosnippet>55</a>			Registry:ExtensionRegistry::<a href="ExtensionRegistry/ExtensionRegistry.rs.html#50-62">Registry</a>::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>(),

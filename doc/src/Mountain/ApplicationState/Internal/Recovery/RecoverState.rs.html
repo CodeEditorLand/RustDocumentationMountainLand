@@ -35,7 +35,7 @@
 <a href=#35 id=35 data-nosnippet>35</a>
 <a href=#36 id=36 data-nosnippet>36</a><span class="kw">use </span>CommonLibrary::Error::CommonError::CommonError;
 <a href=#37 id=37 data-nosnippet>37</a>
-<a href=#38 id=38 data-nosnippet>38</a><span class="kw">use </span><a href="../../../IPC/DevLog.rs.html#150-185"><span class="kw">crate</span>::dev_log</a>;
+<a href=#38 id=38 data-nosnippet>38</a><span class="kw">use </span><a href="../../../IPC/DevLog.rs.html#589-630"><span class="kw">crate</span>::dev_log</a>;
 <a href=#39 id=39 data-nosnippet>39</a>
 <a href=#40 id=40 data-nosnippet>40</a><span class="doccomment">/// Validates and cleans up state data by removing entries that don't pass
 <a href=#41 id=41 data-nosnippet>41</a>/// validation.
@@ -56,7 +56,7 @@
 <a href=#56 id=56 data-nosnippet>56</a>	<span class="kw">let </span>removed_count = <a href="#54">original_len</a> - <a href="#53">state_data</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.len">len</a>();
 <a href=#57 id=57 data-nosnippet>57</a>
 <a href=#58 id=58 data-nosnippet>58</a>	<span class="kw">if </span><a href="#56">removed_count</a> &gt; <span class="number">0 </span>{
-<a href=#59 id=59 data-nosnippet>59</a>		<a href="../../../IPC/DevLog.rs.html#150-185">dev_log!</a>(
+<a href=#59 id=59 data-nosnippet>59</a>		<a href="../../../IPC/DevLog.rs.html#589-630">dev_log!</a>(
 <a href=#60 id=60 data-nosnippet>60</a>			<span class="string">"lifecycle"</span>,
 <a href=#61 id=61 data-nosnippet>61</a>			<span class="string">"warn: [RecoverState] Removed {} invalid state entries ({} remaining)"</span>,
 <a href=#62 id=62 data-nosnippet>62</a>			removed_count,
@@ -101,7 +101,7 @@
 <a href=#101 id=101 data-nosnippet>101</a>	<span class="kw">match </span><a href="#94">receiver</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/mpsc/struct.Receiver.html#method.recv_timeout">recv_timeout</a>(std::time::<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html">Duration</a>::<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html#method.from_millis">from_millis</a>(<a href="#88">timeout_ms</a>)) {
 <a href=#102 id=102 data-nosnippet>102</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(result) =&gt; <a href="#102">result</a>,
 <a href=#103 id=103 data-nosnippet>103</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<span class="kw">_</span>) =&gt; {
-<a href=#104 id=104 data-nosnippet>104</a>			<a href="../../../IPC/DevLog.rs.html#150-185">dev_log!</a>(
+<a href=#104 id=104 data-nosnippet>104</a>			<a href="../../../IPC/DevLog.rs.html#589-630">dev_log!</a>(
 <a href=#105 id=105 data-nosnippet>105</a>				<span class="string">"lifecycle"</span>,
 <a href=#106 id=106 data-nosnippet>106</a>				<span class="string">"error: [RecoverState] Operation '{}' timed out after {}ms"</span>,
 <a href=#107 id=107 data-nosnippet>107</a>				operation_name,

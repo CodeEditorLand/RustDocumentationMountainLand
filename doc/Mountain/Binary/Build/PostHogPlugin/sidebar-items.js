@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"constant":["POSTHOG_API_KEY","POSTHOG_HOST"],"fn":["CaptureError","CaptureEvent","CaptureIPC","DistinctId","Initialize"],"static":["CLIENT"]};
+window.SIDEBAR_ITEMS = {"constant":["POSTHOG_API_KEY","POSTHOG_DISTINCT_ID_SEED","POSTHOG_ENABLED","POSTHOG_HOST"],"fn":["CaptureAllowed","CaptureError","CaptureEvent","CaptureIPC","DistinctId","Initialize"],"static":["CLIENT"]};

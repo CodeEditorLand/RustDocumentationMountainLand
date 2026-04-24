@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["FindFreePort","GetColorScheme","IsFullscreen","IsMaximized","OSProperties","OSStatistics","OpenExternal","PickFolder","ShowItemInFolder","ShowOpenDialog"]};

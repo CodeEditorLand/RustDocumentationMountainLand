@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["handle_environment_get","handle_open_external","handle_show_item_in_folder"]};

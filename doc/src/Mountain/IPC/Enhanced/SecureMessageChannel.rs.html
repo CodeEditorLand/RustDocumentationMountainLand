@@ -19,7 +19,7 @@
 <a href=#19 id=19 data-nosnippet>19</a><span class="kw">use </span>tokio::sync::RwLock;
 <a href=#20 id=20 data-nosnippet>20</a><span class="kw">use </span>bincode::serde::{<a href="https://docs.rs/bincode/2.0.1/bincode/features/serde/de_owned/fn.decode_from_slice.html">decode_from_slice</a>, <a href="https://docs.rs/bincode/2.0.1/bincode/features/serde/ser/fn.encode_to_vec.html">encode_to_vec</a>};
 <a href=#21 id=21 data-nosnippet>21</a>
-<a href=#22 id=22 data-nosnippet>22</a><span class="kw">use </span><a href="../DevLog.rs.html#150-185"><span class="kw">crate</span>::dev_log</a>;
+<a href=#22 id=22 data-nosnippet>22</a><span class="kw">use </span><a href="../DevLog.rs.html#589-630"><span class="kw">crate</span>::dev_log</a>;
 <a href=#23 id=23 data-nosnippet>23</a>
 <a href=#24 id=24 data-nosnippet>24</a><span class="doccomment">/// Security configuration
 <a href=#25 id=25 data-nosnippet>25</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
@@ -119,7 +119,7 @@
 <a href=#119 id=119 data-nosnippet>119</a>			key_rotation_task:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(RwLock::new(<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>)),
 <a href=#120 id=120 data-nosnippet>120</a>		};
 <a href=#121 id=121 data-nosnippet>121</a>
-<a href=#122 id=122 data-nosnippet>122</a>		<a href="../DevLog.rs.html#150-185">dev_log!</a>(
+<a href=#122 id=122 data-nosnippet>122</a>		<a href="../DevLog.rs.html#589-630">dev_log!</a>(
 <a href=#123 id=123 data-nosnippet>123</a>			<span class="string">"ipc"</span>,
 <a href=#124 id=124 data-nosnippet>124</a>			<span class="string">"[SecureMessageChannel] Created secure channel with {} encryption"</span>,
 <a href=#125 id=125 data-nosnippet>125</a>			channel.config.encryption_algorithm

@@ -34,7 +34,7 @@
 <a href=#34 id=34 data-nosnippet>34</a><span class="kw">use </span>CommonLibrary::Error::CommonError::CommonError;
 <a href=#35 id=35 data-nosnippet>35</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#36 id=36 data-nosnippet>36</a>
-<a href=#37 id=37 data-nosnippet>37</a><span class="kw">use </span><a href="../../../IPC/DevLog.rs.html#150-185"><span class="kw">crate</span>::dev_log</a>;
+<a href=#37 id=37 data-nosnippet>37</a><span class="kw">use </span><a href="../../../IPC/DevLog.rs.html#589-630"><span class="kw">crate</span>::dev_log</a>;
 <a href=#38 id=38 data-nosnippet>38</a>
 <a href=#39 id=39 data-nosnippet>39</a><span class="doccomment">/// Synchronously loads Memento storage data from a JSON file.
 <a href=#40 id=40 data-nosnippet>40</a>/// Used during the initial `default()` setup of `ApplicationState`.
@@ -54,7 +54,7 @@
 <a href=#54 id=54 data-nosnippet>54</a>/// Errors are logged but not propagated; default values are returned.
 <a href=#55 id=55 data-nosnippet>55</a></span><span class="kw">pub fn </span><a href="../../../../../Mountain/ApplicationState/Internal/Persistence/MementoLoader/fn.LoadInitialMementoFromDisk.html">LoadInitialMementoFromDisk</a>(StorageFilePath:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html">Path</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt; {
 <a href=#56 id=56 data-nosnippet>56</a>	<span class="kw">if </span>!<a href="#55">StorageFilePath</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.exists">exists</a>() {
-<a href=#57 id=57 data-nosnippet>57</a>		<a href="../../../IPC/DevLog.rs.html#150-185">dev_log!</a>(
+<a href=#57 id=57 data-nosnippet>57</a>		<a href="../../../IPC/DevLog.rs.html#589-630">dev_log!</a>(
 <a href=#58 id=58 data-nosnippet>58</a>			<span class="string">"storage"</span>,
 <a href=#59 id=59 data-nosnippet>59</a>			<span class="string">"[MementoLoader] Memento file does not exist: {}"</span>,
 <a href=#60 id=60 data-nosnippet>60</a>			StorageFilePath.display()
@@ -65,7 +65,7 @@
 <a href=#65 id=65 data-nosnippet>65</a>	<span class="kw">match </span>fs::<a href="https://doc.rust-lang.org/nightly/std/fs/fn.read_to_string.html">read_to_string</a>(<a href="#55">StorageFilePath</a>) {
 <a href=#66 id=66 data-nosnippet>66</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Content) =&gt; {
 <a href=#67 id=67 data-nosnippet>67</a>			serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/de/fn.from_str.html">from_str</a>(<span class="kw-2">&amp;</span><a href="#66">Content</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|Error| {
-<a href=#68 id=68 data-nosnippet>68</a>				<a href="../../../IPC/DevLog.rs.html#150-185">dev_log!</a>(
+<a href=#68 id=68 data-nosnippet>68</a>				<a href="../../../IPC/DevLog.rs.html#589-630">dev_log!</a>(
 <a href=#69 id=69 data-nosnippet>69</a>					<span class="string">"storage"</span>,
 <a href=#70 id=70 data-nosnippet>70</a>					<span class="string">"error: [MementoLoader] Failed to parse JSON from '{}': {}. Attempting recovery."</span>,
 <a href=#71 id=71 data-nosnippet>71</a>					StorageFilePath.display(),
@@ -79,7 +79,7 @@
 <a href=#79 id=79 data-nosnippet>79</a>		},
 <a href=#80 id=80 data-nosnippet>80</a>
 <a href=#81 id=81 data-nosnippet>81</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error) =&gt; {
-<a href=#82 id=82 data-nosnippet>82</a>			<a href="../../../IPC/DevLog.rs.html#150-185">dev_log!</a>(
+<a href=#82 id=82 data-nosnippet>82</a>			<a href="../../../IPC/DevLog.rs.html#589-630">dev_log!</a>(
 <a href=#83 id=83 data-nosnippet>83</a>				<span class="string">"storage"</span>,
 <a href=#84 id=84 data-nosnippet>84</a>				<span class="string">"error: [MementoLoader] Failed to read '{}': {}. Attempting recovery."</span>,
 <a href=#85 id=85 data-nosnippet>85</a>				StorageFilePath.display(),
@@ -90,7 +90,7 @@
 <a href=#90 id=90 data-nosnippet>90</a>			</span><span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(parent) = <a href="#55">StorageFilePath</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.parent">parent</a>() {
 <a href=#91 id=91 data-nosnippet>91</a>				<span class="kw">if </span>!<a href="#90">parent</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.exists">exists</a>() {
 <a href=#92 id=92 data-nosnippet>92</a>					<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(dir_error) = fs::<a href="https://doc.rust-lang.org/nightly/std/fs/fn.create_dir_all.html">create_dir_all</a>(<a href="#90">parent</a>) {
-<a href=#93 id=93 data-nosnippet>93</a>						<a href="../../../IPC/DevLog.rs.html#150-185">dev_log!</a>(
+<a href=#93 id=93 data-nosnippet>93</a>						<a href="../../../IPC/DevLog.rs.html#589-630">dev_log!</a>(
 <a href=#94 id=94 data-nosnippet>94</a>							<span class="string">"storage"</span>,
 <a href=#95 id=95 data-nosnippet>95</a>							<span class="string">"warn: [MementoLoader] Failed to create directory '{}': {}"</span>,
 <a href=#96 id=96 data-nosnippet>96</a>							parent.display(),
@@ -117,7 +117,7 @@
 <a href=#117 id=117 data-nosnippet>117</a>/// Returns CommonError for file I/O or parse errors
 <a href=#118 id=118 data-nosnippet>118</a></span><span class="kw">pub fn </span><a href="../../../../../Mountain/ApplicationState/Internal/Persistence/MementoLoader/fn.LoadMementoWithRecovery.html">LoadMementoWithRecovery</a>(StorageFilePath:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html">Path</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;, CommonError&gt; {
 <a href=#119 id=119 data-nosnippet>119</a>	<span class="kw">if </span>!<a href="#118">StorageFilePath</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.exists">exists</a>() {
-<a href=#120 id=120 data-nosnippet>120</a>		<a href="../../../IPC/DevLog.rs.html#150-185">dev_log!</a>(
+<a href=#120 id=120 data-nosnippet>120</a>		<a href="../../../IPC/DevLog.rs.html#589-630">dev_log!</a>(
 <a href=#121 id=121 data-nosnippet>121</a>			<span class="string">"storage"</span>,
 <a href=#122 id=122 data-nosnippet>122</a>			<span class="string">"[MementoLoader] Memento file does not exist: {}"</span>,
 <a href=#123 id=123 data-nosnippet>123</a>			StorageFilePath.display()
@@ -151,14 +151,14 @@
 <a href=#151 id=151 data-nosnippet>151</a>
 <a href=#152 id=152 data-nosnippet>152</a>	<span class="kw">match </span>fs::<a href="https://doc.rust-lang.org/nightly/std/fs/fn.write.html">write</a>(<span class="kw-2">&amp;</span><a href="#150">backup_path</a>, <a href="#149">corrupted_content</a>) {
 <a href=#153 id=153 data-nosnippet>153</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(()) =&gt; {
-<a href=#154 id=154 data-nosnippet>154</a>			<a href="../../../IPC/DevLog.rs.html#150-185">dev_log!</a>(
+<a href=#154 id=154 data-nosnippet>154</a>			<a href="../../../IPC/DevLog.rs.html#589-630">dev_log!</a>(
 <a href=#155 id=155 data-nosnippet>155</a>				<span class="string">"storage"</span>,
 <a href=#156 id=156 data-nosnippet>156</a>				<span class="string">"warn: [MementoLoader] Created backup of corrupted memento at: {}"</span>,
 <a href=#157 id=157 data-nosnippet>157</a>				backup_path.display()
 <a href=#158 id=158 data-nosnippet>158</a>			);
 <a href=#159 id=159 data-nosnippet>159</a>		},
 <a href=#160 id=160 data-nosnippet>160</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(e) =&gt; {
-<a href=#161 id=161 data-nosnippet>161</a>			<a href="../../../IPC/DevLog.rs.html#150-185">dev_log!</a>(
+<a href=#161 id=161 data-nosnippet>161</a>			<a href="../../../IPC/DevLog.rs.html#589-630">dev_log!</a>(
 <a href=#162 id=162 data-nosnippet>162</a>				<span class="string">"storage"</span>,
 <a href=#163 id=163 data-nosnippet>163</a>				<span class="string">"error: [MementoLoader] Failed to create backup of corrupted memento at '{}': {}"</span>,
 <a href=#164 id=164 data-nosnippet>164</a>				backup_path.display(),
@@ -178,14 +178,14 @@
 <a href=#178 id=178 data-nosnippet>178</a>	<span class="kw">let </span>backup_path = <a href="#176">file_path</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.with_extension">with_extension</a>(<a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"json.corrupted.{}"</span>, timestamp));
 <a href=#179 id=179 data-nosnippet>179</a>
 <a href=#180 id=180 data-nosnippet>180</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(e) = fs::<a href="https://doc.rust-lang.org/nightly/std/fs/fn.write.html">write</a>(<span class="kw-2">&amp;</span><a href="#178">backup_path</a>, <a href="#176">content</a>) {
-<a href=#181 id=181 data-nosnippet>181</a>		<a href="../../../IPC/DevLog.rs.html#150-185">dev_log!</a>(
+<a href=#181 id=181 data-nosnippet>181</a>		<a href="../../../IPC/DevLog.rs.html#589-630">dev_log!</a>(
 <a href=#182 id=182 data-nosnippet>182</a>			<span class="string">"storage"</span>,
 <a href=#183 id=183 data-nosnippet>183</a>			<span class="string">"error: [MementoLoader] Failed to create corrupted backup at '{}': {}"</span>,
 <a href=#184 id=184 data-nosnippet>184</a>			backup_path.display(),
 <a href=#185 id=185 data-nosnippet>185</a>			e
 <a href=#186 id=186 data-nosnippet>186</a>		);
 <a href=#187 id=187 data-nosnippet>187</a>	} <span class="kw">else </span>{
-<a href=#188 id=188 data-nosnippet>188</a>		<a href="../../../IPC/DevLog.rs.html#150-185">dev_log!</a>(
+<a href=#188 id=188 data-nosnippet>188</a>		<a href="../../../IPC/DevLog.rs.html#589-630">dev_log!</a>(
 <a href=#189 id=189 data-nosnippet>189</a>			<span class="string">"storage"</span>,
 <a href=#190 id=190 data-nosnippet>190</a>			<span class="string">"[MementoLoader] Created corrupted backup at: {}"</span>,
 <a href=#191 id=191 data-nosnippet>191</a>			backup_path.display()

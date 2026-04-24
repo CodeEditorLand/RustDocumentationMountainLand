@@ -51,13 +51,13 @@
 <a href=#51 id=51 data-nosnippet>51</a><span class="kw">use </span>CommonLibrary::Error::CommonError::CommonError;
 <a href=#52 id=52 data-nosnippet>52</a>
 <a href=#53 id=53 data-nosnippet>53</a><span class="kw">use </span>super::{
-<a href=#54 id=54 data-nosnippet>54</a>	<a href="ConfigurationState/ConfigurationState.rs.html#52-64">ConfigurationState::State</a> <span class="kw">as </span>ConfigurationState,
+<a href=#54 id=54 data-nosnippet>54</a>	<a href="ConfigurationState/ConfigurationState.rs.html#52-64">ConfigurationState::ConfigurationState::State</a> <span class="kw">as </span>ConfigurationState,
 <a href=#55 id=55 data-nosnippet>55</a>	<a href="ExtensionState/State.rs.html#39-48">ExtensionState::State::State</a> <span class="kw">as </span>ExtensionState,
 <a href=#56 id=56 data-nosnippet>56</a>	<a href="FeatureState/State.rs.html#57-97">FeatureState::State::State</a> <span class="kw">as </span>FeatureState,
-<a href=#57 id=57 data-nosnippet>57</a>	<a href="UIState/UIState.rs.html#46-52">UIState::State</a> <span class="kw">as </span>UIState,
-<a href=#58 id=58 data-nosnippet>58</a>	<a href="WorkspaceState/WorkspaceState.rs.html#54-69">WorkspaceState::State</a> <span class="kw">as </span>WorkspaceState,
+<a href=#57 id=57 data-nosnippet>57</a>	<a href="UIState/UIState.rs.html#46-52">UIState::UIState::State</a> <span class="kw">as </span>UIState,
+<a href=#58 id=58 data-nosnippet>58</a>	<a href="WorkspaceState/WorkspaceState.rs.html#54-69">WorkspaceState::WorkspaceState::State</a> <span class="kw">as </span>WorkspaceState,
 <a href=#59 id=59 data-nosnippet>59</a>};
-<a href=#60 id=60 data-nosnippet>60</a><span class="kw">use </span>crate::{<a href="../../Environment/TestProvider.rs.html#161-165">Environment::TestProvider::TestProviderState</a>, <a href="../../IPC/DevLog.rs.html#150-185">dev_log</a>};
+<a href=#60 id=60 data-nosnippet>60</a><span class="kw">use </span>crate::{<a href="../../Environment/TestProvider.rs.html#161-165">Environment::TestProvider::TestProviderState</a>, <a href="../../IPC/DevLog.rs.html#589-630">dev_log</a>};
 <a href=#61 id=61 data-nosnippet>61</a>
 <a href=#62 id=62 data-nosnippet>62</a><span class="doccomment">/// The central, shared, thread-safe state for the entire Mountain application.
 <a href=#63 id=63 data-nosnippet>63</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>)]
@@ -88,7 +88,7 @@
 <a href=#88 id=88 data-nosnippet>88</a>
 <a href=#89 id=89 data-nosnippet>89</a><span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a> <span class="kw">for </span><a href="#64-87">ApplicationState</a> {
 <a href=#90 id=90 data-nosnippet>90</a>	<span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{
-<a href=#91 id=91 data-nosnippet>91</a>		<a href="../../IPC/DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[ApplicationState] Initializing default application state..."</span>);
+<a href=#91 id=91 data-nosnippet>91</a>		<a href="../../IPC/DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[ApplicationState] Initializing default application state..."</span>);
 <a href=#92 id=92 data-nosnippet>92</a>
 <a href=#93 id=93 data-nosnippet>93</a>		<span class="self">Self </span>{
 <a href=#94 id=94 data-nosnippet>94</a>			Workspace:Default::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>(),
@@ -138,7 +138,7 @@
 <a href=#138 id=138 data-nosnippet>138</a>
 <a href=#139 id=139 data-nosnippet>139</a><span class="doccomment">/// A helper to map a mutex poison error with recovery attempt.
 <a href=#140 id=140 data-nosnippet>140</a></span><span class="kw">pub fn </span><a href="../../../../Mountain/ApplicationState/State/ApplicationState/fn.MapLockErrorWithRecovery.html">MapLockErrorWithRecovery</a>&lt;T&gt;(Error:<a href="https://doc.rust-lang.org/nightly/std/sync/poison/struct.PoisonError.html">PoisonError</a>&lt;T&gt;, RecoveryContext:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; CommonError {
-<a href=#141 id=141 data-nosnippet>141</a>	<a href="../../IPC/DevLog.rs.html#150-185">dev_log!</a>(
+<a href=#141 id=141 data-nosnippet>141</a>	<a href="../../IPC/DevLog.rs.html#589-630">dev_log!</a>(
 <a href=#142 id=142 data-nosnippet>142</a>		<span class="string">"lifecycle"</span>,
 <a href=#143 id=143 data-nosnippet>143</a>		<span class="string">"warn: [ApplicationState] Attempting recovery from poisoned lock in context: {}"</span>,
 <a href=#144 id=144 data-nosnippet>144</a>		RecoveryContext

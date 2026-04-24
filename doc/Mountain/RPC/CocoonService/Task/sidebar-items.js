@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["ExecuteTask","RegisterTaskProvider","TerminateTask"]};

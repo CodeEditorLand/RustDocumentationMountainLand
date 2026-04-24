@@ -15,7 +15,7 @@
 <a href=#15 id=15 data-nosnippet>15</a>	time::interval,
 <a href=#16 id=16 data-nosnippet>16</a>};
 <a href=#17 id=17 data-nosnippet>17</a>
-<a href=#18 id=18 data-nosnippet>18</a><span class="kw">use </span><a href="../DevLog.rs.html#150-185"><span class="kw">crate</span>::dev_log</a>;
+<a href=#18 id=18 data-nosnippet>18</a><span class="kw">use </span><a href="../DevLog.rs.html#589-630"><span class="kw">crate</span>::dev_log</a>;
 <a href=#19 id=19 data-nosnippet>19</a>
 <a href=#20 id=20 data-nosnippet>20</a><span class="doccomment">/// Performance metrics configuration
 <a href=#21 id=21 data-nosnippet>21</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
@@ -170,7 +170,7 @@
 <a href=#170 id=170 data-nosnippet>170</a>			is_running:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(AsyncMutex::new(<span class="bool-val">false</span>)),
 <a href=#171 id=171 data-nosnippet>171</a>		};
 <a href=#172 id=172 data-nosnippet>172</a>
-<a href=#173 id=173 data-nosnippet>173</a>		<a href="../DevLog.rs.html#150-185">dev_log!</a>(
+<a href=#173 id=173 data-nosnippet>173</a>		<a href="../DevLog.rs.html#589-630">dev_log!</a>(
 <a href=#174 id=174 data-nosnippet>174</a>			<span class="string">"ipc"</span>,
 <a href=#175 id=175 data-nosnippet>175</a>			<span class="string">"[PerformanceDashboard] Created dashboard with {}ms update interval"</span>,
 <a href=#176 id=176 data-nosnippet>176</a>			config_clone.update_interval_ms
@@ -582,13 +582,13 @@
 <a href=#582 id=582 data-nosnippet>582</a>	}
 <a href=#583 id=583 data-nosnippet>583</a>
 <a href=#584 id=584 data-nosnippet>584</a>	<span class="doccomment">/// Generate trace ID
-<a href=#585 id=585 data-nosnippet>585</a>	</span><span class="kw">fn </span>generate_trace_id() -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a> { uuid::<a href="https://docs.rs/uuid/1.23.0/uuid/struct.Uuid.html">Uuid</a>::<a href="https://docs.rs/uuid/1.23.0/uuid/struct.Uuid.html#method.new_v4">new_v4</a>().<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>() }
+<a href=#585 id=585 data-nosnippet>585</a>	</span><span class="kw">fn </span>generate_trace_id() -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a> { uuid::<a href="https://docs.rs/uuid/1.23.1/uuid/struct.Uuid.html">Uuid</a>::<a href="https://docs.rs/uuid/1.23.1/uuid/struct.Uuid.html#method.new_v4">new_v4</a>().<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>() }
 <a href=#586 id=586 data-nosnippet>586</a>
 <a href=#587 id=587 data-nosnippet>587</a>	<span class="doccomment">/// Generate span ID
-<a href=#588 id=588 data-nosnippet>588</a>	</span><span class="kw">fn </span>generate_span_id() -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a> { uuid::<a href="https://docs.rs/uuid/1.23.0/uuid/struct.Uuid.html">Uuid</a>::<a href="https://docs.rs/uuid/1.23.0/uuid/struct.Uuid.html#method.new_v4">new_v4</a>().<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>() }
+<a href=#588 id=588 data-nosnippet>588</a>	</span><span class="kw">fn </span>generate_span_id() -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a> { uuid::<a href="https://docs.rs/uuid/1.23.1/uuid/struct.Uuid.html">Uuid</a>::<a href="https://docs.rs/uuid/1.23.1/uuid/struct.Uuid.html#method.new_v4">new_v4</a>().<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>() }
 <a href=#589 id=589 data-nosnippet>589</a>
 <a href=#590 id=590 data-nosnippet>590</a>	<span class="doccomment">/// Generate alert ID
-<a href=#591 id=591 data-nosnippet>591</a>	</span><span class="kw">fn </span>generate_alert_id() -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a> { uuid::<a href="https://docs.rs/uuid/1.23.0/uuid/struct.Uuid.html">Uuid</a>::<a href="https://docs.rs/uuid/1.23.0/uuid/struct.Uuid.html#method.new_v4">new_v4</a>().<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>() }
+<a href=#591 id=591 data-nosnippet>591</a>	</span><span class="kw">fn </span>generate_alert_id() -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a> { uuid::<a href="https://docs.rs/uuid/1.23.1/uuid/struct.Uuid.html">Uuid</a>::<a href="https://docs.rs/uuid/1.23.1/uuid/struct.Uuid.html#method.new_v4">new_v4</a>().<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>() }
 <a href=#592 id=592 data-nosnippet>592</a>
 <a href=#593 id=593 data-nosnippet>593</a>	<span class="doccomment">/// Get metric type name
 <a href=#594 id=594 data-nosnippet>594</a>	</span><span class="kw">fn </span>metric_type_name(metric_type:<span class="kw-2">&amp;</span><a href="#49-57">MetricType</a>) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">'static </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a> {

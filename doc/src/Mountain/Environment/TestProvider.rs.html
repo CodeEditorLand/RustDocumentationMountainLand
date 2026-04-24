@@ -84,17 +84,17 @@
 <a href=#84 id=84 data-nosnippet>84</a><span class="kw">use </span>CommonLibrary::{
 <a href=#85 id=85 data-nosnippet>85</a>	Environment::Requires::Requires,
 <a href=#86 id=86 data-nosnippet>86</a>	Error::CommonError::CommonError,
-<a href=#87 id=87 data-nosnippet>87</a>	IPC::{DTO::ProxyTarget::ProxyTarget, IPCProvider::IPCProvider},
+<a href=#87 id=87 data-nosnippet>87</a>	IPC::{DTO::ProxyTarget::ProxyTarget, IPCProvider::IPCProvider, SkyEvent::SkyEvent},
 <a href=#88 id=88 data-nosnippet>88</a>	Testing::TestController::TestController,
 <a href=#89 id=89 data-nosnippet>89</a>};
 <a href=#90 id=90 data-nosnippet>90</a><span class="kw">use </span><a href="https://docs.rs/async-trait/0.1.89/async_trait/attr.async_trait.html">async_trait::async_trait</a>;
 <a href=#91 id=91 data-nosnippet>91</a><span class="kw">use </span>serde::{<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>};
 <a href=#92 id=92 data-nosnippet>92</a><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json</a>};
 <a href=#93 id=93 data-nosnippet>93</a><span class="kw">use </span>tauri::Emitter;
-<a href=#94 id=94 data-nosnippet>94</a><span class="kw">use </span><a href="https://docs.rs/uuid/1.23.0/uuid/struct.Uuid.html">uuid::Uuid</a>;
+<a href=#94 id=94 data-nosnippet>94</a><span class="kw">use </span><a href="https://docs.rs/uuid/1.23.1/uuid/struct.Uuid.html">uuid::Uuid</a>;
 <a href=#95 id=95 data-nosnippet>95</a>
-<a href=#96 id=96 data-nosnippet>96</a><span class="kw">use </span><a href="MountainEnvironment.rs.html#221-231"><span class="kw">super</span>::MountainEnvironment::MountainEnvironment</a>;
-<a href=#97 id=97 data-nosnippet>97</a><span class="kw">use </span><a href="../IPC/DevLog.rs.html#150-185"><span class="kw">crate</span>::dev_log</a>;
+<a href=#96 id=96 data-nosnippet>96</a><span class="kw">use </span><a href="MountainEnvironment.rs.html#225-235"><span class="kw">super</span>::MountainEnvironment::MountainEnvironment</a>;
+<a href=#97 id=97 data-nosnippet>97</a><span class="kw">use </span><a href="../IPC/DevLog.rs.html#589-630"><span class="kw">crate</span>::dev_log</a>;
 <a href=#98 id=98 data-nosnippet>98</a>
 <a href=#99 id=99 data-nosnippet>99</a><span class="doccomment">/// Represents a test controller's state
 <a href=#100 id=100 data-nosnippet>100</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
@@ -169,13 +169,13 @@
 <a href=#169 id=169 data-nosnippet>169</a>}
 <a href=#170 id=170 data-nosnippet>170</a>
 <a href=#171 id=171 data-nosnippet>171</a><span class="attr">#[async_trait]
-<a href=#172 id=172 data-nosnippet>172</a></span><span class="kw">impl </span>TestController <span class="kw">for </span><a href="MountainEnvironment.rs.html#221-231">MountainEnvironment</a> {
+<a href=#172 id=172 data-nosnippet>172</a></span><span class="kw">impl </span>TestController <span class="kw">for </span><a href="MountainEnvironment.rs.html#225-235">MountainEnvironment</a> {
 <a href=#173 id=173 data-nosnippet>173</a>	<span class="doccomment">/// Registers a new test controller from an extension (e.g., Cocoon).
 <a href=#174 id=174 data-nosnippet>174</a>	///
 <a href=#175 id=175 data-nosnippet>175</a>	/// This method creates a TestControllerState entry and notifies the
 <a href=#176 id=176 data-nosnippet>176</a>	/// frontend about the available test controller.
 <a href=#177 id=177 data-nosnippet>177</a>	</span><span class="kw">async fn </span>RegisterTestController(<span class="kw-2">&amp;</span><a class="self" href="#177">self</a>, <a href="#177">ControllerId</a>:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="#177">Label</a>:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
-<a href=#178 id=178 data-nosnippet>178</a>		<a href="../IPC/DevLog.rs.html#150-185">dev_log!</a>(
+<a href=#178 id=178 data-nosnippet>178</a>		<a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(
 <a href=#179 id=179 data-nosnippet>179</a>			<span class="string">"extensions"</span>,
 <a href=#180 id=180 data-nosnippet>180</a>			<span class="string">"[TestProvider] Registering test controller '{}' with label '{}'"</span>,
 <a href=#181 id=181 data-nosnippet>181</a>			ControllerId,
@@ -206,12 +206,12 @@
 <a href=#206 id=206 data-nosnippet>206</a>
 <a href=#207 id=207 data-nosnippet>207</a>		<span class="comment">// Notify the frontend about the new test controller
 <a href=#208 id=208 data-nosnippet>208</a>		</span><a class="self" href="#177">self</a>.ApplicationHandle
-<a href=#209 id=209 data-nosnippet>209</a>			.emit(<span class="string">"sky://test/registered"</span>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json!</a>({ <span class="string">"ControllerIdentifier"</span>: ControllerId }))
+<a href=#209 id=209 data-nosnippet>209</a>			.emit(SkyEvent::TestRegistered.AsStr(), <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json!</a>({ <span class="string">"ControllerIdentifier"</span>: ControllerId }))
 <a href=#210 id=210 data-nosnippet>210</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| {
 <a href=#211 id=211 data-nosnippet>211</a>				CommonError::IPCError { Description:<a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Failed to emit test registration event: {}"</span>, Error) }
 <a href=#212 id=212 data-nosnippet>212</a>			})<span class="question-mark">?</span>;
 <a href=#213 id=213 data-nosnippet>213</a>
-<a href=#214 id=214 data-nosnippet>214</a>		<a href="../IPC/DevLog.rs.html#150-185">dev_log!</a>(
+<a href=#214 id=214 data-nosnippet>214</a>		<a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(
 <a href=#215 id=215 data-nosnippet>215</a>			<span class="string">"extensions"</span>,
 <a href=#216 id=216 data-nosnippet>216</a>			<span class="string">"[TestProvider] Test controller '{}' registered successfully"</span>,
 <a href=#217 id=217 data-nosnippet>217</a>			ControllerId
@@ -226,7 +226,7 @@
 <a href=#226 id=226 data-nosnippet>226</a>	/// test controllers, with proper test discovery, execution, and result
 <a href=#227 id=227 data-nosnippet>227</a>	/// reporting.
 <a href=#228 id=228 data-nosnippet>228</a>	</span><span class="kw">async fn </span>RunTests(<span class="kw-2">&amp;</span><a class="self" href="#228">self</a>, <a href="#228">ControllerIdentifier</a>:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="#228">TestRunRequest</a>:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
-<a href=#229 id=229 data-nosnippet>229</a>		<a href="../IPC/DevLog.rs.html#150-185">dev_log!</a>(
+<a href=#229 id=229 data-nosnippet>229</a>		<a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(
 <a href=#230 id=230 data-nosnippet>230</a>			<span class="string">"extensions"</span>,
 <a href=#231 id=231 data-nosnippet>231</a>			<span class="string">"[TestProvider] Running tests for controller '{}': {:?}"</span>,
 <a href=#232 id=232 data-nosnippet>232</a>			ControllerIdentifier,
@@ -243,7 +243,7 @@
 <a href=#243 id=243 data-nosnippet>243</a>		</span>};
 <a href=#244 id=244 data-nosnippet>244</a>
 <a href=#245 id=245 data-nosnippet>245</a>		<span class="comment">// Create a new test run
-<a href=#246 id=246 data-nosnippet>246</a>		</span><span class="kw">let </span>RunIdentifier = <a href="https://docs.rs/uuid/1.23.0/uuid/struct.Uuid.html">Uuid</a>::<a href="https://docs.rs/uuid/1.23.0/uuid/struct.Uuid.html#method.new_v4">new_v4</a>().<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>();
+<a href=#246 id=246 data-nosnippet>246</a>		</span><span class="kw">let </span>RunIdentifier = <a href="https://docs.rs/uuid/1.23.1/uuid/struct.Uuid.html">Uuid</a>::<a href="https://docs.rs/uuid/1.23.1/uuid/struct.Uuid.html#method.new_v4">new_v4</a>().<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>();
 <a href=#247 id=247 data-nosnippet>247</a>
 <a href=#248 id=248 data-nosnippet>248</a>		<span class="kw">let </span>TestRun = <a href="#147-157">TestRun</a> {
 <a href=#249 id=249 data-nosnippet>249</a>			RunIdentifier:<a href="#246">RunIdentifier</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>(),
@@ -266,7 +266,7 @@
 <a href=#266 id=266 data-nosnippet>266</a>		<span class="comment">// Notify frontend about test run start
 <a href=#267 id=267 data-nosnippet>267</a>		</span><a class="self" href="#228">self</a>.ApplicationHandle
 <a href=#268 id=268 data-nosnippet>268</a>			.emit(
-<a href=#269 id=269 data-nosnippet>269</a>				<span class="string">"sky://test/run-started"</span>,
+<a href=#269 id=269 data-nosnippet>269</a>				SkyEvent::TestRunStarted.AsStr(),
 <a href=#270 id=270 data-nosnippet>270</a>				<a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json!</a>({ <span class="string">"RunIdentifier"</span>: RunIdentifier, <span class="string">"ControllerIdentifier"</span>: ControllerIdentifier }),
 <a href=#271 id=271 data-nosnippet>271</a>			)
 <a href=#272 id=272 data-nosnippet>272</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| {
@@ -279,7 +279,7 @@
 <a href=#279 id=279 data-nosnippet>279</a>			</span><span class="self">Self</span>::<a href="#301-371">RunProxiedTests</a>(<a class="self" href="#228">self</a>, <a href="#277">SideCarIdentifier</a>, <span class="kw-2">&amp;</span><a href="#246">RunIdentifier</a>, <a href="#228">TestRunRequest</a>).<span class="kw">await</span><span class="question-mark">?</span>;
 <a href=#280 id=280 data-nosnippet>280</a>		} <span class="kw">else </span>{
 <a href=#281 id=281 data-nosnippet>281</a>			<span class="comment">// Native Rust test controller (currently not supported)
-<a href=#282 id=282 data-nosnippet>282</a>			</span><a href="../IPC/DevLog.rs.html#150-185">dev_log!</a>(
+<a href=#282 id=282 data-nosnippet>282</a>			</span><a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(
 <a href=#283 id=283 data-nosnippet>283</a>				<span class="string">"extensions"</span>,
 <a href=#284 id=284 data-nosnippet>284</a>				<span class="string">"warn: [TestProvider] Native test controllers not yet implemented for '{}'"</span>,
 <a href=#285 id=285 data-nosnippet>285</a>				ControllerIdentifier
@@ -296,7 +296,7 @@
 <a href=#296 id=296 data-nosnippet>296</a>// Private Helper Methods
 <a href=#297 id=297 data-nosnippet>297</a>// ============================================================================
 <a href=#298 id=298 data-nosnippet>298</a>
-<a href=#299 id=299 data-nosnippet>299</a></span><span class="kw">impl </span><a href="MountainEnvironment.rs.html#221-231">MountainEnvironment</a> {
+<a href=#299 id=299 data-nosnippet>299</a></span><span class="kw">impl </span><a href="MountainEnvironment.rs.html#225-235">MountainEnvironment</a> {
 <a href=#300 id=300 data-nosnippet>300</a>	<span class="doccomment">/// Runs tests via a proxied sidecar test controller.
 <a href=#301 id=301 data-nosnippet>301</a>	</span><span class="kw">async fn </span>RunProxiedTests(
 <a href=#302 id=302 data-nosnippet>302</a>		<span class="kw-2">&amp;</span><span class="self">self</span>,
@@ -382,7 +382,7 @@
 <a href=#382 id=382 data-nosnippet>382</a>			<span class="comment">// Notify frontend about status change
 <a href=#383 id=383 data-nosnippet>383</a>			</span><span class="self">self</span>.ApplicationHandle
 <a href=#384 id=384 data-nosnippet>384</a>				.emit(
-<a href=#385 id=385 data-nosnippet>385</a>					<span class="string">"sky://test/run-status-changed"</span>,
+<a href=#385 id=385 data-nosnippet>385</a>					SkyEvent::TestRunStatusChanged.AsStr(),
 <a href=#386 id=386 data-nosnippet>386</a>					<span class="macro">json!</span>({
 <a href=#387 id=387 data-nosnippet>387</a>						<span class="string">"RunIdentifier"</span>: RunIdentifier,
 <a href=#388 id=388 data-nosnippet>388</a>

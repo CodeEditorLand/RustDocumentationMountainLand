@@ -24,7 +24,7 @@
 <a href=#24 id=24 data-nosnippet>24</a><span class="comment">// All feature methods delegate to generic invoke pattern
 <a href=#25 id=25 data-nosnippet>25</a>
 <a href=#26 id=26 data-nosnippet>26</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/LanguageFeatureProvider/FeatureMethods/fn.provide_code_actions.html">provide_code_actions</a>(
-<a href=#27 id=27 data-nosnippet>27</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>,
+<a href=#27 id=27 data-nosnippet>27</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
 <a href=#28 id=28 data-nosnippet>28</a>	document_uri:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
 <a href=#29 id=29 data-nosnippet>29</a>	range_or_selection_dto:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#30 id=30 data-nosnippet>30</a>	context_dto:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
@@ -51,7 +51,7 @@
 <a href=#51 id=51 data-nosnippet>51</a>}
 <a href=#52 id=52 data-nosnippet>52</a>
 <a href=#53 id=53 data-nosnippet>53</a><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/LanguageFeatureProvider/FeatureMethods/fn.provide_code_lenses.html">provide_code_lenses</a>(
-<a href=#54 id=54 data-nosnippet>54</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>,
+<a href=#54 id=54 data-nosnippet>54</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
 <a href=#55 id=55 data-nosnippet>55</a>	document_uri:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
 <a href=#56 id=56 data-nosnippet>56</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;Value&gt;, CommonError&gt; {
 <a href=#57 id=57 data-nosnippet>57</a>	<span class="kw">let </span>provider =
@@ -74,7 +74,7 @@
 <a href=#74 id=74 data-nosnippet>74</a>}
 <a href=#75 id=75 data-nosnippet>75</a>
 <a href=#76 id=76 data-nosnippet>76</a><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/LanguageFeatureProvider/FeatureMethods/fn.provide_completions.html">provide_completions</a>(
-<a href=#77 id=77 data-nosnippet>77</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>,
+<a href=#77 id=77 data-nosnippet>77</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
 <a href=#78 id=78 data-nosnippet>78</a>	document_uri:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
 <a href=#79 id=79 data-nosnippet>79</a>	position_dto:PositionDTO,
 <a href=#80 id=80 data-nosnippet>80</a>	context_dto:CompletionContextDTO,
@@ -111,7 +111,7 @@
 <a href=#111 id=111 data-nosnippet>111</a>}
 <a href=#112 id=112 data-nosnippet>112</a>
 <a href=#113 id=113 data-nosnippet>113</a><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/LanguageFeatureProvider/FeatureMethods/fn.provide_definition.html">provide_definition</a>(
-<a href=#114 id=114 data-nosnippet>114</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>,
+<a href=#114 id=114 data-nosnippet>114</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
 <a href=#115 id=115 data-nosnippet>115</a>	document_uri:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
 <a href=#116 id=116 data-nosnippet>116</a>	position_dto:PositionDTO,
 <a href=#117 id=117 data-nosnippet>117</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;Vec&lt;LocationDTO&gt;&gt;, CommonError&gt; {
@@ -144,7 +144,7 @@
 <a href=#144 id=144 data-nosnippet>144</a>}
 <a href=#145 id=145 data-nosnippet>145</a>
 <a href=#146 id=146 data-nosnippet>146</a><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/LanguageFeatureProvider/FeatureMethods/fn.provide_document_formatting_edits.html">provide_document_formatting_edits</a>(
-<a href=#147 id=147 data-nosnippet>147</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>,
+<a href=#147 id=147 data-nosnippet>147</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
 <a href=#148 id=148 data-nosnippet>148</a>	document_uri:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
 <a href=#149 id=149 data-nosnippet>149</a>	options_dto:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#150 id=150 data-nosnippet>150</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;Vec&lt;TextEditDTO&gt;&gt;, CommonError&gt; {
@@ -178,7 +178,7 @@
 <a href=#178 id=178 data-nosnippet>178</a>}
 <a href=#179 id=179 data-nosnippet>179</a>
 <a href=#180 id=180 data-nosnippet>180</a><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/LanguageFeatureProvider/FeatureMethods/fn.provide_document_highlights.html">provide_document_highlights</a>(
-<a href=#181 id=181 data-nosnippet>181</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>,
+<a href=#181 id=181 data-nosnippet>181</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
 <a href=#182 id=182 data-nosnippet>182</a>	document_uri:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
 <a href=#183 id=183 data-nosnippet>183</a>	position_dto:PositionDTO,
 <a href=#184 id=184 data-nosnippet>184</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;Value&gt;, CommonError&gt; {
@@ -204,7 +204,7 @@
 <a href=#204 id=204 data-nosnippet>204</a>}
 <a href=#205 id=205 data-nosnippet>205</a>
 <a href=#206 id=206 data-nosnippet>206</a><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/LanguageFeatureProvider/FeatureMethods/fn.provide_document_links.html">provide_document_links</a>(
-<a href=#207 id=207 data-nosnippet>207</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>,
+<a href=#207 id=207 data-nosnippet>207</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
 <a href=#208 id=208 data-nosnippet>208</a>	document_uri:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
 <a href=#209 id=209 data-nosnippet>209</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;Value&gt;, CommonError&gt; {
 <a href=#210 id=210 data-nosnippet>210</a>	<span class="kw">let </span>provider =
@@ -227,7 +227,7 @@
 <a href=#227 id=227 data-nosnippet>227</a>}
 <a href=#228 id=228 data-nosnippet>228</a>
 <a href=#229 id=229 data-nosnippet>229</a><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/LanguageFeatureProvider/FeatureMethods/fn.provide_document_range_formatting_edits.html">provide_document_range_formatting_edits</a>(
-<a href=#230 id=230 data-nosnippet>230</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>,
+<a href=#230 id=230 data-nosnippet>230</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
 <a href=#231 id=231 data-nosnippet>231</a>	document_uri:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
 <a href=#232 id=232 data-nosnippet>232</a>	range_dto:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#233 id=233 data-nosnippet>233</a>	options_dto:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
@@ -263,7 +263,7 @@
 <a href=#263 id=263 data-nosnippet>263</a>}
 <a href=#264 id=264 data-nosnippet>264</a>
 <a href=#265 id=265 data-nosnippet>265</a><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/LanguageFeatureProvider/FeatureMethods/fn.provide_hover.html">provide_hover</a>(
-<a href=#266 id=266 data-nosnippet>266</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>,
+<a href=#266 id=266 data-nosnippet>266</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
 <a href=#267 id=267 data-nosnippet>267</a>	document_uri:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
 <a href=#268 id=268 data-nosnippet>268</a>	position_dto:PositionDTO,
 <a href=#269 id=269 data-nosnippet>269</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;HoverResultDTO&gt;, CommonError&gt; {
@@ -296,7 +296,7 @@
 <a href=#296 id=296 data-nosnippet>296</a>}
 <a href=#297 id=297 data-nosnippet>297</a>
 <a href=#298 id=298 data-nosnippet>298</a><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/LanguageFeatureProvider/FeatureMethods/fn.provide_references.html">provide_references</a>(
-<a href=#299 id=299 data-nosnippet>299</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>,
+<a href=#299 id=299 data-nosnippet>299</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
 <a href=#300 id=300 data-nosnippet>300</a>	document_uri:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
 <a href=#301 id=301 data-nosnippet>301</a>	position_dto:PositionDTO,
 <a href=#302 id=302 data-nosnippet>302</a>	context_dto:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
@@ -331,7 +331,7 @@
 <a href=#331 id=331 data-nosnippet>331</a>}
 <a href=#332 id=332 data-nosnippet>332</a>
 <a href=#333 id=333 data-nosnippet>333</a><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/LanguageFeatureProvider/FeatureMethods/fn.prepare_rename.html">prepare_rename</a>(
-<a href=#334 id=334 data-nosnippet>334</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>,
+<a href=#334 id=334 data-nosnippet>334</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
 <a href=#335 id=335 data-nosnippet>335</a>	document_uri:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
 <a href=#336 id=336 data-nosnippet>336</a>	position_dto:PositionDTO,
 <a href=#337 id=337 data-nosnippet>337</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;Value&gt;, CommonError&gt; {
@@ -356,7 +356,7 @@
 <a href=#356 id=356 data-nosnippet>356</a>}
 <a href=#357 id=357 data-nosnippet>357</a>
 <a href=#358 id=358 data-nosnippet>358</a><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/LanguageFeatureProvider/FeatureMethods/fn.provide_rename_edits.html">provide_rename_edits</a>(
-<a href=#359 id=359 data-nosnippet>359</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>,
+<a href=#359 id=359 data-nosnippet>359</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
 <a href=#360 id=360 data-nosnippet>360</a>	document_uri:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
 <a href=#361 id=361 data-nosnippet>361</a>	position_dto:PositionDTO,
 <a href=#362 id=362 data-nosnippet>362</a>	new_name:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
@@ -383,7 +383,7 @@
 <a href=#383 id=383 data-nosnippet>383</a>}
 <a href=#384 id=384 data-nosnippet>384</a>
 <a href=#385 id=385 data-nosnippet>385</a><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/LanguageFeatureProvider/FeatureMethods/fn.provide_document_symbols.html">provide_document_symbols</a>(
-<a href=#386 id=386 data-nosnippet>386</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>,
+<a href=#386 id=386 data-nosnippet>386</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
 <a href=#387 id=387 data-nosnippet>387</a>	document_uri:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
 <a href=#388 id=388 data-nosnippet>388</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;Value&gt;, CommonError&gt; {
 <a href=#389 id=389 data-nosnippet>389</a>	<span class="kw">let </span>provider =
@@ -406,10 +406,10 @@
 <a href=#406 id=406 data-nosnippet>406</a>}
 <a href=#407 id=407 data-nosnippet>407</a>
 <a href=#408 id=408 data-nosnippet>408</a><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/LanguageFeatureProvider/FeatureMethods/fn.provide_workspace_symbols.html">provide_workspace_symbols</a>(
-<a href=#409 id=409 data-nosnippet>409</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>,
+<a href=#409 id=409 data-nosnippet>409</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
 <a href=#410 id=410 data-nosnippet>410</a>	query:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#411 id=411 data-nosnippet>411</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;Value&gt;, CommonError&gt; {
-<a href=#412 id=412 data-nosnippet>412</a>	<span class="comment">// Workspace symbols don't have a specific document URI — use a dummy lookup.
+<a href=#412 id=412 data-nosnippet>412</a>	<span class="comment">// Workspace symbols don't have a specific document URI - use a dummy lookup.
 <a href=#413 id=413 data-nosnippet>413</a>	// The provider is registered globally, so we pick the first WorkspaceSymbol
 <a href=#414 id=414 data-nosnippet>414</a>	// provider.
 <a href=#415 id=415 data-nosnippet>415</a>	</span><span class="kw">let </span>MatchingRegistration = {
@@ -436,7 +436,7 @@
 <a href=#436 id=436 data-nosnippet>436</a>}
 <a href=#437 id=437 data-nosnippet>437</a>
 <a href=#438 id=438 data-nosnippet>438</a><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/LanguageFeatureProvider/FeatureMethods/fn.provide_signature_help.html">provide_signature_help</a>(
-<a href=#439 id=439 data-nosnippet>439</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>,
+<a href=#439 id=439 data-nosnippet>439</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
 <a href=#440 id=440 data-nosnippet>440</a>	document_uri:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
 <a href=#441 id=441 data-nosnippet>441</a>	position_dto:PositionDTO,
 <a href=#442 id=442 data-nosnippet>442</a>	context_dto:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
@@ -463,7 +463,7 @@
 <a href=#463 id=463 data-nosnippet>463</a>}
 <a href=#464 id=464 data-nosnippet>464</a>
 <a href=#465 id=465 data-nosnippet>465</a><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/LanguageFeatureProvider/FeatureMethods/fn.provide_folding_ranges.html">provide_folding_ranges</a>(
-<a href=#466 id=466 data-nosnippet>466</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>,
+<a href=#466 id=466 data-nosnippet>466</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
 <a href=#467 id=467 data-nosnippet>467</a>	document_uri:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
 <a href=#468 id=468 data-nosnippet>468</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;Value&gt;, CommonError&gt; {
 <a href=#469 id=469 data-nosnippet>469</a>	<span class="kw">let </span>provider =
@@ -486,7 +486,7 @@
 <a href=#486 id=486 data-nosnippet>486</a>}
 <a href=#487 id=487 data-nosnippet>487</a>
 <a href=#488 id=488 data-nosnippet>488</a><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/LanguageFeatureProvider/FeatureMethods/fn.provide_selection_ranges.html">provide_selection_ranges</a>(
-<a href=#489 id=489 data-nosnippet>489</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>,
+<a href=#489 id=489 data-nosnippet>489</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
 <a href=#490 id=490 data-nosnippet>490</a>	document_uri:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
 <a href=#491 id=491 data-nosnippet>491</a>	positions:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;PositionDTO&gt;,
 <a href=#492 id=492 data-nosnippet>492</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;Value&gt;, CommonError&gt; {
@@ -511,7 +511,7 @@
 <a href=#511 id=511 data-nosnippet>511</a>}
 <a href=#512 id=512 data-nosnippet>512</a>
 <a href=#513 id=513 data-nosnippet>513</a><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/LanguageFeatureProvider/FeatureMethods/fn.provide_semantic_tokens_full.html">provide_semantic_tokens_full</a>(
-<a href=#514 id=514 data-nosnippet>514</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>,
+<a href=#514 id=514 data-nosnippet>514</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
 <a href=#515 id=515 data-nosnippet>515</a>	document_uri:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
 <a href=#516 id=516 data-nosnippet>516</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;Value&gt;, CommonError&gt; {
 <a href=#517 id=517 data-nosnippet>517</a>	<span class="kw">let </span>provider =
@@ -534,7 +534,7 @@
 <a href=#534 id=534 data-nosnippet>534</a>}
 <a href=#535 id=535 data-nosnippet>535</a>
 <a href=#536 id=536 data-nosnippet>536</a><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/LanguageFeatureProvider/FeatureMethods/fn.provide_inlay_hints.html">provide_inlay_hints</a>(
-<a href=#537 id=537 data-nosnippet>537</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>,
+<a href=#537 id=537 data-nosnippet>537</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
 <a href=#538 id=538 data-nosnippet>538</a>	document_uri:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
 <a href=#539 id=539 data-nosnippet>539</a>	range_dto:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#540 id=540 data-nosnippet>540</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;Value&gt;, CommonError&gt; {
@@ -559,7 +559,7 @@
 <a href=#559 id=559 data-nosnippet>559</a>}
 <a href=#560 id=560 data-nosnippet>560</a>
 <a href=#561 id=561 data-nosnippet>561</a><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/LanguageFeatureProvider/FeatureMethods/fn.provide_type_hierarchy_supertypes.html">provide_type_hierarchy_supertypes</a>(
-<a href=#562 id=562 data-nosnippet>562</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>,
+<a href=#562 id=562 data-nosnippet>562</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
 <a href=#563 id=563 data-nosnippet>563</a>	item_dto:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#564 id=564 data-nosnippet>564</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;Value&gt;, CommonError&gt; {
 <a href=#565 id=565 data-nosnippet>565</a>	<span class="comment">// Type hierarchy uses the item's URI to find the provider
@@ -578,7 +578,7 @@
 <a href=#578 id=578 data-nosnippet>578</a>}
 <a href=#579 id=579 data-nosnippet>579</a>
 <a href=#580 id=580 data-nosnippet>580</a><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/LanguageFeatureProvider/FeatureMethods/fn.provide_type_hierarchy_subtypes.html">provide_type_hierarchy_subtypes</a>(
-<a href=#581 id=581 data-nosnippet>581</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>,
+<a href=#581 id=581 data-nosnippet>581</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
 <a href=#582 id=582 data-nosnippet>582</a>	item_dto:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#583 id=583 data-nosnippet>583</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;Value&gt;, CommonError&gt; {
 <a href=#584 id=584 data-nosnippet>584</a>	<span class="kw">let </span>uri_str = item_dto.get(<span class="string">"uri"</span>).and_then(|u| u.as_str()).unwrap_or(<span class="string">""</span>);
@@ -596,7 +596,7 @@
 <a href=#596 id=596 data-nosnippet>596</a>}
 <a href=#597 id=597 data-nosnippet>597</a>
 <a href=#598 id=598 data-nosnippet>598</a><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/LanguageFeatureProvider/FeatureMethods/fn.provide_call_hierarchy_incoming_calls.html">provide_call_hierarchy_incoming_calls</a>(
-<a href=#599 id=599 data-nosnippet>599</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>,
+<a href=#599 id=599 data-nosnippet>599</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
 <a href=#600 id=600 data-nosnippet>600</a>	item_dto:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#601 id=601 data-nosnippet>601</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;Value&gt;, CommonError&gt; {
 <a href=#602 id=602 data-nosnippet>602</a>	<span class="kw">let </span>uri_str = item_dto.get(<span class="string">"uri"</span>).and_then(|u| u.as_str()).unwrap_or(<span class="string">""</span>);
@@ -614,7 +614,7 @@
 <a href=#614 id=614 data-nosnippet>614</a>}
 <a href=#615 id=615 data-nosnippet>615</a>
 <a href=#616 id=616 data-nosnippet>616</a><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/LanguageFeatureProvider/FeatureMethods/fn.provide_call_hierarchy_outgoing_calls.html">provide_call_hierarchy_outgoing_calls</a>(
-<a href=#617 id=617 data-nosnippet>617</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>,
+<a href=#617 id=617 data-nosnippet>617</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
 <a href=#618 id=618 data-nosnippet>618</a>	item_dto:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#619 id=619 data-nosnippet>619</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;Value&gt;, CommonError&gt; {
 <a href=#620 id=620 data-nosnippet>620</a>	<span class="kw">let </span>uri_str = item_dto.get(<span class="string">"uri"</span>).and_then(|u| u.as_str()).unwrap_or(<span class="string">""</span>);
@@ -632,7 +632,7 @@
 <a href=#632 id=632 data-nosnippet>632</a>}
 <a href=#633 id=633 data-nosnippet>633</a>
 <a href=#634 id=634 data-nosnippet>634</a><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/LanguageFeatureProvider/FeatureMethods/fn.provide_linked_editing_ranges.html">provide_linked_editing_ranges</a>(
-<a href=#635 id=635 data-nosnippet>635</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>,
+<a href=#635 id=635 data-nosnippet>635</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
 <a href=#636 id=636 data-nosnippet>636</a>	document_uri:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
 <a href=#637 id=637 data-nosnippet>637</a>	position_dto:PositionDTO,
 <a href=#638 id=638 data-nosnippet>638</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;Value&gt;, CommonError&gt; {
@@ -658,7 +658,7 @@
 <a href=#658 id=658 data-nosnippet>658</a>}
 <a href=#659 id=659 data-nosnippet>659</a>
 <a href=#660 id=660 data-nosnippet>660</a><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/LanguageFeatureProvider/FeatureMethods/fn.provide_on_type_formatting_edits.html">provide_on_type_formatting_edits</a>(
-<a href=#661 id=661 data-nosnippet>661</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>,
+<a href=#661 id=661 data-nosnippet>661</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
 <a href=#662 id=662 data-nosnippet>662</a>	document_uri:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
 <a href=#663 id=663 data-nosnippet>663</a>	position_dto:PositionDTO,
 <a href=#664 id=664 data-nosnippet>664</a>	character:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
@@ -696,7 +696,7 @@
 <a href=#696 id=696 data-nosnippet>696</a>}
 <a href=#697 id=697 data-nosnippet>697</a>
 <a href=#698 id=698 data-nosnippet>698</a><span class="kw">async fn </span><a href="../../../../Mountain/Environment/LanguageFeatureProvider/FeatureMethods/fn.invoke_provider.html">invoke_provider</a>(
-<a href=#699 id=699 data-nosnippet>699</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>,
+<a href=#699 id=699 data-nosnippet>699</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
 <a href=#700 id=700 data-nosnippet>700</a>	registration:<span class="kw-2">&amp;</span><a href="../../ApplicationState/DTO/ProviderRegistrationDTO.rs.html#27-48">ProviderRegistrationDTO</a>,
 <a href=#701 id=701 data-nosnippet>701</a>	arguments:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;,
 <a href=#702 id=702 data-nosnippet>702</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Value, CommonError&gt; {

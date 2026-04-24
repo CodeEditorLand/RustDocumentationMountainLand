@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["handle_notification_end_progress","handle_notification_show","handle_notification_show_progress","handle_notification_update_progress"]};

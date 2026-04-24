@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["ExtensionInstall","ExtensionUninstall","NotifyCocoonDeltaExtensions","UserExtensionDirectory","VsixPathFromArgs"]};

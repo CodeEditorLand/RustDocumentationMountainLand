@@ -7,14 +7,14 @@
 <a href=#7 id=7 data-nosnippet>7</a>
 <a href=#8 id=8 data-nosnippet>8</a></span><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">std::collections::HashMap</a>;
 <a href=#9 id=9 data-nosnippet>9</a>
-<a href=#10 id=10 data-nosnippet>10</a><span class="kw">use </span>CommonLibrary::Error::CommonError::CommonError;
+<a href=#10 id=10 data-nosnippet>10</a><span class="kw">use </span>CommonLibrary::{Error::CommonError::CommonError, IPC::SkyEvent::SkyEvent};
 <a href=#11 id=11 data-nosnippet>11</a><span class="kw">use </span>serde::{<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>};
 <a href=#12 id=12 data-nosnippet>12</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#13 id=13 data-nosnippet>13</a><span class="kw">use </span>tauri::{Emitter, Manager};
-<a href=#14 id=14 data-nosnippet>14</a><span class="kw">use </span><a href="https://docs.rs/uuid/1.23.0/uuid/struct.Uuid.html">uuid::Uuid</a>;
+<a href=#14 id=14 data-nosnippet>14</a><span class="kw">use </span><a href="https://docs.rs/uuid/1.23.1/uuid/struct.Uuid.html">uuid::Uuid</a>;
 <a href=#15 id=15 data-nosnippet>15</a>
-<a href=#16 id=16 data-nosnippet>16</a><span class="kw">use </span><a href="../MountainEnvironment.rs.html#221-231"><span class="kw">super</span>::<span class="kw">super</span>::MountainEnvironment::MountainEnvironment</a>;
-<a href=#17 id=17 data-nosnippet>17</a><span class="kw">use </span><a href="../../IPC/DevLog.rs.html#150-185"><span class="kw">crate</span>::dev_log</a>;
+<a href=#16 id=16 data-nosnippet>16</a><span class="kw">use </span><a href="../MountainEnvironment.rs.html#225-235"><span class="kw">super</span>::<span class="kw">super</span>::MountainEnvironment::MountainEnvironment</a>;
+<a href=#17 id=17 data-nosnippet>17</a><span class="kw">use </span><a href="../../IPC/DevLog.rs.html#589-630"><span class="kw">crate</span>::dev_log</a>;
 <a href=#18 id=18 data-nosnippet>18</a>
 <a href=#19 id=19 data-nosnippet>19</a><span class="doccomment">/// Represents a Webview message
 <a href=#20 id=20 data-nosnippet>20</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
@@ -34,7 +34,7 @@
 <a href=#34 id=34 data-nosnippet>34</a>
 <a href=#35 id=35 data-nosnippet>35</a><span class="doccomment">/// Messaging operations implementation for MountainEnvironment
 <a href=#36 id=36 data-nosnippet>36</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/WebviewProvider/Messaging/fn.post_message_to_webview_impl.html">post_message_to_webview_impl</a>(
-<a href=#37 id=37 data-nosnippet>37</a>	env:<span class="kw-2">&amp;</span><a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>,
+<a href=#37 id=37 data-nosnippet>37</a>	env:<span class="kw-2">&amp;</span><a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
 <a href=#38 id=38 data-nosnippet>38</a>	handle:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#39 id=39 data-nosnippet>39</a>	message:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#40 id=40 data-nosnippet>40</a>) -&gt; <span class="prelude-ty">Result</span>&lt;bool, CommonError&gt; {
@@ -49,7 +49,7 @@
 <a href=#49 id=49 data-nosnippet>49</a>		};
 <a href=#50 id=50 data-nosnippet>50</a>
 <a href=#51 id=51 data-nosnippet>51</a>		webview_window
-<a href=#52 id=52 data-nosnippet>52</a>			.emit::&lt;WebviewMessage&gt;(<span class="string">"sky://webview/post-message"</span>, webview_message)
+<a href=#52 id=52 data-nosnippet>52</a>			.emit::&lt;WebviewMessage&gt;(SkyEvent::WebviewPostMessage.AsStr(), webview_message)
 <a href=#53 id=53 data-nosnippet>53</a>			.map_err(|error| {
 <a href=#54 id=54 data-nosnippet>54</a>				CommonError::IPCError { Description:<span class="macro">format!</span>(<span class="string">"Failed to post message to Webview: {}"</span>, error) }
 <a href=#55 id=55 data-nosnippet>55</a>			})<span class="question-mark">?</span>;
@@ -72,7 +72,7 @@
 <a href=#72 id=72 data-nosnippet>72</a>
 <a href=#73 id=73 data-nosnippet>73</a><span class="doccomment">/// Sets up a message listener for a specific Webview.
 <a href=#74 id=74 data-nosnippet>74</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/WebviewProvider/Messaging/fn.setup_webview_message_listener_impl.html">setup_webview_message_listener_impl</a>(
-<a href=#75 id=75 data-nosnippet>75</a>	env:<span class="kw-2">&amp;</span><a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>,
+<a href=#75 id=75 data-nosnippet>75</a>	env:<span class="kw-2">&amp;</span><a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
 <a href=#76 id=76 data-nosnippet>76</a>	handle:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#77 id=77 data-nosnippet>77</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
 <a href=#78 id=78 data-nosnippet>78</a>	<span class="macro">dev_log!</span>(
@@ -89,7 +89,7 @@
 <a href=#89 id=89 data-nosnippet>89</a>}
 <a href=#90 id=90 data-nosnippet>90</a>
 <a href=#91 id=91 data-nosnippet>91</a><span class="doccomment">/// Removes a message listener for a specific Webview.
-<a href=#92 id=92 data-nosnippet>92</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/WebviewProvider/Messaging/fn.remove_webview_message_listener_impl.html">remove_webview_message_listener_impl</a>(_env:<span class="kw-2">&amp;</span><a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>, _handle:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) {
+<a href=#92 id=92 data-nosnippet>92</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/WebviewProvider/Messaging/fn.remove_webview_message_listener_impl.html">remove_webview_message_listener_impl</a>(_env:<span class="kw-2">&amp;</span><a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>, _handle:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) {
 <a href=#93 id=93 data-nosnippet>93</a>	<span class="comment">// In a full implementation, this would remove the event listener
 <a href=#94 id=94 data-nosnippet>94</a>	// that forwards Webview messages.
 <a href=#95 id=95 data-nosnippet>95</a></span>}

@@ -4,16 +4,16 @@
 <a href=#4 id=4 data-nosnippet>4</a>//! These are not public API - they are called by the main provider
 <a href=#5 id=5 data-nosnippet>5</a>//! implementation.
 <a href=#6 id=6 data-nosnippet>6</a>
-<a href=#7 id=7 data-nosnippet>7</a></span><span class="kw">use </span>CommonLibrary::Error::CommonError::CommonError;
+<a href=#7 id=7 data-nosnippet>7</a></span><span class="kw">use </span>CommonLibrary::{Error::CommonError::CommonError, IPC::SkyEvent::SkyEvent};
 <a href=#8 id=8 data-nosnippet>8</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">serde_json::json</a>;
 <a href=#9 id=9 data-nosnippet>9</a><span class="kw">use </span>tauri::Emitter;
 <a href=#10 id=10 data-nosnippet>10</a>
-<a href=#11 id=11 data-nosnippet>11</a><span class="kw">use </span>crate::{<a href="../mod.rs.html#114">Environment::Utility</a>, <a href="../../IPC/DevLog.rs.html#150-185">dev_log</a>};
+<a href=#11 id=11 data-nosnippet>11</a><span class="kw">use </span>crate::{<a href="../mod.rs.html#116">Environment::Utility</a>, <a href="../../IPC/DevLog.rs.html#589-630">dev_log</a>};
 <a href=#12 id=12 data-nosnippet>12</a>
 <a href=#13 id=13 data-nosnippet>13</a><span class="doccomment">/// Appends text to an output channel.
 <a href=#14 id=14 data-nosnippet>14</a>/// Includes buffer size validation to prevent memory exhaustion.
 <a href=#15 id=15 data-nosnippet>15</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/OutputProvider/ChannelContent/fn.append_to_channel.html">append_to_channel</a>(
-<a href=#16 id=16 data-nosnippet>16</a>	env:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>,
+<a href=#16 id=16 data-nosnippet>16</a>	env:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
 <a href=#17 id=17 data-nosnippet>17</a>	channel_identifier:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#18 id=18 data-nosnippet>18</a>	value:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#19 id=19 data-nosnippet>19</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
@@ -54,7 +54,7 @@
 <a href=#54 id=54 data-nosnippet>54</a>		<span class="kw">let </span>event_payload = <span class="macro">json!</span>({ <span class="string">"Id"</span>: channel_identifier, <span class="string">"AppendedText"</span>: value });
 <a href=#55 id=55 data-nosnippet>55</a>
 <a href=#56 id=56 data-nosnippet>56</a>		env.ApplicationHandle
-<a href=#57 id=57 data-nosnippet>57</a>			.emit(<span class="string">"sky://output/append"</span>, event_payload)
+<a href=#57 id=57 data-nosnippet>57</a>			.emit(SkyEvent::OutputAppend.AsStr(), event_payload)
 <a href=#58 id=58 data-nosnippet>58</a>			.map_err(|Error| CommonError::UserInterfaceInteraction { Reason:Error.to_string() })<span class="question-mark">?</span>;
 <a href=#59 id=59 data-nosnippet>59</a>	} <span class="kw">else </span>{
 <a href=#60 id=60 data-nosnippet>60</a>		<span class="macro">dev_log!</span>(
@@ -69,7 +69,7 @@
 <a href=#69 id=69 data-nosnippet>69</a>
 <a href=#70 id=70 data-nosnippet>70</a><span class="doccomment">/// Replaces the entire content of an output channel.
 <a href=#71 id=71 data-nosnippet>71</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/OutputProvider/ChannelContent/fn.replace_channel_content.html">replace_channel_content</a>(
-<a href=#72 id=72 data-nosnippet>72</a>	env:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>,
+<a href=#72 id=72 data-nosnippet>72</a>	env:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
 <a href=#73 id=73 data-nosnippet>73</a>	channel_identifier:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#74 id=74 data-nosnippet>74</a>	value:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#75 id=75 data-nosnippet>75</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
@@ -93,7 +93,7 @@
 <a href=#93 id=93 data-nosnippet>93</a>		<span class="kw">let </span>event_payload = <span class="macro">json!</span>({ <span class="string">"Id"</span>: channel_identifier, <span class="string">"Content"</span>: value });
 <a href=#94 id=94 data-nosnippet>94</a>
 <a href=#95 id=95 data-nosnippet>95</a>		env.ApplicationHandle
-<a href=#96 id=96 data-nosnippet>96</a>			.emit(<span class="string">"sky://output/replace"</span>, event_payload)
+<a href=#96 id=96 data-nosnippet>96</a>			.emit(SkyEvent::OutputReplace.AsStr(), event_payload)
 <a href=#97 id=97 data-nosnippet>97</a>			.map_err(|Error| CommonError::UserInterfaceInteraction { Reason:Error.to_string() })<span class="question-mark">?</span>;
 <a href=#98 id=98 data-nosnippet>98</a>	} <span class="kw">else </span>{
 <a href=#99 id=99 data-nosnippet>99</a>		<span class="macro">dev_log!</span>(
@@ -108,7 +108,7 @@
 <a href=#108 id=108 data-nosnippet>108</a>
 <a href=#109 id=109 data-nosnippet>109</a><span class="doccomment">/// Clears all content from an output channel.
 <a href=#110 id=110 data-nosnippet>110</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/OutputProvider/ChannelContent/fn.clear_channel.html">clear_channel</a>(
-<a href=#111 id=111 data-nosnippet>111</a>	env:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>,
+<a href=#111 id=111 data-nosnippet>111</a>	env:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
 <a href=#112 id=112 data-nosnippet>112</a>	channel_identifier:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#113 id=113 data-nosnippet>113</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
 <a href=#114 id=114 data-nosnippet>114</a>	<span class="macro">dev_log!</span>(<span class="string">"output"</span>, <span class="string">"[OutputProvider] Clearing channel: '{}'"</span>, channel_identifier);
@@ -125,7 +125,7 @@
 <a href=#125 id=125 data-nosnippet>125</a>		channel_state.Buffer.clear();
 <a href=#126 id=126 data-nosnippet>126</a>
 <a href=#127 id=127 data-nosnippet>127</a>		env.ApplicationHandle
-<a href=#128 id=128 data-nosnippet>128</a>			.emit(<span class="string">"sky://output/clear"</span>, <span class="macro">json!</span>({ <span class="string">"Id"</span>: channel_identifier }))
+<a href=#128 id=128 data-nosnippet>128</a>			.emit(SkyEvent::OutputClear.AsStr(), <span class="macro">json!</span>({ <span class="string">"Id"</span>: channel_identifier }))
 <a href=#129 id=129 data-nosnippet>129</a>			.map_err(|Error| CommonError::UserInterfaceInteraction { Reason:Error.to_string() })<span class="question-mark">?</span>;
 <a href=#130 id=130 data-nosnippet>130</a>	} <span class="kw">else </span>{
 <a href=#131 id=131 data-nosnippet>131</a>		<span class="macro">dev_log!</span>(

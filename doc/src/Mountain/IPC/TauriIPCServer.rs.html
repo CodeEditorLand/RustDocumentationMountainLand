@@ -167,7 +167,7 @@
 <a href=#167 id=167 data-nosnippet>167</a>	time::timeout,
 <a href=#168 id=168 data-nosnippet>168</a>};
 <a href=#169 id=169 data-nosnippet>169</a>
-<a href=#170 id=170 data-nosnippet>170</a><span class="kw">use </span><a href="DevLog.rs.html#150-185"><span class="kw">crate</span>::dev_log</a>;
+<a href=#170 id=170 data-nosnippet>170</a><span class="kw">use </span><a href="DevLog.rs.html#589-630"><span class="kw">crate</span>::dev_log</a>;
 <a href=#171 id=171 data-nosnippet>171</a>
 <a href=#172 id=172 data-nosnippet>172</a><span class="doccomment">/// IPC message structure matching Wind's ITauriIPCMessage interface
 <a href=#173 id=173 data-nosnippet>173</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
@@ -237,7 +237,7 @@
 <a href=#237 id=237 data-nosnippet>237</a><span class="kw">impl </span><a href="#192-197">TauriIPCServer</a> {
 <a href=#238 id=238 data-nosnippet>238</a>	<span class="doccomment">/// Create a new Tauri IPC Server instance
 <a href=#239 id=239 data-nosnippet>239</a>	</span><span class="kw">pub fn </span>new(app_handle:AppHandle) -&gt; <span class="self">Self </span>{
-<a href=#240 id=240 data-nosnippet>240</a>		<a href="DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[TauriIPCServer] Initializing Mountain IPC Server"</span>);
+<a href=#240 id=240 data-nosnippet>240</a>		<a href="DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[TauriIPCServer] Initializing Mountain IPC Server"</span>);
 <a href=#241 id=241 data-nosnippet>241</a>
 <a href=#242 id=242 data-nosnippet>242</a>		<span class="self">Self </span>{
 <a href=#243 id=243 data-nosnippet>243</a>			<a href="#239">app_handle</a>,
@@ -322,7 +322,7 @@
 <a href=#322 id=322 data-nosnippet>322</a>
 <a href=#323 id=323 data-nosnippet>323</a>		<a href="#318">listeners</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.entry">entry</a>(<a href="#317">channel</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>()).<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/enum.Entry.html#method.or_insert_with">or_insert_with</a>(<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>::<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.new">new</a>).<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.push">push</a>(<a href="#317">callback</a>);
 <a href=#324 id=324 data-nosnippet>324</a>
-<a href=#325 id=325 data-nosnippet>325</a>		<a href="DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[TauriIPCServer] Listener registered for channel: {}"</span>, channel);
+<a href=#325 id=325 data-nosnippet>325</a>		<a href="DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[TauriIPCServer] Listener registered for channel: {}"</span>, channel);
 <a href=#326 id=326 data-nosnippet>326</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#327 id=327 data-nosnippet>327</a>	}
 <a href=#328 id=328 data-nosnippet>328</a>
@@ -341,7 +341,7 @@
 <a href=#341 id=341 data-nosnippet>341</a>			}
 <a href=#342 id=342 data-nosnippet>342</a>		}
 <a href=#343 id=343 data-nosnippet>343</a>
-<a href=#344 id=344 data-nosnippet>344</a>		<a href="DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[TauriIPCServer] Listener removed from channel: {}"</span>, channel);
+<a href=#344 id=344 data-nosnippet>344</a>		<a href="DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[TauriIPCServer] Listener removed from channel: {}"</span>, channel);
 <a href=#345 id=345 data-nosnippet>345</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#346 id=346 data-nosnippet>346</a>	}
 <a href=#347 id=347 data-nosnippet>347</a>
@@ -464,7 +464,7 @@
 <a href=#464 id=464 data-nosnippet>464</a>			<span class="kw-2">*</span><a href="#460">is_connected</a> = <span class="bool-val">false</span>;
 <a href=#465 id=465 data-nosnippet>465</a>		}
 <a href=#466 id=466 data-nosnippet>466</a>
-<a href=#467 id=467 data-nosnippet>467</a>		<a href="DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[TauriIPCServer] IPC Server disposed"</span>);
+<a href=#467 id=467 data-nosnippet>467</a>		<a href="DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[TauriIPCServer] IPC Server disposed"</span>);
 <a href=#468 id=468 data-nosnippet>468</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#469 id=469 data-nosnippet>469</a>	}
 <a href=#470 id=470 data-nosnippet>470</a>
@@ -669,7 +669,7 @@
 <a href=#669 id=669 data-nosnippet>669</a>	<span class="doccomment">/// Create a new connection handle with health monitoring
 <a href=#670 id=670 data-nosnippet>670</a>	</span><span class="kw">pub fn </span>new() -&gt; <span class="self">Self </span>{
 <a href=#671 id=671 data-nosnippet>671</a>		<span class="self">Self </span>{
-<a href=#672 id=672 data-nosnippet>672</a>			id:uuid::<a href="https://docs.rs/uuid/1.23.0/uuid/struct.Uuid.html">Uuid</a>::<a href="https://docs.rs/uuid/1.23.0/uuid/struct.Uuid.html#method.new_v4">new_v4</a>().<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
+<a href=#672 id=672 data-nosnippet>672</a>			id:uuid::<a href="https://docs.rs/uuid/1.23.1/uuid/struct.Uuid.html">Uuid</a>::<a href="https://docs.rs/uuid/1.23.1/uuid/struct.Uuid.html#method.new_v4">new_v4</a>().<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
 <a href=#673 id=673 data-nosnippet>673</a>			created_at:std::time::<a href="https://doc.rust-lang.org/nightly/std/time/struct.Instant.html">Instant</a>::<a href="https://doc.rust-lang.org/nightly/std/time/struct.Instant.html#method.now">now</a>(),
 <a href=#674 id=674 data-nosnippet>674</a>			last_used:std::time::<a href="https://doc.rust-lang.org/nightly/std/time/struct.Instant.html">Instant</a>::<a href="https://doc.rust-lang.org/nightly/std/time/struct.Instant.html#method.now">now</a>(),
 <a href=#675 id=675 data-nosnippet>675</a>			health_score:<span class="number">100.0</span>,

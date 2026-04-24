@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["RegisterDebugAdapter","StartDebugging","StopDebugging"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["DebounceWindow"],"fn":["CompileGlobToRegex","MapEventKind"],"struct":["WatcherEntry","WatcherState"]};

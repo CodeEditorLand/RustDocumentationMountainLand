@@ -159,7 +159,7 @@
 <a href=#159 id=159 data-nosnippet>159</a><span class="kw">use </span>serde::{<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>};
 <a href=#160 id=160 data-nosnippet>160</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#161 id=161 data-nosnippet>161</a>
-<a href=#162 id=162 data-nosnippet>162</a><span class="kw">use </span><a href="MountainEnvironment.rs.html#221-231"><span class="kw">super</span>::MountainEnvironment::MountainEnvironment</a>;
+<a href=#162 id=162 data-nosnippet>162</a><span class="kw">use </span><a href="MountainEnvironment.rs.html#225-235"><span class="kw">super</span>::MountainEnvironment::MountainEnvironment</a>;
 <a href=#163 id=163 data-nosnippet>163</a>
 <a href=#164 id=164 data-nosnippet>164</a><span class="doccomment">/// Represents a Webview message
 <a href=#165 id=165 data-nosnippet>165</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
@@ -191,14 +191,14 @@
 <a href=#191 id=191 data-nosnippet>191</a>
 <a href=#192 id=192 data-nosnippet>192</a><span class="comment">// Private submodules containing the actual implementation
 <a href=#193 id=193 data-nosnippet>193</a></span><span class="attr">#[path = <span class="string">"WebviewProvider/Lifecycle.rs"</span>]
-<a href=#194 id=194 data-nosnippet>194</a></span><span class="kw">mod </span><a href="WebviewProvider/Lifecycle.rs.html#1-193">Lifecycle</a>;
+<a href=#194 id=194 data-nosnippet>194</a></span><span class="kw">mod </span><a href="WebviewProvider/Lifecycle.rs.html#1-194">Lifecycle</a>;
 <a href=#195 id=195 data-nosnippet>195</a><span class="attr">#[path = <span class="string">"WebviewProvider/Configuration.rs"</span>]
 <a href=#196 id=196 data-nosnippet>196</a></span><span class="kw">mod </span><a href="WebviewProvider/Configuration.rs.html#1-96">Configuration</a>;
 <a href=#197 id=197 data-nosnippet>197</a><span class="attr">#[path = <span class="string">"WebviewProvider/Messaging.rs"</span>]
 <a href=#198 id=198 data-nosnippet>198</a></span><span class="kw">mod </span><a href="WebviewProvider/Messaging.rs.html#1-95">Messaging</a>;
 <a href=#199 id=199 data-nosnippet>199</a>
 <a href=#200 id=200 data-nosnippet>200</a><span class="attr">#[async_trait]
-<a href=#201 id=201 data-nosnippet>201</a></span><span class="kw">impl </span>WebviewProvider <span class="kw">for </span><a href="MountainEnvironment.rs.html#221-231">MountainEnvironment</a> {
+<a href=#201 id=201 data-nosnippet>201</a></span><span class="kw">impl </span>WebviewProvider <span class="kw">for </span><a href="MountainEnvironment.rs.html#225-235">MountainEnvironment</a> {
 <a href=#202 id=202 data-nosnippet>202</a>	<span class="doccomment">/// Creates a new Webview panel with proper security isolation.
 <a href=#203 id=203 data-nosnippet>203</a>	</span><span class="kw">async fn </span>CreateWebviewPanel(
 <a href=#204 id=204 data-nosnippet>204</a>		<span class="kw-2">&amp;</span><a class="self" href="#204">self</a>,
@@ -209,7 +209,7 @@
 <a href=#209 id=209 data-nosnippet>209</a>		<a href="#209">panel_options_value</a>:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#210 id=210 data-nosnippet>210</a>		<a href="#210">content_options_value</a>:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#211 id=211 data-nosnippet>211</a>	) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, CommonError&gt; {
-<a href=#212 id=212 data-nosnippet>212</a>		Lifecycle::<a href="WebviewProvider/Lifecycle.rs.html#20-113">create_webview_panel_impl</a>(
+<a href=#212 id=212 data-nosnippet>212</a>		Lifecycle::<a href="WebviewProvider/Lifecycle.rs.html#21-114">create_webview_panel_impl</a>(
 <a href=#213 id=213 data-nosnippet>213</a>			<a class="self" href="#204">self</a>,
 <a href=#214 id=214 data-nosnippet>214</a>			<a href="#205">extension_data_value</a>,
 <a href=#215 id=215 data-nosnippet>215</a>			<a href="#206">view_type</a>,
@@ -223,12 +223,12 @@
 <a href=#223 id=223 data-nosnippet>223</a>
 <a href=#224 id=224 data-nosnippet>224</a>	<span class="doccomment">/// Disposes a Webview panel and cleans up all associated resources.
 <a href=#225 id=225 data-nosnippet>225</a>	</span><span class="kw">async fn </span>DisposeWebviewPanel(<span class="kw-2">&amp;</span><a class="self" href="#225">self</a>, <a href="#225">handle</a>:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
-<a href=#226 id=226 data-nosnippet>226</a>		Lifecycle::<a href="WebviewProvider/Lifecycle.rs.html#116-150">dispose_webview_panel_impl</a>(<a class="self" href="#225">self</a>, <a href="#225">handle</a>).<span class="kw">await
+<a href=#226 id=226 data-nosnippet>226</a>		Lifecycle::<a href="WebviewProvider/Lifecycle.rs.html#117-151">dispose_webview_panel_impl</a>(<a class="self" href="#225">self</a>, <a href="#225">handle</a>).<span class="kw">await
 <a href=#227 id=227 data-nosnippet>227</a>	</span>}
 <a href=#228 id=228 data-nosnippet>228</a>
 <a href=#229 id=229 data-nosnippet>229</a>	<span class="doccomment">/// Reveals (shows and focuses) a Webview panel.
 <a href=#230 id=230 data-nosnippet>230</a>	</span><span class="kw">async fn </span>RevealWebviewPanel(<span class="kw-2">&amp;</span><a class="self" href="#230">self</a>, <a href="#230">handle</a>:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="#230">_show_options_value</a>:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
-<a href=#231 id=231 data-nosnippet>231</a>		Lifecycle::<a href="WebviewProvider/Lifecycle.rs.html#153-193">reveal_webview_panel_impl</a>(<a class="self" href="#230">self</a>, <a href="#230">handle</a>, <a href="#230">_show_options_value</a>).<span class="kw">await
+<a href=#231 id=231 data-nosnippet>231</a>		Lifecycle::<a href="WebviewProvider/Lifecycle.rs.html#154-194">reveal_webview_panel_impl</a>(<a class="self" href="#230">self</a>, <a href="#230">handle</a>, <a href="#230">_show_options_value</a>).<span class="kw">await
 <a href=#232 id=232 data-nosnippet>232</a>	</span>}
 <a href=#233 id=233 data-nosnippet>233</a>
 <a href=#234 id=234 data-nosnippet>234</a>	<span class="doccomment">/// Sets Webview options (title, icon, etc.).

@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["handle_history_can_go_back","handle_history_can_go_forward","handle_history_clear","handle_history_get_stack","handle_history_go_back","handle_history_go_forward","handle_history_push"]};

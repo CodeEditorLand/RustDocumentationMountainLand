@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["detect_dark_mode","handle_native_find_free_port","handle_native_get_color_scheme","handle_native_is_fullscreen","handle_native_is_maximized","handle_native_os_properties","handle_native_os_statistics","handle_native_pick_folder","handle_native_show_open_dialog"]};

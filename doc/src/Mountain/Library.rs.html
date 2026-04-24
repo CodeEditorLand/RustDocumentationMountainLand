@@ -76,12 +76,12 @@
 <a href=#76 id=76 data-nosnippet>76</a>
 <a href=#77 id=77 data-nosnippet>77</a><span class="kw">pub mod </span><a href="ApplicationState/mod.rs.html#1-222">ApplicationState</a>;
 <a href=#78 id=78 data-nosnippet>78</a>
-<a href=#79 id=79 data-nosnippet>79</a><span class="kw">pub mod </span><a href="Environment/mod.rs.html#1-114">Environment</a>;
+<a href=#79 id=79 data-nosnippet>79</a><span class="kw">pub mod </span><a href="Environment/mod.rs.html#1-116">Environment</a>;
 <a href=#80 id=80 data-nosnippet>80</a>
 <a href=#81 id=81 data-nosnippet>81</a><span class="kw">pub mod </span><a href="RunTime/mod.rs.html#1-65">RunTime</a>;
 <a href=#82 id=82 data-nosnippet>82</a>
 <a href=#83 id=83 data-nosnippet>83</a><span class="comment">// Communication
-<a href=#84 id=84 data-nosnippet>84</a></span><span class="kw">pub mod </span><a href="IPC/mod.rs.html#1-166">IPC</a>;
+<a href=#84 id=84 data-nosnippet>84</a></span><span class="kw">pub mod </span><a href="IPC/mod.rs.html#1-185">IPC</a>;
 <a href=#85 id=85 data-nosnippet>85</a>
 <a href=#86 id=86 data-nosnippet>86</a><span class="kw">pub mod </span><a href="Air/mod.rs.html#1-80">Air</a>;
 <a href=#87 id=87 data-nosnippet>87</a>
@@ -90,11 +90,11 @@
 <a href=#90 id=90 data-nosnippet>90</a><span class="kw">pub mod </span><a href="RPC/mod.rs.html#1-115">RPC</a>;
 <a href=#91 id=91 data-nosnippet>91</a>
 <a href=#92 id=92 data-nosnippet>92</a><span class="comment">// Services
-<a href=#93 id=93 data-nosnippet>93</a></span><span class="kw">pub mod </span><a href="ProcessManagement/mod.rs.html#1-56">ProcessManagement</a>;
+<a href=#93 id=93 data-nosnippet>93</a></span><span class="kw">pub mod </span><a href="ProcessManagement/mod.rs.html#1-58">ProcessManagement</a>;
 <a href=#94 id=94 data-nosnippet>94</a>
 <a href=#95 id=95 data-nosnippet>95</a><span class="kw">pub mod </span><a href="FileSystem/mod.rs.html#1-37">FileSystem</a>;
 <a href=#96 id=96 data-nosnippet>96</a>
-<a href=#97 id=97 data-nosnippet>97</a><span class="kw">pub mod </span><a href="ExtensionManagement/mod.rs.html#1-34">ExtensionManagement</a>;
+<a href=#97 id=97 data-nosnippet>97</a><span class="kw">pub mod </span><a href="ExtensionManagement/mod.rs.html#1-36">ExtensionManagement</a>;
 <a href=#98 id=98 data-nosnippet>98</a>
 <a href=#99 id=99 data-nosnippet>99</a><span class="comment">// Commands
 <a href=#100 id=100 data-nosnippet>100</a></span><span class="kw">pub mod </span><a href="Command/mod.rs.html#1-88">Command</a>;
@@ -103,10 +103,13 @@
 <a href=#103 id=103 data-nosnippet>103</a>
 <a href=#104 id=104 data-nosnippet>104</a><span class="kw">pub mod </span><a href="Workspace/mod.rs.html#1-121">Workspace</a>;
 <a href=#105 id=105 data-nosnippet>105</a>
-<a href=#106 id=106 data-nosnippet>106</a><span class="comment">// Entry Point
-<a href=#107 id=107 data-nosnippet>107</a></span><span class="kw">pub mod </span><a href="Binary/mod.rs.html#1-141">Binary</a>;
+<a href=#106 id=106 data-nosnippet>106</a><span class="comment">// Tier-gating runtime banner
+<a href=#107 id=107 data-nosnippet>107</a></span><span class="kw">pub mod </span><a href="LandFixTier.rs.html#1-65">LandFixTier</a>;
 <a href=#108 id=108 data-nosnippet>108</a>
-<a href=#109 id=109 data-nosnippet>109</a><span class="doccomment">/// Main entry point for both mobile and desktop builds.
-<a href=#110 id=110 data-nosnippet>110</a></span><span class="attr">#[cfg_attr(mobile, tauri::mobile_entry_point)]
-<a href=#111 id=111 data-nosnippet>111</a></span><span class="kw">pub fn </span><a href="../../Mountain/fn.main.html">main</a>() { Binary::Main::<a href="Binary/Main/Entry.rs.html#136-409">Main</a>(); }
+<a href=#109 id=109 data-nosnippet>109</a><span class="comment">// Entry Point
+<a href=#110 id=110 data-nosnippet>110</a></span><span class="kw">pub mod </span><a href="Binary/mod.rs.html#1-141">Binary</a>;
+<a href=#111 id=111 data-nosnippet>111</a>
+<a href=#112 id=112 data-nosnippet>112</a><span class="doccomment">/// Main entry point for both mobile and desktop builds.
+<a href=#113 id=113 data-nosnippet>113</a></span><span class="attr">#[cfg_attr(mobile, tauri::mobile_entry_point)]
+<a href=#114 id=114 data-nosnippet>114</a></span><span class="kw">pub fn </span><a href="../../Mountain/fn.main.html">main</a>() { Binary::Main::<a href="Binary/Main/Entry.rs.html#137-607">Main</a>(); }
 </code></pre></div></section></main></body></html>

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["ApplicationRoot","ChannelPriority","JsonValueHelpers","MetadataEncoding","PathExtraction","RecentlyOpened","UserdataDir"]};

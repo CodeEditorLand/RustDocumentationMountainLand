@@ -82,11 +82,11 @@
 <a href=#82 id=82 data-nosnippet>82</a><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json</a>};
 <a href=#83 id=83 data-nosnippet>83</a><span class="kw">use </span><a href="https://docs.rs/url/2.5.7/url/struct.Url.html">url::Url</a>;
 <a href=#84 id=84 data-nosnippet>84</a>
-<a href=#85 id=85 data-nosnippet>85</a><span class="kw">use </span><a href="MountainEnvironment.rs.html#221-231"><span class="kw">super</span>::MountainEnvironment::MountainEnvironment</a>;
-<a href=#86 id=86 data-nosnippet>86</a><span class="kw">use </span><a href="../IPC/DevLog.rs.html#150-185"><span class="kw">crate</span>::dev_log</a>;
+<a href=#85 id=85 data-nosnippet>85</a><span class="kw">use </span><a href="MountainEnvironment.rs.html#225-235"><span class="kw">super</span>::MountainEnvironment::MountainEnvironment</a>;
+<a href=#86 id=86 data-nosnippet>86</a><span class="kw">use </span><a href="../IPC/DevLog.rs.html#589-630"><span class="kw">crate</span>::dev_log</a>;
 <a href=#87 id=87 data-nosnippet>87</a>
 <a href=#88 id=88 data-nosnippet>88</a><span class="attr">#[async_trait]
-<a href=#89 id=89 data-nosnippet>89</a></span><span class="kw">impl </span>DebugService <span class="kw">for </span><a href="MountainEnvironment.rs.html#221-231">MountainEnvironment</a> {
+<a href=#89 id=89 data-nosnippet>89</a></span><span class="kw">impl </span>DebugService <span class="kw">for </span><a href="MountainEnvironment.rs.html#225-235">MountainEnvironment</a> {
 <a href=#90 id=90 data-nosnippet>90</a>	<span class="kw">async fn </span>RegisterDebugConfigurationProvider(
 <a href=#91 id=91 data-nosnippet>91</a>		<span class="kw-2">&amp;</span><a class="self" href="#91">self</a>,
 <a href=#92 id=92 data-nosnippet>92</a>
@@ -104,7 +104,7 @@
 <a href=#104 id=104 data-nosnippet>104</a>			});
 <a href=#105 id=105 data-nosnippet>105</a>		}
 <a href=#106 id=106 data-nosnippet>106</a>
-<a href=#107 id=107 data-nosnippet>107</a>		<a href="../IPC/DevLog.rs.html#150-185">dev_log!</a>(
+<a href=#107 id=107 data-nosnippet>107</a>		<a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(
 <a href=#108 id=108 data-nosnippet>108</a>			<span class="string">"exthost"</span>,
 <a href=#109 id=109 data-nosnippet>109</a>			<span class="string">"[DebugProvider] Registering DebugConfigurationProvider for type '{}' (handle: {}, sidecar: {})"</span>,
 <a href=#110 id=110 data-nosnippet>110</a>			DebugType,
@@ -139,7 +139,7 @@
 <a href=#139 id=139 data-nosnippet>139</a>			});
 <a href=#140 id=140 data-nosnippet>140</a>		}
 <a href=#141 id=141 data-nosnippet>141</a>
-<a href=#142 id=142 data-nosnippet>142</a>		<a href="../IPC/DevLog.rs.html#150-185">dev_log!</a>(
+<a href=#142 id=142 data-nosnippet>142</a>		<a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(
 <a href=#143 id=143 data-nosnippet>143</a>			<span class="string">"exthost"</span>,
 <a href=#144 id=144 data-nosnippet>144</a>			<span class="string">"[DebugProvider] Registering DebugAdapterDescriptorFactory for type '{}' (handle: {}, sidecar: {})"</span>,
 <a href=#145 id=145 data-nosnippet>145</a>			DebugType,
@@ -158,8 +158,8 @@
 <a href=#158 id=158 data-nosnippet>158</a>	}
 <a href=#159 id=159 data-nosnippet>159</a>
 <a href=#160 id=160 data-nosnippet>160</a>	<span class="kw">async fn </span>StartDebugging(<span class="kw-2">&amp;</span><a class="self" href="#160">self</a>, <a href="#160">_FolderURI</a>:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>&gt;, <a href="#160">Configuration</a>:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, CommonError&gt; {
-<a href=#161 id=161 data-nosnippet>161</a>		<span class="kw">let </span>SessionID = uuid::<a href="https://docs.rs/uuid/1.23.0/uuid/struct.Uuid.html">Uuid</a>::<a href="https://docs.rs/uuid/1.23.0/uuid/struct.Uuid.html#method.new_v4">new_v4</a>().<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>();
-<a href=#162 id=162 data-nosnippet>162</a>		<a href="../IPC/DevLog.rs.html#150-185">dev_log!</a>(
+<a href=#161 id=161 data-nosnippet>161</a>		<span class="kw">let </span>SessionID = uuid::<a href="https://docs.rs/uuid/1.23.1/uuid/struct.Uuid.html">Uuid</a>::<a href="https://docs.rs/uuid/1.23.1/uuid/struct.Uuid.html#method.new_v4">new_v4</a>().<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>();
+<a href=#162 id=162 data-nosnippet>162</a>		<a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(
 <a href=#163 id=163 data-nosnippet>163</a>			<span class="string">"exthost"</span>,
 <a href=#164 id=164 data-nosnippet>164</a>			<span class="string">"[DebugProvider] Starting debug session '{}' with config: {:?}"</span>,
 <a href=#165 id=165 data-nosnippet>165</a>			SessionID,
@@ -186,12 +186,12 @@
 <a href=#186 id=186 data-nosnippet>186</a>		</span><span class="kw">let </span>TargetSideCar = <span class="string">"cocoon-main"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>();
 <a href=#187 id=187 data-nosnippet>187</a>
 <a href=#188 id=188 data-nosnippet>188</a>		<span class="comment">// 1. Resolve configuration (Reverse-RPC to Cocoon)
-<a href=#189 id=189 data-nosnippet>189</a>		</span><a href="../IPC/DevLog.rs.html#150-185">dev_log!</a>(
+<a href=#189 id=189 data-nosnippet>189</a>		</span><a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(
 <a href=#190 id=190 data-nosnippet>190</a>			<span class="string">"exthost"</span>,
 <a href=#191 id=191 data-nosnippet>191</a>			<span class="string">"[DebugProvider] Resolving debug configuration for type '{}'"</span>,
 <a href=#192 id=192 data-nosnippet>192</a>			DebugType
 <a href=#193 id=193 data-nosnippet>193</a>		);
-<a href=#194 id=194 data-nosnippet>194</a>		<a href="../IPC/DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"exthost"</span>, <span class="string">"[DebugProvider] Resolving debug configuration..."</span>);
+<a href=#194 id=194 data-nosnippet>194</a>		<a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"exthost"</span>, <span class="string">"[DebugProvider] Resolving debug configuration..."</span>);
 <a href=#195 id=195 data-nosnippet>195</a>		<span class="kw">let </span>ResolveConfigMethod = <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"{}$resolveDebugConfiguration"</span>, ProxyTarget::ExtHostDebug.GetTargetPrefix());
 <a href=#196 id=196 data-nosnippet>196</a>		<span class="kw">let </span>ResolvedConfig = <a href="#169">IPCProvider</a>
 <a href=#197 id=197 data-nosnippet>197</a>			.SendRequestToSideCar(
@@ -203,7 +203,7 @@
 <a href=#203 id=203 data-nosnippet>203</a>			.<span class="kw">await</span><span class="question-mark">?</span>;
 <a href=#204 id=204 data-nosnippet>204</a>
 <a href=#205 id=205 data-nosnippet>205</a>		<span class="comment">// 2. Get the Debug Adapter Descriptor (Reverse-RPC to Cocoon)
-<a href=#206 id=206 data-nosnippet>206</a>		</span><a href="../IPC/DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"exthost"</span>, <span class="string">"[DebugProvider] Creating debug adapter descriptor..."</span>);
+<a href=#206 id=206 data-nosnippet>206</a>		</span><a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"exthost"</span>, <span class="string">"[DebugProvider] Creating debug adapter descriptor..."</span>);
 <a href=#207 id=207 data-nosnippet>207</a>		<span class="kw">let </span>CreateDescriptorMethod =
 <a href=#208 id=208 data-nosnippet>208</a>			<a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"{}$createDebugAdapterDescriptor"</span>, ProxyTarget::ExtHostDebug.GetTargetPrefix());
 <a href=#209 id=209 data-nosnippet>209</a>		<span class="kw">let </span>Descriptor = <a href="#169">IPCProvider</a>
@@ -216,7 +216,7 @@
 <a href=#216 id=216 data-nosnippet>216</a>			.<span class="kw">await</span><span class="question-mark">?</span>;
 <a href=#217 id=217 data-nosnippet>217</a>
 <a href=#218 id=218 data-nosnippet>218</a>		<span class="comment">// 3. Spawn the Debug Adapter process based on the descriptor.
-<a href=#219 id=219 data-nosnippet>219</a>		</span><a href="../IPC/DevLog.rs.html#150-185">dev_log!</a>(
+<a href=#219 id=219 data-nosnippet>219</a>		</span><a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(
 <a href=#220 id=220 data-nosnippet>220</a>			<span class="string">"exthost"</span>,
 <a href=#221 id=221 data-nosnippet>221</a>			<span class="string">"[DebugProvider] Spawning Debug Adapter based on descriptor: {:?}"</span>,
 <a href=#222 id=222 data-nosnippet>222</a>			Descriptor
@@ -238,12 +238,12 @@
 <a href=#238 id=238 data-nosnippet>238</a>		// - Handle adapter launch failures with descriptive error messages and proper
 <a href=#239 id=239 data-nosnippet>239</a>		//   session state cleanup
 <a href=#240 id=240 data-nosnippet>240</a>
-<a href=#241 id=241 data-nosnippet>241</a>		</span><a href="../IPC/DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"exthost"</span>, <span class="string">"[DebugProvider] Debug session '{}' started (simulation)."</span>, SessionID);
+<a href=#241 id=241 data-nosnippet>241</a>		</span><a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"exthost"</span>, <span class="string">"[DebugProvider] Debug session '{}' started (simulation)."</span>, SessionID);
 <a href=#242 id=242 data-nosnippet>242</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="#161">SessionID</a>)
 <a href=#243 id=243 data-nosnippet>243</a>	}
 <a href=#244 id=244 data-nosnippet>244</a>
 <a href=#245 id=245 data-nosnippet>245</a>	<span class="kw">async fn </span>SendCommand(<span class="kw-2">&amp;</span><a class="self" href="#245">self</a>, <a href="#245">SessionID</a>:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="#245">Command</a>:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="#245">Arguments</a>:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, CommonError&gt; {
-<a href=#246 id=246 data-nosnippet>246</a>		<a href="../IPC/DevLog.rs.html#150-185">dev_log!</a>(
+<a href=#246 id=246 data-nosnippet>246</a>		<a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(
 <a href=#247 id=247 data-nosnippet>247</a>			<span class="string">"exthost"</span>,
 <a href=#248 id=248 data-nosnippet>248</a>			<span class="string">"[DebugProvider] SendCommand for session '{}' (command: '{}', args: {:?})"</span>,
 <a href=#249 id=249 data-nosnippet>249</a>			SessionID,
@@ -279,5 +279,31 @@
 <a href=#279 id=279 data-nosnippet>279</a>
 <a href=#280 id=280 data-nosnippet>280</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="#267">response</a>)
 <a href=#281 id=281 data-nosnippet>281</a>	}
-<a href=#282 id=282 data-nosnippet>282</a>}
+<a href=#282 id=282 data-nosnippet>282</a>
+<a href=#283 id=283 data-nosnippet>283</a>	<span class="kw">async fn </span>StopDebugging(<span class="kw-2">&amp;</span><a class="self" href="#283">self</a>, <a href="#283">SessionID</a>:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
+<a href=#284 id=284 data-nosnippet>284</a>		<a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"exthost"</span>, <span class="string">"[DebugProvider] StopDebugging request for session '{}'"</span>, SessionID);
+<a href=#285 id=285 data-nosnippet>285</a>
+<a href=#286 id=286 data-nosnippet>286</a>		<span class="comment">// TODO: When StartDebugging stores spawned adapters in
+<a href=#287 id=287 data-nosnippet>287</a>		// ApplicationState.Feature.Debug, look up the session by ID, send a DAP
+<a href=#288 id=288 data-nosnippet>288</a>		// `disconnect` request, terminate the adapter process, and emit
+<a href=#289 id=289 data-nosnippet>289</a>		// `$onDidTerminateDebugSession` to Cocoon. The current StartDebugging
+<a href=#290 id=290 data-nosnippet>290</a>		// impl doesn't persist sessions yet (see TODO block at line 218+), so there is
+<a href=#291 id=291 data-nosnippet>291</a>		// nothing concrete to tear down. Always returning Ok keeps extensions from
+<a href=#292 id=292 data-nosnippet>292</a>		// hanging on the `vscode.debug.stopDebugging()` promise.
+<a href=#293 id=293 data-nosnippet>293</a>		</span><span class="kw">let </span>IPCProvider:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<span class="kw">dyn </span>IPCProvider&gt; = <a class="self" href="#283">self</a>.Require();
+<a href=#294 id=294 data-nosnippet>294</a>		<span class="kw">let </span>TerminateMethod = <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"{}$onDidTerminateDebugSession"</span>, ProxyTarget::ExtHostDebug.GetTargetPrefix());
+<a href=#295 id=295 data-nosnippet>295</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(error) = <a href="#293">IPCProvider</a>
+<a href=#296 id=296 data-nosnippet>296</a>			.SendNotificationToSideCar(<span class="string">"cocoon-main"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(), <a href="#294">TerminateMethod</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json!</a>([SessionID.clone()]))
+<a href=#297 id=297 data-nosnippet>297</a>			.<span class="kw">await
+<a href=#298 id=298 data-nosnippet>298</a>		</span>{
+<a href=#299 id=299 data-nosnippet>299</a>			<a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(
+<a href=#300 id=300 data-nosnippet>300</a>				<span class="string">"exthost"</span>,
+<a href=#301 id=301 data-nosnippet>301</a>				<span class="string">"warn: [DebugProvider] StopDebugging notification failed for '{}': {:?}"</span>,
+<a href=#302 id=302 data-nosnippet>302</a>				SessionID,
+<a href=#303 id=303 data-nosnippet>303</a>				error
+<a href=#304 id=304 data-nosnippet>304</a>			);
+<a href=#305 id=305 data-nosnippet>305</a>		}
+<a href=#306 id=306 data-nosnippet>306</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
+<a href=#307 id=307 data-nosnippet>307</a>	}
+<a href=#308 id=308 data-nosnippet>308</a>}
 </code></pre></div></section></main></body></html>

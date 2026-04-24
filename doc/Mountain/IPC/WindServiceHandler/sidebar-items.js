@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"enum":["ConfigurationTarget"],"mod":["Command","Configuration","Decoration","Environment","Extension","FileSystem","History","Keybinding","Label","Lifecycle","Model","NativeHost","Notification","Output","Progress","QuickInput","Search","Storage","Terminal","TextFile","Theme","WorkingCopy","Workspace"],"struct":["ConfigurationOverridesDTO"]};

@@ -2,7 +2,7 @@
 <a href=#2 id=2 data-nosnippet>2</a>
 <a href=#3 id=3 data-nosnippet>3</a></span><span class="kw">use </span>CommonLibrary::{
 <a href=#4 id=4 data-nosnippet>4</a>	Configuration::DTO::{
-<a href=#5 id=5 data-nosnippet>5</a>		<a href="../../../../Mountain/IPC/WindServiceHandler/struct.ConfigurationOverridesDTO.html">ConfigurationOverridesDTO::ConfigurationOverridesDTO</a>,
+<a href=#5 id=5 data-nosnippet>5</a>		ConfigurationOverridesDTO::ConfigurationOverridesDTO,
 <a href=#6 id=6 data-nosnippet>6</a>		InspectResultDataDTO::InspectResultDataDTO,
 <a href=#7 id=7 data-nosnippet>7</a>	},
 <a href=#8 id=8 data-nosnippet>8</a>	Error::CommonError::CommonError,
@@ -10,13 +10,13 @@
 <a href=#10 id=10 data-nosnippet>10</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#11 id=11 data-nosnippet>11</a><span class="kw">use </span>tauri::Manager;
 <a href=#12 id=12 data-nosnippet>12</a>
-<a href=#13 id=13 data-nosnippet>13</a><span class="kw">use </span>crate::{<a href="../mod.rs.html#114">Environment::Utility</a>, <a href="../../IPC/DevLog.rs.html#150-185">dev_log</a>};
+<a href=#13 id=13 data-nosnippet>13</a><span class="kw">use </span>crate::{<a href="../mod.rs.html#116">Environment::Utility</a>, <a href="../../IPC/DevLog.rs.html#589-630">dev_log</a>};
 <a href=#14 id=14 data-nosnippet>14</a>
 <a href=#15 id=15 data-nosnippet>15</a><span class="doccomment">/// Inspects a configuration key to get its value from all relevant scopes.
 <a href=#16 id=16 data-nosnippet>16</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/ConfigurationProvider/InspectValue/fn.inspect_configuration_value.html">inspect_configuration_value</a>(
-<a href=#17 id=17 data-nosnippet>17</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>,
+<a href=#17 id=17 data-nosnippet>17</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
 <a href=#18 id=18 data-nosnippet>18</a>	key:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
-<a href=#19 id=19 data-nosnippet>19</a>	_overrides:<a href="../../../../Mountain/IPC/WindServiceHandler/struct.ConfigurationOverridesDTO.html">ConfigurationOverridesDTO</a>,
+<a href=#19 id=19 data-nosnippet>19</a>	_overrides:ConfigurationOverridesDTO,
 <a href=#20 id=20 data-nosnippet>20</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;InspectResultDataDTO&gt;, CommonError&gt; {
 <a href=#21 id=21 data-nosnippet>21</a>	<span class="macro">dev_log!</span>(<span class="string">"config"</span>, <span class="string">"[ConfigurationProvider] Inspecting key: {}"</span>, key);
 <a href=#22 id=22 data-nosnippet>22</a>

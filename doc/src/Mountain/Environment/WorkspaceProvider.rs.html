@@ -72,14 +72,14 @@
 <a href=#72 id=72 data-nosnippet>72</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#73 id=73 data-nosnippet>73</a><span class="kw">use </span><a href="https://docs.rs/url/2.5.7/url/struct.Url.html">url::Url</a>;
 <a href=#74 id=74 data-nosnippet>74</a>
-<a href=#75 id=75 data-nosnippet>75</a><span class="kw">use </span>super::{<a href="MountainEnvironment.rs.html#221-231">MountainEnvironment::MountainEnvironment</a>, <a href="mod.rs.html#114">Utility</a>};
-<a href=#76 id=76 data-nosnippet>76</a><span class="kw">use </span><a href="../IPC/DevLog.rs.html#150-185"><span class="kw">crate</span>::dev_log</a>;
+<a href=#75 id=75 data-nosnippet>75</a><span class="kw">use </span>super::{<a href="MountainEnvironment.rs.html#225-235">MountainEnvironment::MountainEnvironment</a>, <a href="mod.rs.html#116">Utility</a>};
+<a href=#76 id=76 data-nosnippet>76</a><span class="kw">use </span><a href="../IPC/DevLog.rs.html#589-630"><span class="kw">crate</span>::dev_log</a>;
 <a href=#77 id=77 data-nosnippet>77</a>
 <a href=#78 id=78 data-nosnippet>78</a><span class="attr">#[async_trait]
-<a href=#79 id=79 data-nosnippet>79</a></span><span class="kw">impl </span>WorkspaceProvider <span class="kw">for </span><a href="MountainEnvironment.rs.html#221-231">MountainEnvironment</a> {
+<a href=#79 id=79 data-nosnippet>79</a></span><span class="kw">impl </span>WorkspaceProvider <span class="kw">for </span><a href="MountainEnvironment.rs.html#225-235">MountainEnvironment</a> {
 <a href=#80 id=80 data-nosnippet>80</a>	<span class="doccomment">/// Retrieves information about all currently open workspace folders.
 <a href=#81 id=81 data-nosnippet>81</a>	</span><span class="kw">async fn </span>GetWorkspaceFoldersInfo(<span class="kw-2">&amp;</span><a class="self" href="#81">self</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;(<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>)&gt;, CommonError&gt; {
-<a href=#82 id=82 data-nosnippet>82</a>		<a href="../IPC/DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[WorkspaceProvider] Getting workspace folders info."</span>);
+<a href=#82 id=82 data-nosnippet>82</a>		<a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[WorkspaceProvider] Getting workspace folders info."</span>);
 <a href=#83 id=83 data-nosnippet>83</a>		<span class="kw">let </span>FoldersGuard = <a class="self" href="#81">self</a>
 <a href=#84 id=84 data-nosnippet>84</a>			.ApplicationState
 <a href=#85 id=85 data-nosnippet>85</a>			.Workspace
@@ -134,7 +134,7 @@
 <a href=#134 id=134 data-nosnippet>134</a>
 <a href=#135 id=135 data-nosnippet>135</a>	<span class="doccomment">/// Requests workspace trust from the user.
 <a href=#136 id=136 data-nosnippet>136</a>	</span><span class="kw">async fn </span>RequestWorkspaceTrust(<span class="kw-2">&amp;</span><a class="self" href="#136">self</a>, <a href="#136">_Options</a>:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>, CommonError&gt; {
-<a href=#137 id=137 data-nosnippet>137</a>		<a href="../IPC/DevLog.rs.html#150-185">dev_log!</a>(
+<a href=#137 id=137 data-nosnippet>137</a>		<a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(
 <a href=#138 id=138 data-nosnippet>138</a>			<span class="string">"workspaces"</span>,
 <a href=#139 id=139 data-nosnippet>139</a>			<span class="string">"warn: [WorkspaceProvider] RequestWorkspaceTrust is not implemented; defaulting to trusted."
 <a href=#140 id=140 data-nosnippet>140</a>		</span>);
@@ -150,7 +150,7 @@
 <a href=#150 id=150 data-nosnippet>150</a>		<span class="kw">_</span>:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
 <a href=#151 id=151 data-nosnippet>151</a>		<span class="kw">_</span>:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
 <a href=#152 id=152 data-nosnippet>152</a>	) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>&gt;, CommonError&gt; {
-<a href=#153 id=153 data-nosnippet>153</a>		<a href="../IPC/DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[WorkspaceProvider] FindFilesInWorkspace called"</span>);
+<a href=#153 id=153 data-nosnippet>153</a>		<a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[WorkspaceProvider] FindFilesInWorkspace called"</span>);
 <a href=#154 id=154 data-nosnippet>154</a>		<span class="comment">// Scan all workspace folders to find files matching the query pattern. This
 <a href=#155 id=155 data-nosnippet>155</a>		// integrates with FileSystemReader to traverse directories, apply glob and
 <a href=#156 id=156 data-nosnippet>156</a>		// exclude patterns, and return matching file URIs. Respect query parameters
@@ -162,7 +162,7 @@
 <a href=#162 id=162 data-nosnippet>162</a>
 <a href=#163 id=163 data-nosnippet>163</a>	<span class="doccomment">/// Opens a file in the workspace.
 <a href=#164 id=164 data-nosnippet>164</a>	</span><span class="kw">async fn </span>OpenFile(<span class="kw-2">&amp;</span><a class="self" href="#164">self</a>, <a href="#164">path</a>:<a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
-<a href=#165 id=165 data-nosnippet>165</a>		<a href="../IPC/DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[WorkspaceProvider] OpenFile called for: {:?}"</span>, path);
+<a href=#165 id=165 data-nosnippet>165</a>		<a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[WorkspaceProvider] OpenFile called for: {:?}"</span>, path);
 <a href=#166 id=166 data-nosnippet>166</a>		<span class="comment">// Open a file in the editor by delegating to the Workbench or command system.
 <a href=#167 id=167 data-nosnippet>167</a>		// Resolves the path relative to workspace roots, handles URI schemes (file://,
 <a href=#168 id=168 data-nosnippet>168</a>		// untitled:), and triggers the 'workbench.action.files.open' command or
@@ -174,10 +174,10 @@
 <a href=#174 id=174 data-nosnippet>174</a>}
 <a href=#175 id=175 data-nosnippet>175</a>
 <a href=#176 id=176 data-nosnippet>176</a><span class="attr">#[async_trait]
-<a href=#177 id=177 data-nosnippet>177</a></span><span class="kw">impl </span>WorkspaceEditApplier <span class="kw">for </span><a href="MountainEnvironment.rs.html#221-231">MountainEnvironment</a> {
+<a href=#177 id=177 data-nosnippet>177</a></span><span class="kw">impl </span>WorkspaceEditApplier <span class="kw">for </span><a href="MountainEnvironment.rs.html#225-235">MountainEnvironment</a> {
 <a href=#178 id=178 data-nosnippet>178</a>	<span class="doccomment">/// Applies a workspace edit to the workspace.
 <a href=#179 id=179 data-nosnippet>179</a>	</span><span class="kw">async fn </span>ApplyWorkspaceEdit(<span class="kw-2">&amp;</span><a class="self" href="#179">self</a>, <a href="#179">Edit</a>:WorkspaceEditDTO) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>, CommonError&gt; {
-<a href=#180 id=180 data-nosnippet>180</a>		<a href="../IPC/DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[WorkspaceEditApplier] Applying workspace edit"</span>);
+<a href=#180 id=180 data-nosnippet>180</a>		<a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[WorkspaceEditApplier] Applying workspace edit"</span>);
 <a href=#181 id=181 data-nosnippet>181</a>
 <a href=#182 id=182 data-nosnippet>182</a>		<span class="comment">// For now, just log the edit details
 <a href=#183 id=183 data-nosnippet>183</a>		</span><span class="kw">match </span><a href="#179">Edit</a> {
@@ -201,7 +201,7 @@
 <a href=#201 id=201 data-nosnippet>201</a>		// failure, emit before/after events for extension observability, and return
 <a href=#202 id=202 data-nosnippet>202</a>		// false if any edit fails with detailed error information. This enables
 <a href=#203 id=203 data-nosnippet>203</a>		// multi-file refactorings, code actions, and automated fixes.
-<a href=#204 id=204 data-nosnippet>204</a>		</span><a href="../IPC/DevLog.rs.html#150-185">dev_log!</a>(
+<a href=#204 id=204 data-nosnippet>204</a>		</span><a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(
 <a href=#205 id=205 data-nosnippet>205</a>			<span class="string">"workspaces"</span>,
 <a href=#206 id=206 data-nosnippet>206</a>			<span class="string">"warn: [WorkspaceEditApplier] ApplyWorkspaceEdit is not fully implemented"
 <a href=#207 id=207 data-nosnippet>207</a>		</span>);

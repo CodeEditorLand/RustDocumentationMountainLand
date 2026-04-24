@@ -66,26 +66,26 @@
 <a href=#66 id=66 data-nosnippet>66</a></span><span class="kw">use </span>std::{<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">collections::HashMap</a>, <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">sync::Arc</a>};
 <a href=#67 id=67 data-nosnippet>67</a>
 <a href=#68 id=68 data-nosnippet>68</a><span class="kw">use </span>CommonLibrary::Error::CommonError::CommonError;
-<a href=#69 id=69 data-nosnippet>69</a><span class="kw">use </span><a href="https://docs.rs/uuid/1.23.0/uuid/struct.Uuid.html">uuid::Uuid</a>;
+<a href=#69 id=69 data-nosnippet>69</a><span class="kw">use </span><a href="https://docs.rs/uuid/1.23.1/uuid/struct.Uuid.html">uuid::Uuid</a>;
 <a href=#70 id=70 data-nosnippet>70</a>
 <a href=#71 id=71 data-nosnippet>71</a><span class="attr">#[allow(unused_imports)]
 <a href=#72 id=72 data-nosnippet>72</a></span><span class="kw">use </span>super::{
-<a href=#73 id=73 data-nosnippet>73</a>	AirClient::{
-<a href=#74 id=74 data-nosnippet>74</a>		<a href="AirClient.rs.html#105-112">AirClient</a>,
-<a href=#75 id=75 data-nosnippet>75</a>		<a href="AirClient.rs.html#1217-1223">AirMetrics</a>,
-<a href=#76 id=76 data-nosnippet>76</a>		<a href="AirClient.rs.html#1203-1213">AirStatus</a>,
-<a href=#77 id=77 data-nosnippet>77</a>		<a href="AirClient.rs.html#1279-1281">DownloadStream</a>,
-<a href=#78 id=78 data-nosnippet>78</a>		<a href="AirClient.rs.html#1241-1252">DownloadStreamChunk</a>,
-<a href=#79 id=79 data-nosnippet>79</a>		<a href="AirClient.rs.html#1193-1199">ExtendedFileInfo</a>,
-<a href=#80 id=80 data-nosnippet>80</a>		<a href="AirClient.rs.html#1169-1173">FileInfo</a>,
-<a href=#81 id=81 data-nosnippet>81</a>		<a href="AirClient.rs.html#1184-1189">FileResult</a>,
-<a href=#82 id=82 data-nosnippet>82</a>		<a href="AirClient.rs.html#1177-1180">IndexInfo</a>,
-<a href=#83 id=83 data-nosnippet>83</a>		<a href="AirClient.rs.html#1227-1234">ResourceUsage</a>,
-<a href=#84 id=84 data-nosnippet>84</a>		<a href="AirClient.rs.html#1160-1165">UpdateInfo</a>,
-<a href=#85 id=85 data-nosnippet>85</a>	},
-<a href=#86 id=86 data-nosnippet>86</a>	<a href="AirClient.rs.html#98">AirClient::DEFAULT_AIR_SERVER_ADDRESS</a>,
+<a href=#73 id=73 data-nosnippet>73</a>	<a href="AirClient.rs.html#98">AirClient::DEFAULT_AIR_SERVER_ADDRESS</a>,
+<a href=#74 id=74 data-nosnippet>74</a>	AirClient::{
+<a href=#75 id=75 data-nosnippet>75</a>		<a href="AirClient.rs.html#105-112">AirClient</a>,
+<a href=#76 id=76 data-nosnippet>76</a>		<a href="AirClient.rs.html#1217-1223">AirMetrics</a>,
+<a href=#77 id=77 data-nosnippet>77</a>		<a href="AirClient.rs.html#1203-1213">AirStatus</a>,
+<a href=#78 id=78 data-nosnippet>78</a>		<a href="AirClient.rs.html#1279-1281">DownloadStream</a>,
+<a href=#79 id=79 data-nosnippet>79</a>		<a href="AirClient.rs.html#1241-1252">DownloadStreamChunk</a>,
+<a href=#80 id=80 data-nosnippet>80</a>		<a href="AirClient.rs.html#1193-1199">ExtendedFileInfo</a>,
+<a href=#81 id=81 data-nosnippet>81</a>		<a href="AirClient.rs.html#1169-1173">FileInfo</a>,
+<a href=#82 id=82 data-nosnippet>82</a>		<a href="AirClient.rs.html#1184-1189">FileResult</a>,
+<a href=#83 id=83 data-nosnippet>83</a>		<a href="AirClient.rs.html#1177-1180">IndexInfo</a>,
+<a href=#84 id=84 data-nosnippet>84</a>		<a href="AirClient.rs.html#1227-1234">ResourceUsage</a>,
+<a href=#85 id=85 data-nosnippet>85</a>		<a href="AirClient.rs.html#1160-1165">UpdateInfo</a>,
+<a href=#86 id=86 data-nosnippet>86</a>	},
 <a href=#87 id=87 data-nosnippet>87</a>};
-<a href=#88 id=88 data-nosnippet>88</a><span class="kw">use </span><a href="../IPC/DevLog.rs.html#150-185"><span class="kw">crate</span>::dev_log</a>;
+<a href=#88 id=88 data-nosnippet>88</a><span class="kw">use </span><a href="../IPC/DevLog.rs.html#589-630"><span class="kw">crate</span>::dev_log</a>;
 <a href=#89 id=89 data-nosnippet>89</a>
 <a href=#90 id=90 data-nosnippet>90</a><span class="comment">// ============================================================================
 <a href=#91 id=91 data-nosnippet>91</a>// AirServiceProvider - High-level API Implementation
@@ -194,7 +194,7 @@
 <a href=#194 id=194 data-nosnippet>194</a>	/// # Returns
 <a href=#195 id=195 data-nosnippet>195</a>	/// * `Self` - The new provider
 <a href=#196 id=196 data-nosnippet>196</a>	</span><span class="kw">pub fn </span>from_client(client:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="AirClient.rs.html#105-112">AirClient</a>&gt;) -&gt; <span class="self">Self </span>{
-<a href=#197 id=197 data-nosnippet>197</a>		<a href="../IPC/DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"grpc"</span>, <span class="string">"[AirServiceProvider] Creating AirServiceProvider from existing client"</span>);
+<a href=#197 id=197 data-nosnippet>197</a>		<a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"grpc"</span>, <span class="string">"[AirServiceProvider] Creating AirServiceProvider from existing client"</span>);
 <a href=#198 id=198 data-nosnippet>198</a>		<span class="self">Self </span>{ <a href="#196">client</a> }
 <a href=#199 id=199 data-nosnippet>199</a>	}
 <a href=#200 id=200 data-nosnippet>200</a>
@@ -738,7 +738,7 @@
 <a href=#738 id=738 data-nosnippet>738</a>/// println!("Request ID: {}", id);
 <a href=#739 id=739 data-nosnippet>739</a>/// // Output example: Request ID: a1b2c3d4e5f67890...
 <a href=#740 id=740 data-nosnippet>740</a>/// ```
-<a href=#741 id=741 data-nosnippet>741</a></span><span class="kw">pub fn </span><a href="../../../Mountain/Air/AirServiceProvider/fn.generate_request_id.html">generate_request_id</a>() -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a> { <a href="https://docs.rs/uuid/1.23.0/uuid/struct.Uuid.html">Uuid</a>::<a href="https://docs.rs/uuid/1.23.0/uuid/struct.Uuid.html#method.new_v4">new_v4</a>().<a href="https://docs.rs/uuid/1.23.0/uuid/struct.Uuid.html#method.simple">simple</a>().<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>() }
+<a href=#741 id=741 data-nosnippet>741</a></span><span class="kw">pub fn </span><a href="../../../Mountain/Air/AirServiceProvider/fn.generate_request_id.html">generate_request_id</a>() -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a> { <a href="https://docs.rs/uuid/1.23.1/uuid/struct.Uuid.html">Uuid</a>::<a href="https://docs.rs/uuid/1.23.1/uuid/struct.Uuid.html#method.new_v4">new_v4</a>().<a href="https://docs.rs/uuid/1.23.1/uuid/struct.Uuid.html#method.simple">simple</a>().<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>() }
 <a href=#742 id=742 data-nosnippet>742</a>
 <a href=#743 id=743 data-nosnippet>743</a><span class="comment">// ============================================================================
 <a href=#744 id=744 data-nosnippet>744</a>// Tests

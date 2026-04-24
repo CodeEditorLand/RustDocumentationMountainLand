@@ -30,7 +30,7 @@
 <a href=#30 id=30 data-nosnippet>30</a>
 <a href=#31 id=31 data-nosnippet>31</a></span><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html">std::path::Path</a>;
 <a href=#32 id=32 data-nosnippet>32</a>
-<a href=#33 id=33 data-nosnippet>33</a><span class="kw">use </span><a href="../../../IPC/DevLog.rs.html#150-185"><span class="kw">crate</span>::dev_log</a>;
+<a href=#33 id=33 data-nosnippet>33</a><span class="kw">use </span><a href="../../../IPC/DevLog.rs.html#589-630"><span class="kw">crate</span>::dev_log</a>;
 <a href=#34 id=34 data-nosnippet>34</a>
 <a href=#35 id=35 data-nosnippet>35</a><span class="doccomment">/// Resolves the absolute path for a Memento storage file based on scope.
 <a href=#36 id=36 data-nosnippet>36</a>///
@@ -56,7 +56,7 @@
 <a href=#56 id=56 data-nosnippet>56</a>
 <a href=#57 id=57 data-nosnippet>57</a>	<span class="kw">if </span><a href="#52">IsGlobalScope</a> {
 <a href=#58 id=58 data-nosnippet>58</a>		<span class="kw">let </span>path = <a href="#55">user_storage_base_path</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">"globalStorage.json"</span>);
-<a href=#59 id=59 data-nosnippet>59</a>		<a href="../../../IPC/DevLog.rs.html#150-185">dev_log!</a>(
+<a href=#59 id=59 data-nosnippet>59</a>		<a href="../../../IPC/DevLog.rs.html#589-630">dev_log!</a>(
 <a href=#60 id=60 data-nosnippet>60</a>			<span class="string">"storage"</span>,
 <a href=#61 id=61 data-nosnippet>61</a>			<span class="string">"[ResolveMementoStorageFilePath] Resolved global memento path: {}"</span>,
 <a href=#62 id=62 data-nosnippet>62</a>			path.display()
@@ -71,7 +71,7 @@
 <a href=#71 id=71 data-nosnippet>71</a>			.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="kw-2">&amp;</span><a href="#67">segment</a>)
 <a href=#72 id=72 data-nosnippet>72</a>			.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">"storage.json"</span>);
 <a href=#73 id=73 data-nosnippet>73</a>
-<a href=#74 id=74 data-nosnippet>74</a>		<a href="../../../IPC/DevLog.rs.html#150-185">dev_log!</a>(
+<a href=#74 id=74 data-nosnippet>74</a>		<a href="../../../IPC/DevLog.rs.html#589-630">dev_log!</a>(
 <a href=#75 id=75 data-nosnippet>75</a>			<span class="string">"storage"</span>,
 <a href=#76 id=76 data-nosnippet>76</a>			<span class="string">"[ResolveMementoStorageFilePath] Resolved workspace memento path: {}"</span>,
 <a href=#77 id=77 data-nosnippet>77</a>			path.display()

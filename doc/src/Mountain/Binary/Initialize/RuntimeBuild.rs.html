@@ -26,7 +26,7 @@
 <a href=#26 id=26 data-nosnippet>26</a>
 <a href=#27 id=27 data-nosnippet>27</a><span class="kw">use </span>Echo::Scheduler::{Scheduler::Scheduler, SchedulerBuilder::SchedulerBuilder};
 <a href=#28 id=28 data-nosnippet>28</a>
-<a href=#29 id=29 data-nosnippet>29</a><span class="kw">use </span><a href="../../IPC/DevLog.rs.html#150-185"><span class="kw">crate</span>::dev_log</a>;
+<a href=#29 id=29 data-nosnippet>29</a><span class="kw">use </span><a href="../../IPC/DevLog.rs.html#589-630"><span class="kw">crate</span>::dev_log</a>;
 <a href=#30 id=30 data-nosnippet>30</a>
 <a href=#31 id=31 data-nosnippet>31</a><span class="comment">// ============ Feature Flags ============
 <a href=#32 id=32 data-nosnippet>32</a>
@@ -65,7 +65,7 @@
 <a href=#65 id=65 data-nosnippet>65</a>		<span class="comment">// Validate worker count bounds
 <a href=#66 id=66 data-nosnippet>66</a>		</span><span class="kw">let </span>count = <a href="#64">count</a>.<a href="https://doc.rust-lang.org/nightly/core/cmp/trait.Ord.html#method.clamp">clamp</a>(<span class="number">1</span>, <span class="number">256</span>);
 <a href=#67 id=67 data-nosnippet>67</a>		<a href="#62">builder</a> = <a href="#62">builder</a>.WithWorkerCount(<a href="#66">count</a>);
-<a href=#68 id=68 data-nosnippet>68</a>		<a href="../../IPC/DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[RuntimeBuild] Configuring {} worker threads"</span>, count);
+<a href=#68 id=68 data-nosnippet>68</a>		<a href="../../IPC/DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[RuntimeBuild] Configuring {} worker threads"</span>, count);
 <a href=#69 id=69 data-nosnippet>69</a>	}
 <a href=#70 id=70 data-nosnippet>70</a>
 <a href=#71 id=71 data-nosnippet>71</a>	<a href="#62">builder</a>
@@ -102,7 +102,7 @@
 <a href=#102 id=102 data-nosnippet>102</a>///
 <a href=#103 id=103 data-nosnippet>103</a>/// Configured scheduler instance
 <a href=#104 id=104 data-nosnippet>104</a></span><span class="kw">pub fn </span><a href="../../../../Mountain/Binary/Initialize/RuntimeBuild/fn.BuildWithConfig.html">BuildWithConfig</a>(config:<a href="#35-39">SchedulerConfig</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;Scheduler&gt; {
-<a href=#105 id=105 data-nosnippet>105</a>	<a href="../../IPC/DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[RuntimeBuild] Initializing scheduler with config: {:?}"</span>, config);
+<a href=#105 id=105 data-nosnippet>105</a>	<a href="../../IPC/DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[RuntimeBuild] Initializing scheduler with config: {:?}"</span>, config);
 <a href=#106 id=106 data-nosnippet>106</a>
 <a href=#107 id=107 data-nosnippet>107</a>	<span class="kw">let </span>builder = <a href="#61-72">CreateBuilder</a>(<a href="#104">config</a>);
 <a href=#108 id=108 data-nosnippet>108</a>	<span class="kw">let </span>scheduler = <a href="#107">builder</a>.Build();
@@ -110,15 +110,15 @@
 <a href=#110 id=110 data-nosnippet>110</a>	<span class="attr">#[cfg(feature = <span class="string">"Telemetry"</span>)]
 <a href=#111 id=111 data-nosnippet>111</a>	</span>{
 <a href=#112 id=112 data-nosnippet>112</a>		<span class="comment">// Initialize task metrics recording
-<a href=#113 id=113 data-nosnippet>113</a>		</span><a href="../../IPC/DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[RuntimeBuild] Task metrics enabled"</span>);
+<a href=#113 id=113 data-nosnippet>113</a>		</span><a href="../../IPC/DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[RuntimeBuild] Task metrics enabled"</span>);
 <a href=#114 id=114 data-nosnippet>114</a>	}
 <a href=#115 id=115 data-nosnippet>115</a>
 <a href=#116 id=116 data-nosnippet>116</a>	<span class="attr">#[cfg(feature = <span class="string">"Debug"</span>)]
 <a href=#117 id=117 data-nosnippet>117</a>	</span>{
-<a href=#118 id=118 data-nosnippet>118</a>		<a href="../../IPC/DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[RuntimeBuild] Scheduler debugging enabled"</span>);
+<a href=#118 id=118 data-nosnippet>118</a>		<a href="../../IPC/DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[RuntimeBuild] Scheduler debugging enabled"</span>);
 <a href=#119 id=119 data-nosnippet>119</a>	}
 <a href=#120 id=120 data-nosnippet>120</a>
-<a href=#121 id=121 data-nosnippet>121</a>	<a href="../../IPC/DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[RuntimeBuild] Scheduler initialized successfully"</span>);
+<a href=#121 id=121 data-nosnippet>121</a>	<a href="../../IPC/DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[RuntimeBuild] Scheduler initialized successfully"</span>);
 <a href=#122 id=122 data-nosnippet>122</a>	<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(<a href="#108">scheduler</a>)
 <a href=#123 id=123 data-nosnippet>123</a>}
 <a href=#124 id=124 data-nosnippet>124</a>
@@ -128,7 +128,7 @@
 <a href=#128 id=128 data-nosnippet>128</a>/// execution order matters.
 <a href=#129 id=129 data-nosnippet>129</a></span><span class="attr">#[cfg(feature = <span class="string">"Debug"</span>)]
 <a href=#130 id=130 data-nosnippet>130</a></span><span class="kw">pub fn </span><a href="../../../../Mountain/Binary/Initialize/RuntimeBuild/fn.BuildDebug.html">BuildDebug</a>() -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;Scheduler&gt; {
-<a href=#131 id=131 data-nosnippet>131</a>	<a href="../../IPC/DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[RuntimeBuild] Creating debug scheduler (single-threaded)"</span>);
+<a href=#131 id=131 data-nosnippet>131</a>	<a href="../../IPC/DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[RuntimeBuild] Creating debug scheduler (single-threaded)"</span>);
 <a href=#132 id=132 data-nosnippet>132</a>	<a href="#104-123">BuildWithConfig</a>(<a href="#35-39">SchedulerConfig</a> { worker_count:<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<span class="number">1</span>), ..Default::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>() })
 <a href=#133 id=133 data-nosnippet>133</a>}
 <a href=#134 id=134 data-nosnippet>134</a>

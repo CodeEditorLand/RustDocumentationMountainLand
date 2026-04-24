@@ -4,8 +4,8 @@
 <a href=#4 id=4 data-nosnippet>4</a>
 <a href=#5 id=5 data-nosnippet>5</a><span class="kw">use </span>CommonLibrary::{
 <a href=#6 id=6 data-nosnippet>6</a>	Configuration::DTO::{
-<a href=#7 id=7 data-nosnippet>7</a>		<a href="../../../../Mountain/IPC/WindServiceHandler/struct.ConfigurationOverridesDTO.html">ConfigurationOverridesDTO::ConfigurationOverridesDTO</a>,
-<a href=#8 id=8 data-nosnippet>8</a>		<a href="../../../../Mountain/IPC/WindServiceHandler/enum.ConfigurationTarget.html">ConfigurationTarget::ConfigurationTarget</a>,
+<a href=#7 id=7 data-nosnippet>7</a>		ConfigurationOverridesDTO::ConfigurationOverridesDTO,
+<a href=#8 id=8 data-nosnippet>8</a>		ConfigurationTarget::ConfigurationTarget,
 <a href=#9 id=9 data-nosnippet>9</a>	},
 <a href=#10 id=10 data-nosnippet>10</a>	Effect::ApplicationRunTime::ApplicationRunTime <span class="kw">as _</span>,
 <a href=#11 id=11 data-nosnippet>11</a>	Error::CommonError::CommonError,
@@ -14,15 +14,15 @@
 <a href=#14 id=14 data-nosnippet>14</a><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.149/serde_json/map/struct.Map.html">Map</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>};
 <a href=#15 id=15 data-nosnippet>15</a><span class="kw">use </span>tauri::Manager;
 <a href=#16 id=16 data-nosnippet>16</a>
-<a href=#17 id=17 data-nosnippet>17</a><span class="kw">use </span>crate::{<a href="../mod.rs.html#114">Environment::Utility</a>, <a href="../../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">RunTime::ApplicationRunTime::RuntimeStruct::ApplicationRunTime</a>, <a href="../../IPC/DevLog.rs.html#150-185">dev_log</a>};
+<a href=#17 id=17 data-nosnippet>17</a><span class="kw">use </span>crate::{<a href="../mod.rs.html#116">Environment::Utility</a>, <a href="../../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">RunTime::ApplicationRunTime::RuntimeStruct::ApplicationRunTime</a>, <a href="../../IPC/DevLog.rs.html#589-630">dev_log</a>};
 <a href=#18 id=18 data-nosnippet>18</a>
 <a href=#19 id=19 data-nosnippet>19</a><span class="doccomment">/// Updates a configuration value in the appropriate `settings.json` file.
 <a href=#20 id=20 data-nosnippet>20</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/ConfigurationProvider/UpdateValue/fn.update_configuration_value.html">update_configuration_value</a>(
-<a href=#21 id=21 data-nosnippet>21</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>,
+<a href=#21 id=21 data-nosnippet>21</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
 <a href=#22 id=22 data-nosnippet>22</a>	key:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#23 id=23 data-nosnippet>23</a>	value:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
-<a href=#24 id=24 data-nosnippet>24</a>	target:<a href="../../../../Mountain/IPC/WindServiceHandler/enum.ConfigurationTarget.html">ConfigurationTarget</a>,
-<a href=#25 id=25 data-nosnippet>25</a>	_overrides:<a href="../../../../Mountain/IPC/WindServiceHandler/struct.ConfigurationOverridesDTO.html">ConfigurationOverridesDTO</a>,
+<a href=#24 id=24 data-nosnippet>24</a>	target:ConfigurationTarget,
+<a href=#25 id=25 data-nosnippet>25</a>	_overrides:ConfigurationOverridesDTO,
 <a href=#26 id=26 data-nosnippet>26</a>	_scope_to_language:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;,
 <a href=#27 id=27 data-nosnippet>27</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
 <a href=#28 id=28 data-nosnippet>28</a>	<span class="macro">dev_log!</span>(

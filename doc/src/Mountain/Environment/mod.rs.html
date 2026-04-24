@@ -54,62 +54,64 @@
 <a href=#54 id=54 data-nosnippet>54</a></span><span class="comment">// --- Main Environment Modules ---
 <a href=#55 id=55 data-nosnippet>55</a>
 <a href=#56 id=56 data-nosnippet>56</a></span><span class="doccomment">/// Main DI container struct.
-<a href=#57 id=57 data-nosnippet>57</a></span><span class="kw">pub mod </span><a href="MountainEnvironment.rs.html#1-591">MountainEnvironment</a>;
+<a href=#57 id=57 data-nosnippet>57</a></span><span class="kw">pub mod </span><a href="MountainEnvironment.rs.html#1-596">MountainEnvironment</a>;
 <a href=#58 id=58 data-nosnippet>58</a>
 <a href=#59 id=59 data-nosnippet>59</a><span class="doccomment">/// Macro for generating trait implementations.
 <a href=#60 id=60 data-nosnippet>60</a></span><span class="kw">pub mod </span><a href="ProviderTraitImplMacro.rs.html#1-99">ProviderTraitImplMacro</a>;
 <a href=#61 id=61 data-nosnippet>61</a>
 <a href=#62 id=62 data-nosnippet>62</a><span class="comment">// --- Provider Trait Implementations (organized by domain) ---
-<a href=#63 id=63 data-nosnippet>63</a></span><span class="kw">pub mod </span><a href="CommandProvider.rs.html#1-346">CommandProvider</a>;
+<a href=#63 id=63 data-nosnippet>63</a></span><span class="kw">pub mod </span><a href="CommandProvider.rs.html#1-429">CommandProvider</a>;
 <a href=#64 id=64 data-nosnippet>64</a>
 <a href=#65 id=65 data-nosnippet>65</a><span class="kw">pub mod </span><a href="ConfigurationProvider/mod.rs.html#1-74">ConfigurationProvider</a>;
 <a href=#66 id=66 data-nosnippet>66</a>
 <a href=#67 id=67 data-nosnippet>67</a><span class="kw">pub mod </span><a href="CustomEditorProvider.rs.html#1-170">CustomEditorProvider</a>;
 <a href=#68 id=68 data-nosnippet>68</a>
-<a href=#69 id=69 data-nosnippet>69</a><span class="kw">pub mod </span><a href="DebugProvider.rs.html#1-282">DebugProvider</a>;
+<a href=#69 id=69 data-nosnippet>69</a><span class="kw">pub mod </span><a href="DebugProvider.rs.html#1-308">DebugProvider</a>;
 <a href=#70 id=70 data-nosnippet>70</a>
-<a href=#71 id=71 data-nosnippet>71</a><span class="kw">pub mod </span><a href="DiagnosticProvider.rs.html#1-364">DiagnosticProvider</a>;
+<a href=#71 id=71 data-nosnippet>71</a><span class="kw">pub mod </span><a href="DiagnosticProvider.rs.html#1-368">DiagnosticProvider</a>;
 <a href=#72 id=72 data-nosnippet>72</a>
 <a href=#73 id=73 data-nosnippet>73</a><span class="kw">pub mod </span><a href="DocumentProvider/mod.rs.html#1-83">DocumentProvider</a>;
 <a href=#74 id=74 data-nosnippet>74</a>
 <a href=#75 id=75 data-nosnippet>75</a><span class="kw">pub mod </span><a href="FileSystemProvider.rs.html#1-129">FileSystemProvider</a>;
 <a href=#76 id=76 data-nosnippet>76</a>
-<a href=#77 id=77 data-nosnippet>77</a><span class="kw">pub mod </span><a href="IPCProvider.rs.html#1-98">IPCProvider</a>;
+<a href=#77 id=77 data-nosnippet>77</a><span class="kw">pub mod </span><a href="FileWatcherProvider.rs.html#1-337">FileWatcherProvider</a>;
 <a href=#78 id=78 data-nosnippet>78</a>
-<a href=#79 id=79 data-nosnippet>79</a><span class="kw">pub mod </span><a href="KeybindingProvider.rs.html#1-238">KeybindingProvider</a>;
+<a href=#79 id=79 data-nosnippet>79</a><span class="kw">pub mod </span><a href="IPCProvider.rs.html#1-98">IPCProvider</a>;
 <a href=#80 id=80 data-nosnippet>80</a>
-<a href=#81 id=81 data-nosnippet>81</a><span class="kw">pub mod </span><a href="LanguageFeatureProvider/mod.rs.html#1-216">LanguageFeatureProvider</a>;
+<a href=#81 id=81 data-nosnippet>81</a><span class="kw">pub mod </span><a href="KeybindingProvider.rs.html#1-238">KeybindingProvider</a>;
 <a href=#82 id=82 data-nosnippet>82</a>
-<a href=#83 id=83 data-nosnippet>83</a><span class="kw">pub mod </span><a href="OutputProvider/mod.rs.html#1-78">OutputProvider</a>;
+<a href=#83 id=83 data-nosnippet>83</a><span class="kw">pub mod </span><a href="LanguageFeatureProvider/mod.rs.html#1-216">LanguageFeatureProvider</a>;
 <a href=#84 id=84 data-nosnippet>84</a>
-<a href=#85 id=85 data-nosnippet>85</a><span class="kw">pub mod </span><a href="SearchProvider.rs.html#1-358">SearchProvider</a>;
+<a href=#85 id=85 data-nosnippet>85</a><span class="kw">pub mod </span><a href="OutputProvider/mod.rs.html#1-78">OutputProvider</a>;
 <a href=#86 id=86 data-nosnippet>86</a>
-<a href=#87 id=87 data-nosnippet>87</a><span class="kw">pub mod </span><a href="SecretProvider.rs.html#1-474">SecretProvider</a>;
+<a href=#87 id=87 data-nosnippet>87</a><span class="kw">pub mod </span><a href="SearchProvider.rs.html#1-358">SearchProvider</a>;
 <a href=#88 id=88 data-nosnippet>88</a>
-<a href=#89 id=89 data-nosnippet>89</a><span class="kw">pub mod </span><a href="SourceControlManagementProvider.rs.html#1-458">SourceControlManagementProvider</a>;
+<a href=#89 id=89 data-nosnippet>89</a><span class="kw">pub mod </span><a href="SecretProvider.rs.html#1-474">SecretProvider</a>;
 <a href=#90 id=90 data-nosnippet>90</a>
-<a href=#91 id=91 data-nosnippet>91</a><span class="kw">pub mod </span><a href="StatusBarProvider.rs.html#1-52">StatusBarProvider</a>;
+<a href=#91 id=91 data-nosnippet>91</a><span class="kw">pub mod </span><a href="SourceControlManagementProvider.rs.html#1-459">SourceControlManagementProvider</a>;
 <a href=#92 id=92 data-nosnippet>92</a>
-<a href=#93 id=93 data-nosnippet>93</a><span class="kw">pub mod </span><a href="StorageProvider.rs.html#1-458">StorageProvider</a>;
+<a href=#93 id=93 data-nosnippet>93</a><span class="kw">pub mod </span><a href="StatusBarProvider.rs.html#1-52">StatusBarProvider</a>;
 <a href=#94 id=94 data-nosnippet>94</a>
-<a href=#95 id=95 data-nosnippet>95</a><span class="kw">pub mod </span><a href="SynchronizationProvider.rs.html#1-130">SynchronizationProvider</a>;
+<a href=#95 id=95 data-nosnippet>95</a><span class="kw">pub mod </span><a href="StorageProvider.rs.html#1-458">StorageProvider</a>;
 <a href=#96 id=96 data-nosnippet>96</a>
-<a href=#97 id=97 data-nosnippet>97</a><span class="kw">pub mod </span><a href="TerminalProvider.rs.html#1-373">TerminalProvider</a>;
+<a href=#97 id=97 data-nosnippet>97</a><span class="kw">pub mod </span><a href="SynchronizationProvider.rs.html#1-130">SynchronizationProvider</a>;
 <a href=#98 id=98 data-nosnippet>98</a>
-<a href=#99 id=99 data-nosnippet>99</a><span class="kw">pub mod </span><a href="TestProvider.rs.html#1-441">TestProvider</a>;
+<a href=#99 id=99 data-nosnippet>99</a><span class="kw">pub mod </span><a href="TerminalProvider.rs.html#1-526">TerminalProvider</a>;
 <a href=#100 id=100 data-nosnippet>100</a>
-<a href=#101 id=101 data-nosnippet>101</a><span class="kw">pub mod </span><a href="TreeViewProvider/mod.rs.html#1-144">TreeViewProvider</a>;
+<a href=#101 id=101 data-nosnippet>101</a><span class="kw">pub mod </span><a href="TestProvider.rs.html#1-441">TestProvider</a>;
 <a href=#102 id=102 data-nosnippet>102</a>
-<a href=#103 id=103 data-nosnippet>103</a><span class="kw">pub mod </span><a href="UserInterfaceProvider.rs.html#1-371">UserInterfaceProvider</a>;
+<a href=#103 id=103 data-nosnippet>103</a><span class="kw">pub mod </span><a href="TreeViewProvider/mod.rs.html#1-144">TreeViewProvider</a>;
 <a href=#104 id=104 data-nosnippet>104</a>
-<a href=#105 id=105 data-nosnippet>105</a><span class="comment">// Re-export UserInterface and DTO for convenience
-<a href=#106 id=106 data-nosnippet>106</a></span><span class="kw">pub use </span><a href="../../../Mountain/Environment/UserInterface/index.html">CommonLibrary::UserInterface</a>;
-<a href=#107 id=107 data-nosnippet>107</a>
-<a href=#108 id=108 data-nosnippet>108</a><span class="kw">pub mod </span><a href="WebviewProvider.rs.html#1-248">WebviewProvider</a>;
+<a href=#105 id=105 data-nosnippet>105</a><span class="kw">pub mod </span><a href="UserInterfaceProvider.rs.html#1-377">UserInterfaceProvider</a>;
+<a href=#106 id=106 data-nosnippet>106</a>
+<a href=#107 id=107 data-nosnippet>107</a><span class="comment">// Re-export UserInterface and DTO for convenience
+<a href=#108 id=108 data-nosnippet>108</a></span><span class="kw">pub use </span><a href="../../../Mountain/Environment/UserInterface/index.html">CommonLibrary::UserInterface</a>;
 <a href=#109 id=109 data-nosnippet>109</a>
-<a href=#110 id=110 data-nosnippet>110</a><span class="kw">pub mod </span><a href="WorkspaceProvider.rs.html#1-211">WorkspaceProvider</a>;
+<a href=#110 id=110 data-nosnippet>110</a><span class="kw">pub mod </span><a href="WebviewProvider.rs.html#1-248">WebviewProvider</a>;
 <a href=#111 id=111 data-nosnippet>111</a>
-<a href=#112 id=112 data-nosnippet>112</a><span class="comment">// --- Internal Utilities ---
-<a href=#113 id=113 data-nosnippet>113</a>// Shared helpers for provider implementations.
-<a href=#114 id=114 data-nosnippet>114</a></span><span class="kw">pub mod </span><a href="Utility/mod.rs.html#1-28">Utility</a>;
+<a href=#112 id=112 data-nosnippet>112</a><span class="kw">pub mod </span><a href="WorkspaceProvider.rs.html#1-211">WorkspaceProvider</a>;
+<a href=#113 id=113 data-nosnippet>113</a>
+<a href=#114 id=114 data-nosnippet>114</a><span class="comment">// --- Internal Utilities ---
+<a href=#115 id=115 data-nosnippet>115</a>// Shared helpers for provider implementations.
+<a href=#116 id=116 data-nosnippet>116</a></span><span class="kw">pub mod </span><a href="Utility/mod.rs.html#1-28">Utility</a>;
 </code></pre></div></section></main></body></html>

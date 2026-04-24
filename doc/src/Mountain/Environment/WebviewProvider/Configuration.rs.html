@@ -7,16 +7,16 @@
 <a href=#7 id=7 data-nosnippet>7</a>
 <a href=#8 id=8 data-nosnippet>8</a></span><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">std::collections::HashMap</a>;
 <a href=#9 id=9 data-nosnippet>9</a>
-<a href=#10 id=10 data-nosnippet>10</a><span class="kw">use </span>CommonLibrary::Error::CommonError::CommonError;
+<a href=#10 id=10 data-nosnippet>10</a><span class="kw">use </span>CommonLibrary::{Error::CommonError::CommonError, IPC::SkyEvent::SkyEvent};
 <a href=#11 id=11 data-nosnippet>11</a><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json</a>};
 <a href=#12 id=12 data-nosnippet>12</a><span class="kw">use </span>tauri::{Emitter, Manager};
 <a href=#13 id=13 data-nosnippet>13</a>
-<a href=#14 id=14 data-nosnippet>14</a><span class="kw">use </span><span class="kw">super</span>::super::{<a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment::MountainEnvironment</a>, <a href="../mod.rs.html#114">Utility</a>};
-<a href=#15 id=15 data-nosnippet>15</a><span class="kw">use </span><a href="../../IPC/DevLog.rs.html#150-185"><span class="kw">crate</span>::dev_log</a>;
+<a href=#14 id=14 data-nosnippet>14</a><span class="kw">use </span><span class="kw">super</span>::super::{<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment::MountainEnvironment</a>, <a href="../mod.rs.html#116">Utility</a>};
+<a href=#15 id=15 data-nosnippet>15</a><span class="kw">use </span><a href="../../IPC/DevLog.rs.html#589-630"><span class="kw">crate</span>::dev_log</a>;
 <a href=#16 id=16 data-nosnippet>16</a>
 <a href=#17 id=17 data-nosnippet>17</a><span class="doccomment">/// Configuration operations implementation for MountainEnvironment
 <a href=#18 id=18 data-nosnippet>18</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/WebviewProvider/Configuration/fn.set_webview_options_impl.html">set_webview_options_impl</a>(
-<a href=#19 id=19 data-nosnippet>19</a>	env:<span class="kw-2">&amp;</span><a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>,
+<a href=#19 id=19 data-nosnippet>19</a>	env:<span class="kw-2">&amp;</span><a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
 <a href=#20 id=20 data-nosnippet>20</a>	handle:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#21 id=21 data-nosnippet>21</a>	options_value:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#22 id=22 data-nosnippet>22</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
@@ -61,7 +61,7 @@
 <a href=#61 id=61 data-nosnippet>61</a>	<span class="comment">// Emit options changed event
 <a href=#62 id=62 data-nosnippet>62</a>	</span>env.ApplicationHandle
 <a href=#63 id=63 data-nosnippet>63</a>		.emit::&lt;Value&gt;(
-<a href=#64 id=64 data-nosnippet>64</a>			<span class="string">"sky://webview/options-changed"</span>,
+<a href=#64 id=64 data-nosnippet>64</a>			SkyEvent::WebviewOptionsChanged.AsStr(),
 <a href=#65 id=65 data-nosnippet>65</a>			<span class="macro">json!</span>({ <span class="string">"Handle"</span>: handle, <span class="string">"Options"</span>: options_value }),
 <a href=#66 id=66 data-nosnippet>66</a>		)
 <a href=#67 id=67 data-nosnippet>67</a>		.map_err(|error| {
@@ -73,7 +73,7 @@
 <a href=#73 id=73 data-nosnippet>73</a>
 <a href=#74 id=74 data-nosnippet>74</a><span class="doccomment">/// Sets the HTML content of a Webview.
 <a href=#75 id=75 data-nosnippet>75</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/WebviewProvider/Configuration/fn.set_webview_html_impl.html">set_webview_html_impl</a>(
-<a href=#76 id=76 data-nosnippet>76</a>	env:<span class="kw-2">&amp;</span><a href="../MountainEnvironment.rs.html#221-231">MountainEnvironment</a>,
+<a href=#76 id=76 data-nosnippet>76</a>	env:<span class="kw-2">&amp;</span><a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
 <a href=#77 id=77 data-nosnippet>77</a>	handle:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#78 id=78 data-nosnippet>78</a>	html:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#79 id=79 data-nosnippet>79</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
@@ -86,7 +86,7 @@
 <a href=#86 id=86 data-nosnippet>86</a>
 <a href=#87 id=87 data-nosnippet>87</a>	<span class="kw">if let </span><span class="prelude-val">Some</span>(webview_window) = env.ApplicationHandle.get_webview_window(<span class="kw-2">&amp;</span>handle) {
 <a href=#88 id=88 data-nosnippet>88</a>		webview_window
-<a href=#89 id=89 data-nosnippet>89</a>			.emit::&lt;String&gt;(<span class="string">"sky://webview/set-html"</span>, html)
+<a href=#89 id=89 data-nosnippet>89</a>			.emit::&lt;String&gt;(SkyEvent::WebviewSetHTML.AsStr(), html)
 <a href=#90 id=90 data-nosnippet>90</a>			.map_err(|error| CommonError::IPCError { Description:<span class="macro">format!</span>(<span class="string">"Failed to set Webview HTML: {}"</span>, error) })<span class="question-mark">?</span>;
 <a href=#91 id=91 data-nosnippet>91</a>
 <a href=#92 id=92 data-nosnippet>92</a>		<span class="prelude-val">Ok</span>(())

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["ApplyEdit","OpenDocument","SaveAll","UpdateConfiguration","UpdateWorkspaceFolders"]};

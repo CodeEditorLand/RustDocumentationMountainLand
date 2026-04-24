@@ -62,7 +62,7 @@
 <a href=#62 id=62 data-nosnippet>62</a>	<a href="Error.rs.html#77-168">Error::VineError</a>,
 <a href=#63 id=63 data-nosnippet>63</a>	Generated::{<a href="Generated/vine.rs.html#29-35">GenericNotification</a>, <a href="Generated/vine.rs.html#7-15">GenericRequest</a>, <a href="Generated/vine.rs.html#2159-2161">cocoon_service_client::CocoonServiceClient</a>},
 <a href=#64 id=64 data-nosnippet>64</a>};
-<a href=#65 id=65 data-nosnippet>65</a><span class="kw">use </span><a href="../IPC/DevLog.rs.html#150-185"><span class="kw">crate</span>::dev_log</a>;
+<a href=#65 id=65 data-nosnippet>65</a><span class="kw">use </span><a href="../IPC/DevLog.rs.html#589-630"><span class="kw">crate</span>::dev_log</a>;
 <a href=#66 id=66 data-nosnippet>66</a>
 <a href=#67 id=67 data-nosnippet>67</a><span class="doccomment">/// Type alias for the Cocoon gRPC client with Channel transport
 <a href=#68 id=68 data-nosnippet>68</a></span><span class="kw">type </span><a href="../../../Mountain/Vine/Client/type.CocoonClient.html">CocoonClient</a> = <a href="Generated/vine.rs.html#2159-2161">CocoonServiceClient</a>&lt;tonic::transport::Channel&gt;;
@@ -222,7 +222,7 @@
 <a href=#222 id=222 data-nosnippet>222</a>	<span class="kw">if </span><a href="#220">clients</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.remove">remove</a>(<span class="kw-2">&amp;</span><a href="#219">SideCarIdentifier</a>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.is_some">is_some</a>() {
 <a href=#223 id=223 data-nosnippet>223</a>		<a href="#101-107">CONNECTION_METADATA</a>.lock().<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.remove">remove</a>(<span class="kw-2">&amp;</span><a href="#219">SideCarIdentifier</a>);
 <a href=#224 id=224 data-nosnippet>224</a>
-<a href=#225 id=225 data-nosnippet>225</a>		<a href="../IPC/DevLog.rs.html#150-185">dev_log!</a>(<span class="string">"grpc"</span>, <span class="string">"[VineClient] Disconnected from sidecar '{}'"</span>, SideCarIdentifier);
+<a href=#225 id=225 data-nosnippet>225</a>		<a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"grpc"</span>, <span class="string">"[VineClient] Disconnected from sidecar '{}'"</span>, SideCarIdentifier);
 <a href=#226 id=226 data-nosnippet>226</a>
 <a href=#227 id=227 data-nosnippet>227</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#228 id=228 data-nosnippet>228</a>	} <span class="kw">else </span>{
