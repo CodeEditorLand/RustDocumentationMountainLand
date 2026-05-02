@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["handle_working_copy_get_all_dirty","handle_working_copy_get_dirty_count","handle_working_copy_is_dirty","handle_working_copy_set_dirty"]};
+window.SIDEBAR_ITEMS = {"fn":["WorkingCopyGetAllDirty","WorkingCopyGetDirtyCount","WorkingCopyIsDirty","WorkingCopySetDirty"]};

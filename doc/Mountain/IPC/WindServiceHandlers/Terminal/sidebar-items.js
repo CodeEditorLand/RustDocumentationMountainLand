@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["handle_local_pty_get_default_shell","handle_local_pty_get_environment","handle_local_pty_get_profiles","handle_terminal_create","handle_terminal_dispose","handle_terminal_hide","handle_terminal_send_text","handle_terminal_show"]};
+window.SIDEBAR_ITEMS = {"fn":["LocalPTYGetDefaultShell","LocalPTYGetEnvironment","LocalPTYGetProfiles","TerminalCreate","TerminalDispose","TerminalHide","TerminalSendText","TerminalShow"]};

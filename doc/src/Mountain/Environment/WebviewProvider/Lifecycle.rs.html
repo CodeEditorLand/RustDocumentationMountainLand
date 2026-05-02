@@ -14,12 +14,12 @@
 <a href=#14 id=14 data-nosnippet>14</a><span class="kw">use </span>tauri::{Emitter, Manager, WebviewWindowBuilder};
 <a href=#15 id=15 data-nosnippet>15</a><span class="kw">use </span><a href="https://docs.rs/uuid/1.23.1/uuid/struct.Uuid.html">uuid::Uuid</a>;
 <a href=#16 id=16 data-nosnippet>16</a>
-<a href=#17 id=17 data-nosnippet>17</a><span class="kw">use </span><span class="kw">super</span>::super::{<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment::MountainEnvironment</a>, <a href="../mod.rs.html#116">Utility</a>};
-<a href=#18 id=18 data-nosnippet>18</a><span class="kw">use </span>crate::{<a href="../../ApplicationState/DTO/WebviewStateDTO.rs.html#43-75">ApplicationState::DTO::WebviewStateDTO::WebviewStateDTO</a>, <a href="../../IPC/DevLog.rs.html#589-630">dev_log</a>};
+<a href=#17 id=17 data-nosnippet>17</a><span class="kw">use </span><span class="kw">super</span>::super::{<a href="../MountainEnvironment.rs.html#228-238">MountainEnvironment::MountainEnvironment</a>, <a href="../mod.rs.html#113">Utility</a>};
+<a href=#18 id=18 data-nosnippet>18</a><span class="kw">use </span>crate::{<a href="../../ApplicationState/DTO/WebviewStateDTO.rs.html#43-75">ApplicationState::DTO::WebviewStateDTO::WebviewStateDTO</a>, <a href="../../IPC/DevLog.rs.html#726-767">dev_log</a>};
 <a href=#19 id=19 data-nosnippet>19</a>
 <a href=#20 id=20 data-nosnippet>20</a><span class="doccomment">/// Lifecycle operations implementation for MountainEnvironment
 <a href=#21 id=21 data-nosnippet>21</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/WebviewProvider/Lifecycle/fn.create_webview_panel_impl.html">create_webview_panel_impl</a>(
-<a href=#22 id=22 data-nosnippet>22</a>	env:<span class="kw-2">&amp;</span><a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
+<a href=#22 id=22 data-nosnippet>22</a>	env:<span class="kw-2">&amp;</span><a href="../MountainEnvironment.rs.html#228-238">MountainEnvironment</a>,
 <a href=#23 id=23 data-nosnippet>23</a>	extension_data_value:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#24 id=24 data-nosnippet>24</a>	view_type:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#25 id=25 data-nosnippet>25</a>	title:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
@@ -66,7 +66,7 @@
 <a href=#66 id=66 data-nosnippet>66</a>			.Webviews
 <a href=#67 id=67 data-nosnippet>67</a>			.ActiveWebviews
 <a href=#68 id=68 data-nosnippet>68</a>			.lock()
-<a href=#69 id=69 data-nosnippet>69</a>			.map_err(Utility::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?</span>;
+<a href=#69 id=69 data-nosnippet>69</a>			.map_err(Utility::ErrorMapping::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?</span>;
 <a href=#70 id=70 data-nosnippet>70</a>
 <a href=#71 id=71 data-nosnippet>71</a>		webview_guard.insert(handle.clone(), state);
 <a href=#72 id=72 data-nosnippet>72</a>	}
@@ -114,7 +114,7 @@
 <a href=#114 id=114 data-nosnippet>114</a>}
 <a href=#115 id=115 data-nosnippet>115</a>
 <a href=#116 id=116 data-nosnippet>116</a><span class="doccomment">/// Disposes a Webview panel and cleans up all associated resources.
-<a href=#117 id=117 data-nosnippet>117</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/WebviewProvider/Lifecycle/fn.dispose_webview_panel_impl.html">dispose_webview_panel_impl</a>(env:<span class="kw-2">&amp;</span><a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>, handle:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
+<a href=#117 id=117 data-nosnippet>117</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/WebviewProvider/Lifecycle/fn.dispose_webview_panel_impl.html">dispose_webview_panel_impl</a>(env:<span class="kw-2">&amp;</span><a href="../MountainEnvironment.rs.html#228-238">MountainEnvironment</a>, handle:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
 <a href=#118 id=118 data-nosnippet>118</a>	<span class="macro">dev_log!</span>(<span class="string">"extensions"</span>, <span class="string">"[WebviewProvider] Disposing WebviewPanel: {}"</span>, handle);
 <a href=#119 id=119 data-nosnippet>119</a>
 <a href=#120 id=120 data-nosnippet>120</a>	<span class="comment">// Remove message listener
@@ -137,7 +137,7 @@
 <a href=#137 id=137 data-nosnippet>137</a>		.Webviews
 <a href=#138 id=138 data-nosnippet>138</a>		.ActiveWebviews
 <a href=#139 id=139 data-nosnippet>139</a>		.lock()
-<a href=#140 id=140 data-nosnippet>140</a>		.map_err(Utility::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?
+<a href=#140 id=140 data-nosnippet>140</a>		.map_err(Utility::ErrorMapping::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?
 <a href=#141 id=141 data-nosnippet>141</a>		</span>.remove(<span class="kw-2">&amp;</span>handle);
 <a href=#142 id=142 data-nosnippet>142</a>
 <a href=#143 id=143 data-nosnippet>143</a>	<span class="comment">// Notify frontend about Webview disposal
@@ -152,7 +152,7 @@
 <a href=#152 id=152 data-nosnippet>152</a>
 <a href=#153 id=153 data-nosnippet>153</a><span class="doccomment">/// Reveals (shows and focuses) a Webview panel.
 <a href=#154 id=154 data-nosnippet>154</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/WebviewProvider/Lifecycle/fn.reveal_webview_panel_impl.html">reveal_webview_panel_impl</a>(
-<a href=#155 id=155 data-nosnippet>155</a>	env:<span class="kw-2">&amp;</span><a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
+<a href=#155 id=155 data-nosnippet>155</a>	env:<span class="kw-2">&amp;</span><a href="../MountainEnvironment.rs.html#228-238">MountainEnvironment</a>,
 <a href=#156 id=156 data-nosnippet>156</a>	handle:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#157 id=157 data-nosnippet>157</a>	_show_options_value:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#158 id=158 data-nosnippet>158</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
@@ -175,7 +175,7 @@
 <a href=#175 id=175 data-nosnippet>175</a>				.Webviews
 <a href=#176 id=176 data-nosnippet>176</a>				.ActiveWebviews
 <a href=#177 id=177 data-nosnippet>177</a>				.lock()
-<a href=#178 id=178 data-nosnippet>178</a>				.map_err(Utility::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?</span>;
+<a href=#178 id=178 data-nosnippet>178</a>				.map_err(Utility::ErrorMapping::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?</span>;
 <a href=#179 id=179 data-nosnippet>179</a>
 <a href=#180 id=180 data-nosnippet>180</a>			<span class="kw">if let </span><span class="prelude-val">Some</span>(state) = webview_guard.get_mut(<span class="kw-2">&amp;</span>handle) {
 <a href=#181 id=181 data-nosnippet>181</a>				state.IsVisible = <span class="bool-val">true</span>;

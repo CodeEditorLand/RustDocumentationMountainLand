@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"struct":["WindowService"]};
+window.SIDEBAR_ITEMS = {"struct":["Struct"]};

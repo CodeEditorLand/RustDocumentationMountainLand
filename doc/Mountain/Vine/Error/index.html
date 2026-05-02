@@ -41,7 +41,7 @@ Vine gRPC Inter-Process Communication (IPC) system.</p>
 <li><code>PoisonError&lt;T&gt;</code> → <code>InternalLockError</code></li>
 </ul>
 <h3 id="usage-example"><a class="doc-anchor" href="#usage-example">§</a>Usage Example</h3><div class="example-wrap"><pre class="language-text"><code># use Vine::Error::VineError;
-fn handle_error(error:VineError) {
+fn Error(error:VineError) {
 match error {
 VineError::RequestTimeout { SideCarIdentifier, MethodName, TimeoutMilliseconds } =&gt; {
 eprintln!(

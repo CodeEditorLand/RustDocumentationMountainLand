@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["handle_configuration_get","handle_configuration_update","handle_environment_get","handle_workbench_configuration"],"type":["ConfigurationOverridesDTO","ConfigurationTarget"]};
+window.SIDEBAR_ITEMS = {"fn":["ConfigurationGet","ConfigurationUpdate","EnvironmentGet","WorkbenchConfiguration"],"type":["ConfigurationOverridesDTO","ConfigurationTarget"]};

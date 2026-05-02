@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `Element/Mountain/Source/IPC/WindServiceHandlers/UI/Theme.rs`."><title>Theme.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../../../static.files/rustdoc-b7b9f40b.css"><meta name="rustdoc-vars" data-root-path="../../../../../" data-static-root-path="../../../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../../../static.files/storage-41dd4d93.js"></script><script defer src="../../../../../static.files/src-script-813739b1.js"></script><script defer src="../../../../../src-files.js"></script><script defer src="../../../../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><h1><div class="sub-heading">Mountain/IPC/WindServiceHandlers/UI/</div>Theme.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-2"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="attr">#![allow(non_snake_case, unused_variables)]
 <a href=#2 id=2 data-nosnippet>2</a></span><span class="doccomment">//! Theme IPC handlers. `themes:getActive` / `themes:list` / `themes:set`
-<a href=#3 id=3 data-nosnippet>3</a>//! drive the workbench's colour-theme picker and the runtime theme swap.
+<a href=#3 id=3 data-nosnippet>3</a>//! drive the workbench's colour-theme picker and the RunTime theme swap.
 <a href=#4 id=4 data-nosnippet>4</a>//!
 <a href=#5 id=5 data-nosnippet>5</a>//! Source of truth: `workbench.colorTheme` inside `ConfigurationProvider`.
 <a href=#6 id=6 data-nosnippet>6</a>//! A `themes:set` writes the key and emits `SkyEvent::ThemeChange` so
@@ -11,15 +11,15 @@
 <a href=#11 id=11 data-nosnippet>11</a><span class="kw">use </span>CommonLibrary::IPC::SkyEvent::SkyEvent;
 <a href=#12 id=12 data-nosnippet>12</a><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json</a>};
 <a href=#13 id=13 data-nosnippet>13</a>
-<a href=#14 id=14 data-nosnippet>14</a><span class="kw">use </span><a href="../../../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55"><span class="kw">crate</span>::RunTime::ApplicationRunTime::ApplicationRunTime</a>;
+<a href=#14 id=14 data-nosnippet>14</a><span class="kw">use </span><a href="../../../RunTime/ApplicationRunTime/mod.rs.html#16-21"><span class="kw">crate</span>::RunTime::ApplicationRunTime::ApplicationRunTime</a>;
 <a href=#15 id=15 data-nosnippet>15</a>
-<a href=#16 id=16 data-nosnippet>16</a><span class="kw">pub async fn </span><a href="../../../../../Mountain/IPC/WindServiceHandlers/UI/Theme/fn.handle_themes_get_active.html">handle_themes_get_active</a>(runtime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../../../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">ApplicationRunTime</a>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
+<a href=#16 id=16 data-nosnippet>16</a><span class="kw">pub async fn </span><a href="../../../../../Mountain/IPC/WindServiceHandlers/UI/Theme/fn.ThemesGetActive.html">ThemesGetActive</a>(RunTime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../../../RunTime/ApplicationRunTime/mod.rs.html#16-21">ApplicationRunTime</a>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
 <a href=#17 id=17 data-nosnippet>17</a>	<span class="kw">use </span>CommonLibrary::Configuration::{
 <a href=#18 id=18 data-nosnippet>18</a>		ConfigurationProvider::ConfigurationProvider,
 <a href=#19 id=19 data-nosnippet>19</a>		DTO::ConfigurationOverridesDTO::ConfigurationOverridesDTO,
 <a href=#20 id=20 data-nosnippet>20</a>	};
 <a href=#21 id=21 data-nosnippet>21</a>
-<a href=#22 id=22 data-nosnippet>22</a>	<span class="kw">let </span>ThemeId = runtime
+<a href=#22 id=22 data-nosnippet>22</a>	<span class="kw">let </span>ThemeId = RunTime
 <a href=#23 id=23 data-nosnippet>23</a>		.Environment
 <a href=#24 id=24 data-nosnippet>24</a>		.GetConfigurationValue(<span class="prelude-val">Some</span>(<span class="string">"workbench.colorTheme"</span>.to_string()), ConfigurationOverridesDTO::default())
 <a href=#25 id=25 data-nosnippet>25</a>		.<span class="kw">await
@@ -41,7 +41,7 @@
 <a href=#41 id=41 data-nosnippet>41</a>	<span class="prelude-val">Ok</span>(<span class="macro">json!</span>({ <span class="string">"id"</span>: Id, <span class="string">"label"</span>: Id, <span class="string">"kind"</span>: Kind }))
 <a href=#42 id=42 data-nosnippet>42</a>}
 <a href=#43 id=43 data-nosnippet>43</a>
-<a href=#44 id=44 data-nosnippet>44</a><span class="kw">pub async fn </span><a href="../../../../../Mountain/IPC/WindServiceHandlers/UI/Theme/fn.handle_themes_list.html">handle_themes_list</a>(_runtime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../../../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">ApplicationRunTime</a>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
+<a href=#44 id=44 data-nosnippet>44</a><span class="kw">pub async fn </span><a href="../../../../../Mountain/IPC/WindServiceHandlers/UI/Theme/fn.ThemesList.html">ThemesList</a>(_runtime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../../../RunTime/ApplicationRunTime/mod.rs.html#16-21">ApplicationRunTime</a>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
 <a href=#45 id=45 data-nosnippet>45</a>	<span class="kw">let </span>Themes = <span class="macro">vec!</span>[
 <a href=#46 id=46 data-nosnippet>46</a>		<span class="macro">json!</span>({ <span class="string">"id"</span>: <span class="string">"Default Dark Modern"</span>, <span class="string">"label"</span>: <span class="string">"Default Dark Modern"</span>, <span class="string">"kind"</span>: <span class="string">"dark" </span>}),
 <a href=#47 id=47 data-nosnippet>47</a>		<span class="macro">json!</span>({ <span class="string">"id"</span>: <span class="string">"Default Light Modern"</span>, <span class="string">"label"</span>: <span class="string">"Default Light Modern"</span>, <span class="string">"kind"</span>: <span class="string">"light" </span>}),
@@ -53,20 +53,20 @@
 <a href=#53 id=53 data-nosnippet>53</a>	<span class="prelude-val">Ok</span>(<span class="macro">json!</span>(Themes))
 <a href=#54 id=54 data-nosnippet>54</a>}
 <a href=#55 id=55 data-nosnippet>55</a>
-<a href=#56 id=56 data-nosnippet>56</a><span class="kw">pub async fn </span><a href="../../../../../Mountain/IPC/WindServiceHandlers/UI/Theme/fn.handle_themes_set.html">handle_themes_set</a>(runtime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../../../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">ApplicationRunTime</a>&gt;, args:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
+<a href=#56 id=56 data-nosnippet>56</a><span class="kw">pub async fn </span><a href="../../../../../Mountain/IPC/WindServiceHandlers/UI/Theme/fn.ThemesSet.html">ThemesSet</a>(RunTime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../../../RunTime/ApplicationRunTime/mod.rs.html#16-21">ApplicationRunTime</a>&gt;, Arguments:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
 <a href=#57 id=57 data-nosnippet>57</a>	<span class="kw">use </span>CommonLibrary::Configuration::{
 <a href=#58 id=58 data-nosnippet>58</a>		ConfigurationProvider::ConfigurationProvider,
 <a href=#59 id=59 data-nosnippet>59</a>		DTO::{ConfigurationOverridesDTO::ConfigurationOverridesDTO, ConfigurationTarget::ConfigurationTarget},
 <a href=#60 id=60 data-nosnippet>60</a>	};
 <a href=#61 id=61 data-nosnippet>61</a>	<span class="kw">use </span>tauri::Emitter;
 <a href=#62 id=62 data-nosnippet>62</a>
-<a href=#63 id=63 data-nosnippet>63</a>	<span class="kw">let </span>ThemeId = args
+<a href=#63 id=63 data-nosnippet>63</a>	<span class="kw">let </span>ThemeId = Arguments
 <a href=#64 id=64 data-nosnippet>64</a>		.first()
 <a href=#65 id=65 data-nosnippet>65</a>		.and_then(|V| V.as_str())
 <a href=#66 id=66 data-nosnippet>66</a>		.ok_or(<span class="string">"themes:set requires themeId as first argument"</span>.to_string())<span class="question-mark">?
 <a href=#67 id=67 data-nosnippet>67</a>		</span>.to_string();
 <a href=#68 id=68 data-nosnippet>68</a>
-<a href=#69 id=69 data-nosnippet>69</a>	runtime
+<a href=#69 id=69 data-nosnippet>69</a>	RunTime
 <a href=#70 id=70 data-nosnippet>70</a>		.Environment
 <a href=#71 id=71 data-nosnippet>71</a>		.UpdateConfigurationValue(
 <a href=#72 id=72 data-nosnippet>72</a>			<span class="string">"workbench.colorTheme"</span>.to_string(),
@@ -78,7 +78,7 @@
 <a href=#78 id=78 data-nosnippet>78</a>		.<span class="kw">await
 <a href=#79 id=79 data-nosnippet>79</a>		</span>.map_err(|Error| <span class="macro">format!</span>(<span class="string">"themes:set failed: {}"</span>, Error))<span class="question-mark">?</span>;
 <a href=#80 id=80 data-nosnippet>80</a>
-<a href=#81 id=81 data-nosnippet>81</a>	<span class="kw">let _ </span>= runtime
+<a href=#81 id=81 data-nosnippet>81</a>	<span class="kw">let _ </span>= RunTime
 <a href=#82 id=82 data-nosnippet>82</a>		.Environment
 <a href=#83 id=83 data-nosnippet>83</a>		.ApplicationHandle
 <a href=#84 id=84 data-nosnippet>84</a>		.emit(SkyEvent::ThemeChange.AsStr(), <span class="macro">json!</span>({ <span class="string">"themeId"</span>: ThemeId }));

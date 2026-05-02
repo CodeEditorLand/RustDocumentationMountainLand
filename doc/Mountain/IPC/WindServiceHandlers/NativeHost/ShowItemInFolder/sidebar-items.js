@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["handle_show_item_in_folder"]};
+window.SIDEBAR_ITEMS = {"fn":["ShowItemInFolder"]};

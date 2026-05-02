@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["handle_commands_execute","handle_commands_get_all"]};
+window.SIDEBAR_ITEMS = {"fn":["CommandsExecute","CommandsGetAll"]};

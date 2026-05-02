@@ -3,16 +3,16 @@
 <a href=#3 id=3 data-nosnippet>3</a>//! scan path in `Binary/Extension/ScanPathConfigure.rs` so VSIX-installed
 <a href=#4 id=4 data-nosnippet>4</a>//! extensions are discovered on the next Mountain boot without a sync step.
 <a href=#5 id=5 data-nosnippet>5</a>//!
-<a href=#6 id=6 data-nosnippet>6</a>//! Resolution order (honours Atom V1 `LAND_USER_EXTENSIONS_DIR`):
-<a href=#7 id=7 data-nosnippet>7</a>//!   1. `$LAND_USER_EXTENSIONS_DIR` - explicit per-operator override.
-<a href=#8 id=8 data-nosnippet>8</a>//!      Leading `~/` expands against `$HOME`.
+<a href=#6 id=6 data-nosnippet>6</a>//! Resolution order (honours Atom V1 `Lodge`):
+<a href=#7 id=7 data-nosnippet>7</a>//!   1. `$Lodge` - explicit per-operator override. Leading `~/` expands against
+<a href=#8 id=8 data-nosnippet>8</a>//!      `$HOME`.
 <a href=#9 id=9 data-nosnippet>9</a>//!   2. `$HOME/.land/extensions` - VS Code-style user-scope default.
 <a href=#10 id=10 data-nosnippet>10</a>//!   3. `./extensions` - fallback when `$HOME` is unavailable.
 <a href=#11 id=11 data-nosnippet>11</a>
 <a href=#12 id=12 data-nosnippet>12</a></span><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">std::path::PathBuf</a>;
 <a href=#13 id=13 data-nosnippet>13</a>
 <a href=#14 id=14 data-nosnippet>14</a><span class="kw">pub fn </span><a href="../../../../../Mountain/IPC/WindServiceHandlers/Extension/UserExtensionDirectory/fn.UserExtensionDirectory.html">UserExtensionDirectory</a>() -&gt; <a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a> {
-<a href=#15 id=15 data-nosnippet>15</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Override) = std::env::<a href="https://doc.rust-lang.org/nightly/std/env/fn.var.html">var</a>(<span class="string">"LAND_USER_EXTENSIONS_DIR"</span>) {
+<a href=#15 id=15 data-nosnippet>15</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Override) = std::env::<a href="https://doc.rust-lang.org/nightly/std/env/fn.var.html">var</a>(<span class="string">"Lodge"</span>) {
 <a href=#16 id=16 data-nosnippet>16</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Stripped) = <a href="#15">Override</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.strip_prefix">strip_prefix</a>(<span class="string">"~/"</span>) {
 <a href=#17 id=17 data-nosnippet>17</a>			<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(HomeDirectory) = dirs::home_dir() {
 <a href=#18 id=18 data-nosnippet>18</a>				<span class="kw">return </span><a href="#17">HomeDirectory</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<a href="#16">Stripped</a>);

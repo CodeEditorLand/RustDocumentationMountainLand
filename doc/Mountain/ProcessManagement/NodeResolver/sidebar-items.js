@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":["NodeSource"],"fn":["CheckMinMajor","ExpandHome","NodeExecutableName","QueryNodeVersion","ResolveNodeBinary","ResolveUncached","TryAsdf","TryFnm","TryHomebrew","TryNvm","TryOverride","TryShipped","TryVolta"],"static":["RESOLVED"],"struct":["ResolvedNode"]};
+window.SIDEBAR_ITEMS = {"mod":["CheckMinMajor","ExpandHome","NodeExecutableName","NodeSource","QueryNodeVersion","ResolveNodeBinary","ResolveUncached","ResolvedNode","TryAsdf","TryFnm","TryHomebrew","TryNvm","TryOverride","TryShipped","TryVolta"]};

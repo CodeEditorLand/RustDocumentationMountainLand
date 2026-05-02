@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["CancelOperation","InitExtensionHost","InitialHandshake"]};
+window.SIDEBAR_ITEMS = {"mod":["CancelOperation","InitExtensionHost","InitialHandshake"]};

@@ -2,14 +2,14 @@
 declined (Land has no marketplace backend) and return <code>null</code>.</p>
 <p>Sequence:</p>
 <ol>
-<li>Resolve the VSIX path from <code>args[0]</code> (string or UriComponents).</li>
+<li>Resolve the VSIX path from <code>Arguments[0]</code> (string or UriComponents).</li>
 <li>Reject non-<code>.vsix</code> files.</li>
 <li>Unpack into the user-scope extension directory via
 <code>VsixInstaller::InstallVsix</code>.</li>
-<li>Register with <code>ScannedExtensions</code> so <code>GetExtensions()</code> reflects
-the install on the next read.</li>
-<li>Fire-and-forget <code>$deltaExtensions</code> + <code>$activateByEvent</code> to Cocoon
-so the extension activates without a workbench reload.</li>
+<li>Register with <code>ScannedExtensions</code> so <code>GetExtensions()</code> reflects the
+install on the next read.</li>
+<li>Fire-and-forget <code>$deltaExtensions</code> + <code>$activateByEvent</code> to Cocoon so
+the extension activates without a workbench reload.</li>
 <li>Emit <code>sky://extensions/installed</code> so Wind refreshes the sidebar.</li>
 <li>Return an <code>ILocalExtension</code> envelope shaped for VS Code’s
 ExtensionEnablementService sidebar merge path.</li>

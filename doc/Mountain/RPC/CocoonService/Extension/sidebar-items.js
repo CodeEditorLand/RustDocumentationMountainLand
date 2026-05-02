@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["GetAllExtensions","GetConfiguration","GetExtension"]};
+window.SIDEBAR_ITEMS = {"mod":["GetAllExtensions","GetConfiguration","GetExtension"]};

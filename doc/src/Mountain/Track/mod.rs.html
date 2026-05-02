@@ -65,25 +65,22 @@
 <a href=#65 id=65 data-nosnippet>65</a></span><span class="comment">// --- Sub-modules ---
 <a href=#66 id=66 data-nosnippet>66</a>
 <a href=#67 id=67 data-nosnippet>67</a></span><span class="doccomment">/// Frontend command dispatch handling.
-<a href=#68 id=68 data-nosnippet>68</a></span><span class="kw">pub mod </span><a href="FrontendCommand/mod.rs.html#1-11">FrontendCommand</a>;
+<a href=#68 id=68 data-nosnippet>68</a></span><span class="kw">pub mod </span><a href="FrontendCommand/mod.rs.html#1-6">FrontendCommand</a>;
 <a href=#69 id=69 data-nosnippet>69</a>
 <a href=#70 id=70 data-nosnippet>70</a><span class="doccomment">/// Sidecar RPC request dispatch handling.
-<a href=#71 id=71 data-nosnippet>71</a></span><span class="kw">pub mod </span><a href="SideCarRequest/mod.rs.html#1-8">SideCarRequest</a>;
+<a href=#71 id=71 data-nosnippet>71</a></span><span class="kw">pub mod </span><a href="SideCarRequest/mod.rs.html#1-6">SideCarRequest</a>;
 <a href=#72 id=72 data-nosnippet>72</a>
 <a href=#73 id=73 data-nosnippet>73</a><span class="doccomment">/// UI request-response result handling.
-<a href=#74 id=74 data-nosnippet>74</a></span><span class="kw">pub mod </span><a href="UIRequest/mod.rs.html#1-11">UIRequest</a>;
+<a href=#74 id=74 data-nosnippet>74</a></span><span class="kw">pub mod </span><a href="UIRequest/mod.rs.html#1-7">UIRequest</a>;
 <a href=#75 id=75 data-nosnippet>75</a>
 <a href=#76 id=76 data-nosnippet>76</a><span class="doccomment">/// Webview message forwarding.
-<a href=#77 id=77 data-nosnippet>77</a></span><span class="kw">pub mod </span><a href="Webview/mod.rs.html#1-11">Webview</a>;
+<a href=#77 id=77 data-nosnippet>77</a></span><span class="kw">pub mod </span><a href="Webview/mod.rs.html#1-6">Webview</a>;
 <a href=#78 id=78 data-nosnippet>78</a>
 <a href=#79 id=79 data-nosnippet>79</a><span class="doccomment">/// Effect creation and routing.
-<a href=#80 id=80 data-nosnippet>80</a></span><span class="kw">pub mod </span><a href="Effect/mod.rs.html#1-10">Effect</a>;
+<a href=#80 id=80 data-nosnippet>80</a></span><span class="kw">pub mod </span><a href="Effect/mod.rs.html#1-9">Effect</a>;
 <a href=#81 id=81 data-nosnippet>81</a>
-<a href=#82 id=82 data-nosnippet>82</a><span class="comment">// --- Re-exports for backward compatibility ---
-<a href=#83 id=83 data-nosnippet>83</a>
-<a href=#84 id=84 data-nosnippet>84</a></span><span class="kw">pub use </span><a href="FrontendCommand/DispatchFrontendCommand.rs.html#65-94">FrontendCommand::DispatchFrontendCommand</a>;
-<a href=#85 id=85 data-nosnippet>85</a><span class="kw">pub use </span><a href="SideCarRequest/DispatchSideCarRequest.rs.html#63-95">SideCarRequest::DispatchSideCarRequest</a>;
-<a href=#86 id=86 data-nosnippet>86</a><span class="kw">pub use </span><a href="UIRequest/ResolveUIRequest.rs.html#62-94">UIRequest::ResolveUIRequest</a>;
-<a href=#87 id=87 data-nosnippet>87</a><span class="kw">pub use </span><a href="Webview/MountainWebviewPostMessageFromGuest.rs.html#60-88">Webview::MountainWebviewPostMessageFromGuest</a>;
-<a href=#88 id=88 data-nosnippet>88</a><span class="kw">pub use </span>Effect::{<a href="Effect/CreateEffectForRequest/mod.rs.html#78-121">CreateEffectForRequest</a>, <a href="Effect/MappedEffectType.rs.html#47-48">MappedEffect</a>};
-</code></pre></div></section></main></body></html>
+<a href=#82 id=82 data-nosnippet>82</a><span class="comment">// No `pub use` re-exports - callers spell the full path
+<a href=#83 id=83 data-nosnippet>83</a>// (`Track::UIRequest::ResolveUIRequest::ResolveUIRequest`, etc.). The
+<a href=#84 id=84 data-nosnippet>84</a>// double-segment shape is required by `tauri::generate_handler!` so the
+<a href=#85 id=85 data-nosnippet>85</a>// macro can find the `__cmd__&lt;Name&gt;` companion in the same file.
+</span></code></pre></div></section></main></body></html>

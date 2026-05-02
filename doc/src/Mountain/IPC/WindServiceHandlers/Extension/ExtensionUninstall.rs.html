@@ -9,15 +9,15 @@
 <a href=#9 id=9 data-nosnippet>9</a><span class="kw">use </span>tauri::{AppHandle, Emitter};
 <a href=#10 id=10 data-nosnippet>10</a>
 <a href=#11 id=11 data-nosnippet>11</a><span class="kw">use </span>crate::{
-<a href=#12 id=12 data-nosnippet>12</a>	<a href="../../../ExtensionManagement/mod.rs.html#36">ExtensionManagement::VsixInstaller</a>,
-<a href=#13 id=13 data-nosnippet>13</a>	<a href="NotifyCocoonDeltaExtensions.rs.html#28-86">IPC::WindServiceHandlers::Extension::NotifyCocoonDeltaExtensions::NotifyCocoonDeltaExtensions</a>,
-<a href=#14 id=14 data-nosnippet>14</a>	<a href="../../../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">RunTime::ApplicationRunTime::ApplicationRunTime</a>,
-<a href=#15 id=15 data-nosnippet>15</a>	<a href="../../DevLog.rs.html#589-630">dev_log</a>,
+<a href=#12 id=12 data-nosnippet>12</a>	<a href="../../../ExtensionManagement/mod.rs.html#8">ExtensionManagement::VsixInstaller</a>,
+<a href=#13 id=13 data-nosnippet>13</a>	<a href="NotifyCocoonDeltaExtensions.rs.html#28-81">IPC::WindServiceHandlers::Extension::NotifyCocoonDeltaExtensions::NotifyCocoonDeltaExtensions</a>,
+<a href=#14 id=14 data-nosnippet>14</a>	<a href="../../../RunTime/ApplicationRunTime/mod.rs.html#16-21">RunTime::ApplicationRunTime::ApplicationRunTime</a>,
+<a href=#15 id=15 data-nosnippet>15</a>	<a href="../../DevLog.rs.html#726-767">dev_log</a>,
 <a href=#16 id=16 data-nosnippet>16</a>};
 <a href=#17 id=17 data-nosnippet>17</a>
 <a href=#18 id=18 data-nosnippet>18</a><span class="kw">pub async fn </span><a href="../../../../../Mountain/IPC/WindServiceHandlers/Extension/ExtensionUninstall/fn.ExtensionUninstall.html">ExtensionUninstall</a>(
 <a href=#19 id=19 data-nosnippet>19</a>	ApplicationHandle:AppHandle,
-<a href=#20 id=20 data-nosnippet>20</a>	Runtime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../../../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">ApplicationRunTime</a>&gt;,
+<a href=#20 id=20 data-nosnippet>20</a>	Runtime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../../../RunTime/ApplicationRunTime/mod.rs.html#16-21">ApplicationRunTime</a>&gt;,
 <a href=#21 id=21 data-nosnippet>21</a>	Args:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;,
 <a href=#22 id=22 data-nosnippet>22</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
 <a href=#23 id=23 data-nosnippet>23</a>	<span class="kw">let </span>OTELStart = <span class="kw">crate</span>::IPC::DevLog::NowNano();
@@ -30,7 +30,7 @@
 <a href=#30 id=30 data-nosnippet>30</a>	}) {
 <a href=#31 id=31 data-nosnippet>31</a>		<span class="prelude-val">Some</span>(Value) =&gt; Value,
 <a href=#32 id=32 data-nosnippet>32</a>		<span class="prelude-val">None </span>=&gt; {
-<a href=#33 id=33 data-nosnippet>33</a>			<span class="macro">dev_log!</span>(<span class="string">"extensions"</span>, <span class="string">"extensions:uninstall no-op: args[0] missing identifier"</span>);
+<a href=#33 id=33 data-nosnippet>33</a>			<span class="macro">dev_log!</span>(<span class="string">"extensions"</span>, <span class="string">"extensions:uninstall no-op: Arguments[0] missing identifier"</span>);
 <a href=#34 id=34 data-nosnippet>34</a>			<span class="macro">crate::otel_span!</span>(<span class="string">"extensions:uninstall:noop-missing-id"</span>, OTELStart);
 <a href=#35 id=35 data-nosnippet>35</a>			<span class="kw">return </span><span class="prelude-val">Ok</span>(Value::Null);
 <a href=#36 id=36 data-nosnippet>36</a>		},

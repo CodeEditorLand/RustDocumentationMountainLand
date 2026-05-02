@@ -107,13 +107,13 @@
 <a href=#107 id=107 data-nosnippet>107</a><span class="kw">use </span><a href="https://docs.rs/async-trait/0.1.89/async_trait/attr.async_trait.html">async_trait::async_trait</a>;
 <a href=#108 id=108 data-nosnippet>108</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#109 id=109 data-nosnippet>109</a>
-<a href=#110 id=110 data-nosnippet>110</a><span class="kw">use </span><a href="MountainEnvironment.rs.html#225-235"><span class="kw">super</span>::MountainEnvironment::MountainEnvironment</a>;
-<a href=#111 id=111 data-nosnippet>111</a><span class="kw">use </span><a href="../IPC/DevLog.rs.html#589-630"><span class="kw">crate</span>::dev_log</a>;
+<a href=#110 id=110 data-nosnippet>110</a><span class="kw">use </span><a href="MountainEnvironment.rs.html#228-238"><span class="kw">super</span>::MountainEnvironment::MountainEnvironment</a>;
+<a href=#111 id=111 data-nosnippet>111</a><span class="kw">use </span><a href="../IPC/DevLog.rs.html#726-767"><span class="kw">crate</span>::dev_log</a>;
 <a href=#112 id=112 data-nosnippet>112</a>
 <a href=#113 id=113 data-nosnippet>113</a><span class="attr">#[async_trait]
-<a href=#114 id=114 data-nosnippet>114</a></span><span class="kw">impl </span>SynchronizationProvider <span class="kw">for </span><a href="MountainEnvironment.rs.html#225-235">MountainEnvironment</a> {
+<a href=#114 id=114 data-nosnippet>114</a></span><span class="kw">impl </span>SynchronizationProvider <span class="kw">for </span><a href="MountainEnvironment.rs.html#228-238">MountainEnvironment</a> {
 <a href=#115 id=115 data-nosnippet>115</a>	<span class="kw">async fn </span>PushUserData(<span class="kw-2">&amp;</span><a class="self" href="#115">self</a>, <a href="#115">_UserData</a>:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
-<a href=#116 id=116 data-nosnippet>116</a>		<a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"workingcopy"</span>, <span class="string">"warn: [SyncProvider] PushUserData is not implemented."</span>);
+<a href=#116 id=116 data-nosnippet>116</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"workingcopy"</span>, <span class="string">"warn: [SyncProvider] PushUserData is not implemented."</span>);
 <a href=#117 id=117 data-nosnippet>117</a>
 <a href=#118 id=118 data-nosnippet>118</a>		<span class="comment">// A real implementation would connect to a settings sync service,
 <a href=#119 id=119 data-nosnippet>119</a>		// authenticate, and upload the user data payload.
@@ -121,7 +121,7 @@
 <a href=#121 id=121 data-nosnippet>121</a>	}
 <a href=#122 id=122 data-nosnippet>122</a>
 <a href=#123 id=123 data-nosnippet>123</a>	<span class="kw">async fn </span>PullUserData(<span class="kw-2">&amp;</span><a class="self" href="#123">self</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, CommonError&gt; {
-<a href=#124 id=124 data-nosnippet>124</a>		<a href="../IPC/DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"workingcopy"</span>, <span class="string">"warn: [SyncProvider] PullUserData is not implemented."</span>);
+<a href=#124 id=124 data-nosnippet>124</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"workingcopy"</span>, <span class="string">"warn: [SyncProvider] PullUserData is not implemented."</span>);
 <a href=#125 id=125 data-nosnippet>125</a>
 <a href=#126 id=126 data-nosnippet>126</a>		<span class="comment">// A real implementation would connect to a settings sync service,
 <a href=#127 id=127 data-nosnippet>127</a>		// authenticate, and download the latest user data snapshot.

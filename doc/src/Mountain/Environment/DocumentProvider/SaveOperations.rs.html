@@ -9,22 +9,22 @@
 <a href=#9 id=9 data-nosnippet>9</a>	Error::CommonError::CommonError,
 <a href=#10 id=10 data-nosnippet>10</a>	FileSystem::WriteFileBytes::WriteFileBytes,
 <a href=#11 id=11 data-nosnippet>11</a>	IPC::SkyEvent::SkyEvent,
-<a href=#12 id=12 data-nosnippet>12</a>	UserInterface::{<a href="../../../../Mountain/Environment/UserInterface/DTO/SaveDialogOptionsDTO/struct.SaveDialogOptionsDTO.html">DTO::SaveDialogOptionsDTO::SaveDialogOptionsDTO</a>, <a href="../../../../Mountain/Environment/UserInterface/ShowSaveDialog/fn.ShowSaveDialog.html">ShowSaveDialog::ShowSaveDialog</a>},
+<a href=#12 id=12 data-nosnippet>12</a>	UserInterface::{DTO::SaveDialogOptionsDTO::SaveDialogOptionsDTO, ShowSaveDialog::ShowSaveDialog},
 <a href=#13 id=13 data-nosnippet>13</a>};
 <a href=#14 id=14 data-nosnippet>14</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">serde_json::json</a>;
 <a href=#15 id=15 data-nosnippet>15</a><span class="kw">use </span>tauri::{Emitter, Manager};
 <a href=#16 id=16 data-nosnippet>16</a><span class="kw">use </span><a href="https://docs.rs/url/2.5.7/url/struct.Url.html">url::Url</a>;
 <a href=#17 id=17 data-nosnippet>17</a>
 <a href=#18 id=18 data-nosnippet>18</a><span class="kw">use </span>crate::{
-<a href=#19 id=19 data-nosnippet>19</a>	<a href="../../ApplicationState/DTO/DocumentStateDTO.rs.html#43-69">ApplicationState::DTO::DocumentStateDTO::DocumentStateDTO</a>,
-<a href=#20 id=20 data-nosnippet>20</a>	<a href="../mod.rs.html#116">Environment::Utility</a>,
-<a href=#21 id=21 data-nosnippet>21</a>	<a href="../../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">RunTime::ApplicationRunTime::ApplicationRunTime</a>,
-<a href=#22 id=22 data-nosnippet>22</a>	<a href="../../IPC/DevLog.rs.html#589-630">dev_log</a>,
+<a href=#19 id=19 data-nosnippet>19</a>	<a href="../../ApplicationState/DTO/DocumentStateDTO.rs.html#43-70">ApplicationState::DTO::DocumentStateDTO::DocumentStateDTO</a>,
+<a href=#20 id=20 data-nosnippet>20</a>	<a href="../mod.rs.html#113">Environment::Utility</a>,
+<a href=#21 id=21 data-nosnippet>21</a>	<a href="../../RunTime/ApplicationRunTime/mod.rs.html#16-21">RunTime::ApplicationRunTime::ApplicationRunTime</a>,
+<a href=#22 id=22 data-nosnippet>22</a>	<a href="../../IPC/DevLog.rs.html#726-767">dev_log</a>,
 <a href=#23 id=23 data-nosnippet>23</a>};
 <a href=#24 id=24 data-nosnippet>24</a>
 <a href=#25 id=25 data-nosnippet>25</a><span class="doccomment">/// Saves the document at the given URI.
 <a href=#26 id=26 data-nosnippet>26</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/DocumentProvider/SaveOperations/fn.save_document.html">save_document</a>(
-<a href=#27 id=27 data-nosnippet>27</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
+<a href=#27 id=27 data-nosnippet>27</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#228-238">MountainEnvironment</a>,
 <a href=#28 id=28 data-nosnippet>28</a>	uri:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
 <a href=#29 id=29 data-nosnippet>29</a>) -&gt; <span class="prelude-ty">Result</span>&lt;bool, CommonError&gt; {
 <a href=#30 id=30 data-nosnippet>30</a>	<span class="macro">dev_log!</span>(<span class="string">"model"</span>, <span class="string">"[DocumentProvider] Saving document: {}"</span>, uri);
@@ -36,7 +36,7 @@
 <a href=#36 id=36 data-nosnippet>36</a>			.Documents
 <a href=#37 id=37 data-nosnippet>37</a>			.OpenDocuments
 <a href=#38 id=38 data-nosnippet>38</a>			.lock()
-<a href=#39 id=39 data-nosnippet>39</a>			.map_err(Utility::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?</span>;
+<a href=#39 id=39 data-nosnippet>39</a>			.map_err(Utility::ErrorMapping::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?</span>;
 <a href=#40 id=40 data-nosnippet>40</a>
 <a href=#41 id=41 data-nosnippet>41</a>		<span class="kw">if let </span><span class="prelude-val">Some</span>(document) = open_documents_guard.get_mut(uri.as_str()) {
 <a href=#42 id=42 data-nosnippet>42</a>			<span class="comment">// For non-file URIs, use temporary file location
@@ -86,7 +86,7 @@
 <a href=#86 id=86 data-nosnippet>86</a>
 <a href=#87 id=87 data-nosnippet>87</a><span class="doccomment">/// Saves a document to a new location.
 <a href=#88 id=88 data-nosnippet>88</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/DocumentProvider/SaveOperations/fn.save_document_as.html">save_document_as</a>(
-<a href=#89 id=89 data-nosnippet>89</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
+<a href=#89 id=89 data-nosnippet>89</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#228-238">MountainEnvironment</a>,
 <a href=#90 id=90 data-nosnippet>90</a>	original_uri:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
 <a href=#91 id=91 data-nosnippet>91</a>	new_target_uri:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>&gt;,
 <a href=#92 id=92 data-nosnippet>92</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;Url&gt;, CommonError&gt; {
@@ -115,7 +115,7 @@
 <a href=#115 id=115 data-nosnippet>115</a>			.Documents
 <a href=#116 id=116 data-nosnippet>116</a>			.OpenDocuments
 <a href=#117 id=117 data-nosnippet>117</a>			.lock()
-<a href=#118 id=118 data-nosnippet>118</a>			.map_err(Utility::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?</span>;
+<a href=#118 id=118 data-nosnippet>118</a>			.map_err(Utility::ErrorMapping::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?</span>;
 <a href=#119 id=119 data-nosnippet>119</a>
 <a href=#120 id=120 data-nosnippet>120</a>		guard
 <a href=#121 id=121 data-nosnippet>121</a>			.get(original_uri.as_str())
@@ -134,7 +134,7 @@
 <a href=#134 id=134 data-nosnippet>134</a>			.Documents
 <a href=#135 id=135 data-nosnippet>135</a>			.OpenDocuments
 <a href=#136 id=136 data-nosnippet>136</a>			.lock()
-<a href=#137 id=137 data-nosnippet>137</a>			.map_err(Utility::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?</span>;
+<a href=#137 id=137 data-nosnippet>137</a>			.map_err(Utility::ErrorMapping::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?</span>;
 <a href=#138 id=138 data-nosnippet>138</a>
 <a href=#139 id=139 data-nosnippet>139</a>		<span class="kw">let </span>old_document = guard.remove(original_uri.as_str());
 <a href=#140 id=140 data-nosnippet>140</a>
@@ -168,7 +168,7 @@
 <a href=#168 id=168 data-nosnippet>168</a>
 <a href=#169 id=169 data-nosnippet>169</a><span class="doccomment">/// Saves all currently dirty documents.
 <a href=#170 id=170 data-nosnippet>170</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/DocumentProvider/SaveOperations/fn.save_all_documents.html">save_all_documents</a>(
-<a href=#171 id=171 data-nosnippet>171</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
+<a href=#171 id=171 data-nosnippet>171</a>	environment:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#228-238">MountainEnvironment</a>,
 <a href=#172 id=172 data-nosnippet>172</a>	include_untitled:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
 <a href=#173 id=173 data-nosnippet>173</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;bool&gt;, CommonError&gt; {
 <a href=#174 id=174 data-nosnippet>174</a>	<span class="macro">dev_log!</span>(
@@ -184,7 +184,7 @@
 <a href=#184 id=184 data-nosnippet>184</a>			.Documents
 <a href=#185 id=185 data-nosnippet>185</a>			.OpenDocuments
 <a href=#186 id=186 data-nosnippet>186</a>			.lock()
-<a href=#187 id=187 data-nosnippet>187</a>			.map_err(Utility::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?</span>;
+<a href=#187 id=187 data-nosnippet>187</a>			.map_err(Utility::ErrorMapping::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?</span>;
 <a href=#188 id=188 data-nosnippet>188</a>
 <a href=#189 id=189 data-nosnippet>189</a>		open_documents_guard
 <a href=#190 id=190 data-nosnippet>190</a>			.values()

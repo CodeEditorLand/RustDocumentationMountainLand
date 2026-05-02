@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["handle_file_exists"]};
+window.SIDEBAR_ITEMS = {"fn":["FileExists"]};

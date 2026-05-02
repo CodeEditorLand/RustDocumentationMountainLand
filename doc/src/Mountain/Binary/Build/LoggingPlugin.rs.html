@@ -34,7 +34,7 @@
 <a href=#34 id=34 data-nosnippet>34</a>///
 <a href=#35 id=35 data-nosnippet>35</a>/// # Short Mode
 <a href=#36 id=36 data-nosnippet>36</a>///
-<a href=#37 id=37 data-nosnippet>37</a>/// When `LAND_DEV_LOG=short`:
+<a href=#37 id=37 data-nosnippet>37</a>/// When `Trace=short`:
 <a href=#38 id=38 data-nosnippet>38</a>/// - Module targets compressed to last segment
 <a href=#39 id=39 data-nosnippet>39</a>/// - Long app-data paths aliased to `$APP`
 <a href=#40 id=40 data-nosnippet>40</a>/// - Storage key-by-key logs suppressed (batch count only)
@@ -78,33 +78,52 @@
 <a href=#78 id=78 data-nosnippet>78</a>		.level_for(<span class="string">"mio"</span>, LevelFilter::<a href="https://docs.rs/log/0.4.29/log/enum.LevelFilter.html#variant.Info">Info</a>)
 <a href=#79 id=79 data-nosnippet>79</a>		.level_for(<span class="string">"tao"</span>, LevelFilter::<a href="https://docs.rs/log/0.4.29/log/enum.LevelFilter.html#variant.Info">Info</a>)
 <a href=#80 id=80 data-nosnippet>80</a>		.level_for(<span class="string">"tracing"</span>, LevelFilter::<a href="https://docs.rs/log/0.4.29/log/enum.LevelFilter.html#variant.Info">Info</a>)
-<a href=#81 id=81 data-nosnippet>81</a>		<span class="comment">// Filter out extremely noisy targets
-<a href=#82 id=82 data-nosnippet>82</a>		</span>.filter(|Metadata| {
-<a href=#83 id=83 data-nosnippet>83</a>			!<a href="#82">Metadata</a>.<a href="https://docs.rs/log/0.4.29/log/struct.Metadata.html#method.target">target</a>().<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.starts_with">starts_with</a>(<span class="string">"polling"</span>)
-<a href=#84 id=84 data-nosnippet>84</a>				&amp;&amp; !<a href="#82">Metadata</a>.<a href="https://docs.rs/log/0.4.29/log/struct.Metadata.html#method.target">target</a>().<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.starts_with">starts_with</a>(<span class="string">"tokio_reactor"</span>)
-<a href=#85 id=85 data-nosnippet>85</a>				&amp;&amp; !<a href="#82">Metadata</a>.<a href="https://docs.rs/log/0.4.29/log/struct.Metadata.html#method.target">target</a>().<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.starts_with">starts_with</a>(<span class="string">"want"</span>)
-<a href=#86 id=86 data-nosnippet>86</a>		})
-<a href=#87 id=87 data-nosnippet>87</a>		<span class="comment">// Format logs with category-like structure: [LEVEL] [TARGET] message
-<a href=#88 id=88 data-nosnippet>88</a>		</span>.format(|out, message, record| {
-<a href=#89 id=89 data-nosnippet>89</a>			<span class="kw">if </span>DevLog::<a href="../../IPC/DevLog.rs.html#571">IsShort</a>() {
-<a href=#90 id=90 data-nosnippet>90</a>				<span class="kw">let </span>ShortTarget = <a href="#16">CompressTarget</a>(<a href="#88">record</a>.<a href="https://docs.rs/log/0.4.29/log/struct.Record.html#method.target">target</a>());
-<a href=#91 id=91 data-nosnippet>91</a>				<span class="kw">let </span>RawMessage = <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"{}"</span>, message);
-<a href=#92 id=92 data-nosnippet>92</a>				<span class="kw">let </span>Aliased = DevLog::<a href="../../IPC/DevLog.rs.html#433-439">AliasPath</a>(<span class="kw-2">&amp;</span><a href="#91">RawMessage</a>);
-<a href=#93 id=93 data-nosnippet>93</a>				<a href="#88">out</a>.<a href="https://docs.rs/fern/0.7.1/fern/log_impl/struct.FormatCallback.html#method.finish">finish</a>(<a href="https://doc.rust-lang.org/nightly/core/macro.format_args.html">format_args!</a>(
-<a href=#94 id=94 data-nosnippet>94</a>					<span class="string">"[{:&lt;5}] [{}] {}"</span>,
-<a href=#95 id=95 data-nosnippet>95</a>					record.level(),
-<a href=#96 id=96 data-nosnippet>96</a>					ShortTarget,
-<a href=#97 id=97 data-nosnippet>97</a>					Aliased
-<a href=#98 id=98 data-nosnippet>98</a>				))
-<a href=#99 id=99 data-nosnippet>99</a>			} <span class="kw">else </span>{
-<a href=#100 id=100 data-nosnippet>100</a>				<a href="#88">out</a>.<a href="https://docs.rs/fern/0.7.1/fern/log_impl/struct.FormatCallback.html#method.finish">finish</a>(<a href="https://doc.rust-lang.org/nightly/core/macro.format_args.html">format_args!</a>(
-<a href=#101 id=101 data-nosnippet>101</a>					<span class="string">"[{:&lt;5}] [{}] {}"</span>,
-<a href=#102 id=102 data-nosnippet>102</a>					record.level(),
-<a href=#103 id=103 data-nosnippet>103</a>					record.target(),
-<a href=#104 id=104 data-nosnippet>104</a>					message
-<a href=#105 id=105 data-nosnippet>105</a>				))
-<a href=#106 id=106 data-nosnippet>106</a>			}
-<a href=#107 id=107 data-nosnippet>107</a>		})
-<a href=#108 id=108 data-nosnippet>108</a>		.build()
-<a href=#109 id=109 data-nosnippet>109</a>}
+<a href=#81 id=81 data-nosnippet>81</a>		<span class="comment">// `ignore` and `globset` (used by Mountain's extension scanner +
+<a href=#82 id=82 data-nosnippet>82</a>		// `WorkspaceProvider::FindFiles` walk) emit a DEBUG line per
+<a href=#83 id=83 data-nosnippet>83</a>		// `.gitignore` opened, per glob compiled, and per file
+<a href=#84 id=84 data-nosnippet>84</a>		// whitelisted/ignored. A single `debug-electron-bundled` boot
+<a href=#85 id=85 data-nosnippet>85</a>		// produces tens of thousands of these lines, drowning out every
+<a href=#86 id=86 data-nosnippet>86</a>		// extension activation / SCM register / GIT-MARK / IPC trace
+<a href=#87 id=87 data-nosnippet>87</a>		// the rest of Mountain emits at the same level. Cap to Warn so
+<a href=#88 id=88 data-nosnippet>88</a>		// the extension-activation signal is readable.
+<a href=#89 id=89 data-nosnippet>89</a>		</span>.level_for(<span class="string">"ignore"</span>, LevelFilter::<a href="https://docs.rs/log/0.4.29/log/enum.LevelFilter.html#variant.Warn">Warn</a>)
+<a href=#90 id=90 data-nosnippet>90</a>		.level_for(<span class="string">"ignore::walk"</span>, LevelFilter::<a href="https://docs.rs/log/0.4.29/log/enum.LevelFilter.html#variant.Warn">Warn</a>)
+<a href=#91 id=91 data-nosnippet>91</a>		.level_for(<span class="string">"ignore::gitignore"</span>, LevelFilter::<a href="https://docs.rs/log/0.4.29/log/enum.LevelFilter.html#variant.Warn">Warn</a>)
+<a href=#92 id=92 data-nosnippet>92</a>		.level_for(<span class="string">"globset"</span>, LevelFilter::<a href="https://docs.rs/log/0.4.29/log/enum.LevelFilter.html#variant.Warn">Warn</a>)
+<a href=#93 id=93 data-nosnippet>93</a>		<span class="comment">// `keyring` (used by Mountain's secret-storage path on the
+<a href=#94 id=94 data-nosnippet>94</a>		// `dev1phpTools.license.data` lookup chain) emits a 3-line
+<a href=#95 id=95 data-nosnippet>95</a>		// DEBUG block per `get_password` call - "creating entry",
+<a href=#96 id=96 data-nosnippet>96</a>		// "created entry", "get password from entry" - per refresh
+<a href=#97 id=97 data-nosnippet>97</a>		// tick. After the workbench paints these fire indefinitely.
+<a href=#98 id=98 data-nosnippet>98</a>		// Cap to Warn alongside the other dependency mutes.
+<a href=#99 id=99 data-nosnippet>99</a>		</span>.level_for(<span class="string">"keyring"</span>, LevelFilter::<a href="https://docs.rs/log/0.4.29/log/enum.LevelFilter.html#variant.Warn">Warn</a>)
+<a href=#100 id=100 data-nosnippet>100</a>		<span class="comment">// Filter out extremely noisy targets
+<a href=#101 id=101 data-nosnippet>101</a>		</span>.filter(|Metadata| {
+<a href=#102 id=102 data-nosnippet>102</a>			!<a href="#101">Metadata</a>.<a href="https://docs.rs/log/0.4.29/log/struct.Metadata.html#method.target">target</a>().<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.starts_with">starts_with</a>(<span class="string">"polling"</span>)
+<a href=#103 id=103 data-nosnippet>103</a>				&amp;&amp; !<a href="#101">Metadata</a>.<a href="https://docs.rs/log/0.4.29/log/struct.Metadata.html#method.target">target</a>().<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.starts_with">starts_with</a>(<span class="string">"tokio_reactor"</span>)
+<a href=#104 id=104 data-nosnippet>104</a>				&amp;&amp; !<a href="#101">Metadata</a>.<a href="https://docs.rs/log/0.4.29/log/struct.Metadata.html#method.target">target</a>().<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.starts_with">starts_with</a>(<span class="string">"want"</span>)
+<a href=#105 id=105 data-nosnippet>105</a>		})
+<a href=#106 id=106 data-nosnippet>106</a>		<span class="comment">// Format logs with category-like structure: [LEVEL] [TARGET] message
+<a href=#107 id=107 data-nosnippet>107</a>		</span>.format(|out, message, record| {
+<a href=#108 id=108 data-nosnippet>108</a>			<span class="kw">if </span>DevLog::<a href="../../IPC/DevLog.rs.html#648">IsShort</a>() {
+<a href=#109 id=109 data-nosnippet>109</a>				<span class="kw">let </span>ShortTarget = <a href="#16">CompressTarget</a>(<a href="#107">record</a>.<a href="https://docs.rs/log/0.4.29/log/struct.Record.html#method.target">target</a>());
+<a href=#110 id=110 data-nosnippet>110</a>				<span class="kw">let </span>RawMessage = <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"{}"</span>, message);
+<a href=#111 id=111 data-nosnippet>111</a>				<span class="kw">let </span>Aliased = DevLog::<a href="../../IPC/DevLog.rs.html#434-440">AliasPath</a>(<span class="kw-2">&amp;</span><a href="#110">RawMessage</a>);
+<a href=#112 id=112 data-nosnippet>112</a>				<a href="#107">out</a>.<a href="https://docs.rs/fern/0.7.1/fern/log_impl/struct.FormatCallback.html#method.finish">finish</a>(<a href="https://doc.rust-lang.org/nightly/core/macro.format_args.html">format_args!</a>(
+<a href=#113 id=113 data-nosnippet>113</a>					<span class="string">"[{:&lt;5}] [{}] {}"</span>,
+<a href=#114 id=114 data-nosnippet>114</a>					record.level(),
+<a href=#115 id=115 data-nosnippet>115</a>					ShortTarget,
+<a href=#116 id=116 data-nosnippet>116</a>					Aliased
+<a href=#117 id=117 data-nosnippet>117</a>				))
+<a href=#118 id=118 data-nosnippet>118</a>			} <span class="kw">else </span>{
+<a href=#119 id=119 data-nosnippet>119</a>				<a href="#107">out</a>.<a href="https://docs.rs/fern/0.7.1/fern/log_impl/struct.FormatCallback.html#method.finish">finish</a>(<a href="https://doc.rust-lang.org/nightly/core/macro.format_args.html">format_args!</a>(
+<a href=#120 id=120 data-nosnippet>120</a>					<span class="string">"[{:&lt;5}] [{}] {}"</span>,
+<a href=#121 id=121 data-nosnippet>121</a>					record.level(),
+<a href=#122 id=122 data-nosnippet>122</a>					record.target(),
+<a href=#123 id=123 data-nosnippet>123</a>					message
+<a href=#124 id=124 data-nosnippet>124</a>				))
+<a href=#125 id=125 data-nosnippet>125</a>			}
+<a href=#126 id=126 data-nosnippet>126</a>		})
+<a href=#127 id=127 data-nosnippet>127</a>		.build()
+<a href=#128 id=128 data-nosnippet>128</a>}
 </code></pre></div></section></main></body></html>

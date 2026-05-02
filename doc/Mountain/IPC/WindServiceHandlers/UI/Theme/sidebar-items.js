@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["handle_themes_get_active","handle_themes_list","handle_themes_set"]};
+window.SIDEBAR_ITEMS = {"fn":["ThemesGetActive","ThemesList","ThemesSet"]};

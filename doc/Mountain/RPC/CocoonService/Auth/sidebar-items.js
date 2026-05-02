@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["GetAuthenticationSession","RegisterAuthenticationProvider"]};
+window.SIDEBAR_ITEMS = {"mod":["GetAuthenticationSession","RegisterAuthenticationProvider"]};

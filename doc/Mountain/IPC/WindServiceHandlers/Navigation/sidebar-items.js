@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["handle_history_can_go_back","handle_history_can_go_forward","handle_history_clear","handle_history_get_stack","handle_history_go_back","handle_history_go_forward","handle_history_push","handle_label_get_base","handle_label_get_uri","handle_label_get_workspace"]};
+window.SIDEBAR_ITEMS = {"fn":["HistoryCanGoBack","HistoryCanGoForward","HistoryClear","HistoryGetStack","HistoryGoBack","HistoryGoForward","HistoryPush","LabelGetBase","LabelGetURI","LabelGetWorkspace"]};

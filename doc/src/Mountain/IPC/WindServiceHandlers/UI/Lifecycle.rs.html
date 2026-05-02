@@ -3,7 +3,7 @@
 <a href=#3 id=3 data-nosnippet>3</a>//! four-phase startup (Starting / Ready / Restored / Eventually) so Sky
 <a href=#4 id=4 data-nosnippet>4</a>//! can gate UI installation on lifecycle progress.
 <a href=#5 id=5 data-nosnippet>5</a>//!
-<a href=#6 id=6 data-nosnippet>6</a>//! `handle_lifecycle_when_phase` currently polls at 100 ms intervals up
+<a href=#6 id=6 data-nosnippet>6</a>//! `LifecycleWhenPhase` currently polls at 100 ms intervals up
 <a href=#7 id=7 data-nosnippet>7</a>//! to 5 s; TODO to replace with a `tokio::sync::Notify` when the
 <a href=#8 id=8 data-nosnippet>8</a>//! lifecycle service grows real broadcast semantics.
 <a href=#9 id=9 data-nosnippet>9</a>
@@ -12,23 +12,23 @@
 <a href=#12 id=12 data-nosnippet>12</a><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json</a>};
 <a href=#13 id=13 data-nosnippet>13</a><span class="kw">use </span>tauri::AppHandle;
 <a href=#14 id=14 data-nosnippet>14</a>
-<a href=#15 id=15 data-nosnippet>15</a><span class="kw">use </span><a href="../../../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55"><span class="kw">crate</span>::RunTime::ApplicationRunTime::ApplicationRunTime</a>;
+<a href=#15 id=15 data-nosnippet>15</a><span class="kw">use </span><a href="../../../RunTime/ApplicationRunTime/mod.rs.html#16-21"><span class="kw">crate</span>::RunTime::ApplicationRunTime::ApplicationRunTime</a>;
 <a href=#16 id=16 data-nosnippet>16</a>
-<a href=#17 id=17 data-nosnippet>17</a><span class="kw">pub async fn </span><a href="../../../../../Mountain/IPC/WindServiceHandlers/UI/Lifecycle/fn.handle_lifecycle_get_phase.html">handle_lifecycle_get_phase</a>(runtime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../../../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">ApplicationRunTime</a>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
-<a href=#18 id=18 data-nosnippet>18</a>	<span class="kw">let </span>Phase = runtime.Environment.ApplicationState.Feature.Lifecycle.GetPhase();
+<a href=#17 id=17 data-nosnippet>17</a><span class="kw">pub async fn </span><a href="../../../../../Mountain/IPC/WindServiceHandlers/UI/Lifecycle/fn.LifecycleGetPhase.html">LifecycleGetPhase</a>(RunTime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../../../RunTime/ApplicationRunTime/mod.rs.html#16-21">ApplicationRunTime</a>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
+<a href=#18 id=18 data-nosnippet>18</a>	<span class="kw">let </span>Phase = RunTime.Environment.ApplicationState.Feature.Lifecycle.GetPhase();
 <a href=#19 id=19 data-nosnippet>19</a>	<span class="prelude-val">Ok</span>(<span class="macro">json!</span>(Phase))
 <a href=#20 id=20 data-nosnippet>20</a>}
 <a href=#21 id=21 data-nosnippet>21</a>
-<a href=#22 id=22 data-nosnippet>22</a><span class="kw">pub async fn </span><a href="../../../../../Mountain/IPC/WindServiceHandlers/UI/Lifecycle/fn.handle_lifecycle_when_phase.html">handle_lifecycle_when_phase</a>(runtime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../../../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">ApplicationRunTime</a>&gt;, args:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
-<a href=#23 id=23 data-nosnippet>23</a>	<span class="kw">let </span>RequestedPhase = args.first().and_then(|V| V.as_u64()).unwrap_or(<span class="number">1</span>) <span class="kw">as </span>u8;
-<a href=#24 id=24 data-nosnippet>24</a>	<span class="kw">let </span>CurrentPhase = runtime.Environment.ApplicationState.Feature.Lifecycle.GetPhase();
+<a href=#22 id=22 data-nosnippet>22</a><span class="kw">pub async fn </span><a href="../../../../../Mountain/IPC/WindServiceHandlers/UI/Lifecycle/fn.LifecycleWhenPhase.html">LifecycleWhenPhase</a>(RunTime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../../../RunTime/ApplicationRunTime/mod.rs.html#16-21">ApplicationRunTime</a>&gt;, Arguments:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
+<a href=#23 id=23 data-nosnippet>23</a>	<span class="kw">let </span>RequestedPhase = Arguments.first().and_then(|V| V.as_u64()).unwrap_or(<span class="number">1</span>) <span class="kw">as </span>u8;
+<a href=#24 id=24 data-nosnippet>24</a>	<span class="kw">let </span>CurrentPhase = RunTime.Environment.ApplicationState.Feature.Lifecycle.GetPhase();
 <a href=#25 id=25 data-nosnippet>25</a>	<span class="kw">if </span>CurrentPhase &gt;= RequestedPhase {
 <a href=#26 id=26 data-nosnippet>26</a>		<span class="kw">return </span><span class="prelude-val">Ok</span>(Value::Null);
 <a href=#27 id=27 data-nosnippet>27</a>	}
 <a href=#28 id=28 data-nosnippet>28</a>	<span class="kw">let </span><span class="kw-2">mut </span>Retries = <span class="number">0u8</span>;
 <a href=#29 id=29 data-nosnippet>29</a>	<span class="kw">loop </span>{
 <a href=#30 id=30 data-nosnippet>30</a>		tokio::time::sleep(tokio::time::Duration::from_millis(<span class="number">100</span>)).<span class="kw">await</span>;
-<a href=#31 id=31 data-nosnippet>31</a>		<span class="kw">let </span>Phase = runtime.Environment.ApplicationState.Feature.Lifecycle.GetPhase();
+<a href=#31 id=31 data-nosnippet>31</a>		<span class="kw">let </span>Phase = RunTime.Environment.ApplicationState.Feature.Lifecycle.GetPhase();
 <a href=#32 id=32 data-nosnippet>32</a>		<span class="kw">if </span>Phase &gt;= RequestedPhase || Retries &gt;= <span class="number">50 </span>{
 <a href=#33 id=33 data-nosnippet>33</a>			<span class="kw">break</span>;
 <a href=#34 id=34 data-nosnippet>34</a>		}
@@ -37,8 +37,8 @@
 <a href=#37 id=37 data-nosnippet>37</a>	<span class="prelude-val">Ok</span>(Value::Null)
 <a href=#38 id=38 data-nosnippet>38</a>}
 <a href=#39 id=39 data-nosnippet>39</a>
-<a href=#40 id=40 data-nosnippet>40</a><span class="kw">pub async fn </span><a href="../../../../../Mountain/IPC/WindServiceHandlers/UI/Lifecycle/fn.handle_lifecycle_request_shutdown.html">handle_lifecycle_request_shutdown</a>(app_handle:AppHandle) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
-<a href=#41 id=41 data-nosnippet>41</a>	app_handle.exit(<span class="number">0</span>);
+<a href=#40 id=40 data-nosnippet>40</a><span class="kw">pub async fn </span><a href="../../../../../Mountain/IPC/WindServiceHandlers/UI/Lifecycle/fn.LifecycleRequestShutdown.html">LifecycleRequestShutdown</a>(ApplicationHandle:AppHandle) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
+<a href=#41 id=41 data-nosnippet>41</a>	ApplicationHandle.exit(<span class="number">0</span>);
 <a href=#42 id=42 data-nosnippet>42</a>	<span class="prelude-val">Ok</span>(Value::Null)
 <a href=#43 id=43 data-nosnippet>43</a>}
 </code></pre></div></section></main></body></html>

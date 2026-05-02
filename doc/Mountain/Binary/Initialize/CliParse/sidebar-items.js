@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["HasWorkspaceArgument","Parse","ParseWorkspaceFolders"]};
+window.SIDEBAR_ITEMS = {"fn":["HasWorkspaceArgument","Parse","ParseWorkspaceFolders","ResolveRecentlyOpenedTopFolder","WalkUpToProjectRoot"]};

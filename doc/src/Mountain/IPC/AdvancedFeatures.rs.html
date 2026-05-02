@@ -213,12 +213,12 @@
 <a href=#213 id=213 data-nosnippet>213</a><span class="kw">use </span>tokio::time::interval;
 <a href=#214 id=214 data-nosnippet>214</a><span class="kw">use </span>tauri::{Emitter, Manager};
 <a href=#215 id=215 data-nosnippet>215</a>
-<a href=#216 id=216 data-nosnippet>216</a><span class="kw">use </span>crate::{<a href="../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">RunTime::ApplicationRunTime::ApplicationRunTime</a>, <a href="DevLog.rs.html#589-630">dev_log</a>};
+<a href=#216 id=216 data-nosnippet>216</a><span class="kw">use </span>crate::{<a href="../RunTime/ApplicationRunTime/mod.rs.html#16-21">RunTime::ApplicationRunTime::ApplicationRunTime</a>, <a href="DevLog.rs.html#726-767">dev_log</a>};
 <a href=#217 id=217 data-nosnippet>217</a>
 <a href=#218 id=218 data-nosnippet>218</a><span class="doccomment">/// Advanced IPC features for enhanced Mountain-Wind synchronization
 <a href=#219 id=219 data-nosnippet>219</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>)]
 <a href=#220 id=220 data-nosnippet>220</a></span><span class="kw">pub struct </span><a href="#220-225">AdvancedFeatures</a> {
-<a href=#221 id=221 data-nosnippet>221</a>	runtime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">ApplicationRunTime</a>&gt;,
+<a href=#221 id=221 data-nosnippet>221</a>	runtime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/mod.rs.html#16-21">ApplicationRunTime</a>&gt;,
 <a href=#222 id=222 data-nosnippet>222</a>	performance_stats:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">Mutex</a>&lt;<a href="#229-237">PerformanceStats</a>&gt;&gt;,
 <a href=#223 id=223 data-nosnippet>223</a>	collaboration_sessions:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">Mutex</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="#241-247">CollaborationSession</a>&gt;&gt;&gt;,
 <a href=#224 id=224 data-nosnippet>224</a>	message_cache:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">Mutex</a>&lt;<a href="#260-265">MessageCache</a>&gt;&gt;,
@@ -276,8 +276,8 @@
 <a href=#276 id=276 data-nosnippet>276</a>
 <a href=#277 id=277 data-nosnippet>277</a><span class="kw">impl </span><a href="#220-225">AdvancedFeatures</a> {
 <a href=#278 id=278 data-nosnippet>278</a>	<span class="doccomment">/// Create new advanced features instance
-<a href=#279 id=279 data-nosnippet>279</a>	</span><span class="kw">pub fn </span>new(runtime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">ApplicationRunTime</a>&gt;) -&gt; <span class="self">Self </span>{
-<a href=#280 id=280 data-nosnippet>280</a>		<a href="DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"Initializing advanced IPC features"</span>);
+<a href=#279 id=279 data-nosnippet>279</a>	</span><span class="kw">pub fn </span>new(runtime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/mod.rs.html#16-21">ApplicationRunTime</a>&gt;) -&gt; <span class="self">Self </span>{
+<a href=#280 id=280 data-nosnippet>280</a>		<a href="DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"Initializing advanced IPC features"</span>);
 <a href=#281 id=281 data-nosnippet>281</a>
 <a href=#282 id=282 data-nosnippet>282</a>		<span class="self">Self </span>{
 <a href=#283 id=283 data-nosnippet>283</a>			<a href="#279">runtime</a>,
@@ -627,9 +627,9 @@
 <a href=#627 id=627 data-nosnippet>627</a><span class="doccomment">/// Initialize advanced features in Mountain's setup
 <a href=#628 id=628 data-nosnippet>628</a></span><span class="kw">pub fn </span><a href="../../../Mountain/IPC/AdvancedFeatures/fn.initialize_advanced_features.html">initialize_advanced_features</a>(
 <a href=#629 id=629 data-nosnippet>629</a>	app_handle:<span class="kw-2">&amp;</span>tauri::AppHandle,
-<a href=#630 id=630 data-nosnippet>630</a>	runtime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/RuntimeStruct.rs.html#48-55">ApplicationRunTime</a>&gt;,
+<a href=#630 id=630 data-nosnippet>630</a>	runtime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/mod.rs.html#16-21">ApplicationRunTime</a>&gt;,
 <a href=#631 id=631 data-nosnippet>631</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
-<a href=#632 id=632 data-nosnippet>632</a>	<a href="DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"Initializing advanced IPC features"</span>);
+<a href=#632 id=632 data-nosnippet>632</a>	<a href="DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"Initializing advanced IPC features"</span>);
 <a href=#633 id=633 data-nosnippet>633</a>
 <a href=#634 id=634 data-nosnippet>634</a>	<span class="kw">let </span>features = <a href="#220-225">AdvancedFeatures</a>::<a href="#279-304">new</a>(<a href="#630">runtime</a>);
 <a href=#635 id=635 data-nosnippet>635</a>
@@ -640,7 +640,7 @@
 <a href=#640 id=640 data-nosnippet>640</a>	</span><span class="kw">let </span>features_clone = <a href="#634">features</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
 <a href=#641 id=641 data-nosnippet>641</a>	tokio::spawn(<span class="kw">async move </span>{
 <a href=#642 id=642 data-nosnippet>642</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(e) = <a href="#640">features_clone</a>.<a href="#307-330">start_monitoring</a>().<span class="kw">await </span>{
-<a href=#643 id=643 data-nosnippet>643</a>			<a href="DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"error: [AdvancedFeatures] Failed to start monitoring: {}"</span>, e);
+<a href=#643 id=643 data-nosnippet>643</a>			<a href="DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"error: [AdvancedFeatures] Failed to start monitoring: {}"</span>, e);
 <a href=#644 id=644 data-nosnippet>644</a>		}
 <a href=#645 id=645 data-nosnippet>645</a>	});
 <a href=#646 id=646 data-nosnippet>646</a>

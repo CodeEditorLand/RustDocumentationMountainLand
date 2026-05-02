@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["handle_quick_input_show_input_box","handle_quick_input_show_quick_pick"]};
+window.SIDEBAR_ITEMS = {"fn":["QuickInputShowInputBox","QuickInputShowQuickPick"]};

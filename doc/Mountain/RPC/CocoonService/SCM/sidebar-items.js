@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["GitExec","RegisterScmProvider","UpdateScmGroup"]};
+window.SIDEBAR_ITEMS = {"mod":["GitExec","RegisterScmProvider","UpdateScmGroup"]};

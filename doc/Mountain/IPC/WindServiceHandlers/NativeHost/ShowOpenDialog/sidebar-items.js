@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["handle_native_show_open_dialog"]};
+window.SIDEBAR_ITEMS = {"fn":["NativeShowOpenDialog"]};

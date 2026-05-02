@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["GetTreeChildren","RegisterTreeViewProvider","ViewIdHandle"]};
+window.SIDEBAR_ITEMS = {"mod":["EnqueueTreeViewEmit","GetTreeChildren","RegisterTreeViewProvider","ViewIdHandle"]};

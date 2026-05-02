@@ -17,7 +17,7 @@
 <a href=#17 id=17 data-nosnippet>17</a>//! - Diagnostic endpoint for IPC health
 <a href=#18 id=18 data-nosnippet>18</a>//!
 <a href=#19 id=19 data-nosnippet>19</a>//! ### Dependencies
-<a href=#20 id=20 data-nosnippet>20</a>//! - crate::IPC::TauriIPCServer: Status retrieval
+<a href=#20 id=20 data-nosnippet>20</a>//! - crate::IPC::TauriIPCServer_Old: Status retrieval
 <a href=#21 id=21 data-nosnippet>21</a>//! - tauri: IPC framework
 <a href=#22 id=22 data-nosnippet>22</a>//! - serde_json: JSON serialization
 <a href=#23 id=23 data-nosnippet>23</a>//!
@@ -40,7 +40,7 @@
 <a href=#40 id=40 data-nosnippet>40</a></span><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#41 id=41 data-nosnippet>41</a><span class="kw">use </span>tauri::AppHandle;
 <a href=#42 id=42 data-nosnippet>42</a>
-<a href=#43 id=43 data-nosnippet>43</a><span class="kw">use </span><a href="../../IPC/DevLog.rs.html#589-630"><span class="kw">crate</span>::dev_log</a>;
+<a href=#43 id=43 data-nosnippet>43</a><span class="kw">use </span><a href="../../IPC/DevLog.rs.html#726-767"><span class="kw">crate</span>::dev_log</a>;
 <a href=#44 id=44 data-nosnippet>44</a>
 <a href=#45 id=45 data-nosnippet>45</a><span class="doccomment">/// Get Mountain IPC status.
 <a href=#46 id=46 data-nosnippet>46</a>///
@@ -62,7 +62,7 @@
 <a href=#62 id=62 data-nosnippet>62</a>/// - Status cannot be retrieved from IPC server
 <a href=#63 id=63 data-nosnippet>63</a></span><span class="attr">#[tauri::command]
 <a href=#64 id=64 data-nosnippet>64</a></span><span class="kw">pub async fn </span><a href="#63">MountainIPCGetStatus</a>(app_handle:AppHandle) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
-<a href=#65 id=65 data-nosnippet>65</a>	<span class="kw">let </span>Status = <span class="kw">crate</span>::IPC::TauriIPCServer::mountain_ipc_get_status(app_handle)
+<a href=#65 id=65 data-nosnippet>65</a>	<span class="kw">let </span>Status = <span class="kw">crate</span>::IPC::TauriIPCServer_Old::mountain_ipc_get_status(app_handle)
 <a href=#66 id=66 data-nosnippet>66</a>		.<span class="kw">await
 <a href=#67 id=67 data-nosnippet>67</a>		</span>.map_err(|Error| {
 <a href=#68 id=68 data-nosnippet>68</a>			<span class="macro">dev_log!</span>(<span class="string">"ipc"</span>, <span class="string">"error: [IPC] [Command] Failed to get IPC status: {}"</span>, Error);

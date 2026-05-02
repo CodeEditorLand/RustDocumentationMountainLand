@@ -28,10 +28,10 @@
 <a href=#28 id=28 data-nosnippet>28</a><span class="comment">// Private helper modules (not re-exported)
 <a href=#29 id=29 data-nosnippet>29</a></span><span class="kw">mod </span><a href="ChannelLifecycle.rs.html#1-92">ChannelLifecycle</a>;
 <a href=#30 id=30 data-nosnippet>30</a><span class="kw">mod </span><a href="ChannelContent.rs.html#1-139">ChannelContent</a>;
-<a href=#31 id=31 data-nosnippet>31</a><span class="kw">mod </span><a href="ChannelVisibility.rs.html#1-56">ChannelVisibility</a>;
+<a href=#31 id=31 data-nosnippet>31</a><span class="kw">mod </span><a href="ChannelVisibility.rs.html#1-87">ChannelVisibility</a>;
 <a href=#32 id=32 data-nosnippet>32</a>
 <a href=#33 id=33 data-nosnippet>33</a><span class="attr">#[async_trait]
-<a href=#34 id=34 data-nosnippet>34</a></span><span class="kw">impl </span>OutputChannelManager <span class="kw">for </span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a> {
+<a href=#34 id=34 data-nosnippet>34</a></span><span class="kw">impl </span>OutputChannelManager <span class="kw">for </span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#228-238">MountainEnvironment</a> {
 <a href=#35 id=35 data-nosnippet>35</a>	<span class="kw">async fn </span>RegisterChannel(
 <a href=#36 id=36 data-nosnippet>36</a>		<span class="kw-2">&amp;</span><a class="self" href="#36">self</a>,
 <a href=#37 id=37 data-nosnippet>37</a>		<a href="#37">name</a>:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
@@ -69,7 +69,7 @@
 <a href=#69 id=69 data-nosnippet>69</a>	</span>}
 <a href=#70 id=70 data-nosnippet>70</a>
 <a href=#71 id=71 data-nosnippet>71</a>	<span class="kw">async fn </span>Close(<span class="kw-2">&amp;</span><a class="self" href="#71">self</a>, <a href="#71">channel_identifier</a>:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonLibrary::Error::CommonError::CommonError&gt; {
-<a href=#72 id=72 data-nosnippet>72</a>		ChannelVisibility::<a href="ChannelVisibility.rs.html#49-56">close_channel</a>(<a class="self" href="#71">self</a>, <a href="#71">channel_identifier</a>).<span class="kw">await
+<a href=#72 id=72 data-nosnippet>72</a>		ChannelVisibility::<a href="ChannelVisibility.rs.html#54-87">close_channel</a>(<a class="self" href="#71">self</a>, <a href="#71">channel_identifier</a>).<span class="kw">await
 <a href=#73 id=73 data-nosnippet>73</a>	</span>}
 <a href=#74 id=74 data-nosnippet>74</a>
 <a href=#75 id=75 data-nosnippet>75</a>	<span class="kw">async fn </span>Dispose(<span class="kw-2">&amp;</span><a class="self" href="#75">self</a>, <a href="#75">channel_identifier</a>:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonLibrary::Error::CommonError::CommonError&gt; {

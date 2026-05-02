@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"constant":["EXTENSION_TYPE_SYSTEM","EXTENSION_TYPE_USER"],"fn":["handle_extensions_get","handle_extensions_get_all","handle_extensions_get_installed","handle_extensions_is_active"]};
+window.SIDEBAR_ITEMS = {"constant":["EXTENSION_TYPE_SYSTEM","EXTENSION_TYPE_USER"],"fn":["ExtensionsGet","ExtensionsGetAll","ExtensionsGetInstalled","ExtensionsIsActive"]};

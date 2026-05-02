@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["ApplyEdit","OpenDocument","SaveAll","UpdateConfiguration","UpdateWorkspaceFolders"]};
+window.SIDEBAR_ITEMS = {"mod":["ApplyEdit","OpenDocument","SaveAll","UpdateConfiguration","UpdateWorkspaceFolders"]};

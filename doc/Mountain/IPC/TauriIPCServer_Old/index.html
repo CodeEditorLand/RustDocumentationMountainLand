@@ -7,7 +7,7 @@ between Mountain’s Rust backend and Wind’s TypeScript frontend. It
 implements the Mountain counterpart to Wind’s TauriIPCServer.ts, ensuring
 seamless integration across the language boundary.</p>
 <p><strong>Architectural Role in Wind-Mountain Connection:</strong>
-The TauriIPCServer acts as the central message router and communication
+The TauriIPCServer acts as the central Message router and communication
 orchestrator:</p>
 <ol>
 <li>
@@ -24,7 +24,7 @@ orchestrator:</p>
 <ul>
 <li>Routes incoming messages from Wind to appropriate handlers</li>
 <li>Broadcasts messages from Mountain to Wind subscribers</li>
-<li>Implements message filtering and prioritization</li>
+<li>Implements Message filtering and prioritization</li>
 <li>Supports point-to-point and publish-subscribe patterns</li>
 </ul>
 </li>
@@ -63,7 +63,7 @@ app.emit(&quot;file-changed&quot;, file_event).await;</code></pre></div>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// Broadcast to all subscribers on a channel
 </span><span class="kw">for </span>listener <span class="kw">in </span>listeners.get(channel) {
-	listener(message.clone()).<span class="kw">await</span>;
+	listener(Message.clone()).<span class="kw">await</span>;
 }</code></pre></div>
 <p><strong>Message Flow:</strong></p>
 <div class="example-wrap"><pre class="language-text"><code>Wind Frontend
@@ -85,7 +85,7 @@ v
 Mountain Services</code></pre></div>
 <p><strong>Key Structures:</strong></p>
 <ul>
-<li><strong>TauriIPCMessage:</strong> Standard message format for all IPC communication</li>
+<li><strong>TauriIPCMessage:</strong> Standard Message format for all IPC communication</li>
 <li><strong>ConnectionStatus:</strong> Tracks connection health and uptime</li>
 <li><strong>ConnectionPool:</strong> Manages concurrent IPC connections efficiently</li>
 <li><strong>PermissionManager:</strong> Implements role-based access control</li>
@@ -124,7 +124,7 @@ Mountain Services</code></pre></div>
 <ul>
 <li>Connection pooling to prevent exhaustion</li>
 <li>Automatic cleanup of stale resources</li>
-<li>Memory-efficient message queuing</li>
+<li>Memory-efficient Message queuing</li>
 </ul>
 </li>
 </ol>
@@ -148,17 +148,17 @@ Mountain Services</code></pre></div>
 <ul>
 <li><strong>Connection Status:</strong> Real-time health monitoring</li>
 <li><strong>Performance Metrics:</strong> Latency, throughput, error rates</li>
-<li><strong>Audit Logs:</strong> Complete message and security event logging</li>
+<li><strong>Audit Logs:</strong> Complete Message and security event logging</li>
 <li><strong>Health Checks:</strong> Periodic health assessments</li>
 </ul>
 <p><strong>VSCode RPC Patterns (Study Reference):</strong>
 This implementation draws inspiration from VSCode’s RPC/IPC architecture:</p>
 <ul>
-<li>Channel-based message routing</li>
+<li>Channel-based Message routing</li>
 <li>Request-response correlation</li>
 <li>Cancellation token support</li>
-<li>Binary protocol message serialization</li>
+<li>Binary protocol Message serialization</li>
 <li>Protocol versioning for compatibility</li>
 </ul>
 </div></details><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.ConnectionHandle.html" title="struct Mountain::IPC::TauriIPCServer_Old::ConnectionHandle">Connection<wbr>Handle</a></dt><dd>Handle representing an active connection</dd><dt><a class="struct" href="struct.ConnectionHealthChecker.html" title="struct Mountain::IPC::TauriIPCServer_Old::ConnectionHealthChecker">Connection<wbr>Health<wbr>Checker</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Connection health checker</dd><dt><a class="struct" href="struct.ConnectionPool.html" title="struct Mountain::IPC::TauriIPCServer_Old::ConnectionPool">Connection<wbr>Pool</a></dt><dd>Connection pool for IPC operations - manages concurrent connections
-efficiently</dd><dt><a class="struct" href="struct.ConnectionStats.html" title="struct Mountain::IPC::TauriIPCServer_Old::ConnectionStats">Connection<wbr>Stats</a></dt><dd>Connection statistics</dd><dt><a class="struct" href="struct.ConnectionStatus.html" title="struct Mountain::IPC::TauriIPCServer_Old::ConnectionStatus">Connection<wbr>Status</a></dt><dd>Connection status message</dd><dt><a class="struct" href="struct.EncryptedMessage.html" title="struct Mountain::IPC::TauriIPCServer_Old::EncryptedMessage">Encrypted<wbr>Message</a></dt><dd>Encrypted message structure</dd><dt><a class="struct" href="struct.MessageCompressor.html" title="struct Mountain::IPC::TauriIPCServer_Old::MessageCompressor">Message<wbr>Compressor</a></dt><dd>Message compression utility for optimizing IPC message transfer</dd><dt><a class="struct" href="struct.Permission.html" title="struct Mountain::IPC::TauriIPCServer_Old::Permission">Permission</a></dt><dd>Permission definition</dd><dt><a class="struct" href="struct.PermissionManager.html" title="struct Mountain::IPC::TauriIPCServer_Old::PermissionManager">Permission<wbr>Manager</a></dt><dd>Permission manager for IPC operations</dd><dt><a class="struct" href="struct.Role.html" title="struct Mountain::IPC::TauriIPCServer_Old::Role">Role</a></dt><dd>Role definition for RBAC</dd><dt><a class="struct" href="struct.SecureMessageChannel.html" title="struct Mountain::IPC::TauriIPCServer_Old::SecureMessageChannel">Secure<wbr>Message<wbr>Channel</a></dt><dd>Secure message channel with encryption and authentication</dd><dt><a class="struct" href="struct.SecurityContext.html" title="struct Mountain::IPC::TauriIPCServer_Old::SecurityContext">Security<wbr>Context</a></dt><dd>Security context for permission validation</dd><dt><a class="struct" href="struct.SecurityEvent.html" title="struct Mountain::IPC::TauriIPCServer_Old::SecurityEvent">Security<wbr>Event</a></dt><dd>Security event for auditing</dd><dt><a class="struct" href="struct.TauriIPCMessage.html" title="struct Mountain::IPC::TauriIPCServer_Old::TauriIPCMessage">TauriIPC<wbr>Message</a></dt><dd>IPC message structure matching Wind’s ITauriIPCMessage interface</dd><dt><a class="struct" href="struct.TauriIPCServer.html" title="struct Mountain::IPC::TauriIPCServer_Old::TauriIPCServer">TauriIPC<wbr>Server</a></dt><dd>Mountain’s IPC Server counterpart to Wind’s TauriIPCServer</dd></dl><h2 id="enums" class="section-header">Enums<a href="#enums" class="anchor">§</a></h2><dl class="item-table"><dt><a class="enum" href="enum.SecurityEventType.html" title="enum Mountain::IPC::TauriIPCServer_Old::SecurityEventType">Security<wbr>Event<wbr>Type</a></dt></dl><h2 id="functions" class="section-header">Functions<a href="#functions" class="anchor">§</a></h2><dl class="item-table"><dt><a class="fn" href="fn.mountain_ipc_get_status.html" title="fn Mountain::IPC::TauriIPCServer_Old::mountain_ipc_get_status">mountain_<wbr>ipc_<wbr>get_<wbr>status</a></dt><dd>Tauri command handler for Wind to check connection status</dd><dt><a class="fn" href="fn.mountain_ipc_receive_message.html" title="fn Mountain::IPC::TauriIPCServer_Old::mountain_ipc_receive_message">mountain_<wbr>ipc_<wbr>receive_<wbr>message</a></dt><dd>Advanced permission-based IPC message handler</dd></dl><h2 id="types" class="section-header">Type Aliases<a href="#types" class="anchor">§</a></h2><dl class="item-table"><dt><a class="type" href="type.ListenerCallback.html" title="type Mountain::IPC::TauriIPCServer_Old::ListenerCallback">Listener<wbr>Callback</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Listener callback type</dd></dl></section></div></main></body></html>
+efficiently</dd><dt><a class="struct" href="struct.ConnectionStats.html" title="struct Mountain::IPC::TauriIPCServer_Old::ConnectionStats">Connection<wbr>Stats</a></dt><dd>Connection statistics</dd><dt><a class="struct" href="struct.ConnectionStatus.html" title="struct Mountain::IPC::TauriIPCServer_Old::ConnectionStatus">Connection<wbr>Status</a></dt><dd>Connection status Message</dd><dt><a class="struct" href="struct.EncryptedMessage.html" title="struct Mountain::IPC::TauriIPCServer_Old::EncryptedMessage">Encrypted<wbr>Message</a></dt><dd>Encrypted Message structure</dd><dt><a class="struct" href="struct.MessageCompressor.html" title="struct Mountain::IPC::TauriIPCServer_Old::MessageCompressor">Message<wbr>Compressor</a></dt><dd>Message compression utility for optimizing IPC Message transfer</dd><dt><a class="struct" href="struct.Permission.html" title="struct Mountain::IPC::TauriIPCServer_Old::Permission">Permission</a></dt><dd>Permission definition</dd><dt><a class="struct" href="struct.PermissionManager.html" title="struct Mountain::IPC::TauriIPCServer_Old::PermissionManager">Permission<wbr>Manager</a></dt><dd>Permission manager for IPC operations</dd><dt><a class="struct" href="struct.Role.html" title="struct Mountain::IPC::TauriIPCServer_Old::Role">Role</a></dt><dd>Role definition for RBAC</dd><dt><a class="struct" href="struct.SecureMessageChannel.html" title="struct Mountain::IPC::TauriIPCServer_Old::SecureMessageChannel">Secure<wbr>Message<wbr>Channel</a></dt><dd>Secure Message channel with encryption and authentication</dd><dt><a class="struct" href="struct.SecurityContext.html" title="struct Mountain::IPC::TauriIPCServer_Old::SecurityContext">Security<wbr>Context</a></dt><dd>Security context for permission validation</dd><dt><a class="struct" href="struct.SecurityEvent.html" title="struct Mountain::IPC::TauriIPCServer_Old::SecurityEvent">Security<wbr>Event</a></dt><dd>Security event for auditing</dd><dt><a class="struct" href="struct.TauriIPCMessage.html" title="struct Mountain::IPC::TauriIPCServer_Old::TauriIPCMessage">TauriIPC<wbr>Message</a></dt><dd>IPC Message structure matching Wind’s ITauriIPCMessage interface</dd><dt><a class="struct" href="struct.TauriIPCServer.html" title="struct Mountain::IPC::TauriIPCServer_Old::TauriIPCServer">TauriIPC<wbr>Server</a></dt><dd>Mountain’s IPC Server counterpart to Wind’s TauriIPCServer</dd></dl><h2 id="enums" class="section-header">Enums<a href="#enums" class="anchor">§</a></h2><dl class="item-table"><dt><a class="enum" href="enum.SecurityEventType.html" title="enum Mountain::IPC::TauriIPCServer_Old::SecurityEventType">Security<wbr>Event<wbr>Type</a></dt></dl><h2 id="functions" class="section-header">Functions<a href="#functions" class="anchor">§</a></h2><dl class="item-table"><dt><a class="fn" href="fn.mountain_ipc_get_status.html" title="fn Mountain::IPC::TauriIPCServer_Old::mountain_ipc_get_status">mountain_<wbr>ipc_<wbr>get_<wbr>status</a></dt><dd>Tauri command handler for Wind to check connection status</dd><dt><a class="fn" href="fn.mountain_ipc_receive_message.html" title="fn Mountain::IPC::TauriIPCServer_Old::mountain_ipc_receive_message">mountain_<wbr>ipc_<wbr>receive_<wbr>message</a></dt><dd>Advanced permission-based IPC Message handler</dd></dl><h2 id="types" class="section-header">Type Aliases<a href="#types" class="anchor">§</a></h2><dl class="item-table"><dt><a class="type" href="type.ListenerCallback.html" title="type Mountain::IPC::TauriIPCServer_Old::ListenerCallback">Listener<wbr>Callback</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Listener callback type</dd></dl></section></div></main></body></html>

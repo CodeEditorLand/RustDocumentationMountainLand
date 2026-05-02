@@ -23,7 +23,7 @@
 <a href=#23 id=23 data-nosnippet>23</a><span class="doccomment">/// Holds information about the state of the main application window, such as
 <a href=#24 id=24 data-nosnippet>24</a>/// whether it is focused or fullscreen, and its current zoom level.
 <a href=#25 id=25 data-nosnippet>25</a></span><span class="attr">#[derive(<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://doc.rust-lang.org/nightly/core/default/derive.Default.html">Default</a>)]
-<a href=#26 id=26 data-nosnippet>26</a>#[serde(rename_all = <span class="string">"PascalCase"</span>)]
+<a href=#26 id=26 data-nosnippet>26</a>#[serde(rename_all = <span class="string">"camelCase"</span>)]
 <a href=#27 id=27 data-nosnippet>27</a></span><span class="kw">pub struct </span><a href="#27-39">WindowStateDTO</a> {
 <a href=#28 id=28 data-nosnippet>28</a>	<span class="doccomment">/// Whether the window currently has input focus
 <a href=#29 id=29 data-nosnippet>29</a>	</span><span class="attr">#[serde(default)]

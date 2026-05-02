@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["metrics","spans"],"struct":["TelemetryService"]};
+window.SIDEBAR_ITEMS = {"mod":["ServiceMetrics","TelemetryService","TraceSpan"]};

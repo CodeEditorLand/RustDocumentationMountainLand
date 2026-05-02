@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["handle_native_find_free_port"]};
+window.SIDEBAR_ITEMS = {"fn":["NativeFindFreePort"]};

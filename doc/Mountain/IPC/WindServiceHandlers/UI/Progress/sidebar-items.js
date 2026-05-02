@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["NewProgressId","handle_progress_begin","handle_progress_end","handle_progress_report"]};
+window.SIDEBAR_ITEMS = {"fn":["NewProgressId","ProgressBegin","ProgressEnd","ProgressReport"]};

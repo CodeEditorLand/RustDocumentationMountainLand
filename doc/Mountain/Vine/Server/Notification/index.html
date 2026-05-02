@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Cocoon → Mountain notification atoms. One handler per file so the dispatcher in `MountainVinegRPCService::send_cocoon_notification` stays a thin match; each wire method lives at `Vine::Server::Notification::&#60;Atom&#62;::&#60;Atom&#62;` for grep-friendly navigation. See `Notification/mod.rs` for the contract."><title>Mountain::Vine::Server::Notification - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../../static.files/rustdoc-b7b9f40b.css"><meta name="rustdoc-vars" data-root-path="../../../../" data-static-root-path="../../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../../static.files/storage-41dd4d93.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module Notification</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Notification</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#vine-cocoon--mountain-notification-atoms" title="Vine Cocoon → Mountain Notification Atoms">Vine Cocoon → Mountain Notification Atoms</a><ul><li><a href="#naming" title="Naming">Naming</a></li><li><a href="#signature-contract" title="Signature contract">Signature contract</a></li></ul></li></ul><h3><a href="#modules">Module Items</a></h3><ul class="block"><li><a href="#modules" title="Modules">Modules</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Vine::<wbr>Server</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../../index.html">Mountain</a>::<wbr><a href="../../index.html">Vine</a>::<wbr><a href="../index.html">Server</a></div><h1>Module <span>Notification</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../../src/Mountain/Vine/Server/Notification/mod.rs.html#1-113">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Cocoon → Mountain notification atoms. One handler per file so the
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Cocoon → Mountain notification atoms. One handler per file so the dispatcher in `MountainVinegRPCService::send_cocoon_notification` stays a thin match; each wire method lives at `Vine::Server::Notification::&#60;Atom&#62;::&#60;Atom&#62;` for grep-friendly navigation. See `Notification/mod.rs` for the contract."><title>Mountain::Vine::Server::Notification - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../../static.files/rustdoc-b7b9f40b.css"><meta name="rustdoc-vars" data-root-path="../../../../" data-static-root-path="../../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../../static.files/storage-41dd4d93.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module Notification</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Notification</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#vine-cocoon--mountain-notification-atoms" title="Vine Cocoon → Mountain Notification Atoms">Vine Cocoon → Mountain Notification Atoms</a><ul><li><a href="#naming" title="Naming">Naming</a></li><li><a href="#signature-contract" title="Signature contract">Signature contract</a></li></ul></li></ul><h3><a href="#modules">Module Items</a></h3><ul class="block"><li><a href="#modules" title="Modules">Modules</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Vine::<wbr>Server</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../../index.html">Mountain</a>::<wbr><a href="../../index.html">Vine</a>::<wbr><a href="../index.html">Server</a></div><h1>Module <span>Notification</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../../src/Mountain/Vine/Server/Notification/mod.rs.html#1-123">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Cocoon → Mountain notification atoms. One handler per file so the
 dispatcher in <code>MountainVinegRPCService::send_cocoon_notification</code>
 stays a thin match; each wire method lives at
 <code>Vine::Server::Notification::&lt;Atom&gt;::&lt;Atom&gt;</code> for grep-friendly
@@ -14,7 +14,8 @@ these files.</p>
 <ul>
 <li>Wire string <code>outputChannel.create</code> → atom file <code>OutputChannelCreate.rs</code>
 with <code>pub async fn OutputChannelCreate(...)</code>.</li>
-<li>Wire string <code>unregister_scm_provider</code> → atom file <code>UnregisterScmProvider.rs</code>.</li>
+<li>Wire string <code>unregister_scm_provider</code> → atom file
+<code>UnregisterScmProvider.rs</code>.</li>
 <li>Wire string <code>progress.update</code> → atom file <code>ProgressUpdate.rs</code>.</li>
 </ul>
 <p>Snake_case / dotted wire strings collapse to PascalCase file names.
@@ -28,22 +29,23 @@ The function name mirrors the file name verbatim so a grep for
     Parameter: <span class="kw-2">&amp;</span>serde_json::Value,
 );</code></pre></div>
 <ul>
-<li><code>Service</code> gives access to <code>ApplicationHandle</code> (for Tauri
-<code>emit</code> / webview lookup) and <code>RunTime</code> (for <code>Environment</code>,
-<code>ApplicationState</code>, provider registry, scheduler).</li>
-<li><code>Parameter</code> is the raw JSON payload Cocoon sent; each atom extracts
-the fields it needs and validates locally.</li>
-<li>Return <code>()</code> - atoms that need to fail just log via <code>dev_log!</code> on
-the <code>notif-drop</code> / <code>grpc</code> tag; the caller always returns <code>Empty</code> to
-Cocoon because notifications are fire-and-forget.</li>
+<li><code>Service</code> gives access to <code>ApplicationHandle</code> (for Tauri <code>emit</code> / webview
+lookup) and <code>RunTime</code> (for <code>Environment</code>, <code>ApplicationState</code>, provider
+registry, scheduler).</li>
+<li><code>Parameter</code> is the raw JSON payload Cocoon sent; each atom extracts the
+fields it needs and validates locally.</li>
+<li>Return <code>()</code> - atoms that need to fail just log via <code>dev_log!</code> on the
+<code>notif-drop</code> / <code>grpc</code> tag; the caller always returns <code>Empty</code> to Cocoon
+because notifications are fire-and-forget.</li>
 </ul>
 </div></details><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="DebugLifecycle/index.html" title="mod Mountain::Vine::Server::Notification::DebugLifecycle">Debug<wbr>Lifecycle</a></dt><dd>Cocoon → Mountain <code>debug.addBreakpoints</code> / <code>debug.removeBreakpoints</code> /
 <code>debug.consoleAppend</code> notifications. Fans on <code>sky://debug/&lt;suffix&gt;</code>
 so the Sky-side debug view picks up breakpoint changes and console
 output from the extension’s <code>vscode.debug.*</code> surface.</dd><dt><a class="mod" href="DecorationTypeLifecycle/index.html" title="mod Mountain::Vine::Server::Notification::DecorationTypeLifecycle">Decoration<wbr>Type<wbr>Lifecycle</a></dt><dd>Cocoon → Mountain <code>window.createTextEditorDecorationType</code> /
-<code>window.disposeTextEditorDecorationType</code> notifications. Forwards the
-payload on <code>sky://decoration/&lt;suffix&gt;</code>; Sky’s editor renderer owns
-the Monaco-side decoration lifecycle so Mountain is a pure relay.</dd><dt><a class="mod" href="DisposeStatusBarItem/index.html" title="mod Mountain::Vine::Server::Notification::DisposeStatusBarItem">Dispose<wbr>Status<wbr>BarItem</a></dt><dd>Cocoon → Mountain <code>disposeStatusBarItem</code> notification.
+<code>window.disposeTextEditorDecorationType</code> notifications. Forwards
+the payload on <code>sky://decoration/&lt;suffix&gt;</code>; Sky’s editor renderer
+owns the Monaco-side decoration lifecycle so Mountain is a pure
+relay.</dd><dt><a class="mod" href="DisposeStatusBarItem/index.html" title="mod Mountain::Vine::Server::Notification::DisposeStatusBarItem">Dispose<wbr>Status<wbr>BarItem</a></dt><dd>Cocoon → Mountain <code>disposeStatusBarItem</code> notification.
 Emitted once by <code>Cocoon/.../Services/Window/StatusBar.ts:139</code> when an
 extension calls <code>StatusBarItem.dispose()</code> (or the whole subscription
 set tears down). Forwards onto the canonical
@@ -115,8 +117,14 @@ Fires once per <code>vscode.window.withProgress(...)</code> call when the task
 settles. Forwarded onto <code>sky://notification/progress-end</code> so Sky’s
 progress indicator tears down.</dd><dt><a class="mod" href="ProgressReport/index.html" title="mod Mountain::Vine::Server::Notification::ProgressReport">Progress<wbr>Report</a></dt><dd>Cocoon → Mountain <code>progress.report</code> notification.
 Fires on every <code>Progress.report({ message, increment })</code> callback
-within a <code>vscode.window.withProgress(...)</code> run. Forwarded onto
-<code>sky://notification/progress-update</code>.</dd><dt><a class="mod" href="ProgressStart/index.html" title="mod Mountain::Vine::Server::Notification::ProgressStart">Progress<wbr>Start</a></dt><dd>Cocoon → Mountain <code>progress.start</code> notification.
+within a <code>vscode.window.withProgress(...)</code> run. The git extension
+alone fires 6000+ of these per session during repository scans;
+emitting one Tauri event per call saturates the WKWebView IPC
+channel that also delivers keystrokes. Each event is coalesced
+into a 16ms (one frame) window per Progress handle, accumulating
+<code>increment</code> deltas and keeping the most recent non-empty
+<code>message</code>. Sky sees one update per frame per progress operation
+instead of dozens, with the same final cumulative state.</dd><dt><a class="mod" href="ProgressStart/index.html" title="mod Mountain::Vine::Server::Notification::ProgressStart">Progress<wbr>Start</a></dt><dd>Cocoon → Mountain <code>progress.start</code> notification.
 Fires at the top of every <code>vscode.window.withProgress(...)</code> call.
 Normalises onto <code>sky://notification/progress-begin</code> so Sky’s progress
 indicator renders identically whether an extension or a Mountain
@@ -132,7 +140,7 @@ Stores the command as a <code>Proxied</code> handler in Mountain’s
 <code>CommandRegistry</code> so subsequent <code>commands.executeCommand</code> calls get
 routed back to Cocoon via <code>$executeContributedCommand</code> gRPC. The
 sidecar identifier is hard-coded to <code>cocoon-main</code> because that is
-the sole extension-host Cocoon instance today.</dd><dt><a class="mod" href="SecurityIncident/index.html" title="mod Mountain::Vine::Server::Notification::SecurityIncident">Security<wbr>Incident</a></dt><dd>Cocoon → Mountain <code>security.incident</code> notification.
+the sole extension-host Cocoon instance today.</dd><dt><a class="mod" href="RegisterScmProvider/index.html" title="mod Mountain::Vine::Server::Notification::RegisterScmProvider">Register<wbr>ScmProvider</a></dt><dd>Cocoon → Mountain <code>register_scm_provider</code> notification.</dd><dt><a class="mod" href="RegisterScmResourceGroup/index.html" title="mod Mountain::Vine::Server::Notification::RegisterScmResourceGroup">Register<wbr>ScmResource<wbr>Group</a></dt><dd>Cocoon → Mountain <code>register_scm_resource_group</code> notification.</dd><dt><a class="mod" href="SecurityIncident/index.html" title="mod Mountain::Vine::Server::Notification::SecurityIncident">Security<wbr>Incident</a></dt><dd>Cocoon → Mountain <code>security.incident</code> notification.
 Emitted by <code>Cocoon/.../Services/SecurityService.ts:284</code> when the
 Cocoon-side security policy flags a policy breach (extension violated
 its declared permission set, blocked filesystem access, etc.). Land
@@ -186,12 +194,7 @@ Emitted by <code>Cocoon/.../TasksNamespace.ts:35</code> when
 Emitted by <code>Cocoon/.../WindowNamespace.ts:786</code> when
 <code>vscode.window.registerUriHandler(...).dispose()</code> fires. Carries the
 handle the paired <code>register_uri_handler</code> stored and (optionally) the
-scheme bound to it.</dd><dt><a class="mod" href="UpdateScmGroup/index.html" title="mod Mountain::Vine::Server::Notification::UpdateScmGroup">Update<wbr>ScmGroup</a></dt><dd>Cocoon → Mountain <code>update_scm_group</code> notification.
-Parallels the typed <code>RPC/CocoonService/SCM.rs::UpdateScmGroup</code> gRPC;
-Cocoon’s <code>ScmNamespace.ts</code> emits through <code>SendToMountain(...)</code> for
-fire-and-forget resource-state updates. Re-emits on the canonical
-<code>sky://scm/updateGroup</code> channel so the renderer SCM view updates
-without waiting for a round-trip response.</dd><dt><a class="mod" href="WebviewDispose/index.html" title="mod Mountain::Vine::Server::Notification::WebviewDispose">Webview<wbr>Dispose</a></dt><dd>Cocoon → Mountain <code>webview.dispose</code> notification.
+scheme bound to it.</dd><dt><a class="mod" href="UpdateScmGroup/index.html" title="mod Mountain::Vine::Server::Notification::UpdateScmGroup">Update<wbr>ScmGroup</a></dt><dd>Cocoon → Mountain <code>update_scm_group</code> notification.</dd><dt><a class="mod" href="WebviewDispose/index.html" title="mod Mountain::Vine::Server::Notification::WebviewDispose">Webview<wbr>Dispose</a></dt><dd>Cocoon → Mountain <code>webview.dispose</code> notification.
 Emitted by <code>Cocoon/.../Services/Window/WebviewPanel.ts:155</code> when the
 extension disposes a webview panel or the user closes the tab. Sky’s
 webview shim listens on <code>sky://webview/dispose</code> and tears down the

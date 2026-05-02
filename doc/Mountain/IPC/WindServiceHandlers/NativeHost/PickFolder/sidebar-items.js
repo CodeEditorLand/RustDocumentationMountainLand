@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["handle_native_pick_folder"]};
+window.SIDEBAR_ITEMS = {"fn":["NativePickFolder"]};

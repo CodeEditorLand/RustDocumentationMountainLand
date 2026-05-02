@@ -8,7 +8,7 @@
 <a href=#8 id=8 data-nosnippet>8</a>//! seamless integration across the language boundary.
 <a href=#9 id=9 data-nosnippet>9</a>//!
 <a href=#10 id=10 data-nosnippet>10</a>//! **Architectural Role in Wind-Mountain Connection:**
-<a href=#11 id=11 data-nosnippet>11</a>//! The TauriIPCServer acts as the central message router and communication
+<a href=#11 id=11 data-nosnippet>11</a>//! The TauriIPCServer acts as the central Message router and communication
 <a href=#12 id=12 data-nosnippet>12</a>//! orchestrator:
 <a href=#13 id=13 data-nosnippet>13</a>//!
 <a href=#14 id=14 data-nosnippet>14</a>//! 1. **Connection Management:**
@@ -20,7 +20,7 @@
 <a href=#20 id=20 data-nosnippet>20</a>//! 2. **Message Routing:**
 <a href=#21 id=21 data-nosnippet>21</a>//!    - Routes incoming messages from Wind to appropriate handlers
 <a href=#22 id=22 data-nosnippet>22</a>//!    - Broadcasts messages from Mountain to Wind subscribers
-<a href=#23 id=23 data-nosnippet>23</a>//!    - Implements message filtering and prioritization
+<a href=#23 id=23 data-nosnippet>23</a>//!    - Implements Message filtering and prioritization
 <a href=#24 id=24 data-nosnippet>24</a>//!    - Supports point-to-point and publish-subscribe patterns
 <a href=#25 id=25 data-nosnippet>25</a>//!
 <a href=#26 id=26 data-nosnippet>26</a>//! 3. **Security Layer:**
@@ -58,7 +58,7 @@
 <a href=#58 id=58 data-nosnippet>58</a>//! ```rust
 <a href=#59 id=59 data-nosnippet>59</a>//! // Broadcast to all subscribers on a channel
 <a href=#60 id=60 data-nosnippet>60</a>//! for listener in listeners.get(channel) {
-<a href=#61 id=61 data-nosnippet>61</a>//! 	listener(message.clone()).await;
+<a href=#61 id=61 data-nosnippet>61</a>//! 	listener(Message.clone()).await;
 <a href=#62 id=62 data-nosnippet>62</a>//! }
 <a href=#63 id=63 data-nosnippet>63</a>//! ```
 <a href=#64 id=64 data-nosnippet>64</a>//!
@@ -85,7 +85,7 @@
 <a href=#85 id=85 data-nosnippet>85</a>//!
 <a href=#86 id=86 data-nosnippet>86</a>//! **Key Structures:**
 <a href=#87 id=87 data-nosnippet>87</a>//!
-<a href=#88 id=88 data-nosnippet>88</a>//! - **TauriIPCMessage:** Standard message format for all IPC communication
+<a href=#88 id=88 data-nosnippet>88</a>//! - **TauriIPCMessage:** Standard Message format for all IPC communication
 <a href=#89 id=89 data-nosnippet>89</a>//! - **ConnectionStatus:** Tracks connection health and uptime
 <a href=#90 id=90 data-nosnippet>90</a>//! - **ConnectionPool:** Manages concurrent IPC connections efficiently
 <a href=#91 id=91 data-nosnippet>91</a>//! - **PermissionManager:** Implements role-based access control
@@ -113,7 +113,7 @@
 <a href=#113 id=113 data-nosnippet>113</a>//! 4. **Resource Management:**
 <a href=#114 id=114 data-nosnippet>114</a>//!    - Connection pooling to prevent exhaustion
 <a href=#115 id=115 data-nosnippet>115</a>//!    - Automatic cleanup of stale resources
-<a href=#116 id=116 data-nosnippet>116</a>//!    - Memory-efficient message queuing
+<a href=#116 id=116 data-nosnippet>116</a>//!    - Memory-efficient Message queuing
 <a href=#117 id=117 data-nosnippet>117</a>//!
 <a href=#118 id=118 data-nosnippet>118</a>//! **Security Architecture:**
 <a href=#119 id=119 data-nosnippet>119</a>//!
@@ -135,15 +135,15 @@
 <a href=#135 id=135 data-nosnippet>135</a>//!
 <a href=#136 id=136 data-nosnippet>136</a>//! - **Connection Status:** Real-time health monitoring
 <a href=#137 id=137 data-nosnippet>137</a>//! - **Performance Metrics:** Latency, throughput, error rates
-<a href=#138 id=138 data-nosnippet>138</a>//! - **Audit Logs:** Complete message and security event logging
+<a href=#138 id=138 data-nosnippet>138</a>//! - **Audit Logs:** Complete Message and security event logging
 <a href=#139 id=139 data-nosnippet>139</a>//! - **Health Checks:** Periodic health assessments
 <a href=#140 id=140 data-nosnippet>140</a>//!
 <a href=#141 id=141 data-nosnippet>141</a>//! **VSCode RPC Patterns (Study Reference):**
 <a href=#142 id=142 data-nosnippet>142</a>//! This implementation draws inspiration from VSCode's RPC/IPC architecture:
-<a href=#143 id=143 data-nosnippet>143</a>//! - Channel-based message routing
+<a href=#143 id=143 data-nosnippet>143</a>//! - Channel-based Message routing
 <a href=#144 id=144 data-nosnippet>144</a>//! - Request-response correlation
 <a href=#145 id=145 data-nosnippet>145</a>//! - Cancellation token support
-<a href=#146 id=146 data-nosnippet>146</a>//! - Binary protocol message serialization
+<a href=#146 id=146 data-nosnippet>146</a>//! - Binary protocol Message serialization
 <a href=#147 id=147 data-nosnippet>147</a>//! - Protocol versioning for compatibility
 <a href=#148 id=148 data-nosnippet>148</a>
 <a href=#149 id=149 data-nosnippet>149</a></span><span class="kw">use </span>std::{
@@ -167,9 +167,9 @@
 <a href=#167 id=167 data-nosnippet>167</a>	time::timeout,
 <a href=#168 id=168 data-nosnippet>168</a>};
 <a href=#169 id=169 data-nosnippet>169</a>
-<a href=#170 id=170 data-nosnippet>170</a><span class="kw">use </span><a href="DevLog.rs.html#589-630"><span class="kw">crate</span>::dev_log</a>;
+<a href=#170 id=170 data-nosnippet>170</a><span class="kw">use </span><a href="DevLog.rs.html#726-767"><span class="kw">crate</span>::dev_log</a>;
 <a href=#171 id=171 data-nosnippet>171</a>
-<a href=#172 id=172 data-nosnippet>172</a><span class="doccomment">/// IPC message structure matching Wind's ITauriIPCMessage interface
+<a href=#172 id=172 data-nosnippet>172</a><span class="doccomment">/// IPC Message structure matching Wind's ITauriIPCMessage interface
 <a href=#173 id=173 data-nosnippet>173</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
 <a href=#174 id=174 data-nosnippet>174</a></span><span class="kw">pub struct </span><a href="#174-179">TauriIPCMessage</a> {
 <a href=#175 id=175 data-nosnippet>175</a>	<span class="kw">pub </span>channel:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
@@ -178,7 +178,7 @@
 <a href=#178 id=178 data-nosnippet>178</a>	<span class="kw">pub </span>timestamp:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
 <a href=#179 id=179 data-nosnippet>179</a>}
 <a href=#180 id=180 data-nosnippet>180</a>
-<a href=#181 id=181 data-nosnippet>181</a><span class="doccomment">/// Connection status message
+<a href=#181 id=181 data-nosnippet>181</a><span class="doccomment">/// Connection status Message
 <a href=#182 id=182 data-nosnippet>182</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
 <a href=#183 id=183 data-nosnippet>183</a></span><span class="kw">pub struct </span><a href="#183-185">ConnectionStatus</a> {
 <a href=#184 id=184 data-nosnippet>184</a>	<span class="kw">pub </span>connected:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
@@ -196,14 +196,14 @@
 <a href=#196 id=196 data-nosnippet>196</a>	message_queue:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">Mutex</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="#174-179">TauriIPCMessage</a>&gt;&gt;&gt;,
 <a href=#197 id=197 data-nosnippet>197</a>}
 <a href=#198 id=198 data-nosnippet>198</a>
-<a href=#199 id=199 data-nosnippet>199</a><span class="doccomment">/// Message compression utility for optimizing IPC message transfer
+<a href=#199 id=199 data-nosnippet>199</a><span class="doccomment">/// Message compression utility for optimizing IPC Message transfer
 <a href=#200 id=200 data-nosnippet>200</a></span><span class="kw">pub struct </span><a href="../../../Mountain/IPC/TauriIPCServer_Old/struct.MessageCompressor.html">MessageCompressor</a> {
 <a href=#201 id=201 data-nosnippet>201</a>	CompressionLevel:<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
 <a href=#202 id=202 data-nosnippet>202</a>	BatchSize:<a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>,
 <a href=#203 id=203 data-nosnippet>203</a>}
 <a href=#204 id=204 data-nosnippet>204</a>
 <a href=#205 id=205 data-nosnippet>205</a><span class="kw">impl </span><a href="#200-203">MessageCompressor</a> {
-<a href=#206 id=206 data-nosnippet>206</a>	<span class="doccomment">/// Create a new message compressor with specified parameters
+<a href=#206 id=206 data-nosnippet>206</a>	<span class="doccomment">/// Create a new Message compressor with specified parameters
 <a href=#207 id=207 data-nosnippet>207</a>	</span><span class="kw">pub fn </span>new(CompressionLevel:<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>, BatchSize:<a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; <span class="self">Self </span>{ <span class="self">Self </span>{ <a href="#207">CompressionLevel</a>, <a href="#207">BatchSize</a> } }
 <a href=#208 id=208 data-nosnippet>208</a>
 <a href=#209 id=209 data-nosnippet>209</a>	<span class="doccomment">/// Compress messages using Gzip for efficient transfer
@@ -237,7 +237,7 @@
 <a href=#237 id=237 data-nosnippet>237</a><span class="kw">impl </span><a href="#192-197">TauriIPCServer</a> {
 <a href=#238 id=238 data-nosnippet>238</a>	<span class="doccomment">/// Create a new Tauri IPC Server instance
 <a href=#239 id=239 data-nosnippet>239</a>	</span><span class="kw">pub fn </span>new(app_handle:AppHandle) -&gt; <span class="self">Self </span>{
-<a href=#240 id=240 data-nosnippet>240</a>		<a href="DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[TauriIPCServer] Initializing Mountain IPC Server"</span>);
+<a href=#240 id=240 data-nosnippet>240</a>		<a href="DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[TauriIPCServer] Initializing Mountain IPC Server"</span>);
 <a href=#241 id=241 data-nosnippet>241</a>
 <a href=#242 id=242 data-nosnippet>242</a>		<span class="self">Self </span>{
 <a href=#243 id=243 data-nosnippet>243</a>			<a href="#239">app_handle</a>,
@@ -273,9 +273,9 @@
 <a href=#273 id=273 data-nosnippet>273</a>		<span class="prelude-val">Ok</span>(())
 <a href=#274 id=274 data-nosnippet>274</a>	}
 <a href=#275 id=275 data-nosnippet>275</a>
-<a href=#276 id=276 data-nosnippet>276</a>	<span class="doccomment">/// Send a message to the Wind frontend
+<a href=#276 id=276 data-nosnippet>276</a>	<span class="doccomment">/// Send a Message to the Wind frontend
 <a href=#277 id=277 data-nosnippet>277</a>	</span><span class="kw">pub async fn </span>send(<span class="kw-2">&amp;</span><span class="self">self</span>, channel:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, data:serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
-<a href=#278 id=278 data-nosnippet>278</a>		<span class="kw">let </span>message = TauriIPCMessage {
+<a href=#278 id=278 data-nosnippet>278</a>		<span class="kw">let </span>Message = TauriIPCMessage {
 <a href=#279 id=279 data-nosnippet>279</a>			channel:channel.to_string(),
 <a href=#280 id=280 data-nosnippet>280</a>			data,
 <a href=#281 id=281 data-nosnippet>281</a>			sender:<span class="prelude-val">Some</span>(<span class="string">"mountain"</span>.to_string()),
@@ -294,12 +294,12 @@
 <a href=#294 id=294 data-nosnippet>294</a>		};
 <a href=#295 id=295 data-nosnippet>295</a>
 <a href=#296 id=296 data-nosnippet>296</a>		<span class="kw">if </span>!is_connected {
-<a href=#297 id=297 data-nosnippet>297</a>			<span class="comment">// Queue the message for later delivery
+<a href=#297 id=297 data-nosnippet>297</a>			<span class="comment">// Queue the Message for later delivery
 <a href=#298 id=298 data-nosnippet>298</a>			</span><span class="kw">let </span><span class="kw-2">mut </span>queue = <span class="self">self
 <a href=#299 id=299 data-nosnippet>299</a>				</span>.message_queue
 <a href=#300 id=300 data-nosnippet>300</a>				.lock()
-<a href=#301 id=301 data-nosnippet>301</a>				.map_err(|e| <span class="macro">format!</span>(<span class="string">"Failed to access message queue: {}"</span>, e))<span class="question-mark">?</span>;
-<a href=#302 id=302 data-nosnippet>302</a>			queue.push(message);
+<a href=#301 id=301 data-nosnippet>301</a>				.map_err(|e| <span class="macro">format!</span>(<span class="string">"Failed to access Message queue: {}"</span>, e))<span class="question-mark">?</span>;
+<a href=#302 id=302 data-nosnippet>302</a>			queue.push(Message);
 <a href=#303 id=303 data-nosnippet>303</a>			<span class="macro">dev_log!</span>(
 <a href=#304 id=304 data-nosnippet>304</a>				<span class="string">"ipc"</span>,
 <a href=#305 id=305 data-nosnippet>305</a>				<span class="string">"[TauriIPCServer] Message queued (channel: {}, queue size: {})"</span>,
@@ -310,7 +310,7 @@
 <a href=#310 id=310 data-nosnippet>310</a>		}
 <a href=#311 id=311 data-nosnippet>311</a>
 <a href=#312 id=312 data-nosnippet>312</a>		<span class="comment">// Send immediately
-<a href=#313 id=313 data-nosnippet>313</a>		</span><span class="self">self</span>.emit_message(<span class="kw-2">&amp;</span>message).<span class="kw">await
+<a href=#313 id=313 data-nosnippet>313</a>		</span><span class="self">self</span>.emit_message(<span class="kw-2">&amp;</span>Message).<span class="kw">await
 <a href=#314 id=314 data-nosnippet>314</a>	</span>}
 <a href=#315 id=315 data-nosnippet>315</a>
 <a href=#316 id=316 data-nosnippet>316</a>	<span class="doccomment">/// Register a listener for incoming messages from Wind
@@ -322,7 +322,7 @@
 <a href=#322 id=322 data-nosnippet>322</a>
 <a href=#323 id=323 data-nosnippet>323</a>		<a href="#318">listeners</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.entry">entry</a>(<a href="#317">channel</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>()).<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/enum.Entry.html#method.or_insert_with">or_insert_with</a>(<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>::<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.new">new</a>).<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.push">push</a>(<a href="#317">callback</a>);
 <a href=#324 id=324 data-nosnippet>324</a>
-<a href=#325 id=325 data-nosnippet>325</a>		<a href="DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[TauriIPCServer] Listener registered for channel: {}"</span>, channel);
+<a href=#325 id=325 data-nosnippet>325</a>		<a href="DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[TauriIPCServer] Listener registered for channel: {}"</span>, channel);
 <a href=#326 id=326 data-nosnippet>326</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#327 id=327 data-nosnippet>327</a>	}
 <a href=#328 id=328 data-nosnippet>328</a>
@@ -341,32 +341,32 @@
 <a href=#341 id=341 data-nosnippet>341</a>			}
 <a href=#342 id=342 data-nosnippet>342</a>		}
 <a href=#343 id=343 data-nosnippet>343</a>
-<a href=#344 id=344 data-nosnippet>344</a>		<a href="DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[TauriIPCServer] Listener removed from channel: {}"</span>, channel);
+<a href=#344 id=344 data-nosnippet>344</a>		<a href="DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[TauriIPCServer] Listener removed from channel: {}"</span>, channel);
 <a href=#345 id=345 data-nosnippet>345</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#346 id=346 data-nosnippet>346</a>	}
 <a href=#347 id=347 data-nosnippet>347</a>
 <a href=#348 id=348 data-nosnippet>348</a>	<span class="doccomment">/// Handle incoming messages from Wind
-<a href=#349 id=349 data-nosnippet>349</a>	</span><span class="kw">pub async fn </span>handle_incoming_message(<span class="kw-2">&amp;</span><span class="self">self</span>, message:<a href="#174-179">TauriIPCMessage</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
-<a href=#350 id=350 data-nosnippet>350</a>		<span class="macro">dev_log!</span>(<span class="string">"ipc"</span>, <span class="string">"[TauriIPCServer] Received message on channel: {}"</span>, message.channel);
+<a href=#349 id=349 data-nosnippet>349</a>	</span><span class="kw">pub async fn </span>IncomingMessage(<span class="kw-2">&amp;</span><span class="self">self</span>, Message:<a href="#174-179">TauriIPCMessage</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
+<a href=#350 id=350 data-nosnippet>350</a>		<span class="macro">dev_log!</span>(<span class="string">"ipc"</span>, <span class="string">"[TauriIPCServer] Received Message on channel: {}"</span>, Message.channel);
 <a href=#351 id=351 data-nosnippet>351</a>
 <a href=#352 id=352 data-nosnippet>352</a>		<span class="kw">let </span>listeners = <span class="self">self
 <a href=#353 id=353 data-nosnippet>353</a>			</span>.listeners
 <a href=#354 id=354 data-nosnippet>354</a>			.lock()
 <a href=#355 id=355 data-nosnippet>355</a>			.map_err(|e| <span class="macro">format!</span>(<span class="string">"Failed to access listeners: {}"</span>, e))<span class="question-mark">?</span>;
 <a href=#356 id=356 data-nosnippet>356</a>
-<a href=#357 id=357 data-nosnippet>357</a>		<span class="kw">if let </span><span class="prelude-val">Some</span>(channel_listeners) = listeners.get(<span class="kw-2">&amp;</span>message.channel) {
+<a href=#357 id=357 data-nosnippet>357</a>		<span class="kw">if let </span><span class="prelude-val">Some</span>(channel_listeners) = listeners.get(<span class="kw-2">&amp;</span>Message.channel) {
 <a href=#358 id=358 data-nosnippet>358</a>			<span class="kw">for </span>callback <span class="kw">in </span>channel_listeners {
-<a href=#359 id=359 data-nosnippet>359</a>				<span class="kw">if let </span><span class="prelude-val">Err</span>(e) = callback(message.data.clone()) {
+<a href=#359 id=359 data-nosnippet>359</a>				<span class="kw">if let </span><span class="prelude-val">Err</span>(e) = callback(Message.data.clone()) {
 <a href=#360 id=360 data-nosnippet>360</a>					<span class="macro">dev_log!</span>(
 <a href=#361 id=361 data-nosnippet>361</a>						<span class="string">"ipc"</span>,
 <a href=#362 id=362 data-nosnippet>362</a>						<span class="string">"error: [TauriIPCServer] Error in listener for channel {}: {}"</span>,
-<a href=#363 id=363 data-nosnippet>363</a>						message.channel,
+<a href=#363 id=363 data-nosnippet>363</a>						Message.channel,
 <a href=#364 id=364 data-nosnippet>364</a>						e
 <a href=#365 id=365 data-nosnippet>365</a>					);
 <a href=#366 id=366 data-nosnippet>366</a>				}
 <a href=#367 id=367 data-nosnippet>367</a>			}
 <a href=#368 id=368 data-nosnippet>368</a>		} <span class="kw">else </span>{
-<a href=#369 id=369 data-nosnippet>369</a>			<span class="macro">dev_log!</span>(<span class="string">"ipc"</span>, <span class="string">"[TauriIPCServer] No listeners found for channel: {}"</span>, message.channel);
+<a href=#369 id=369 data-nosnippet>369</a>			<span class="macro">dev_log!</span>(<span class="string">"ipc"</span>, <span class="string">"[TauriIPCServer] No listeners found for channel: {}"</span>, Message.channel);
 <a href=#370 id=370 data-nosnippet>370</a>		}
 <a href=#371 id=371 data-nosnippet>371</a>
 <a href=#372 id=372 data-nosnippet>372</a>		<span class="prelude-val">Ok</span>(())
@@ -384,13 +384,13 @@
 <a href=#384 id=384 data-nosnippet>384</a>		<span class="prelude-val">Ok</span>(())
 <a href=#385 id=385 data-nosnippet>385</a>	}
 <a href=#386 id=386 data-nosnippet>386</a>
-<a href=#387 id=387 data-nosnippet>387</a>	<span class="doccomment">/// Emit a message to Wind
-<a href=#388 id=388 data-nosnippet>388</a>	</span><span class="kw">async fn </span>emit_message(<span class="kw-2">&amp;</span><span class="self">self</span>, message:<span class="kw-2">&amp;</span><a href="#174-179">TauriIPCMessage</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
+<a href=#387 id=387 data-nosnippet>387</a>	<span class="doccomment">/// Emit a Message to Wind
+<a href=#388 id=388 data-nosnippet>388</a>	</span><span class="kw">async fn </span>emit_message(<span class="kw-2">&amp;</span><span class="self">self</span>, Message:<span class="kw-2">&amp;</span><a href="#174-179">TauriIPCMessage</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
 <a href=#389 id=389 data-nosnippet>389</a>		<span class="self">self</span>.app_handle
-<a href=#390 id=390 data-nosnippet>390</a>			.emit(<span class="string">"vscode-ipc-message"</span>, message)
-<a href=#391 id=391 data-nosnippet>391</a>			.map_err(|e| <span class="macro">format!</span>(<span class="string">"Failed to emit message: {}"</span>, e))<span class="question-mark">?</span>;
+<a href=#390 id=390 data-nosnippet>390</a>			.emit(<span class="string">"vscode-ipc-Message"</span>, Message)
+<a href=#391 id=391 data-nosnippet>391</a>			.map_err(|e| <span class="macro">format!</span>(<span class="string">"Failed to emit Message: {}"</span>, e))<span class="question-mark">?</span>;
 <a href=#392 id=392 data-nosnippet>392</a>
-<a href=#393 id=393 data-nosnippet>393</a>		<span class="macro">dev_log!</span>(<span class="string">"ipc"</span>, <span class="string">"[TauriIPCServer] Message emitted on channel: {}"</span>, message.channel);
+<a href=#393 id=393 data-nosnippet>393</a>		<span class="macro">dev_log!</span>(<span class="string">"ipc"</span>, <span class="string">"[TauriIPCServer] Message emitted on channel: {}"</span>, Message.channel);
 <a href=#394 id=394 data-nosnippet>394</a>		<span class="prelude-val">Ok</span>(())
 <a href=#395 id=395 data-nosnippet>395</a>	}
 <a href=#396 id=396 data-nosnippet>396</a>
@@ -399,16 +399,16 @@
 <a href=#399 id=399 data-nosnippet>399</a>		<span class="kw">let </span><span class="kw-2">mut </span>queue = <span class="kw">match </span><span class="self">self</span>.message_queue.lock() {
 <a href=#400 id=400 data-nosnippet>400</a>			<span class="prelude-val">Ok</span>(queue) =&gt; queue,
 <a href=#401 id=401 data-nosnippet>401</a>			<span class="prelude-val">Err</span>(e) =&gt; {
-<a href=#402 id=402 data-nosnippet>402</a>				<span class="macro">dev_log!</span>(<span class="string">"ipc"</span>, <span class="string">"error: [TauriIPCServer] Failed to access message queue: {}"</span>, e);
+<a href=#402 id=402 data-nosnippet>402</a>				<span class="macro">dev_log!</span>(<span class="string">"ipc"</span>, <span class="string">"error: [TauriIPCServer] Failed to access Message queue: {}"</span>, e);
 <a href=#403 id=403 data-nosnippet>403</a>				<span class="kw">return</span>;
 <a href=#404 id=404 data-nosnippet>404</a>			},
 <a href=#405 id=405 data-nosnippet>405</a>		};
 <a href=#406 id=406 data-nosnippet>406</a>
-<a href=#407 id=407 data-nosnippet>407</a>		<span class="kw">while let </span><span class="prelude-val">Some</span>(message) = queue.pop() {
-<a href=#408 id=408 data-nosnippet>408</a>			<span class="kw">if let </span><span class="prelude-val">Err</span>(e) = <span class="self">self</span>.emit_message(<span class="kw-2">&amp;</span>message).<span class="kw">await </span>{
-<a href=#409 id=409 data-nosnippet>409</a>				<span class="macro">dev_log!</span>(<span class="string">"ipc"</span>, <span class="string">"error: [TauriIPCServer] Failed to send queued message: {}"</span>, e);
-<a href=#410 id=410 data-nosnippet>410</a>				<span class="comment">// Put the message back in the queue
-<a href=#411 id=411 data-nosnippet>411</a>				</span>queue.insert(<span class="number">0</span>, message);
+<a href=#407 id=407 data-nosnippet>407</a>		<span class="kw">while let </span><span class="prelude-val">Some</span>(Message) = queue.pop() {
+<a href=#408 id=408 data-nosnippet>408</a>			<span class="kw">if let </span><span class="prelude-val">Err</span>(e) = <span class="self">self</span>.emit_message(<span class="kw-2">&amp;</span>Message).<span class="kw">await </span>{
+<a href=#409 id=409 data-nosnippet>409</a>				<span class="macro">dev_log!</span>(<span class="string">"ipc"</span>, <span class="string">"error: [TauriIPCServer] Failed to send queued Message: {}"</span>, e);
+<a href=#410 id=410 data-nosnippet>410</a>				<span class="comment">// Put the Message back in the queue
+<a href=#411 id=411 data-nosnippet>411</a>				</span>queue.insert(<span class="number">0</span>, Message);
 <a href=#412 id=412 data-nosnippet>412</a>				<span class="kw">break</span>;
 <a href=#413 id=413 data-nosnippet>413</a>			}
 <a href=#414 id=414 data-nosnippet>414</a>		}
@@ -429,7 +429,7 @@
 <a href=#429 id=429 data-nosnippet>429</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="kw-2">*</span><a href="#425">guard</a>)
 <a href=#430 id=430 data-nosnippet>430</a>	}
 <a href=#431 id=431 data-nosnippet>431</a>
-<a href=#432 id=432 data-nosnippet>432</a>	<span class="doccomment">/// Get queued message count
+<a href=#432 id=432 data-nosnippet>432</a>	<span class="doccomment">/// Get queued Message count
 <a href=#433 id=433 data-nosnippet>433</a>	</span><span class="kw">pub fn </span>get_queue_size(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
 <a href=#434 id=434 data-nosnippet>434</a>		<span class="kw">let </span>guard = <a class="self" href="#433">self</a>
 <a href=#435 id=435 data-nosnippet>435</a>			.message_queue
@@ -452,7 +452,7 @@
 <a href=#452 id=452 data-nosnippet>452</a>			<span class="kw">let </span><span class="kw-2">mut </span>queue = <a class="self" href="#442">self</a>
 <a href=#453 id=453 data-nosnippet>453</a>				.message_queue
 <a href=#454 id=454 data-nosnippet>454</a>				.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>()
-<a href=#455 id=455 data-nosnippet>455</a>				.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Failed to access message queue: {}"</span>, e))<span class="question-mark">?</span>;
+<a href=#455 id=455 data-nosnippet>455</a>				.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Failed to access Message queue: {}"</span>, e))<span class="question-mark">?</span>;
 <a href=#456 id=456 data-nosnippet>456</a>			<a href="#452">queue</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.clear">clear</a>();
 <a href=#457 id=457 data-nosnippet>457</a>		}
 <a href=#458 id=458 data-nosnippet>458</a>
@@ -464,34 +464,34 @@
 <a href=#464 id=464 data-nosnippet>464</a>			<span class="kw-2">*</span><a href="#460">is_connected</a> = <span class="bool-val">false</span>;
 <a href=#465 id=465 data-nosnippet>465</a>		}
 <a href=#466 id=466 data-nosnippet>466</a>
-<a href=#467 id=467 data-nosnippet>467</a>		<a href="DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[TauriIPCServer] IPC Server disposed"</span>);
+<a href=#467 id=467 data-nosnippet>467</a>		<a href="DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[TauriIPCServer] IPC Server disposed"</span>);
 <a href=#468 id=468 data-nosnippet>468</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#469 id=469 data-nosnippet>469</a>	}
 <a href=#470 id=470 data-nosnippet>470</a>
-<a href=#471 id=471 data-nosnippet>471</a>	<span class="doccomment">/// Advanced: Validate message permissions
-<a href=#472 id=472 data-nosnippet>472</a>	</span><span class="kw">pub async fn </span>validate_message_permissions(<span class="kw-2">&amp;</span><span class="self">self</span>, message:<span class="kw-2">&amp;</span><a href="#174-179">TauriIPCMessage</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
+<a href=#471 id=471 data-nosnippet>471</a>	<span class="doccomment">/// Advanced: Validate Message permissions
+<a href=#472 id=472 data-nosnippet>472</a>	</span><span class="kw">pub async fn </span>validate_message_permissions(<span class="kw-2">&amp;</span><span class="self">self</span>, Message:<span class="kw-2">&amp;</span><a href="#174-179">TauriIPCMessage</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
 <a href=#473 id=473 data-nosnippet>473</a>		<span class="kw">let </span>permission_manager = PermissionManager::new();
 <a href=#474 id=474 data-nosnippet>474</a>		permission_manager.initialize_defaults().<span class="kw">await</span>;
 <a href=#475 id=475 data-nosnippet>475</a>
-<a href=#476 id=476 data-nosnippet>476</a>		<span class="kw">let </span>context = <span class="self">self</span>.create_security_context(message);
+<a href=#476 id=476 data-nosnippet>476</a>		<span class="kw">let </span>context = <span class="self">self</span>.create_security_context(Message);
 <a href=#477 id=477 data-nosnippet>477</a>
 <a href=#478 id=478 data-nosnippet>478</a>		<span class="comment">// Extract operation from channel name
-<a href=#479 id=479 data-nosnippet>479</a>		</span><span class="kw">let </span>operation = message.channel.replace(<span class="string">"mountain_"</span>, <span class="string">""</span>);
+<a href=#479 id=479 data-nosnippet>479</a>		</span><span class="kw">let </span>operation = Message.channel.replace(<span class="string">"mountain_"</span>, <span class="string">""</span>);
 <a href=#480 id=480 data-nosnippet>480</a>
 <a href=#481 id=481 data-nosnippet>481</a>		<span class="comment">// Validate permission
 <a href=#482 id=482 data-nosnippet>482</a>		</span>permission_manager.validate_permission(<span class="kw-2">&amp;</span>operation, <span class="kw-2">&amp;</span>context).<span class="kw">await
 <a href=#483 id=483 data-nosnippet>483</a>	</span>}
 <a href=#484 id=484 data-nosnippet>484</a>
-<a href=#485 id=485 data-nosnippet>485</a>	<span class="doccomment">/// Advanced: Create security context from message
-<a href=#486 id=486 data-nosnippet>486</a>	</span><span class="kw">fn </span>create_security_context(<span class="kw-2">&amp;</span><span class="self">self</span>, message:<span class="kw-2">&amp;</span><a href="#174-179">TauriIPCMessage</a>) -&gt; <a href="#1016-1022">SecurityContext</a> {
+<a href=#485 id=485 data-nosnippet>485</a>	<span class="doccomment">/// Advanced: Create security context from Message
+<a href=#486 id=486 data-nosnippet>486</a>	</span><span class="kw">fn </span>create_security_context(<span class="kw-2">&amp;</span><span class="self">self</span>, Message:<span class="kw-2">&amp;</span><a href="#174-179">TauriIPCMessage</a>) -&gt; <a href="#1016-1022">SecurityContext</a> {
 <a href=#487 id=487 data-nosnippet>487</a>		<a href="#1016-1022">SecurityContext</a> {
-<a href=#488 id=488 data-nosnippet>488</a>			user_id:<a href="#486">message</a>.sender.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or">unwrap_or</a>(<span class="string">"unknown"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>()),
+<a href=#488 id=488 data-nosnippet>488</a>			user_id:<a href="#486">Message</a>.sender.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or">unwrap_or</a>(<span class="string">"unknown"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>()),
 <a href=#489 id=489 data-nosnippet>489</a>			<span class="comment">// Default role assigned to authenticated IPC connections
 <a href=#490 id=490 data-nosnippet>490</a>			</span>roles:<a href="https://doc.rust-lang.org/nightly/alloc/macro.vec.html">vec!</a>[<span class="string">"user"</span>.to_string()],
 <a href=#491 id=491 data-nosnippet>491</a>			permissions:<a href="https://doc.rust-lang.org/nightly/alloc/macro.vec.html">vec!</a>[],
 <a href=#492 id=492 data-nosnippet>492</a>			<span class="comment">// IPC connections use loopback address for security (localhost only)
 <a href=#493 id=493 data-nosnippet>493</a>			</span>ip_address:<span class="string">"127.0.0.1"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
-<a href=#494 id=494 data-nosnippet>494</a>			timestamp:std::time::<a href="https://doc.rust-lang.org/nightly/std/time/struct.SystemTime.html">SystemTime</a>::<a href="https://doc.rust-lang.org/nightly/std/time/struct.SystemTime.html#associatedconstant.UNIX_EPOCH">UNIX_EPOCH</a> + std::time::<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html">Duration</a>::<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html#method.from_millis">from_millis</a>(<a href="#486">message</a>.timestamp),
+<a href=#494 id=494 data-nosnippet>494</a>			timestamp:std::time::<a href="https://doc.rust-lang.org/nightly/std/time/struct.SystemTime.html">SystemTime</a>::<a href="https://doc.rust-lang.org/nightly/std/time/struct.SystemTime.html#associatedconstant.UNIX_EPOCH">UNIX_EPOCH</a> + std::time::<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html">Duration</a>::<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html#method.from_millis">from_millis</a>(<a href="#486">Message</a>.timestamp),
 <a href=#495 id=495 data-nosnippet>495</a>		}
 <a href=#496 id=496 data-nosnippet>496</a>	}
 <a href=#497 id=497 data-nosnippet>497</a>
@@ -519,7 +519,7 @@
 <a href=#519 id=519 data-nosnippet>519</a>		<span class="prelude-val">Ok</span>(permission_manager.get_audit_log(limit).<span class="kw">await</span>)
 <a href=#520 id=520 data-nosnippet>520</a>	}
 <a href=#521 id=521 data-nosnippet>521</a>
-<a href=#522 id=522 data-nosnippet>522</a>	<span class="doccomment">/// Send compressed message batch
+<a href=#522 id=522 data-nosnippet>522</a>	<span class="doccomment">/// Send compressed Message batch
 <a href=#523 id=523 data-nosnippet>523</a>	</span><span class="kw">pub async fn </span>send_compressed_batch(<span class="kw-2">&amp;</span><span class="self">self</span>, channel:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, messages:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="#174-179">TauriIPCMessage</a>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
 <a href=#524 id=524 data-nosnippet>524</a>		<span class="comment">// Configure compressor with balanced settings: level 6 (good compression/speed
 <a href=#525 id=525 data-nosnippet>525</a>		// tradeoff) and batch size 10 (aggregate small messages for efficiency)
@@ -542,9 +542,9 @@
 <a href=#542 id=542 data-nosnippet>542</a>		<span class="self">self</span>.send(channel, serde_json::to_value(batch_message).unwrap()).<span class="kw">await
 <a href=#543 id=543 data-nosnippet>543</a>	</span>}
 <a href=#544 id=544 data-nosnippet>544</a>
-<a href=#545 id=545 data-nosnippet>545</a>	<span class="doccomment">/// Handle compressed batch message
-<a href=#546 id=546 data-nosnippet>546</a>	</span><span class="kw">pub async fn </span>handle_compressed_batch(<span class="kw-2">&amp;</span><span class="self">self</span>, message:<a href="#174-179">TauriIPCMessage</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
-<a href=#547 id=547 data-nosnippet>547</a>		<span class="kw">let </span>compressed_data_base64 = message.data.as_str().ok_or(<span class="string">"Compressed batch data must be a string"</span>)<span class="question-mark">?</span>;
+<a href=#545 id=545 data-nosnippet>545</a>	<span class="doccomment">/// Handle compressed batch Message
+<a href=#546 id=546 data-nosnippet>546</a>	</span><span class="kw">pub async fn </span>CompressedBatch(<span class="kw-2">&amp;</span><span class="self">self</span>, Message:<a href="#174-179">TauriIPCMessage</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
+<a href=#547 id=547 data-nosnippet>547</a>		<span class="kw">let </span>compressed_data_base64 = Message.data.as_str().ok_or(<span class="string">"Compressed batch data must be a string"</span>)<span class="question-mark">?</span>;
 <a href=#548 id=548 data-nosnippet>548</a>
 <a href=#549 id=549 data-nosnippet>549</a>		<span class="kw">let </span>compressed_data = general_purpose::STANDARD
 <a href=#550 id=550 data-nosnippet>550</a>			.decode(compressed_data_base64)
@@ -555,26 +555,26 @@
 <a href=#555 id=555 data-nosnippet>555</a>			.decompress_messages(<span class="kw-2">&amp;</span>compressed_data)
 <a href=#556 id=556 data-nosnippet>556</a>			.map_err(|e| <span class="macro">format!</span>(<span class="string">"Failed to decompress batch: {}"</span>, e))<span class="question-mark">?</span>;
 <a href=#557 id=557 data-nosnippet>557</a>
-<a href=#558 id=558 data-nosnippet>558</a>		<span class="comment">// Process each message in the batch
-<a href=#559 id=559 data-nosnippet>559</a>		</span><span class="kw">for </span>message <span class="kw">in </span>messages {
-<a href=#560 id=560 data-nosnippet>560</a>			<span class="self">self</span>.handle_incoming_message(message).<span class="kw">await</span><span class="question-mark">?</span>;
+<a href=#558 id=558 data-nosnippet>558</a>		<span class="comment">// Process each Message in the batch
+<a href=#559 id=559 data-nosnippet>559</a>		</span><span class="kw">for </span>Message <span class="kw">in </span>messages {
+<a href=#560 id=560 data-nosnippet>560</a>			<span class="self">self</span>.IncomingMessage(Message).<span class="kw">await</span><span class="question-mark">?</span>;
 <a href=#561 id=561 data-nosnippet>561</a>		}
 <a href=#562 id=562 data-nosnippet>562</a>
 <a href=#563 id=563 data-nosnippet>563</a>		<span class="prelude-val">Ok</span>(())
 <a href=#564 id=564 data-nosnippet>564</a>	}
 <a href=#565 id=565 data-nosnippet>565</a>
-<a href=#566 id=566 data-nosnippet>566</a>	<span class="doccomment">/// Send message using connection pool
+<a href=#566 id=566 data-nosnippet>566</a>	<span class="doccomment">/// Send Message using connection pool
 <a href=#567 id=567 data-nosnippet>567</a>	</span><span class="kw">pub async fn </span>send_with_pool(<span class="kw-2">&amp;</span><span class="self">self</span>, channel:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, data:serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
 <a href=#568 id=568 data-nosnippet>568</a>		<span class="kw">let </span>pool = Arc::new(ConnectionPool::new(<span class="number">10</span>, Duration::from_secs(<span class="number">30</span>)));
 <a href=#569 id=569 data-nosnippet>569</a>
-<a href=#570 id=570 data-nosnippet>570</a>		<span class="kw">let </span>handle = pool
+<a href=#570 id=570 data-nosnippet>570</a>		<span class="kw">let </span>Handle = pool
 <a href=#571 id=571 data-nosnippet>571</a>			.GetConnection()
 <a href=#572 id=572 data-nosnippet>572</a>			.<span class="kw">await
 <a href=#573 id=573 data-nosnippet>573</a>			</span>.map_err(|e| <span class="macro">format!</span>(<span class="string">"Failed to get connection: {}"</span>, e))<span class="question-mark">?</span>;
 <a href=#574 id=574 data-nosnippet>574</a>
 <a href=#575 id=575 data-nosnippet>575</a>		<span class="kw">let </span>result = <span class="self">self</span>.send(channel, data).<span class="kw">await</span>;
 <a href=#576 id=576 data-nosnippet>576</a>
-<a href=#577 id=577 data-nosnippet>577</a>		pool.ReleaseConnection(handle).<span class="kw">await</span>;
+<a href=#577 id=577 data-nosnippet>577</a>		pool.ReleaseConnection(Handle).<span class="kw">await</span>;
 <a href=#578 id=578 data-nosnippet>578</a>
 <a href=#579 id=579 data-nosnippet>579</a>		result
 <a href=#580 id=580 data-nosnippet>580</a>	}
@@ -585,12 +585,12 @@
 <a href=#585 id=585 data-nosnippet>585</a>		<span class="prelude-val">Ok</span>(pool.GetStats().<span class="kw">await</span>)
 <a href=#586 id=586 data-nosnippet>586</a>	}
 <a href=#587 id=587 data-nosnippet>587</a>
-<a href=#588 id=588 data-nosnippet>588</a>	<span class="doccomment">/// Send encrypted message
+<a href=#588 id=588 data-nosnippet>588</a>	<span class="doccomment">/// Send encrypted Message
 <a href=#589 id=589 data-nosnippet>589</a>	</span><span class="kw">pub async fn </span>send_secure(<span class="kw-2">&amp;</span><span class="self">self</span>, channel:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, data:serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
 <a href=#590 id=590 data-nosnippet>590</a>		<span class="kw">let </span>secure_channel =
 <a href=#591 id=591 data-nosnippet>591</a>			SecureMessageChannel::new().map_err(|e| <span class="macro">format!</span>(<span class="string">"Failed to create secure channel: {}"</span>, e))<span class="question-mark">?</span>;
 <a href=#592 id=592 data-nosnippet>592</a>
-<a href=#593 id=593 data-nosnippet>593</a>		<span class="kw">let </span>message = TauriIPCMessage {
+<a href=#593 id=593 data-nosnippet>593</a>		<span class="kw">let </span>Message = TauriIPCMessage {
 <a href=#594 id=594 data-nosnippet>594</a>			channel:channel.to_string(),
 <a href=#595 id=595 data-nosnippet>595</a>			data,
 <a href=#596 id=596 data-nosnippet>596</a>			sender:<span class="prelude-val">Some</span>(<span class="string">"mountain"</span>.to_string()),
@@ -601,43 +601,43 @@
 <a href=#601 id=601 data-nosnippet>601</a>		};
 <a href=#602 id=602 data-nosnippet>602</a>
 <a href=#603 id=603 data-nosnippet>603</a>		<span class="kw">let </span>encrypted_message = secure_channel
-<a href=#604 id=604 data-nosnippet>604</a>			.encrypt_message(<span class="kw-2">&amp;</span>message)
-<a href=#605 id=605 data-nosnippet>605</a>			.map_err(|e| <span class="macro">format!</span>(<span class="string">"Failed to encrypt message: {}"</span>, e))<span class="question-mark">?</span>;
+<a href=#604 id=604 data-nosnippet>604</a>			.encrypt_message(<span class="kw-2">&amp;</span>Message)
+<a href=#605 id=605 data-nosnippet>605</a>			.map_err(|e| <span class="macro">format!</span>(<span class="string">"Failed to encrypt Message: {}"</span>, e))<span class="question-mark">?</span>;
 <a href=#606 id=606 data-nosnippet>606</a>
 <a href=#607 id=607 data-nosnippet>607</a>		<span class="kw">let </span>encrypted_data = serde_json::to_value(encrypted_message)
-<a href=#608 id=608 data-nosnippet>608</a>			.map_err(|e| <span class="macro">format!</span>(<span class="string">"Failed to serialize encrypted message: {}"</span>, e))<span class="question-mark">?</span>;
+<a href=#608 id=608 data-nosnippet>608</a>			.map_err(|e| <span class="macro">format!</span>(<span class="string">"Failed to serialize encrypted Message: {}"</span>, e))<span class="question-mark">?</span>;
 <a href=#609 id=609 data-nosnippet>609</a>
 <a href=#610 id=610 data-nosnippet>610</a>		<span class="self">self</span>.send(<span class="string">"secure_message"</span>, encrypted_data).<span class="kw">await
 <a href=#611 id=611 data-nosnippet>611</a>	</span>}
 <a href=#612 id=612 data-nosnippet>612</a>
-<a href=#613 id=613 data-nosnippet>613</a>	<span class="doccomment">/// Handle encrypted message
-<a href=#614 id=614 data-nosnippet>614</a>	</span><span class="kw">pub async fn </span>handle_secure_message(<span class="kw-2">&amp;</span><span class="self">self</span>, encrypted_data:serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
+<a href=#613 id=613 data-nosnippet>613</a>	<span class="doccomment">/// Handle encrypted Message
+<a href=#614 id=614 data-nosnippet>614</a>	</span><span class="kw">pub async fn </span>SecureMessage(<span class="kw-2">&amp;</span><span class="self">self</span>, encrypted_data:serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
 <a href=#615 id=615 data-nosnippet>615</a>		<span class="kw">let </span>encrypted_message:EncryptedMessage = serde_json::from_value(encrypted_data)
-<a href=#616 id=616 data-nosnippet>616</a>			.map_err(|e| <span class="macro">format!</span>(<span class="string">"Failed to deserialize encrypted message: {}"</span>, e))<span class="question-mark">?</span>;
+<a href=#616 id=616 data-nosnippet>616</a>			.map_err(|e| <span class="macro">format!</span>(<span class="string">"Failed to deserialize encrypted Message: {}"</span>, e))<span class="question-mark">?</span>;
 <a href=#617 id=617 data-nosnippet>617</a>
 <a href=#618 id=618 data-nosnippet>618</a>		<span class="kw">let </span>secure_channel =
 <a href=#619 id=619 data-nosnippet>619</a>			SecureMessageChannel::new().map_err(|e| <span class="macro">format!</span>(<span class="string">"Failed to create secure channel: {}"</span>, e))<span class="question-mark">?</span>;
 <a href=#620 id=620 data-nosnippet>620</a>
-<a href=#621 id=621 data-nosnippet>621</a>		<span class="kw">let </span>message = secure_channel
+<a href=#621 id=621 data-nosnippet>621</a>		<span class="kw">let </span>Message = secure_channel
 <a href=#622 id=622 data-nosnippet>622</a>			.decrypt_message(<span class="kw-2">&amp;</span>encrypted_message)
-<a href=#623 id=623 data-nosnippet>623</a>			.map_err(|e| <span class="macro">format!</span>(<span class="string">"Failed to decrypt message: {}"</span>, e))<span class="question-mark">?</span>;
+<a href=#623 id=623 data-nosnippet>623</a>			.map_err(|e| <span class="macro">format!</span>(<span class="string">"Failed to decrypt Message: {}"</span>, e))<span class="question-mark">?</span>;
 <a href=#624 id=624 data-nosnippet>624</a>
-<a href=#625 id=625 data-nosnippet>625</a>		<span class="self">self</span>.handle_incoming_message(message).<span class="kw">await
+<a href=#625 id=625 data-nosnippet>625</a>		<span class="self">self</span>.IncomingMessage(Message).<span class="kw">await
 <a href=#626 id=626 data-nosnippet>626</a>	</span>}
 <a href=#627 id=627 data-nosnippet>627</a>
-<a href=#628 id=628 data-nosnippet>628</a>	<span class="doccomment">/// Handle message with permission validation
-<a href=#629 id=629 data-nosnippet>629</a>	</span><span class="kw">pub async fn </span>handle_message_with_permissions(<span class="kw-2">&amp;</span><span class="self">self</span>, message:<a href="#174-179">TauriIPCMessage</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
+<a href=#628 id=628 data-nosnippet>628</a>	<span class="doccomment">/// Handle Message with permission validation
+<a href=#629 id=629 data-nosnippet>629</a>	</span><span class="kw">pub async fn </span>MessageWithPermissions(<span class="kw-2">&amp;</span><span class="self">self</span>, Message:<a href="#174-179">TauriIPCMessage</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
 <a href=#630 id=630 data-nosnippet>630</a>		<span class="kw">let </span>permission_manager = PermissionManager::new();
-<a href=#631 id=631 data-nosnippet>631</a>		<span class="kw">let </span>context = <span class="self">self</span>.create_security_context(<span class="kw-2">&amp;</span>message);
+<a href=#631 id=631 data-nosnippet>631</a>		<span class="kw">let </span>context = <span class="self">self</span>.create_security_context(<span class="kw-2">&amp;</span>Message);
 <a href=#632 id=632 data-nosnippet>632</a>
 <a href=#633 id=633 data-nosnippet>633</a>		<span class="comment">// Extract operation from channel name
-<a href=#634 id=634 data-nosnippet>634</a>		</span><span class="kw">let </span>operation = message.channel.replace(<span class="string">"mountain_"</span>, <span class="string">""</span>);
+<a href=#634 id=634 data-nosnippet>634</a>		</span><span class="kw">let </span>operation = Message.channel.replace(<span class="string">"mountain_"</span>, <span class="string">""</span>);
 <a href=#635 id=635 data-nosnippet>635</a>
 <a href=#636 id=636 data-nosnippet>636</a>		<span class="comment">// Validate permission
 <a href=#637 id=637 data-nosnippet>637</a>		</span>permission_manager.validate_permission(<span class="kw-2">&amp;</span>operation, <span class="kw-2">&amp;</span>context).<span class="kw">await</span><span class="question-mark">?</span>;
 <a href=#638 id=638 data-nosnippet>638</a>
-<a href=#639 id=639 data-nosnippet>639</a>		<span class="comment">// Process the message
-<a href=#640 id=640 data-nosnippet>640</a>		</span><span class="self">self</span>.handle_incoming_message(message).<span class="kw">await
+<a href=#639 id=639 data-nosnippet>639</a>		<span class="comment">// Process the Message
+<a href=#640 id=640 data-nosnippet>640</a>		</span><span class="self">self</span>.IncomingMessage(Message).<span class="kw">await
 <a href=#641 id=641 data-nosnippet>641</a>	</span>}
 <a href=#642 id=642 data-nosnippet>642</a>}
 <a href=#643 id=643 data-nosnippet>643</a>
@@ -666,7 +666,7 @@
 <a href=#666 id=666 data-nosnippet>666</a>}
 <a href=#667 id=667 data-nosnippet>667</a>
 <a href=#668 id=668 data-nosnippet>668</a><span class="kw">impl </span><a href="#660-666">ConnectionHandle</a> {
-<a href=#669 id=669 data-nosnippet>669</a>	<span class="doccomment">/// Create a new connection handle with health monitoring
+<a href=#669 id=669 data-nosnippet>669</a>	<span class="doccomment">/// Create a new connection Handle with health monitoring
 <a href=#670 id=670 data-nosnippet>670</a>	</span><span class="kw">pub fn </span>new() -&gt; <span class="self">Self </span>{
 <a href=#671 id=671 data-nosnippet>671</a>		<span class="self">Self </span>{
 <a href=#672 id=672 data-nosnippet>672</a>			id:uuid::<a href="https://docs.rs/uuid/1.23.1/uuid/struct.Uuid.html">Uuid</a>::<a href="https://docs.rs/uuid/1.23.1/uuid/struct.Uuid.html#method.new_v4">new_v4</a>().<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
@@ -705,31 +705,31 @@
 <a href=#705 id=705 data-nosnippet>705</a>		}
 <a href=#706 id=706 data-nosnippet>706</a>	}
 <a href=#707 id=707 data-nosnippet>707</a>
-<a href=#708 id=708 data-nosnippet>708</a>	<span class="doccomment">/// Get a connection handle from the pool with timeout
+<a href=#708 id=708 data-nosnippet>708</a>	<span class="doccomment">/// Get a connection Handle from the pool with timeout
 <a href=#709 id=709 data-nosnippet>709</a>	</span><span class="kw">pub async fn </span>GetConnection(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Result</span>&lt;ConnectionHandle, String&gt; {
 <a href=#710 id=710 data-nosnippet>710</a>		<span class="kw">let </span>_permit = timeout(<span class="self">self</span>.ConnectionTimeout, <span class="self">self</span>.Semaphore.acquire())
 <a href=#711 id=711 data-nosnippet>711</a>			.<span class="kw">await
 <a href=#712 id=712 data-nosnippet>712</a>			</span>.map_err(|<span class="kw">_</span>| <span class="string">"Connection timeout"</span>)<span class="question-mark">?
 <a href=#713 id=713 data-nosnippet>713</a>			</span>.map_err(|e| <span class="macro">format!</span>(<span class="string">"Failed to acquire connection: {}"</span>, e))<span class="question-mark">?</span>;
 <a href=#714 id=714 data-nosnippet>714</a>
-<a href=#715 id=715 data-nosnippet>715</a>		<span class="kw">let </span>handle = ConnectionHandle::new();
+<a href=#715 id=715 data-nosnippet>715</a>		<span class="kw">let </span>Handle = ConnectionHandle::new();
 <a href=#716 id=716 data-nosnippet>716</a>
 <a href=#717 id=717 data-nosnippet>717</a>		{
 <a href=#718 id=718 data-nosnippet>718</a>			<span class="kw">let </span><span class="kw-2">mut </span>connections = <span class="self">self</span>.ActiveConnection.lock().<span class="kw">await</span>;
-<a href=#719 id=719 data-nosnippet>719</a>			connections.insert(handle.id.clone(), handle.clone());
+<a href=#719 id=719 data-nosnippet>719</a>			connections.insert(Handle.id.clone(), Handle.clone());
 <a href=#720 id=720 data-nosnippet>720</a>		}
 <a href=#721 id=721 data-nosnippet>721</a>
 <a href=#722 id=722 data-nosnippet>722</a>		<span class="comment">// Start health monitoring for this connection
-<a href=#723 id=723 data-nosnippet>723</a>		</span><span class="self">self</span>.StartHealthMonitoring(<span class="kw-2">&amp;</span>handle.id).<span class="kw">await</span>;
+<a href=#723 id=723 data-nosnippet>723</a>		</span><span class="self">self</span>.StartHealthMonitoring(<span class="kw-2">&amp;</span>Handle.id).<span class="kw">await</span>;
 <a href=#724 id=724 data-nosnippet>724</a>
-<a href=#725 id=725 data-nosnippet>725</a>		<span class="prelude-val">Ok</span>(handle)
+<a href=#725 id=725 data-nosnippet>725</a>		<span class="prelude-val">Ok</span>(Handle)
 <a href=#726 id=726 data-nosnippet>726</a>	}
 <a href=#727 id=727 data-nosnippet>727</a>
-<a href=#728 id=728 data-nosnippet>728</a>	<span class="doccomment">/// Release a connection handle back to the pool
-<a href=#729 id=729 data-nosnippet>729</a>	</span><span class="kw">pub async fn </span>ReleaseConnection(<span class="kw-2">&amp;</span><span class="self">self</span>, handle:<a href="#660-666">ConnectionHandle</a>) {
+<a href=#728 id=728 data-nosnippet>728</a>	<span class="doccomment">/// Release a connection Handle back to the pool
+<a href=#729 id=729 data-nosnippet>729</a>	</span><span class="kw">pub async fn </span>ReleaseConnection(<span class="kw-2">&amp;</span><span class="self">self</span>, Handle:<a href="#660-666">ConnectionHandle</a>) {
 <a href=#730 id=730 data-nosnippet>730</a>		{
 <a href=#731 id=731 data-nosnippet>731</a>			<span class="kw">let </span><span class="kw-2">mut </span>connections = <span class="self">self</span>.ActiveConnection.lock().<span class="kw">await</span>;
-<a href=#732 id=732 data-nosnippet>732</a>			connections.remove(<span class="kw-2">&amp;</span>handle.id);
+<a href=#732 id=732 data-nosnippet>732</a>			connections.remove(<span class="kw-2">&amp;</span>Handle.id);
 <a href=#733 id=733 data-nosnippet>733</a>		}
 <a href=#734 id=734 data-nosnippet>734</a>
 <a href=#735 id=735 data-nosnippet>735</a>		<span class="comment">// The permit is released when dropped
@@ -758,7 +758,7 @@
 <a href=#758 id=758 data-nosnippet>758</a>
 <a href=#759 id=759 data-nosnippet>759</a>		<span class="kw">let </span>stale_ids:Vec&lt;String&gt; = connections
 <a href=#760 id=760 data-nosnippet>760</a>			.iter()
-<a href=#761 id=761 data-nosnippet>761</a>			.filter(|(<span class="kw">_</span>, handle)| now.duration_since(handle.last_used) &gt; stale_threshold || !handle.is_healthy())
+<a href=#761 id=761 data-nosnippet>761</a>			.filter(|(<span class="kw">_</span>, Handle)| now.duration_since(Handle.last_used) &gt; stale_threshold || !Handle.is_healthy())
 <a href=#762 id=762 data-nosnippet>762</a>			.map(|(id, <span class="kw">_</span>)| id.clone())
 <a href=#763 id=763 data-nosnippet>763</a>			.collect();
 <a href=#764 id=764 data-nosnippet>764</a>
@@ -788,16 +788,16 @@
 <a href=#788 id=788 data-nosnippet>788</a>					<span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; <span class="kw">continue</span>,
 <a href=#789 id=789 data-nosnippet>789</a>				};
 <a href=#790 id=790 data-nosnippet>790</a>
-<a href=#791 id=791 data-nosnippet>791</a>				<span class="kw">if let </span><span class="prelude-val">Some</span>(handle) = connections.get_mut(<span class="kw-2">&amp;</span>connection_id) {
-<a href=#792 id=792 data-nosnippet>792</a>					<span class="kw">let </span>is_healthy = checker.check_connection_health(handle).<span class="kw">await</span>;
-<a href=#793 id=793 data-nosnippet>793</a>					handle.update_health(is_healthy);
+<a href=#791 id=791 data-nosnippet>791</a>				<span class="kw">if let </span><span class="prelude-val">Some</span>(Handle) = connections.get_mut(<span class="kw-2">&amp;</span>connection_id) {
+<a href=#792 id=792 data-nosnippet>792</a>					<span class="kw">let </span>is_healthy = checker.check_connection_health(Handle).<span class="kw">await</span>;
+<a href=#793 id=793 data-nosnippet>793</a>					Handle.update_health(is_healthy);
 <a href=#794 id=794 data-nosnippet>794</a>
-<a href=#795 id=795 data-nosnippet>795</a>					<span class="kw">if </span>!handle.is_healthy() {
+<a href=#795 id=795 data-nosnippet>795</a>					<span class="kw">if </span>!Handle.is_healthy() {
 <a href=#796 id=796 data-nosnippet>796</a>						<span class="macro">dev_log!</span>(
 <a href=#797 id=797 data-nosnippet>797</a>							<span class="string">"ipc"</span>,
 <a href=#798 id=798 data-nosnippet>798</a>							<span class="string">"Connection {} marked as unhealthy (score: {:.1})"</span>,
-<a href=#799 id=799 data-nosnippet>799</a>							handle.id,
-<a href=#800 id=800 data-nosnippet>800</a>							handle.health_score
+<a href=#799 id=799 data-nosnippet>799</a>							Handle.id,
+<a href=#800 id=800 data-nosnippet>800</a>							Handle.health_score
 <a href=#801 id=801 data-nosnippet>801</a>						);
 <a href=#802 id=802 data-nosnippet>802</a>					}
 <a href=#803 id=803 data-nosnippet>803</a>				} <span class="kw">else </span>{
@@ -819,8 +819,8 @@
 <a href=#819 id=819 data-nosnippet>819</a>
 <a href=#820 id=820 data-nosnippet>820</a>	<span class="doccomment">/// Check connection health by sending a ping
 <a href=#821 id=821 data-nosnippet>821</a>	</span><span class="kw">async fn </span>check_connection_health(<span class="kw-2">&amp;</span><span class="self">self</span>, _handle:<span class="kw-2">&amp;mut </span><a href="#660-666">ConnectionHandle</a>) -&gt; bool {
-<a href=#822 id=822 data-nosnippet>822</a>		<span class="comment">// Simulate health check by ensuring connection can handle basic operations
-<a href=#823 id=823 data-nosnippet>823</a>		// In a real implementation, this would send an actual ping message
+<a href=#822 id=822 data-nosnippet>822</a>		<span class="comment">// Simulate health check by ensuring connection can Handle basic operations
+<a href=#823 id=823 data-nosnippet>823</a>		// In a real implementation, this would send an actual ping Message
 <a href=#824 id=824 data-nosnippet>824</a>		</span><span class="kw">let </span>start_time = std::time::Instant::now();
 <a href=#825 id=825 data-nosnippet>825</a>
 <a href=#826 id=826 data-nosnippet>826</a>		<span class="comment">// Simulate network latency
@@ -843,7 +843,7 @@
 <a href=#843 id=843 data-nosnippet>843</a>	<span class="kw">pub </span>connection_timeout:<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html">Duration</a>,
 <a href=#844 id=844 data-nosnippet>844</a>}
 <a href=#845 id=845 data-nosnippet>845</a>
-<a href=#846 id=846 data-nosnippet>846</a><span class="doccomment">/// Secure message channel with encryption and authentication
+<a href=#846 id=846 data-nosnippet>846</a><span class="doccomment">/// Secure Message channel with encryption and authentication
 <a href=#847 id=847 data-nosnippet>847</a></span><span class="kw">pub struct </span><a href="../../../Mountain/IPC/TauriIPCServer_Old/struct.SecureMessageChannel.html">SecureMessageChannel</a> {
 <a href=#848 id=848 data-nosnippet>848</a>	encryption_key:LessSafeKey,
 <a href=#849 id=849 data-nosnippet>849</a>	hmac_key:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;,
@@ -872,10 +872,10 @@
 <a href=#872 id=872 data-nosnippet>872</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="self">Self </span>{ <a href="#865">encryption_key</a>, <a href="#868">hmac_key</a> })
 <a href=#873 id=873 data-nosnippet>873</a>	}
 <a href=#874 id=874 data-nosnippet>874</a>
-<a href=#875 id=875 data-nosnippet>875</a>	<span class="doccomment">/// Encrypt and authenticate a message
-<a href=#876 id=876 data-nosnippet>876</a>	</span><span class="kw">pub fn </span>encrypt_message(<span class="kw-2">&amp;</span><span class="self">self</span>, message:<span class="kw-2">&amp;</span><a href="#174-179">TauriIPCMessage</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="#934-938">EncryptedMessage</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
+<a href=#875 id=875 data-nosnippet>875</a>	<span class="doccomment">/// Encrypt and authenticate a Message
+<a href=#876 id=876 data-nosnippet>876</a>	</span><span class="kw">pub fn </span>encrypt_message(<span class="kw-2">&amp;</span><span class="self">self</span>, Message:<span class="kw-2">&amp;</span><a href="#174-179">TauriIPCMessage</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="#934-938">EncryptedMessage</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
 <a href=#877 id=877 data-nosnippet>877</a>		<span class="kw">let </span>serialized_message =
-<a href=#878 id=878 data-nosnippet>878</a>			serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/ser/fn.to_vec.html">to_vec</a>(<a href="#876">message</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Failed to serialize message: {}"</span>, e))<span class="question-mark">?</span>;
+<a href=#878 id=878 data-nosnippet>878</a>			serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/ser/fn.to_vec.html">to_vec</a>(<a href="#876">Message</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Failed to serialize Message: {}"</span>, e))<span class="question-mark">?</span>;
 <a href=#879 id=879 data-nosnippet>879</a>
 <a href=#880 id=880 data-nosnippet>880</a>		<span class="comment">// Generate nonce
 <a href=#881 id=881 data-nosnippet>881</a>		</span><span class="kw">let </span><span class="kw-2">mut </span>nonce = [<span class="number">0u8</span>; <span class="number">12</span>];
@@ -883,7 +883,7 @@
 <a href=#883 id=883 data-nosnippet>883</a>			.fill(<span class="kw-2">&amp;mut </span><a href="#881">nonce</a>)
 <a href=#884 id=884 data-nosnippet>884</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Failed to generate nonce: {}"</span>, e))<span class="question-mark">?</span>;
 <a href=#885 id=885 data-nosnippet>885</a>
-<a href=#886 id=886 data-nosnippet>886</a>		<span class="comment">// Encrypt message
+<a href=#886 id=886 data-nosnippet>886</a>		<span class="comment">// Encrypt Message
 <a href=#887 id=887 data-nosnippet>887</a>		</span><span class="kw">let </span><span class="kw-2">mut </span>in_out = <a href="#877">serialized_message</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
 <a href=#888 id=888 data-nosnippet>888</a>		<a class="self" href="#876">self</a>.encryption_key
 <a href=#889 id=889 data-nosnippet>889</a>			.seal_in_place_append_tag(aead::Nonce::assume_unique_for_key(<a href="#881">nonce</a>), aead::Aad::empty(), <span class="kw-2">&amp;mut </span><a href="#887">in_out</a>)
@@ -896,14 +896,14 @@
 <a href=#896 id=896 data-nosnippet>896</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="#934-938">EncryptedMessage</a> { nonce:<a href="#881">nonce</a>.<a href="https://doc.rust-lang.org/nightly/alloc/foreigntype.slice.html#method.to_vec">to_vec</a>(), ciphertext:<a href="#887">in_out</a>, hmac_tag:<a href="#894">hmac_tag</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://doc.rust-lang.org/nightly/alloc/foreigntype.slice.html#method.to_vec">to_vec</a>() })
 <a href=#897 id=897 data-nosnippet>897</a>	}
 <a href=#898 id=898 data-nosnippet>898</a>
-<a href=#899 id=899 data-nosnippet>899</a>	<span class="doccomment">/// Decrypt and verify a message
+<a href=#899 id=899 data-nosnippet>899</a>	<span class="doccomment">/// Decrypt and verify a Message
 <a href=#900 id=900 data-nosnippet>900</a>	</span><span class="kw">pub fn </span>decrypt_message(<span class="kw-2">&amp;</span><span class="self">self</span>, encrypted:<span class="kw-2">&amp;</span><a href="#934-938">EncryptedMessage</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="#174-179">TauriIPCMessage</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
 <a href=#901 id=901 data-nosnippet>901</a>		<span class="comment">// Verify HMAC
 <a href=#902 id=902 data-nosnippet>902</a>		</span><span class="kw">let </span>hmac_key = hmac::Key::new(hmac::HMAC_SHA256, <span class="kw-2">&amp;</span><a class="self" href="#900">self</a>.hmac_key);
 <a href=#903 id=903 data-nosnippet>903</a>		hmac::verify(<span class="kw-2">&amp;</span><a href="#902">hmac_key</a>, <span class="kw-2">&amp;</span><a href="#900">encrypted</a>.ciphertext, <span class="kw-2">&amp;</span><a href="#900">encrypted</a>.hmac_tag)
 <a href=#904 id=904 data-nosnippet>904</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|<span class="kw">_</span>| <span class="string">"HMAC verification failed"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>())<span class="question-mark">?</span>;
 <a href=#905 id=905 data-nosnippet>905</a>
-<a href=#906 id=906 data-nosnippet>906</a>		<span class="comment">// Decrypt message
+<a href=#906 id=906 data-nosnippet>906</a>		<span class="comment">// Decrypt Message
 <a href=#907 id=907 data-nosnippet>907</a>		</span><span class="kw">let </span><span class="kw-2">mut </span>in_out = <a href="#900">encrypted</a>.ciphertext.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
 <a href=#908 id=908 data-nosnippet>908</a>		<span class="kw">let </span>nonce_slice:<span class="kw-2">&amp;</span>[<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>] = <span class="kw-2">&amp;</span><a href="#900">encrypted</a>.nonce;
 <a href=#909 id=909 data-nosnippet>909</a>		<span class="kw">let </span>nonce_array:[<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>; <span class="number">12</span>] = <a href="#908">nonce_slice</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|<span class="kw">_</span>| <span class="string">"Invalid nonce length"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>())<span class="question-mark">?</span>;
@@ -918,8 +918,8 @@
 <a href=#918 id=918 data-nosnippet>918</a>		</span><span class="kw">let </span>plaintext_len = <a href="#907">in_out</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.len">len</a>() - AES_256_GCM.tag_len();
 <a href=#919 id=919 data-nosnippet>919</a>		<a href="#907">in_out</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.truncate">truncate</a>(<a href="#918">plaintext_len</a>);
 <a href=#920 id=920 data-nosnippet>920</a>
-<a href=#921 id=921 data-nosnippet>921</a>		<span class="comment">// Deserialize message
-<a href=#922 id=922 data-nosnippet>922</a>		</span>serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/de/fn.from_slice.html">from_slice</a>(<span class="kw-2">&amp;</span><a href="#907">in_out</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Failed to deserialize message: {}"</span>, e))
+<a href=#921 id=921 data-nosnippet>921</a>		<span class="comment">// Deserialize Message
+<a href=#922 id=922 data-nosnippet>922</a>		</span>serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/de/fn.from_slice.html">from_slice</a>(<span class="kw-2">&amp;</span><a href="#907">in_out</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Failed to deserialize Message: {}"</span>, e))
 <a href=#923 id=923 data-nosnippet>923</a>	}
 <a href=#924 id=924 data-nosnippet>924</a>
 <a href=#925 id=925 data-nosnippet>925</a>	<span class="doccomment">/// Rotate encryption keys
@@ -929,7 +929,7 @@
 <a href=#929 id=929 data-nosnippet>929</a>	}
 <a href=#930 id=930 data-nosnippet>930</a>}
 <a href=#931 id=931 data-nosnippet>931</a>
-<a href=#932 id=932 data-nosnippet>932</a><span class="doccomment">/// Encrypted message structure
+<a href=#932 id=932 data-nosnippet>932</a><span class="doccomment">/// Encrypted Message structure
 <a href=#933 id=933 data-nosnippet>933</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
 <a href=#934 id=934 data-nosnippet>934</a></span><span class="kw">pub struct </span><a href="#934-938">EncryptedMessage</a> {
 <a href=#935 id=935 data-nosnippet>935</a>	nonce:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;,
@@ -937,23 +937,23 @@
 <a href=#937 id=937 data-nosnippet>937</a>	hmac_tag:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;,
 <a href=#938 id=938 data-nosnippet>938</a>}
 <a href=#939 id=939 data-nosnippet>939</a>
-<a href=#940 id=940 data-nosnippet>940</a><span class="doccomment">/// Advanced permission-based IPC message handler
+<a href=#940 id=940 data-nosnippet>940</a><span class="doccomment">/// Advanced permission-based IPC Message handler
 <a href=#941 id=941 data-nosnippet>941</a></span><span class="attr">#[tauri::command]
-<a href=#942 id=942 data-nosnippet>942</a></span><span class="kw">pub async fn </span><a href="#941">mountain_ipc_receive_message</a>(app_handle:tauri::AppHandle, message:<a href="#174-179">TauriIPCMessage</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
+<a href=#942 id=942 data-nosnippet>942</a></span><span class="kw">pub async fn </span><a href="#941">mountain_ipc_receive_message</a>(app_handle:tauri::AppHandle, Message:<a href="#174-179">TauriIPCMessage</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
 <a href=#943 id=943 data-nosnippet>943</a>	<span class="macro">dev_log!</span>(
 <a href=#944 id=944 data-nosnippet>944</a>		<span class="string">"ipc"</span>,
-<a href=#945 id=945 data-nosnippet>945</a>		<span class="string">"[TauriIPCServer] Received IPC message from Wind on channel: {}"</span>,
-<a href=#946 id=946 data-nosnippet>946</a>		message.channel
+<a href=#945 id=945 data-nosnippet>945</a>		<span class="string">"[TauriIPCServer] Received IPC Message from Wind on channel: {}"</span>,
+<a href=#946 id=946 data-nosnippet>946</a>		Message.channel
 <a href=#947 id=947 data-nosnippet>947</a>	);
 <a href=#948 id=948 data-nosnippet>948</a>
 <a href=#949 id=949 data-nosnippet>949</a>	<span class="comment">// Get the IPC server instance from application state
 <a href=#950 id=950 data-nosnippet>950</a>	</span><span class="kw">if let </span><span class="prelude-val">Some</span>(ipc_server) = app_handle.try_state::&lt;TauriIPCServer&gt;() {
 <a href=#951 id=951 data-nosnippet>951</a>		<span class="comment">// Advanced security: Validate permissions before processing
-<a href=#952 id=952 data-nosnippet>952</a>		</span><span class="kw">if let </span><span class="prelude-val">Err</span>(e) = ipc_server.validate_message_permissions(<span class="kw-2">&amp;</span>message).<span class="kw">await </span>{
+<a href=#952 id=952 data-nosnippet>952</a>		</span><span class="kw">if let </span><span class="prelude-val">Err</span>(e) = ipc_server.validate_message_permissions(<span class="kw-2">&amp;</span>Message).<span class="kw">await </span>{
 <a href=#953 id=953 data-nosnippet>953</a>			<span class="macro">dev_log!</span>(
 <a href=#954 id=954 data-nosnippet>954</a>				<span class="string">"ipc"</span>,
 <a href=#955 id=955 data-nosnippet>955</a>				<span class="string">"error: [TauriIPCServer] Permission validation failed for channel {}: {}"</span>,
-<a href=#956 id=956 data-nosnippet>956</a>				message.channel,
+<a href=#956 id=956 data-nosnippet>956</a>				Message.channel,
 <a href=#957 id=957 data-nosnippet>957</a>				e
 <a href=#958 id=958 data-nosnippet>958</a>			);
 <a href=#959 id=959 data-nosnippet>959</a>
@@ -961,8 +961,8 @@
 <a href=#961 id=961 data-nosnippet>961</a>			</span>ipc_server
 <a href=#962 id=962 data-nosnippet>962</a>				.log_security_event(SecurityEvent {
 <a href=#963 id=963 data-nosnippet>963</a>					event_type:SecurityEventType::PermissionDenied,
-<a href=#964 id=964 data-nosnippet>964</a>					user_id:message.sender.clone().unwrap_or(<span class="string">"unknown"</span>.to_string()),
-<a href=#965 id=965 data-nosnippet>965</a>					operation:message.channel.clone(),
+<a href=#964 id=964 data-nosnippet>964</a>					user_id:Message.sender.clone().unwrap_or(<span class="string">"unknown"</span>.to_string()),
+<a href=#965 id=965 data-nosnippet>965</a>					operation:Message.channel.clone(),
 <a href=#966 id=966 data-nosnippet>966</a>					timestamp:std::time::SystemTime::now(),
 <a href=#967 id=967 data-nosnippet>967</a>					details:<span class="prelude-val">Some</span>(<span class="macro">format!</span>(<span class="string">"Permission denied: {}"</span>, e)),
 <a href=#968 id=968 data-nosnippet>968</a>				})
@@ -971,14 +971,14 @@
 <a href=#971 id=971 data-nosnippet>971</a>			<span class="kw">return </span><span class="prelude-val">Err</span>(<span class="macro">format!</span>(<span class="string">"Permission denied: {}"</span>, e));
 <a href=#972 id=972 data-nosnippet>972</a>		}
 <a href=#973 id=973 data-nosnippet>973</a>
-<a href=#974 id=974 data-nosnippet>974</a>		<span class="comment">// Advanced monitoring: Track message processing time
+<a href=#974 id=974 data-nosnippet>974</a>		<span class="comment">// Advanced monitoring: Track Message processing time
 <a href=#975 id=975 data-nosnippet>975</a>		</span><span class="kw">let </span>start_time = std::time::Instant::now();
-<a href=#976 id=976 data-nosnippet>976</a>		<span class="kw">let </span>result = ipc_server.handle_incoming_message(message.clone()).<span class="kw">await</span>;
+<a href=#976 id=976 data-nosnippet>976</a>		<span class="kw">let </span>result = ipc_server.IncomingMessage(Message.clone()).<span class="kw">await</span>;
 <a href=#977 id=977 data-nosnippet>977</a>		<span class="kw">let </span>duration = start_time.elapsed();
 <a href=#978 id=978 data-nosnippet>978</a>
 <a href=#979 id=979 data-nosnippet>979</a>		<span class="comment">// Record performance metrics
 <a href=#980 id=980 data-nosnippet>980</a>		</span>ipc_server
-<a href=#981 id=981 data-nosnippet>981</a>			.record_performance_metrics(message.channel, duration, result.is_ok())
+<a href=#981 id=981 data-nosnippet>981</a>			.record_performance_metrics(Message.channel, duration, result.is_ok())
 <a href=#982 id=982 data-nosnippet>982</a>			.<span class="kw">await</span>;
 <a href=#983 id=983 data-nosnippet>983</a>
 <a href=#984 id=984 data-nosnippet>984</a>		result
@@ -990,7 +990,7 @@
 <a href=#990 id=990 data-nosnippet>990</a><span class="doccomment">/// Tauri command handler for Wind to check connection status
 <a href=#991 id=991 data-nosnippet>991</a>///
 <a href=#992 id=992 data-nosnippet>992</a>/// **Command Registration:** Registered in Tauri's invoke_handler
-<a href=#993 id=993 data-nosnippet>993</a>/// Called by Wind using: `app.handle.invoke('mountain_ipc_get_status')`
+<a href=#993 id=993 data-nosnippet>993</a>/// Called by Wind using: `app.Handle.invoke('mountain_ipc_get_status')`
 <a href=#994 id=994 data-nosnippet>994</a>///
 <a href=#995 id=995 data-nosnippet>995</a>/// **Response Format:**
 <a href=#996 id=996 data-nosnippet>996</a>/// ```json

@@ -19,7 +19,7 @@ against one file tells you exactly which wire methods it owns.</p>
 <code>ApplicationState::Feature::Decorations</code> owns the map keyed on URI
 string; handlers here just read / mutate that store.</dd><dt><a class="mod" href="Keybinding/index.html" title="mod Mountain::IPC::WindServiceHandlers::UI::Keybinding">Keybinding</a></dt><dd>Dynamic keybinding handlers. Extensions’ <code>package.json &gt; contributes. keybindings</code> is a declarative registry; this surface is for the
 imperative <code>keybindings:add/remove/lookup/getAll</code> IPC path Wind uses
-for runtime registrations (e.g. palette-installed commands).</dd><dt><a class="mod" href="Lifecycle/index.html" title="mod Mountain::IPC::WindServiceHandlers::UI::Lifecycle">Lifecycle</a></dt><dd>Lifecycle handlers: phase get / wait / shutdown. Tracks Mountain’s
+for RunTime registrations (e.g. palette-installed commands).</dd><dt><a class="mod" href="Lifecycle/index.html" title="mod Mountain::IPC::WindServiceHandlers::UI::Lifecycle">Lifecycle</a></dt><dd>Lifecycle handlers: phase get / wait / shutdown. Tracks Mountain’s
 four-phase startup (Starting / Ready / Restored / Eventually) so Sky
 can gate UI installation on lifecycle progress.</dd><dt><a class="mod" href="Notification/index.html" title="mod Mountain::IPC::WindServiceHandlers::UI::Notification">Notification</a></dt><dd>Notification toast handlers. Both the plain-message and the
 progress-bar variants go through here; each emits on an
@@ -31,7 +31,7 @@ via <code>SkyEvent::Progress*</code>.</dd><dt><a class="mod" href="QuickInput/in
 <code>UserInterfaceProvider</code> so the actual dialog rendering stays
 platform-agnostic (Tauri-webview on desktop; extensible to a future
 browser preview).</dd><dt><a class="mod" href="Theme/index.html" title="mod Mountain::IPC::WindServiceHandlers::UI::Theme">Theme</a></dt><dd>Theme IPC handlers. <code>themes:getActive</code> / <code>themes:list</code> / <code>themes:set</code>
-drive the workbench’s colour-theme picker and the runtime theme swap.</dd><dt><a class="mod" href="WorkingCopy/index.html" title="mod Mountain::IPC::WindServiceHandlers::UI::WorkingCopy">Working<wbr>Copy</a></dt><dd>Working-copy (dirty-state) handlers. Tracks whether an open URI has
+drive the workbench’s colour-theme picker and the RunTime theme swap.</dd><dt><a class="mod" href="WorkingCopy/index.html" title="mod Mountain::IPC::WindServiceHandlers::UI::WorkingCopy">Working<wbr>Copy</a></dt><dd>Working-copy (dirty-state) handlers. Tracks whether an open URI has
 unsaved changes; Sky queries this to paint the tab’s dot-indicator,
 gate exit dialogs, and drive “Save All” affordances.</dd><dt><a class="mod" href="Workspace/index.html" title="mod Mountain::IPC::WindServiceHandlers::UI::Workspace">Workspace</a></dt><dd>Workspace folder handlers: get / add / remove / get-name. Thin
 wrappers over <code>ApplicationState::Workspace</code> that re-broadcast via

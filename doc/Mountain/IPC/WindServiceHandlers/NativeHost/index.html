@@ -2,7 +2,7 @@
 <p>One <code>pub async fn</code> per file. This <code>mod.rs</code> only declares sub-modules; no
 <code>pub use</code>. Dispatch-site callers bring each atom in via local <code>use</code>.</p>
 </div></details><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="FindFreePort/index.html" title="mod Mountain::IPC::WindServiceHandlers::NativeHost::FindFreePort">Find<wbr>Free<wbr>Port</a></dt><dd>Wire method: <code>nativeHost:findFreePort</code>.
-Scans 100 ports starting from <code>args[0]</code> (default 9000) and returns the
+Scans 100 ports starting from <code>Arguments[0]</code> (default 9000) and returns the
 first free one. Returns 0 when nothing is free in-range so callers can
 distinguish “search exhausted” from a genuine port 0.</dd><dt><a class="mod" href="GetColorScheme/index.html" title="mod Mountain::IPC::WindServiceHandlers::NativeHost::GetColorScheme">GetColor<wbr>Scheme</a></dt><dd>Wire method: <code>nativeHost:getColorScheme</code>.
 Returns <code>{ dark, highContrast }</code>. Dark-mode probe covers macOS

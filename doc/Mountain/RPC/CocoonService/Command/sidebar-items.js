@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["ExecuteContributedCommand","RegisterCommand","UnregisterCommand"]};
+window.SIDEBAR_ITEMS = {"mod":["ExecuteContributedCommand","RegisterCommand","UnregisterCommand"]};

@@ -15,7 +15,7 @@ directory traversal</li>
 <p>SECURITY MODEL:</p>
 <ul>
 <li>Sandboxed filesystem access limited to registered workspace folders</li>
-<li>All operations call <code>Utility::IsPathAllowedForAccess</code> first</li>
+<li>All operations call <code>Utility::PathSecurity::IsPathAllowedForAccess</code> first</li>
 <li>Requires workspace trust to be enabled for any file access</li>
 <li>Path normalization prevents <code>../</code> attacks</li>
 <li>Symbolic link detection avoids following untrusted links outside

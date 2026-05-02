@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["handle_file_stat"]};
+window.SIDEBAR_ITEMS = {"fn":["FileStat"]};

@@ -32,10 +32,10 @@
 <a href=#32 id=32 data-nosnippet>32</a>/// editor. This is stored in `ApplicationState` to track the lifecycle of
 <a href=#33 id=33 data-nosnippet>33</a>/// custom documents.
 <a href=#34 id=34 data-nosnippet>34</a></span><span class="attr">#[derive(<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>)]
-<a href=#35 id=35 data-nosnippet>35</a>#[serde(rename_all = <span class="string">"PascalCase"</span>)]
+<a href=#35 id=35 data-nosnippet>35</a>#[serde(rename_all = <span class="string">"camelCase"</span>)]
 <a href=#36 id=36 data-nosnippet>36</a></span><span class="kw">pub struct </span><a href="#36-61">CustomDocumentStateDTO</a> {
 <a href=#37 id=37 data-nosnippet>37</a>	<span class="doccomment">/// The URI of the document resource being edited.
-<a href=#38 id=38 data-nosnippet>38</a>	</span><span class="attr">#[serde(with = <span class="string">"URLSerializationHelper"</span>)]
+<a href=#38 id=38 data-nosnippet>38</a>	</span><span class="attr">#[serde(rename = <span class="string">"uri"</span>, with = <span class="string">"URLSerializationHelper"</span>)]
 <a href=#39 id=39 data-nosnippet>39</a>	</span><span class="kw">pub </span>URI:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
 <a href=#40 id=40 data-nosnippet>40</a>
 <a href=#41 id=41 data-nosnippet>41</a>	<span class="doccomment">/// The view type of the custom editor responsible for this document.

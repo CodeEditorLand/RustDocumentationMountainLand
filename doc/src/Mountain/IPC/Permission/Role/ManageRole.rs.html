@@ -81,7 +81,7 @@
 <a href=#81 id=81 data-nosnippet>81</a>
 <a href=#82 id=82 data-nosnippet>82</a><span class="kw">use </span>serde::{<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>};
 <a href=#83 id=83 data-nosnippet>83</a>
-<a href=#84 id=84 data-nosnippet>84</a><span class="kw">use </span><a href="../../DevLog.rs.html#589-630"><span class="kw">crate</span>::dev_log</a>;
+<a href=#84 id=84 data-nosnippet>84</a><span class="kw">use </span><a href="../../DevLog.rs.html#726-767"><span class="kw">crate</span>::dev_log</a>;
 <a href=#85 id=85 data-nosnippet>85</a>
 <a href=#86 id=86 data-nosnippet>86</a><span class="doccomment">/// Role definition for RBAC system
 <a href=#87 id=87 data-nosnippet>87</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
@@ -177,9 +177,9 @@
 <a href=#177 id=177 data-nosnippet>177</a>	</span><span class="kw">pub fn </span>AddPermission(<span class="kw-2">mut </span><span class="self">self</span>, Permission:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) -&gt; <span class="self">Self </span>{
 <a href=#178 id=178 data-nosnippet>178</a>		<span class="kw">if </span>!<a class="self" href="#177">self</a>.Permissions.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.contains">contains</a>(<span class="kw-2">&amp;</span><a href="#177">Permission</a>) {
 <a href=#179 id=179 data-nosnippet>179</a>			<a class="self" href="#177">self</a>.Permissions.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.push">push</a>(<a href="#177">Permission</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>());
-<a href=#180 id=180 data-nosnippet>180</a>			<a href="../../DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[Role] Added permission '{}' to role '{}'"</span>, Permission, <span class="self">self</span>.Name);
+<a href=#180 id=180 data-nosnippet>180</a>			<a href="../../DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[Role] Added permission '{}' to role '{}'"</span>, Permission, <span class="self">self</span>.Name);
 <a href=#181 id=181 data-nosnippet>181</a>		} <span class="kw">else </span>{
-<a href=#182 id=182 data-nosnippet>182</a>			<a href="../../DevLog.rs.html#589-630">dev_log!</a>(
+<a href=#182 id=182 data-nosnippet>182</a>			<a href="../../DevLog.rs.html#726-767">dev_log!</a>(
 <a href=#183 id=183 data-nosnippet>183</a>				<span class="string">"ipc"</span>,
 <a href=#184 id=184 data-nosnippet>184</a>				<span class="string">"[Role] Permission '{}' already exists in role '{}', skipping"</span>,
 <a href=#185 id=185 data-nosnippet>185</a>				Permission,
@@ -401,7 +401,7 @@
 <a href=#401 id=401 data-nosnippet>401</a>/// ## Returns
 <a href=#402 id=402 data-nosnippet>402</a>/// Vector containing user, developer, and admin roles
 <a href=#403 id=403 data-nosnippet>403</a></span><span class="kw">pub fn </span><a href="../../../../../Mountain/IPC/Permission/Role/ManageRole/fn.CreateStandardRoles.html">CreateStandardRoles</a>() -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="#88-103">Role</a>&gt; {
-<a href=#404 id=404 data-nosnippet>404</a>	<a href="../../DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[ManageRole] Creating standard roles"</span>);
+<a href=#404 id=404 data-nosnippet>404</a>	<a href="../../DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[ManageRole] Creating standard roles"</span>);
 <a href=#405 id=405 data-nosnippet>405</a>	<a href="https://doc.rust-lang.org/nightly/alloc/macro.vec.html">vec!</a>[CreateUserRole(), CreateDeveloperRole(), CreateAdminRole()]
 <a href=#406 id=406 data-nosnippet>406</a>}
 <a href=#407 id=407 data-nosnippet>407</a>
@@ -410,7 +410,7 @@
 <a href=#410 id=410 data-nosnippet>410</a>/// ## Returns
 <a href=#411 id=411 data-nosnippet>411</a>/// Vector containing standard permission definitions
 <a href=#412 id=412 data-nosnippet>412</a></span><span class="kw">pub fn </span><a href="../../../../../Mountain/IPC/Permission/Role/ManageRole/fn.CreateStandardPermissions.html">CreateStandardPermissions</a>() -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="#107-119">Permission</a>&gt; {
-<a href=#413 id=413 data-nosnippet>413</a>	<a href="../../DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[ManageRole] Creating standard permissions"</span>);
+<a href=#413 id=413 data-nosnippet>413</a>	<a href="../../DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[ManageRole] Creating standard permissions"</span>);
 <a href=#414 id=414 data-nosnippet>414</a>	<a href="https://doc.rust-lang.org/nightly/alloc/macro.vec.html">vec!</a>[
 <a href=#415 id=415 data-nosnippet>415</a>		<span class="comment">// File permissions
 <a href=#416 id=416 data-nosnippet>416</a>		</span>Permission::New(<span class="string">"file.read"</span>.to_string(), <span class="string">"Read file operations"</span>.to_string(), <span class="string">"file"</span>.to_string()),

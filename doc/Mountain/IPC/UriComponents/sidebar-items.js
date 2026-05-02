@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"constant":["MID_URI"],"fn":["FromFilePath","FromUrl","Normalize","StampMidUri"]};
+window.SIDEBAR_ITEMS = {"mod":["FromFilePath","FromUrl","MID_URI","Normalize","StampMidUri"]};

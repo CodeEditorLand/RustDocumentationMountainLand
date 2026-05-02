@@ -52,7 +52,7 @@
 <a href=#52 id=52 data-nosnippet>52</a><span class="kw">use </span>Echo::Task::Priority::Priority;
 <a href=#53 id=53 data-nosnippet>53</a><span class="kw">use </span><a href="https://docs.rs/async-trait/0.1.89/async_trait/attr.async_trait.html">async_trait::async_trait</a>;
 <a href=#54 id=54 data-nosnippet>54</a>
-<a href=#55 id=55 data-nosnippet>55</a><span class="kw">use </span>crate::{<a href="../ApplicationRunTime/RuntimeStruct.rs.html#48-55">RunTime::ApplicationRunTime::ApplicationRunTime</a>, <a href="../../IPC/DevLog.rs.html#589-630">dev_log</a>};
+<a href=#55 id=55 data-nosnippet>55</a><span class="kw">use </span>crate::{<a href="../ApplicationRunTime/RuntimeStruct.rs.html#48-55">RunTime::ApplicationRunTime::ApplicationRunTime</a>, <a href="../../IPC/DevLog.rs.html#726-767">dev_log</a>};
 <a href=#56 id=56 data-nosnippet>56</a>
 <a href=#57 id=57 data-nosnippet>57</a><span class="doccomment">/// The core integration logic between `Common::ActionEffect` and
 <a href=#58 id=58 data-nosnippet>58</a>/// `Echo::Scheduler`.
@@ -76,7 +76,7 @@
 <a href=#76 id=76 data-nosnippet>76</a>			<span class="kw">let </span><span class="prelude-ty">Result </span>= <a href="#63">Effect</a>.Apply(<a href="#73">CapabilityProvider</a>).<span class="kw">await</span>;
 <a href=#77 id=77 data-nosnippet>77</a>
 <a href=#78 id=78 data-nosnippet>78</a>			<span class="kw">if </span><a href="#71">ResultSender</a>.send(<a class="prelude-ty" href="#76">Result</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.is_err">is_err</a>() {
-<a href=#79 id=79 data-nosnippet>79</a>				<a href="../../IPC/DevLog.rs.html#589-630">dev_log!</a>(
+<a href=#79 id=79 data-nosnippet>79</a>				<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
 <a href=#80 id=80 data-nosnippet>80</a>					<span class="string">"lifecycle"</span>,
 <a href=#81 id=81 data-nosnippet>81</a>					<span class="string">"error: [ApplicationRunTime] Failed to send effect result; receiver was dropped."
 <a href=#82 id=82 data-nosnippet>82</a>				</span>);
@@ -91,7 +91,7 @@
 <a href=#91 id=91 data-nosnippet>91</a>			<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(_RecvError) =&gt; {
 <a href=#92 id=92 data-nosnippet>92</a>				<span class="kw">let </span>Message = <span class="string">"Effect execution canceled; oneshot channel closed."</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>();
 <a href=#93 id=93 data-nosnippet>93</a>
-<a href=#94 id=94 data-nosnippet>94</a>				<a href="../../IPC/DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"error: {}"</span>, Message);
+<a href=#94 id=94 data-nosnippet>94</a>				<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"error: {}"</span>, Message);
 <a href=#95 id=95 data-nosnippet>95</a>
 <a href=#96 id=96 data-nosnippet>96</a>				<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(CommonError::IPCError { Description:<a href="#92">Message</a> }.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into">into</a>())
 <a href=#97 id=97 data-nosnippet>97</a>			},

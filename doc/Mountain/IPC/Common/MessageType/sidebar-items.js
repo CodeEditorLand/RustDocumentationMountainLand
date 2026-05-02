@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":["MessagePriority"],"struct":["IPCCommand","IPCMessage","IPCResponse"]};
+window.SIDEBAR_ITEMS = {"mod":["IPCCommand","IPCMessage","IPCResponse","MessagePriority"]};

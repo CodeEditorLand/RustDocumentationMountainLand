@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["ProgressReport"]};
+window.SIDEBAR_ITEMS = {"fn":["EnqueueProgressEmit","ProgressReport"],"static":["PROGRESS_EMIT_BATCH"],"struct":["ProgressAccumulator","ProgressEmitBatch"]};

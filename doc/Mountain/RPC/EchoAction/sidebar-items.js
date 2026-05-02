@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["ResolveMethodPriority"],"struct":["EchoActionServer","ExtensionHostRegistry","ExtensionRouter"]};
+window.SIDEBAR_ITEMS = {"mod":["EchoActionServer","ExtensionHostRegistry","ExtensionRouter","ResolveMethodPriority"]};

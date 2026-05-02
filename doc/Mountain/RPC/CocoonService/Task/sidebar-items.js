@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["ExecuteTask","RegisterTaskProvider","TerminateTask"]};
+window.SIDEBAR_ITEMS = {"mod":["ExecuteTask","RegisterTaskProvider","TerminateTask"]};

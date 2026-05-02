@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["AppendOutput","ClearOutput","CreateOutputChannel","DisposeOutput","ShowOutput"]};
+window.SIDEBAR_ITEMS = {"mod":["AppendOutput","ClearOutput","CreateOutputChannel","DisposeOutput","ShowOutput"]};

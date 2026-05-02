@@ -22,10 +22,10 @@
 <a href=#22 id=22 data-nosnippet>22</a><span class="doccomment">/// Represents a single folder that is part of the current workspace.
 <a href=#23 id=23 data-nosnippet>23</a>/// Compatible with VS Code's WorkspaceFolder interface.
 <a href=#24 id=24 data-nosnippet>24</a></span><span class="attr">#[derive(<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/cmp/derive.PartialEq.html">PartialEq</a>, <a href="https://doc.rust-lang.org/nightly/core/cmp/derive.Eq.html">Eq</a>)]
-<a href=#25 id=25 data-nosnippet>25</a>#[serde(rename_all = <span class="string">"PascalCase"</span>)]
+<a href=#25 id=25 data-nosnippet>25</a>#[serde(rename_all = <span class="string">"camelCase"</span>)]
 <a href=#26 id=26 data-nosnippet>26</a></span><span class="kw">pub struct </span><a href="#26-37">WorkspaceFolderStateDTO</a> {
 <a href=#27 id=27 data-nosnippet>27</a>	<span class="doccomment">/// The URI of the folder.
-<a href=#28 id=28 data-nosnippet>28</a>	</span><span class="attr">#[serde(with = <span class="string">"URLSerializationHelper"</span>)]
+<a href=#28 id=28 data-nosnippet>28</a>	</span><span class="attr">#[serde(rename = <span class="string">"uri"</span>, with = <span class="string">"URLSerializationHelper"</span>)]
 <a href=#29 id=29 data-nosnippet>29</a>	</span><span class="kw">pub </span>URI:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
 <a href=#30 id=30 data-nosnippet>30</a>
 <a href=#31 id=31 data-nosnippet>31</a>	<span class="doccomment">/// The display name of the folder.

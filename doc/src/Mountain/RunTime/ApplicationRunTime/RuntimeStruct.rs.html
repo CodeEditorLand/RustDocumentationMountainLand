@@ -40,7 +40,7 @@
 <a href=#40 id=40 data-nosnippet>40</a><span class="kw">use </span>CommonLibrary::Environment::{Environment::Environment, HasEnvironment::HasEnvironment};
 <a href=#41 id=41 data-nosnippet>41</a><span class="kw">use </span>Echo::Scheduler::Scheduler::Scheduler;
 <a href=#42 id=42 data-nosnippet>42</a>
-<a href=#43 id=43 data-nosnippet>43</a><span class="kw">use </span>crate::{<a href="../../Environment/MountainEnvironment.rs.html#225-235">Environment::MountainEnvironment::MountainEnvironment</a>, <a href="../../IPC/DevLog.rs.html#589-630">dev_log</a>};
+<a href=#43 id=43 data-nosnippet>43</a><span class="kw">use </span>crate::{<a href="../../Environment/MountainEnvironment.rs.html#225-235">Environment::MountainEnvironment::MountainEnvironment</a>, <a href="../../IPC/DevLog.rs.html#726-767">dev_log</a>};
 <a href=#44 id=44 data-nosnippet>44</a>
 <a href=#45 id=45 data-nosnippet>45</a><span class="doccomment">/// A `RunTime` that uses a high-performance, work-stealing scheduler (`Echo`)
 <a href=#46 id=46 data-nosnippet>46</a>/// to execute all `ActionEffect`s.
@@ -58,7 +58,7 @@
 <a href=#58 id=58 data-nosnippet>58</a>	<span class="doccomment">/// Creates a new `ApplicationRunTime` that is powered by an `Echo`
 <a href=#59 id=59 data-nosnippet>59</a>	/// scheduler.
 <a href=#60 id=60 data-nosnippet>60</a>	</span><span class="kw">pub fn </span>Create(Scheduler:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;Scheduler&gt;, Environment:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../../Environment/MountainEnvironment.rs.html#225-235">MountainEnvironment</a>&gt;) -&gt; <span class="self">Self </span>{
-<a href=#61 id=61 data-nosnippet>61</a>		<a href="../../IPC/DevLog.rs.html#589-630">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"new Echo-based instance created"</span>);
+<a href=#61 id=61 data-nosnippet>61</a>		<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"new Echo-based instance created"</span>);
 <a href=#62 id=62 data-nosnippet>62</a>
 <a href=#63 id=63 data-nosnippet>63</a>		<span class="self">Self </span>{ <a href="#60">Scheduler</a>, <a href="#60">Environment</a> }
 <a href=#64 id=64 data-nosnippet>64</a>	}

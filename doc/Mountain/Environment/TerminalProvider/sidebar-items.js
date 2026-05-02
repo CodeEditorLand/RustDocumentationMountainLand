@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {};
+window.SIDEBAR_ITEMS = {"constant":["MAX_BUFFERED_BYTES"],"fn":["AppendTerminalOutput","DrainTerminalOutputBuffer","RemoveTerminalOutputBuffer","TerminalOutputBuffer"],"static":["TERMINAL_OUTPUT_BUFFER"]};

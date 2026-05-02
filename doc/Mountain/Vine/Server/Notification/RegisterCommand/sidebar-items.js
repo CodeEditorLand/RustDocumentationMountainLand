@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["RegisterCommand"]};
+window.SIDEBAR_ITEMS = {"fn":["EnqueueCommandEmit","RegisterCommand"],"static":["COMMAND_EMIT_BATCH"],"struct":["CommandEmitBatch"]};

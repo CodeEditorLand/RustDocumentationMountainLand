@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["handle_file_mkdir"]};
+window.SIDEBAR_ITEMS = {"fn":["FileMkdir"]};

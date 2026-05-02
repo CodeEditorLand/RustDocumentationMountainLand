@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["RegisterDebugAdapter","StartDebugging","StopDebugging"]};
+window.SIDEBAR_ITEMS = {"mod":["RegisterDebugAdapter","StartDebugging","StopDebugging"]};

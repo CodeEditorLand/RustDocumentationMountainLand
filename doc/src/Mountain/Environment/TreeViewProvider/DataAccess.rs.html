@@ -11,12 +11,12 @@
 <a href=#11 id=11 data-nosnippet>11</a>};
 <a href=#12 id=12 data-nosnippet>12</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#13 id=13 data-nosnippet>13</a>
-<a href=#14 id=14 data-nosnippet>14</a><span class="kw">use </span>crate::{<a href="../mod.rs.html#116">Environment::Utility</a>, <a href="../../IPC/DevLog.rs.html#589-630">dev_log</a>};
+<a href=#14 id=14 data-nosnippet>14</a><span class="kw">use </span>crate::{<a href="../mod.rs.html#113">Environment::Utility</a>, <a href="../../IPC/DevLog.rs.html#726-767">dev_log</a>};
 <a href=#15 id=15 data-nosnippet>15</a>
 <a href=#16 id=16 data-nosnippet>16</a><span class="doccomment">/// Gets the children for a given element.
 <a href=#17 id=17 data-nosnippet>17</a>/// Acts as a dispatcher to native or extension providers.
 <a href=#18 id=18 data-nosnippet>18</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/TreeViewProvider/DataAccess/fn.get_children.html">get_children</a>(
-<a href=#19 id=19 data-nosnippet>19</a>	env:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
+<a href=#19 id=19 data-nosnippet>19</a>	env:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#228-238">MountainEnvironment</a>,
 <a href=#20 id=20 data-nosnippet>20</a>	view_identifier:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#21 id=21 data-nosnippet>21</a>	element_handle:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;,
 <a href=#22 id=22 data-nosnippet>22</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;Value&gt;, CommonError&gt; {
@@ -33,7 +33,7 @@
 <a href=#33 id=33 data-nosnippet>33</a>		.TreeViews
 <a href=#34 id=34 data-nosnippet>34</a>		.ActiveTreeViews
 <a href=#35 id=35 data-nosnippet>35</a>		.lock()
-<a href=#36 id=36 data-nosnippet>36</a>		.map_err(Utility::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?
+<a href=#36 id=36 data-nosnippet>36</a>		.map_err(Utility::ErrorMapping::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?
 <a href=#37 id=37 data-nosnippet>37</a>		</span>.get(<span class="kw-2">&amp;</span>view_identifier)
 <a href=#38 id=38 data-nosnippet>38</a>		.cloned();
 <a href=#39 id=39 data-nosnippet>39</a>
@@ -62,7 +62,7 @@
 <a href=#62 id=62 data-nosnippet>62</a><span class="doccomment">/// Gets the TreeItem for a given element.
 <a href=#63 id=63 data-nosnippet>63</a>/// Acts as a dispatcher to native or extension providers.
 <a href=#64 id=64 data-nosnippet>64</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/TreeViewProvider/DataAccess/fn.get_tree_item.html">get_tree_item</a>(
-<a href=#65 id=65 data-nosnippet>65</a>	env:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#225-235">MountainEnvironment</a>,
+<a href=#65 id=65 data-nosnippet>65</a>	env:<span class="kw-2">&amp;</span><span class="kw">crate</span>::Environment::MountainEnvironment::<a href="../MountainEnvironment.rs.html#228-238">MountainEnvironment</a>,
 <a href=#66 id=66 data-nosnippet>66</a>	view_identifier:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#67 id=67 data-nosnippet>67</a>	element_handle:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#68 id=68 data-nosnippet>68</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Value, CommonError&gt; {
@@ -79,7 +79,7 @@
 <a href=#79 id=79 data-nosnippet>79</a>		.TreeViews
 <a href=#80 id=80 data-nosnippet>80</a>		.ActiveTreeViews
 <a href=#81 id=81 data-nosnippet>81</a>		.lock()
-<a href=#82 id=82 data-nosnippet>82</a>		.map_err(Utility::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?
+<a href=#82 id=82 data-nosnippet>82</a>		.map_err(Utility::ErrorMapping::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?
 <a href=#83 id=83 data-nosnippet>83</a>		</span>.get(<span class="kw-2">&amp;</span>view_identifier)
 <a href=#84 id=84 data-nosnippet>84</a>		.cloned();
 <a href=#85 id=85 data-nosnippet>85</a>

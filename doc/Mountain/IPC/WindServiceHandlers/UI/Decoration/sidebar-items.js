@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["handle_decorations_clear","handle_decorations_get","handle_decorations_get_many","handle_decorations_set"]};
+window.SIDEBAR_ITEMS = {"fn":["DecorationsClear","DecorationsGet","DecorationsGetMany","DecorationsSet"]};

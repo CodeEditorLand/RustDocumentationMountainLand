@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["handle_file_move"]};
+window.SIDEBAR_ITEMS = {"fn":["FileMove"]};

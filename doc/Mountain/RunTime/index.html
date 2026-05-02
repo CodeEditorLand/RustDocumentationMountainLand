@@ -56,4 +56,13 @@ Implement effect pipeline with chaining and composition</li>
 </ul>
 </div></details><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="ApplicationRunTime/index.html" title="mod Mountain::RunTime::ApplicationRunTime">Application<wbr>RunTime</a></dt><dd>Application runtime module containing the struct definition.
 The struct is accessible as
-<code>RunTime::ApplicationRunTime::ApplicationRunTime</code>.</dd><dt><a class="mod" href="Execute/index.html" title="mod Mountain::RunTime::Execute">Execute</a></dt><dd>Effect execution logic.</dd><dt><a class="mod" href="Shutdown/index.html" title="mod Mountain::RunTime::Shutdown">Shutdown</a></dt><dd>Service shutdown and lifecycle management.</dd></dl></section></div></main></body></html>
+<code>RunTime::ApplicationRunTime::ApplicationRunTime</code>.
+Echo-scheduler-powered runtime that executes <code>ActionEffect</code> pipelines.
+Method-per-file impls live as siblings under <code>RunTime/Execute/</code> and
+<code>RunTime/Shutdown/</code>. The struct stays here (no <code>pub use</code> indirection)
+so callers spell <code>RunTime::ApplicationRunTime::ApplicationRunTime</code>.</dd><dt><a class="mod" href="Execute/index.html" title="mod Mountain::RunTime::Execute">Execute</a></dt><dd>Effect execution logic.
+Bridge between the declarative <code>ActionEffect</code> system and the Echo
+work-stealing scheduler. Three entry points: bare <code>Run</code> (trait method),
+<code>RunWithTimeout</code>, and <code>RunWithRetry</code>.</dd><dt><a class="mod" href="Shutdown/index.html" title="mod Mountain::RunTime::Shutdown">Shutdown</a></dt><dd>Service shutdown and lifecycle management.
+Graceful shutdown of every Mountain service. <code>Shutdown</code> orchestrates;
+<code>ShutdownWithRecovery</code> continues across per-service failures.</dd></dl></section></div></main></body></html>

@@ -39,7 +39,7 @@
 <a href=#39 id=39 data-nosnippet>39</a>/// This is stored in `ApplicationState` to track all active Webviews managed by
 <a href=#40 id=40 data-nosnippet>40</a>/// the host.
 <a href=#41 id=41 data-nosnippet>41</a></span><span class="attr">#[derive(<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>)]
-<a href=#42 id=42 data-nosnippet>42</a>#[serde(rename_all = <span class="string">"PascalCase"</span>)]
+<a href=#42 id=42 data-nosnippet>42</a>#[serde(rename_all = <span class="string">"camelCase"</span>)]
 <a href=#43 id=43 data-nosnippet>43</a></span><span class="kw">pub struct </span><a href="#43-75">WebviewStateDTO</a> {
 <a href=#44 id=44 data-nosnippet>44</a>	<span class="doccomment">/// A unique UUID handle for this Webview instance.
 <a href=#45 id=45 data-nosnippet>45</a>	</span><span class="kw">pub </span>Handle:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,

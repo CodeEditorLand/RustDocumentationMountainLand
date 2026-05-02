@@ -24,7 +24,7 @@
 <a href=#24 id=24 data-nosnippet>24</a>		PerformanceDashboard::{<a href="PerformanceDashboard.rs.html#22-28">DashboardConfig</a>, <a href="PerformanceDashboard.rs.html#135-145">DashboardStatistics</a>, <a href="PerformanceDashboard.rs.html#49-57">MetricType</a>},
 <a href=#25 id=25 data-nosnippet>25</a>		SecureMessageChannel::{<a href="SecureMessageChannel.rs.html#414-420">EncryptedMessage</a>, <a href="SecureMessageChannel.rs.html#26-33">SecurityConfig</a>, <a href="SecureMessageChannel.rs.html#424-430">SecurityStats</a>},
 <a href=#26 id=26 data-nosnippet>26</a>	},
-<a href=#27 id=27 data-nosnippet>27</a>	<a href="../DevLog.rs.html#589-630">dev_log</a>,
+<a href=#27 id=27 data-nosnippet>27</a>	<a href="../DevLog.rs.html#726-767">dev_log</a>,
 <a href=#28 id=28 data-nosnippet>28</a>};
 <a href=#29 id=29 data-nosnippet>29</a>
 <a href=#30 id=30 data-nosnippet>30</a><span class="doccomment">/// Enhanced IPC manager that combines all advanced features
@@ -261,7 +261,7 @@
 <a href=#261 id=261 data-nosnippet>261</a>	<span class="doccomment">/// Integrate with Tauri IPCServer
 <a href=#262 id=262 data-nosnippet>262</a>	</span><span class="kw">pub async fn </span>integrate_with_tauri_ipc(
 <a href=#263 id=263 data-nosnippet>263</a>		<span class="kw-2">&amp;</span><span class="self">self</span>,
-<a href=#264 id=264 data-nosnippet>264</a>		_ipc_server:<span class="kw-2">&amp;</span><span class="kw">crate</span>::IPC::TauriIPCServer::<a href="../TauriIPCServer.rs.html#192-197">TauriIPCServer</a>,
+<a href=#264 id=264 data-nosnippet>264</a>		_ipc_server:<span class="kw-2">&amp;</span><span class="kw">crate</span>::IPC::TauriIPCServer_Old::<a href="../TauriIPCServer.rs.html#192-197">TauriIPCServer</a>,
 <a href=#265 id=265 data-nosnippet>265</a>	) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
 <a href=#266 id=266 data-nosnippet>266</a>		<span class="macro">dev_log!</span>(<span class="string">"ipc"</span>, <span class="string">"[EnhancedIPCManager] Integrating with Tauri IPC server"</span>);
 <a href=#267 id=267 data-nosnippet>267</a>
@@ -275,9 +275,9 @@
 <a href=#275 id=275 data-nosnippet>275</a>	<span class="doccomment">/// Create enhanced message handler
 <a href=#276 id=276 data-nosnippet>276</a>	</span><span class="kw">pub async fn </span>create_enhanced_handler(
 <a href=#277 id=277 data-nosnippet>277</a>		<span class="kw-2">&amp;</span><span class="self">self</span>,
-<a href=#278 id=278 data-nosnippet>278</a>	) -&gt; <span class="kw">impl </span>Fn(<span class="kw">crate</span>::IPC::TauriIPCServer::TauriIPCMessage) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
+<a href=#278 id=278 data-nosnippet>278</a>	) -&gt; <span class="kw">impl </span>Fn(<span class="kw">crate</span>::IPC::TauriIPCServer_Old::TauriIPCMessage) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
 <a href=#279 id=279 data-nosnippet>279</a>		<span class="comment">// Return a closure that handles messages with enhanced features
-<a href=#280 id=280 data-nosnippet>280</a>		</span>|message:<span class="kw">crate</span>::IPC::TauriIPCServer::TauriIPCMessage| {
+<a href=#280 id=280 data-nosnippet>280</a>		</span>|message:<span class="kw">crate</span>::IPC::TauriIPCServer_Old::TauriIPCMessage| {
 <a href=#281 id=281 data-nosnippet>281</a>			<span class="macro">dev_log!</span>(<span class="string">"ipc"</span>, <span class="string">"[EnhancedIPCManager] Handling message on channel: {}"</span>, message.channel);
 <a href=#282 id=282 data-nosnippet>282</a>			<span class="prelude-val">Ok</span>(())
 <a href=#283 id=283 data-nosnippet>283</a>		}
