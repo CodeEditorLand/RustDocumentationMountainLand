@@ -207,7 +207,7 @@
 <a href=#207 id=207 data-nosnippet>207</a>// import was previously here for the direct `.emit()` calls now
 <a href=#208 id=208 data-nosnippet>208</a>// replaced. Removed to keep the file warning-clean.
 <a href=#209 id=209 data-nosnippet>209</a></span><span class="kw">use </span>super::{<a href="MountainEnvironment.rs.html#228-238">MountainEnvironment::MountainEnvironment</a>, <a href="mod.rs.html#113">Utility</a>};
-<a href=#210 id=210 data-nosnippet>210</a><span class="kw">use </span>crate::{<a href="../ApplicationState/DTO/MarkerDataDTO.rs.html#40-79">ApplicationState::DTO::MarkerDataDTO::MarkerDataDTO</a>, <a href="../IPC/SkyEmit.rs.html#45-64">IPC::SkyEmit::LogSkyEmit</a>, <a href="../IPC/DevLog.rs.html#726-767">dev_log</a>};
+<a href=#210 id=210 data-nosnippet>210</a><span class="kw">use </span>crate::{<a href="../ApplicationState/DTO/MarkerDataDTO.rs.html#40-79">ApplicationState::DTO::MarkerDataDTO::MarkerDataDTO</a>, <a href="../IPC/SkyEmit.rs.html#45-64">IPC::SkyEmit::LogSkyEmit</a>, <a href="../IPC/DevLog/mod.rs.html#40-81">dev_log</a>};
 <a href=#211 id=211 data-nosnippet>211</a>
 <a href=#212 id=212 data-nosnippet>212</a><span class="attr">#[async_trait]
 <a href=#213 id=213 data-nosnippet>213</a></span><span class="kw">impl </span>DiagnosticManager <span class="kw">for </span><a href="MountainEnvironment.rs.html#228-238">MountainEnvironment</a> {
@@ -215,7 +215,7 @@
 <a href=#215 id=215 data-nosnippet>215</a>	/// owner. Empty marker arrays are treated as clearing diagnostics for that
 <a href=#216 id=216 data-nosnippet>216</a>	/// URI.
 <a href=#217 id=217 data-nosnippet>217</a>	</span><span class="kw">async fn </span>SetDiagnostics(<span class="kw-2">&amp;</span><a class="self" href="#217">self</a>, <a href="#217">Owner</a>:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="#217">EntriesDTOValue</a>:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
-<a href=#218 id=218 data-nosnippet>218</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[DiagnosticProvider] Setting diagnostics for owner: {}"</span>, Owner);
+<a href=#218 id=218 data-nosnippet>218</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[DiagnosticProvider] Setting diagnostics for owner: {}"</span>, Owner);
 <a href=#219 id=219 data-nosnippet>219</a>
 <a href=#220 id=220 data-nosnippet>220</a>		<span class="kw">let </span>DeserializedEntries:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;(<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="../ApplicationState/DTO/MarkerDataDTO.rs.html#40-79">MarkerDataDTO</a>&gt;&gt;)&gt; = serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/fn.from_value.html">from_value</a>(<a href="#217">EntriesDTOValue</a>)
 <a href=#221 id=221 data-nosnippet>221</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| {
@@ -320,14 +320,14 @@
 <a href=#320 id=320 data-nosnippet>320</a>		// shows count but no items"; without LogSkyEmit the channel was
 <a href=#321 id=321 data-nosnippet>321</a>		// invisible.
 <a href=#322 id=322 data-nosnippet>322</a>		</span><span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error) = <a href="../IPC/SkyEmit.rs.html#45-64">LogSkyEmit</a>(<span class="kw-2">&amp;</span><a class="self" href="#217">self</a>.ApplicationHandle, SkyEvent::DiagnosticsChanged.AsStr(), <a href="#309">EventPayload</a>) {
-<a href=#323 id=323 data-nosnippet>323</a>			<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#323 id=323 data-nosnippet>323</a>			<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#324 id=324 data-nosnippet>324</a>				<span class="string">"extensions"</span>,
 <a href=#325 id=325 data-nosnippet>325</a>				<span class="string">"error: [DiagnosticProvider] Failed to emit 'diagnostics_changed': {}"</span>,
 <a href=#326 id=326 data-nosnippet>326</a>				Error
 <a href=#327 id=327 data-nosnippet>327</a>			);
 <a href=#328 id=328 data-nosnippet>328</a>		}
 <a href=#329 id=329 data-nosnippet>329</a>
-<a href=#330 id=330 data-nosnippet>330</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#330 id=330 data-nosnippet>330</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#331 id=331 data-nosnippet>331</a>			<span class="string">"extensions"</span>,
 <a href=#332 id=332 data-nosnippet>332</a>			<span class="string">"[DiagnosticProvider] Emitted diagnostics changed for {} URI(s)"</span>,
 <a href=#333 id=333 data-nosnippet>333</a>			ChangedURIKeys.len()
@@ -338,7 +338,7 @@
 <a href=#338 id=338 data-nosnippet>338</a>
 <a href=#339 id=339 data-nosnippet>339</a>	<span class="doccomment">/// Clears all diagnostics from a specific owner.
 <a href=#340 id=340 data-nosnippet>340</a>	</span><span class="kw">async fn </span>ClearDiagnostics(<span class="kw-2">&amp;</span><a class="self" href="#340">self</a>, <a href="#340">Owner</a>:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
-<a href=#341 id=341 data-nosnippet>341</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#341 id=341 data-nosnippet>341</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#342 id=342 data-nosnippet>342</a>			<span class="string">"extensions"</span>,
 <a href=#343 id=343 data-nosnippet>343</a>			<span class="string">"[DiagnosticProvider] Clearing all diagnostics for owner: {}"</span>,
 <a href=#344 id=344 data-nosnippet>344</a>			Owner
@@ -363,7 +363,7 @@
 <a href=#363 id=363 data-nosnippet>363</a>		};
 <a href=#364 id=364 data-nosnippet>364</a>
 <a href=#365 id=365 data-nosnippet>365</a>		<span class="kw">if </span>!<a href="#347">ChangedURIKeys</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.is_empty">is_empty</a>() {
-<a href=#366 id=366 data-nosnippet>366</a>			<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#366 id=366 data-nosnippet>366</a>			<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#367 id=367 data-nosnippet>367</a>				<span class="string">"extensions"</span>,
 <a href=#368 id=368 data-nosnippet>368</a>				<span class="string">"[DiagnosticProvider] Cleared {} diagnostics across {} URI(s)"</span>,
 <a href=#369 id=369 data-nosnippet>369</a>				ClearedCount,
@@ -384,7 +384,7 @@
 <a href=#384 id=384 data-nosnippet>384</a>
 <a href=#385 id=385 data-nosnippet>385</a>			<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error) = <a href="../IPC/SkyEmit.rs.html#45-64">LogSkyEmit</a>(<span class="kw-2">&amp;</span><a class="self" href="#340">self</a>.ApplicationHandle, SkyEvent::DiagnosticsChanged.AsStr(), <a href="#378">EventPayload</a>)
 <a href=#386 id=386 data-nosnippet>386</a>			{
-<a href=#387 id=387 data-nosnippet>387</a>				<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#387 id=387 data-nosnippet>387</a>				<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#388 id=388 data-nosnippet>388</a>					<span class="string">"extensions"</span>,
 <a href=#389 id=389 data-nosnippet>389</a>					<span class="string">"error: [DiagnosticProvider] Failed to emit 'diagnostics_changed' on clear: {}"</span>,
 <a href=#390 id=390 data-nosnippet>390</a>					Error
@@ -399,7 +399,7 @@
 <a href=#399 id=399 data-nosnippet>399</a>	/// Returns diagnostics aggregated from all owners for the specified
 <a href=#400 id=400 data-nosnippet>400</a>	/// resource(s).
 <a href=#401 id=401 data-nosnippet>401</a>	</span><span class="kw">async fn </span>GetAllDiagnostics(<span class="kw-2">&amp;</span><a class="self" href="#401">self</a>, <a href="#401">ResourceURIFilterOption</a>:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, CommonError&gt; {
-<a href=#402 id=402 data-nosnippet>402</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#402 id=402 data-nosnippet>402</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#403 id=403 data-nosnippet>403</a>			<span class="string">"extensions"</span>,
 <a href=#404 id=404 data-nosnippet>404</a>			<span class="string">"[DiagnosticProvider] Getting all diagnostics with filter: {:?}"</span>,
 <a href=#405 id=405 data-nosnippet>405</a>			ResourceURIFilterOption
@@ -434,7 +434,7 @@
 <a href=#434 id=434 data-nosnippet>434</a>
 <a href=#435 id=435 data-nosnippet>435</a>		<span class="kw">let </span>ResultList:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;(<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="../ApplicationState/DTO/MarkerDataDTO.rs.html#40-79">MarkerDataDTO</a>&gt;)&gt; = <a href="#416">ResultMap</a>.<a href="https://doc.rust-lang.org/nightly/core/iter/traits/collect/trait.IntoIterator.html#tymethod.into_iter">into_iter</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.collect">collect</a>();
 <a href=#436 id=436 data-nosnippet>436</a>
-<a href=#437 id=437 data-nosnippet>437</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#437 id=437 data-nosnippet>437</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#438 id=438 data-nosnippet>438</a>			<span class="string">"extensions"</span>,
 <a href=#439 id=439 data-nosnippet>439</a>			<span class="string">"[DiagnosticProvider] Returning {} diagnostic collection(s)"</span>,
 <a href=#440 id=440 data-nosnippet>440</a>			ResultList.len()

@@ -11,7 +11,7 @@
 <a href=#11 id=11 data-nosnippet>11</a>
 <a href=#12 id=12 data-nosnippet>12</a><span class="kw">use </span>crate::{
 <a href=#13 id=13 data-nosnippet>13</a>	ProcessManagement::NodeResolver::{<a href="../NodeResolver.rs.html#11">CheckMinMajor</a>, <a href="../NodeResolver.rs.html#15">QueryNodeVersion</a>, <a href="../NodeResolver.rs.html#17">ResolveUncached</a>, <a href="../NodeResolver.rs.html#18">ResolvedNode</a>},
-<a href=#14 id=14 data-nosnippet>14</a>	<a href="../../IPC/DevLog.rs.html#726-767">dev_log</a>,
+<a href=#14 id=14 data-nosnippet>14</a>	<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log</a>,
 <a href=#15 id=15 data-nosnippet>15</a>};
 <a href=#16 id=16 data-nosnippet>16</a>
 <a href=#17 id=17 data-nosnippet>17</a><span class="kw">static </span><a href="../../../../Mountain/ProcessManagement/NodeResolver/ResolveNodeBinary/static.RESOLVED.html">RESOLVED</a>:<a href="https://doc.rust-lang.org/nightly/std/sync/once_lock/struct.OnceLock.html">OnceLock</a>&lt;ResolvedNode::<a href="ResolvedNode.rs.html#11-14">Struct</a>&gt; = <a href="https://doc.rust-lang.org/nightly/std/sync/once_lock/struct.OnceLock.html">OnceLock</a>::<a href="https://doc.rust-lang.org/nightly/std/sync/once_lock/struct.OnceLock.html#method.new">new</a>();
@@ -26,7 +26,7 @@
 <a href=#26 id=26 data-nosnippet>26</a>	<span class="kw">let </span>Version = QueryNodeVersion::<a href="QueryNodeVersion.rs.html#10-17">Fn</a>(<span class="kw-2">&amp;</span><a href="#24">Resolved</a>.Path);
 <a href=#27 id=27 data-nosnippet>27</a>	<span class="kw">match </span><span class="kw-2">&amp;</span><a href="#26">Version</a> {
 <a href=#28 id=28 data-nosnippet>28</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Reported) =&gt; {
-<a href=#29 id=29 data-nosnippet>29</a>			<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#29 id=29 data-nosnippet>29</a>			<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#30 id=30 data-nosnippet>30</a>				<span class="string">"cocoon"</span>,
 <a href=#31 id=31 data-nosnippet>31</a>				<span class="string">"[NodeResolver] Using: {} (source={}, version={})"</span>,
 <a href=#32 id=32 data-nosnippet>32</a>				Resolved.Path.display(),
@@ -36,7 +36,7 @@
 <a href=#36 id=36 data-nosnippet>36</a>			CheckMinMajor::<a href="CheckMinMajor.rs.html#10-29">Fn</a>(<a href="#28">Reported</a>);
 <a href=#37 id=37 data-nosnippet>37</a>		},
 <a href=#38 id=38 data-nosnippet>38</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a> =&gt; {
-<a href=#39 id=39 data-nosnippet>39</a>			<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#39 id=39 data-nosnippet>39</a>			<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#40 id=40 data-nosnippet>40</a>				<span class="string">"cocoon"</span>,
 <a href=#41 id=41 data-nosnippet>41</a>				<span class="string">"[NodeResolver] Using: {} (source={}, version=unknown)"</span>,
 <a href=#42 id=42 data-nosnippet>42</a>				Resolved.Path.display(),

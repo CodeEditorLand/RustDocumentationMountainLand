@@ -1,123 +1,38 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Legacy Wind Service Adapters."><title>Mountain::IPC::WindServiceAdapters - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-b7b9f40b.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-41dd4d93.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module WindServiceAdapters</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Wind<wbr>Service<wbr>Adapters</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#wind-service-adapters---type-conversion--service-bridging" title="Wind Service Adapters - Type Conversion &#38; Service Bridging">Wind Service Adapters - Type Conversion &amp; Service Bridging</a></li></ul><h3><a href="#structs">Module Items</a></h3><ul class="block"><li><a href="#structs" title="Structs">Structs</a></li><li><a href="#types" title="Type Aliases">Type Aliases</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>IPC</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">IPC</a></div><h1>Module <span>Wind<wbr>Service<wbr>Adapters</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/IPC/WindServiceAdapters.rs.html#1-474">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Legacy Wind Service Adapters.</p>
-<h2 id="wind-service-adapters---type-conversion--service-bridging"><a class="doc-anchor" href="#wind-service-adapters---type-conversion--service-bridging">§</a>Wind Service Adapters - Type Conversion &amp; Service Bridging</h2>
-<p><strong>File Responsibilities:</strong>
-This module provides the adapter layer that handles type conversion and
-service abstraction between Wind’s TypeScript interfaces and Mountain’s Rust
-implementations. It allows Mountain services to present Wind-compatible APIs
-while using Mountain’s internal architecture.</p>
-<p><strong>Architectural Role in Wind-Mountain Connection:</strong></p>
-<p>The WindServiceAdapters module serves as the translation layer that:</p>
-<ol>
-<li><strong>Converts Data Types:</strong> Transforms TypeScript types to Rust types and
-vice versa</li>
-<li><strong>Abstracts Services:</strong> Provides Wind-compatible service interfaces over
-Mountain services</li>
-<li><strong>Handles Configuration:</strong> Converts between different configuration
-formats</li>
-<li><strong>Maintains Compatibility:</strong> Ensures Wind contracts are satisfied</li>
-</ol>
-<p><strong>Adapter Pattern:</strong></p>
-<p>This module implements the Adapter design pattern to bridge the interface
-gap:</p>
-<div class="example-wrap"><pre class="language-text"><code>Wind&#39;s IFileService (TypeScript interface)
-       |
-       |  Expected interface
-       v
-WindFileService (Rust adapter)
-       |
-       |  Delegates to
-       v
-Mountain&#39;s FileSystemReader (Rust trait)</code></pre></div>
-<p><strong>Key Structures:</strong></p>
-<p><strong>1. WindDesktopConfiguration:</strong></p>
-<ul>
-<li>Represents Wind’s complete desktop configuration structure</li>
-<li>Mirrors Wind’s TypeScript interface</li>
-<li>Includes window settings, paths, platform info, profile data</li>
-</ul>
-<p><strong>2. WindServiceAdapter:</strong>
-Main adapter that converts between Mountain and Wind formats</p>
-<ul>
-<li><code>convert_to_wind_configuration()</code> - Mountain config to Wind config</li>
-<li><code>get_environment_service()</code> - Wind-compatible environment service</li>
-<li><code>get_file_service()</code> - Wind-compatible file service</li>
-<li><code>get_storage_service()</code> - Wind-compatible storage service</li>
-<li><code>get_configuration_service()</code> - Wind-compatible configuration service</li>
-</ul>
-<p><strong>3. Individual Service Adapters:</strong></p>
-<p><strong>WindEnvironmentService:</strong>
-Provides Wind-compatible environment variable access</p>
-<ul>
-<li><code>get_app_root()</code> - Get application root path</li>
-<li><code>get_user_data_path()</code> - Get user data directory</li>
-</ul>
-<p><strong>WindFileService:</strong>
-Adapts Mountain’s file system to Wind’s interface</p>
-<ul>
-<li><code>read_file()</code> - Read file as bytes</li>
-<li><code>write_file()</code> - Write file from bytes</li>
-<li><code>stat_file()</code> - Get file metadata as JSON</li>
-</ul>
-<p><strong>WindStorageService:</strong>
-Adapts Mountain’s storage to Wind’s interface</p>
-<ul>
-<li><code>get()</code> - Get storage value as JSON</li>
-<li><code>set()</code> - Set storage value from JSON</li>
-</ul>
-<p><strong>WindConfigurationService:</strong>
-Adapts Mountain’s configuration to Wind’s interface</p>
-<ul>
-<li><code>get_value()</code> - Get configuration value</li>
-<li><code>update_value()</code> - Update configuration value</li>
-</ul>
-<p><strong>Type Conversion Examples:</strong></p>
-<p><strong>Configuration Conversion:</strong></p>
-<div class="example-wrap"><pre class="language-typescript"><code>// Wind TypeScript Configuration
-interface IDesktopConfiguration {
-  windowId: number;
-  appRoot: string;
-  userDataPath: string;
-  // ... more fields
-}</code></pre></div><div class="example-wrap"><pre class="language-text"><code>// Mountain Rust Configuration (after conversion)
-struct WindDesktopConfiguration {
-pub window_id:u32,
-pub app_root:String,
-pub user_data_path:String,
-// ... more fields
-}</code></pre></div>
-<p><strong>File Service Integration:</strong></p>
-<p>Mountain’s file system uses traits for abstraction:</p>
-<div class="example-wrap"><pre class="language-text"><code>let reader:Arc&lt;dyn FileSystemReader&gt; = runtime.Environment.Require();
-let writer:Arc&lt;dyn FileSystemWriter&gt; = runtime.Environment.Require();
-
-// Adapt to Wind&#39;s interface
-let wind_file_service = WindFileService::new(reader, writer);
-let bytes = wind_file_service.read_file(path).await?;</code></pre></div>
-<p><strong>Configuration Bridge Integration:</strong></p>
-<p>The WindServiceAdapter works closely with ConfigurationBridge:</p>
-<ul>
-<li>ConfigurationBridge uses WindServiceAdapter to convert formats</li>
-<li>WindServiceAdapter maintains type compatibility</li>
-<li>Both work together to ensure seamless Wind-Mountain integration</li>
-</ul>
-<p><strong>Error Handling:</strong></p>
-<p>All adapter methods return <code>Result&lt;T, String&gt;</code> with descriptive errors:</p>
-<ul>
-<li>Type conversion errors include the field and reason</li>
-<li>Service delegation errors propagate with context</li>
-<li>All errors are in a format Wind can understand</li>
-</ul>
-<p><strong>Usage Pattern:</strong></p>
-<div class="example-wrap"><pre class="language-text"><code>// Create adapter
-let adapter = WindServiceAdapter::new(runtime);
-
-// Get Mountain config
-let mountain_config = get_mountain_config().await?;
-
-// Convert to Wind format
-let wind_config = adapter.convert_to_wind_configuration(mountain_config).await?;
-
-// Get Wind-compatible services
-let file_service = adapter.get_file_service().await?;
-let config_service = adapter.get_configuration_service().await?;</code></pre></div></div></details><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.FileToDiff.html" title="struct Mountain::IPC::WindServiceAdapters::FileToDiff">File<wbr>ToDiff</a></dt><dd>File to diff structure</dd><dt><a class="struct" href="struct.FileToOpenOrCreate.html" title="struct Mountain::IPC::WindServiceAdapters::FileToOpenOrCreate">File<wbr>ToOpen<wbr>OrCreate</a></dt><dd>File to open or create structure</dd><dt><a class="struct" href="struct.FilesToWait.html" title="struct Mountain::IPC::WindServiceAdapters::FilesToWait">Files<wbr>ToWait</a></dt><dd>Files to wait structure</dd><dt><a class="struct" href="struct.Logger.html" title="struct Mountain::IPC::WindServiceAdapters::Logger">Logger</a></dt><dd>Logger structure</dd><dt><a class="struct" href="struct.MountainSandboxConfiguration.html" title="struct Mountain::IPC::WindServiceAdapters::MountainSandboxConfiguration">Mountain<wbr>Sandbox<wbr>Configuration</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Mountain sandbox configuration structure</dd><dt><a class="struct" href="struct.NLSConfiguration.html" title="struct Mountain::IPC::WindServiceAdapters::NLSConfiguration">NLSConfiguration</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dt><a class="struct" href="struct.OsInfo.html" title="struct Mountain::IPC::WindServiceAdapters::OsInfo">OsInfo</a></dt><dd>OS information structure</dd><dt><a class="struct" href="struct.ProductConfiguration.html" title="struct Mountain::IPC::WindServiceAdapters::ProductConfiguration">Product<wbr>Configuration</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dt><a class="struct" href="struct.Profiles.html" title="struct Mountain::IPC::WindServiceAdapters::Profiles">Profiles</a></dt><dd>Profiles structure</dd><dt><a class="struct" href="struct.Versions.html" title="struct Mountain::IPC::WindServiceAdapters::Versions">Versions</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dt><a class="struct" href="struct.WindConfigurationService.html" title="struct Mountain::IPC::WindServiceAdapters::WindConfigurationService">Wind<wbr>Configuration<wbr>Service</a></dt><dd>Wind configuration service adapter</dd><dt><a class="struct" href="struct.WindDesktopConfiguration.html" title="struct Mountain::IPC::WindServiceAdapters::WindDesktopConfiguration">Wind<wbr>Desktop<wbr>Configuration</a></dt><dd>Wind desktop configuration structure
-Mirrors Wind’s IDesktopConfiguration interface</dd><dt><a class="struct" href="struct.WindEnvironmentService.html" title="struct Mountain::IPC::WindServiceAdapters::WindEnvironmentService">Wind<wbr>Environment<wbr>Service</a></dt><dd>Wind environment service adapter</dd><dt><a class="struct" href="struct.WindFileService.html" title="struct Mountain::IPC::WindServiceAdapters::WindFileService">Wind<wbr>File<wbr>Service</a></dt><dd>Wind file service adapter</dd><dt><a class="struct" href="struct.WindServiceAdapter.html" title="struct Mountain::IPC::WindServiceAdapters::WindServiceAdapter">Wind<wbr>Service<wbr>Adapter</a></dt><dd>Wind service adapter that bridges Mountain services to Wind’s interfaces</dd><dt><a class="struct" href="struct.WindStorageService.html" title="struct Mountain::IPC::WindServiceAdapters::WindStorageService">Wind<wbr>Storage<wbr>Service</a></dt><dd>Wind storage service adapter</dd></dl><h2 id="types" class="section-header">Type Aliases<a href="#types" class="anchor">§</a></h2><dl class="item-table"><dt><a class="type" href="type.ConfigurationOverridesDTO.html" title="type Mountain::IPC::WindServiceAdapters::ConfigurationOverridesDTO">Configuration<wbr>OverridesDTO</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dt><a class="type" href="type.ConfigurationTarget.html" title="type Mountain::IPC::WindServiceAdapters::ConfigurationTarget">Configuration<wbr>Target</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt></dl></section></div></main></body></html>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Legacy Wind Service Adapters."><title>Mountain::IPC::WindServiceAdapters - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-b7b9f40b.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-41dd4d93.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module WindServiceAdapters</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Wind<wbr>Service<wbr>Adapters</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#wind-service-adapters" title="Wind service adapters">Wind service adapters</a></li></ul><h3><a href="#modules">Module Items</a></h3><ul class="block"><li><a href="#modules" title="Modules">Modules</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>IPC</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">IPC</a></div><h1>Module <span>Wind<wbr>Service<wbr>Adapters</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/IPC/WindServiceAdapters/mod.rs.html#1-26">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Legacy Wind Service Adapters.</p>
+<h2 id="wind-service-adapters"><a class="doc-anchor" href="#wind-service-adapters">§</a>Wind service adapters</h2>
+<p>Mountain → Wind bridge: takes Mountain’s sandbox config
+and runtime providers, exposes them in Wind’s expected
+shape (<code>WindDesktopConfiguration::Struct</code>,
+<code>WindFileService::Struct</code>, <code>WindStorageService::Struct</code>,
+<code>WindConfigurationService::Struct</code>,
+<code>WindEnvironmentService::Struct</code>). The
+<code>WindServiceAdapter::Struct</code> factory holds the runtime
+handle and produces the per-domain wrappers on demand.</p>
+</div></details><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="FileToDiff/index.html" title="mod Mountain::IPC::WindServiceAdapters::FileToDiff">File<wbr>ToDiff</a></dt><dd>Single diff target URI used by Wind’s <code>--diff</code> launch
+flag. Mirrors <code>vscode.IDiffEditorInput::resource</code>.</dd><dt><a class="mod" href="FileToOpenOrCreate/index.html" title="mod Mountain::IPC::WindServiceAdapters::FileToOpenOrCreate">File<wbr>ToOpen<wbr>OrCreate</a></dt><dd>One file URI scheduled for open / create. Carried inside
+<code>WindDesktopConfiguration::Struct::files_to_open_or_create</code>.</dd><dt><a class="mod" href="FilesToWait/index.html" title="mod Mountain::IPC::WindServiceAdapters::FilesToWait">Files<wbr>ToWait</a></dt><dd><code>--wait</code> payload: marker file URI plus the path list whose
+close events the launcher is blocked on.</dd><dt><a class="mod" href="Logger/index.html" title="mod Mountain::IPC::WindServiceAdapters::Logger">Logger</a></dt><dd>Single registered logger - resource URI inside Wind’s log
+registry payload.</dd><dt><a class="mod" href="MountainSandboxConfiguration/index.html" title="mod Mountain::IPC::WindServiceAdapters::MountainSandboxConfiguration">Mountain<wbr>Sandbox<wbr>Configuration</a></dt><dd>Mountain’s own sandbox-config payload (input to
+<code>WindServiceAdapter::convert_to_wind_configuration</code>).
+Private to this module; the trio of nested DTOs
+(<code>Versions</code>, <code>NLSConfiguration</code>, <code>ProductConfiguration</code>)
+lives inline because they’re consumed only here and never
+constructed externally.</dd><dt><a class="mod" href="OsInfo/index.html" title="mod Mountain::IPC::WindServiceAdapters::OsInfo">OsInfo</a></dt><dd>Minimal OS slice surfaced to Wind - just the release / OS
+identifier string.</dd><dt><a class="mod" href="Profiles/index.html" title="mod Mountain::IPC::WindServiceAdapters::Profiles">Profiles</a></dt><dd>Wind profile-state slice: every known profile, the home
+directory, and the active profile descriptor.</dd><dt><a class="mod" href="WindConfigurationService/index.html" title="mod Mountain::IPC::WindServiceAdapters::WindConfigurationService">Wind<wbr>Configuration<wbr>Service</a></dt><dd>Wind-shaped configuration service - read / write of
+configuration values via the injected
+<code>ConfigurationProvider</code> trait. Defaults to user-target
+writes; <code>ConfigurationOverridesDTO::default()</code> resolves to
+the active scope.</dd><dt><a class="mod" href="WindDesktopConfiguration/index.html" title="mod Mountain::IPC::WindServiceAdapters::WindDesktopConfiguration">Wind<wbr>Desktop<wbr>Configuration</a></dt><dd>Mirror of Wind’s <code>IDesktopConfiguration</code> interface - the
+shape Sky deserialises on boot. Built by
+<code>WindServiceAdapter::convert_to_wind_configuration</code> from
+Mountain’s sandbox config.</dd><dt><a class="mod" href="WindEnvironmentService/index.html" title="mod Mountain::IPC::WindServiceAdapters::WindEnvironmentService">Wind<wbr>Environment<wbr>Service</a></dt><dd>Wind-shaped environment-variable accessor. Reads
+<code>APP_ROOT</code> / <code>USER_DATA_PATH</code> from the process env so Wind’s
+desktop bootstrap can stay agnostic to the Tauri side.</dd><dt><a class="mod" href="WindFileService/index.html" title="mod Mountain::IPC::WindServiceAdapters::WindFileService">Wind<wbr>File<wbr>Service</a></dt><dd>Wind-shaped file service: read / write / stat over the
+injected <code>FileSystemReader</code> / <code>FileSystemWriter</code> traits.</dd><dt><a class="mod" href="WindServiceAdapter/index.html" title="mod Mountain::IPC::WindServiceAdapters::WindServiceAdapter">Wind<wbr>Service<wbr>Adapter</a></dt><dd>Bridge between Mountain’s runtime and Wind’s expected
+service interfaces. <code>convert_to_wind_configuration</code> turns
+Mountain’s sandbox config into the
+<code>WindDesktopConfiguration::Struct</code> Sky deserialises;
+<code>get_*_service</code> factories produce the per-domain wrappers
+(env, file, storage, configuration) Wind needs.</dd><dt><a class="mod" href="WindStorageService/index.html" title="mod Mountain::IPC::WindServiceAdapters::WindStorageService">Wind<wbr>Storage<wbr>Service</a></dt><dd>Wind-shaped storage service: get / set against the
+injected <code>StorageProvider</code> trait.</dd></dl></section></div></main></body></html>

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["StorageDelete","StorageGet","StorageGetItems","StorageKeys","StorageSet","StorageUpdateItems"]};
+window.SIDEBAR_ITEMS = {"mod":["StorageDelete","StorageGet","StorageGetItems","StorageKeys","StorageSet","StorageUpdateItems"]};

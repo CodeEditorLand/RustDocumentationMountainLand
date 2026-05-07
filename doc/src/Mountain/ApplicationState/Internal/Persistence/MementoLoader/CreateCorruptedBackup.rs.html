@@ -7,21 +7,21 @@
 <a href=#7 id=7 data-nosnippet>7</a>
 <a href=#8 id=8 data-nosnippet>8</a></span><span class="kw">use </span>std::{<a href="https://doc.rust-lang.org/nightly/std/fs/index.html">fs</a>, <a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html">path::Path</a>};
 <a href=#9 id=9 data-nosnippet>9</a>
-<a href=#10 id=10 data-nosnippet>10</a><span class="kw">use </span><a href="../../../../IPC/DevLog.rs.html#726-767"><span class="kw">crate</span>::dev_log</a>;
+<a href=#10 id=10 data-nosnippet>10</a><span class="kw">use </span><a href="../../../../IPC/DevLog/mod.rs.html#40-81"><span class="kw">crate</span>::dev_log</a>;
 <a href=#11 id=11 data-nosnippet>11</a>
 <a href=#12 id=12 data-nosnippet>12</a><span class="kw">pub fn </span><a href="../../../../../../Mountain/ApplicationState/Internal/Persistence/MementoLoader/CreateCorruptedBackup/fn.Fn.html">Fn</a>(FilePath:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html">Path</a>, Content:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) {
 <a href=#13 id=13 data-nosnippet>13</a>	<span class="kw">let </span>Timestamp = chrono::<a href="https://docs.rs/chrono/latest/chrono/offset/utc/struct.Utc.html">Utc</a>::<a href="https://docs.rs/chrono/latest/chrono/offset/utc/struct.Utc.html#method.now">now</a>().<a href="https://docs.rs/chrono/latest/chrono/datetime/struct.DateTime.html#method.format">format</a>(<span class="string">"%Y%m%d_%H%M%S"</span>);
 <a href=#14 id=14 data-nosnippet>14</a>	<span class="kw">let </span>BackupPath = <a href="#12">FilePath</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.with_extension">with_extension</a>(<a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"json.corrupted.{}"</span>, Timestamp));
 <a href=#15 id=15 data-nosnippet>15</a>
 <a href=#16 id=16 data-nosnippet>16</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(E) = fs::<a href="https://doc.rust-lang.org/nightly/std/fs/fn.write.html">write</a>(<span class="kw-2">&amp;</span><a href="#14">BackupPath</a>, <a href="#12">Content</a>) {
-<a href=#17 id=17 data-nosnippet>17</a>		<a href="../../../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#17 id=17 data-nosnippet>17</a>		<a href="../../../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#18 id=18 data-nosnippet>18</a>			<span class="string">"storage"</span>,
 <a href=#19 id=19 data-nosnippet>19</a>			<span class="string">"error: [MementoLoader] Failed to create corrupted backup at '{}': {}"</span>,
 <a href=#20 id=20 data-nosnippet>20</a>			BackupPath.display(),
 <a href=#21 id=21 data-nosnippet>21</a>			E
 <a href=#22 id=22 data-nosnippet>22</a>		);
 <a href=#23 id=23 data-nosnippet>23</a>	} <span class="kw">else </span>{
-<a href=#24 id=24 data-nosnippet>24</a>		<a href="../../../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#24 id=24 data-nosnippet>24</a>		<a href="../../../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#25 id=25 data-nosnippet>25</a>			<span class="string">"storage"</span>,
 <a href=#26 id=26 data-nosnippet>26</a>			<span class="string">"[MementoLoader] Created corrupted backup at: {}"</span>,
 <a href=#27 id=27 data-nosnippet>27</a>			BackupPath.display()

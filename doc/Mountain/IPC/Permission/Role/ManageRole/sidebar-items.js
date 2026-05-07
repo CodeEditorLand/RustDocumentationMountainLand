@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["CreateAdminRole","CreateDeveloperRole","CreateStandardPermissions","CreateStandardRoles","CreateUserRole"],"struct":["Permission","Role"]};
+window.SIDEBAR_ITEMS = {"mod":["CreateAdminRole","CreateDeveloperRole","CreateStandardPermissions","CreateStandardRoles","CreateUserRole","Permission","Role"]};

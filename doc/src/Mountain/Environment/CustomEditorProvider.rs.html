@@ -67,12 +67,12 @@
 <a href=#67 id=67 data-nosnippet>67</a><span class="kw">use </span><a href="https://docs.rs/url/2.5.7/url/struct.Url.html">url::Url</a>;
 <a href=#68 id=68 data-nosnippet>68</a>
 <a href=#69 id=69 data-nosnippet>69</a><span class="kw">use </span><a href="MountainEnvironment.rs.html#228-238"><span class="kw">super</span>::MountainEnvironment::MountainEnvironment</a>;
-<a href=#70 id=70 data-nosnippet>70</a><span class="kw">use </span><a href="../IPC/DevLog.rs.html#726-767"><span class="kw">crate</span>::dev_log</a>;
+<a href=#70 id=70 data-nosnippet>70</a><span class="kw">use </span><a href="../IPC/DevLog/mod.rs.html#40-81"><span class="kw">crate</span>::dev_log</a>;
 <a href=#71 id=71 data-nosnippet>71</a>
 <a href=#72 id=72 data-nosnippet>72</a><span class="attr">#[async_trait]
 <a href=#73 id=73 data-nosnippet>73</a></span><span class="kw">impl </span>CustomEditorProvider <span class="kw">for </span><a href="MountainEnvironment.rs.html#228-238">MountainEnvironment</a> {
 <a href=#74 id=74 data-nosnippet>74</a>	<span class="kw">async fn </span>RegisterCustomEditorProvider(<span class="kw-2">&amp;</span><a class="self" href="#74">self</a>, <a href="#74">ViewType</a>:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="#74">_Options</a>:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
-<a href=#75 id=75 data-nosnippet>75</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#75 id=75 data-nosnippet>75</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#76 id=76 data-nosnippet>76</a>			<span class="string">"extensions"</span>,
 <a href=#77 id=77 data-nosnippet>77</a>			<span class="string">"[CustomEditorProvider] Registering provider for view type: {}"</span>,
 <a href=#78 id=78 data-nosnippet>78</a>			ViewType
@@ -97,7 +97,7 @@
 <a href=#97 id=97 data-nosnippet>97</a>	}
 <a href=#98 id=98 data-nosnippet>98</a>
 <a href=#99 id=99 data-nosnippet>99</a>	<span class="kw">async fn </span>UnregisterCustomEditorProvider(<span class="kw-2">&amp;</span><a class="self" href="#99">self</a>, <a href="#99">ViewType</a>:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
-<a href=#100 id=100 data-nosnippet>100</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#100 id=100 data-nosnippet>100</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#101 id=101 data-nosnippet>101</a>			<span class="string">"extensions"</span>,
 <a href=#102 id=102 data-nosnippet>102</a>			<span class="string">"[CustomEditorProvider] Unregistering provider for view type: {}"</span>,
 <a href=#103 id=103 data-nosnippet>103</a>			ViewType
@@ -114,7 +114,7 @@
 <a href=#114 id=114 data-nosnippet>114</a>	}
 <a href=#115 id=115 data-nosnippet>115</a>
 <a href=#116 id=116 data-nosnippet>116</a>	<span class="kw">async fn </span>OnSaveCustomDocument(<span class="kw-2">&amp;</span><a class="self" href="#116">self</a>, <a href="#116">ViewType</a>:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="#116">ResourceURI</a>:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
-<a href=#117 id=117 data-nosnippet>117</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#117 id=117 data-nosnippet>117</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#118 id=118 data-nosnippet>118</a>			<span class="string">"extensions"</span>,
 <a href=#119 id=119 data-nosnippet>119</a>			<span class="string">"[CustomEditorProvider] OnSaveCustomDocument called for '{}' at '{}'"</span>,
 <a href=#120 id=120 data-nosnippet>120</a>			ViewType,
@@ -155,7 +155,7 @@
 <a href=#155 id=155 data-nosnippet>155</a>			.<span class="kw">await
 <a href=#156 id=156 data-nosnippet>156</a>		</span>{
 <a href=#157 id=157 data-nosnippet>157</a>			<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="kw">_</span>) =&gt; {
-<a href=#158 id=158 data-nosnippet>158</a>				<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#158 id=158 data-nosnippet>158</a>				<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#159 id=159 data-nosnippet>159</a>					<span class="string">"extensions"</span>,
 <a href=#160 id=160 data-nosnippet>160</a>					<span class="string">"[CustomEditorProvider] OnSaveCustomDocument completed for '{}' at '{}'"</span>,
 <a href=#161 id=161 data-nosnippet>161</a>					ViewType,
@@ -171,7 +171,7 @@
 <a href=#171 id=171 data-nosnippet>171</a>				<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#172 id=172 data-nosnippet>172</a>			},
 <a href=#173 id=173 data-nosnippet>173</a>			<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error) =&gt; {
-<a href=#174 id=174 data-nosnippet>174</a>				<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#174 id=174 data-nosnippet>174</a>				<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#175 id=175 data-nosnippet>175</a>					<span class="string">"extensions"</span>,
 <a href=#176 id=176 data-nosnippet>176</a>					<span class="string">"warn: [CustomEditorProvider] OnSaveCustomDocument failed for '{}' at '{}': {:?}"</span>,
 <a href=#177 id=177 data-nosnippet>177</a>					ViewType,
@@ -189,7 +189,7 @@
 <a href=#189 id=189 data-nosnippet>189</a>		<a href="#189">ResourceURI</a>:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
 <a href=#190 id=190 data-nosnippet>190</a>		<a href="#190">WebviewPanelHandle</a>:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#191 id=191 data-nosnippet>191</a>	) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
-<a href=#192 id=192 data-nosnippet>192</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#192 id=192 data-nosnippet>192</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#193 id=193 data-nosnippet>193</a>			<span class="string">"extensions"</span>,
 <a href=#194 id=194 data-nosnippet>194</a>			<span class="string">"[CustomEditorProvider] Resolving custom editor for '{}' on resource '{}'"</span>,
 <a href=#195 id=195 data-nosnippet>195</a>			ViewType,

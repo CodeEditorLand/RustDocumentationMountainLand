@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":["SecurityEventType"],"struct":["PermissionManager","SecurityContext","SecurityEvent"]};
+window.SIDEBAR_ITEMS = {"mod":["Manager","SecurityContext","SecurityEvent","SecurityEventType"]};

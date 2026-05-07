@@ -209,7 +209,7 @@
 <a href=#209 id=209 data-nosnippet>209</a><span class="kw">use </span>tokio::fs;
 <a href=#210 id=210 data-nosnippet>210</a>
 <a href=#211 id=211 data-nosnippet>211</a><span class="kw">use </span>super::{<a href="MountainEnvironment.rs.html#228-238">MountainEnvironment::MountainEnvironment</a>, <a href="mod.rs.html#113">Utility</a>};
-<a href=#212 id=212 data-nosnippet>212</a><span class="kw">use </span><a href="../IPC/DevLog.rs.html#726-767"><span class="kw">crate</span>::dev_log</a>;
+<a href=#212 id=212 data-nosnippet>212</a><span class="kw">use </span><a href="../IPC/DevLog/mod.rs.html#40-81"><span class="kw">crate</span>::dev_log</a>;
 <a href=#213 id=213 data-nosnippet>213</a>
 <a href=#214 id=214 data-nosnippet>214</a><span class="attr">#[async_trait]
 <a href=#215 id=215 data-nosnippet>215</a></span><span class="kw">impl </span>StorageProvider <span class="kw">for </span><a href="MountainEnvironment.rs.html#228-238">MountainEnvironment</a> {
@@ -218,7 +218,7 @@
 <a href=#218 id=218 data-nosnippet>218</a>	</span><span class="kw">async fn </span>GetStorageValue(<span class="kw-2">&amp;</span><a class="self" href="#218">self</a>, <a href="#218">IsGlobalScope</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>, Key:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;, CommonError&gt; {
 <a href=#219 id=219 data-nosnippet>219</a>		<span class="kw">let </span>ScopeName = <span class="kw">if </span><a href="#218">IsGlobalScope</a> { <span class="string">"Global" </span>} <span class="kw">else </span>{ <span class="string">"Workspace" </span>};
 <a href=#220 id=220 data-nosnippet>220</a>
-<a href=#221 id=221 data-nosnippet>221</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#221 id=221 data-nosnippet>221</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#222 id=222 data-nosnippet>222</a>			<span class="string">"storage"</span>,
 <a href=#223 id=223 data-nosnippet>223</a>			<span class="string">"[StorageProvider] Getting value from {} scope for key: {}"</span>,
 <a href=#224 id=224 data-nosnippet>224</a>			ScopeName,
@@ -269,10 +269,10 @@
 <a href=#269 id=269 data-nosnippet>269</a>		// Short-form + long-form both emit under `storage-verbose` so the
 <a href=#270 id=270 data-nosnippet>270</a>		// default log stays clean; `Trace=storage-verbose` restores
 <a href=#271 id=271 data-nosnippet>271</a>		// the original verbose tracing.
-<a href=#272 id=272 data-nosnippet>272</a>		</span><span class="kw">if </span><span class="kw">crate</span>::IPC::DevLog::<a href="../IPC/DevLog.rs.html#648">IsShort</a>() {
-<a href=#273 id=273 data-nosnippet>273</a>			<a href="../IPC/DevLog.rs.html#726-767">crate::dev_log!</a>(<span class="string">"storage-verbose"</span>, <span class="string">"update {} {}"</span>, ScopeName, Key);
+<a href=#272 id=272 data-nosnippet>272</a>		</span><span class="kw">if </span><span class="kw">crate</span>::IPC::DevLog::IsShort::<a href="../IPC/DevLog/IsShort.rs.html#12">Fn</a>() {
+<a href=#273 id=273 data-nosnippet>273</a>			<a href="../IPC/DevLog/mod.rs.html#40-81">crate::dev_log!</a>(<span class="string">"storage-verbose"</span>, <span class="string">"update {} {}"</span>, ScopeName, Key);
 <a href=#274 id=274 data-nosnippet>274</a>		} <span class="kw">else </span>{
-<a href=#275 id=275 data-nosnippet>275</a>			<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#275 id=275 data-nosnippet>275</a>			<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#276 id=276 data-nosnippet>276</a>				<span class="string">"storage-verbose"</span>,
 <a href=#277 id=277 data-nosnippet>277</a>				<span class="string">"[StorageProvider] Updating value in {} scope for key: {}"</span>,
 <a href=#278 id=278 data-nosnippet>278</a>				ScopeName,
@@ -358,7 +358,7 @@
 <a href=#358 id=358 data-nosnippet>358</a>	</span><span class="kw">async fn </span>GetAllStorage(<span class="kw-2">&amp;</span><a class="self" href="#358">self</a>, <a href="#358">IsGlobalScope</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, CommonError&gt; {
 <a href=#359 id=359 data-nosnippet>359</a>		<span class="kw">let </span>ScopeName = <span class="kw">if </span><a href="#358">IsGlobalScope</a> { <span class="string">"Global" </span>} <span class="kw">else </span>{ <span class="string">"Workspace" </span>};
 <a href=#360 id=360 data-nosnippet>360</a>
-<a href=#361 id=361 data-nosnippet>361</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#361 id=361 data-nosnippet>361</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#362 id=362 data-nosnippet>362</a>			<span class="string">"storage-verbose"</span>,
 <a href=#363 id=363 data-nosnippet>363</a>			<span class="string">"[StorageProvider] Getting all values from {} scope."</span>,
 <a href=#364 id=364 data-nosnippet>364</a>			ScopeName
@@ -381,7 +381,7 @@
 <a href=#381 id=381 data-nosnippet>381</a>	</span><span class="kw">async fn </span>SetAllStorage(<span class="kw-2">&amp;</span><a class="self" href="#381">self</a>, <a href="#381">IsGlobalScope</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>, <a href="#381">FullState</a>:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
 <a href=#382 id=382 data-nosnippet>382</a>		<span class="kw">let </span>ScopeName = <span class="kw">if </span><a href="#381">IsGlobalScope</a> { <span class="string">"Global" </span>} <span class="kw">else </span>{ <span class="string">"Workspace" </span>};
 <a href=#383 id=383 data-nosnippet>383</a>
-<a href=#384 id=384 data-nosnippet>384</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#384 id=384 data-nosnippet>384</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#385 id=385 data-nosnippet>385</a>			<span class="string">"storage-verbose"</span>,
 <a href=#386 id=386 data-nosnippet>386</a>			<span class="string">"[StorageProvider] Setting all values for {} scope."</span>,
 <a href=#387 id=387 data-nosnippet>387</a>			ScopeName

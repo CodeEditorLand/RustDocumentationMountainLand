@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["OutputAppend","OutputAppendLine","OutputClear","OutputCreate","OutputShow"]};
+window.SIDEBAR_ITEMS = {"mod":["OutputAppend","OutputAppendLine","OutputClear","OutputCreate","OutputShow"]};

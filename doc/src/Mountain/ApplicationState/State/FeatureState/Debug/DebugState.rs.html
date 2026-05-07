@@ -29,7 +29,7 @@
 <a href=#29 id=29 data-nosnippet>29</a>	sync::{<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>, <a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">Mutex</a> <span class="kw">as </span>StandardMutex},
 <a href=#30 id=30 data-nosnippet>30</a>};
 <a href=#31 id=31 data-nosnippet>31</a>
-<a href=#32 id=32 data-nosnippet>32</a><span class="kw">use </span><a href="../../../../IPC/DevLog.rs.html#726-767"><span class="kw">crate</span>::dev_log</a>;
+<a href=#32 id=32 data-nosnippet>32</a><span class="kw">use </span><a href="../../../../IPC/DevLog/mod.rs.html#40-81"><span class="kw">crate</span>::dev_log</a>;
 <a href=#33 id=33 data-nosnippet>33</a>
 <a href=#34 id=34 data-nosnippet>34</a><span class="doccomment">/// Debug configuration provider registration info
 <a href=#35 id=35 data-nosnippet>35</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>)]
@@ -98,7 +98,7 @@
 <a href=#98 id=98 data-nosnippet>98</a>
 <a href=#99 id=99 data-nosnippet>99</a><span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a> <span class="kw">for </span><a href="#86-97">DebugState</a> {
 <a href=#100 id=100 data-nosnippet>100</a>	<span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{
-<a href=#101 id=101 data-nosnippet>101</a>		<a href="../../../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"exthost"</span>, <span class="string">"[DebugState] Initializing default debug state..."</span>);
+<a href=#101 id=101 data-nosnippet>101</a>		<a href="../../../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"exthost"</span>, <span class="string">"[DebugState] Initializing default debug state..."</span>);
 <a href=#102 id=102 data-nosnippet>102</a>
 <a href=#103 id=103 data-nosnippet>103</a>		<span class="self">Self </span>{
 <a href=#104 id=104 data-nosnippet>104</a>			DebugConfigurationProviders:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">StandardMutex</a>::<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.new">new</a>(<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>::<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.new">new</a>())),

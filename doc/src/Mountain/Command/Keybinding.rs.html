@@ -7,30 +7,28 @@
 <a href=#7 id=7 data-nosnippet>7</a>//! own file (file name = Tauri command identifier per the
 <a href=#8 id=8 data-nosnippet>8</a>//! Naming-Convention exception):
 <a href=#9 id=9 data-nosnippet>9</a>//!
-<a href=#10 id=10 data-nosnippet>10</a>//! - `GetResolvedKeybinding::GetResolvedKeybinding` - final resolved
-<a href=#11 id=11 data-nosnippet>11</a>//!   bindings after merging defaults + extension contributions + user.
+<a href=#10 id=10 data-nosnippet>10</a>//! - `GetResolvedKeybinding::GetResolvedKeybinding` - final resolved bindings
+<a href=#11 id=11 data-nosnippet>11</a>//!   after merging defaults + extension contributions + user.
 <a href=#12 id=12 data-nosnippet>12</a>//! - `GetUserKeybindings::GetUserKeybindings` - user overrides (stub).
-<a href=#13 id=13 data-nosnippet>13</a>//! - `RegisterExtensionKeybindings::RegisterExtensionKeybindings`
-<a href=#14 id=14 data-nosnippet>14</a>//!   (stub).
-<a href=#15 id=15 data-nosnippet>15</a>//! - `UnregisterExtensionKeybindings::UnregisterExtensionKeybindings`
-<a href=#16 id=16 data-nosnippet>16</a>//!   (stub).
-<a href=#17 id=17 data-nosnippet>17</a>//! - `CheckKeybindingConflicts::CheckKeybindingConflicts` - chord overlap
-<a href=#18 id=18 data-nosnippet>18</a>//!   detection (stub).
-<a href=#19 id=19 data-nosnippet>19</a>//!
-<a href=#20 id=20 data-nosnippet>20</a>//! Errors propagate as `Result&lt;Value, String&gt;` for direct frontend
-<a href=#21 id=21 data-nosnippet>21</a>//! display.
-<a href=#22 id=22 data-nosnippet>22</a>//!
-<a href=#23 id=23 data-nosnippet>23</a>//! VS Code reference:
-<a href=#24 id=24 data-nosnippet>24</a>//! `vs/workbench/services/keybinding/browser/keybindingService.ts`,
-<a href=#25 id=25 data-nosnippet>25</a>//! `vs/platform/keybinding/common/keybindingResolver.ts`.
-<a href=#26 id=26 data-nosnippet>26</a>//!
-<a href=#27 id=27 data-nosnippet>27</a>//! TODO: weighted resolution (user &gt; extension &gt; default), persistence
-<a href=#28 id=28 data-nosnippet>28</a>//! to ApplicationState, when-clause contexts, chord (multi-stroke)
-<a href=#29 id=29 data-nosnippet>29</a>//! sequences, platform-specific bindings, conflict-resolution UI.
-<a href=#30 id=30 data-nosnippet>30</a>
-<a href=#31 id=31 data-nosnippet>31</a></span><span class="kw">pub mod </span><a href="Keybinding/CheckKeybindingConflicts.rs.html#1-27">CheckKeybindingConflicts</a>;
-<a href=#32 id=32 data-nosnippet>32</a><span class="kw">pub mod </span><a href="Keybinding/GetResolvedKeybinding.rs.html#1-23">GetResolvedKeybinding</a>;
-<a href=#33 id=33 data-nosnippet>33</a><span class="kw">pub mod </span><a href="Keybinding/GetUserKeybindings.rs.html#1-27">GetUserKeybindings</a>;
-<a href=#34 id=34 data-nosnippet>34</a><span class="kw">pub mod </span><a href="Keybinding/RegisterExtensionKeybindings.rs.html#1-28">RegisterExtensionKeybindings</a>;
-<a href=#35 id=35 data-nosnippet>35</a><span class="kw">pub mod </span><a href="Keybinding/UnregisterExtensionKeybindings.rs.html#1-26">UnregisterExtensionKeybindings</a>;
+<a href=#13 id=13 data-nosnippet>13</a>//! - `RegisterExtensionKeybindings::RegisterExtensionKeybindings` (stub).
+<a href=#14 id=14 data-nosnippet>14</a>//! - `UnregisterExtensionKeybindings::UnregisterExtensionKeybindings` (stub).
+<a href=#15 id=15 data-nosnippet>15</a>//! - `CheckKeybindingConflicts::CheckKeybindingConflicts` - chord overlap
+<a href=#16 id=16 data-nosnippet>16</a>//!   detection (stub).
+<a href=#17 id=17 data-nosnippet>17</a>//!
+<a href=#18 id=18 data-nosnippet>18</a>//! Errors propagate as `Result&lt;Value, String&gt;` for direct frontend
+<a href=#19 id=19 data-nosnippet>19</a>//! display.
+<a href=#20 id=20 data-nosnippet>20</a>//!
+<a href=#21 id=21 data-nosnippet>21</a>//! VS Code reference:
+<a href=#22 id=22 data-nosnippet>22</a>//! `vs/workbench/services/keybinding/browser/keybindingService.ts`,
+<a href=#23 id=23 data-nosnippet>23</a>//! `vs/platform/keybinding/common/keybindingResolver.ts`.
+<a href=#24 id=24 data-nosnippet>24</a>//!
+<a href=#25 id=25 data-nosnippet>25</a>//! TODO: weighted resolution (user &gt; extension &gt; default), persistence
+<a href=#26 id=26 data-nosnippet>26</a>//! to ApplicationState, when-clause contexts, chord (multi-stroke)
+<a href=#27 id=27 data-nosnippet>27</a>//! sequences, platform-specific bindings, conflict-resolution UI.
+<a href=#28 id=28 data-nosnippet>28</a>
+<a href=#29 id=29 data-nosnippet>29</a></span><span class="kw">pub mod </span><a href="Keybinding/CheckKeybindingConflicts.rs.html#1-24">CheckKeybindingConflicts</a>;
+<a href=#30 id=30 data-nosnippet>30</a><span class="kw">pub mod </span><a href="Keybinding/GetResolvedKeybinding.rs.html#1-23">GetResolvedKeybinding</a>;
+<a href=#31 id=31 data-nosnippet>31</a><span class="kw">pub mod </span><a href="Keybinding/GetUserKeybindings.rs.html#1-27">GetUserKeybindings</a>;
+<a href=#32 id=32 data-nosnippet>32</a><span class="kw">pub mod </span><a href="Keybinding/RegisterExtensionKeybindings.rs.html#1-28">RegisterExtensionKeybindings</a>;
+<a href=#33 id=33 data-nosnippet>33</a><span class="kw">pub mod </span><a href="Keybinding/UnregisterExtensionKeybindings.rs.html#1-26">UnregisterExtensionKeybindings</a>;
 </code></pre></div></section></main></body></html>

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["ModelClose","ModelGet","ModelGetAll","ModelOpen","ModelUpdateContent","TextfileRead","TextfileSave","TextfileWrite"]};
+window.SIDEBAR_ITEMS = {"mod":["ModelClose","ModelGet","ModelGetAll","ModelOpen","ModelUpdateContent","TextfileRead","TextfileSave","TextfileWrite"]};

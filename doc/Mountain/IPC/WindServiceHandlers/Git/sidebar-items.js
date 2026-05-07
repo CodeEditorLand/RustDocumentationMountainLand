@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["AsStringArray","ClearPid","Generated","HandleCancel","HandleCheckout","HandleClone","HandleExec","HandleFetch","HandleIsAvailable","HandlePull","HandleRevListCount","HandleRevParse","RegisterPid","ResolveCwd","RunGit","RunningProcesses","TakePid"]};
+window.SIDEBAR_ITEMS = {"mod":["HandleCancel","HandleCheckout","HandleClone","HandleExec","HandleFetch","HandleIsAvailable","HandlePull","HandleRevListCount","HandleRevParse","Shared"]};

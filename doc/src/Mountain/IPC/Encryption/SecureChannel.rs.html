@@ -40,7 +40,7 @@
 <a href=#40 id=40 data-nosnippet>40</a><span class="kw">use </span>serde::{<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>};
 <a href=#41 id=41 data-nosnippet>41</a>
 <a href=#42 id=42 data-nosnippet>42</a><span class="kw">use </span><a href="../Message/Types.rs.html#77-90"><span class="kw">super</span>::<span class="kw">super</span>::Message::Types::TauriIPCMessage</a>;
-<a href=#43 id=43 data-nosnippet>43</a><span class="kw">use </span><a href="../DevLog.rs.html#726-767"><span class="kw">crate</span>::dev_log</a>;
+<a href=#43 id=43 data-nosnippet>43</a><span class="kw">use </span><a href="../DevLog/mod.rs.html#40-81"><span class="kw">crate</span>::dev_log</a>;
 <a href=#44 id=44 data-nosnippet>44</a>
 <a href=#45 id=45 data-nosnippet>45</a><span class="doccomment">/// Encrypted message structure
 <a href=#46 id=46 data-nosnippet>46</a>///
@@ -177,7 +177,7 @@
 <a href=#177 id=177 data-nosnippet>177</a>	/// let secure_channel = SecureMessageChannel::new()?;
 <a href=#178 id=178 data-nosnippet>178</a>	/// ```
 <a href=#179 id=179 data-nosnippet>179</a>	</span><span class="kw">pub fn </span>new() -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<span class="self">Self</span>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
-<a href=#180 id=180 data-nosnippet>180</a>		<a href="../DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"encryption"</span>, <span class="string">"[SecureMessageChannel] Creating new secure channel"</span>);
+<a href=#180 id=180 data-nosnippet>180</a>		<a href="../DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"encryption"</span>, <span class="string">"[SecureMessageChannel] Creating new secure channel"</span>);
 <a href=#181 id=181 data-nosnippet>181</a>
 <a href=#182 id=182 data-nosnippet>182</a>		<span class="kw">let </span>rng = SystemRandom::new();
 <a href=#183 id=183 data-nosnippet>183</a>
@@ -196,7 +196,7 @@
 <a href=#196 id=196 data-nosnippet>196</a>		<a href="#182">rng</a>.fill(<span class="kw-2">&amp;mut </span><a href="#195">hmac_key</a>)
 <a href=#197 id=197 data-nosnippet>197</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Failed to generate HMAC key: {}"</span>, e))<span class="question-mark">?</span>;
 <a href=#198 id=198 data-nosnippet>198</a>
-<a href=#199 id=199 data-nosnippet>199</a>		<a href="../DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"encryption"</span>, <span class="string">"[SecureMessageChannel] Secure channel created successfully"</span>);
+<a href=#199 id=199 data-nosnippet>199</a>		<a href="../DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"encryption"</span>, <span class="string">"[SecureMessageChannel] Secure channel created successfully"</span>);
 <a href=#200 id=200 data-nosnippet>200</a>
 <a href=#201 id=201 data-nosnippet>201</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="self">Self </span>{ <a href="#192">encryption_key</a>, <a href="#195">hmac_key</a> })
 <a href=#202 id=202 data-nosnippet>202</a>	}
@@ -219,7 +219,7 @@
 <a href=#219 id=219 data-nosnippet>219</a>	/// let encrypted = secure_channel.encrypt_message(&amp;message)?;
 <a href=#220 id=220 data-nosnippet>220</a>	/// ```
 <a href=#221 id=221 data-nosnippet>221</a>	</span><span class="kw">pub fn </span>encrypt_message(<span class="kw-2">&amp;</span><span class="self">self</span>, message:<span class="kw-2">&amp;</span><a href="../Message/Types.rs.html#77-90">TauriIPCMessage</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="#70-79">EncryptedMessage</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
-<a href=#222 id=222 data-nosnippet>222</a>		<a href="../DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#222 id=222 data-nosnippet>222</a>		<a href="../DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#223 id=223 data-nosnippet>223</a>			<span class="string">"encryption"</span>,
 <a href=#224 id=224 data-nosnippet>224</a>			<span class="string">"[SecureMessageChannel] Encrypting message on channel: {}"</span>,
 <a href=#225 id=225 data-nosnippet>225</a>			message.channel
@@ -248,7 +248,7 @@
 <a href=#248 id=248 data-nosnippet>248</a>		<span class="kw">let </span>encrypted_message =
 <a href=#249 id=249 data-nosnippet>249</a>			<a href="#70-79">EncryptedMessage</a> { nonce:<a href="#233">nonce</a>.<a href="https://doc.rust-lang.org/nightly/alloc/foreigntype.slice.html#method.to_vec">to_vec</a>(), ciphertext:<a href="#239">in_out</a>, hmac_tag:<a href="#246">hmac_tag</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://doc.rust-lang.org/nightly/alloc/foreigntype.slice.html#method.to_vec">to_vec</a>() };
 <a href=#250 id=250 data-nosnippet>250</a>
-<a href=#251 id=251 data-nosnippet>251</a>		<a href="../DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#251 id=251 data-nosnippet>251</a>		<a href="../DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#252 id=252 data-nosnippet>252</a>			<span class="string">"encryption"</span>,
 <a href=#253 id=253 data-nosnippet>253</a>			<span class="string">"[SecureMessageChannel] Message encrypted: {} bytes -&gt; {} bytes"</span>,
 <a href=#254 id=254 data-nosnippet>254</a>			serialized_message.len(),
@@ -276,7 +276,7 @@
 <a href=#276 id=276 data-nosnippet>276</a>	/// let decrypted = secure_channel.decrypt_message(&amp;encrypted)?;
 <a href=#277 id=277 data-nosnippet>277</a>	/// ```
 <a href=#278 id=278 data-nosnippet>278</a>	</span><span class="kw">pub fn </span>decrypt_message(<span class="kw-2">&amp;</span><span class="self">self</span>, encrypted:<span class="kw-2">&amp;</span><a href="#70-79">EncryptedMessage</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="../Message/Types.rs.html#77-90">TauriIPCMessage</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
-<a href=#279 id=279 data-nosnippet>279</a>		<a href="../DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"encryption"</span>, <span class="string">"[SecureMessageChannel] Decrypting message"</span>);
+<a href=#279 id=279 data-nosnippet>279</a>		<a href="../DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"encryption"</span>, <span class="string">"[SecureMessageChannel] Decrypting message"</span>);
 <a href=#280 id=280 data-nosnippet>280</a>
 <a href=#281 id=281 data-nosnippet>281</a>		<span class="comment">// Verify HMAC first (detect tampering)
 <a href=#282 id=282 data-nosnippet>282</a>		</span><span class="kw">let </span>hmac_key = hmac::Key::new(hmac::HMAC_SHA256, <span class="kw-2">&amp;</span><a class="self" href="#278">self</a>.hmac_key);
@@ -305,7 +305,7 @@
 <a href=#305 id=305 data-nosnippet>305</a>		</span><span class="kw">let </span>message:<a href="../Message/Types.rs.html#77-90">TauriIPCMessage</a> =
 <a href=#306 id=306 data-nosnippet>306</a>			serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/de/fn.from_slice.html">from_slice</a>(<span class="kw-2">&amp;</span><a href="#295">in_out</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Failed to deserialize message: {}"</span>, e))<span class="question-mark">?</span>;
 <a href=#307 id=307 data-nosnippet>307</a>
-<a href=#308 id=308 data-nosnippet>308</a>		<a href="../DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#308 id=308 data-nosnippet>308</a>		<a href="../DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#309 id=309 data-nosnippet>309</a>			<span class="string">"encryption"</span>,
 <a href=#310 id=310 data-nosnippet>310</a>			<span class="string">"[SecureMessageChannel] Message decrypted successfully on channel: {}"</span>,
 <a href=#311 id=311 data-nosnippet>311</a>			message.channel
@@ -329,11 +329,11 @@
 <a href=#329 id=329 data-nosnippet>329</a>	/// secure_channel.rotate_keys()?;
 <a href=#330 id=330 data-nosnippet>330</a>	/// ```
 <a href=#331 id=331 data-nosnippet>331</a>	</span><span class="kw">pub fn </span>rotate_keys(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
-<a href=#332 id=332 data-nosnippet>332</a>		<a href="../DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"encryption"</span>, <span class="string">"[SecureMessageChannel] Rotating encryption keys"</span>);
+<a href=#332 id=332 data-nosnippet>332</a>		<a href="../DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"encryption"</span>, <span class="string">"[SecureMessageChannel] Rotating encryption keys"</span>);
 <a href=#333 id=333 data-nosnippet>333</a>
 <a href=#334 id=334 data-nosnippet>334</a>		<span class="kw-2">*</span><a class="self" href="#331">self</a> = <span class="self">Self</span>::<a href="#179-202">new</a>()<span class="question-mark">?</span>;
 <a href=#335 id=335 data-nosnippet>335</a>
-<a href=#336 id=336 data-nosnippet>336</a>		<a href="../DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"encryption"</span>, <span class="string">"[SecureMessageChannel] Keys rotated successfully"</span>);
+<a href=#336 id=336 data-nosnippet>336</a>		<a href="../DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"encryption"</span>, <span class="string">"[SecureMessageChannel] Keys rotated successfully"</span>);
 <a href=#337 id=337 data-nosnippet>337</a>
 <a href=#338 id=338 data-nosnippet>338</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#339 id=339 data-nosnippet>339</a>	}

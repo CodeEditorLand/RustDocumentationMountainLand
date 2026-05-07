@@ -22,7 +22,7 @@
 <a href=#22 id=22 data-nosnippet>22</a><span class="kw">use </span>crate::{
 <a href=#23 id=23 data-nosnippet>23</a>	<a href="../../../Environment/CommandProvider.rs.html#192-208">Environment::CommandProvider::CommandHandler</a>,
 <a href=#24 id=24 data-nosnippet>24</a>	<a href="../MountainVinegRPCService.rs.html#77-87">Vine::Server::MountainVinegRPCService::MountainVinegRPCService</a>,
-<a href=#25 id=25 data-nosnippet>25</a>	<a href="../../../IPC/DevLog.rs.html#726-767">dev_log</a>,
+<a href=#25 id=25 data-nosnippet>25</a>	<a href="../../../IPC/DevLog/mod.rs.html#40-81">dev_log</a>,
 <a href=#26 id=26 data-nosnippet>26</a>};
 <a href=#27 id=27 data-nosnippet>27</a>
 <a href=#28 id=28 data-nosnippet>28</a><span class="doccomment">/// Coalesced Mountain → Sky emit buffer for `sky://command/register`.
@@ -67,10 +67,10 @@
 <a href=#67 id=67 data-nosnippet>67</a>			<span class="kw">let </span>Count = <a href="#59">Drained</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.len">len</a>();
 <a href=#68 id=68 data-nosnippet>68</a>			<span class="kw">match </span><a href="#56">HandleClone</a>.emit(<span class="string">"sky://command/register"</span>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json!</a>({ <span class="string">"commands"</span>: Drained })) {
 <a href=#69 id=69 data-nosnippet>69</a>				<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(()) =&gt; {
-<a href=#70 id=70 data-nosnippet>70</a>					<a href="../../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"sky-emit"</span>, <span class="string">"[SkyEmit] ok channel=sky://command/register batch={}"</span>, Count);
+<a href=#70 id=70 data-nosnippet>70</a>					<a href="../../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"sky-emit"</span>, <span class="string">"[SkyEmit] ok channel=sky://command/register batch={}"</span>, Count);
 <a href=#71 id=71 data-nosnippet>71</a>				},
 <a href=#72 id=72 data-nosnippet>72</a>				<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error) =&gt; {
-<a href=#73 id=73 data-nosnippet>73</a>					<a href="../../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#73 id=73 data-nosnippet>73</a>					<a href="../../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#74 id=74 data-nosnippet>74</a>						<span class="string">"sky-emit"</span>,
 <a href=#75 id=75 data-nosnippet>75</a>						<span class="string">"[SkyEmit] fail channel=sky://command/register batch={} error={}"</span>,
 <a href=#76 id=76 data-nosnippet>76</a>						Count,

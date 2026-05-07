@@ -10,23 +10,28 @@
 <a href=#10 id=10 data-nosnippet>10</a>//! - `Initialize::Fn` - boot the global ingestion client.
 <a href=#11 id=11 data-nosnippet>11</a>//! - `CaptureEvent::Fn` - generic event emitter with `$app` / `$component`
 <a href=#12 id=12 data-nosnippet>12</a>//!   standard props.
-<a href=#13 id=13 data-nosnippet>13</a>//! - `CaptureError::Fn` - emit under `mountain:error` with tag + message.
-<a href=#14 id=14 data-nosnippet>14</a>//! - `CaptureIPC::Fn` - emit under `mountain:ipc:invoke` with method name.
-<a href=#15 id=15 data-nosnippet>15</a>//!
-<a href=#16 id=16 data-nosnippet>16</a>//! Module-private helpers:
-<a href=#17 id=17 data-nosnippet>17</a>//! - `Constants` - `Authorize` / `Beam` / `Report` / `Brand` baked from
-<a href=#18 id=18 data-nosnippet>18</a>//!   `.env.Land.PostHog`.
-<a href=#19 id=19 data-nosnippet>19</a>//! - `Client::CLIENT` - `OnceLock&lt;posthog_rs::Client&gt;` singleton.
-<a href=#20 id=20 data-nosnippet>20</a>//! - `DistinctId::Fn` - pinned-or-derived dev distinct id.
-<a href=#21 id=21 data-nosnippet>21</a>//! - `CaptureAllowed::Fn` - `debug_assertions` &amp;&amp; `Report != off`.
-<a href=#22 id=22 data-nosnippet>22</a>
-<a href=#23 id=23 data-nosnippet>23</a></span><span class="kw">pub mod </span><a href="PostHogPlugin/CaptureError.rs.html#1-13">CaptureError</a>;
-<a href=#24 id=24 data-nosnippet>24</a><span class="kw">pub mod </span><a href="PostHogPlugin/CaptureEvent.rs.html#1-30">CaptureEvent</a>;
-<a href=#25 id=25 data-nosnippet>25</a><span class="kw">pub mod </span><a href="PostHogPlugin/CaptureIPC.rs.html#1-13">CaptureIPC</a>;
-<a href=#26 id=26 data-nosnippet>26</a><span class="kw">pub mod </span><a href="PostHogPlugin/Initialize.rs.html#1-36">Initialize</a>;
-<a href=#27 id=27 data-nosnippet>27</a>
-<a href=#28 id=28 data-nosnippet>28</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod </span><a href="PostHogPlugin/CaptureAllowed.rs.html#1-14">CaptureAllowed</a>;
-<a href=#29 id=29 data-nosnippet>29</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod </span><a href="PostHogPlugin/Client.rs.html#1-9">Client</a>;
-<a href=#30 id=30 data-nosnippet>30</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod </span><a href="PostHogPlugin/Constants.rs.html#1-21">Constants</a>;
-<a href=#31 id=31 data-nosnippet>31</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod </span><a href="PostHogPlugin/DistinctId.rs.html#1-17">DistinctId</a>;
+<a href=#13 id=13 data-nosnippet>13</a>//! - `CaptureError::Fn` - emit under `land:mountain:error` with tag + message.
+<a href=#14 id=14 data-nosnippet>14</a>//! - `CaptureIPC::Fn` - emit under `land:mountain:ipc:invoke` with method name.
+<a href=#15 id=15 data-nosnippet>15</a>//! - `CaptureHandler::Fn` - emit under `land:mountain:handler:complete` with
+<a href=#16 id=16 data-nosnippet>16</a>//!   `feature` + `duration_ms` + `ok`. Powers the Feature Parity dashboard's
+<a href=#17 id=17 data-nosnippet>17</a>//!   Node-vs-Rust handler latency comparison.
+<a href=#18 id=18 data-nosnippet>18</a>//!
+<a href=#19 id=19 data-nosnippet>19</a>//! Module-private helpers:
+<a href=#20 id=20 data-nosnippet>20</a>//! - `Constants` - `Authorize` / `Beam` / `Report` / `Brand` baked from
+<a href=#21 id=21 data-nosnippet>21</a>//!   `.env.Land.PostHog`.
+<a href=#22 id=22 data-nosnippet>22</a>//! - `Client::CLIENT` - `OnceLock&lt;posthog_rs::Client&gt;` singleton.
+<a href=#23 id=23 data-nosnippet>23</a>//! - `DistinctId::Fn` - pinned-or-derived dev distinct id.
+<a href=#24 id=24 data-nosnippet>24</a>//! - `CaptureAllowed::Fn` - `debug_assertions` &amp;&amp; `Report != off`.
+<a href=#25 id=25 data-nosnippet>25</a>
+<a href=#26 id=26 data-nosnippet>26</a></span><span class="kw">pub mod </span><a href="PostHogPlugin/CaptureError.rs.html#1-18">CaptureError</a>;
+<a href=#27 id=27 data-nosnippet>27</a><span class="kw">pub mod </span><a href="PostHogPlugin/CaptureEvent.rs.html#1-30">CaptureEvent</a>;
+<a href=#28 id=28 data-nosnippet>28</a><span class="kw">pub mod </span><a href="PostHogPlugin/CaptureHandler.rs.html#1-24">CaptureHandler</a>;
+<a href=#29 id=29 data-nosnippet>29</a><span class="kw">pub mod </span><a href="PostHogPlugin/CaptureIPC.rs.html#1-15">CaptureIPC</a>;
+<a href=#30 id=30 data-nosnippet>30</a><span class="kw">pub mod </span><a href="PostHogPlugin/HydrateRuntimeEnvironment.rs.html#1-59">HydrateRuntimeEnvironment</a>;
+<a href=#31 id=31 data-nosnippet>31</a><span class="kw">pub mod </span><a href="PostHogPlugin/Initialize.rs.html#1-43">Initialize</a>;
+<a href=#32 id=32 data-nosnippet>32</a>
+<a href=#33 id=33 data-nosnippet>33</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod </span><a href="PostHogPlugin/CaptureAllowed.rs.html#1-23">CaptureAllowed</a>;
+<a href=#34 id=34 data-nosnippet>34</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod </span><a href="PostHogPlugin/Client.rs.html#1-9">Client</a>;
+<a href=#35 id=35 data-nosnippet>35</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod </span><a href="PostHogPlugin/Constants.rs.html#1-45">Constants</a>;
+<a href=#36 id=36 data-nosnippet>36</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">mod </span><a href="PostHogPlugin/DistinctId.rs.html#1-17">DistinctId</a>;
 </code></pre></div></section></main></body></html>

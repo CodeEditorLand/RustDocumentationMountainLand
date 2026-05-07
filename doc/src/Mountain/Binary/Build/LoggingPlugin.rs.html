@@ -7,7 +7,7 @@
 <a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span>tauri::plugin::TauriPlugin;
 <a href=#8 id=8 data-nosnippet>8</a><span class="kw">use </span>tauri_plugin_log::{RotationStrategy, Target, TargetKind, TimezoneStrategy};
 <a href=#9 id=9 data-nosnippet>9</a>
-<a href=#10 id=10 data-nosnippet>10</a><span class="kw">use </span><a href="../../IPC/mod.rs.html#120"><span class="kw">crate</span>::IPC::DevLog</a>;
+<a href=#10 id=10 data-nosnippet>10</a><span class="kw">use </span><a href="../../IPC/mod.rs.html#118"><span class="kw">crate</span>::IPC::DevLog</a>;
 <a href=#11 id=11 data-nosnippet>11</a>
 <a href=#12 id=12 data-nosnippet>12</a><span class="doccomment">/// Compress a Rust module target path to its final segment.
 <a href=#13 id=13 data-nosnippet>13</a>///
@@ -105,10 +105,10 @@
 <a href=#105 id=105 data-nosnippet>105</a>		})
 <a href=#106 id=106 data-nosnippet>106</a>		<span class="comment">// Format logs with category-like structure: [LEVEL] [TARGET] message
 <a href=#107 id=107 data-nosnippet>107</a>		</span>.format(|out, message, record| {
-<a href=#108 id=108 data-nosnippet>108</a>			<span class="kw">if </span>DevLog::<a href="../../IPC/DevLog.rs.html#648">IsShort</a>() {
+<a href=#108 id=108 data-nosnippet>108</a>			<span class="kw">if </span>DevLog::IsShort::<a href="../../IPC/DevLog/IsShort.rs.html#12">Fn</a>() {
 <a href=#109 id=109 data-nosnippet>109</a>				<span class="kw">let </span>ShortTarget = <a href="#16">CompressTarget</a>(<a href="#107">record</a>.<a href="https://docs.rs/log/0.4.29/log/struct.Record.html#method.target">target</a>());
 <a href=#110 id=110 data-nosnippet>110</a>				<span class="kw">let </span>RawMessage = <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"{}"</span>, message);
-<a href=#111 id=111 data-nosnippet>111</a>				<span class="kw">let </span>Aliased = DevLog::<a href="../../IPC/DevLog.rs.html#434-440">AliasPath</a>(<span class="kw-2">&amp;</span><a href="#110">RawMessage</a>);
+<a href=#111 id=111 data-nosnippet>111</a>				<span class="kw">let </span>Aliased = DevLog::AliasPath::<a href="../../IPC/DevLog/AliasPath.rs.html#8-14">Fn</a>(<span class="kw-2">&amp;</span><a href="#110">RawMessage</a>);
 <a href=#112 id=112 data-nosnippet>112</a>				<a href="#107">out</a>.<a href="https://docs.rs/fern/0.7.1/fern/log_impl/struct.FormatCallback.html#method.finish">finish</a>(<a href="https://doc.rust-lang.org/nightly/core/macro.format_args.html">format_args!</a>(
 <a href=#113 id=113 data-nosnippet>113</a>					<span class="string">"[{:&lt;5}] [{}] {}"</span>,
 <a href=#114 id=114 data-nosnippet>114</a>					record.level(),

@@ -6,7 +6,7 @@
 <a href=#6 id=6 data-nosnippet>6</a>
 <a href=#7 id=7 data-nosnippet>7</a></span><span class="kw">use </span>Echo::Scheduler::SchedulerBuilder::SchedulerBuilder;
 <a href=#8 id=8 data-nosnippet>8</a>
-<a href=#9 id=9 data-nosnippet>9</a><span class="kw">use </span>crate::{<a href="../RuntimeBuild.rs.html#28">Binary::Initialize::RuntimeBuild::SchedulerConfig</a>, <a href="../../../IPC/DevLog.rs.html#726-767">dev_log</a>};
+<a href=#9 id=9 data-nosnippet>9</a><span class="kw">use </span>crate::{<a href="../RuntimeBuild.rs.html#28">Binary::Initialize::RuntimeBuild::SchedulerConfig</a>, <a href="../../../IPC/DevLog/mod.rs.html#40-81">dev_log</a>};
 <a href=#10 id=10 data-nosnippet>10</a>
 <a href=#11 id=11 data-nosnippet>11</a><span class="kw">pub fn </span><a href="../../../../../Mountain/Binary/Initialize/RuntimeBuild/CreateBuilder/fn.Fn.html">Fn</a>(Config:SchedulerConfig::<a href="SchedulerConfig.rs.html#8-12">Struct</a>) -&gt; SchedulerBuilder {
 <a href=#12 id=12 data-nosnippet>12</a>	<span class="kw">let </span><span class="kw-2">mut </span>Builder = SchedulerBuilder::Create();
@@ -14,7 +14,7 @@
 <a href=#14 id=14 data-nosnippet>14</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Count) = <a href="#11">Config</a>.WorkerCount {
 <a href=#15 id=15 data-nosnippet>15</a>		<span class="kw">let </span>Count = <a href="#14">Count</a>.<a href="https://doc.rust-lang.org/nightly/core/cmp/trait.Ord.html#method.clamp">clamp</a>(<span class="number">1</span>, <span class="number">256</span>);
 <a href=#16 id=16 data-nosnippet>16</a>		<a href="#12">Builder</a> = <a href="#12">Builder</a>.WithWorkerCount(<a href="#15">Count</a>);
-<a href=#17 id=17 data-nosnippet>17</a>		<a href="../../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[RuntimeBuild] Configuring {} worker threads"</span>, Count);
+<a href=#17 id=17 data-nosnippet>17</a>		<a href="../../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[RuntimeBuild] Configuring {} worker threads"</span>, Count);
 <a href=#18 id=18 data-nosnippet>18</a>	}
 <a href=#19 id=19 data-nosnippet>19</a>
 <a href=#20 id=20 data-nosnippet>20</a>	<a href="#12">Builder</a>

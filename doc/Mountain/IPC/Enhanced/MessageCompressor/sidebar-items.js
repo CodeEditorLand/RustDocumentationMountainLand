@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":["CompressionAlgorithm","CompressionLevel"],"struct":["BatchConfig","BatchStats","CompressedBatch","CompressionInfo","MessageCompressor"]};
+window.SIDEBAR_ITEMS = {"mod":["BatchConfig","BatchStats","CompressedBatch","CompressionAlgorithm","CompressionInfo","CompressionLevel","Compressor"]};

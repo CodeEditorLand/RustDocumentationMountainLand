@@ -12,7 +12,7 @@
 <a href=#12 id=12 data-nosnippet>12</a>	<a href="../../../ExtensionManagement/mod.rs.html#8">ExtensionManagement::VsixInstaller</a>,
 <a href=#13 id=13 data-nosnippet>13</a>	<a href="NotifyCocoonDeltaExtensions.rs.html#28-81">IPC::WindServiceHandlers::Extension::NotifyCocoonDeltaExtensions::NotifyCocoonDeltaExtensions</a>,
 <a href=#14 id=14 data-nosnippet>14</a>	<a href="../../../RunTime/ApplicationRunTime/mod.rs.html#16-21">RunTime::ApplicationRunTime::ApplicationRunTime</a>,
-<a href=#15 id=15 data-nosnippet>15</a>	<a href="../../DevLog.rs.html#726-767">dev_log</a>,
+<a href=#15 id=15 data-nosnippet>15</a>	<a href="../../DevLog/mod.rs.html#40-81">dev_log</a>,
 <a href=#16 id=16 data-nosnippet>16</a>};
 <a href=#17 id=17 data-nosnippet>17</a>
 <a href=#18 id=18 data-nosnippet>18</a><span class="kw">pub async fn </span><a href="../../../../../Mountain/IPC/WindServiceHandlers/Extension/ExtensionUninstall/fn.ExtensionUninstall.html">ExtensionUninstall</a>(
@@ -20,7 +20,7 @@
 <a href=#20 id=20 data-nosnippet>20</a>	Runtime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../../../RunTime/ApplicationRunTime/mod.rs.html#16-21">ApplicationRunTime</a>&gt;,
 <a href=#21 id=21 data-nosnippet>21</a>	Args:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;,
 <a href=#22 id=22 data-nosnippet>22</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
-<a href=#23 id=23 data-nosnippet>23</a>	<span class="kw">let </span>OTELStart = <span class="kw">crate</span>::IPC::DevLog::NowNano();
+<a href=#23 id=23 data-nosnippet>23</a>	<span class="kw">let </span>OTELStart = <span class="kw">crate</span>::IPC::DevLog::NowNano::Fn();
 <a href=#24 id=24 data-nosnippet>24</a>
 <a href=#25 id=25 data-nosnippet>25</a>	<span class="kw">let </span>Identifier = <span class="kw">match </span>Args.first().and_then(|Value| {
 <a href=#26 id=26 data-nosnippet>26</a>		Value

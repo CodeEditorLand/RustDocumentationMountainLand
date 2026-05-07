@@ -57,7 +57,7 @@
 <a href=#57 id=57 data-nosnippet>57</a><span class="kw">use </span>rustls_pki_types::{CertificateDer, PrivateKeyDer, PrivatePkcs8KeyDer};
 <a href=#58 id=58 data-nosnippet>58</a><span class="kw">use </span>keyring::Entry;
 <a href=#59 id=59 data-nosnippet>59</a>
-<a href=#60 id=60 data-nosnippet>60</a><span class="kw">use </span><a href="../../IPC/DevLog.rs.html#726-767"><span class="kw">crate</span>::dev_log</a>;
+<a href=#60 id=60 data-nosnippet>60</a><span class="kw">use </span><a href="../../IPC/DevLog/mod.rs.html#40-81"><span class="kw">crate</span>::dev_log</a>;
 <a href=#61 id=61 data-nosnippet>61</a>
 <a href=#62 id=62 data-nosnippet>62</a><span class="doccomment">/// Certificate information for display and validation
 <a href=#63 id=63 data-nosnippet>63</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">serde::Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">serde::Deserialize</a>)]
@@ -193,7 +193,7 @@
 <a href=#193 id=193 data-nosnippet>193</a>	/// - Valid for 10 years
 <a href=#194 id=194 data-nosnippet>194</a>	/// - Includes proper extensions for CA functionality
 <a href=#195 id=195 data-nosnippet>195</a>	</span><span class="kw">fn </span>generate_ca_cert(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a class="prelude-ty" href="https://docs.rs/anyhow/1.0.102/anyhow/type.Result.html">Result</a>&lt;(<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;, <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;)&gt; {
-<a href=#196 id=196 data-nosnippet>196</a>		<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"security"</span>, <span class="string">"generating new CA certificate"</span>);
+<a href=#196 id=196 data-nosnippet>196</a>		<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"security"</span>, <span class="string">"generating new CA certificate"</span>);
 <a href=#197 id=197 data-nosnippet>197</a>
 <a href=#198 id=198 data-nosnippet>198</a>		<span class="comment">// NOTE: Using rcgen CertificateParams::default() which provides working API
 <a href=#199 id=199 data-nosnippet>199</a>
@@ -224,7 +224,7 @@
 <a href=#224 id=224 data-nosnippet>224</a>		</span><span class="kw">let </span>cert_pem = <a href="#221">cert</a>.pem();
 <a href=#225 id=225 data-nosnippet>225</a>		<span class="kw">let </span>key_pem = <a href="#201">key_pair</a>.serialize_pem();
 <a href=#226 id=226 data-nosnippet>226</a>
-<a href=#227 id=227 data-nosnippet>227</a>		<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"security"</span>, <span class="string">"CA certificate generated successfully"</span>);
+<a href=#227 id=227 data-nosnippet>227</a>		<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"security"</span>, <span class="string">"CA certificate generated successfully"</span>);
 <a href=#228 id=228 data-nosnippet>228</a>
 <a href=#229 id=229 data-nosnippet>229</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>((<a href="#224">cert_pem</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.into_bytes">into_bytes</a>(), <a href="#225">key_pem</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.into_bytes">into_bytes</a>()))
 <a href=#230 id=230 data-nosnippet>230</a>	}
@@ -356,7 +356,7 @@
 <a href=#356 id=356 data-nosnippet>356</a>		</span><span class="kw">let </span>info = <a class="self" href="#288">self</a>.<a href="#601-649">extract_cert_info</a>(<span class="kw-2">&amp;</span><a href="#333">cert_der_for_info</a>, <a href="#288">hostname</a>, <span class="bool-val">true</span>)<span class="question-mark">?</span>;
 <a href=#357 id=357 data-nosnippet>357</a>		<span class="kw">let </span>valid_until = <a href="https://docs.rs/chrono/latest/chrono/offset/utc/struct.Utc.html">Utc</a>::<a href="https://docs.rs/chrono/latest/chrono/offset/utc/struct.Utc.html#method.now">now</a>() + chrono::<a href="https://docs.rs/chrono/latest/chrono/type.Duration.html">Duration</a>::<a href="https://docs.rs/chrono/latest/chrono/time_delta/struct.TimeDelta.html#method.days">days</a>(<span class="self">Self</span>::<a href="#120">SERVER_VALIDITY_DAYS</a>);
 <a href=#358 id=358 data-nosnippet>358</a>
-<a href=#359 id=359 data-nosnippet>359</a>		<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#359 id=359 data-nosnippet>359</a>		<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#360 id=360 data-nosnippet>360</a>			<span class="string">"security"</span>,
 <a href=#361 id=361 data-nosnippet>361</a>			<span class="string">"server certificate generated for {} (valid until {})"</span>,
 <a href=#362 id=362 data-nosnippet>362</a>			hostname,
@@ -388,7 +388,7 @@
 <a href=#388 id=388 data-nosnippet>388</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://docs.rs/anyhow/1.0.102/anyhow/macro.anyhow.html">anyhow::anyhow!</a>(<span class="string">"Failed to load CA key from keyring: {}"</span>, e))<span class="question-mark">?
 <a href=#389 id=389 data-nosnippet>389</a>			</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.into_bytes">into_bytes</a>();
 <a href=#390 id=390 data-nosnippet>390</a>
-<a href=#391 id=391 data-nosnippet>391</a>		<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"security"</span>, <span class="string">"CA certificate loaded from keyring"</span>);
+<a href=#391 id=391 data-nosnippet>391</a>		<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"security"</span>, <span class="string">"CA certificate loaded from keyring"</span>);
 <a href=#392 id=392 data-nosnippet>392</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>((<a href="#380">cert</a>, <a href="#386">key</a>)))
 <a href=#393 id=393 data-nosnippet>393</a>	}
 <a href=#394 id=394 data-nosnippet>394</a>
@@ -413,7 +413,7 @@
 <a href=#413 id=413 data-nosnippet>413</a>			.set_password(<span class="kw-2">&amp;</span><a href="#406">key_str</a>)
 <a href=#414 id=414 data-nosnippet>414</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://docs.rs/anyhow/1.0.102/anyhow/macro.anyhow.html">anyhow::anyhow!</a>(<span class="string">"Failed to save CA key to keyring: {}"</span>, e))<span class="question-mark">?</span>;
 <a href=#415 id=415 data-nosnippet>415</a>
-<a href=#416 id=416 data-nosnippet>416</a>		<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"security"</span>, <span class="string">"CA certificate saved to keyring"</span>);
+<a href=#416 id=416 data-nosnippet>416</a>		<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"security"</span>, <span class="string">"CA certificate saved to keyring"</span>);
 <a href=#417 id=417 data-nosnippet>417</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#418 id=418 data-nosnippet>418</a>	}
 <a href=#419 id=419 data-nosnippet>419</a>
@@ -426,7 +426,7 @@
 <a href=#426 id=426 data-nosnippet>426</a>			<a href="#425">result</a>.should_renew
 <a href=#427 id=427 data-nosnippet>427</a>		} <span class="kw">else </span>{
 <a href=#428 id=428 data-nosnippet>428</a>			<span class="comment">// If we can't parse validity, err on the side of renewal
-<a href=#429 id=429 data-nosnippet>429</a>			</span><a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"security"</span>, <span class="string">"warn: could not parse certificate validity, forcing renewal"</span>);
+<a href=#429 id=429 data-nosnippet>429</a>			</span><a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"security"</span>, <span class="string">"warn: could not parse certificate validity, forcing renewal"</span>);
 <a href=#430 id=430 data-nosnippet>430</a>			<span class="bool-val">true
 <a href=#431 id=431 data-nosnippet>431</a>		</span>}
 <a href=#432 id=432 data-nosnippet>432</a>	}

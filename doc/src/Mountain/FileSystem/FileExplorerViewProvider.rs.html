@@ -22,7 +22,7 @@
 <a href=#22 id=22 data-nosnippet>22</a><span class="kw">use </span>tauri::{AppHandle, Manager};
 <a href=#23 id=23 data-nosnippet>23</a><span class="kw">use </span><a href="https://docs.rs/url/2.5.7/url/struct.Url.html">url::Url</a>;
 <a href=#24 id=24 data-nosnippet>24</a>
-<a href=#25 id=25 data-nosnippet>25</a><span class="kw">use </span>crate::{<a href="../RunTime/ApplicationRunTime/mod.rs.html#16-21">RunTime::ApplicationRunTime::ApplicationRunTime</a> <span class="kw">as </span>Runtime, <a href="../IPC/DevLog.rs.html#726-767">dev_log</a>};
+<a href=#25 id=25 data-nosnippet>25</a><span class="kw">use </span>crate::{<a href="../RunTime/ApplicationRunTime/mod.rs.html#16-21">RunTime::ApplicationRunTime::ApplicationRunTime</a> <span class="kw">as </span>Runtime, <a href="../IPC/DevLog/mod.rs.html#40-81">dev_log</a>};
 <a href=#26 id=26 data-nosnippet>26</a>
 <a href=#27 id=27 data-nosnippet>27</a><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>)]
 <a href=#28 id=28 data-nosnippet>28</a></span><span class="kw">pub struct </span><a href="#28-30">Struct</a> {
@@ -100,7 +100,7 @@
 <a href=#100 id=100 data-nosnippet>100</a>		<a href="#100">_ElementHandle</a>:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#101 id=101 data-nosnippet>101</a>		<a href="#101">_IsExpanded</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
 <a href=#102 id=102 data-nosnippet>102</a>	) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
-<a href=#103 id=103 data-nosnippet>103</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"vfs"</span>, <span class="string">"[FileExplorer] OnTreeNodeExpanded - native provider no-op"</span>);
+<a href=#103 id=103 data-nosnippet>103</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"vfs"</span>, <span class="string">"[FileExplorer] OnTreeNodeExpanded - native provider no-op"</span>);
 <a href=#104 id=104 data-nosnippet>104</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#105 id=105 data-nosnippet>105</a>	}
 <a href=#106 id=106 data-nosnippet>106</a>
@@ -109,7 +109,7 @@
 <a href=#109 id=109 data-nosnippet>109</a>		<a href="#109">_ViewIdentifier</a>:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#110 id=110 data-nosnippet>110</a>		<a href="#110">_SelectedHandles</a>:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;,
 <a href=#111 id=111 data-nosnippet>111</a>	) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
-<a href=#112 id=112 data-nosnippet>112</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"vfs"</span>, <span class="string">"[FileExplorer] OnTreeSelectionChanged - native provider no-op"</span>);
+<a href=#112 id=112 data-nosnippet>112</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"vfs"</span>, <span class="string">"[FileExplorer] OnTreeSelectionChanged - native provider no-op"</span>);
 <a href=#113 id=113 data-nosnippet>113</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#114 id=114 data-nosnippet>114</a>	}
 <a href=#115 id=115 data-nosnippet>115</a>
@@ -155,7 +155,7 @@
 <a href=#155 id=155 data-nosnippet>155</a>			<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="#151">RootItems</a>);
 <a href=#156 id=156 data-nosnippet>156</a>		};
 <a href=#157 id=157 data-nosnippet>157</a>
-<a href=#158 id=158 data-nosnippet>158</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"vfs"</span>, <span class="string">"[FileExplorer] GetChildren {}"</span>, PathToRead.display());
+<a href=#158 id=158 data-nosnippet>158</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"vfs"</span>, <span class="string">"[FileExplorer] GetChildren {}"</span>, PathToRead.display());
 <a href=#159 id=159 data-nosnippet>159</a>
 <a href=#160 id=160 data-nosnippet>160</a>		<span class="kw">let </span>Entries:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;(<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, FileTypeDTO)&gt; = <a href="#131">RunTime</a>.Run(ReadDirectory(<a href="#134">PathToRead</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>())).<span class="kw">await</span><span class="question-mark">?</span>;
 <a href=#161 id=161 data-nosnippet>161</a>

@@ -20,7 +20,7 @@
 <a href=#20 id=20 data-nosnippet>20</a><span class="kw">use </span>tauri::{AppHandle, Emitter};
 <a href=#21 id=21 data-nosnippet>21</a><span class="kw">use </span>CommonLibrary::IPC::SkyEvent::SkyEvent;
 <a href=#22 id=22 data-nosnippet>22</a>
-<a href=#23 id=23 data-nosnippet>23</a><span class="kw">use </span><a href="../../../IPC/DevLog.rs.html#726-767"><span class="kw">crate</span>::dev_log</a>;
+<a href=#23 id=23 data-nosnippet>23</a><span class="kw">use </span><a href="../../../IPC/DevLog/mod.rs.html#40-81"><span class="kw">crate</span>::dev_log</a>;
 <a href=#24 id=24 data-nosnippet>24</a>
 <a href=#25 id=25 data-nosnippet>25</a><span class="kw">struct </span><a href="../../../../../Mountain/RPC/CocoonService/TreeView/EnqueueTreeViewEmit/struct.Batch.html">Batch</a> {
 <a href=#26 id=26 data-nosnippet>26</a>	Pending:<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">Mutex</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;&gt;,
@@ -54,9 +54,9 @@
 <a href=#54 id=54 data-nosnippet>54</a>			}
 <a href=#55 id=55 data-nosnippet>55</a>			<span class="kw">let </span>Count = <a href="#47">Drained</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.len">len</a>();
 <a href=#56 id=56 data-nosnippet>56</a>			<span class="kw">match </span><a href="#43">HandleCloned</a>.emit(<span class="kw-2">&amp;</span><a href="#44">Channel</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json!</a>({ <span class="string">"views"</span>: Drained })) {
-<a href=#57 id=57 data-nosnippet>57</a>				<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(()) =&gt; <a href="../../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"sky-emit"</span>, <span class="string">"[SkyEmit] ok channel={} batch={}"</span>, Channel, Count),
+<a href=#57 id=57 data-nosnippet>57</a>				<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(()) =&gt; <a href="../../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"sky-emit"</span>, <span class="string">"[SkyEmit] ok channel={} batch={}"</span>, Channel, Count),
 <a href=#58 id=58 data-nosnippet>58</a>				<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error) =&gt; {
-<a href=#59 id=59 data-nosnippet>59</a>					<a href="../../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"sky-emit"</span>, <span class="string">"[SkyEmit] fail channel={} batch={} error={}"</span>, Channel, Count, Error)
+<a href=#59 id=59 data-nosnippet>59</a>					<a href="../../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"sky-emit"</span>, <span class="string">"[SkyEmit] fail channel={} batch={} error={}"</span>, Channel, Count, Error)
 <a href=#60 id=60 data-nosnippet>60</a>				},
 <a href=#61 id=61 data-nosnippet>61</a>			}
 <a href=#62 id=62 data-nosnippet>62</a>		});

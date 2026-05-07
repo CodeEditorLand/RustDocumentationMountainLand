@@ -57,7 +57,7 @@
 <a href=#57 id=57 data-nosnippet>57</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#58 id=58 data-nosnippet>58</a><span class="kw">use </span>zip::ZipArchive;
 <a href=#59 id=59 data-nosnippet>59</a>
-<a href=#60 id=60 data-nosnippet>60</a><span class="kw">use </span>crate::{<a href="../ApplicationState/DTO/ExtensionDescriptionStateDTO.rs.html#49-207">ApplicationState::DTO::ExtensionDescriptionStateDTO::ExtensionDescriptionStateDTO</a>, <a href="../IPC/DevLog.rs.html#726-767">dev_log</a>};
+<a href=#60 id=60 data-nosnippet>60</a><span class="kw">use </span>crate::{<a href="../ApplicationState/DTO/ExtensionDescriptionStateDTO.rs.html#49-207">ApplicationState::DTO::ExtensionDescriptionStateDTO::ExtensionDescriptionStateDTO</a>, <a href="../IPC/DevLog/mod.rs.html#40-81">dev_log</a>};
 <a href=#61 id=61 data-nosnippet>61</a>
 <a href=#62 id=62 data-nosnippet>62</a><span class="doccomment">/// Everything an IPC handler needs after a successful install.
 <a href=#63 id=63 data-nosnippet>63</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>)]
@@ -133,7 +133,7 @@
 <a href=#133 id=133 data-nosnippet>133</a>			</span><span class="attr">#[cfg(unix)]
 <a href=#134 id=134 data-nosnippet>134</a>			</span><a href="#376-468">HealExecutableBits</a>(<span class="kw-2">&amp;</span><a href="#114">InstalledAt</a>);
 <a href=#135 id=135 data-nosnippet>135</a>
-<a href=#136 id=136 data-nosnippet>136</a>			<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#136 id=136 data-nosnippet>136</a>			<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#137 id=137 data-nosnippet>137</a>				<span class="string">"extensions"</span>,
 <a href=#138 id=138 data-nosnippet>138</a>				<span class="string">"[VsixInstaller] Reinstall no-op - '{}' v{} already present at {}"</span>,
 <a href=#139 id=139 data-nosnippet>139</a>				Identifier,
@@ -145,7 +145,7 @@
 <a href=#145 id=145 data-nosnippet>145</a>		}
 <a href=#146 id=146 data-nosnippet>146</a>
 <a href=#147 id=147 data-nosnippet>147</a>		<span class="comment">// Corrupt / partial previous install - wipe and re-extract below.
-<a href=#148 id=148 data-nosnippet>148</a>		</span><a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#148 id=148 data-nosnippet>148</a>		</span><a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#149 id=149 data-nosnippet>149</a>			<span class="string">"extensions"</span>,
 <a href=#150 id=150 data-nosnippet>150</a>			<span class="string">"[VsixInstaller] Existing install at {} is unreadable - wiping and reinstalling"</span>,
 <a href=#151 id=151 data-nosnippet>151</a>			InstalledAt.display()
@@ -159,7 +159,7 @@
 <a href=#159 id=159 data-nosnippet>159</a>
 <a href=#160 id=160 data-nosnippet>160</a>	<span class="kw">let </span>Description = <a href="#470-504">BuildDescription</a>(<span class="kw-2">&amp;</span><a href="#114">InstalledAt</a>)<span class="question-mark">?</span>;
 <a href=#161 id=161 data-nosnippet>161</a>
-<a href=#162 id=162 data-nosnippet>162</a>	<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#162 id=162 data-nosnippet>162</a>	<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#163 id=163 data-nosnippet>163</a>		<span class="string">"extensions"</span>,
 <a href=#164 id=164 data-nosnippet>164</a>		<span class="string">"[VsixInstaller] Installed '{}' v{} at {}"</span>,
 <a href=#165 id=165 data-nosnippet>165</a>		Identifier,
@@ -173,7 +173,7 @@
 <a href=#173 id=173 data-nosnippet>173</a><span class="doccomment">/// Delete the install directory. Returns `Ok` if the path was already absent.
 <a href=#174 id=174 data-nosnippet>174</a></span><span class="kw">pub fn </span><a href="../../../Mountain/ExtensionManagement/VsixInstaller/fn.UninstallExtension.html">UninstallExtension</a>(InstallDir:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html">Path</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="#85-100">InstallError</a>&gt; {
 <a href=#175 id=175 data-nosnippet>175</a>	<span class="kw">if </span>!<a href="#174">InstallDir</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.exists">exists</a>() {
-<a href=#176 id=176 data-nosnippet>176</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#176 id=176 data-nosnippet>176</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#177 id=177 data-nosnippet>177</a>			<span class="string">"extensions"</span>,
 <a href=#178 id=178 data-nosnippet>178</a>			<span class="string">"[VsixInstaller] Uninstall skipped - {} already absent"</span>,
 <a href=#179 id=179 data-nosnippet>179</a>			InstallDir.display()
@@ -184,7 +184,7 @@
 <a href=#184 id=184 data-nosnippet>184</a>
 <a href=#185 id=185 data-nosnippet>185</a>	fs::<a href="https://doc.rust-lang.org/nightly/std/fs/fn.remove_dir_all.html">remove_dir_all</a>(<a href="#174">InstallDir</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| InstallError::<a href="#99">FilesystemIO</a>(<a href="#185">Error</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>()))<span class="question-mark">?</span>;
 <a href=#186 id=186 data-nosnippet>186</a>
-<a href=#187 id=187 data-nosnippet>187</a>	<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[VsixInstaller] Uninstalled {}"</span>, InstallDir.display());
+<a href=#187 id=187 data-nosnippet>187</a>	<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[VsixInstaller] Uninstalled {}"</span>, InstallDir.display());
 <a href=#188 id=188 data-nosnippet>188</a>
 <a href=#189 id=189 data-nosnippet>189</a>	<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#190 id=190 data-nosnippet>190</a>}
@@ -458,7 +458,7 @@
 <a href=#458 id=458 data-nosnippet>458</a>	<span class="kw">let </span><span class="kw-2">mut </span>Healed:<a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> = <span class="number">0</span>;
 <a href=#459 id=459 data-nosnippet>459</a>	<a href="#418-456">Walk</a>(<a href="#376">InstalledAt</a>, <a href="#376">InstalledAt</a>, <span class="kw-2">&amp;mut </span><a href="#458">Healed</a>);
 <a href=#460 id=460 data-nosnippet>460</a>	<span class="kw">if </span><a href="#458">Healed</a> &gt; <span class="number">0 </span>{
-<a href=#461 id=461 data-nosnippet>461</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#461 id=461 data-nosnippet>461</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#462 id=462 data-nosnippet>462</a>			<span class="string">"extensions"</span>,
 <a href=#463 id=463 data-nosnippet>463</a>			<span class="string">"[VsixInstaller] Healed {} executable bit(s) under {}"</span>,
 <a href=#464 id=464 data-nosnippet>464</a>			Healed,

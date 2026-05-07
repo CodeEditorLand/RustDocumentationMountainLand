@@ -81,7 +81,7 @@
 <a href=#81 id=81 data-nosnippet>81</a><span class="kw">use </span><a href="https://docs.rs/url/2.5.7/url/struct.Url.html">url::Url</a>;
 <a href=#82 id=82 data-nosnippet>82</a>
 <a href=#83 id=83 data-nosnippet>83</a><span class="kw">use </span>super::{<a href="MountainEnvironment.rs.html#228-238">MountainEnvironment::MountainEnvironment</a>, <a href="mod.rs.html#113">Utility</a>};
-<a href=#84 id=84 data-nosnippet>84</a><span class="kw">use </span><a href="../IPC/DevLog.rs.html#726-767"><span class="kw">crate</span>::dev_log</a>;
+<a href=#84 id=84 data-nosnippet>84</a><span class="kw">use </span><a href="../IPC/DevLog/mod.rs.html#40-81"><span class="kw">crate</span>::dev_log</a>;
 <a href=#85 id=85 data-nosnippet>85</a>
 <a href=#86 id=86 data-nosnippet>86</a><span class="doccomment">/// Process-wide LRU cache for `FindFilesInWorkspace`. Cache key folds
 <a href=#87 id=87 data-nosnippet>87</a>/// every input that influences the walk; TTL is short so we never serve
@@ -179,7 +179,7 @@
 <a href=#179 id=179 data-nosnippet>179</a></span><span class="kw">impl </span>WorkspaceProvider <span class="kw">for </span><a href="MountainEnvironment.rs.html#228-238">MountainEnvironment</a> {
 <a href=#180 id=180 data-nosnippet>180</a>	<span class="doccomment">/// Retrieves information about all currently open workspace folders.
 <a href=#181 id=181 data-nosnippet>181</a>	</span><span class="kw">async fn </span>GetWorkspaceFoldersInfo(<span class="kw-2">&amp;</span><a class="self" href="#181">self</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;(<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>)&gt;, CommonError&gt; {
-<a href=#182 id=182 data-nosnippet>182</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[WorkspaceProvider] Getting workspace folders info."</span>);
+<a href=#182 id=182 data-nosnippet>182</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[WorkspaceProvider] Getting workspace folders info."</span>);
 <a href=#183 id=183 data-nosnippet>183</a>		<span class="kw">let </span>FoldersGuard = <a class="self" href="#181">self</a>
 <a href=#184 id=184 data-nosnippet>184</a>			.ApplicationState
 <a href=#185 id=185 data-nosnippet>185</a>			.Workspace
@@ -234,7 +234,7 @@
 <a href=#234 id=234 data-nosnippet>234</a>
 <a href=#235 id=235 data-nosnippet>235</a>	<span class="doccomment">/// Requests workspace trust from the user.
 <a href=#236 id=236 data-nosnippet>236</a>	</span><span class="kw">async fn </span>RequestWorkspaceTrust(<span class="kw-2">&amp;</span><a class="self" href="#236">self</a>, <a href="#236">_Options</a>:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>, CommonError&gt; {
-<a href=#237 id=237 data-nosnippet>237</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#237 id=237 data-nosnippet>237</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#238 id=238 data-nosnippet>238</a>			<span class="string">"workspaces"</span>,
 <a href=#239 id=239 data-nosnippet>239</a>			<span class="string">"warn: [WorkspaceProvider] RequestWorkspaceTrust is not implemented; defaulting to trusted."
 <a href=#240 id=240 data-nosnippet>240</a>		</span>);
@@ -273,13 +273,13 @@
 <a href=#273 id=273 data-nosnippet>273</a>		<a href="#273">UseIgnoreFiles</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
 <a href=#274 id=274 data-nosnippet>274</a>		<a href="#274">FollowSymlinks</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
 <a href=#275 id=275 data-nosnippet>275</a>	) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>&gt;, CommonError&gt; {
-<a href=#276 id=276 data-nosnippet>276</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[WorkspaceProvider] FindFilesInWorkspace called"</span>);
+<a href=#276 id=276 data-nosnippet>276</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[WorkspaceProvider] FindFilesInWorkspace called"</span>);
 <a href=#277 id=277 data-nosnippet>277</a>
 <a href=#278 id=278 data-nosnippet>278</a>		<span class="kw">let </span>IncludePattern = <a href="#808-824">ExtractGlobPattern</a>(<span class="kw-2">&amp;</span><a href="#270">IncludePatternDTO</a>);
 <a href=#279 id=279 data-nosnippet>279</a>		<span class="kw">let </span>IncludePattern = <span class="kw">match </span><a href="#278">IncludePattern</a> {
 <a href=#280 id=280 data-nosnippet>280</a>			<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(P) <span class="kw">if </span>!<a href="#280">P</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.is_empty">is_empty</a>() =&gt; <a href="#280">P</a>,
 <a href=#281 id=281 data-nosnippet>281</a>			<span class="kw">_ </span>=&gt; {
-<a href=#282 id=282 data-nosnippet>282</a>				<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[FindFilesInWorkspace] empty include pattern → []"</span>);
+<a href=#282 id=282 data-nosnippet>282</a>				<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[FindFilesInWorkspace] empty include pattern → []"</span>);
 <a href=#283 id=283 data-nosnippet>283</a>				<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>::<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.new">new</a>());
 <a href=#284 id=284 data-nosnippet>284</a>			},
 <a href=#285 id=285 data-nosnippet>285</a>		};
@@ -293,7 +293,7 @@
 <a href=#293 id=293 data-nosnippet>293</a>		// pattern like `/**/*.json` (leading slash) that globset
 <a href=#294 id=294 data-nosnippet>294</a>		// then fails to match against the relative paths produced by
 <a href=#295 id=295 data-nosnippet>295</a>		// `Path.strip_prefix(...)`.
-<a href=#296 id=296 data-nosnippet>296</a>		</span><a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#296 id=296 data-nosnippet>296</a>		</span><a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#297 id=297 data-nosnippet>297</a>			<span class="string">"workspaces"</span>,
 <a href=#298 id=298 data-nosnippet>298</a>			<span class="string">"[FindFilesInWorkspace] include={} dto_shape={}"</span>,
 <a href=#299 id=299 data-nosnippet>299</a>			IncludePattern,
@@ -354,7 +354,7 @@
 <a href=#354 id=354 data-nosnippet>354</a>			.<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.filter_map">filter_map</a>(|Folder| <a href="#354">Folder</a>.URI.<a href="https://docs.rs/url/2.5.7/url/struct.Url.html#method.to_file_path">to_file_path</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>())
 <a href=#355 id=355 data-nosnippet>355</a>			.<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.collect">collect</a>();
 <a href=#356 id=356 data-nosnippet>356</a>		<span class="kw">if </span><a href="#347">Folders</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.is_empty">is_empty</a>() {
-<a href=#357 id=357 data-nosnippet>357</a>			<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[FindFilesInWorkspace] no workspace folders → []"</span>);
+<a href=#357 id=357 data-nosnippet>357</a>			<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[FindFilesInWorkspace] no workspace folders → []"</span>);
 <a href=#358 id=358 data-nosnippet>358</a>			<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>::<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.new">new</a>());
 <a href=#359 id=359 data-nosnippet>359</a>		}
 <a href=#360 id=360 data-nosnippet>360</a>
@@ -386,7 +386,7 @@
 <a href=#386 id=386 data-nosnippet>386</a>			RestrictBase:<a href="#345">RestrictBase</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>(),
 <a href=#387 id=387 data-nosnippet>387</a>		};
 <a href=#388 id=388 data-nosnippet>388</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Cached) = <a href="#141-148">FindFilesCacheGet</a>(<span class="kw-2">&amp;</span><a href="#379">CacheKey</a>) {
-<a href=#389 id=389 data-nosnippet>389</a>			<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[FindFilesInWorkspace] cache hit → {} match(es)"</span>, Cached.len());
+<a href=#389 id=389 data-nosnippet>389</a>			<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[FindFilesInWorkspace] cache hit → {} match(es)"</span>, Cached.len());
 <a href=#390 id=390 data-nosnippet>390</a>			<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="#388">Cached</a>);
 <a href=#391 id=391 data-nosnippet>391</a>		}
 <a href=#392 id=392 data-nosnippet>392</a>
@@ -418,7 +418,7 @@
 <a href=#418 id=418 data-nosnippet>418</a>		};
 <a href=#419 id=419 data-nosnippet>419</a>		<span class="kw">let </span>LeaderNotify:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;Notify&gt; = <span class="kw">match </span><a href="#406">RoleResolved</a> {
 <a href=#420 id=420 data-nosnippet>420</a>			SingleFlightRole::<a href="#403">Follower</a>(WaitNotify) =&gt; {
-<a href=#421 id=421 data-nosnippet>421</a>				<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#421 id=421 data-nosnippet>421</a>				<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#422 id=422 data-nosnippet>422</a>					<span class="string">"workspaces"</span>,
 <a href=#423 id=423 data-nosnippet>423</a>					<span class="string">"[FindFilesInWorkspace] singleflight wait - leader walk in progress for include={}"</span>,
 <a href=#424 id=424 data-nosnippet>424</a>					IncludePattern
@@ -524,7 +524,7 @@
 <a href=#524 id=524 data-nosnippet>524</a>			})<span class="question-mark">?
 <a href=#525 id=525 data-nosnippet>525</a>			</span>.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.into_inner">into_inner</a>()
 <a href=#526 id=526 data-nosnippet>526</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| CommonError::StateLockPoisoned { Context:<a href="#526">Error</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>() })<span class="question-mark">?</span>;
-<a href=#527 id=527 data-nosnippet>527</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#527 id=527 data-nosnippet>527</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#528 id=528 data-nosnippet>528</a>			<span class="string">"workspaces"</span>,
 <a href=#529 id=529 data-nosnippet>529</a>			<span class="string">"[FindFilesInWorkspace] returned {} match(es) include={} exclude={:?} roots={}"</span>,
 <a href=#530 id=530 data-nosnippet>530</a>			Final.len(),
@@ -564,7 +564,7 @@
 <a href=#564 id=564 data-nosnippet>564</a>	/// callers always pass absolute paths via the trait).
 <a href=#565 id=565 data-nosnippet>565</a>	</span><span class="kw">async fn </span>OpenFile(<span class="kw-2">&amp;</span><a class="self" href="#565">self</a>, <a href="#565">path</a>:<a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
 <a href=#566 id=566 data-nosnippet>566</a>		<span class="kw">use </span>tauri::Emitter;
-<a href=#567 id=567 data-nosnippet>567</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[WorkspaceProvider] OpenFile called for: {:?}"</span>, path);
+<a href=#567 id=567 data-nosnippet>567</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[WorkspaceProvider] OpenFile called for: {:?}"</span>, path);
 <a href=#568 id=568 data-nosnippet>568</a>
 <a href=#569 id=569 data-nosnippet>569</a>		<span class="kw">let </span>UriString = <span class="kw">match </span><a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>::<a href="https://docs.rs/url/2.5.7/url/struct.Url.html#method.from_file_path">from_file_path</a>(<span class="kw-2">&amp;</span><a href="#565">path</a>) {
 <a href=#570 id=570 data-nosnippet>570</a>			<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(U) =&gt; <a href="#570">U</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
@@ -604,7 +604,7 @@
 <a href=#604 id=604 data-nosnippet>604</a>	/// zero-based.
 <a href=#605 id=605 data-nosnippet>605</a>	</span><span class="kw">async fn </span>ApplyWorkspaceEdit(<span class="kw-2">&amp;</span><a class="self" href="#605">self</a>, <a href="#605">Edit</a>:WorkspaceEditDTO) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>, CommonError&gt; {
 <a href=#606 id=606 data-nosnippet>606</a>		<span class="kw">use </span>tauri::Emitter;
-<a href=#607 id=607 data-nosnippet>607</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[WorkspaceEditApplier] Applying workspace edit"</span>);
+<a href=#607 id=607 data-nosnippet>607</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[WorkspaceEditApplier] Applying workspace edit"</span>);
 <a href=#608 id=608 data-nosnippet>608</a>
 <a href=#609 id=609 data-nosnippet>609</a>		<span class="kw">let </span>WorkspaceEditDTO { Edits } = <a href="#605">Edit</a>;
 <a href=#610 id=610 data-nosnippet>610</a>		<span class="kw">let </span>DocumentMirror = <span class="kw-2">&amp;</span><a class="self" href="#605">self</a>.ApplicationState.Feature.Documents;

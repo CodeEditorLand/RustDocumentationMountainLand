@@ -63,7 +63,7 @@
 <a href=#63 id=63 data-nosnippet>63</a>	<a href="../../Environment/MountainEnvironment.rs.html#228-238">Environment::MountainEnvironment::MountainEnvironment</a>,
 <a href=#64 id=64 data-nosnippet>64</a>};
 <a href=#65 id=65 data-nosnippet>65</a><span class="comment">// Import generated protobuf types
-<a href=#66 id=66 data-nosnippet>66</a></span><span class="kw">use </span><a href="../../IPC/DevLog.rs.html#726-767"><span class="kw">crate</span>::dev_log</a>;
+<a href=#66 id=66 data-nosnippet>66</a></span><span class="kw">use </span><a href="../../IPC/DevLog/mod.rs.html#40-81"><span class="kw">crate</span>::dev_log</a>;
 <a href=#67 id=67 data-nosnippet>67</a><span class="kw">use </span><span class="kw">crate</span>::Vine::Generated::{
 <a href=#68 id=68 data-nosnippet>68</a>	<span class="comment">// Service trait
 <a href=#69 id=69 data-nosnippet>69</a>	// Extended Language + Window + FS + Output + Task + Auth + Debug + Extension types
@@ -285,7 +285,7 @@
 <a href=#285 id=285 data-nosnippet>285</a>	/// # Returns
 <a href=#286 id=286 data-nosnippet>286</a>	/// A new CocoonService instance
 <a href=#287 id=287 data-nosnippet>287</a>	</span><span class="kw">pub fn </span>new(environment:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../../Environment/MountainEnvironment.rs.html#228-238">MountainEnvironment</a>&gt;) -&gt; <span class="self">Self </span>{
-<a href=#288 id=288 data-nosnippet>288</a>		<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"cocoon"</span>, <span class="string">"[CocoonService] New instance created"</span>);
+<a href=#288 id=288 data-nosnippet>288</a>		<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"cocoon"</span>, <span class="string">"[CocoonService] New instance created"</span>);
 <a href=#289 id=289 data-nosnippet>289</a>
 <a href=#290 id=290 data-nosnippet>290</a>		<span class="self">Self </span>{ <a href="#287">environment</a>, ActiveOperations:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(RwLock::new(<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>::<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.new">new</a>())) }
 <a href=#291 id=291 data-nosnippet>291</a>	}
@@ -341,7 +341,7 @@
 <a href=#341 id=341 data-nosnippet>341</a>			.Extension
 <a href=#342 id=342 data-nosnippet>342</a>			.ProviderRegistration
 <a href=#343 id=343 data-nosnippet>343</a>			.<a href="../../ApplicationState/State/ExtensionState/ProviderRegistration/ProviderRegistration.rs.html#74-89">RegisterProvider</a>(<a href="#326">handle</a>, <a href="#331">dto</a>);
-<a href=#344 id=344 data-nosnippet>344</a>		<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#344 id=344 data-nosnippet>344</a>		<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#345 id=345 data-nosnippet>345</a>			<span class="string">"cocoon"</span>,
 <a href=#346 id=346 data-nosnippet>346</a>			<span class="string">"[CocoonService] Provider {:?} registered: handle={}, language={}"</span>,
 <a href=#347 id=347 data-nosnippet>347</a>			provider_type,
@@ -413,7 +413,7 @@
 <a href=#413 id=413 data-nosnippet>413</a>		<span class="kw">let </span>Req = <a href="#411">request</a>.into_inner();
 <a href=#414 id=414 data-nosnippet>414</a>		<span class="kw">let </span>RequestId = <a href="#413">Req</a>.request_identifier;
 <a href=#415 id=415 data-nosnippet>415</a>
-<a href=#416 id=416 data-nosnippet>416</a>		<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#416 id=416 data-nosnippet>416</a>		<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#417 id=417 data-nosnippet>417</a>			<span class="string">"cocoon"</span>,
 <a href=#418 id=418 data-nosnippet>418</a>			<span class="string">"[CocoonService] generic request: method={} id={}"</span>,
 <a href=#419 id=419 data-nosnippet>419</a>			Req.method,
@@ -983,7 +983,7 @@
 <a href=#983 id=983 data-nosnippet>983</a>			},
 <a href=#984 id=984 data-nosnippet>984</a>			<span class="comment">// ---- Unknown ----
 <a href=#985 id=985 data-nosnippet>985</a>			</span><span class="kw">_ </span>=&gt; {
-<a href=#986 id=986 data-nosnippet>986</a>				<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"cocoon"</span>, <span class="string">"warn: [CocoonService] Unknown generic method: {}"</span>, Req.method);
+<a href=#986 id=986 data-nosnippet>986</a>				<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"cocoon"</span>, <span class="string">"warn: [CocoonService] Unknown generic method: {}"</span>, Req.method);
 <a href=#987 id=987 data-nosnippet>987</a>				<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="#430-436">ErrResponse</a>(<a href="#414">RequestId</a>, -<span class="number">32601</span>, <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Method '{}' not found"</span>, Req.method)))
 <a href=#988 id=988 data-nosnippet>988</a>			},
 <a href=#989 id=989 data-nosnippet>989</a>		}
@@ -998,7 +998,7 @@
 <a href=#998 id=998 data-nosnippet>998</a>		<a href="#998">request</a>:Request&lt;<a href="../../Vine/Generated/vine.rs.html#72-78">GenericNotification</a>&gt;,
 <a href=#999 id=999 data-nosnippet>999</a>	) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;Response&lt;<a href="../../Vine/Generated/vine.rs.html#4">Empty</a>&gt;, Status&gt; {
 <a href=#1000 id=1000 data-nosnippet>1000</a>		<span class="kw">let </span>notification = <a href="#998">request</a>.into_inner();
-<a href=#1001 id=1001 data-nosnippet>1001</a>		<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#1001 id=1001 data-nosnippet>1001</a>		<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#1002 id=1002 data-nosnippet>1002</a>			<span class="string">"cocoon"</span>,
 <a href=#1003 id=1003 data-nosnippet>1003</a>			<span class="string">"[CocoonService] Notification router: method='{}'"</span>,
 <a href=#1004 id=1004 data-nosnippet>1004</a>			notification.method
@@ -1017,7 +1017,7 @@
 <a href=#1017 id=1017 data-nosnippet>1017</a>				<span class="kw">let </span>CommandId = <a href="#1008">Params</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#method.get">get</a>(<span class="string">"commandId"</span>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|V| <a href="#1017">V</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#method.as_str">as_str</a>()).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or">unwrap_or</a>(<span class="string">""</span>).<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>();
 <a href=#1018 id=1018 data-nosnippet>1018</a>				<span class="kw">let </span>ExtensionId = <a href="#1008">Params</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#method.get">get</a>(<span class="string">"extensionId"</span>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|V| <a href="#1018">V</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#method.as_str">as_str</a>()).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or">unwrap_or</a>(<span class="string">""</span>).<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>();
 <a href=#1019 id=1019 data-nosnippet>1019</a>				<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error) = <a class="self" href="#997">self</a>.environment.RegisterCommand(<a href="#1018">ExtensionId</a>, <a href="#1017">CommandId</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>()).<span class="kw">await </span>{
-<a href=#1020 id=1020 data-nosnippet>1020</a>					<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#1020 id=1020 data-nosnippet>1020</a>					<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#1021 id=1021 data-nosnippet>1021</a>						<span class="string">"cocoon"</span>,
 <a href=#1022 id=1022 data-nosnippet>1022</a>						<span class="string">"warn: [CocoonService] notification: registerCommand '{}' failed: {:?}"</span>,
 <a href=#1023 id=1023 data-nosnippet>1023</a>						CommandId,
@@ -1382,7 +1382,7 @@
 <a href=#1382 id=1382 data-nosnippet>1382</a>					.emit(<span class="string">"sky://language/configure"</span>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json!</a>({ <span class="string">"language"</span>: Language }));
 <a href=#1383 id=1383 data-nosnippet>1383</a>			},
 <a href=#1384 id=1384 data-nosnippet>1384</a>			<span class="kw">_ </span>=&gt; {
-<a href=#1385 id=1385 data-nosnippet>1385</a>				<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#1385 id=1385 data-nosnippet>1385</a>				<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#1386 id=1386 data-nosnippet>1386</a>					<span class="string">"cocoon"</span>,
 <a href=#1387 id=1387 data-nosnippet>1387</a>					<span class="string">"[CocoonService] Unknown notification method: '{}'"</span>,
 <a href=#1388 id=1388 data-nosnippet>1388</a>					notification.method

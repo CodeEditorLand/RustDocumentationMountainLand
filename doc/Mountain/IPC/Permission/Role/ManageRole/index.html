@@ -1,76 +1,26 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Manage Role"><title>Mountain::IPC::Permission::Role::ManageRole - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../../../static.files/rustdoc-b7b9f40b.css"><meta name="rustdoc-vars" data-root-path="../../../../../" data-static-root-path="../../../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../../../static.files/storage-41dd4d93.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module ManageRole</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Manage<wbr>Role</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#manage-role" title="Manage Role">Manage Role</a><ul><li><a href="#file-ipcpermissionrolemanagerolers" title="File: IPC/Permission/Role/ManageRole.rs">File: IPC/Permission/Role/ManageRole.rs</a></li><li><a href="#role-in-mountain-architecture" title="Role in Mountain Architecture">Role in Mountain Architecture</a></li><li><a href="#primary-responsibility" title="Primary Responsibility">Primary Responsibility</a></li><li><a href="#secondary-responsibilities" title="Secondary Responsibilities">Secondary Responsibilities</a></li><li><a href="#dependencies" title="Dependencies">Dependencies</a></li><li><a href="#dependents" title="Dependents">Dependents</a></li><li><a href="#vscode-pattern-reference" title="VSCode Pattern Reference">VSCode Pattern Reference</a></li><li><a href="#security-considerations" title="Security Considerations">Security Considerations</a></li><li><a href="#performance-considerations" title="Performance Considerations">Performance Considerations</a></li><li><a href="#error-handling-strategy" title="Error Handling Strategy">Error Handling Strategy</a></li><li><a href="#thread-safety" title="Thread Safety">Thread Safety</a></li><li><a href="#todo-items" title="TODO Items">TODO Items</a></li></ul></li></ul><h3><a href="#structs">Module Items</a></h3><ul class="block"><li><a href="#structs" title="Structs">Structs</a></li><li><a href="#functions" title="Functions">Functions</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>IPC::<wbr>Permission::<wbr>Role</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../../../index.html">Mountain</a>::<wbr><a href="../../../index.html">IPC</a>::<wbr><a href="../../index.html">Permission</a>::<wbr><a href="../index.html">Role</a></div><h1>Module <span>Manage<wbr>Role</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../../../src/Mountain/IPC/Permission/Role/ManageRole.rs.html#1-642">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="manage-role"><a class="doc-anchor" href="#manage-role">§</a>Manage Role</h2><h3 id="file-ipcpermissionrolemanagerolers"><a class="doc-anchor" href="#file-ipcpermissionrolemanagerolers">§</a>File: IPC/Permission/Role/ManageRole.rs</h3><h3 id="role-in-mountain-architecture"><a class="doc-anchor" href="#role-in-mountain-architecture">§</a>Role in Mountain Architecture</h3>
-<p>Defines and manages role structures for role-based access control (RBAC),
-providing organizational hierarchy for user permissions across the system.</p>
-<h3 id="primary-responsibility"><a class="doc-anchor" href="#primary-responsibility">§</a>Primary Responsibility</h3>
-<p>Define role and permission structures for RBAC system with inheritance
-support.</p>
-<h3 id="secondary-responsibilities"><a class="doc-anchor" href="#secondary-responsibilities">§</a>Secondary Responsibilities</h3>
-<ul>
-<li>Create role definitions with assigned permissions</li>
-<li>Create permission definitions with categorization</li>
-<li>Support role hierarchy and permission inheritance</li>
-<li>Validate role and permission integrity</li>
-</ul>
-<h3 id="dependencies"><a class="doc-anchor" href="#dependencies">§</a>Dependencies</h3>
-<p><strong>External Crates:</strong></p>
-<ul>
-<li><code>serde</code> - Serialization for storage and transport</li>
-<li><code>std::collections::HashSet</code> - Unique permission tracking</li>
-</ul>
-<p><strong>Internal Modules:</strong></p>
-<ul>
-<li><code>Validate::{SecurityContext}</code> - Security context validation</li>
-<li><code>LogEvent::{SecurityEvent}</code> - Security event logging</li>
-</ul>
-<h3 id="dependents"><a class="doc-anchor" href="#dependents">§</a>Dependents</h3>
-<ul>
-<li><code>Validate</code> - Uses roles for permission validation</li>
-<li><code>TauriIPCServer</code> - Manages roles for IPC authorization</li>
-</ul>
-<h3 id="vscode-pattern-reference"><a class="doc-anchor" href="#vscode-pattern-reference">§</a>VSCode Pattern Reference</h3>
-<p>Matches VSCode’s role system in
-<code>vs/platform/permissions/common/permissions.ts</code></p>
-<ul>
-<li>Hierarchical role definitions</li>
-<li>Permission categorization</li>
-<li>Role inheritance support</li>
-<li>Permission uniqueness validation</li>
-</ul>
-<h3 id="security-considerations"><a class="doc-anchor" href="#security-considerations">§</a>Security Considerations</h3>
-<ul>
-<li>Role names are case-sensitive for precise control</li>
-<li>Permission names follow hierarchical naming (category.action)</li>
-<li>Role inheritance prevents permission escalation through ambiguity</li>
-<li>Role modifications logged for audit trails</li>
-<li>Default roles cannot be deleted without confirmation</li>
-<li>Permission deduplication prevents duplicate permissions in roles</li>
-</ul>
-<h3 id="performance-considerations"><a class="doc-anchor" href="#performance-considerations">§</a>Performance Considerations</h3>
-<ul>
-<li>HashSet for unique permissions enables O(1) lookup</li>
-<li>Role hierarchy flattened for fast permission resolution</li>
-<li>Lazy initialization of role collections</li>
-<li>Minimal copying of permission data</li>
-</ul>
-<h3 id="error-handling-strategy"><a class="doc-anchor" href="#error-handling-strategy">§</a>Error Handling Strategy</h3>
-<ul>
-<li>Returns Result for explicit error handling</li>
-<li>Duplicate permissions ignored with warning</li>
-<li>Invalid role/permission names rejected early</li>
-<li>Circular dependency detection in role hierarchy</li>
-</ul>
-<h3 id="thread-safety"><a class="doc-anchor" href="#thread-safety">§</a>Thread Safety</h3>
-<ul>
-<li>Immutable role definitions after creation</li>
-<li>Clone semantics for safe sharing across threads</li>
-</ul>
-<h3 id="todo-items"><a class="doc-anchor" href="#todo-items">§</a>TODO Items</h3>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Implement role hierarchy with parent/child relationships</li>
-<li><input disabled="" type="checkbox"/>
-Add permission negation (deny permissions)</li>
-<li><input disabled="" type="checkbox"/>
-Support role templates for common permission sets</li>
-</ul>
-</div></details><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.Permission.html" title="struct Mountain::IPC::Permission::Role::ManageRole::Permission">Permission</a></dt><dd>Permission definition</dd><dt><a class="struct" href="struct.Role.html" title="struct Mountain::IPC::Permission::Role::ManageRole::Role">Role</a></dt><dd>Role definition for RBAC system</dd></dl><h2 id="functions" class="section-header">Functions<a href="#functions" class="anchor">§</a></h2><dl class="item-table"><dt><a class="fn" href="fn.CreateAdminRole.html" title="fn Mountain::IPC::Permission::Role::ManageRole::CreateAdminRole">Create<wbr>Admin<wbr>Role</a></dt><dd>Create administrator role</dd><dt><a class="fn" href="fn.CreateDeveloperRole.html" title="fn Mountain::IPC::Permission::Role::ManageRole::CreateDeveloperRole">Create<wbr>Developer<wbr>Role</a></dt><dd>Create developer role</dd><dt><a class="fn" href="fn.CreateStandardPermissions.html" title="fn Mountain::IPC::Permission::Role::ManageRole::CreateStandardPermissions">Create<wbr>Standard<wbr>Permissions</a></dt><dd>Create all standard permissions</dd><dt><a class="fn" href="fn.CreateStandardRoles.html" title="fn Mountain::IPC::Permission::Role::ManageRole::CreateStandardRoles">Create<wbr>Standard<wbr>Roles</a></dt><dd>Create all standard roles</dd><dt><a class="fn" href="fn.CreateUserRole.html" title="fn Mountain::IPC::Permission::Role::ManageRole::CreateUserRole">Create<wbr>User<wbr>Role</a></dt><dd>Create standard user role</dd></dl></section></div></main></body></html>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="ManageRole"><title>Mountain::IPC::Permission::Role::ManageRole - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../../../static.files/rustdoc-b7b9f40b.css"><meta name="rustdoc-vars" data-root-path="../../../../../" data-static-root-path="../../../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../../../static.files/storage-41dd4d93.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module ManageRole</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Manage<wbr>Role</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#managerole" title="ManageRole">ManageRole</a></li></ul><h3><a href="#modules">Module Items</a></h3><ul class="block"><li><a href="#modules" title="Modules">Modules</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>IPC::<wbr>Permission::<wbr>Role</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../../../index.html">Mountain</a>::<wbr><a href="../../../index.html">IPC</a>::<wbr><a href="../../index.html">Permission</a>::<wbr><a href="../index.html">Role</a></div><h1>Module <span>Manage<wbr>Role</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../../../src/Mountain/IPC/Permission/Role/ManageRole/mod.rs.html#1-18">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="managerole"><a class="doc-anchor" href="#managerole">§</a>ManageRole</h2>
+<p>Role + permission types for the RBAC engine. Each <code>Role</code>
+holds a deduplicated permission list; each <code>Permission</code>
+lives in a <code>category.action</code> namespace and carries an
+<code>IsSensitive</code> flag for elevated audit logging. The
+<code>Create*</code> factories build the standard <code>user</code> /
+<code>developer</code> / <code>admin</code> triple.</p>
+</div></details><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="CreateAdminRole/index.html" title="mod Mountain::IPC::Permission::Role::ManageRole::CreateAdminRole">Create<wbr>Admin<wbr>Role</a></dt><dd>Standard <code>admin</code> role - full access including system /
+external / execute and <code>role.manage</code> for changing role
+definitions at runtime.</dd><dt><a class="mod" href="CreateDeveloperRole/index.html" title="mod Mountain::IPC::Permission::Role::ManageRole::CreateDeveloperRole">Create<wbr>Developer<wbr>Role</a></dt><dd>Standard <code>developer</code> role - read + write across files and
+storage; read-only on config.</dd><dt><a class="mod" href="CreateStandardPermissions/index.html" title="mod Mountain::IPC::Permission::Role::ManageRole::CreateStandardPermissions">Create<wbr>Standard<wbr>Permissions</a></dt><dd>Build the standard <code>Permission::Struct</code> set covering file,
+config, storage, system, and admin categories. Sensitive
+permissions (<code>config.update</code>, <code>system.*</code>, <code>admin.*</code>,
+<code>role.manage</code>) are flagged so audit logging picks them up.</dd><dt><a class="mod" href="CreateStandardRoles/index.html" title="mod Mountain::IPC::Permission::Role::ManageRole::CreateStandardRoles">Create<wbr>Standard<wbr>Roles</a></dt><dd>Build the standard <code>user</code> / <code>developer</code> / <code>admin</code> role
+triple. Used by <code>Validator::Struct::InitializeDefaults</code> and
+by tests.</dd><dt><a class="mod" href="CreateUserRole/index.html" title="mod Mountain::IPC::Permission::Role::ManageRole::CreateUserRole">Create<wbr>User<wbr>Role</a></dt><dd>Standard <code>user</code> role - read-only access to file, config,
+and storage subsystems. The default role assigned when no
+roles are supplied in a <code>SecurityContext</code>.</dd><dt><a class="mod" href="Permission/index.html" title="mod Mountain::IPC::Permission::Role::ManageRole::Permission">Permission</a></dt><dd><code>Permission::Struct</code> - RBAC permission descriptor.
+<code>category.action</code> name shape (validated by <code>Validate</code>),
+human description, category bucket, and an <code>IsSensitive</code>
+flag that drives elevated audit logging in the
+<code>LogEvent</code> module.</dd><dt><a class="mod" href="Role/index.html" title="mod Mountain::IPC::Permission::Role::ManageRole::Role">Role</a></dt><dd><code>Role::Struct</code> - RBAC role descriptor. Builder methods
+deduplicate permissions on insert, expose
+<code>HasPermission</code> / <code>PermissionCount</code> lookups, and
+<code>Validate</code> enforces the <code>category.action</code> permission name
+shape so misconfigured roles fail loudly at registration.</dd></dl></section></div></main></body></html>

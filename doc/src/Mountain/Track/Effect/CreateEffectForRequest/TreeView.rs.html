@@ -14,7 +14,7 @@
 <a href=#14 id=14 data-nosnippet>14</a>	<a href="../../../IPC/SkyEmit.rs.html#45-64">IPC::SkyEmit::LogSkyEmit</a>,
 <a href=#15 id=15 data-nosnippet>15</a>	<a href="../../../RunTime/ApplicationRunTime/mod.rs.html#16-21">RunTime::ApplicationRunTime::ApplicationRunTime</a>,
 <a href=#16 id=16 data-nosnippet>16</a>	<a href="../MappedEffectType.rs.html#47-48">Track::Effect::MappedEffectType::MappedEffect</a>,
-<a href=#17 id=17 data-nosnippet>17</a>	<a href="../../../IPC/DevLog.rs.html#726-767">dev_log</a>,
+<a href=#17 id=17 data-nosnippet>17</a>	<a href="../../../IPC/DevLog/mod.rs.html#40-81">dev_log</a>,
 <a href=#18 id=18 data-nosnippet>18</a>};
 <a href=#19 id=19 data-nosnippet>19</a>
 <a href=#20 id=20 data-nosnippet>20</a><span class="kw">pub fn </span><a href="../../../../../Mountain/Track/Effect/CreateEffectForRequest/TreeView/fn.CreateEffect.html">CreateEffect</a>&lt;R:Runtime&gt;(MethodName:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, Parameters:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="../MappedEffectType.rs.html#47-48">MappedEffect</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;&gt; {
@@ -24,7 +24,7 @@
 <a href=#24 id=24 data-nosnippet>24</a>				.<a href="https://doc.rust-lang.org/nightly/std/time/struct.SystemTime.html#method.duration_since">duration_since</a>(std::time::<a href="https://doc.rust-lang.org/nightly/std/time/constant.UNIX_EPOCH.html">UNIX_EPOCH</a>)
 <a href=#25 id=25 data-nosnippet>25</a>				.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map">map</a>(|D| <a href="#25">D</a>.<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html#method.as_nanos">as_nanos</a>())
 <a href=#26 id=26 data-nosnippet>26</a>				.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or">unwrap_or</a>(<span class="number">0</span>);
-<a href=#27 id=27 data-nosnippet>27</a>			<a href="../../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#27 id=27 data-nosnippet>27</a>			<a href="../../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#28 id=28 data-nosnippet>28</a>				<span class="string">"tree-latency"</span>,
 <a href=#29 id=29 data-nosnippet>29</a>				<span class="string">"[LandFix:Tree] dispatch-enter method={} t_ns={}"</span>,
 <a href=#30 id=30 data-nosnippet>30</a>				MethodName,
@@ -51,20 +51,20 @@
 <a href=#51 id=51 data-nosnippet>51</a>							(<a href="#49">vid</a>, <a href="#50">opts</a>)
 <a href=#52 id=52 data-nosnippet>52</a>						};
 <a href=#53 id=53 data-nosnippet>53</a>						<span class="kw">let </span>ViewIdForLog = <a href="#44">view_id</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
-<a href=#54 id=54 data-nosnippet>54</a>						<a href="../../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"grpc"</span>, <span class="string">"[LandFix:Tree] body-start view={} t_ns={}"</span>, ViewIdForLog, BodyStartNs);
+<a href=#54 id=54 data-nosnippet>54</a>						<a href="../../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"grpc"</span>, <span class="string">"[LandFix:Tree] body-start view={} t_ns={}"</span>, ViewIdForLog, BodyStartNs);
 <a href=#55 id=55 data-nosnippet>55</a>						<span class="kw">let </span><span class="prelude-ty">Result </span>= <a href="#42">provider</a>.RegisterTreeDataProvider(<a href="#44">view_id</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>(), <a href="#44">options</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>()).<span class="kw">await</span>;
 <a href=#56 id=56 data-nosnippet>56</a>						<span class="kw">let </span>RegisteredNs = std::time::<a href="https://doc.rust-lang.org/nightly/std/time/struct.SystemTime.html">SystemTime</a>::<a href="https://doc.rust-lang.org/nightly/std/time/struct.SystemTime.html#method.now">now</a>()
 <a href=#57 id=57 data-nosnippet>57</a>							.<a href="https://doc.rust-lang.org/nightly/std/time/struct.SystemTime.html#method.duration_since">duration_since</a>(std::time::<a href="https://doc.rust-lang.org/nightly/std/time/constant.UNIX_EPOCH.html">UNIX_EPOCH</a>)
 <a href=#58 id=58 data-nosnippet>58</a>							.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map">map</a>(|D| <a href="#58">D</a>.<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html#method.as_nanos">as_nanos</a>())
 <a href=#59 id=59 data-nosnippet>59</a>							.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or">unwrap_or</a>(<span class="number">0</span>);
-<a href=#60 id=60 data-nosnippet>60</a>						<a href="../../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#60 id=60 data-nosnippet>60</a>						<a href="../../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#61 id=61 data-nosnippet>61</a>							<span class="string">"grpc"</span>,
 <a href=#62 id=62 data-nosnippet>62</a>							<span class="string">"[LandFix:Tree] registered view={} elapsed={}ms t_ns={}"</span>,
 <a href=#63 id=63 data-nosnippet>63</a>							ViewIdForLog,
 <a href=#64 id=64 data-nosnippet>64</a>							DispatchAt.elapsed().as_millis(),
 <a href=#65 id=65 data-nosnippet>65</a>							RegisteredNs
 <a href=#66 id=66 data-nosnippet>66</a>						);
-<a href=#67 id=67 data-nosnippet>67</a>						<a href="../../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#67 id=67 data-nosnippet>67</a>						<a href="../../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#68 id=68 data-nosnippet>68</a>							<span class="string">"tree-view"</span>,
 <a href=#69 id=69 data-nosnippet>69</a>							<span class="string">"[TreeView] register view={} result={} elapsed={}ms"</span>,
 <a href=#70 id=70 data-nosnippet>70</a>							ViewIdForLog,
@@ -93,7 +93,7 @@
 <a href=#93 id=93 data-nosnippet>93</a>								}),
 <a href=#94 id=94 data-nosnippet>94</a>							) {
 <a href=#95 id=95 data-nosnippet>95</a>								<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(()) =&gt; {
-<a href=#96 id=96 data-nosnippet>96</a>									<a href="../../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#96 id=96 data-nosnippet>96</a>									<a href="../../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#97 id=97 data-nosnippet>97</a>										<span class="string">"tree-view"</span>,
 <a href=#98 id=98 data-nosnippet>98</a>										<span class="string">"[TreeView] emit-ok channel={} view={}"</span>,
 <a href=#99 id=99 data-nosnippet>99</a>										SkyEvent::TreeViewCreate.AsStr(),
@@ -101,14 +101,14 @@
 <a href=#101 id=101 data-nosnippet>101</a>									);
 <a href=#102 id=102 data-nosnippet>102</a>								},
 <a href=#103 id=103 data-nosnippet>103</a>								<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error) =&gt; {
-<a href=#104 id=104 data-nosnippet>104</a>									<a href="../../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#104 id=104 data-nosnippet>104</a>									<a href="../../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#105 id=105 data-nosnippet>105</a>										<span class="string">"grpc"</span>,
 <a href=#106 id=106 data-nosnippet>106</a>										<span class="string">"warn: [LandFix:Tree] failed to emit {} for view={}: {}"</span>,
 <a href=#107 id=107 data-nosnippet>107</a>										SkyEvent::TreeViewCreate.AsStr(),
 <a href=#108 id=108 data-nosnippet>108</a>										ViewIdForLog,
 <a href=#109 id=109 data-nosnippet>109</a>										Error
 <a href=#110 id=110 data-nosnippet>110</a>									);
-<a href=#111 id=111 data-nosnippet>111</a>									<a href="../../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#111 id=111 data-nosnippet>111</a>									<a href="../../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#112 id=112 data-nosnippet>112</a>										<span class="string">"tree-view"</span>,
 <a href=#113 id=113 data-nosnippet>113</a>										<span class="string">"[TreeView] emit-fail channel={} view={} error={}"</span>,
 <a href=#114 id=114 data-nosnippet>114</a>										SkyEvent::TreeViewCreate.AsStr(),
@@ -130,7 +130,7 @@
 <a href=#130 id=130 data-nosnippet>130</a>				<span class="kw">move </span>|_run_time:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../../../RunTime/ApplicationRunTime/mod.rs.html#16-21">ApplicationRunTime</a>&gt;| -&gt; <a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html">Pin</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<span class="kw">dyn </span><a href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html">Future</a>&lt;Output = <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;&gt; + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a>&gt;&gt; {
 <a href=#131 id=131 data-nosnippet>131</a>					<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>::<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.pin">pin</a>(<span class="kw">async move </span>{
 <a href=#132 id=132 data-nosnippet>132</a>						<span class="kw">let </span>handle = <a href="#20">Parameters</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#method.get">get</a>(<span class="number">0</span>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#method.as_str">as_str</a>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or">unwrap_or</a>(<span class="string">""</span>);
-<a href=#133 id=133 data-nosnippet>133</a>						<a href="../../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[tree.unregister] handle={}"</span>, handle);
+<a href=#133 id=133 data-nosnippet>133</a>						<a href="../../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[tree.unregister] handle={}"</span>, handle);
 <a href=#134 id=134 data-nosnippet>134</a>						<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json!</a>(null))
 <a href=#135 id=135 data-nosnippet>135</a>					})
 <a href=#136 id=136 data-nosnippet>136</a>				};

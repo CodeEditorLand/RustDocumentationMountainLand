@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"constant":["EXTENSION_TYPE_SYSTEM","EXTENSION_TYPE_USER"],"fn":["ExtensionsGet","ExtensionsGetAll","ExtensionsGetInstalled","ExtensionsIsActive"]};
+window.SIDEBAR_ITEMS = {"mod":["ExtensionsGet","ExtensionsGetAll","ExtensionsGetInstalled","ExtensionsIsActive"]};

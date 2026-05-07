@@ -6,7 +6,7 @@
 <a href=#6 id=6 data-nosnippet>6</a>
 <a href=#7 id=7 data-nosnippet>7</a></span><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html">std::time::Duration</a>;
 <a href=#8 id=8 data-nosnippet>8</a>
-<a href=#9 id=9 data-nosnippet>9</a><span class="kw">use </span>crate::{<a href="../PathCanon.rs.html#25">Cache::PathCanon::Stats</a>, <a href="../../IPC/DevLog.rs.html#726-767">dev_log</a>};
+<a href=#9 id=9 data-nosnippet>9</a><span class="kw">use </span>crate::{<a href="../PathCanon.rs.html#25">Cache::PathCanon::Stats</a>, <a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log</a>};
 <a href=#10 id=10 data-nosnippet>10</a>
 <a href=#11 id=11 data-nosnippet>11</a><span class="kw">pub fn </span><a href="../../../../Mountain/Cache/PathCanon/SpawnDiagnosticLogger/fn.Fn.html">Fn</a>() {
 <a href=#12 id=12 data-nosnippet>12</a>	tokio::spawn(<span class="kw">async </span>{
@@ -20,7 +20,7 @@
 <a href=#20 id=20 data-nosnippet>20</a>
 <a href=#21 id=21 data-nosnippet>21</a>			<span class="kw">let </span>Snapshot = Stats::<a href="Stats.rs.html#7-12">Fn</a>();
 <a href=#22 id=22 data-nosnippet>22</a>
-<a href=#23 id=23 data-nosnippet>23</a>			<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"path-canon"</span>, <span class="string">"entries={} weighted={}"</span>, Snapshot.Entries, Snapshot.WeightedSize);
+<a href=#23 id=23 data-nosnippet>23</a>			<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"path-canon"</span>, <span class="string">"entries={} weighted={}"</span>, Snapshot.Entries, Snapshot.WeightedSize);
 <a href=#24 id=24 data-nosnippet>24</a>		}
 <a href=#25 id=25 data-nosnippet>25</a>	});
 <a href=#26 id=26 data-nosnippet>26</a>}

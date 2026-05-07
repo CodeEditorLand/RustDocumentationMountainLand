@@ -13,7 +13,7 @@
 <a href=#13 id=13 data-nosnippet>13</a><span class="kw">use </span>crate::{<a href="../../../RunTime/ApplicationRunTime/mod.rs.html#16-21">RunTime::ApplicationRunTime::ApplicationRunTime</a>, <a href="../MappedEffectType.rs.html#47-48">Track::Effect::MappedEffectType::MappedEffect</a>};
 <a href=#14 id=14 data-nosnippet>14</a>
 <a href=#15 id=15 data-nosnippet>15</a><span class="doccomment">/// Strip a leading `file://` (or `file:///`) scheme from the incoming path.
-<a href=#16 id=16 data-nosnippet>16</a>/// Cocoon sends full URIs like `file:///Users/nikola/.land/extensions/...`
+<a href=#16 id=16 data-nosnippet>16</a>/// Cocoon sends full URIs like `file:///&lt;home&gt;/.land/extensions/...`
 <a href=#17 id=17 data-nosnippet>17</a>/// through `FileSystem.ReadFile`/`WriteFile`/`ReadDirectory`; `PathBuf` from
 <a href=#18 id=18 data-nosnippet>18</a>/// such a string treats the scheme literally and every read 404s. Without
 <a href=#19 id=19 data-nosnippet>19</a>/// this the redhat.java activation (and any other extension that uses the

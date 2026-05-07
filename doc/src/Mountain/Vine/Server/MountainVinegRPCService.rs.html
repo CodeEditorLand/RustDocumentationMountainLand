@@ -53,7 +53,7 @@
 <a href=#53 id=53 data-nosnippet>53</a>		<a href="../Generated/vine.rs.html#81-89">RpcError</a> <span class="kw">as </span>RPCError,
 <a href=#54 id=54 data-nosnippet>54</a>		<a href="../Generated/vine.rs.html#1948-1988">mountain_service_server::MountainService</a>,
 <a href=#55 id=55 data-nosnippet>55</a>	},
-<a href=#56 id=56 data-nosnippet>56</a>	<a href="../../IPC/DevLog.rs.html#726-767">dev_log</a>,
+<a href=#56 id=56 data-nosnippet>56</a>	<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log</a>,
 <a href=#57 id=57 data-nosnippet>57</a>};
 <a href=#58 id=58 data-nosnippet>58</a>
 <a href=#59 id=59 data-nosnippet>59</a><span class="doccomment">/// Configuration for MountainService
@@ -111,7 +111,7 @@
 <a href=#111 id=111 data-nosnippet>111</a>	/// # Returns
 <a href=#112 id=112 data-nosnippet>112</a>	/// New MountainVinegRPCService instance
 <a href=#113 id=113 data-nosnippet>113</a>	</span><span class="kw">pub fn </span>Create(ApplicationHandle:AppHandle, RunTime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../../RunTime/ApplicationRunTime/mod.rs.html#16-21">ApplicationRunTime</a>&gt;) -&gt; <span class="self">Self </span>{
-<a href=#114 id=114 data-nosnippet>114</a>		<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"grpc"</span>, <span class="string">"[MountainVinegRPCService] New instance created"</span>);
+<a href=#114 id=114 data-nosnippet>114</a>		<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"grpc"</span>, <span class="string">"[MountainVinegRPCService] New instance created"</span>);
 <a href=#115 id=115 data-nosnippet>115</a>
 <a href=#116 id=116 data-nosnippet>116</a>		<span class="self">Self </span>{
 <a href=#117 id=117 data-nosnippet>117</a>			<a href="#113">ApplicationHandle</a>,
@@ -211,7 +211,7 @@
 <a href=#211 id=211 data-nosnippet>211</a>		<span class="kw">let </span>result_bytes = <span class="kw">match </span>serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/ser/fn.to_vec.html">to_vec</a>(<a href="#210">result</a>) {
 <a href=#212 id=212 data-nosnippet>212</a>			<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(bytes) =&gt; <a href="#212">bytes</a>,
 <a href=#213 id=213 data-nosnippet>213</a>			<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(e) =&gt; {
-<a href=#214 id=214 data-nosnippet>214</a>				<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"grpc"</span>, <span class="string">"error: [MountainVinegRPCService] Failed to serialize result: {}"</span>, e);
+<a href=#214 id=214 data-nosnippet>214</a>				<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"grpc"</span>, <span class="string">"error: [MountainVinegRPCService] Failed to serialize result: {}"</span>, e);
 <a href=#215 id=215 data-nosnippet>215</a>
 <a href=#216 id=216 data-nosnippet>216</a>				<span class="comment">// Return error response instead
 <a href=#217 id=217 data-nosnippet>217</a>				</span><span class="kw">return </span><span class="self">Self</span>::<a href="#194-200">CreateErrorResponse</a>(
@@ -280,7 +280,7 @@
 <a href=#280 id=280 data-nosnippet>280</a>		// per request × thousands of requests. Move under `grpc-verbose`
 <a href=#281 id=281 data-nosnippet>281</a>		// so the cheap default is quiet; failures are logged by the
 <a href=#282 id=282 data-nosnippet>282</a>		// dispatch path regardless.
-<a href=#283 id=283 data-nosnippet>283</a>		</span><a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#283 id=283 data-nosnippet>283</a>		</span><a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#284 id=284 data-nosnippet>284</a>			<span class="string">"grpc-verbose"</span>,
 <a href=#285 id=285 data-nosnippet>285</a>			<span class="string">"[MountainVinegRPCService] Received gRPC Request [ID: {}]: Method='{}'"</span>,
 <a href=#286 id=286 data-nosnippet>286</a>			RequestIdentifier,
@@ -307,7 +307,7 @@
 <a href=#307 id=307 data-nosnippet>307</a>			<span class="comment">// Per-call receive timestamp for latency diagnosis - only
 <a href=#308 id=308 data-nosnippet>308</a>			// useful when actively profiling. Gate under `rpc-latency`
 <a href=#309 id=309 data-nosnippet>309</a>			// so `short` / `grpc` don't print it.
-<a href=#310 id=310 data-nosnippet>310</a>			</span><a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#310 id=310 data-nosnippet>310</a>			</span><a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#311 id=311 data-nosnippet>311</a>				<span class="string">"rpc-latency"</span>,
 <a href=#312 id=312 data-nosnippet>312</a>				<span class="string">"[LandFix:RPC] grpc-recv method={} id={} size={} t_ns={}"</span>,
 <a href=#313 id=313 data-nosnippet>313</a>				MethodName,
@@ -319,7 +319,7 @@
 <a href=#319 id=319 data-nosnippet>319</a>
 <a href=#320 id=320 data-nosnippet>320</a>		<span class="comment">// Validate request before processing
 <a href=#321 id=321 data-nosnippet>321</a>		</span><span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(status) = <a class="self" href="#269">self</a>.<a href="#158-182">ValidateRequest</a>(<span class="kw-2">&amp;</span><a href="#272">RequestData</a>) {
-<a href=#322 id=322 data-nosnippet>322</a>			<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"grpc"</span>, <span class="string">"warn: [MountainVinegRPCService] Request validation failed: {}"</span>, status);
+<a href=#322 id=322 data-nosnippet>322</a>			<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"grpc"</span>, <span class="string">"warn: [MountainVinegRPCService] Request validation failed: {}"</span>, status);
 <a href=#323 id=323 data-nosnippet>323</a>
 <a href=#324 id=324 data-nosnippet>324</a>			<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Response::new(<span class="self">Self</span>::<a href="#194-200">CreateErrorResponse</a>(
 <a href=#325 id=325 data-nosnippet>325</a>				<a href="#276">RequestIdentifier</a>,
@@ -344,7 +344,7 @@
 <a href=#344 id=344 data-nosnippet>344</a>				// alone is already in Cocoon's `Request metrics:` line under
 <a href=#345 id=345 data-nosnippet>345</a>				// `grpc-verbose`, so duplicate here adds noise without
 <a href=#346 id=346 data-nosnippet>346</a>				// signal. Route to `grpc-verbose`.
-<a href=#347 id=347 data-nosnippet>347</a>				</span><a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#347 id=347 data-nosnippet>347</a>				</span><a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#348 id=348 data-nosnippet>348</a>					<span class="string">"grpc-verbose"</span>,
 <a href=#349 id=349 data-nosnippet>349</a>					<span class="string">"[MountainVinegRPCService] Params for [ID: {}] ({} bytes)"</span>,
 <a href=#350 id=350 data-nosnippet>350</a>					RequestIdentifier,
@@ -355,7 +355,7 @@
 <a href=#355 id=355 data-nosnippet>355</a>			<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(e) =&gt; {
 <a href=#356 id=356 data-nosnippet>356</a>				<span class="kw">let </span>msg = <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Failed to deserialize parameters for method '{}': {}"</span>, MethodName, e);
 <a href=#357 id=357 data-nosnippet>357</a>
-<a href=#358 id=358 data-nosnippet>358</a>				<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"grpc"</span>, <span class="string">"error: {}"</span>, msg);
+<a href=#358 id=358 data-nosnippet>358</a>				<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"grpc"</span>, <span class="string">"error: {}"</span>, msg);
 <a href=#359 id=359 data-nosnippet>359</a>
 <a href=#360 id=360 data-nosnippet>360</a>				<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Response::new(<span class="self">Self</span>::<a href="#194-200">CreateErrorResponse</a>(
 <a href=#361 id=361 data-nosnippet>361</a>					<a href="#276">RequestIdentifier</a>,
@@ -366,7 +366,7 @@
 <a href=#366 id=366 data-nosnippet>366</a>			},
 <a href=#367 id=367 data-nosnippet>367</a>		};
 <a href=#368 id=368 data-nosnippet>368</a>
-<a href=#369 id=369 data-nosnippet>369</a>		<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#369 id=369 data-nosnippet>369</a>		<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#370 id=370 data-nosnippet>370</a>			<span class="string">"grpc-verbose"</span>,
 <a href=#371 id=371 data-nosnippet>371</a>			<span class="string">"[MountainVinegRPCService] Dispatching request [ID: {}] to Track::DispatchLogic"</span>,
 <a href=#372 id=372 data-nosnippet>372</a>			RequestIdentifier
@@ -389,7 +389,7 @@
 <a href=#389 id=389 data-nosnippet>389</a>					<span class="comment">// Hot-RPC dispatched latency line - already narrow
 <a href=#390 id=390 data-nosnippet>390</a>					// (~50 tagged RPCs per session). Route to `rpc-latency`
 <a href=#391 id=391 data-nosnippet>391</a>					// so the profiling context stays opt-in.
-<a href=#392 id=392 data-nosnippet>392</a>					</span><a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#392 id=392 data-nosnippet>392</a>					</span><a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#393 id=393 data-nosnippet>393</a>						<span class="string">"rpc-latency"</span>,
 <a href=#394 id=394 data-nosnippet>394</a>						<span class="string">"[LandFix:RPC] dispatched method={} id={} elapsed={}ms"</span>,
 <a href=#395 id=395 data-nosnippet>395</a>						MethodName,
@@ -401,7 +401,7 @@
 <a href=#401 id=401 data-nosnippet>401</a>				// Failures still log under the unconditional `error:` path
 <a href=#402 id=402 data-nosnippet>402</a>				// below, so routing this to `grpc-verbose` doesn't hide real
 <a href=#403 id=403 data-nosnippet>403</a>				// problems.
-<a href=#404 id=404 data-nosnippet>404</a>				</span><a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#404 id=404 data-nosnippet>404</a>				</span><a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#405 id=405 data-nosnippet>405</a>					<span class="string">"grpc-verbose"</span>,
 <a href=#406 id=406 data-nosnippet>406</a>					<span class="string">"[MountainVinegRPCService] Request [ID: {}] completed successfully"</span>,
 <a href=#407 id=407 data-nosnippet>407</a>					RequestIdentifier
@@ -446,7 +446,7 @@
 <a href=#446 id=446 data-nosnippet>446</a>						|| <a href="#424">LowerError</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.contains">contains</a>(<span class="string">"permission denied for operation"</span>)
 <a href=#447 id=447 data-nosnippet>447</a>						|| <a href="#424">LowerError</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.contains">contains</a>(<span class="string">"workspace is not trusted"</span>));
 <a href=#448 id=448 data-nosnippet>448</a>				<span class="kw">if </span><a href="#436">LooksLike404</a> {
-<a href=#449 id=449 data-nosnippet>449</a>					<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#449 id=449 data-nosnippet>449</a>					<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#450 id=450 data-nosnippet>450</a>						<span class="string">"grpc-verbose"</span>,
 <a href=#451 id=451 data-nosnippet>451</a>						<span class="string">"[LandFix:MountainVinegRPC] Request [ID: {}] {} 404 (benign): {}"</span>,
 <a href=#452 id=452 data-nosnippet>452</a>						RequestIdentifier,
@@ -454,7 +454,7 @@
 <a href=#454 id=454 data-nosnippet>454</a>						ErrorString
 <a href=#455 id=455 data-nosnippet>455</a>					);
 <a href=#456 id=456 data-nosnippet>456</a>				} <span class="kw">else </span>{
-<a href=#457 id=457 data-nosnippet>457</a>					<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#457 id=457 data-nosnippet>457</a>					<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#458 id=458 data-nosnippet>458</a>						<span class="string">"grpc"</span>,
 <a href=#459 id=459 data-nosnippet>459</a>						<span class="string">"error: [MountainVinegRPCService] Request [ID: {}] failed: {}"</span>,
 <a href=#460 id=460 data-nosnippet>460</a>						RequestIdentifier,
@@ -503,7 +503,7 @@
 <a href=#503 id=503 data-nosnippet>503</a>		<span class="comment">// Notifications are even higher-volume than requests
 <a href=#504 id=504 data-nosnippet>504</a>		// (progress.report alone fires 2500+ times per long activation).
 <a href=#505 id=505 data-nosnippet>505</a>		// Move under `grpc-verbose` alongside the request-side banner.
-<a href=#506 id=506 data-nosnippet>506</a>		</span><a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#506 id=506 data-nosnippet>506</a>		</span><a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#507 id=507 data-nosnippet>507</a>			<span class="string">"grpc-verbose"</span>,
 <a href=#508 id=508 data-nosnippet>508</a>			<span class="string">"[MountainVinegRPCService] Received gRPC Notification: Method='{}'"</span>,
 <a href=#509 id=509 data-nosnippet>509</a>			MethodName
@@ -511,7 +511,7 @@
 <a href=#511 id=511 data-nosnippet>511</a>
 <a href=#512 id=512 data-nosnippet>512</a>		<span class="comment">// Validate notification method name
 <a href=#513 id=513 data-nosnippet>513</a>		</span><span class="kw">if </span><a href="#501">MethodName</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.is_empty">is_empty</a>() {
-<a href=#514 id=514 data-nosnippet>514</a>			<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#514 id=514 data-nosnippet>514</a>			<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#515 id=515 data-nosnippet>515</a>				<span class="string">"grpc"</span>,
 <a href=#516 id=516 data-nosnippet>516</a>				<span class="string">"warn: [MountainVinegRPCService] Received notification with empty method name"
 <a href=#517 id=517 data-nosnippet>517</a>			</span>);
@@ -580,7 +580,7 @@
 <a href=#580 id=580 data-nosnippet>580</a>			</span>| <span class="string">"webview.setHtml"
 <a href=#581 id=581 data-nosnippet>581</a>			</span>| <span class="string">"webview.updateView"
 <a href=#582 id=582 data-nosnippet>582</a>			</span>| <span class="string">"webview.reveal" </span>=&gt; {
-<a href=#583 id=583 data-nosnippet>583</a>				<span class="kw">super</span>::Notification::WebviewLifecycle::<a href="Notification/WebviewLifecycle.rs.html#18-37">WebviewLifecycle</a>(<a class="self" href="#498">self</a>, <span class="kw-2">&amp;</span><a href="#501">MethodName</a>, <span class="kw-2">&amp;</span><a href="#531">Parameter</a>).<span class="kw">await</span>;
+<a href=#583 id=583 data-nosnippet>583</a>				<span class="kw">super</span>::Notification::WebviewLifecycle::<a href="Notification/WebviewLifecycle.rs.html#27-91">WebviewLifecycle</a>(<a class="self" href="#498">self</a>, <span class="kw-2">&amp;</span><a href="#501">MethodName</a>, <span class="kw-2">&amp;</span><a href="#531">Parameter</a>).<span class="kw">await</span>;
 <a href=#584 id=584 data-nosnippet>584</a>			},
 <a href=#585 id=585 data-nosnippet>585</a>			<span class="string">"window.createTerminal" </span>=&gt; {
 <a href=#586 id=586 data-nosnippet>586</a>				<span class="kw">super</span>::Notification::WindowCreateTerminal::<a href="Notification/WindowCreateTerminal.rs.html#17-55">WindowCreateTerminal</a>(<a class="self" href="#498">self</a>, <span class="kw-2">&amp;</span><a href="#531">Parameter</a>).<span class="kw">await</span>;
@@ -842,14 +842,14 @@
 <a href=#842 id=842 data-nosnippet>842</a>				// was just the short form printed twice per register.
 <a href=#843 id=843 data-nosnippet>843</a>				// Route to `grpc-verbose` so the `short` log only shows
 <a href=#844 id=844 data-nosnippet>844</a>				// one line per provider registration.
-<a href=#845 id=845 data-nosnippet>845</a>				</span><a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#845 id=845 data-nosnippet>845</a>				</span><a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#846 id=846 data-nosnippet>846</a>					<span class="string">"grpc-verbose"</span>,
 <a href=#847 id=847 data-nosnippet>847</a>					<span class="string">"[MountainVinegRPCService] Cocoon registered {} provider: handle={}, lang={}"</span>,
 <a href=#848 id=848 data-nosnippet>848</a>					ProviderTypeName,
 <a href=#849 id=849 data-nosnippet>849</a>					Handle,
 <a href=#850 id=850 data-nosnippet>850</a>					Selector
 <a href=#851 id=851 data-nosnippet>851</a>				);
-<a href=#852 id=852 data-nosnippet>852</a>				<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#852 id=852 data-nosnippet>852</a>				<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#853 id=853 data-nosnippet>853</a>					<span class="string">"provider-register"</span>,
 <a href=#854 id=854 data-nosnippet>854</a>					<span class="string">"[ProviderRegister] accepted method={} type={} handle={} lang={} scheme={} ext={}"</span>,
 <a href=#855 id=855 data-nosnippet>855</a>					MethodName,
@@ -941,7 +941,7 @@
 <a href=#941 id=941 data-nosnippet>941</a>				}
 <a href=#942 id=942 data-nosnippet>942</a>			},
 <a href=#943 id=943 data-nosnippet>943</a>			<span class="kw">_ </span>=&gt; {
-<a href=#944 id=944 data-nosnippet>944</a>				<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"grpc"</span>, <span class="string">"[MountainVinegRPCService] Cocoon notification: {}"</span>, MethodName);
+<a href=#944 id=944 data-nosnippet>944</a>				<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"grpc"</span>, <span class="string">"[MountainVinegRPCService] Cocoon notification: {}"</span>, MethodName);
 <a href=#945 id=945 data-nosnippet>945</a>				<span class="comment">// No typed match arm exists for this notification - it hits
 <a href=#946 id=946 data-nosnippet>946</a>				// the default path and becomes a `cocoon:&lt;method&gt;` Tauri
 <a href=#947 id=947 data-nosnippet>947</a>				// event that Wind may or may not listen for. The
@@ -960,7 +960,7 @@
 <a href=#960 id=960 data-nosnippet>960</a>					<span class="kw">let </span>Slice = <span class="kw-2">&amp;</span><a href="#499">NotificationData</a>.parameter[..<span class="number">160</span>];
 <a href=#961 id=961 data-nosnippet>961</a>					<a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"{}…"</span>, String::from_utf8_lossy(Slice))
 <a href=#962 id=962 data-nosnippet>962</a>				};
-<a href=#963 id=963 data-nosnippet>963</a>				<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#963 id=963 data-nosnippet>963</a>				<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#964 id=964 data-nosnippet>964</a>					<span class="string">"notif-drop"</span>,
 <a href=#965 id=965 data-nosnippet>965</a>					<span class="string">"[NotifDrop] method={} payload_bytes={} preview={:?} (falls through to cocoon:{} event)"</span>,
 <a href=#966 id=966 data-nosnippet>966</a>					MethodName,
@@ -972,7 +972,7 @@
 <a href=#972 id=972 data-nosnippet>972</a>				// can subscribe to any Cocoon-originated event.
 <a href=#973 id=973 data-nosnippet>973</a>				</span><span class="kw">let </span>EventName = <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"cocoon:{}"</span>, MethodName);
 <a href=#974 id=974 data-nosnippet>974</a>				<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error) = <a class="self" href="#498">self</a>.ApplicationHandle.emit(<span class="kw-2">&amp;</span><a href="#973">EventName</a>, <span class="kw-2">&amp;</span><a href="#531">Parameter</a>) {
-<a href=#975 id=975 data-nosnippet>975</a>					<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#975 id=975 data-nosnippet>975</a>					<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#976 id=976 data-nosnippet>976</a>						<span class="string">"grpc"</span>,
 <a href=#977 id=977 data-nosnippet>977</a>						<span class="string">"warn: [MountainVinegRPCService] Failed to emit {}: {}"</span>,
 <a href=#978 id=978 data-nosnippet>978</a>						EventName,
@@ -1001,7 +1001,7 @@
 <a href=#1001 id=1001 data-nosnippet>1001</a>
 <a href=#1002 id=1002 data-nosnippet>1002</a>		<span class="kw">let </span>RequestIdentifierToCancel = <a href="#1000">cancel_request</a>.request_identifier_to_cancel;
 <a href=#1003 id=1003 data-nosnippet>1003</a>
-<a href=#1004 id=1004 data-nosnippet>1004</a>		<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#1004 id=1004 data-nosnippet>1004</a>		<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#1005 id=1005 data-nosnippet>1005</a>			<span class="string">"grpc"</span>,
 <a href=#1006 id=1006 data-nosnippet>1006</a>			<span class="string">"[MountainVinegRPCService] Received CancelOperation request for RequestID: {}"</span>,
 <a href=#1007 id=1007 data-nosnippet>1007</a>			RequestIdentifierToCancel
@@ -1018,7 +1018,7 @@
 <a href=#1018 id=1018 data-nosnippet>1018</a>				<span class="comment">// Trigger cancellation token to signal the operation to abort
 <a href=#1019 id=1019 data-nosnippet>1019</a>				</span><a href="#1017">token</a>.cancel();
 <a href=#1020 id=1020 data-nosnippet>1020</a>
-<a href=#1021 id=1021 data-nosnippet>1021</a>				<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#1021 id=1021 data-nosnippet>1021</a>				<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#1022 id=1022 data-nosnippet>1022</a>					<span class="string">"grpc"</span>,
 <a href=#1023 id=1023 data-nosnippet>1023</a>					<span class="string">"[MountainVinegRPCService] Successfully initiated cancellation for operation {}"</span>,
 <a href=#1024 id=1024 data-nosnippet>1024</a>					RequestIdentifierToCancel
@@ -1032,7 +1032,7 @@
 <a href=#1032 id=1032 data-nosnippet>1032</a>			},
 <a href=#1033 id=1033 data-nosnippet>1033</a>			<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a> =&gt; {
 <a href=#1034 id=1034 data-nosnippet>1034</a>				<span class="comment">// Operation not found - it may have already completed
-<a href=#1035 id=1035 data-nosnippet>1035</a>				</span><a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#1035 id=1035 data-nosnippet>1035</a>				</span><a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#1036 id=1036 data-nosnippet>1036</a>					<span class="string">"grpc"</span>,
 <a href=#1037 id=1037 data-nosnippet>1037</a>					<span class="string">"warn: [MountainVinegRPCService] Cannot cancel operation {}: operation not found (may have \
 <a href=#1038 id=1038 data-nosnippet>1038</a>					 already completed)"</span>,

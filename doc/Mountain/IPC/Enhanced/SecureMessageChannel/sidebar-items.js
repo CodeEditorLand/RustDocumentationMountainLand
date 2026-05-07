@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"struct":["EncryptedMessage","EncryptionKey","SecureMessage","SecureMessageChannel","SecurityConfig","SecurityStats"]};
+window.SIDEBAR_ITEMS = {"mod":["Channel","EncryptedMessage","EncryptionKey","SecureMessage","SecurityConfig","SecurityStats"]};

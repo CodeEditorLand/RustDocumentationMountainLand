@@ -6,7 +6,7 @@
 <a href=#6 id=6 data-nosnippet>6</a>
 <a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span>crate::{
 <a href=#8 id=8 data-nosnippet>8</a>	ApplicationState::State::ApplicationState::{<a href="../../ApplicationState/State/ApplicationState.rs.html#64-87">ApplicationState</a>, <a href="../../ApplicationState/State/ApplicationState.rs.html#135-137">MapLockError</a>},
-<a href=#9 id=9 data-nosnippet>9</a>	<a href="../../IPC/DevLog.rs.html#726-767">dev_log</a>,
+<a href=#9 id=9 data-nosnippet>9</a>	<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log</a>,
 <a href=#10 id=10 data-nosnippet>10</a>};
 <a href=#11 id=11 data-nosnippet>11</a>
 <a href=#12 id=12 data-nosnippet>12</a><span class="doccomment">/// Configures extension scan paths by resolving paths from the executable
@@ -30,7 +30,7 @@
 <a href=#30 id=30 data-nosnippet>30</a>///
 <a href=#31 id=31 data-nosnippet>31</a>/// Returns an error if ExtensionScanPaths mutex lock fails.
 <a href=#32 id=32 data-nosnippet>32</a></span><span class="kw">pub fn </span><a href="../../../../Mountain/Binary/Extension/ScanPathConfigure/fn.ScanPathConfigure.html">ScanPathConfigure</a>(AppState:<span class="kw-2">&amp;</span>std::sync::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../../ApplicationState/State/ApplicationState.rs.html#64-87">ApplicationState</a>&gt;) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>&gt;, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
-<a href=#33 id=33 data-nosnippet>33</a>	<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[Extensions] [ScanPaths] Locking ExtensionScanPaths..."</span>);
+<a href=#33 id=33 data-nosnippet>33</a>	<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[Extensions] [ScanPaths] Locking ExtensionScanPaths..."</span>);
 <a href=#34 id=34 data-nosnippet>34</a>
 <a href=#35 id=35 data-nosnippet>35</a>	<span class="kw">let </span><span class="kw-2">mut </span>ScanPathsGuard = <a href="#32">AppState</a>
 <a href=#36 id=36 data-nosnippet>36</a>		.Extension
@@ -49,12 +49,12 @@
 <a href=#49 id=49 data-nosnippet>49</a>		|| <a href="https://doc.rust-lang.org/nightly/core/macro.matches.html">matches!</a>(std::env::var(<span class="string">"Skip"</span>).as_deref(), <span class="prelude-val">Ok</span>(<span class="string">"1"</span>) | <span class="prelude-val">Ok</span>(<span class="string">"true"</span>));
 <a href=#50 id=50 data-nosnippet>50</a>
 <a href=#51 id=51 data-nosnippet>51</a>	<span class="kw">if </span><a href="#48">SkipBuiltins</a> {
-<a href=#52 id=52 data-nosnippet>52</a>		<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#52 id=52 data-nosnippet>52</a>		<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#53 id=53 data-nosnippet>53</a>			<span class="string">"extensions"</span>,
 <a href=#54 id=54 data-nosnippet>54</a>			<span class="string">"[Extensions] [ScanPaths] Skip=true - skipping all built-in paths, keeping user path"
 <a href=#55 id=55 data-nosnippet>55</a>		</span>);
 <a href=#56 id=56 data-nosnippet>56</a>	} <span class="kw">else </span>{
-<a href=#57 id=57 data-nosnippet>57</a>		<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[Extensions] [ScanPaths] Adding default scan paths..."</span>);
+<a href=#57 id=57 data-nosnippet>57</a>		<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[Extensions] [ScanPaths] Adding default scan paths..."</span>);
 <a href=#58 id=58 data-nosnippet>58</a>	}
 <a href=#59 id=59 data-nosnippet>59</a>
 <a href=#60 id=60 data-nosnippet>60</a>	<span class="comment">// `Ship` takes precedence over the executable-
@@ -64,10 +64,10 @@
 <a href=#64 id=64 data-nosnippet>64</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Override) = std::env::<a href="https://doc.rust-lang.org/nightly/std/env/fn.var.html">var</a>(<span class="string">"Ship"</span>) {
 <a href=#65 id=65 data-nosnippet>65</a>			<span class="kw">let </span>OverridePath = <a href="#197-204">ExpandUserPath</a>(<span class="kw-2">&amp;</span><a href="#64">Override</a>);
 <a href=#66 id=66 data-nosnippet>66</a>			<span class="kw">if </span><a href="#65">OverridePath</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.exists">exists</a>() {
-<a href=#67 id=67 data-nosnippet>67</a>				<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[Extensions] [ScanPaths] + {} (Ship)"</span>, OverridePath.display());
+<a href=#67 id=67 data-nosnippet>67</a>				<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[Extensions] [ScanPaths] + {} (Ship)"</span>, OverridePath.display());
 <a href=#68 id=68 data-nosnippet>68</a>				<a href="#35">ScanPathsGuard</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.push">push</a>(<a href="#65">OverridePath</a>);
 <a href=#69 id=69 data-nosnippet>69</a>			} <span class="kw">else </span>{
-<a href=#70 id=70 data-nosnippet>70</a>				<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#70 id=70 data-nosnippet>70</a>				<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#71 id=71 data-nosnippet>71</a>					<span class="string">"extensions"</span>,
 <a href=#72 id=72 data-nosnippet>72</a>					<span class="string">"warn: [Extensions] [ScanPaths] Ship={} does not exist; ignoring"</span>,
 <a href=#73 id=73 data-nosnippet>73</a>					Override
@@ -84,19 +84,19 @@
 <a href=#84 id=84 data-nosnippet>84</a>				// When launched from a `.app`, Parent is `Contents/MacOS/` and
 <a href=#85 id=85 data-nosnippet>85</a>				// this resolves to `Contents/Resources/extensions`.
 <a href=#86 id=86 data-nosnippet>86</a>				</span><span class="kw">let </span>ResourcesPath = <a href="#82">Parent</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">"../Resources/extensions"</span>);
-<a href=#87 id=87 data-nosnippet>87</a>				<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[Extensions] [ScanPaths] + {}"</span>, ResourcesPath.display());
+<a href=#87 id=87 data-nosnippet>87</a>				<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[Extensions] [ScanPaths] + {}"</span>, ResourcesPath.display());
 <a href=#88 id=88 data-nosnippet>88</a>				<a href="#35">ScanPathsGuard</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.push">push</a>(<a href="#86">ResourcesPath</a>);
 <a href=#89 id=89 data-nosnippet>89</a>
 <a href=#90 id=90 data-nosnippet>90</a>				<span class="comment">// VS Code-style bundle layout: `.app/Contents/Resources/app/extensions`.
 <a href=#91 id=91 data-nosnippet>91</a>				// Some tooling copies built-ins here; probe both conventions so a
 <a href=#92 id=92 data-nosnippet>92</a>				// single bundle works regardless of which copy step placed them.
 <a href=#93 id=93 data-nosnippet>93</a>				</span><span class="kw">let </span>ResourcesAppPath = <a href="#82">Parent</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">"../Resources/app/extensions"</span>);
-<a href=#94 id=94 data-nosnippet>94</a>				<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[Extensions] [ScanPaths] + {}"</span>, ResourcesAppPath.display());
+<a href=#94 id=94 data-nosnippet>94</a>				<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[Extensions] [ScanPaths] + {}"</span>, ResourcesAppPath.display());
 <a href=#95 id=95 data-nosnippet>95</a>				<a href="#35">ScanPathsGuard</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.push">push</a>(<a href="#93">ResourcesAppPath</a>);
 <a href=#96 id=96 data-nosnippet>96</a>
 <a href=#97 id=97 data-nosnippet>97</a>				<span class="comment">// Debug/dev path: Target/debug/extensions
 <a href=#98 id=98 data-nosnippet>98</a>				</span><span class="kw">let </span>LocalPath = <a href="#82">Parent</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">"extensions"</span>);
-<a href=#99 id=99 data-nosnippet>99</a>				<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[Extensions] [ScanPaths] + {}"</span>, LocalPath.display());
+<a href=#99 id=99 data-nosnippet>99</a>				<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[Extensions] [ScanPaths] + {}"</span>, LocalPath.display());
 <a href=#100 id=100 data-nosnippet>100</a>				<a href="#35">ScanPathsGuard</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.push">push</a>(<a href="#98">LocalPath</a>);
 <a href=#101 id=101 data-nosnippet>101</a>
 <a href=#102 id=102 data-nosnippet>102</a>				<span class="comment">// Monorepo-layout fallback paths: resolved relative to
@@ -112,7 +112,7 @@
 <a href=#112 id=112 data-nosnippet>112</a>				// extensions during the Sky build.
 <a href=#113 id=113 data-nosnippet>113</a>				</span><span class="kw">let </span>SkyTargetPath = <a href="#82">Parent</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">"../../../Sky/Target/Static/Application/extensions"</span>);
 <a href=#114 id=114 data-nosnippet>114</a>				<span class="kw">if </span><a href="#113">SkyTargetPath</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.exists">exists</a>() {
-<a href=#115 id=115 data-nosnippet>115</a>					<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#115 id=115 data-nosnippet>115</a>					<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#116 id=116 data-nosnippet>116</a>						<span class="string">"extensions"</span>,
 <a href=#117 id=117 data-nosnippet>117</a>						<span class="string">"[Extensions] [ScanPaths] + {} (Sky Target, repo-layout)"</span>,
 <a href=#118 id=118 data-nosnippet>118</a>						SkyTargetPath.display()
@@ -124,7 +124,7 @@
 <a href=#124 id=124 data-nosnippet>124</a>				// Code source checkout - avoids requiring a copy step.
 <a href=#125 id=125 data-nosnippet>125</a>				</span><span class="kw">let </span>DependencyPath = <a href="#82">Parent</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">"../../../../Dependency/Microsoft/Dependency/Editor/extensions"</span>);
 <a href=#126 id=126 data-nosnippet>126</a>				<span class="kw">if </span><a href="#125">DependencyPath</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.exists">exists</a>() {
-<a href=#127 id=127 data-nosnippet>127</a>					<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#127 id=127 data-nosnippet>127</a>					<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#128 id=128 data-nosnippet>128</a>						<span class="string">"extensions"</span>,
 <a href=#129 id=129 data-nosnippet>129</a>						<span class="string">"[Extensions] [ScanPaths] + {} (VS Code Dependency, repo-layout)"</span>,
 <a href=#130 id=130 data-nosnippet>130</a>						DependencyPath.display()
@@ -145,11 +145,11 @@
 <a href=#145 id=145 data-nosnippet>145</a>	// polluting the user's real profile.
 <a href=#146 id=146 data-nosnippet>146</a>	</span><span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(UserOverride) = std::env::<a href="https://doc.rust-lang.org/nightly/std/env/fn.var.html">var</a>(<span class="string">"Lodge"</span>) {
 <a href=#147 id=147 data-nosnippet>147</a>		<span class="kw">let </span>OverridePath = <a href="#197-204">ExpandUserPath</a>(<span class="kw-2">&amp;</span><a href="#146">UserOverride</a>);
-<a href=#148 id=148 data-nosnippet>148</a>		<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[Extensions] [ScanPaths] + {} (Lodge)"</span>, OverridePath.display());
+<a href=#148 id=148 data-nosnippet>148</a>		<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[Extensions] [ScanPaths] + {} (Lodge)"</span>, OverridePath.display());
 <a href=#149 id=149 data-nosnippet>149</a>		<a href="#35">ScanPathsGuard</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.push">push</a>(<a href="#147">OverridePath</a>);
 <a href=#150 id=150 data-nosnippet>150</a>	} <span class="kw">else if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(HomeDirectory) = dirs::home_dir() {
 <a href=#151 id=151 data-nosnippet>151</a>		<span class="kw">let </span>UserExtensionPath = <a href="#150">HomeDirectory</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">".land/extensions"</span>);
-<a href=#152 id=152 data-nosnippet>152</a>		<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#152 id=152 data-nosnippet>152</a>		<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#153 id=153 data-nosnippet>153</a>			<span class="string">"extensions"</span>,
 <a href=#154 id=154 data-nosnippet>154</a>			<span class="string">"[Extensions] [ScanPaths] + {} (User)"</span>,
 <a href=#155 id=155 data-nosnippet>155</a>			UserExtensionPath.display()
@@ -179,13 +179,13 @@
 <a href=#179 id=179 data-nosnippet>179</a>	// broken dev extension doesn't persist into the user's profile.
 <a href=#180 id=180 data-nosnippet>180</a>	</span><span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(DevExtensions) = std::env::<a href="https://doc.rust-lang.org/nightly/std/env/fn.var.html">var</a>(<span class="string">"Probe"</span>) {
 <a href=#181 id=181 data-nosnippet>181</a>		<span class="kw">let </span>DevPath = <a href="#197-204">ExpandUserPath</a>(<span class="kw-2">&amp;</span><a href="#180">DevExtensions</a>);
-<a href=#182 id=182 data-nosnippet>182</a>		<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[Extensions] [ScanPaths] + {} (Probe)"</span>, DevPath.display());
+<a href=#182 id=182 data-nosnippet>182</a>		<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[Extensions] [ScanPaths] + {} (Probe)"</span>, DevPath.display());
 <a href=#183 id=183 data-nosnippet>183</a>		<a href="#35">ScanPathsGuard</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.push">push</a>(<a href="#181">DevPath</a>);
 <a href=#184 id=184 data-nosnippet>184</a>	}
 <a href=#185 id=185 data-nosnippet>185</a>
 <a href=#186 id=186 data-nosnippet>186</a>	<span class="kw">let </span>ScanPaths = <a href="#35">ScanPathsGuard</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
 <a href=#187 id=187 data-nosnippet>187</a>
-<a href=#188 id=188 data-nosnippet>188</a>	<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[Extensions] [ScanPaths] Configured: {:?}"</span>, ScanPaths);
+<a href=#188 id=188 data-nosnippet>188</a>	<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[Extensions] [ScanPaths] Configured: {:?}"</span>, ScanPaths);
 <a href=#189 id=189 data-nosnippet>189</a>
 <a href=#190 id=190 data-nosnippet>190</a>	<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="#186">ScanPaths</a>)
 <a href=#191 id=191 data-nosnippet>191</a>}

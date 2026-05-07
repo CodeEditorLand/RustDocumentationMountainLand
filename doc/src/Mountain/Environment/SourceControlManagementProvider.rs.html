@@ -247,7 +247,7 @@
 <a href=#247 id=247 data-nosnippet>247</a><span class="kw">use </span>tauri::Emitter;
 <a href=#248 id=248 data-nosnippet>248</a>
 <a href=#249 id=249 data-nosnippet>249</a><span class="kw">use </span>super::{<a href="MountainEnvironment.rs.html#228-238">MountainEnvironment::MountainEnvironment</a>, <a href="mod.rs.html#113">Utility</a>};
-<a href=#250 id=250 data-nosnippet>250</a><span class="kw">use </span><a href="../IPC/DevLog.rs.html#726-767"><span class="kw">crate</span>::dev_log</a>;
+<a href=#250 id=250 data-nosnippet>250</a><span class="kw">use </span><a href="../IPC/DevLog/mod.rs.html#40-81"><span class="kw">crate</span>::dev_log</a>;
 <a href=#251 id=251 data-nosnippet>251</a>
 <a href=#252 id=252 data-nosnippet>252</a><span class="attr">#[async_trait]
 <a href=#253 id=253 data-nosnippet>253</a></span><span class="kw">impl </span>SourceControlManagementProvider <span class="kw">for </span><a href="MountainEnvironment.rs.html#228-238">MountainEnvironment</a> {
@@ -267,7 +267,7 @@
 <a href=#267 id=267 data-nosnippet>267</a>			.Handle
 <a href=#268 id=268 data-nosnippet>268</a>			.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or_else">unwrap_or_else</a>(|| <a class="self" href="#254">self</a>.ApplicationState.<a href="../ApplicationState/State/ApplicationState.rs.html#114-116">GetNextSourceControlManagementProviderHandle</a>());
 <a href=#269 id=269 data-nosnippet>269</a>
-<a href=#270 id=270 data-nosnippet>270</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#270 id=270 data-nosnippet>270</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#271 id=271 data-nosnippet>271</a>			<span class="string">"extensions"</span>,
 <a href=#272 id=272 data-nosnippet>272</a>			<span class="string">"[SourceControlManagementProvider] Creating new SCM provider with handle {}"</span>,
 <a href=#273 id=273 data-nosnippet>273</a>			Handle
@@ -309,7 +309,7 @@
 <a href=#309 id=309 data-nosnippet>309</a>	}
 <a href=#310 id=310 data-nosnippet>310</a>
 <a href=#311 id=311 data-nosnippet>311</a>	<span class="kw">async fn </span>DisposeSourceControl(<span class="kw-2">&amp;</span><a class="self" href="#311">self</a>, <a href="#311">ProviderHandle</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
-<a href=#312 id=312 data-nosnippet>312</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#312 id=312 data-nosnippet>312</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#313 id=313 data-nosnippet>313</a>			<span class="string">"extensions"</span>,
 <a href=#314 id=314 data-nosnippet>314</a>			<span class="string">"[SourceControlManagementProvider] Disposing SCM provider with handle {}"</span>,
 <a href=#315 id=315 data-nosnippet>315</a>			ProviderHandle
@@ -341,7 +341,7 @@
 <a href=#341 id=341 data-nosnippet>341</a>	<span class="kw">async fn </span>UpdateSourceControl(<span class="kw-2">&amp;</span><a class="self" href="#341">self</a>, <a href="#341">ProviderHandle</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>, <a href="#341">UpdateDataValue</a>:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
 <a href=#342 id=342 data-nosnippet>342</a>		<span class="kw">let </span>UpdateData:SourceControlUpdateDTO = serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/fn.from_value.html">from_value</a>(<a href="#341">UpdateDataValue</a>)<span class="question-mark">?</span>;
 <a href=#343 id=343 data-nosnippet>343</a>
-<a href=#344 id=344 data-nosnippet>344</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#344 id=344 data-nosnippet>344</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#345 id=345 data-nosnippet>345</a>			<span class="string">"extensions"</span>,
 <a href=#346 id=346 data-nosnippet>346</a>			<span class="string">"[SourceControlManagementProvider] Updating provider {}"</span>,
 <a href=#347 id=347 data-nosnippet>347</a>			ProviderHandle
@@ -385,7 +385,7 @@
 <a href=#385 id=385 data-nosnippet>385</a>	<span class="kw">async fn </span>UpdateSourceControlGroup(<span class="kw-2">&amp;</span><a class="self" href="#385">self</a>, <a href="#385">ProviderHandle</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>, <a href="#385">GroupDataValue</a>:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
 <a href=#386 id=386 data-nosnippet>386</a>		<span class="kw">let </span>GroupData:SourceControlGroupUpdateDTO = serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/fn.from_value.html">from_value</a>(<a href="#385">GroupDataValue</a>)<span class="question-mark">?</span>;
 <a href=#387 id=387 data-nosnippet>387</a>
-<a href=#388 id=388 data-nosnippet>388</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#388 id=388 data-nosnippet>388</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#389 id=389 data-nosnippet>389</a>			<span class="string">"extensions"</span>,
 <a href=#390 id=390 data-nosnippet>390</a>			<span class="string">"[SourceControlManagementProvider] Updating group '{}' for provider {}"</span>,
 <a href=#391 id=391 data-nosnippet>391</a>			GroupData.GroupID,
@@ -423,7 +423,7 @@
 <a href=#423 id=423 data-nosnippet>423</a>				)
 <a href=#424 id=424 data-nosnippet>424</a>				.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| CommonError::UserInterfaceInteraction { Reason:<a href="#424">Error</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>() })<span class="question-mark">?</span>;
 <a href=#425 id=425 data-nosnippet>425</a>		} <span class="kw">else </span>{
-<a href=#426 id=426 data-nosnippet>426</a>			<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#426 id=426 data-nosnippet>426</a>			<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#427 id=427 data-nosnippet>427</a>				<span class="string">"extensions"</span>,
 <a href=#428 id=428 data-nosnippet>428</a>				<span class="string">"warn: [SourceControlManagementProvider] Received group update for unknown provider handle: {}"</span>,
 <a href=#429 id=429 data-nosnippet>429</a>				ProviderHandle
@@ -436,7 +436,7 @@
 <a href=#436 id=436 data-nosnippet>436</a>	<span class="kw">async fn </span>RegisterInputBox(<span class="kw-2">&amp;</span><a class="self" href="#436">self</a>, <a href="#436">ProviderHandle</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>, <a href="#436">InputBoxDataValue</a>:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
 <a href=#437 id=437 data-nosnippet>437</a>		<span class="kw">let </span>InputBoxData:SourceControlInputBoxDTO = serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/fn.from_value.html">from_value</a>(<a href="#436">InputBoxDataValue</a>)<span class="question-mark">?</span>;
 <a href=#438 id=438 data-nosnippet>438</a>
-<a href=#439 id=439 data-nosnippet>439</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#439 id=439 data-nosnippet>439</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#440 id=440 data-nosnippet>440</a>			<span class="string">"extensions"</span>,
 <a href=#441 id=441 data-nosnippet>441</a>			<span class="string">"[SourceControlManagementProvider] Registering input box for provider {}"</span>,
 <a href=#442 id=442 data-nosnippet>442</a>			ProviderHandle

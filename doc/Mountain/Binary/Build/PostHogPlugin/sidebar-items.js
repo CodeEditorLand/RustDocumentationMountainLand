@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["CaptureAllowed","CaptureError","CaptureEvent","CaptureIPC","Client","Constants","DistinctId","Initialize"]};
+window.SIDEBAR_ITEMS = {"mod":["CaptureAllowed","CaptureError","CaptureEvent","CaptureHandler","CaptureIPC","Client","Constants","DistinctId","HydrateRuntimeEnvironment","Initialize"]};

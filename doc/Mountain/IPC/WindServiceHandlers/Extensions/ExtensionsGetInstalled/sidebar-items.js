@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["EXTENSION_TYPE_SYSTEM","EXTENSION_TYPE_USER"],"fn":["ExtensionsGetInstalled"]};

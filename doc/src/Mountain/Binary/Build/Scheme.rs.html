@@ -41,7 +41,7 @@
 <a href=#41 id=41 data-nosnippet>41</a>};
 <a href=#42 id=42 data-nosnippet>42</a>
 <a href=#43 id=43 data-nosnippet>43</a><span class="kw">use </span><a href="ServiceRegistry.rs.html#85-90"><span class="kw">super</span>::ServiceRegistry::ServiceRegistry</a>;
-<a href=#44 id=44 data-nosnippet>44</a><span class="kw">use </span><a href="../../IPC/DevLog.rs.html#726-767"><span class="kw">crate</span>::dev_log</a>;
+<a href=#44 id=44 data-nosnippet>44</a><span class="kw">use </span><a href="../../IPC/DevLog/mod.rs.html#40-81"><span class="kw">crate</span>::dev_log</a>;
 <a href=#45 id=45 data-nosnippet>45</a>
 <a href=#46 id=46 data-nosnippet>46</a><span class="comment">// Global service registry (will be initialized in Tauri setup)
 <a href=#47 id=47 data-nosnippet>47</a></span><span class="kw">static </span><a href="../../../../Mountain/Binary/Build/Scheme/static.SERVICE_REGISTRY.html">SERVICE_REGISTRY</a>:<a href="https://doc.rust-lang.org/nightly/std/sync/poison/rwlock/struct.RwLock.html">RwLock</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="ServiceRegistry.rs.html#85-90">ServiceRegistry</a>&gt;&gt; = <a href="https://doc.rust-lang.org/nightly/std/sync/poison/rwlock/struct.RwLock.html">RwLock</a>::<a href="https://doc.rust-lang.org/nightly/std/sync/poison/rwlock/struct.RwLock.html#method.new">new</a>(<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>);
@@ -175,7 +175,7 @@
 <a href=#175 id=175 data-nosnippet>175</a>
 <a href=#176 id=176 data-nosnippet>176</a>	<span class="kw">let </span>path = <span class="kw">if </span><a href="#172">parts</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.len">len</a>() &gt; <span class="number">1 </span>{ <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"/{}"</span>, parts[<span class="number">1</span>]) } <span class="kw">else </span>{ <span class="string">"/"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>() };
 <a href=#177 id=177 data-nosnippet>177</a>
-<a href=#178 id=178 data-nosnippet>178</a>	<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[Scheme] Parsed URI: {} -&gt; domain={}, path={}"</span>, uri, domain, path);
+<a href=#178 id=178 data-nosnippet>178</a>	<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[Scheme] Parsed URI: {} -&gt; domain={}, path={}"</span>, uri, domain, path);
 <a href=#179 id=179 data-nosnippet>179</a>	<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>((<a href="#174">domain</a>, <a href="#176">path</a>))
 <a href=#180 id=180 data-nosnippet>180</a>}
 <a href=#181 id=181 data-nosnippet>181</a>
@@ -208,7 +208,7 @@
 <a href=#208 id=208 data-nosnippet>208</a>
 <a href=#209 id=209 data-nosnippet>209</a>	<span class="kw">let </span>addr = <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"{}:{}"</span>, host, port);
 <a href=#210 id=210 data-nosnippet>210</a>
-<a href=#211 id=211 data-nosnippet>211</a>	<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[Scheme] Connecting to {} at {}"</span>, url, addr);
+<a href=#211 id=211 data-nosnippet>211</a>	<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[Scheme] Connecting to {} at {}"</span>, url, addr);
 <a href=#212 id=212 data-nosnippet>212</a>
 <a href=#213 id=213 data-nosnippet>213</a>	<span class="comment">// Clone request body and headers for use in thread
 <a href=#214 id=214 data-nosnippet>214</a>	</span><span class="kw">let </span>body = <a href="#195">request</a>.body().<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
@@ -298,7 +298,7 @@
 <a href=#298 id=298 data-nosnippet>298</a>				// of headers)
 <a href=#299 id=299 data-nosnippet>299</a>				</span><span class="kw">if </span><a href="#282">buffer</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.len">len</a>() &gt; <span class="number">1024 </span>* <span class="number">1024 </span>{
 <a href=#300 id=300 data-nosnippet>300</a>					<span class="comment">// Limit to 1MB
-<a href=#301 id=301 data-nosnippet>301</a>					</span><a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"warn: [Scheme] Response too large, truncating"</span>);
+<a href=#301 id=301 data-nosnippet>301</a>					</span><a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"warn: [Scheme] Response too large, truncating"</span>);
 <a href=#302 id=302 data-nosnippet>302</a>					<span class="kw">break</span>;
 <a href=#303 id=303 data-nosnippet>303</a>				}
 <a href=#304 id=304 data-nosnippet>304</a>
@@ -408,27 +408,27 @@
 <a href=#408 id=408 data-nosnippet>408</a>
 <a href=#409 id=409 data-nosnippet>409</a>	<span class="comment">// Get URI
 <a href=#410 id=410 data-nosnippet>410</a>	</span><span class="kw">let </span>uri = <a href="#405">request</a>.uri().<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>();
-<a href=#411 id=411 data-nosnippet>411</a>	<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[Scheme] Handling land:// request: {}"</span>, uri);
+<a href=#411 id=411 data-nosnippet>411</a>	<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[Scheme] Handling land:// request: {}"</span>, uri);
 <a href=#412 id=412 data-nosnippet>412</a>
 <a href=#413 id=413 data-nosnippet>413</a>	<span class="comment">// Parse URI to extract domain and path
 <a href=#414 id=414 data-nosnippet>414</a>	</span><span class="kw">let </span>(domain, path) = <span class="kw">match </span><a href="#165-180">parse_land_uri</a>(<span class="kw-2">&amp;</span><a href="#410">uri</a>) {
 <a href=#415 id=415 data-nosnippet>415</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(result) =&gt; <a href="#415">result</a>,
 <a href=#416 id=416 data-nosnippet>416</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(e) =&gt; {
-<a href=#417 id=417 data-nosnippet>417</a>			<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"error: [Scheme] Failed to parse URI: {}"</span>, e);
+<a href=#417 id=417 data-nosnippet>417</a>			<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"error: [Scheme] Failed to parse URI: {}"</span>, e);
 <a href=#418 id=418 data-nosnippet>418</a>			<span class="kw">return </span><a href="#571-583">build_error_response</a>(<span class="number">400</span>, <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Bad Request: {}"</span>, e));
 <a href=#419 id=419 data-nosnippet>419</a>		},
 <a href=#420 id=420 data-nosnippet>420</a>	};
 <a href=#421 id=421 data-nosnippet>421</a>
 <a href=#422 id=422 data-nosnippet>422</a>	<span class="comment">// Handle CORS preflight requests
 <a href=#423 id=423 data-nosnippet>423</a>	</span><span class="kw">if </span><a href="#405">request</a>.method() == Method::OPTIONS {
-<a href=#424 id=424 data-nosnippet>424</a>		<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[Scheme] Handling CORS preflight request"</span>);
+<a href=#424 id=424 data-nosnippet>424</a>		<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[Scheme] Handling CORS preflight request"</span>);
 <a href=#425 id=425 data-nosnippet>425</a>		<span class="kw">return </span><a href="#586-595">build_cors_preflight_response</a>();
 <a href=#426 id=426 data-nosnippet>426</a>	}
 <a href=#427 id=427 data-nosnippet>427</a>
 <a href=#428 id=428 data-nosnippet>428</a>	<span class="comment">// Check cache for static assets
 <a href=#429 id=429 data-nosnippet>429</a>	</span><span class="kw">if </span><a href="#130-144">should_cache</a>(<span class="kw-2">&amp;</span><a href="#414">path</a>) {
 <a href=#430 id=430 data-nosnippet>430</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(cached) = <a href="#114-117">get_cached</a>(<span class="kw-2">&amp;</span><a href="#414">path</a>) {
-<a href=#431 id=431 data-nosnippet>431</a>			<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[Scheme] Cache hit for: {}"</span>, path);
+<a href=#431 id=431 data-nosnippet>431</a>			<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[Scheme] Cache hit for: {}"</span>, path);
 <a href=#432 id=432 data-nosnippet>432</a>			<span class="kw">return </span><a href="#598-616">build_cached_response</a>(<a href="#430">cached</a>);
 <a href=#433 id=433 data-nosnippet>433</a>		}
 <a href=#434 id=434 data-nosnippet>434</a>	}
@@ -437,7 +437,7 @@
 <a href=#437 id=437 data-nosnippet>437</a>	</span><span class="kw">let </span>registry = <span class="kw">match </span><a href="#69-72">get_service_registry</a>() {
 <a href=#438 id=438 data-nosnippet>438</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(r) =&gt; <a href="#438">r</a>,
 <a href=#439 id=439 data-nosnippet>439</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a> =&gt; {
-<a href=#440 id=440 data-nosnippet>440</a>			<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"error: [Scheme] Service registry not initialized"</span>);
+<a href=#440 id=440 data-nosnippet>440</a>			<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"error: [Scheme] Service registry not initialized"</span>);
 <a href=#441 id=441 data-nosnippet>441</a>			<span class="kw">return </span><a href="#571-583">build_error_response</a>(<span class="number">503</span>, <span class="string">"Service Unavailable: Registry not initialized"</span>);
 <a href=#442 id=442 data-nosnippet>442</a>		},
 <a href=#443 id=443 data-nosnippet>443</a>	};
@@ -445,7 +445,7 @@
 <a href=#445 id=445 data-nosnippet>445</a>	<span class="kw">let </span>service = <span class="kw">match </span><a href="#437">registry</a>.<a href="ServiceRegistry.rs.html#227-242">lookup</a>(<span class="kw-2">&amp;</span><a href="#414">domain</a>) {
 <a href=#446 id=446 data-nosnippet>446</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(s) =&gt; <a href="#446">s</a>,
 <a href=#447 id=447 data-nosnippet>447</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a> =&gt; {
-<a href=#448 id=448 data-nosnippet>448</a>			<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"warn: [Scheme] Service not found: {}"</span>, domain);
+<a href=#448 id=448 data-nosnippet>448</a>			<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"warn: [Scheme] Service not found: {}"</span>, domain);
 <a href=#449 id=449 data-nosnippet>449</a>			<span class="kw">return </span><a href="#571-583">build_error_response</a>(<span class="number">404</span>, <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Not Found: Service {} not registered"</span>, domain));
 <a href=#450 id=450 data-nosnippet>450</a>		},
 <a href=#451 id=451 data-nosnippet>451</a>	};
@@ -453,7 +453,7 @@
 <a href=#453 id=453 data-nosnippet>453</a>	<span class="comment">// Build local service URL
 <a href=#454 id=454 data-nosnippet>454</a>	</span><span class="kw">let </span>local_url = <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"http://127.0.0.1:{}{}"</span>, service.port, path);
 <a href=#455 id=455 data-nosnippet>455</a>
-<a href=#456 id=456 data-nosnippet>456</a>	<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#456 id=456 data-nosnippet>456</a>	<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#457 id=457 data-nosnippet>457</a>		<span class="string">"lifecycle"</span>,
 <a href=#458 id=458 data-nosnippet>458</a>		<span class="string">"[Scheme] Routing {} {} to local service at {}"</span>,
 <a href=#459 id=459 data-nosnippet>459</a>		request.method(),
@@ -498,7 +498,7 @@
 <a href=#498 id=498 data-nosnippet>498</a>				.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|V| <a href="#498">V</a>.<a href="https://doc.rust-lang.org/nightly/alloc/foreigntype.str.html#method.to_ascii_lowercase">to_ascii_lowercase</a>().<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.contains">contains</a>(<span class="string">"text/html"</span>))
 <a href=#499 id=499 data-nosnippet>499</a>				.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or">unwrap_or</a>(<span class="bool-val">false</span>);
 <a href=#500 id=500 data-nosnippet>500</a>			<span class="kw">if </span><a href="#483">IsAssetRequest</a> &amp;&amp; (<a href="#468">status</a> == <span class="number">404 </span>|| (<a href="#468">status</a> &gt;= <span class="number">400 </span>&amp;&amp; <a href="#496">UpstreamSaysHtml</a>)) {
-<a href=#501 id=501 data-nosnippet>501</a>				<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#501 id=501 data-nosnippet>501</a>				<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#502 id=502 data-nosnippet>502</a>					<span class="string">"scheme-assets"</span>,
 <a href=#503 id=503 data-nosnippet>503</a>					<span class="string">"[LandFix:Mime] swap HTML 404 → text/plain empty for asset path={} status={}"</span>,
 <a href=#504 id=504 data-nosnippet>504</a>					path,
@@ -555,13 +555,13 @@
 <a href=#555 id=555 data-nosnippet>555</a>
 <a href=#556 id=556 data-nosnippet>556</a>				<span class="kw">let </span>entry = <a href="#83-94">CacheEntry</a> { <a href="#468">body</a>, <a href="#545">content_type</a>, <a href="#549">cache_control</a>, <a href="#553">etag</a>, <a href="#554">last_modified</a> };
 <a href=#557 id=557 data-nosnippet>557</a>				<a href="#120-125">set_cached</a>(<span class="kw-2">&amp;</span><a href="#414">path</a>, <a href="#556">entry</a>);
-<a href=#558 id=558 data-nosnippet>558</a>				<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[Scheme] Cached response for: {}"</span>, path);
+<a href=#558 id=558 data-nosnippet>558</a>				<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[Scheme] Cached response for: {}"</span>, path);
 <a href=#559 id=559 data-nosnippet>559</a>			}
 <a href=#560 id=560 data-nosnippet>560</a>
 <a href=#561 id=561 data-nosnippet>561</a>			<a href="#541">response</a>.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|<span class="kw">_</span>| <a href="#571-583">build_error_response</a>(<span class="number">500</span>, <span class="string">"Internal Server Error"</span>))
 <a href=#562 id=562 data-nosnippet>562</a>		},
 <a href=#563 id=563 data-nosnippet>563</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(e) =&gt; {
-<a href=#564 id=564 data-nosnippet>564</a>			<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"error: [Scheme] Failed to forward request: {}"</span>, e);
+<a href=#564 id=564 data-nosnippet>564</a>			<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"error: [Scheme] Failed to forward request: {}"</span>, e);
 <a href=#565 id=565 data-nosnippet>565</a>			<a href="#571-583">build_error_response</a>(<span class="number">503</span>, <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Service Unavailable: {}"</span>, e))
 <a href=#566 id=566 data-nosnippet>566</a>		},
 <a href=#567 id=567 data-nosnippet>567</a>	}
@@ -626,7 +626,7 @@
 <a href=#626 id=626 data-nosnippet>626</a></span><span class="kw">pub fn </span><a href="../../../../Mountain/Binary/Build/Scheme/fn.register_land_service.html">register_land_service</a>(name:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, port:<a href="https://doc.rust-lang.org/nightly/std/primitive.u16.html">u16</a>) {
 <a href=#627 id=627 data-nosnippet>627</a>	<span class="kw">let </span>registry = <a href="#69-72">get_service_registry</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.expect">expect</a>(<span class="string">"Service registry not initialized. Call init_service_registry first."</span>);
 <a href=#628 id=628 data-nosnippet>628</a>	<a href="#627">registry</a>.<a href="ServiceRegistry.rs.html#130-132">register</a>(<a href="#626">name</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(), <a href="#626">port</a>, <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<span class="string">"/health"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>()));
-<a href=#629 id=629 data-nosnippet>629</a>	<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[Scheme] Registered service: {} -&gt; {}"</span>, name, port);
+<a href=#629 id=629 data-nosnippet>629</a>	<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[Scheme] Registered service: {} -&gt; {}"</span>, name, port);
 <a href=#630 id=630 data-nosnippet>630</a>}
 <a href=#631 id=631 data-nosnippet>631</a>
 <a href=#632 id=632 data-nosnippet>632</a><span class="doccomment">/// Get the port for a registered service
@@ -788,8 +788,8 @@
 <a href=#788 id=788 data-nosnippet>788</a>	// `scheme-assets` line below (opt-in tag) already captures the
 <a href=#789 id=789 data-nosnippet>789</a>	// same data; duplicating under `lifecycle` at the default level
 <a href=#790 id=790 data-nosnippet>790</a>	// just floods the log.
-<a href=#791 id=791 data-nosnippet>791</a>	</span><a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"scheme-assets"</span>, <span class="string">"[LandFix:VscodeFile] Request: {}"</span>, Uri);
-<a href=#792 id=792 data-nosnippet>792</a>	<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"scheme-assets"</span>, <span class="string">"[SchemeAssets] request uri={}"</span>, Uri);
+<a href=#791 id=791 data-nosnippet>791</a>	</span><a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"scheme-assets"</span>, <span class="string">"[LandFix:VscodeFile] Request: {}"</span>, Uri);
+<a href=#792 id=792 data-nosnippet>792</a>	<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"scheme-assets"</span>, <span class="string">"[SchemeAssets] request uri={}"</span>, Uri);
 <a href=#793 id=793 data-nosnippet>793</a>
 <a href=#794 id=794 data-nosnippet>794</a>	<span class="comment">// Extract path from: vscode-file://&lt;authority&gt;/&lt;path&gt;
 <a href=#795 id=795 data-nosnippet>795</a>	//
@@ -836,410 +836,470 @@
 <a href=#836 id=836 data-nosnippet>836</a>		<a href="#822">CleanPath</a>
 <a href=#837 id=837 data-nosnippet>837</a>	};
 <a href=#838 id=838 data-nosnippet>838</a>
-<a href=#839 id=839 data-nosnippet>839</a>	<span class="comment">// P1.5 fix: DevTools fetches `*.js.map` for every bundled script it loads
-<a href=#840 id=840 data-nosnippet>840</a>	// to render pretty stack traces. Our `Static/Application/` tree ships the
-<a href=#841 id=841 data-nosnippet>841</a>	// JS files without their `.map` siblings (esbuild's `sourcemap:false` path)
-<a href=#842 id=842 data-nosnippet>842</a>	// so those requests always 404. Short-circuit here with a clean
-<a href=#843 id=843 data-nosnippet>843</a>	// `204 No Content` - Chromium treats 204 as "no map available" and moves
-<a href=#844 id=844 data-nosnippet>844</a>	// on silently, avoiding both the noisy stderr lines and the filesystem
-<a href=#845 id=845 data-nosnippet>845</a>	// stat round-trip per request.
-<a href=#846 id=846 data-nosnippet>846</a>	</span><span class="kw">if </span><a href="#833">CleanPath</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.ends_with">ends_with</a>(<span class="string">".map"</span>) {
-<a href=#847 id=847 data-nosnippet>847</a>		<span class="kw">return </span>Builder::new()
-<a href=#848 id=848 data-nosnippet>848</a>			.status(<span class="number">204</span>)
-<a href=#849 id=849 data-nosnippet>849</a>			.header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"*"</span>)
-<a href=#850 id=850 data-nosnippet>850</a>			.body(<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>::<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.new">new</a>())
-<a href=#851 id=851 data-nosnippet>851</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|<span class="kw">_</span>| <a href="#571-583">build_error_response</a>(<span class="number">500</span>, <span class="string">"Failed to build response"</span>));
-<a href=#852 id=852 data-nosnippet>852</a>	}
-<a href=#853 id=853 data-nosnippet>853</a>
-<a href=#854 id=854 data-nosnippet>854</a>	<span class="comment">// CSS-as-JS shim: when a `.css` URL is requested through
-<a href=#855 id=855 data-nosnippet>855</a>	// `vscode-file://` (which happens for any unstripped raw `import
-<a href=#856 id=856 data-nosnippet>856</a>	// "./foo.css"` that VS Code's bundle still contains after
-<a href=#857 id=857 data-nosnippet>857</a>	// `workbench.js` switches `_VSCODE_FILE_ROOT` to the custom
-<a href=#858 id=858 data-nosnippet>858</a>	// scheme), the browser would refuse the response with
-<a href=#859 id=859 data-nosnippet>859</a>	// `'text/css' is not a valid JavaScript MIME type`. Service
-<a href=#860 id=860 data-nosnippet>860</a>	// Workers can't intercept custom-scheme requests, so we inline
-<a href=#861 id=861 data-nosnippet>861</a>	// the same JS shim the Worker SW emits on the localhost path:
-<a href=#862 id=862 data-nosnippet>862</a>	// invoke `_LOAD_CSS_WORKER` against the localhost-form path and
-<a href=#863 id=863 data-nosnippet>863</a>	// export an empty default. The SW + `&lt;link&gt;` fast-path then
-<a href=#864 id=864 data-nosnippet>864</a>	// loads the actual CSS bytes from `/Static/Application/...`.
-<a href=#865 id=865 data-nosnippet>865</a>	</span><span class="kw">if </span><a href="#833">CleanPath</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.ends_with">ends_with</a>(<span class="string">".css"</span>) {
-<a href=#866 id=866 data-nosnippet>866</a>		<span class="kw">let </span>LocalPath = <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"/Static/Application/{}"</span>, CleanPath.trim_start_matches(<span class="string">"Static/Application/"</span>));
-<a href=#867 id=867 data-nosnippet>867</a>		<span class="kw">let </span>Body = <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"globalThis._LOAD_CSS_WORKER?.({:?}); export default {{}};"</span>, LocalPath);
-<a href=#868 id=868 data-nosnippet>868</a>		<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
-<a href=#869 id=869 data-nosnippet>869</a>			<span class="string">"scheme-assets"</span>,
-<a href=#870 id=870 data-nosnippet>870</a>			<span class="string">"[LandFix:VscodeFile] css-shim {} -&gt; _LOAD_CSS_WORKER({})"</span>,
-<a href=#871 id=871 data-nosnippet>871</a>			CleanPath,
-<a href=#872 id=872 data-nosnippet>872</a>			LocalPath
-<a href=#873 id=873 data-nosnippet>873</a>		);
-<a href=#874 id=874 data-nosnippet>874</a>		<span class="kw">return </span>Builder::new()
-<a href=#875 id=875 data-nosnippet>875</a>			.status(<span class="number">200</span>)
-<a href=#876 id=876 data-nosnippet>876</a>			.header(<span class="string">"Content-Type"</span>, <span class="string">"application/javascript; charset=utf-8"</span>)
-<a href=#877 id=877 data-nosnippet>877</a>			.header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"*"</span>)
-<a href=#878 id=878 data-nosnippet>878</a>			.header(<span class="string">"Cache-Control"</span>, <span class="string">"public, max-age=31536000, immutable"</span>)
-<a href=#879 id=879 data-nosnippet>879</a>			.body(<a href="#867">Body</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.into_bytes">into_bytes</a>())
-<a href=#880 id=880 data-nosnippet>880</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|<span class="kw">_</span>| <a href="#571-583">build_error_response</a>(<span class="number">500</span>, <span class="string">"Failed to build response"</span>));
-<a href=#881 id=881 data-nosnippet>881</a>	}
-<a href=#882 id=882 data-nosnippet>882</a>
-<a href=#883 id=883 data-nosnippet>883</a>	<span class="comment">// Icon themes, grammars and other extension-contributed assets generate
-<a href=#884 id=884 data-nosnippet>884</a>	// URIs like `vscode-file://vscode-app/Volumes/CORSAIR/.../seti.woff` after
-<a href=#885 id=885 data-nosnippet>885</a>	// `FileAccess.uriToBrowserUri` rewrites a plain `file:///Volumes/...`
-<a href=#886 id=886 data-nosnippet>886</a>	// extension path. The authority `vscode-app` is followed directly by the
-<a href=#887 id=887 data-nosnippet>887</a>	// absolute filesystem path (sans leading `/`). Detect the well-known macOS /
-<a href=#888 id=888 data-nosnippet>888</a>	// Linux absolute-path roots and serve straight from disk instead of trying
-<a href=#889 id=889 data-nosnippet>889</a>	// to resolve them against `Sky/Target/` (where they do not exist).
-<a href=#890 id=890 data-nosnippet>890</a>	</span><span class="kw">let </span>IsAbsoluteOSPath = [
-<a href=#891 id=891 data-nosnippet>891</a>		<span class="string">"Volumes/"</span>,
-<a href=#892 id=892 data-nosnippet>892</a>		<span class="string">"Users/"</span>,
-<a href=#893 id=893 data-nosnippet>893</a>		<span class="string">"Library/"</span>,
-<a href=#894 id=894 data-nosnippet>894</a>		<span class="string">"System/"</span>,
-<a href=#895 id=895 data-nosnippet>895</a>		<span class="string">"Applications/"</span>,
-<a href=#896 id=896 data-nosnippet>896</a>		<span class="string">"private/"</span>,
-<a href=#897 id=897 data-nosnippet>897</a>		<span class="string">"tmp/"</span>,
-<a href=#898 id=898 data-nosnippet>898</a>		<span class="string">"var/"</span>,
-<a href=#899 id=899 data-nosnippet>899</a>		<span class="string">"etc/"</span>,
-<a href=#900 id=900 data-nosnippet>900</a>		<span class="string">"opt/"</span>,
-<a href=#901 id=901 data-nosnippet>901</a>		<span class="string">"home/"</span>,
-<a href=#902 id=902 data-nosnippet>902</a>		<span class="string">"usr/"</span>,
-<a href=#903 id=903 data-nosnippet>903</a>		<span class="string">"srv/"</span>,
-<a href=#904 id=904 data-nosnippet>904</a>		<span class="string">"mnt/"</span>,
-<a href=#905 id=905 data-nosnippet>905</a>		<span class="string">"root/"</span>,
-<a href=#906 id=906 data-nosnippet>906</a>	]
-<a href=#907 id=907 data-nosnippet>907</a>	.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.iter">iter</a>()
-<a href=#908 id=908 data-nosnippet>908</a>	.<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.any">any</a>(|Prefix| <a href="#833">CleanPath</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.starts_with">starts_with</a>(<a href="#908">Prefix</a>));
-<a href=#909 id=909 data-nosnippet>909</a>
-<a href=#910 id=910 data-nosnippet>910</a>	<span class="kw">if </span><a href="#890">IsAbsoluteOSPath</a> {
-<a href=#911 id=911 data-nosnippet>911</a>		<span class="kw">let </span>AbsolutePath = <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"/{}"</span>, CleanPath);
-<a href=#912 id=912 data-nosnippet>912</a>		<span class="kw">let </span>FilesystemPath = std::path::<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html">Path</a>::<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.new">new</a>(<span class="kw-2">&amp;</span><a href="#911">AbsolutePath</a>);
-<a href=#913 id=913 data-nosnippet>913</a>		<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
-<a href=#914 id=914 data-nosnippet>914</a>			<span class="string">"scheme-assets"</span>,
-<a href=#915 id=915 data-nosnippet>915</a>			<span class="string">"[LandFix:VscodeFile] os-abs candidate {} (exists={}, is_file={})"</span>,
-<a href=#916 id=916 data-nosnippet>916</a>			AbsolutePath,
-<a href=#917 id=917 data-nosnippet>917</a>			FilesystemPath.exists(),
-<a href=#918 id=918 data-nosnippet>918</a>			FilesystemPath.is_file()
-<a href=#919 id=919 data-nosnippet>919</a>		);
-<a href=#920 id=920 data-nosnippet>920</a>		<span class="kw">if </span><a href="#912">FilesystemPath</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.exists">exists</a>() &amp;&amp; <a href="#912">FilesystemPath</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.is_file">is_file</a>() {
-<a href=#921 id=921 data-nosnippet>921</a>			<span class="comment">// LAND-PATCH B7.P01: route through the mmap cache. First
-<a href=#922 id=922 data-nosnippet>922</a>			// hit on a path mmaps the file; subsequent hits are
-<a href=#923 id=923 data-nosnippet>923</a>			// wait-free DashMap reads. Brotli sibling (`&lt;file&gt;.br`)
-<a href=#924 id=924 data-nosnippet>924</a>			// is auto-discovered and served when the request offers
-<a href=#925 id=925 data-nosnippet>925</a>			// `Accept-Encoding: br`.
-<a href=#926 id=926 data-nosnippet>926</a>			</span><span class="kw">match </span><span class="kw">crate</span>::Cache::AssetMemoryMap::LoadOrInsert::<a href="../../Cache/AssetMemoryMap/LoadOrInsert.rs.html#20-61">Fn</a>(<a href="#912">FilesystemPath</a>) {
-<a href=#927 id=927 data-nosnippet>927</a>				<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Entry) =&gt; {
-<a href=#928 id=928 data-nosnippet>928</a>					<span class="kw">let </span>AcceptsBrotli = <a href="#783">Request</a>
-<a href=#929 id=929 data-nosnippet>929</a>						.headers()
-<a href=#930 id=930 data-nosnippet>930</a>						.get(<span class="string">"accept-encoding"</span>)
-<a href=#931 id=931 data-nosnippet>931</a>						.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|V| <a href="#931">V</a>.to_str().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>())
-<a href=#932 id=932 data-nosnippet>932</a>						.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|S| <a href="#932">S</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.contains">contains</a>(<span class="string">"br"</span>))
-<a href=#933 id=933 data-nosnippet>933</a>						.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or">unwrap_or</a>(<span class="bool-val">false</span>);
-<a href=#934 id=934 data-nosnippet>934</a>					<span class="kw">let </span>(Body, Encoding):(<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;, <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;) = <span class="kw">if </span><a href="#928">AcceptsBrotli</a> {
-<a href=#935 id=935 data-nosnippet>935</a>						<span class="kw">match </span><a href="#927">Entry</a>.<a href="../../Cache/AssetMemoryMap/Entry.rs.html#27">AsBrotliSlice</a>() {
-<a href=#936 id=936 data-nosnippet>936</a>							<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Slice) =&gt; (<a href="#936">Slice</a>.<a href="https://doc.rust-lang.org/nightly/alloc/foreigntype.slice.html#method.to_vec">to_vec</a>(), <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<span class="string">"br"</span>)),
-<a href=#937 id=937 data-nosnippet>937</a>							<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a> =&gt; (<a href="#927">Entry</a>.<a href="../../Cache/AssetMemoryMap/Entry.rs.html#24">AsSlice</a>().<a href="https://doc.rust-lang.org/nightly/alloc/foreigntype.slice.html#method.to_vec">to_vec</a>(), <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>),
-<a href=#938 id=938 data-nosnippet>938</a>						}
-<a href=#939 id=939 data-nosnippet>939</a>					} <span class="kw">else </span>{
-<a href=#940 id=940 data-nosnippet>940</a>						(<a href="#927">Entry</a>.<a href="../../Cache/AssetMemoryMap/Entry.rs.html#24">AsSlice</a>().<a href="https://doc.rust-lang.org/nightly/alloc/foreigntype.slice.html#method.to_vec">to_vec</a>(), <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>)
-<a href=#941 id=941 data-nosnippet>941</a>					};
-<a href=#942 id=942 data-nosnippet>942</a>					<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
-<a href=#943 id=943 data-nosnippet>943</a>						<span class="string">"scheme-assets"</span>,
-<a href=#944 id=944 data-nosnippet>944</a>						<span class="string">"[LandFix:VscodeFile] os-abs served {} ({}, {} bytes, encoding={:?})"</span>,
-<a href=#945 id=945 data-nosnippet>945</a>						AbsolutePath,
-<a href=#946 id=946 data-nosnippet>946</a>						Entry.Mime,
-<a href=#947 id=947 data-nosnippet>947</a>						Body.len(),
-<a href=#948 id=948 data-nosnippet>948</a>						Encoding
-<a href=#949 id=949 data-nosnippet>949</a>					);
-<a href=#950 id=950 data-nosnippet>950</a>					<span class="kw">let </span><span class="kw-2">mut </span>B = Builder::new()
-<a href=#951 id=951 data-nosnippet>951</a>						.status(<span class="number">200</span>)
-<a href=#952 id=952 data-nosnippet>952</a>						.header(<span class="string">"Content-Type"</span>, <a href="#927">Entry</a>.Mime)
-<a href=#953 id=953 data-nosnippet>953</a>						.header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"*"</span>)
-<a href=#954 id=954 data-nosnippet>954</a>						.header(<span class="string">"Cache-Control"</span>, <span class="string">"public, max-age=3600"</span>);
-<a href=#955 id=955 data-nosnippet>955</a>					<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Enc) = <a href="#934">Encoding</a> {
-<a href=#956 id=956 data-nosnippet>956</a>						<a href="#950">B</a> = <a href="#950">B</a>.header(<span class="string">"Content-Encoding"</span>, <a href="#955">Enc</a>);
-<a href=#957 id=957 data-nosnippet>957</a>					}
-<a href=#958 id=958 data-nosnippet>958</a>					<span class="kw">return </span><a href="#950">B</a>
-<a href=#959 id=959 data-nosnippet>959</a>						.body(<a href="#934">Body</a>)
-<a href=#960 id=960 data-nosnippet>960</a>						.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|<span class="kw">_</span>| <a href="#571-583">build_error_response</a>(<span class="number">500</span>, <span class="string">"Failed to build response"</span>));
-<a href=#961 id=961 data-nosnippet>961</a>				},
-<a href=#962 id=962 data-nosnippet>962</a>				<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error) =&gt; {
-<a href=#963 id=963 data-nosnippet>963</a>					<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
-<a href=#964 id=964 data-nosnippet>964</a>						<span class="string">"lifecycle"</span>,
-<a href=#965 id=965 data-nosnippet>965</a>						<span class="string">"warn: [LandFix:VscodeFile] os-abs mmap failure {}: {}"</span>,
-<a href=#966 id=966 data-nosnippet>966</a>						AbsolutePath,
-<a href=#967 id=967 data-nosnippet>967</a>						Error
-<a href=#968 id=968 data-nosnippet>968</a>					);
-<a href=#969 id=969 data-nosnippet>969</a>				},
-<a href=#970 id=970 data-nosnippet>970</a>			}
-<a href=#971 id=971 data-nosnippet>971</a>		} <span class="kw">else </span>{
-<a href=#972 id=972 data-nosnippet>972</a>			<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"warn: [LandFix:VscodeFile] os-abs not on disk: {}"</span>, AbsolutePath);
-<a href=#973 id=973 data-nosnippet>973</a>		}
-<a href=#974 id=974 data-nosnippet>974</a>	}
-<a href=#975 id=975 data-nosnippet>975</a>
-<a href=#976 id=976 data-nosnippet>976</a>	<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[LandFix:VscodeFile] Resolved path: {}"</span>, CleanPath);
-<a href=#977 id=977 data-nosnippet>977</a>
-<a href=#978 id=978 data-nosnippet>978</a>	<span class="comment">// Resolve against the frontendDist directory
-<a href=#979 id=979 data-nosnippet>979</a>	// In production: embedded in the binary via asset_resolver
-<a href=#980 id=980 data-nosnippet>980</a>	// In debug: fall back to filesystem read from Sky/Target
-<a href=#981 id=981 data-nosnippet>981</a>	</span><span class="kw">let </span>AssetResult = <a href="#782">AppHandle</a>.asset_resolver().get(<a href="#833">CleanPath</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>());
-<a href=#982 id=982 data-nosnippet>982</a>
-<a href=#983 id=983 data-nosnippet>983</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Asset) = <a href="#981">AssetResult</a> {
-<a href=#984 id=984 data-nosnippet>984</a>		<span class="kw">let </span>Mime = <a href="#717-751">MimeFromExtension</a>(<span class="kw-2">&amp;</span><a href="#833">CleanPath</a>);
-<a href=#985 id=985 data-nosnippet>985</a>
-<a href=#986 id=986 data-nosnippet>986</a>		<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
-<a href=#987 id=987 data-nosnippet>987</a>			<span class="string">"lifecycle"</span>,
-<a href=#988 id=988 data-nosnippet>988</a>			<span class="string">"[LandFix:VscodeFile] Serving (embedded) {} ({}, {} bytes)"</span>,
-<a href=#989 id=989 data-nosnippet>989</a>			CleanPath,
-<a href=#990 id=990 data-nosnippet>990</a>			Mime,
-<a href=#991 id=991 data-nosnippet>991</a>			Asset.bytes.len()
-<a href=#992 id=992 data-nosnippet>992</a>		);
-<a href=#993 id=993 data-nosnippet>993</a>		<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
-<a href=#994 id=994 data-nosnippet>994</a>			<span class="string">"scheme-assets"</span>,
-<a href=#995 id=995 data-nosnippet>995</a>			<span class="string">"[SchemeAssets] serve source=embedded path={} mime={} bytes={}"</span>,
-<a href=#996 id=996 data-nosnippet>996</a>			CleanPath,
-<a href=#997 id=997 data-nosnippet>997</a>			Mime,
-<a href=#998 id=998 data-nosnippet>998</a>			Asset.bytes.len()
-<a href=#999 id=999 data-nosnippet>999</a>		);
-<a href=#1000 id=1000 data-nosnippet>1000</a>
-<a href=#1001 id=1001 data-nosnippet>1001</a>		<span class="kw">return </span>Builder::new()
-<a href=#1002 id=1002 data-nosnippet>1002</a>			.status(<span class="number">200</span>)
-<a href=#1003 id=1003 data-nosnippet>1003</a>			.header(<span class="string">"Content-Type"</span>, <a href="#984">Mime</a>)
-<a href=#1004 id=1004 data-nosnippet>1004</a>			.header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"*"</span>)
-<a href=#1005 id=1005 data-nosnippet>1005</a>			.header(<span class="string">"Cache-Control"</span>, <span class="string">"public, max-age=31536000, immutable"</span>)
-<a href=#1006 id=1006 data-nosnippet>1006</a>			.body(<a href="#983">Asset</a>.bytes.<a href="https://doc.rust-lang.org/nightly/alloc/foreigntype.slice.html#method.to_vec">to_vec</a>())
-<a href=#1007 id=1007 data-nosnippet>1007</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|<span class="kw">_</span>| <a href="#571-583">build_error_response</a>(<span class="number">500</span>, <span class="string">"Failed to build response"</span>));
-<a href=#1008 id=1008 data-nosnippet>1008</a>	}
-<a href=#1009 id=1009 data-nosnippet>1009</a>
-<a href=#1010 id=1010 data-nosnippet>1010</a>	<span class="comment">// Fallback: read from filesystem (dev mode where assets aren't embedded)
-<a href=#1011 id=1011 data-nosnippet>1011</a>	</span><span class="kw">let </span>StaticRoot = <span class="kw">crate</span>::IPC::WindServiceHandlers::Utilities::ApplicationRoot::<a href="../../IPC/WindServiceHandlers/Utilities/ApplicationRoot.rs.html#14">get_static_application_root</a>();
-<a href=#1012 id=1012 data-nosnippet>1012</a>
-<a href=#1013 id=1013 data-nosnippet>1013</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Root) = <a href="#1011">StaticRoot</a> {
-<a href=#1014 id=1014 data-nosnippet>1014</a>		<span class="kw">let </span>FilesystemPath = std::path::<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html">Path</a>::<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.new">new</a>(<span class="kw-2">&amp;</span><a href="#1013">Root</a>).<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="kw-2">&amp;</span><a href="#833">CleanPath</a>);
-<a href=#1015 id=1015 data-nosnippet>1015</a>
-<a href=#1016 id=1016 data-nosnippet>1016</a>		<span class="kw">if </span><a href="#1014">FilesystemPath</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.exists">exists</a>() &amp;&amp; <a href="#1014">FilesystemPath</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.is_file">is_file</a>() {
-<a href=#1017 id=1017 data-nosnippet>1017</a>			<span class="comment">// LAND-PATCH B7.P01: mmap-cache the StaticRoot fallback
-<a href=#1018 id=1018 data-nosnippet>1018</a>			// path so dev-mode workbench reloads pay the syscall
-<a href=#1019 id=1019 data-nosnippet>1019</a>			// once per asset for the entire session.
-<a href=#1020 id=1020 data-nosnippet>1020</a>			</span><span class="kw">match </span><span class="kw">crate</span>::Cache::AssetMemoryMap::LoadOrInsert::<a href="../../Cache/AssetMemoryMap/LoadOrInsert.rs.html#20-61">Fn</a>(<span class="kw-2">&amp;</span><a href="#1014">FilesystemPath</a>) {
-<a href=#1021 id=1021 data-nosnippet>1021</a>				<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Entry) =&gt; {
-<a href=#1022 id=1022 data-nosnippet>1022</a>					<span class="kw">let </span>AcceptsBrotli = <a href="#783">Request</a>
-<a href=#1023 id=1023 data-nosnippet>1023</a>						.headers()
-<a href=#1024 id=1024 data-nosnippet>1024</a>						.get(<span class="string">"accept-encoding"</span>)
-<a href=#1025 id=1025 data-nosnippet>1025</a>						.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|V| <a href="#1025">V</a>.to_str().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>())
-<a href=#1026 id=1026 data-nosnippet>1026</a>						.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|S| <a href="#1026">S</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.contains">contains</a>(<span class="string">"br"</span>))
-<a href=#1027 id=1027 data-nosnippet>1027</a>						.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or">unwrap_or</a>(<span class="bool-val">false</span>);
-<a href=#1028 id=1028 data-nosnippet>1028</a>					<span class="kw">let </span>(Body, Encoding):(<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;, <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;) = <span class="kw">if </span><a href="#1022">AcceptsBrotli</a> {
-<a href=#1029 id=1029 data-nosnippet>1029</a>						<span class="kw">match </span><a href="#1021">Entry</a>.<a href="../../Cache/AssetMemoryMap/Entry.rs.html#27">AsBrotliSlice</a>() {
-<a href=#1030 id=1030 data-nosnippet>1030</a>							<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Slice) =&gt; (<a href="#1030">Slice</a>.<a href="https://doc.rust-lang.org/nightly/alloc/foreigntype.slice.html#method.to_vec">to_vec</a>(), <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<span class="string">"br"</span>)),
-<a href=#1031 id=1031 data-nosnippet>1031</a>							<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a> =&gt; (<a href="#1021">Entry</a>.<a href="../../Cache/AssetMemoryMap/Entry.rs.html#24">AsSlice</a>().<a href="https://doc.rust-lang.org/nightly/alloc/foreigntype.slice.html#method.to_vec">to_vec</a>(), <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>),
-<a href=#1032 id=1032 data-nosnippet>1032</a>						}
-<a href=#1033 id=1033 data-nosnippet>1033</a>					} <span class="kw">else </span>{
-<a href=#1034 id=1034 data-nosnippet>1034</a>						(<a href="#1021">Entry</a>.<a href="../../Cache/AssetMemoryMap/Entry.rs.html#24">AsSlice</a>().<a href="https://doc.rust-lang.org/nightly/alloc/foreigntype.slice.html#method.to_vec">to_vec</a>(), <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>)
-<a href=#1035 id=1035 data-nosnippet>1035</a>					};
-<a href=#1036 id=1036 data-nosnippet>1036</a>					<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
-<a href=#1037 id=1037 data-nosnippet>1037</a>						<span class="string">"lifecycle"</span>,
-<a href=#1038 id=1038 data-nosnippet>1038</a>						<span class="string">"[LandFix:VscodeFile] Serving (fs-mmap) {} ({}, {} bytes, encoding={:?})"</span>,
-<a href=#1039 id=1039 data-nosnippet>1039</a>						CleanPath,
-<a href=#1040 id=1040 data-nosnippet>1040</a>						Entry.Mime,
-<a href=#1041 id=1041 data-nosnippet>1041</a>						Body.len(),
-<a href=#1042 id=1042 data-nosnippet>1042</a>						Encoding
-<a href=#1043 id=1043 data-nosnippet>1043</a>					);
-<a href=#1044 id=1044 data-nosnippet>1044</a>					<span class="kw">let </span><span class="kw-2">mut </span>B = Builder::new()
-<a href=#1045 id=1045 data-nosnippet>1045</a>						.status(<span class="number">200</span>)
-<a href=#1046 id=1046 data-nosnippet>1046</a>						.header(<span class="string">"Content-Type"</span>, <a href="#1021">Entry</a>.Mime)
-<a href=#1047 id=1047 data-nosnippet>1047</a>						.header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"*"</span>)
-<a href=#1048 id=1048 data-nosnippet>1048</a>						.header(<span class="string">"Cache-Control"</span>, <span class="string">"public, max-age=3600"</span>);
-<a href=#1049 id=1049 data-nosnippet>1049</a>					<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Enc) = <a href="#1028">Encoding</a> {
-<a href=#1050 id=1050 data-nosnippet>1050</a>						<a href="#1044">B</a> = <a href="#1044">B</a>.header(<span class="string">"Content-Encoding"</span>, <a href="#1049">Enc</a>);
-<a href=#1051 id=1051 data-nosnippet>1051</a>					}
-<a href=#1052 id=1052 data-nosnippet>1052</a>					<span class="kw">return </span><a href="#1044">B</a>
-<a href=#1053 id=1053 data-nosnippet>1053</a>						.body(<a href="#1028">Body</a>)
-<a href=#1054 id=1054 data-nosnippet>1054</a>						.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|<span class="kw">_</span>| <a href="#571-583">build_error_response</a>(<span class="number">500</span>, <span class="string">"Failed to build response"</span>));
-<a href=#1055 id=1055 data-nosnippet>1055</a>				},
-<a href=#1056 id=1056 data-nosnippet>1056</a>				<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error) =&gt; {
-<a href=#1057 id=1057 data-nosnippet>1057</a>					<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
-<a href=#1058 id=1058 data-nosnippet>1058</a>						<span class="string">"lifecycle"</span>,
-<a href=#1059 id=1059 data-nosnippet>1059</a>						<span class="string">"warn: [LandFix:VscodeFile] Failed to read {}: {}"</span>,
-<a href=#1060 id=1060 data-nosnippet>1060</a>						FilesystemPath.display(),
-<a href=#1061 id=1061 data-nosnippet>1061</a>						Error
-<a href=#1062 id=1062 data-nosnippet>1062</a>					);
-<a href=#1063 id=1063 data-nosnippet>1063</a>				},
-<a href=#1064 id=1064 data-nosnippet>1064</a>			}
-<a href=#1065 id=1065 data-nosnippet>1065</a>		}
-<a href=#1066 id=1066 data-nosnippet>1066</a>	}
-<a href=#1067 id=1067 data-nosnippet>1067</a>
-<a href=#1068 id=1068 data-nosnippet>1068</a>	<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
-<a href=#1069 id=1069 data-nosnippet>1069</a>		<span class="string">"lifecycle"</span>,
-<a href=#1070 id=1070 data-nosnippet>1070</a>		<span class="string">"warn: [LandFix:VscodeFile] Not found: {} (resolved: {})"</span>,
-<a href=#1071 id=1071 data-nosnippet>1071</a>		Uri,
-<a href=#1072 id=1072 data-nosnippet>1072</a>		CleanPath
-<a href=#1073 id=1073 data-nosnippet>1073</a>	);
-<a href=#1074 id=1074 data-nosnippet>1074</a>	<a href="#571-583">build_error_response</a>(<span class="number">404</span>, <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Not Found: {}"</span>, CleanPath))
-<a href=#1075 id=1075 data-nosnippet>1075</a>}
-<a href=#1076 id=1076 data-nosnippet>1076</a>
-<a href=#1077 id=1077 data-nosnippet>1077</a><span class="doccomment">/// Custom URI scheme handler for `vscode-webview://` requests.
-<a href=#1078 id=1078 data-nosnippet>1078</a>///
-<a href=#1079 id=1079 data-nosnippet>1079</a>/// VS Code's `WebviewElement` (used by every extension webview - Roo
-<a href=#1080 id=1080 data-nosnippet>1080</a>/// Code, Claude, GitLens, custom-editor providers) wraps the inner
-<a href=#1081 id=1081 data-nosnippet>1081</a>/// extension HTML in an `&lt;iframe&gt;` whose `src` is
-<a href=#1082 id=1082 data-nosnippet>1082</a>/// `vscode-webview://&lt;authority&gt;/index.html?...`. The `&lt;authority&gt;` is
-<a href=#1083 id=1083 data-nosnippet>1083</a>/// a per-instance random base32 string. The authority is irrelevant to
-<a href=#1084 id=1084 data-nosnippet>1084</a>/// the bytes served - all that matters is the path component, which
-<a href=#1085 id=1085 data-nosnippet>1085</a>/// always resolves under
-<a href=#1086 id=1086 data-nosnippet>1086</a>/// `vs/workbench/contrib/webview/browser/pre/`.
-<a href=#1087 id=1087 data-nosnippet>1087</a>///
-<a href=#1088 id=1088 data-nosnippet>1088</a>/// In stock Electron VS Code, `app.protocol.registerStreamProtocol(
-<a href=#1089 id=1089 data-nosnippet>1089</a>/// 'vscode-webview', ...)` serves this directory. Under Tauri 2.x +
-<a href=#1090 id=1090 data-nosnippet>1090</a>/// WKWebView, `register_asynchronous_uri_scheme_protocol("vscode-webview",
-<a href=#1091 id=1091 data-nosnippet>1091</a>/// ...)` installs an equivalent `WKURLSchemeHandler`. Without this handler,
-<a href=#1092 id=1092 data-nosnippet>1092</a>/// every extension that uses `webviewView` / `WebviewPanel` /
-<a href=#1093 id=1093 data-nosnippet>1093</a>/// `CustomEditor` lands the inner iframe at a `vscode-webview://...`
-<a href=#1094 id=1094 data-nosnippet>1094</a>/// URL the WKWebView can't resolve, the iframe stays blank, and the
-<a href=#1095 id=1095 data-nosnippet>1095</a>/// extension surface is dead.
-<a href=#1096 id=1096 data-nosnippet>1096</a>///
-<a href=#1097 id=1097 data-nosnippet>1097</a>/// Three resources live under `pre/`:
-<a href=#1098 id=1098 data-nosnippet>1098</a>///   - `index.html`        - the webview shell that bridges `postMessage`
-<a href=#1099 id=1099 data-nosnippet>1099</a>///     between workbench host and inner extension HTML
-<a href=#1100 id=1100 data-nosnippet>1100</a>///   - `service-worker.js` - registered by `index.html` to intercept
-<a href=#1101 id=1101 data-nosnippet>1101</a>///     `vscode-webview-resource` requests for extension-shipped assets
-<a href=#1102 id=1102 data-nosnippet>1102</a>///   - `fake.html`         - sandbox stub used as a placeholder before
-<a href=#1103 id=1103 data-nosnippet>1103</a>///     extension HTML arrives via postMessage
-<a href=#1104 id=1104 data-nosnippet>1104</a>///
-<a href=#1105 id=1105 data-nosnippet>1105</a>/// Anything else (querystrings, extra path segments, GUID-like
-<a href=#1106 id=1106 data-nosnippet>1106</a>/// authorities) is silently dropped; the extension's actual content
-<a href=#1107 id=1107 data-nosnippet>1107</a>/// gets piped in via the `swMessage` channel after `index.html` boots,
-<a href=#1108 id=1108 data-nosnippet>1108</a>/// not through this scheme handler.
-<a href=#1109 id=1109 data-nosnippet>1109</a>///
-<a href=#1110 id=1110 data-nosnippet>1110</a>/// # Parameters
-<a href=#1111 id=1111 data-nosnippet>1111</a>///
-<a href=#1112 id=1112 data-nosnippet>1112</a>/// - `AppHandle`: Tauri AppHandle for resolving the embedded asset resolver and
-<a href=#1113 id=1113 data-nosnippet>1113</a>///   the dev-mode `Static/Application/` filesystem fallback (same chain as
-<a href=#1114 id=1114 data-nosnippet>1114</a>///   `VscodeFileSchemeHandler`).
-<a href=#1115 id=1115 data-nosnippet>1115</a>/// - `Request`: The incoming request - typically a `GET` for one of the three
-<a href=#1116 id=1116 data-nosnippet>1116</a>///   pre-baked files.
-<a href=#1117 id=1117 data-nosnippet>1117</a>///
-<a href=#1118 id=1118 data-nosnippet>1118</a>/// # Returns
-<a href=#1119 id=1119 data-nosnippet>1119</a>///
-<a href=#1120 id=1120 data-nosnippet>1120</a>/// A `Response&lt;Vec&lt;u8&gt;&gt;` carrying:
-<a href=#1121 id=1121 data-nosnippet>1121</a>///   - `200 OK` with the file bytes + correct MIME (`text/html` /
-<a href=#1122 id=1122 data-nosnippet>1122</a>///     `application/javascript`) when found, or
-<a href=#1123 id=1123 data-nosnippet>1123</a>///   - `404 Not Found` when the resolved path falls outside the `pre/`
-<a href=#1124 id=1124 data-nosnippet>1124</a>///     directory or the asset isn't shipped.
-<a href=#1125 id=1125 data-nosnippet>1125</a>///
-<a href=#1126 id=1126 data-nosnippet>1126</a>/// CORS headers are permissive (`*`) to match the workbench host's
-<a href=#1127 id=1127 data-nosnippet>1127</a>/// `vscode-webview-resource:` traffic, which round-trips through the
-<a href=#1128 id=1128 data-nosnippet>1128</a>/// service worker registered by `index.html`.
-<a href=#1129 id=1129 data-nosnippet>1129</a></span><span class="kw">pub fn </span><a href="../../../../Mountain/Binary/Build/Scheme/fn.VscodeWebviewSchemeHandler.html">VscodeWebviewSchemeHandler</a>&lt;R:tauri::Runtime&gt;(
-<a href=#1130 id=1130 data-nosnippet>1130</a>	AppHandle:<span class="kw-2">&amp;</span>tauri::AppHandle&lt;R&gt;,
-<a href=#1131 id=1131 data-nosnippet>1131</a>	Request:<span class="kw-2">&amp;</span>tauri::http::request::Request&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;&gt;,
-<a href=#1132 id=1132 data-nosnippet>1132</a>) -&gt; Response&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;&gt; {
-<a href=#1133 id=1133 data-nosnippet>1133</a>	<span class="kw">let </span>Uri = <a href="#1131">Request</a>.uri().<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>();
-<a href=#1134 id=1134 data-nosnippet>1134</a>	<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"scheme-assets"</span>, <span class="string">"[LandFix:VscodeWebview] Request: {}"</span>, Uri);
-<a href=#1135 id=1135 data-nosnippet>1135</a>
-<a href=#1136 id=1136 data-nosnippet>1136</a>	<span class="comment">// `vscode-webview://&lt;authority&gt;/&lt;path&gt;?&lt;query&gt;`. We only care about
-<a href=#1137 id=1137 data-nosnippet>1137</a>	// `&lt;path&gt;` - authority is per-instance noise, querystring is the
-<a href=#1138 id=1138 data-nosnippet>1138</a>	// `id`/`parentId`/`extensionId`/etc that `index.html` reads via
-<a href=#1139 id=1139 data-nosnippet>1139</a>	// `URLSearchParams` (we don't touch it).
-<a href=#1140 id=1140 data-nosnippet>1140</a>	</span><span class="kw">let </span>After = <span class="kw">match </span><a href="#1133">Uri</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.strip_prefix">strip_prefix</a>(<span class="string">"vscode-webview://"</span>) {
-<a href=#1141 id=1141 data-nosnippet>1141</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Rest) =&gt; <a href="#1141">Rest</a>,
-<a href=#1142 id=1142 data-nosnippet>1142</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a> =&gt; {
-<a href=#1143 id=1143 data-nosnippet>1143</a>			<span class="kw">return </span><a href="#571-583">build_error_response</a>(<span class="number">400</span>, <span class="string">"vscode-webview scheme without prefix"</span>);
-<a href=#1144 id=1144 data-nosnippet>1144</a>		},
-<a href=#1145 id=1145 data-nosnippet>1145</a>	};
-<a href=#1146 id=1146 data-nosnippet>1146</a>	<span class="kw">let </span>PathStart = <span class="kw">match </span><a href="#1140">After</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.find">find</a>(<span class="string">'/'</span>) {
-<a href=#1147 id=1147 data-nosnippet>1147</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Index) =&gt; <a href="#1147">Index</a> + <span class="number">1</span>,
-<a href=#1148 id=1148 data-nosnippet>1148</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a> =&gt; {
-<a href=#1149 id=1149 data-nosnippet>1149</a>			<span class="kw">return </span><a href="#571-583">build_error_response</a>(<span class="number">400</span>, <span class="string">"vscode-webview URI missing path component"</span>);
-<a href=#1150 id=1150 data-nosnippet>1150</a>		},
-<a href=#1151 id=1151 data-nosnippet>1151</a>	};
-<a href=#1152 id=1152 data-nosnippet>1152</a>	<span class="kw">let </span>PathPlusQuery = <span class="kw-2">&amp;</span><a href="#1140">After</a>[PathStart..];
-<a href=#1153 id=1153 data-nosnippet>1153</a>	<span class="comment">// Trim the querystring + fragment - filesystem doesn't care.
-<a href=#1154 id=1154 data-nosnippet>1154</a>	</span><span class="kw">let </span>CleanPath:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a> = <a href="#1152">PathPlusQuery</a>
-<a href=#1155 id=1155 data-nosnippet>1155</a>		.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.split_once">split_once</a>(|C:<a href="https://doc.rust-lang.org/nightly/std/primitive.char.html">char</a>| <a href="#1155">C</a> == <span class="string">'?' </span>|| <a href="#1155">C</a> == <span class="string">'#'</span>)
-<a href=#1156 id=1156 data-nosnippet>1156</a>		.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|(Path, <span class="kw">_</span>)| <a href="#1156">Path</a>)
-<a href=#1157 id=1157 data-nosnippet>1157</a>		.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or">unwrap_or</a>(<a href="#1152">PathPlusQuery</a>);
-<a href=#1158 id=1158 data-nosnippet>1158</a>	<span class="comment">// Reject path-traversal attempts. The webview shell is a static
-<a href=#1159 id=1159 data-nosnippet>1159</a>	// three-file directory; anything containing `..` or hitting
-<a href=#1160 id=1160 data-nosnippet>1160</a>	// outside `pre/` is hostile or a bug.
-<a href=#1161 id=1161 data-nosnippet>1161</a>	</span><span class="kw">if </span><a href="#1154">CleanPath</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.is_empty">is_empty</a>() || <a href="#1154">CleanPath</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.contains">contains</a>(<span class="string">".."</span>) {
-<a href=#1162 id=1162 data-nosnippet>1162</a>		<span class="kw">return </span><a href="#571-583">build_error_response</a>(<span class="number">404</span>, <span class="string">"vscode-webview path empty or traversal"</span>);
-<a href=#1163 id=1163 data-nosnippet>1163</a>	}
-<a href=#1164 id=1164 data-nosnippet>1164</a>
-<a href=#1165 id=1165 data-nosnippet>1165</a>	<span class="kw">let </span>ResolvedPath = <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Static/Application/vs/workbench/contrib/webview/browser/pre/{}"</span>, CleanPath);
-<a href=#1166 id=1166 data-nosnippet>1166</a>	<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
-<a href=#1167 id=1167 data-nosnippet>1167</a>		<span class="string">"scheme-assets"</span>,
-<a href=#1168 id=1168 data-nosnippet>1168</a>		<span class="string">"[LandFix:VscodeWebview] resolve {} -&gt; {}"</span>,
-<a href=#1169 id=1169 data-nosnippet>1169</a>		CleanPath,
-<a href=#1170 id=1170 data-nosnippet>1170</a>		ResolvedPath
-<a href=#1171 id=1171 data-nosnippet>1171</a>	);
-<a href=#1172 id=1172 data-nosnippet>1172</a>
-<a href=#1173 id=1173 data-nosnippet>1173</a>	<span class="comment">// Try the embedded asset resolver first (release / packaged builds
-<a href=#1174 id=1174 data-nosnippet>1174</a>	// where `Sky/Target/Static/Application/` is bundled into Mountain's
-<a href=#1175 id=1175 data-nosnippet>1175</a>	// binary). Falls through to the filesystem fallback below for
-<a href=#1176 id=1176 data-nosnippet>1176</a>	// debug-electron-bundled, where assets ship next to Mountain.
-<a href=#1177 id=1177 data-nosnippet>1177</a>	</span><span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Asset) = <a href="#1130">AppHandle</a>.asset_resolver().get(<a href="#1165">ResolvedPath</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>()) {
-<a href=#1178 id=1178 data-nosnippet>1178</a>		<span class="kw">let </span>Mime = <a href="#717-751">MimeFromExtension</a>(<span class="kw-2">&amp;</span><a href="#1165">ResolvedPath</a>);
-<a href=#1179 id=1179 data-nosnippet>1179</a>		<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
-<a href=#1180 id=1180 data-nosnippet>1180</a>			<span class="string">"scheme-assets"</span>,
-<a href=#1181 id=1181 data-nosnippet>1181</a>			<span class="string">"[LandFix:VscodeWebview] serve embedded {} ({}, {} bytes)"</span>,
-<a href=#1182 id=1182 data-nosnippet>1182</a>			ResolvedPath,
-<a href=#1183 id=1183 data-nosnippet>1183</a>			Mime,
-<a href=#1184 id=1184 data-nosnippet>1184</a>			Asset.bytes.len()
-<a href=#1185 id=1185 data-nosnippet>1185</a>		);
-<a href=#1186 id=1186 data-nosnippet>1186</a>		<span class="kw">return </span>Builder::new()
-<a href=#1187 id=1187 data-nosnippet>1187</a>			.status(<span class="number">200</span>)
-<a href=#1188 id=1188 data-nosnippet>1188</a>			.header(<span class="string">"Content-Type"</span>, <a href="#1178">Mime</a>)
-<a href=#1189 id=1189 data-nosnippet>1189</a>			.header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"*"</span>)
-<a href=#1190 id=1190 data-nosnippet>1190</a>			.header(<span class="string">"Cross-Origin-Embedder-Policy"</span>, <span class="string">"require-corp"</span>)
-<a href=#1191 id=1191 data-nosnippet>1191</a>			.header(<span class="string">"Cross-Origin-Resource-Policy"</span>, <span class="string">"cross-origin"</span>)
-<a href=#1192 id=1192 data-nosnippet>1192</a>			.header(<span class="string">"Cache-Control"</span>, <span class="string">"no-cache"</span>)
-<a href=#1193 id=1193 data-nosnippet>1193</a>			.body(<a href="#1177">Asset</a>.bytes.<a href="https://doc.rust-lang.org/nightly/alloc/foreigntype.slice.html#method.to_vec">to_vec</a>())
-<a href=#1194 id=1194 data-nosnippet>1194</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|<span class="kw">_</span>| <a href="#571-583">build_error_response</a>(<span class="number">500</span>, <span class="string">"Failed to build response"</span>));
-<a href=#1195 id=1195 data-nosnippet>1195</a>	}
-<a href=#1196 id=1196 data-nosnippet>1196</a>
-<a href=#1197 id=1197 data-nosnippet>1197</a>	<span class="comment">// Filesystem fallback for dev mode. `ApplicationRoot` is set by
-<a href=#1198 id=1198 data-nosnippet>1198</a>	// `Binary/Main/AppLifecycle.rs` to the resolved `Sky/Target/`
-<a href=#1199 id=1199 data-nosnippet>1199</a>	// directory at startup so we can read the same `pre/` files the
-<a href=#1200 id=1200 data-nosnippet>1200</a>	// embedded resolver would have served.
-<a href=#1201 id=1201 data-nosnippet>1201</a>	</span><span class="kw">let </span>StaticRoot = <span class="kw">crate</span>::IPC::WindServiceHandlers::Utilities::ApplicationRoot::<a href="../../IPC/WindServiceHandlers/Utilities/ApplicationRoot.rs.html#14">get_static_application_root</a>();
-<a href=#1202 id=1202 data-nosnippet>1202</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Root) = <a href="#1201">StaticRoot</a> {
-<a href=#1203 id=1203 data-nosnippet>1203</a>		<span class="kw">let </span>FilesystemPath = std::path::<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html">Path</a>::<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.new">new</a>(<span class="kw-2">&amp;</span><a href="#1202">Root</a>).<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="kw-2">&amp;</span><a href="#1165">ResolvedPath</a>);
-<a href=#1204 id=1204 data-nosnippet>1204</a>		<span class="kw">if </span><a href="#1203">FilesystemPath</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.exists">exists</a>() &amp;&amp; <a href="#1203">FilesystemPath</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.is_file">is_file</a>() {
-<a href=#1205 id=1205 data-nosnippet>1205</a>			<span class="kw">match </span>std::fs::<a href="https://doc.rust-lang.org/nightly/std/fs/fn.read.html">read</a>(<span class="kw-2">&amp;</span><a href="#1203">FilesystemPath</a>) {
-<a href=#1206 id=1206 data-nosnippet>1206</a>				<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Bytes) =&gt; {
-<a href=#1207 id=1207 data-nosnippet>1207</a>					<span class="kw">let </span>Mime = <a href="#717-751">MimeFromExtension</a>(<span class="kw-2">&amp;</span><a href="#1165">ResolvedPath</a>);
-<a href=#1208 id=1208 data-nosnippet>1208</a>					<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
-<a href=#1209 id=1209 data-nosnippet>1209</a>						<span class="string">"scheme-assets"</span>,
-<a href=#1210 id=1210 data-nosnippet>1210</a>						<span class="string">"[LandFix:VscodeWebview] serve filesystem {} ({}, {} bytes)"</span>,
-<a href=#1211 id=1211 data-nosnippet>1211</a>						FilesystemPath.display(),
-<a href=#1212 id=1212 data-nosnippet>1212</a>						Mime,
-<a href=#1213 id=1213 data-nosnippet>1213</a>						Bytes.len()
-<a href=#1214 id=1214 data-nosnippet>1214</a>					);
-<a href=#1215 id=1215 data-nosnippet>1215</a>					<span class="kw">return </span>Builder::new()
-<a href=#1216 id=1216 data-nosnippet>1216</a>						.status(<span class="number">200</span>)
-<a href=#1217 id=1217 data-nosnippet>1217</a>						.header(<span class="string">"Content-Type"</span>, <a href="#1207">Mime</a>)
-<a href=#1218 id=1218 data-nosnippet>1218</a>						.header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"*"</span>)
-<a href=#1219 id=1219 data-nosnippet>1219</a>						.header(<span class="string">"Cross-Origin-Embedder-Policy"</span>, <span class="string">"require-corp"</span>)
-<a href=#1220 id=1220 data-nosnippet>1220</a>						.header(<span class="string">"Cross-Origin-Resource-Policy"</span>, <span class="string">"cross-origin"</span>)
-<a href=#1221 id=1221 data-nosnippet>1221</a>						.header(<span class="string">"Cache-Control"</span>, <span class="string">"no-cache"</span>)
-<a href=#1222 id=1222 data-nosnippet>1222</a>						.body(<a href="#1206">Bytes</a>)
-<a href=#1223 id=1223 data-nosnippet>1223</a>						.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|<span class="kw">_</span>| <a href="#571-583">build_error_response</a>(<span class="number">500</span>, <span class="string">"Failed to build response"</span>));
-<a href=#1224 id=1224 data-nosnippet>1224</a>				},
-<a href=#1225 id=1225 data-nosnippet>1225</a>				<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error) =&gt; {
-<a href=#1226 id=1226 data-nosnippet>1226</a>					<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
-<a href=#1227 id=1227 data-nosnippet>1227</a>						<span class="string">"lifecycle"</span>,
-<a href=#1228 id=1228 data-nosnippet>1228</a>						<span class="string">"warn: [LandFix:VscodeWebview] Failed to read {}: {}"</span>,
-<a href=#1229 id=1229 data-nosnippet>1229</a>						FilesystemPath.display(),
-<a href=#1230 id=1230 data-nosnippet>1230</a>						Error
-<a href=#1231 id=1231 data-nosnippet>1231</a>					);
-<a href=#1232 id=1232 data-nosnippet>1232</a>				},
-<a href=#1233 id=1233 data-nosnippet>1233</a>			}
-<a href=#1234 id=1234 data-nosnippet>1234</a>		}
-<a href=#1235 id=1235 data-nosnippet>1235</a>	}
-<a href=#1236 id=1236 data-nosnippet>1236</a>
-<a href=#1237 id=1237 data-nosnippet>1237</a>	<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
-<a href=#1238 id=1238 data-nosnippet>1238</a>		<span class="string">"lifecycle"</span>,
-<a href=#1239 id=1239 data-nosnippet>1239</a>		<span class="string">"warn: [LandFix:VscodeWebview] Not found: {} (resolved: {})"</span>,
-<a href=#1240 id=1240 data-nosnippet>1240</a>		Uri,
-<a href=#1241 id=1241 data-nosnippet>1241</a>		ResolvedPath
-<a href=#1242 id=1242 data-nosnippet>1242</a>	);
-<a href=#1243 id=1243 data-nosnippet>1243</a>	<a href="#571-583">build_error_response</a>(<span class="number">404</span>, <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Not Found: {}"</span>, ResolvedPath))
-<a href=#1244 id=1244 data-nosnippet>1244</a>}
+<a href=#839 id=839 data-nosnippet>839</a>	<span class="comment">// Strip `?&lt;query&gt;` and `#&lt;fragment&gt;` from the resolved path so
+<a href=#840 id=840 data-nosnippet>840</a>	// filesystem / asset-resolver lookups operate on a clean path
+<a href=#841 id=841 data-nosnippet>841</a>	// component. Roo's runtime sourcemap-probe (`vZt` in its bundle)
+<a href=#842 id=842 data-nosnippet>842</a>	// fetches `&lt;src&gt;?source-map=true` which would otherwise hit the
+<a href=#843 id=843 data-nosnippet>843</a>	// asset_resolver as a literal `index.js?source-map=true` filename
+<a href=#844 id=844 data-nosnippet>844</a>	// and either 404 or fall through to the SPA-fallback `index.html`
+<a href=#845 id=845 data-nosnippet>845</a>	// (5765 bytes served as `application/octet-stream`). With the
+<a href=#846 id=846 data-nosnippet>846</a>	// strip, `index.js?source-map=true` → `index.js`, which exists on
+<a href=#847 id=847 data-nosnippet>847</a>	// disk and serves correctly with the right MIME. Equivalent for
+<a href=#848 id=848 data-nosnippet>848</a>	// `#&lt;fragment&gt;`. Sourcemap-probe URLs that point to non-existent
+<a href=#849 id=849 data-nosnippet>849</a>	// suffixes (`index.map.json`, `index.sourcemap`) still 404
+<a href=#850 id=850 data-nosnippet>850</a>	// silently; that is the intended behavior of `vZt`'s preload list.
+<a href=#851 id=851 data-nosnippet>851</a>	</span><span class="kw">let </span>CleanPath = <span class="kw">match </span><a href="#833">CleanPath</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.split_once">split_once</a>([<span class="string">'?'</span>, <span class="string">'#'</span>]) {
+<a href=#852 id=852 data-nosnippet>852</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>((Before, <span class="kw">_</span>)) =&gt; <a href="#852">Before</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
+<a href=#853 id=853 data-nosnippet>853</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a> =&gt; <a href="#833">CleanPath</a>,
+<a href=#854 id=854 data-nosnippet>854</a>	};
+<a href=#855 id=855 data-nosnippet>855</a>
+<a href=#856 id=856 data-nosnippet>856</a>	<span class="comment">// P1.5 fix: DevTools fetches `*.js.map` for every bundled script it loads
+<a href=#857 id=857 data-nosnippet>857</a>	// to render pretty stack traces. Our `Static/Application/` tree ships the
+<a href=#858 id=858 data-nosnippet>858</a>	// JS files without their `.map` siblings (esbuild's `sourcemap:false` path)
+<a href=#859 id=859 data-nosnippet>859</a>	// so those requests always 404. Short-circuit here with a clean
+<a href=#860 id=860 data-nosnippet>860</a>	// `204 No Content` - Chromium treats 204 as "no map available" and moves
+<a href=#861 id=861 data-nosnippet>861</a>	// on silently, avoiding both the noisy stderr lines and the filesystem
+<a href=#862 id=862 data-nosnippet>862</a>	// stat round-trip per request.
+<a href=#863 id=863 data-nosnippet>863</a>	</span><span class="kw">if </span><a href="#851">CleanPath</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.ends_with">ends_with</a>(<span class="string">".map"</span>) {
+<a href=#864 id=864 data-nosnippet>864</a>		<span class="kw">return </span>Builder::new()
+<a href=#865 id=865 data-nosnippet>865</a>			.status(<span class="number">204</span>)
+<a href=#866 id=866 data-nosnippet>866</a>			.header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"*"</span>)
+<a href=#867 id=867 data-nosnippet>867</a>			.header(<span class="string">"Cross-Origin-Resource-Policy"</span>, <span class="string">"cross-origin"</span>)
+<a href=#868 id=868 data-nosnippet>868</a>			.body(<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>::<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.new">new</a>())
+<a href=#869 id=869 data-nosnippet>869</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|<span class="kw">_</span>| <a href="#571-583">build_error_response</a>(<span class="number">500</span>, <span class="string">"Failed to build response"</span>));
+<a href=#870 id=870 data-nosnippet>870</a>	}
+<a href=#871 id=871 data-nosnippet>871</a>
+<a href=#872 id=872 data-nosnippet>872</a>	<span class="comment">// CSS-as-JS shim: when a `.css` URL is requested through
+<a href=#873 id=873 data-nosnippet>873</a>	// `vscode-file://` (which happens for any unstripped raw `import
+<a href=#874 id=874 data-nosnippet>874</a>	// "./foo.css"` that VS Code's bundle still contains after
+<a href=#875 id=875 data-nosnippet>875</a>	// `workbench.js` switches `_VSCODE_FILE_ROOT` to the custom
+<a href=#876 id=876 data-nosnippet>876</a>	// scheme), the browser would refuse the response with
+<a href=#877 id=877 data-nosnippet>877</a>	// `'text/css' is not a valid JavaScript MIME type`. Service
+<a href=#878 id=878 data-nosnippet>878</a>	// Workers can't intercept custom-scheme requests, so we inline
+<a href=#879 id=879 data-nosnippet>879</a>	// the same JS shim the Worker SW emits on the localhost path:
+<a href=#880 id=880 data-nosnippet>880</a>	// invoke `_LOAD_CSS_WORKER` against the localhost-form path and
+<a href=#881 id=881 data-nosnippet>881</a>	// export an empty default. The SW + `&lt;link&gt;` fast-path then
+<a href=#882 id=882 data-nosnippet>882</a>	// loads the actual CSS bytes from `/Static/Application/...`.
+<a href=#883 id=883 data-nosnippet>883</a>	//
+<a href=#884 id=884 data-nosnippet>884</a>	// CRITICAL gate: only apply the shim for paths under
+<a href=#885 id=885 data-nosnippet>885</a>	// `Static/Application/` (i.e. workbench-internal CSS imports
+<a href=#886 id=886 data-nosnippet>886</a>	// that survive bundling as `import "./foo.css"`). Extension-
+<a href=#887 id=887 data-nosnippet>887</a>	// contributed CSS lives in absolute filesystem paths
+<a href=#888 id=888 data-nosnippet>888</a>	// (`Users/...`, `Volumes/...`, `Library/...`, etc.) and reaches
+<a href=#889 id=889 data-nosnippet>889</a>	// `vscode-file://` via `WebviewImplementation::asWebviewUri`.
+<a href=#890 id=890 data-nosnippet>890</a>	// Those `.css` files MUST be served as real `text/css` from
+<a href=#891 id=891 data-nosnippet>891</a>	// disk (the IsAbsoluteOSPath fallback below handles them) -
+<a href=#892 id=892 data-nosnippet>892</a>	// returning the JS shim instead silently breaks every
+<a href=#893 id=893 data-nosnippet>893</a>	// extension webview-ui that bundles its own stylesheet
+<a href=#894 id=894 data-nosnippet>894</a>	// (Roo: `webview-ui/build/assets/index.css`, Claude, GitLens,
+<a href=#895 id=895 data-nosnippet>895</a>	// Continue, etc. all use Vite/webpack and ship CSS bundles).
+<a href=#896 id=896 data-nosnippet>896</a>	// Without this gate the iframe loads no styles and the panel
+<a href=#897 id=897 data-nosnippet>897</a>	// renders as a transparent overlay over the workbench - the
+<a href=#898 id=898 data-nosnippet>898</a>	// classic "blank webview" symptom.
+<a href=#899 id=899 data-nosnippet>899</a>	</span><span class="kw">if </span><a href="#851">CleanPath</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.ends_with">ends_with</a>(<span class="string">".css"</span>) &amp;&amp; <a href="#851">CleanPath</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.starts_with">starts_with</a>(<span class="string">"Static/Application/"</span>) {
+<a href=#900 id=900 data-nosnippet>900</a>		<span class="kw">let </span>LocalPath = <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"/Static/Application/{}"</span>, CleanPath.trim_start_matches(<span class="string">"Static/Application/"</span>));
+<a href=#901 id=901 data-nosnippet>901</a>		<span class="kw">let </span>Body = <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"globalThis._LOAD_CSS_WORKER?.({:?}); export default {{}};"</span>, LocalPath);
+<a href=#902 id=902 data-nosnippet>902</a>		<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
+<a href=#903 id=903 data-nosnippet>903</a>			<span class="string">"scheme-assets"</span>,
+<a href=#904 id=904 data-nosnippet>904</a>			<span class="string">"[LandFix:VscodeFile] css-shim {} -&gt; _LOAD_CSS_WORKER({})"</span>,
+<a href=#905 id=905 data-nosnippet>905</a>			CleanPath,
+<a href=#906 id=906 data-nosnippet>906</a>			LocalPath
+<a href=#907 id=907 data-nosnippet>907</a>		);
+<a href=#908 id=908 data-nosnippet>908</a>		<span class="kw">return </span>Builder::new()
+<a href=#909 id=909 data-nosnippet>909</a>			.status(<span class="number">200</span>)
+<a href=#910 id=910 data-nosnippet>910</a>			.header(<span class="string">"Content-Type"</span>, <span class="string">"application/javascript; charset=utf-8"</span>)
+<a href=#911 id=911 data-nosnippet>911</a>			.header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"*"</span>)
+<a href=#912 id=912 data-nosnippet>912</a>			.header(<span class="string">"Cross-Origin-Resource-Policy"</span>, <span class="string">"cross-origin"</span>)
+<a href=#913 id=913 data-nosnippet>913</a>			.header(<span class="string">"Cross-Origin-Embedder-Policy"</span>, <span class="string">"require-corp"</span>)
+<a href=#914 id=914 data-nosnippet>914</a>			.header(<span class="string">"Cache-Control"</span>, <span class="string">"public, max-age=31536000, immutable"</span>)
+<a href=#915 id=915 data-nosnippet>915</a>			.body(<a href="#901">Body</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.into_bytes">into_bytes</a>())
+<a href=#916 id=916 data-nosnippet>916</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|<span class="kw">_</span>| <a href="#571-583">build_error_response</a>(<span class="number">500</span>, <span class="string">"Failed to build response"</span>));
+<a href=#917 id=917 data-nosnippet>917</a>	}
+<a href=#918 id=918 data-nosnippet>918</a>
+<a href=#919 id=919 data-nosnippet>919</a>	<span class="comment">// Icon themes, grammars and other extension-contributed assets generate
+<a href=#920 id=920 data-nosnippet>920</a>	// URIs like `vscode-file://vscode-app/Volumes/&lt;vol&gt;/.../seti.woff` after
+<a href=#921 id=921 data-nosnippet>921</a>	// `FileAccess.uriToBrowserUri` rewrites a plain `file:///Volumes/...`
+<a href=#922 id=922 data-nosnippet>922</a>	// extension path. The authority `vscode-app` is followed directly by the
+<a href=#923 id=923 data-nosnippet>923</a>	// absolute filesystem path (sans leading `/`). Detect the well-known macOS /
+<a href=#924 id=924 data-nosnippet>924</a>	// Linux absolute-path roots and serve straight from disk instead of trying
+<a href=#925 id=925 data-nosnippet>925</a>	// to resolve them against `Sky/Target/` (where they do not exist).
+<a href=#926 id=926 data-nosnippet>926</a>	</span><span class="kw">let </span>IsAbsoluteOSPath = [
+<a href=#927 id=927 data-nosnippet>927</a>		<span class="string">"Volumes/"</span>,
+<a href=#928 id=928 data-nosnippet>928</a>		<span class="string">"Users/"</span>,
+<a href=#929 id=929 data-nosnippet>929</a>		<span class="string">"Library/"</span>,
+<a href=#930 id=930 data-nosnippet>930</a>		<span class="string">"System/"</span>,
+<a href=#931 id=931 data-nosnippet>931</a>		<span class="string">"Applications/"</span>,
+<a href=#932 id=932 data-nosnippet>932</a>		<span class="string">"private/"</span>,
+<a href=#933 id=933 data-nosnippet>933</a>		<span class="string">"tmp/"</span>,
+<a href=#934 id=934 data-nosnippet>934</a>		<span class="string">"var/"</span>,
+<a href=#935 id=935 data-nosnippet>935</a>		<span class="string">"etc/"</span>,
+<a href=#936 id=936 data-nosnippet>936</a>		<span class="string">"opt/"</span>,
+<a href=#937 id=937 data-nosnippet>937</a>		<span class="string">"home/"</span>,
+<a href=#938 id=938 data-nosnippet>938</a>		<span class="string">"usr/"</span>,
+<a href=#939 id=939 data-nosnippet>939</a>		<span class="string">"srv/"</span>,
+<a href=#940 id=940 data-nosnippet>940</a>		<span class="string">"mnt/"</span>,
+<a href=#941 id=941 data-nosnippet>941</a>		<span class="string">"root/"</span>,
+<a href=#942 id=942 data-nosnippet>942</a>	]
+<a href=#943 id=943 data-nosnippet>943</a>	.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.iter">iter</a>()
+<a href=#944 id=944 data-nosnippet>944</a>	.<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.any">any</a>(|Prefix| <a href="#851">CleanPath</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.starts_with">starts_with</a>(<a href="#944">Prefix</a>));
+<a href=#945 id=945 data-nosnippet>945</a>
+<a href=#946 id=946 data-nosnippet>946</a>	<span class="kw">if </span><a href="#926">IsAbsoluteOSPath</a> {
+<a href=#947 id=947 data-nosnippet>947</a>		<span class="kw">let </span>AbsolutePath = <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"/{}"</span>, CleanPath);
+<a href=#948 id=948 data-nosnippet>948</a>		<span class="kw">let </span>FilesystemPath = std::path::<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html">Path</a>::<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.new">new</a>(<span class="kw-2">&amp;</span><a href="#947">AbsolutePath</a>);
+<a href=#949 id=949 data-nosnippet>949</a>		<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
+<a href=#950 id=950 data-nosnippet>950</a>			<span class="string">"scheme-assets"</span>,
+<a href=#951 id=951 data-nosnippet>951</a>			<span class="string">"[LandFix:VscodeFile] os-abs candidate {} (exists={}, is_file={})"</span>,
+<a href=#952 id=952 data-nosnippet>952</a>			AbsolutePath,
+<a href=#953 id=953 data-nosnippet>953</a>			FilesystemPath.exists(),
+<a href=#954 id=954 data-nosnippet>954</a>			FilesystemPath.is_file()
+<a href=#955 id=955 data-nosnippet>955</a>		);
+<a href=#956 id=956 data-nosnippet>956</a>		<span class="kw">if </span><a href="#948">FilesystemPath</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.exists">exists</a>() &amp;&amp; <a href="#948">FilesystemPath</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.is_file">is_file</a>() {
+<a href=#957 id=957 data-nosnippet>957</a>			<span class="comment">// LAND-PATCH B7.P01: route through the mmap cache. First
+<a href=#958 id=958 data-nosnippet>958</a>			// hit on a path mmaps the file; subsequent hits are
+<a href=#959 id=959 data-nosnippet>959</a>			// wait-free DashMap reads. Brotli sibling (`&lt;file&gt;.br`)
+<a href=#960 id=960 data-nosnippet>960</a>			// is auto-discovered and served when the request offers
+<a href=#961 id=961 data-nosnippet>961</a>			// `Accept-Encoding: br`.
+<a href=#962 id=962 data-nosnippet>962</a>			</span><span class="kw">match </span><span class="kw">crate</span>::Cache::AssetMemoryMap::LoadOrInsert::<a href="../../Cache/AssetMemoryMap/LoadOrInsert.rs.html#20-61">Fn</a>(<a href="#948">FilesystemPath</a>) {
+<a href=#963 id=963 data-nosnippet>963</a>				<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Entry) =&gt; {
+<a href=#964 id=964 data-nosnippet>964</a>					<span class="kw">let </span>AcceptsBrotli = <a href="#783">Request</a>
+<a href=#965 id=965 data-nosnippet>965</a>						.headers()
+<a href=#966 id=966 data-nosnippet>966</a>						.get(<span class="string">"accept-encoding"</span>)
+<a href=#967 id=967 data-nosnippet>967</a>						.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|V| <a href="#967">V</a>.to_str().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>())
+<a href=#968 id=968 data-nosnippet>968</a>						.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|S| <a href="#968">S</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.contains">contains</a>(<span class="string">"br"</span>))
+<a href=#969 id=969 data-nosnippet>969</a>						.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or">unwrap_or</a>(<span class="bool-val">false</span>);
+<a href=#970 id=970 data-nosnippet>970</a>					<span class="kw">let </span>(Body, Encoding):(<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;, <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;) = <span class="kw">if </span><a href="#964">AcceptsBrotli</a> {
+<a href=#971 id=971 data-nosnippet>971</a>						<span class="kw">match </span><a href="#963">Entry</a>.<a href="../../Cache/AssetMemoryMap/Entry.rs.html#27">AsBrotliSlice</a>() {
+<a href=#972 id=972 data-nosnippet>972</a>							<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Slice) =&gt; (<a href="#972">Slice</a>.<a href="https://doc.rust-lang.org/nightly/alloc/foreigntype.slice.html#method.to_vec">to_vec</a>(), <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<span class="string">"br"</span>)),
+<a href=#973 id=973 data-nosnippet>973</a>							<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a> =&gt; (<a href="#963">Entry</a>.<a href="../../Cache/AssetMemoryMap/Entry.rs.html#24">AsSlice</a>().<a href="https://doc.rust-lang.org/nightly/alloc/foreigntype.slice.html#method.to_vec">to_vec</a>(), <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>),
+<a href=#974 id=974 data-nosnippet>974</a>						}
+<a href=#975 id=975 data-nosnippet>975</a>					} <span class="kw">else </span>{
+<a href=#976 id=976 data-nosnippet>976</a>						(<a href="#963">Entry</a>.<a href="../../Cache/AssetMemoryMap/Entry.rs.html#24">AsSlice</a>().<a href="https://doc.rust-lang.org/nightly/alloc/foreigntype.slice.html#method.to_vec">to_vec</a>(), <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>)
+<a href=#977 id=977 data-nosnippet>977</a>					};
+<a href=#978 id=978 data-nosnippet>978</a>					<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
+<a href=#979 id=979 data-nosnippet>979</a>						<span class="string">"scheme-assets"</span>,
+<a href=#980 id=980 data-nosnippet>980</a>						<span class="string">"[LandFix:VscodeFile] os-abs served {} ({}, {} bytes, encoding={:?})"</span>,
+<a href=#981 id=981 data-nosnippet>981</a>						AbsolutePath,
+<a href=#982 id=982 data-nosnippet>982</a>						Entry.Mime,
+<a href=#983 id=983 data-nosnippet>983</a>						Body.len(),
+<a href=#984 id=984 data-nosnippet>984</a>						Encoding
+<a href=#985 id=985 data-nosnippet>985</a>					);
+<a href=#986 id=986 data-nosnippet>986</a>					<span class="comment">// `Cross-Origin-Resource-Policy: cross-origin` lets the
+<a href=#987 id=987 data-nosnippet>987</a>					// COEP-isolated webview iframe (which Mountain serves
+<a href=#988 id=988 data-nosnippet>988</a>					// from the `vscode-webview://` scheme with
+<a href=#989 id=989 data-nosnippet>989</a>					// `Cross-Origin-Embedder-Policy: require-corp`) load
+<a href=#990 id=990 data-nosnippet>990</a>					// these assets via `&lt;script src=…&gt;` / `&lt;link href=…&gt;`.
+<a href=#991 id=991 data-nosnippet>991</a>					// Without it WebKit refuses to expose the response to
+<a href=#992 id=992 data-nosnippet>992</a>					// the embedder document and the extension's React
+<a href=#993 id=993 data-nosnippet>993</a>					// bundle / CSS / fonts come up as cross-origin
+<a href=#994 id=994 data-nosnippet>994</a>					// resource-policy blocks.
+<a href=#995 id=995 data-nosnippet>995</a>					</span><span class="kw">let </span><span class="kw-2">mut </span>B = Builder::new()
+<a href=#996 id=996 data-nosnippet>996</a>						.status(<span class="number">200</span>)
+<a href=#997 id=997 data-nosnippet>997</a>						.header(<span class="string">"Content-Type"</span>, <a href="#963">Entry</a>.Mime)
+<a href=#998 id=998 data-nosnippet>998</a>						.header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"*"</span>)
+<a href=#999 id=999 data-nosnippet>999</a>						.header(<span class="string">"Cross-Origin-Resource-Policy"</span>, <span class="string">"cross-origin"</span>)
+<a href=#1000 id=1000 data-nosnippet>1000</a>						.header(<span class="string">"Cross-Origin-Embedder-Policy"</span>, <span class="string">"require-corp"</span>)
+<a href=#1001 id=1001 data-nosnippet>1001</a>						.header(<span class="string">"Cache-Control"</span>, <span class="string">"public, max-age=3600"</span>);
+<a href=#1002 id=1002 data-nosnippet>1002</a>					<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Enc) = <a href="#970">Encoding</a> {
+<a href=#1003 id=1003 data-nosnippet>1003</a>						<a href="#995">B</a> = <a href="#995">B</a>.header(<span class="string">"Content-Encoding"</span>, <a href="#1002">Enc</a>);
+<a href=#1004 id=1004 data-nosnippet>1004</a>					}
+<a href=#1005 id=1005 data-nosnippet>1005</a>					<span class="kw">return </span><a href="#995">B</a>
+<a href=#1006 id=1006 data-nosnippet>1006</a>						.body(<a href="#970">Body</a>)
+<a href=#1007 id=1007 data-nosnippet>1007</a>						.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|<span class="kw">_</span>| <a href="#571-583">build_error_response</a>(<span class="number">500</span>, <span class="string">"Failed to build response"</span>));
+<a href=#1008 id=1008 data-nosnippet>1008</a>				},
+<a href=#1009 id=1009 data-nosnippet>1009</a>				<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error) =&gt; {
+<a href=#1010 id=1010 data-nosnippet>1010</a>					<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
+<a href=#1011 id=1011 data-nosnippet>1011</a>						<span class="string">"lifecycle"</span>,
+<a href=#1012 id=1012 data-nosnippet>1012</a>						<span class="string">"warn: [LandFix:VscodeFile] os-abs mmap failure {}: {}"</span>,
+<a href=#1013 id=1013 data-nosnippet>1013</a>						AbsolutePath,
+<a href=#1014 id=1014 data-nosnippet>1014</a>						Error
+<a href=#1015 id=1015 data-nosnippet>1015</a>					);
+<a href=#1016 id=1016 data-nosnippet>1016</a>				},
+<a href=#1017 id=1017 data-nosnippet>1017</a>			}
+<a href=#1018 id=1018 data-nosnippet>1018</a>		} <span class="kw">else </span>{
+<a href=#1019 id=1019 data-nosnippet>1019</a>			<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"warn: [LandFix:VscodeFile] os-abs not on disk: {}"</span>, AbsolutePath);
+<a href=#1020 id=1020 data-nosnippet>1020</a>		}
+<a href=#1021 id=1021 data-nosnippet>1021</a>	}
+<a href=#1022 id=1022 data-nosnippet>1022</a>
+<a href=#1023 id=1023 data-nosnippet>1023</a>	<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[LandFix:VscodeFile] Resolved path: {}"</span>, CleanPath);
+<a href=#1024 id=1024 data-nosnippet>1024</a>
+<a href=#1025 id=1025 data-nosnippet>1025</a>	<span class="comment">// Resolve against the frontendDist directory
+<a href=#1026 id=1026 data-nosnippet>1026</a>	// In production: embedded in the binary via asset_resolver
+<a href=#1027 id=1027 data-nosnippet>1027</a>	// In debug: fall back to filesystem read from Sky/Target
+<a href=#1028 id=1028 data-nosnippet>1028</a>	</span><span class="kw">let </span>AssetResult = <a href="#782">AppHandle</a>.asset_resolver().get(<a href="#851">CleanPath</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>());
+<a href=#1029 id=1029 data-nosnippet>1029</a>
+<a href=#1030 id=1030 data-nosnippet>1030</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Asset) = <a href="#1028">AssetResult</a> {
+<a href=#1031 id=1031 data-nosnippet>1031</a>		<span class="kw">let </span>Mime = <a href="#717-751">MimeFromExtension</a>(<span class="kw-2">&amp;</span><a href="#851">CleanPath</a>);
+<a href=#1032 id=1032 data-nosnippet>1032</a>
+<a href=#1033 id=1033 data-nosnippet>1033</a>		<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
+<a href=#1034 id=1034 data-nosnippet>1034</a>			<span class="string">"lifecycle"</span>,
+<a href=#1035 id=1035 data-nosnippet>1035</a>			<span class="string">"[LandFix:VscodeFile] Serving (embedded) {} ({}, {} bytes)"</span>,
+<a href=#1036 id=1036 data-nosnippet>1036</a>			CleanPath,
+<a href=#1037 id=1037 data-nosnippet>1037</a>			Mime,
+<a href=#1038 id=1038 data-nosnippet>1038</a>			Asset.bytes.len()
+<a href=#1039 id=1039 data-nosnippet>1039</a>		);
+<a href=#1040 id=1040 data-nosnippet>1040</a>		<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
+<a href=#1041 id=1041 data-nosnippet>1041</a>			<span class="string">"scheme-assets"</span>,
+<a href=#1042 id=1042 data-nosnippet>1042</a>			<span class="string">"[SchemeAssets] serve source=embedded path={} mime={} bytes={}"</span>,
+<a href=#1043 id=1043 data-nosnippet>1043</a>			CleanPath,
+<a href=#1044 id=1044 data-nosnippet>1044</a>			Mime,
+<a href=#1045 id=1045 data-nosnippet>1045</a>			Asset.bytes.len()
+<a href=#1046 id=1046 data-nosnippet>1046</a>		);
+<a href=#1047 id=1047 data-nosnippet>1047</a>
+<a href=#1048 id=1048 data-nosnippet>1048</a>		<span class="kw">return </span>Builder::new()
+<a href=#1049 id=1049 data-nosnippet>1049</a>			.status(<span class="number">200</span>)
+<a href=#1050 id=1050 data-nosnippet>1050</a>			.header(<span class="string">"Content-Type"</span>, <a href="#1031">Mime</a>)
+<a href=#1051 id=1051 data-nosnippet>1051</a>			.header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"*"</span>)
+<a href=#1052 id=1052 data-nosnippet>1052</a>			.header(<span class="string">"Cross-Origin-Resource-Policy"</span>, <span class="string">"cross-origin"</span>)
+<a href=#1053 id=1053 data-nosnippet>1053</a>			.header(<span class="string">"Cross-Origin-Embedder-Policy"</span>, <span class="string">"require-corp"</span>)
+<a href=#1054 id=1054 data-nosnippet>1054</a>			.header(<span class="string">"Cache-Control"</span>, <span class="string">"public, max-age=31536000, immutable"</span>)
+<a href=#1055 id=1055 data-nosnippet>1055</a>			.body(<a href="#1030">Asset</a>.bytes.<a href="https://doc.rust-lang.org/nightly/alloc/foreigntype.slice.html#method.to_vec">to_vec</a>())
+<a href=#1056 id=1056 data-nosnippet>1056</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|<span class="kw">_</span>| <a href="#571-583">build_error_response</a>(<span class="number">500</span>, <span class="string">"Failed to build response"</span>));
+<a href=#1057 id=1057 data-nosnippet>1057</a>	}
+<a href=#1058 id=1058 data-nosnippet>1058</a>
+<a href=#1059 id=1059 data-nosnippet>1059</a>	<span class="comment">// Fallback: read from filesystem (dev mode where assets aren't embedded)
+<a href=#1060 id=1060 data-nosnippet>1060</a>	</span><span class="kw">let </span>StaticRoot = <span class="kw">crate</span>::IPC::WindServiceHandlers::Utilities::ApplicationRoot::<a href="../../IPC/WindServiceHandlers/Utilities/ApplicationRoot.rs.html#14">get_static_application_root</a>();
+<a href=#1061 id=1061 data-nosnippet>1061</a>
+<a href=#1062 id=1062 data-nosnippet>1062</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Root) = <a href="#1060">StaticRoot</a> {
+<a href=#1063 id=1063 data-nosnippet>1063</a>		<span class="kw">let </span>FilesystemPath = std::path::<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html">Path</a>::<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.new">new</a>(<span class="kw-2">&amp;</span><a href="#1062">Root</a>).<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="kw-2">&amp;</span><a href="#851">CleanPath</a>);
+<a href=#1064 id=1064 data-nosnippet>1064</a>
+<a href=#1065 id=1065 data-nosnippet>1065</a>		<span class="kw">if </span><a href="#1063">FilesystemPath</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.exists">exists</a>() &amp;&amp; <a href="#1063">FilesystemPath</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.is_file">is_file</a>() {
+<a href=#1066 id=1066 data-nosnippet>1066</a>			<span class="comment">// LAND-PATCH B7.P01: mmap-cache the StaticRoot fallback
+<a href=#1067 id=1067 data-nosnippet>1067</a>			// path so dev-mode workbench reloads pay the syscall
+<a href=#1068 id=1068 data-nosnippet>1068</a>			// once per asset for the entire session.
+<a href=#1069 id=1069 data-nosnippet>1069</a>			</span><span class="kw">match </span><span class="kw">crate</span>::Cache::AssetMemoryMap::LoadOrInsert::<a href="../../Cache/AssetMemoryMap/LoadOrInsert.rs.html#20-61">Fn</a>(<span class="kw-2">&amp;</span><a href="#1063">FilesystemPath</a>) {
+<a href=#1070 id=1070 data-nosnippet>1070</a>				<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Entry) =&gt; {
+<a href=#1071 id=1071 data-nosnippet>1071</a>					<span class="kw">let </span>AcceptsBrotli = <a href="#783">Request</a>
+<a href=#1072 id=1072 data-nosnippet>1072</a>						.headers()
+<a href=#1073 id=1073 data-nosnippet>1073</a>						.get(<span class="string">"accept-encoding"</span>)
+<a href=#1074 id=1074 data-nosnippet>1074</a>						.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|V| <a href="#1074">V</a>.to_str().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>())
+<a href=#1075 id=1075 data-nosnippet>1075</a>						.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|S| <a href="#1075">S</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.contains">contains</a>(<span class="string">"br"</span>))
+<a href=#1076 id=1076 data-nosnippet>1076</a>						.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or">unwrap_or</a>(<span class="bool-val">false</span>);
+<a href=#1077 id=1077 data-nosnippet>1077</a>					<span class="kw">let </span>(Body, Encoding):(<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;, <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;) = <span class="kw">if </span><a href="#1071">AcceptsBrotli</a> {
+<a href=#1078 id=1078 data-nosnippet>1078</a>						<span class="kw">match </span><a href="#1070">Entry</a>.<a href="../../Cache/AssetMemoryMap/Entry.rs.html#27">AsBrotliSlice</a>() {
+<a href=#1079 id=1079 data-nosnippet>1079</a>							<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Slice) =&gt; (<a href="#1079">Slice</a>.<a href="https://doc.rust-lang.org/nightly/alloc/foreigntype.slice.html#method.to_vec">to_vec</a>(), <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<span class="string">"br"</span>)),
+<a href=#1080 id=1080 data-nosnippet>1080</a>							<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a> =&gt; (<a href="#1070">Entry</a>.<a href="../../Cache/AssetMemoryMap/Entry.rs.html#24">AsSlice</a>().<a href="https://doc.rust-lang.org/nightly/alloc/foreigntype.slice.html#method.to_vec">to_vec</a>(), <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>),
+<a href=#1081 id=1081 data-nosnippet>1081</a>						}
+<a href=#1082 id=1082 data-nosnippet>1082</a>					} <span class="kw">else </span>{
+<a href=#1083 id=1083 data-nosnippet>1083</a>						(<a href="#1070">Entry</a>.<a href="../../Cache/AssetMemoryMap/Entry.rs.html#24">AsSlice</a>().<a href="https://doc.rust-lang.org/nightly/alloc/foreigntype.slice.html#method.to_vec">to_vec</a>(), <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>)
+<a href=#1084 id=1084 data-nosnippet>1084</a>					};
+<a href=#1085 id=1085 data-nosnippet>1085</a>					<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
+<a href=#1086 id=1086 data-nosnippet>1086</a>						<span class="string">"lifecycle"</span>,
+<a href=#1087 id=1087 data-nosnippet>1087</a>						<span class="string">"[LandFix:VscodeFile] Serving (fs-mmap) {} ({}, {} bytes, encoding={:?})"</span>,
+<a href=#1088 id=1088 data-nosnippet>1088</a>						CleanPath,
+<a href=#1089 id=1089 data-nosnippet>1089</a>						Entry.Mime,
+<a href=#1090 id=1090 data-nosnippet>1090</a>						Body.len(),
+<a href=#1091 id=1091 data-nosnippet>1091</a>						Encoding
+<a href=#1092 id=1092 data-nosnippet>1092</a>					);
+<a href=#1093 id=1093 data-nosnippet>1093</a>					<span class="comment">// `Cross-Origin-Resource-Policy: cross-origin` lets the
+<a href=#1094 id=1094 data-nosnippet>1094</a>					// COEP-isolated webview iframe (which Mountain serves
+<a href=#1095 id=1095 data-nosnippet>1095</a>					// from the `vscode-webview://` scheme with
+<a href=#1096 id=1096 data-nosnippet>1096</a>					// `Cross-Origin-Embedder-Policy: require-corp`) load
+<a href=#1097 id=1097 data-nosnippet>1097</a>					// these assets via `&lt;script src=…&gt;` / `&lt;link href=…&gt;`.
+<a href=#1098 id=1098 data-nosnippet>1098</a>					// Without it WebKit refuses to expose the response to
+<a href=#1099 id=1099 data-nosnippet>1099</a>					// the embedder document and the extension's React
+<a href=#1100 id=1100 data-nosnippet>1100</a>					// bundle / CSS / fonts come up as cross-origin
+<a href=#1101 id=1101 data-nosnippet>1101</a>					// resource-policy blocks.
+<a href=#1102 id=1102 data-nosnippet>1102</a>					</span><span class="kw">let </span><span class="kw-2">mut </span>B = Builder::new()
+<a href=#1103 id=1103 data-nosnippet>1103</a>						.status(<span class="number">200</span>)
+<a href=#1104 id=1104 data-nosnippet>1104</a>						.header(<span class="string">"Content-Type"</span>, <a href="#1070">Entry</a>.Mime)
+<a href=#1105 id=1105 data-nosnippet>1105</a>						.header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"*"</span>)
+<a href=#1106 id=1106 data-nosnippet>1106</a>						.header(<span class="string">"Cross-Origin-Resource-Policy"</span>, <span class="string">"cross-origin"</span>)
+<a href=#1107 id=1107 data-nosnippet>1107</a>						.header(<span class="string">"Cross-Origin-Embedder-Policy"</span>, <span class="string">"require-corp"</span>)
+<a href=#1108 id=1108 data-nosnippet>1108</a>						.header(<span class="string">"Cache-Control"</span>, <span class="string">"public, max-age=3600"</span>);
+<a href=#1109 id=1109 data-nosnippet>1109</a>					<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Enc) = <a href="#1077">Encoding</a> {
+<a href=#1110 id=1110 data-nosnippet>1110</a>						<a href="#1102">B</a> = <a href="#1102">B</a>.header(<span class="string">"Content-Encoding"</span>, <a href="#1109">Enc</a>);
+<a href=#1111 id=1111 data-nosnippet>1111</a>					}
+<a href=#1112 id=1112 data-nosnippet>1112</a>					<span class="kw">return </span><a href="#1102">B</a>
+<a href=#1113 id=1113 data-nosnippet>1113</a>						.body(<a href="#1077">Body</a>)
+<a href=#1114 id=1114 data-nosnippet>1114</a>						.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|<span class="kw">_</span>| <a href="#571-583">build_error_response</a>(<span class="number">500</span>, <span class="string">"Failed to build response"</span>));
+<a href=#1115 id=1115 data-nosnippet>1115</a>				},
+<a href=#1116 id=1116 data-nosnippet>1116</a>				<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error) =&gt; {
+<a href=#1117 id=1117 data-nosnippet>1117</a>					<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
+<a href=#1118 id=1118 data-nosnippet>1118</a>						<span class="string">"lifecycle"</span>,
+<a href=#1119 id=1119 data-nosnippet>1119</a>						<span class="string">"warn: [LandFix:VscodeFile] Failed to read {}: {}"</span>,
+<a href=#1120 id=1120 data-nosnippet>1120</a>						FilesystemPath.display(),
+<a href=#1121 id=1121 data-nosnippet>1121</a>						Error
+<a href=#1122 id=1122 data-nosnippet>1122</a>					);
+<a href=#1123 id=1123 data-nosnippet>1123</a>				},
+<a href=#1124 id=1124 data-nosnippet>1124</a>			}
+<a href=#1125 id=1125 data-nosnippet>1125</a>		}
+<a href=#1126 id=1126 data-nosnippet>1126</a>	}
+<a href=#1127 id=1127 data-nosnippet>1127</a>
+<a href=#1128 id=1128 data-nosnippet>1128</a>	<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
+<a href=#1129 id=1129 data-nosnippet>1129</a>		<span class="string">"lifecycle"</span>,
+<a href=#1130 id=1130 data-nosnippet>1130</a>		<span class="string">"warn: [LandFix:VscodeFile] Not found: {} (resolved: {})"</span>,
+<a href=#1131 id=1131 data-nosnippet>1131</a>		Uri,
+<a href=#1132 id=1132 data-nosnippet>1132</a>		CleanPath
+<a href=#1133 id=1133 data-nosnippet>1133</a>	);
+<a href=#1134 id=1134 data-nosnippet>1134</a>	<a href="#571-583">build_error_response</a>(<span class="number">404</span>, <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Not Found: {}"</span>, CleanPath))
+<a href=#1135 id=1135 data-nosnippet>1135</a>}
+<a href=#1136 id=1136 data-nosnippet>1136</a>
+<a href=#1137 id=1137 data-nosnippet>1137</a><span class="doccomment">/// Custom URI scheme handler for `vscode-webview://` requests.
+<a href=#1138 id=1138 data-nosnippet>1138</a>///
+<a href=#1139 id=1139 data-nosnippet>1139</a>/// VS Code's `WebviewElement` (used by every extension webview - Roo
+<a href=#1140 id=1140 data-nosnippet>1140</a>/// Code, Claude, GitLens, custom-editor providers) wraps the inner
+<a href=#1141 id=1141 data-nosnippet>1141</a>/// extension HTML in an `&lt;iframe&gt;` whose `src` is
+<a href=#1142 id=1142 data-nosnippet>1142</a>/// `vscode-webview://&lt;authority&gt;/index.html?...`. The `&lt;authority&gt;` is
+<a href=#1143 id=1143 data-nosnippet>1143</a>/// a per-instance random base32 string. The authority is irrelevant to
+<a href=#1144 id=1144 data-nosnippet>1144</a>/// the bytes served - all that matters is the path component, which
+<a href=#1145 id=1145 data-nosnippet>1145</a>/// always resolves under
+<a href=#1146 id=1146 data-nosnippet>1146</a>/// `vs/workbench/contrib/webview/browser/pre/`.
+<a href=#1147 id=1147 data-nosnippet>1147</a>///
+<a href=#1148 id=1148 data-nosnippet>1148</a>/// In stock Electron VS Code, `app.protocol.registerStreamProtocol(
+<a href=#1149 id=1149 data-nosnippet>1149</a>/// 'vscode-webview', ...)` serves this directory. Under Tauri 2.x +
+<a href=#1150 id=1150 data-nosnippet>1150</a>/// WKWebView, `register_asynchronous_uri_scheme_protocol("vscode-webview",
+<a href=#1151 id=1151 data-nosnippet>1151</a>/// ...)` installs an equivalent `WKURLSchemeHandler`. Without this handler,
+<a href=#1152 id=1152 data-nosnippet>1152</a>/// every extension that uses `webviewView` / `WebviewPanel` /
+<a href=#1153 id=1153 data-nosnippet>1153</a>/// `CustomEditor` lands the inner iframe at a `vscode-webview://...`
+<a href=#1154 id=1154 data-nosnippet>1154</a>/// URL the WKWebView can't resolve, the iframe stays blank, and the
+<a href=#1155 id=1155 data-nosnippet>1155</a>/// extension surface is dead.
+<a href=#1156 id=1156 data-nosnippet>1156</a>///
+<a href=#1157 id=1157 data-nosnippet>1157</a>/// Three resources live under `pre/`:
+<a href=#1158 id=1158 data-nosnippet>1158</a>///   - `index.html`        - the webview shell that bridges `postMessage`
+<a href=#1159 id=1159 data-nosnippet>1159</a>///     between workbench host and inner extension HTML
+<a href=#1160 id=1160 data-nosnippet>1160</a>///   - `service-worker.js` - registered by `index.html` to intercept
+<a href=#1161 id=1161 data-nosnippet>1161</a>///     `vscode-webview-resource` requests for extension-shipped assets
+<a href=#1162 id=1162 data-nosnippet>1162</a>///   - `fake.html`         - sandbox stub used as a placeholder before
+<a href=#1163 id=1163 data-nosnippet>1163</a>///     extension HTML arrives via postMessage
+<a href=#1164 id=1164 data-nosnippet>1164</a>///
+<a href=#1165 id=1165 data-nosnippet>1165</a>/// Anything else (querystrings, extra path segments, GUID-like
+<a href=#1166 id=1166 data-nosnippet>1166</a>/// authorities) is silently dropped; the extension's actual content
+<a href=#1167 id=1167 data-nosnippet>1167</a>/// gets piped in via the `swMessage` channel after `index.html` boots,
+<a href=#1168 id=1168 data-nosnippet>1168</a>/// not through this scheme handler.
+<a href=#1169 id=1169 data-nosnippet>1169</a>///
+<a href=#1170 id=1170 data-nosnippet>1170</a>/// # Parameters
+<a href=#1171 id=1171 data-nosnippet>1171</a>///
+<a href=#1172 id=1172 data-nosnippet>1172</a>/// - `AppHandle`: Tauri AppHandle for resolving the embedded asset resolver and
+<a href=#1173 id=1173 data-nosnippet>1173</a>///   the dev-mode `Static/Application/` filesystem fallback (same chain as
+<a href=#1174 id=1174 data-nosnippet>1174</a>///   `VscodeFileSchemeHandler`).
+<a href=#1175 id=1175 data-nosnippet>1175</a>/// - `Request`: The incoming request - typically a `GET` for one of the three
+<a href=#1176 id=1176 data-nosnippet>1176</a>///   pre-baked files.
+<a href=#1177 id=1177 data-nosnippet>1177</a>///
+<a href=#1178 id=1178 data-nosnippet>1178</a>/// # Returns
+<a href=#1179 id=1179 data-nosnippet>1179</a>///
+<a href=#1180 id=1180 data-nosnippet>1180</a>/// A `Response&lt;Vec&lt;u8&gt;&gt;` carrying:
+<a href=#1181 id=1181 data-nosnippet>1181</a>///   - `200 OK` with the file bytes + correct MIME (`text/html` /
+<a href=#1182 id=1182 data-nosnippet>1182</a>///     `application/javascript`) when found, or
+<a href=#1183 id=1183 data-nosnippet>1183</a>///   - `404 Not Found` when the resolved path falls outside the `pre/`
+<a href=#1184 id=1184 data-nosnippet>1184</a>///     directory or the asset isn't shipped.
+<a href=#1185 id=1185 data-nosnippet>1185</a>///
+<a href=#1186 id=1186 data-nosnippet>1186</a>/// CORS headers are permissive (`*`) to match the workbench host's
+<a href=#1187 id=1187 data-nosnippet>1187</a>/// `vscode-webview-resource:` traffic, which round-trips through the
+<a href=#1188 id=1188 data-nosnippet>1188</a>/// service worker registered by `index.html`.
+<a href=#1189 id=1189 data-nosnippet>1189</a></span><span class="kw">pub fn </span><a href="../../../../Mountain/Binary/Build/Scheme/fn.VscodeWebviewSchemeHandler.html">VscodeWebviewSchemeHandler</a>&lt;R:tauri::Runtime&gt;(
+<a href=#1190 id=1190 data-nosnippet>1190</a>	AppHandle:<span class="kw-2">&amp;</span>tauri::AppHandle&lt;R&gt;,
+<a href=#1191 id=1191 data-nosnippet>1191</a>	Request:<span class="kw-2">&amp;</span>tauri::http::request::Request&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;&gt;,
+<a href=#1192 id=1192 data-nosnippet>1192</a>) -&gt; Response&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;&gt; {
+<a href=#1193 id=1193 data-nosnippet>1193</a>	<span class="kw">let </span>Uri = <a href="#1191">Request</a>.uri().<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>();
+<a href=#1194 id=1194 data-nosnippet>1194</a>	<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"scheme-assets"</span>, <span class="string">"[LandFix:VscodeWebview] Request: {}"</span>, Uri);
+<a href=#1195 id=1195 data-nosnippet>1195</a>
+<a href=#1196 id=1196 data-nosnippet>1196</a>	<span class="comment">// `vscode-webview://&lt;authority&gt;/&lt;path&gt;?&lt;query&gt;`. We only care about
+<a href=#1197 id=1197 data-nosnippet>1197</a>	// `&lt;path&gt;` - authority is per-instance noise, querystring is the
+<a href=#1198 id=1198 data-nosnippet>1198</a>	// `id`/`parentId`/`extensionId`/etc that `index.html` reads via
+<a href=#1199 id=1199 data-nosnippet>1199</a>	// `URLSearchParams` (we don't touch it).
+<a href=#1200 id=1200 data-nosnippet>1200</a>	</span><span class="kw">let </span>After = <span class="kw">match </span><a href="#1193">Uri</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.strip_prefix">strip_prefix</a>(<span class="string">"vscode-webview://"</span>) {
+<a href=#1201 id=1201 data-nosnippet>1201</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Rest) =&gt; <a href="#1201">Rest</a>,
+<a href=#1202 id=1202 data-nosnippet>1202</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a> =&gt; {
+<a href=#1203 id=1203 data-nosnippet>1203</a>			<span class="kw">return </span><a href="#571-583">build_error_response</a>(<span class="number">400</span>, <span class="string">"vscode-webview scheme without prefix"</span>);
+<a href=#1204 id=1204 data-nosnippet>1204</a>		},
+<a href=#1205 id=1205 data-nosnippet>1205</a>	};
+<a href=#1206 id=1206 data-nosnippet>1206</a>	<span class="kw">let </span>PathStart = <span class="kw">match </span><a href="#1200">After</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.find">find</a>(<span class="string">'/'</span>) {
+<a href=#1207 id=1207 data-nosnippet>1207</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Index) =&gt; <a href="#1207">Index</a> + <span class="number">1</span>,
+<a href=#1208 id=1208 data-nosnippet>1208</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a> =&gt; {
+<a href=#1209 id=1209 data-nosnippet>1209</a>			<span class="kw">return </span><a href="#571-583">build_error_response</a>(<span class="number">400</span>, <span class="string">"vscode-webview URI missing path component"</span>);
+<a href=#1210 id=1210 data-nosnippet>1210</a>		},
+<a href=#1211 id=1211 data-nosnippet>1211</a>	};
+<a href=#1212 id=1212 data-nosnippet>1212</a>	<span class="kw">let </span>PathPlusQuery = <span class="kw-2">&amp;</span><a href="#1200">After</a>[PathStart..];
+<a href=#1213 id=1213 data-nosnippet>1213</a>	<span class="comment">// Trim the querystring + fragment - filesystem doesn't care.
+<a href=#1214 id=1214 data-nosnippet>1214</a>	</span><span class="kw">let </span>CleanPath:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a> = <a href="#1212">PathPlusQuery</a>
+<a href=#1215 id=1215 data-nosnippet>1215</a>		.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.split_once">split_once</a>(|C:<a href="https://doc.rust-lang.org/nightly/std/primitive.char.html">char</a>| <a href="#1215">C</a> == <span class="string">'?' </span>|| <a href="#1215">C</a> == <span class="string">'#'</span>)
+<a href=#1216 id=1216 data-nosnippet>1216</a>		.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|(Path, <span class="kw">_</span>)| <a href="#1216">Path</a>)
+<a href=#1217 id=1217 data-nosnippet>1217</a>		.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or">unwrap_or</a>(<a href="#1212">PathPlusQuery</a>);
+<a href=#1218 id=1218 data-nosnippet>1218</a>	<span class="comment">// Reject path-traversal attempts. The webview shell is a static
+<a href=#1219 id=1219 data-nosnippet>1219</a>	// three-file directory; anything containing `..` or hitting
+<a href=#1220 id=1220 data-nosnippet>1220</a>	// outside `pre/` is hostile or a bug.
+<a href=#1221 id=1221 data-nosnippet>1221</a>	</span><span class="kw">if </span><a href="#1214">CleanPath</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.is_empty">is_empty</a>() || <a href="#1214">CleanPath</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.contains">contains</a>(<span class="string">".."</span>) {
+<a href=#1222 id=1222 data-nosnippet>1222</a>		<span class="kw">return </span><a href="#571-583">build_error_response</a>(<span class="number">404</span>, <span class="string">"vscode-webview path empty or traversal"</span>);
+<a href=#1223 id=1223 data-nosnippet>1223</a>	}
+<a href=#1224 id=1224 data-nosnippet>1224</a>
+<a href=#1225 id=1225 data-nosnippet>1225</a>	<span class="kw">let </span>ResolvedPath = <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Static/Application/vs/workbench/contrib/webview/browser/pre/{}"</span>, CleanPath);
+<a href=#1226 id=1226 data-nosnippet>1226</a>	<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
+<a href=#1227 id=1227 data-nosnippet>1227</a>		<span class="string">"scheme-assets"</span>,
+<a href=#1228 id=1228 data-nosnippet>1228</a>		<span class="string">"[LandFix:VscodeWebview] resolve {} -&gt; {}"</span>,
+<a href=#1229 id=1229 data-nosnippet>1229</a>		CleanPath,
+<a href=#1230 id=1230 data-nosnippet>1230</a>		ResolvedPath
+<a href=#1231 id=1231 data-nosnippet>1231</a>	);
+<a href=#1232 id=1232 data-nosnippet>1232</a>
+<a href=#1233 id=1233 data-nosnippet>1233</a>	<span class="comment">// Try the embedded asset resolver first (release / packaged builds
+<a href=#1234 id=1234 data-nosnippet>1234</a>	// where `Sky/Target/Static/Application/` is bundled into Mountain's
+<a href=#1235 id=1235 data-nosnippet>1235</a>	// binary). Falls through to the filesystem fallback below for
+<a href=#1236 id=1236 data-nosnippet>1236</a>	// debug-electron-bundled, where assets ship next to Mountain.
+<a href=#1237 id=1237 data-nosnippet>1237</a>	</span><span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Asset) = <a href="#1190">AppHandle</a>.asset_resolver().get(<a href="#1225">ResolvedPath</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>()) {
+<a href=#1238 id=1238 data-nosnippet>1238</a>		<span class="kw">let </span>Mime = <a href="#717-751">MimeFromExtension</a>(<span class="kw-2">&amp;</span><a href="#1225">ResolvedPath</a>);
+<a href=#1239 id=1239 data-nosnippet>1239</a>		<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
+<a href=#1240 id=1240 data-nosnippet>1240</a>			<span class="string">"scheme-assets"</span>,
+<a href=#1241 id=1241 data-nosnippet>1241</a>			<span class="string">"[LandFix:VscodeWebview] serve embedded {} ({}, {} bytes)"</span>,
+<a href=#1242 id=1242 data-nosnippet>1242</a>			ResolvedPath,
+<a href=#1243 id=1243 data-nosnippet>1243</a>			Mime,
+<a href=#1244 id=1244 data-nosnippet>1244</a>			Asset.bytes.len()
+<a href=#1245 id=1245 data-nosnippet>1245</a>		);
+<a href=#1246 id=1246 data-nosnippet>1246</a>		<span class="kw">return </span>Builder::new()
+<a href=#1247 id=1247 data-nosnippet>1247</a>			.status(<span class="number">200</span>)
+<a href=#1248 id=1248 data-nosnippet>1248</a>			.header(<span class="string">"Content-Type"</span>, <a href="#1238">Mime</a>)
+<a href=#1249 id=1249 data-nosnippet>1249</a>			.header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"*"</span>)
+<a href=#1250 id=1250 data-nosnippet>1250</a>			.header(<span class="string">"Cross-Origin-Embedder-Policy"</span>, <span class="string">"require-corp"</span>)
+<a href=#1251 id=1251 data-nosnippet>1251</a>			.header(<span class="string">"Cross-Origin-Resource-Policy"</span>, <span class="string">"cross-origin"</span>)
+<a href=#1252 id=1252 data-nosnippet>1252</a>			.header(<span class="string">"Cache-Control"</span>, <span class="string">"no-cache"</span>)
+<a href=#1253 id=1253 data-nosnippet>1253</a>			.body(<a href="#1237">Asset</a>.bytes.<a href="https://doc.rust-lang.org/nightly/alloc/foreigntype.slice.html#method.to_vec">to_vec</a>())
+<a href=#1254 id=1254 data-nosnippet>1254</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|<span class="kw">_</span>| <a href="#571-583">build_error_response</a>(<span class="number">500</span>, <span class="string">"Failed to build response"</span>));
+<a href=#1255 id=1255 data-nosnippet>1255</a>	}
+<a href=#1256 id=1256 data-nosnippet>1256</a>
+<a href=#1257 id=1257 data-nosnippet>1257</a>	<span class="comment">// Filesystem fallback for dev mode. `ApplicationRoot` is set by
+<a href=#1258 id=1258 data-nosnippet>1258</a>	// `Binary/Main/AppLifecycle.rs` to the resolved `Sky/Target/`
+<a href=#1259 id=1259 data-nosnippet>1259</a>	// directory at startup so we can read the same `pre/` files the
+<a href=#1260 id=1260 data-nosnippet>1260</a>	// embedded resolver would have served.
+<a href=#1261 id=1261 data-nosnippet>1261</a>	</span><span class="kw">let </span>StaticRoot = <span class="kw">crate</span>::IPC::WindServiceHandlers::Utilities::ApplicationRoot::<a href="../../IPC/WindServiceHandlers/Utilities/ApplicationRoot.rs.html#14">get_static_application_root</a>();
+<a href=#1262 id=1262 data-nosnippet>1262</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Root) = <a href="#1261">StaticRoot</a> {
+<a href=#1263 id=1263 data-nosnippet>1263</a>		<span class="kw">let </span>FilesystemPath = std::path::<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html">Path</a>::<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.new">new</a>(<span class="kw-2">&amp;</span><a href="#1262">Root</a>).<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="kw-2">&amp;</span><a href="#1225">ResolvedPath</a>);
+<a href=#1264 id=1264 data-nosnippet>1264</a>		<span class="kw">if </span><a href="#1263">FilesystemPath</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.exists">exists</a>() &amp;&amp; <a href="#1263">FilesystemPath</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.is_file">is_file</a>() {
+<a href=#1265 id=1265 data-nosnippet>1265</a>			<span class="kw">match </span>std::fs::<a href="https://doc.rust-lang.org/nightly/std/fs/fn.read.html">read</a>(<span class="kw-2">&amp;</span><a href="#1263">FilesystemPath</a>) {
+<a href=#1266 id=1266 data-nosnippet>1266</a>				<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Bytes) =&gt; {
+<a href=#1267 id=1267 data-nosnippet>1267</a>					<span class="kw">let </span>Mime = <a href="#717-751">MimeFromExtension</a>(<span class="kw-2">&amp;</span><a href="#1225">ResolvedPath</a>);
+<a href=#1268 id=1268 data-nosnippet>1268</a>					<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
+<a href=#1269 id=1269 data-nosnippet>1269</a>						<span class="string">"scheme-assets"</span>,
+<a href=#1270 id=1270 data-nosnippet>1270</a>						<span class="string">"[LandFix:VscodeWebview] serve filesystem {} ({}, {} bytes)"</span>,
+<a href=#1271 id=1271 data-nosnippet>1271</a>						FilesystemPath.display(),
+<a href=#1272 id=1272 data-nosnippet>1272</a>						Mime,
+<a href=#1273 id=1273 data-nosnippet>1273</a>						Bytes.len()
+<a href=#1274 id=1274 data-nosnippet>1274</a>					);
+<a href=#1275 id=1275 data-nosnippet>1275</a>					<span class="kw">return </span>Builder::new()
+<a href=#1276 id=1276 data-nosnippet>1276</a>						.status(<span class="number">200</span>)
+<a href=#1277 id=1277 data-nosnippet>1277</a>						.header(<span class="string">"Content-Type"</span>, <a href="#1267">Mime</a>)
+<a href=#1278 id=1278 data-nosnippet>1278</a>						.header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"*"</span>)
+<a href=#1279 id=1279 data-nosnippet>1279</a>						.header(<span class="string">"Cross-Origin-Embedder-Policy"</span>, <span class="string">"require-corp"</span>)
+<a href=#1280 id=1280 data-nosnippet>1280</a>						.header(<span class="string">"Cross-Origin-Resource-Policy"</span>, <span class="string">"cross-origin"</span>)
+<a href=#1281 id=1281 data-nosnippet>1281</a>						.header(<span class="string">"Cache-Control"</span>, <span class="string">"no-cache"</span>)
+<a href=#1282 id=1282 data-nosnippet>1282</a>						.body(<a href="#1266">Bytes</a>)
+<a href=#1283 id=1283 data-nosnippet>1283</a>						.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|<span class="kw">_</span>| <a href="#571-583">build_error_response</a>(<span class="number">500</span>, <span class="string">"Failed to build response"</span>));
+<a href=#1284 id=1284 data-nosnippet>1284</a>				},
+<a href=#1285 id=1285 data-nosnippet>1285</a>				<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error) =&gt; {
+<a href=#1286 id=1286 data-nosnippet>1286</a>					<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
+<a href=#1287 id=1287 data-nosnippet>1287</a>						<span class="string">"lifecycle"</span>,
+<a href=#1288 id=1288 data-nosnippet>1288</a>						<span class="string">"warn: [LandFix:VscodeWebview] Failed to read {}: {}"</span>,
+<a href=#1289 id=1289 data-nosnippet>1289</a>						FilesystemPath.display(),
+<a href=#1290 id=1290 data-nosnippet>1290</a>						Error
+<a href=#1291 id=1291 data-nosnippet>1291</a>					);
+<a href=#1292 id=1292 data-nosnippet>1292</a>				},
+<a href=#1293 id=1293 data-nosnippet>1293</a>			}
+<a href=#1294 id=1294 data-nosnippet>1294</a>		}
+<a href=#1295 id=1295 data-nosnippet>1295</a>	}
+<a href=#1296 id=1296 data-nosnippet>1296</a>
+<a href=#1297 id=1297 data-nosnippet>1297</a>	<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
+<a href=#1298 id=1298 data-nosnippet>1298</a>		<span class="string">"lifecycle"</span>,
+<a href=#1299 id=1299 data-nosnippet>1299</a>		<span class="string">"warn: [LandFix:VscodeWebview] Not found: {} (resolved: {})"</span>,
+<a href=#1300 id=1300 data-nosnippet>1300</a>		Uri,
+<a href=#1301 id=1301 data-nosnippet>1301</a>		ResolvedPath
+<a href=#1302 id=1302 data-nosnippet>1302</a>	);
+<a href=#1303 id=1303 data-nosnippet>1303</a>	<a href="#571-583">build_error_response</a>(<span class="number">404</span>, <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Not Found: {}"</span>, ResolvedPath))
+<a href=#1304 id=1304 data-nosnippet>1304</a>}
 </code></pre></div></section></main></body></html>

@@ -208,7 +208,7 @@
 <a href=#208 id=208 data-nosnippet>208</a><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json</a>};
 <a href=#209 id=209 data-nosnippet>209</a>
 <a href=#210 id=210 data-nosnippet>210</a><span class="kw">use </span>super::{<a href="MountainEnvironment.rs.html#228-238">MountainEnvironment::MountainEnvironment</a>, <a href="mod.rs.html#113">Utility</a>};
-<a href=#211 id=211 data-nosnippet>211</a><span class="kw">use </span><a href="../IPC/DevLog.rs.html#726-767"><span class="kw">crate</span>::dev_log</a>;
+<a href=#211 id=211 data-nosnippet>211</a><span class="kw">use </span><a href="../IPC/DevLog/mod.rs.html#40-81"><span class="kw">crate</span>::dev_log</a>;
 <a href=#212 id=212 data-nosnippet>212</a>
 <a href=#213 id=213 data-nosnippet>213</a><span class="doccomment">/// Mirrors VS Code's `ITextSearchQuery` shape (`vs/workbench/services/
 <a href=#214 id=214 data-nosnippet>214</a>/// search/common/search.ts`). The workbench's Search view serialises
@@ -415,7 +415,7 @@
 <a href=#415 id=415 data-nosnippet>415</a>	<span class="kw">async fn </span>TextSearch(<span class="kw-2">&amp;</span><a class="self" href="#415">self</a>, <a href="#415">QueryValue</a>:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="#415">_OptionsValue</a>:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, CommonError&gt; {
 <a href=#416 id=416 data-nosnippet>416</a>		<span class="kw">let </span>Query:<a href="#229-243">TextSearchQuery</a> = serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/fn.from_value.html">from_value</a>(<a href="#415">QueryValue</a>)<span class="question-mark">?</span>;
 <a href=#417 id=417 data-nosnippet>417</a>
-<a href=#418 id=418 data-nosnippet>418</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"search"</span>, <span class="string">"[SearchProvider] Performing text search for: {:?}"</span>, Query);
+<a href=#418 id=418 data-nosnippet>418</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"search"</span>, <span class="string">"[SearchProvider] Performing text search for: {:?}"</span>, Query);
 <a href=#419 id=419 data-nosnippet>419</a>
 <a href=#420 id=420 data-nosnippet>420</a>		<span class="kw">let </span><span class="kw-2">mut </span>Builder = RegexMatcherBuilder::new();
 <a href=#421 id=421 data-nosnippet>421</a>
@@ -450,7 +450,7 @@
 <a href=#450 id=450 data-nosnippet>450</a>			</span>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
 <a href=#451 id=451 data-nosnippet>451</a>
 <a href=#452 id=452 data-nosnippet>452</a>		<span class="kw">if </span><a href="#444">Folders</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.is_empty">is_empty</a>() {
-<a href=#453 id=453 data-nosnippet>453</a>			<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"search"</span>, <span class="string">"warn: [SearchProvider] No workspace folders to search in."</span>);
+<a href=#453 id=453 data-nosnippet>453</a>			<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"search"</span>, <span class="string">"warn: [SearchProvider] No workspace folders to search in."</span>);
 <a href=#454 id=454 data-nosnippet>454</a>
 <a href=#455 id=455 data-nosnippet>455</a>			<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json!</a>([]));
 <a href=#456 id=456 data-nosnippet>456</a>		}
@@ -509,7 +509,7 @@
 <a href=#509 id=509 data-nosnippet>509</a>			</span>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
 <a href=#510 id=510 data-nosnippet>510</a>
 <a href=#511 id=511 data-nosnippet>511</a>		<span class="kw">let </span>TotalLineMatches:<a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> = <a href="#506">FinalMatches</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.iter">iter</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.map">map</a>(|F| <a href="#511">F</a>.matches.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.len">len</a>()).<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.sum">sum</a>();
-<a href=#512 id=512 data-nosnippet>512</a>		<a href="../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#512 id=512 data-nosnippet>512</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#513 id=513 data-nosnippet>513</a>			<span class="string">"search"</span>,
 <a href=#514 id=514 data-nosnippet>514</a>			<span class="string">"[SearchProvider] returned {} files / {} line-matches for pattern={:?}"</span>,
 <a href=#515 id=515 data-nosnippet>515</a>			FinalMatches.len(),

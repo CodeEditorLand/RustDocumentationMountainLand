@@ -14,7 +14,7 @@
 <a href=#14 id=14 data-nosnippet>14</a><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json</a>};
 <a href=#15 id=15 data-nosnippet>15</a><span class="kw">use </span>tauri::Runtime;
 <a href=#16 id=16 data-nosnippet>16</a>
-<a href=#17 id=17 data-nosnippet>17</a><span class="kw">use </span>crate::{<a href="../../../RunTime/ApplicationRunTime/mod.rs.html#16-21">RunTime::ApplicationRunTime::ApplicationRunTime</a>, <a href="../MappedEffectType.rs.html#47-48">Track::Effect::MappedEffectType::MappedEffect</a>, <a href="../../../IPC/DevLog.rs.html#726-767">dev_log</a>};
+<a href=#17 id=17 data-nosnippet>17</a><span class="kw">use </span>crate::{<a href="../../../RunTime/ApplicationRunTime/mod.rs.html#16-21">RunTime::ApplicationRunTime::ApplicationRunTime</a>, <a href="../MappedEffectType.rs.html#47-48">Track::Effect::MappedEffectType::MappedEffect</a>, <a href="../../../IPC/DevLog/mod.rs.html#40-81">dev_log</a>};
 <a href=#18 id=18 data-nosnippet>18</a>
 <a href=#19 id=19 data-nosnippet>19</a><span class="kw">pub fn </span><a href="../../../../../Mountain/Track/Effect/CreateEffectForRequest/Configuration/fn.CreateEffect.html">CreateEffect</a>&lt;R:Runtime&gt;(MethodName:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, Parameters:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="../MappedEffectType.rs.html#47-48">MappedEffect</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;&gt; {
 <a href=#20 id=20 data-nosnippet>20</a>	<span class="kw">match </span><a href="#19">MethodName</a> {
@@ -127,7 +127,7 @@
 <a href=#127 id=127 data-nosnippet>127</a>							});
 <a href=#128 id=128 data-nosnippet>128</a>							<span class="kw">let </span>AppHandle = <a href="#108">run_time</a>.Environment.ApplicationHandle.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
 <a href=#129 id=129 data-nosnippet>129</a>							<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error) = <a href="#128">AppHandle</a>.emit(<span class="string">"sky://configuration/changed"</span>, <a href="#124">Payload</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>()) {
-<a href=#130 id=130 data-nosnippet>130</a>								<a href="../../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#130 id=130 data-nosnippet>130</a>								<a href="../../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#131 id=131 data-nosnippet>131</a>									<span class="string">"config"</span>,
 <a href=#132 id=132 data-nosnippet>132</a>									<span class="string">"warn: [Configuration.Update] sky://configuration/changed emit failed: {}"</span>,
 <a href=#133 id=133 data-nosnippet>133</a>									Error
@@ -142,7 +142,7 @@
 <a href=#142 id=142 data-nosnippet>142</a>								)
 <a href=#143 id=143 data-nosnippet>143</a>								.<span class="kw">await
 <a href=#144 id=144 data-nosnippet>144</a>							</span>{
-<a href=#145 id=145 data-nosnippet>145</a>								<a href="../../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#145 id=145 data-nosnippet>145</a>								<a href="../../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#146 id=146 data-nosnippet>146</a>									<span class="string">"config"</span>,
 <a href=#147 id=147 data-nosnippet>147</a>									<span class="string">"warn: [Configuration.Update] Cocoon configuration.change notification failed: {}"</span>,
 <a href=#148 id=148 data-nosnippet>148</a>									Error

@@ -19,4 +19,28 @@
 <a href=#19 id=19 data-nosnippet>19</a>/// per process; populated → pinned across every process in the same
 <a href=#20 id=20 data-nosnippet>20</a>/// dev run for cross-restart correlation.
 <a href=#21 id=21 data-nosnippet>21</a></span><span class="kw">pub const </span><a href="../../../../../Mountain/Binary/Build/PostHogPlugin/Constants/constant.POSTHOG_DISTINCT_ID_SEED.html">POSTHOG_DISTINCT_ID_SEED</a>:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a> = <a href="https://doc.rust-lang.org/nightly/core/macro.env.html">env!</a>(<span class="string">"Brand"</span>);
+<a href=#22 id=22 data-nosnippet>22</a>
+<a href=#23 id=23 data-nosnippet>23</a><span class="doccomment">/// OTLP collector endpoint (`OTLPEndpoint`). Default points at the local
+<a href=#24 id=24 data-nosnippet>24</a>/// Jaeger all-in-one HTTP receiver from `Land/Container/Compose.yaml`.
+<a href=#25 id=25 data-nosnippet>25</a>/// Read by `IPC::DevLog::EmitOTLPSpan` instead of the previous
+<a href=#26 id=26 data-nosnippet>26</a>/// hard-coded `127.0.0.1:4318`.
+<a href=#27 id=27 data-nosnippet>27</a></span><span class="kw">pub const </span><a href="../../../../../Mountain/Binary/Build/PostHogPlugin/Constants/constant.OTLP_ENDPOINT.html">OTLP_ENDPOINT</a>:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a> = <a href="https://doc.rust-lang.org/nightly/core/macro.env.html">env!</a>(<span class="string">"OTLPEndpoint"</span>);
+<a href=#28 id=28 data-nosnippet>28</a>
+<a href=#29 id=29 data-nosnippet>29</a><span class="doccomment">/// Per-tier OTLP enable flag (`OTLPEnabled`). Mirrors `POSTHOG_ENABLED`
+<a href=#30 id=30 data-nosnippet>30</a>/// for the OTLP pipe. Independent of `Disable` so each pipe can be
+<a href=#31 id=31 data-nosnippet>31</a>/// flipped separately during diagnosis.
+<a href=#32 id=32 data-nosnippet>32</a></span><span class="kw">pub const </span><a href="../../../../../Mountain/Binary/Build/PostHogPlugin/Constants/constant.OTLP_ENABLED.html">OTLP_ENABLED</a>:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a> = <a href="https://doc.rust-lang.org/nightly/core/macro.env.html">env!</a>(<span class="string">"OTLPEnabled"</span>);
+<a href=#33 id=33 data-nosnippet>33</a>
+<a href=#34 id=34 data-nosnippet>34</a><span class="doccomment">/// Master telemetry kill switch (`Capture`). `false` short-circuits BOTH
+<a href=#35 id=35 data-nosnippet>35</a>/// PostHog and OTLP regardless of their per-pipe toggles. Distinct from
+<a href=#36 id=36 data-nosnippet>36</a>/// `.env.Land.Diagnostics`'s `Disable` which kills polyfills/shims.
+<a href=#37 id=37 data-nosnippet>37</a></span><span class="kw">pub const </span><a href="../../../../../Mountain/Binary/Build/PostHogPlugin/Constants/constant.TELEMETRY_CAPTURE.html">TELEMETRY_CAPTURE</a>:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a> = <a href="https://doc.rust-lang.org/nightly/core/macro.env.html">env!</a>(<span class="string">"Capture"</span>);
+<a href=#38 id=38 data-nosnippet>38</a>
+<a href=#39 id=39 data-nosnippet>39</a><span class="doccomment">/// Span / element filter (`Trace`). RUST_LOG-shaped string consumed by
+<a href=#40 id=40 data-nosnippet>40</a>/// the `IPC::DevLog::IsEnabled::Fn` filter. `all` enables every tag.
+<a href=#41 id=41 data-nosnippet>41</a>/// Reserved for the eventual `tracing-subscriber` EnvFilter; currently
+<a href=#42 id=42 data-nosnippet>42</a>/// duplicated with `IPC::DevLog::IsEnabled` which reads `Trace` at
+<a href=#43 id=43 data-nosnippet>43</a>/// runtime via `std::env::var`.
+<a href=#44 id=44 data-nosnippet>44</a></span><span class="attr">#[allow(dead_code)]
+<a href=#45 id=45 data-nosnippet>45</a></span><span class="kw">pub const </span><a href="../../../../../Mountain/Binary/Build/PostHogPlugin/Constants/constant.TRACE_FILTER.html">TRACE_FILTER</a>:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a> = <a href="https://doc.rust-lang.org/nightly/core/macro.env.html">env!</a>(<span class="string">"Trace"</span>);
 </code></pre></div></section></main></body></html>

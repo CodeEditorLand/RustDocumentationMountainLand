@@ -23,7 +23,7 @@
 <a href=#23 id=23 data-nosnippet>23</a>	<a href="../../DTO/WorkspaceFolderStateDTO.rs.html#26-37">ApplicationState::DTO::WorkspaceFolderStateDTO::WorkspaceFolderStateDTO</a>,
 <a href=#24 id=24 data-nosnippet>24</a>	<a href="../../../IPC/SkyEmit.rs.html#45-64">IPC::SkyEmit::LogSkyEmit</a>,
 <a href=#25 id=25 data-nosnippet>25</a>	<a href="../../../Vine/mod.rs.html#86">Vine::Client</a>,
-<a href=#26 id=26 data-nosnippet>26</a>	<a href="../../../IPC/DevLog.rs.html#726-767">dev_log</a>,
+<a href=#26 id=26 data-nosnippet>26</a>	<a href="../../../IPC/DevLog/mod.rs.html#40-81">dev_log</a>,
 <a href=#27 id=27 data-nosnippet>27</a>};
 <a href=#28 id=28 data-nosnippet>28</a>
 <a href=#29 id=29 data-nosnippet>29</a><span class="doccomment">/// Serialisation shape matching the Cocoon-side Workspace shim. Mirrors the
@@ -96,7 +96,7 @@
 <a href=#96 id=96 data-nosnippet>96</a>			<a href="#48-78">DispatchDeltaWorkspaceFolders</a>(<a href="#90">Added</a>, <a href="#90">Removed</a>).<span class="kw">await</span>;
 <a href=#97 id=97 data-nosnippet>97</a>		});
 <a href=#98 id=98 data-nosnippet>98</a>	} <span class="kw">else </span>{
-<a href=#99 id=99 data-nosnippet>99</a>		<a href="../../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#99 id=99 data-nosnippet>99</a>		<a href="../../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#100 id=100 data-nosnippet>100</a>			<span class="string">"workspaces"</span>,
 <a href=#101 id=101 data-nosnippet>101</a>			<span class="string">"warn: [LandFix:WsDelta] No tokio runtime available - delta dropped ({} added, {} removed)"</span>,
 <a href=#102 id=102 data-nosnippet>102</a>			Added.len(),
@@ -134,7 +134,7 @@
 <a href=#134 id=134 data-nosnippet>134</a>			.collect::&lt;Vec&lt;<span class="kw">_</span>&gt;&gt;(),
 <a href=#135 id=135 data-nosnippet>135</a>	});
 <a href=#136 id=136 data-nosnippet>136</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error) = <a href="../../../IPC/SkyEmit.rs.html#45-64">LogSkyEmit</a>(<a href="#113">ApplicationHandle</a>, SkyEvent::WorkspacesChanged.AsStr(), <a href="#127">BroadcastPayload</a>) {
-<a href=#137 id=137 data-nosnippet>137</a>		<a href="../../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#137 id=137 data-nosnippet>137</a>		<a href="../../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#138 id=138 data-nosnippet>138</a>			<span class="string">"workspaces"</span>,
 <a href=#139 id=139 data-nosnippet>139</a>			<span class="string">"warn: [LandFix:WsDelta] sky://workspaces/changed emit failed: {}"</span>,
 <a href=#140 id=140 data-nosnippet>140</a>			Error

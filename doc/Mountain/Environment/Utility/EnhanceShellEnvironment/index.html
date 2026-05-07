@@ -4,20 +4,20 @@
 no <code>JAVA_HOME</code>, …</p>
 <p>That breaks every child process Mountain or its extensions spawn:</p>
 <ul>
-<li>Cocoon’s <code>node</code> binary can’t find Homebrew installs
-(<code>/opt/homebrew/bin</code>, <code>/usr/local/bin</code>).</li>
-<li>Language servers (rust-analyzer, gopls, pyright) probe <code>PATH</code> and
-fail to launch.</li>
-<li>Git extensions invoking <code>git</code> fall back to <code>/usr/bin/git</code> (Apple’s
-ancient stock copy) instead of the Homebrew one.</li>
+<li>Cocoon’s <code>node</code> binary can’t find Homebrew installs (<code>/opt/homebrew/bin</code>,
+<code>/usr/local/bin</code>).</li>
+<li>Language servers (rust-analyzer, gopls, pyright) probe <code>PATH</code> and fail to
+launch.</li>
+<li>Git extensions invoking <code>git</code> fall back to <code>/usr/bin/git</code> (Apple’s ancient
+stock copy) instead of the Homebrew one.</li>
 </ul>
 <p>VS Code, Atom, and most other Electron editors solve this by spawning
 the user’s interactive shell with <code>-ilc env</code> once at boot and merging
 the result into the process environment. We do the same here.</p>
 <p>Skipped when:</p>
 <ul>
-<li>The launcher is already a TTY (the user invoked from a terminal -
-PATH is already correct).</li>
+<li>The launcher is already a TTY (the user invoked from a terminal - PATH is
+already correct).</li>
 <li><code>Walk=0</code> (matches the existing knob users may rely on).</li>
 <li>The shell probe fails or times out (best-effort; never fatal).</li>
 </ul>

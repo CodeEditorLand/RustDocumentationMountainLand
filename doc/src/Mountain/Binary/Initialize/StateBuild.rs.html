@@ -30,7 +30,7 @@
 <a href=#30 id=30 data-nosnippet>30</a><span class="kw">use </span>crate::{
 <a href=#31 id=31 data-nosnippet>31</a>	<a href="../../ApplicationState/State/ApplicationState.rs.html#64-87">ApplicationState::State::ApplicationState::ApplicationState</a>,
 <a href=#32 id=32 data-nosnippet>32</a>	<a href="../../Environment/MountainEnvironment.rs.html#228-238">Environment::MountainEnvironment::MountainEnvironment</a>,
-<a href=#33 id=33 data-nosnippet>33</a>	<a href="../../IPC/DevLog.rs.html#726-767">dev_log</a>,
+<a href=#33 id=33 data-nosnippet>33</a>	<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log</a>,
 <a href=#34 id=34 data-nosnippet>34</a>};
 <a href=#35 id=35 data-nosnippet>35</a>
 <a href=#36 id=36 data-nosnippet>36</a><span class="doccomment">/// State build configuration
@@ -94,10 +94,10 @@
 <a href=#94 id=94 data-nosnippet>94</a>	<span class="attr">#[cfg(feature = <span class="string">"Telemetry"</span>)]
 <a href=#95 id=95 data-nosnippet>95</a>	</span><span class="kw">let </span>span = global::tracer(<span class="string">"StateBuild"</span>).start(<span class="string">"Build"</span>);
 <a href=#96 id=96 data-nosnippet>96</a>
-<a href=#97 id=97 data-nosnippet>97</a>	<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[StateBuild] Initializing application state"</span>);
+<a href=#97 id=97 data-nosnippet>97</a>	<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[StateBuild] Initializing application state"</span>);
 <a href=#98 id=98 data-nosnippet>98</a>
 <a href=#99 id=99 data-nosnippet>99</a>	<span class="kw">if </span><a href="#93">config</a>.verbose_logging {
-<a href=#100 id=100 data-nosnippet>100</a>		<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[StateBuild] Config: {:?}"</span>, config);
+<a href=#100 id=100 data-nosnippet>100</a>		<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[StateBuild] Config: {:?}"</span>, config);
 <a href=#101 id=101 data-nosnippet>101</a>	}
 <a href=#102 id=102 data-nosnippet>102</a>
 <a href=#103 id=103 data-nosnippet>103</a>	<span class="comment">// Validate required capabilities if strict mode enabled
@@ -106,12 +106,12 @@
 <a href=#106 id=106 data-nosnippet>106</a>		</span><a href="#95">span</a>.set_attribute(KeyValue::new(<span class="string">"validation"</span>, <span class="string">"strict"</span>));
 <a href=#107 id=107 data-nosnippet>107</a>
 <a href=#108 id=108 data-nosnippet>108</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(err) = <a href="#131-135">ValidateCapabilities</a>(<span class="kw-2">&amp;</span><a href="#93">environment</a>) {
-<a href=#109 id=109 data-nosnippet>109</a>			<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"error: [StateBuild] Capability validation failed: {}"</span>, err);
+<a href=#109 id=109 data-nosnippet>109</a>			<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"error: [StateBuild] Capability validation failed: {}"</span>, err);
 <a href=#110 id=110 data-nosnippet>110</a>			<span class="attr">#[cfg(feature = <span class="string">"Telemetry"</span>)]
 <a href=#111 id=111 data-nosnippet>111</a>			</span><a href="#95">span</a>.set_attribute(KeyValue::new(<span class="string">"error"</span>, <a href="#108">err</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>()));
 <a href=#112 id=112 data-nosnippet>112</a>			<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Capability validation failed: {}"</span>, err));
 <a href=#113 id=113 data-nosnippet>113</a>		}
-<a href=#114 id=114 data-nosnippet>114</a>		<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[StateBuild] All required capabilities validated"</span>);
+<a href=#114 id=114 data-nosnippet>114</a>		<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[StateBuild] All required capabilities validated"</span>);
 <a href=#115 id=115 data-nosnippet>115</a>	}
 <a href=#116 id=116 data-nosnippet>116</a>
 <a href=#117 id=117 data-nosnippet>117</a>	<span class="comment">// Create state with injected capabilities
@@ -123,7 +123,7 @@
 <a href=#123 id=123 data-nosnippet>123</a>		<a href="#95">span</a>.end();
 <a href=#124 id=124 data-nosnippet>124</a>	}
 <a href=#125 id=125 data-nosnippet>125</a>
-<a href=#126 id=126 data-nosnippet>126</a>	<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[StateBuild] Application state initialized successfully"</span>);
+<a href=#126 id=126 data-nosnippet>126</a>	<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[StateBuild] Application state initialized successfully"</span>);
 <a href=#127 id=127 data-nosnippet>127</a>	<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="#118">state</a>)
 <a href=#128 id=128 data-nosnippet>128</a>}
 <a href=#129 id=129 data-nosnippet>129</a>
@@ -137,7 +137,7 @@
 <a href=#137 id=137 data-nosnippet>137</a><span class="doccomment">/// Create minimal state for testing (reduced requirements)
 <a href=#138 id=138 data-nosnippet>138</a></span><span class="attr">#[cfg(any(test, feature = <span class="string">"Test"</span>))]
 <a href=#139 id=139 data-nosnippet>139</a></span><span class="kw">pub fn </span><a href="../../../../Mountain/Binary/Initialize/StateBuild/fn.BuildMinimal.html">BuildMinimal</a>(_app_handle:tauri::AppHandle) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="../../ApplicationState/State/ApplicationState.rs.html#64-87">ApplicationState</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
-<a href=#140 id=140 data-nosnippet>140</a>	<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[StateBuild] Creating minimal test state"</span>);
+<a href=#140 id=140 data-nosnippet>140</a>	<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[StateBuild] Creating minimal test state"</span>);
 <a href=#141 id=141 data-nosnippet>141</a>	<span class="comment">// Create minimal ApplicationState for tests (no environment needed)
 <a href=#142 id=142 data-nosnippet>142</a>	// The environment is created later in the actual application lifecycle
 <a href=#143 id=143 data-nosnippet>143</a>	</span><span class="kw">let </span>app_state = <a href="../../ApplicationState/State/ApplicationState.rs.html#64-87">ApplicationState</a>::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>();

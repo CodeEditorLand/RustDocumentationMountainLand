@@ -109,10 +109,10 @@ append) on the existing channels. That preserves semantics without
 requiring a coordinated Sky-side change.</dd><dt><a class="mod" href="OutputShow/index.html" title="mod Mountain::Vine::Server::Notification::OutputShow">Output<wbr>Show</a></dt><dd>Cocoon → Mountain <code>output.show</code> notification.
 Forwarding atom for <code>OutputChannel.show(preserveFocus?)</code>.</dd><dt><a class="mod" href="ProgressComplete/index.html" title="mod Mountain::Vine::Server::Notification::ProgressComplete">Progress<wbr>Complete</a></dt><dd>Cocoon → Mountain <code>progress.complete</code> notification.
 Fires once <code>vscode.window.withProgress(...)</code> settles - either the task
-finishes or Cocoon cancels it. Canonical counterpart to Mountain’s
-already-handled <code>progress.end</code>; this atom re-routes onto the
-<code>sky://progress/end</code> channel so the renderer’s progress indicator
-tears down regardless of which wire name Cocoon picked.</dd><dt><a class="mod" href="ProgressEnd/index.html" title="mod Mountain::Vine::Server::Notification::ProgressEnd">Progress<wbr>End</a></dt><dd>Cocoon → Mountain <code>progress.end</code> notification.
+finishes or Cocoon cancels it. Emits onto Sky’s canonical
+<code>sky://progress/complete</code> channel so the renderer’s progress indicator
+tears down. (Earlier code emitted <code>sky://progress/end</code> which Sky never
+listened on - the indicator stayed pinned forever.)</dd><dt><a class="mod" href="ProgressEnd/index.html" title="mod Mountain::Vine::Server::Notification::ProgressEnd">Progress<wbr>End</a></dt><dd>Cocoon → Mountain <code>progress.end</code> notification.
 Fires once per <code>vscode.window.withProgress(...)</code> call when the task
 settles. Forwarded onto <code>sky://notification/progress-end</code> so Sky’s
 progress indicator tears down.</dd><dt><a class="mod" href="ProgressReport/index.html" title="mod Mountain::Vine::Server::Notification::ProgressReport">Progress<wbr>Report</a></dt><dd>Cocoon → Mountain <code>progress.report</code> notification.
@@ -199,10 +199,11 @@ Emitted by <code>Cocoon/.../Services/Window/WebviewPanel.ts:155</code> when the
 extension disposes a webview panel or the user closes the tab. Sky’s
 webview shim listens on <code>sky://webview/dispose</code> and tears down the
 DOM container + unregisters the handle lookup.</dd><dt><a class="mod" href="WebviewLifecycle/index.html" title="mod Mountain::Vine::Server::Notification::WebviewLifecycle">Webview<wbr>Lifecycle</a></dt><dd>Cocoon → Mountain <code>webview.setTitle</code> / <code>webview.setIconPath</code> /
-<code>webview.setHtml</code> notifications. Shared atom because the three wire
-methods map to the same suffix-split pattern; keeping them in one
-file avoids three near-identical 5-line files while still pinning
-the handler to a discoverable filename.</dd><dt><a class="mod" href="WebviewPostMessage/index.html" title="mod Mountain::Vine::Server::Notification::WebviewPostMessage">Webview<wbr>Post<wbr>Message</a></dt><dd>Cocoon → Mountain <code>webview.postMessage</code> notification.
+<code>webview.setHtml</code> / <code>webview.postMessage</code> / <code>webview.updateView</code> /
+<code>webview.viewState</code> / <code>webview.dispose</code> notifications. Shared atom
+because the methods all map to the same suffix-split pattern; keeping
+them in one file avoids near-identical 5-line files while still
+pinning the handler to a discoverable filename.</dd><dt><a class="mod" href="WebviewPostMessage/index.html" title="mod Mountain::Vine::Server::Notification::WebviewPostMessage">Webview<wbr>Post<wbr>Message</a></dt><dd>Cocoon → Mountain <code>webview.postMessage</code> notification.
 Emitted by <code>Cocoon/.../Services/Window/WebviewPanel.ts:125</code> when an
 extension calls <code>WebviewPanel.webview.postMessage(...)</code>. Stock VS
 Code delivers this as a DOM <code>message</code> event inside the webview

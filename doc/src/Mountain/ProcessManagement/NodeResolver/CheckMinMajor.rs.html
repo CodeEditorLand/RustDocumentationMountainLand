@@ -5,7 +5,7 @@
 <a href=#5 id=5 data-nosnippet>5</a>//! engines and operators should be free to experiment on unreleased Node
 <a href=#6 id=6 data-nosnippet>6</a>//! without a hard gate.
 <a href=#7 id=7 data-nosnippet>7</a>
-<a href=#8 id=8 data-nosnippet>8</a></span><span class="kw">use </span><a href="../../IPC/DevLog.rs.html#726-767"><span class="kw">crate</span>::dev_log</a>;
+<a href=#8 id=8 data-nosnippet>8</a></span><span class="kw">use </span><a href="../../IPC/DevLog/mod.rs.html#40-81"><span class="kw">crate</span>::dev_log</a>;
 <a href=#9 id=9 data-nosnippet>9</a>
 <a href=#10 id=10 data-nosnippet>10</a><span class="kw">pub fn </span><a href="../../../../Mountain/ProcessManagement/NodeResolver/CheckMinMajor/fn.Fn.html">Fn</a>(VersionString:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) {
 <a href=#11 id=11 data-nosnippet>11</a>	<span class="kw">let </span>Trimmed = <a href="#10">VersionString</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.trim_start_matches">trim_start_matches</a>(<span class="string">'v'</span>);
@@ -18,7 +18,7 @@
 <a href=#18 id=18 data-nosnippet>18</a>	<span class="kw">let </span>Required:<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a> = std::env::<a href="https://doc.rust-lang.org/nightly/std/env/fn.var.html">var</a>(<span class="string">"Require"</span>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|Raw| <a href="#18">Raw</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.parse">parse</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>()).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or">unwrap_or</a>(<span class="number">20</span>);
 <a href=#19 id=19 data-nosnippet>19</a>
 <a href=#20 id=20 data-nosnippet>20</a>	<span class="kw">if </span><a href="#13">Major</a> &lt; <a href="#18">Required</a> {
-<a href=#21 id=21 data-nosnippet>21</a>		<a href="../../IPC/DevLog.rs.html#726-767">dev_log!</a>(
+<a href=#21 id=21 data-nosnippet>21</a>		<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
 <a href=#22 id=22 data-nosnippet>22</a>			<span class="string">"cocoon"</span>,
 <a href=#23 id=23 data-nosnippet>23</a>			<span class="string">"warn: [NodeResolver] Node {} is below Require={}; extension host may fail to boot. Override via Pick or \
 <a href=#24 id=24 data-nosnippet>24</a>			 upgrade Node."</span>,

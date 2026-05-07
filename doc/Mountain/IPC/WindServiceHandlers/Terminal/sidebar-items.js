@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["LocalPTYGetDefaultShell","LocalPTYGetEnvironment","LocalPTYGetProfiles","TerminalCreate","TerminalDispose","TerminalHide","TerminalSendText","TerminalShow"]};
+window.SIDEBAR_ITEMS = {"mod":["LocalPTYGetDefaultShell","LocalPTYGetEnvironment","LocalPTYGetProfiles","TerminalCreate","TerminalDispose","TerminalHide","TerminalSendText","TerminalShow"]};

@@ -8,7 +8,7 @@
 <a href=#8 id=8 data-nosnippet>8</a></span><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#9 id=9 data-nosnippet>9</a><span class="kw">use </span>tauri::Emitter;
 <a href=#10 id=10 data-nosnippet>10</a>
-<a href=#11 id=11 data-nosnippet>11</a><span class="kw">use </span>crate::{<a href="../MountainVinegRPCService.rs.html#77-87">Vine::Server::MountainVinegRPCService::MountainVinegRPCService</a>, <a href="../../../IPC/DevLog.rs.html#726-767">dev_log</a>};
+<a href=#11 id=11 data-nosnippet>11</a><span class="kw">use </span>crate::{<a href="../MountainVinegRPCService.rs.html#77-87">Vine::Server::MountainVinegRPCService::MountainVinegRPCService</a>, <a href="../../../IPC/DevLog/mod.rs.html#40-81">dev_log</a>};
 <a href=#12 id=12 data-nosnippet>12</a>
 <a href=#13 id=13 data-nosnippet>13</a><span class="kw">pub async fn </span><a href="../../../../../Mountain/Vine/Server/Notification/OutputAppend/fn.OutputAppend.html">OutputAppend</a>(Service:<span class="kw-2">&amp;</span><a href="../MountainVinegRPCService.rs.html#77-87">MountainVinegRPCService</a>, Parameter:<span class="kw-2">&amp;</span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) {
 <a href=#14 id=14 data-nosnippet>14</a>	<span class="kw">let _ </span>= Service.ApplicationHandle().emit(<span class="string">"sky://output/append"</span>, Parameter);

@@ -89,107 +89,113 @@
 <a href=#89 id=89 data-nosnippet>89</a></span><span class="doccomment">/// Advanced experimental features (collaboration, intelligent caching,
 <a href=#90 id=90 data-nosnippet>90</a>/// performance monitoring). TODO: atomize this 648-LOC single file into a
 <a href=#91 id=91 data-nosnippet>91</a>/// directory; for now consumers spell `IPC::AdvancedFeatures::*` directly.
-<a href=#92 id=92 data-nosnippet>92</a></span><span class="kw">pub mod </span><a href="AdvancedFeatures.rs.html#1-648">AdvancedFeatures</a>;
+<a href=#92 id=92 data-nosnippet>92</a></span><span class="kw">pub mod </span><a href="AdvancedFeatures/mod.rs.html#1-21">AdvancedFeatures</a>;
 <a href=#93 id=93 data-nosnippet>93</a>
 <a href=#94 id=94 data-nosnippet>94</a><span class="doccomment">/// Configuration synchronization bridge.
 <a href=#95 id=95 data-nosnippet>95</a></span><span class="comment">// Legacy ConfigurationBridge.rs for backward compatibility
 <a href=#96 id=96 data-nosnippet>96</a></span><span class="attr">#[path = <span class="string">"ConfigurationBridge.rs"</span>]
-<a href=#97 id=97 data-nosnippet>97</a></span><span class="kw">pub mod </span><a href="ConfigurationBridge.rs.html#1-721">ConfigurationBridge</a>;
+<a href=#97 id=97 data-nosnippet>97</a></span><span class="kw">pub mod </span><a href="ConfigurationBridge.rs.html#1-724">ConfigurationBridge</a>;
 <a href=#98 id=98 data-nosnippet>98</a>
-<a href=#99 id=99 data-nosnippet>99</a><span class="doccomment">/// Status and metrics reporting.
-<a href=#100 id=100 data-nosnippet>100</a></span><span class="comment">// Legacy StatusReporter.rs for backward compatibility
-<a href=#101 id=101 data-nosnippet>101</a></span><span class="attr">#[path = <span class="string">"StatusReporter.rs"</span>]
-<a href=#102 id=102 data-nosnippet>102</a></span><span class="kw">pub mod </span><a href="StatusReporter.rs.html#1-1256">StatusReporter</a>;
-<a href=#103 id=103 data-nosnippet>103</a>
-<a href=#104 id=104 data-nosnippet>104</a><span class="doccomment">/// Wind UI framework synchronization.
-<a href=#105 id=105 data-nosnippet>105</a></span><span class="comment">// Legacy WindAdvancedSync.rs for backward compatibility
-<a href=#106 id=106 data-nosnippet>106</a></span><span class="attr">#[path = <span class="string">"WindAdvancedSync.rs"</span>]
-<a href=#107 id=107 data-nosnippet>107</a></span><span class="kw">pub mod </span><a href="WindAdvancedSync.rs.html#1-1051">WindAdvancedSync</a>;
+<a href=#99 id=99 data-nosnippet>99</a><span class="doccomment">/// Status and metrics reporting (atomized; siblings live in `StatusReporter/`).
+<a href=#100 id=100 data-nosnippet>100</a></span><span class="kw">pub mod </span><a href="StatusReporter/mod.rs.html#1-47">StatusReporter</a>;
+<a href=#101 id=101 data-nosnippet>101</a>
+<a href=#102 id=102 data-nosnippet>102</a><span class="doccomment">/// Wind UI framework synchronization.
+<a href=#103 id=103 data-nosnippet>103</a></span><span class="comment">// Legacy WindAdvancedSync.rs for backward compatibility
+<a href=#104 id=104 data-nosnippet>104</a></span><span class="attr">#[path = <span class="string">"WindAdvancedSync.rs"</span>]
+<a href=#105 id=105 data-nosnippet>105</a></span><span class="kw">pub mod </span><a href="WindAdvancedSync.rs.html#1-1055">WindAdvancedSync</a>;
+<a href=#106 id=106 data-nosnippet>106</a>
+<a href=#107 id=107 data-nosnippet>107</a><span class="comment">// --- Legacy Sub-modules ---
 <a href=#108 id=108 data-nosnippet>108</a>
-<a href=#109 id=109 data-nosnippet>109</a><span class="comment">// --- Legacy Sub-modules ---
-<a href=#110 id=110 data-nosnippet>110</a>
-<a href=#111 id=111 data-nosnippet>111</a></span><span class="doccomment">/// Legacy Wind Air Commands.
-<a href=#112 id=112 data-nosnippet>112</a></span><span class="kw">pub mod </span><a href="WindAirCommands.rs.html#1-859">WindAirCommands</a>;
-<a href=#113 id=113 data-nosnippet>113</a>
-<a href=#114 id=114 data-nosnippet>114</a><span class="doccomment">/// Legacy Wind Service Adapters.
-<a href=#115 id=115 data-nosnippet>115</a></span><span class="kw">pub mod </span><a href="WindServiceAdapters.rs.html#1-474">WindServiceAdapters</a>;
-<a href=#116 id=116 data-nosnippet>116</a>
-<a href=#117 id=117 data-nosnippet>117</a><span class="doccomment">/// Tag-filtered development logging (Trace env var).
-<a href=#118 id=118 data-nosnippet>118</a>/// Must be declared before WindServiceHandlers so the dev_log! macro is
-<a href=#119 id=119 data-nosnippet>119</a>/// available.
-<a href=#120 id=120 data-nosnippet>120</a></span><span class="kw">pub mod </span><a href="DevLog.rs.html#1-898">DevLog</a>;
-<a href=#121 id=121 data-nosnippet>121</a>
-<a href=#122 id=122 data-nosnippet>122</a><span class="doccomment">/// Central `sky://` emit wrapper that logs under the `sky-emit` DevLog
-<a href=#123 id=123 data-nosnippet>123</a>/// tag. Optional drop-in for any `ApplicationHandle::emit(channel, …)`
-<a href=#124 id=124 data-nosnippet>124</a>/// call site; existing emits keep working unchanged.
-<a href=#125 id=125 data-nosnippet>125</a></span><span class="kw">pub mod </span><a href="SkyEmit.rs.html#1-64">SkyEmit</a>;
-<a href=#126 id=126 data-nosnippet>126</a>
-<a href=#127 id=127 data-nosnippet>127</a><span class="doccomment">/// Shared `UriComponents` emitter. Every handler that returns a URI to the
-<a href=#128 id=128 data-nosnippet>128</a>/// renderer must route through this module so the `$mid: 1` marshalling
-<a href=#129 id=129 data-nosnippet>129</a>/// marker is never forgotten (without it VS Code's IPC reviver skips the
-<a href=#130 id=130 data-nosnippet>130</a>/// field and `uri.with is not a function` cascades through the sidebar).
-<a href=#131 id=131 data-nosnippet>131</a></span><span class="kw">pub mod </span><a href="UriComponents.rs.html#1-25">UriComponents</a>;
+<a href=#109 id=109 data-nosnippet>109</a></span><span class="doccomment">/// Legacy Wind Air Commands.
+<a href=#110 id=110 data-nosnippet>110</a></span><span class="kw">pub mod </span><a href="WindAirCommands/mod.rs.html#1-32">WindAirCommands</a>;
+<a href=#111 id=111 data-nosnippet>111</a>
+<a href=#112 id=112 data-nosnippet>112</a><span class="doccomment">/// Legacy Wind Service Adapters.
+<a href=#113 id=113 data-nosnippet>113</a></span><span class="kw">pub mod </span><a href="WindServiceAdapters/mod.rs.html#1-26">WindServiceAdapters</a>;
+<a href=#114 id=114 data-nosnippet>114</a>
+<a href=#115 id=115 data-nosnippet>115</a><span class="doccomment">/// Tag-filtered development logging (Trace env var).
+<a href=#116 id=116 data-nosnippet>116</a>/// Must be declared before WindServiceHandlers so the dev_log! macro is
+<a href=#117 id=117 data-nosnippet>117</a>/// available.
+<a href=#118 id=118 data-nosnippet>118</a></span><span class="kw">pub mod </span><a href="DevLog/mod.rs.html#1-93">DevLog</a>;
+<a href=#119 id=119 data-nosnippet>119</a>
+<a href=#120 id=120 data-nosnippet>120</a><span class="doccomment">/// Central `sky://` emit wrapper that logs under the `sky-emit` DevLog
+<a href=#121 id=121 data-nosnippet>121</a>/// tag. Optional drop-in for any `ApplicationHandle::emit(channel, …)`
+<a href=#122 id=122 data-nosnippet>122</a>/// call site; existing emits keep working unchanged.
+<a href=#123 id=123 data-nosnippet>123</a></span><span class="kw">pub mod </span><a href="SkyEmit.rs.html#1-64">SkyEmit</a>;
+<a href=#124 id=124 data-nosnippet>124</a>
+<a href=#125 id=125 data-nosnippet>125</a><span class="doccomment">/// Outbound emit wrapper that stamps a W3C `_traceparent` field onto
+<a href=#126 id=126 data-nosnippet>126</a>/// every JSON payload before forwarding to `app_handle.emit(...)`.
+<a href=#127 id=127 data-nosnippet>127</a>/// Sky's `Workbench/Electron/TraceparentBridge.ts` extracts the
+<a href=#128 id=128 data-nosnippet>128</a>/// header at the receiving end so spans emitted inside the handler
+<a href=#129 id=129 data-nosnippet>129</a>/// attach to the same Jaeger trace. Release builds short-circuit to
+<a href=#130 id=130 data-nosnippet>130</a>/// a plain `emit(...)` via `cfg!(debug_assertions)`.
+<a href=#131 id=131 data-nosnippet>131</a></span><span class="kw">pub mod </span><a href="EmitWithTraceparent.rs.html#1-52">EmitWithTraceparent</a>;
 <a href=#132 id=132 data-nosnippet>132</a>
-<a href=#133 id=133 data-nosnippet>133</a><span class="doccomment">/// Wind Service Handlers - dispatcher for every `MountainIPCInvoke` Tauri
-<a href=#134 id=134 data-nosnippet>134</a>/// call from Wind/Output/Sky. The `mod.rs` inside is the central `match`
-<a href=#135 id=135 data-nosnippet>135</a>/// that routes wire strings to per-domain atoms or handler files. Atoms
-<a href=#136 id=136 data-nosnippet>136</a>/// live under `WindServiceHandlers/&lt;Domain&gt;/&lt;Atom&gt;.rs` following the
-<a href=#137 id=137 data-nosnippet>137</a>/// one-export-per-file convention.
-<a href=#138 id=138 data-nosnippet>138</a>///
-<a href=#139 id=139 data-nosnippet>139</a>/// The previous `WindServiceHandler` (singular) sibling was merged here
-<a href=#140 id=140 data-nosnippet>140</a>/// on 2026-04-23: of its 24 files, only 3 functions were live
-<a href=#141 id=141 data-nosnippet>141</a>/// (extensions install/uninstall, nativeHost showOpenDialog) and those
-<a href=#142 id=142 data-nosnippet>142</a>/// now live as atoms under `WindServiceHandlers/Extension/` and
-<a href=#143 id=143 data-nosnippet>143</a>/// `WindServiceHandlers/NativeDialog/`. The remaining 21 files were
-<a href=#144 id=144 data-nosnippet>144</a>/// dead-code duplicates of plural-side implementations.
-<a href=#145 id=145 data-nosnippet>145</a></span><span class="kw">pub mod </span><a href="WindServiceHandlers/mod.rs.html#1-2475">WindServiceHandlers</a>;
-<a href=#146 id=146 data-nosnippet>146</a>
-<a href=#147 id=147 data-nosnippet>147</a><span class="comment">// --- Legacy Subdirectories ---
-<a href=#148 id=148 data-nosnippet>148</a>
-<a href=#149 id=149 data-nosnippet>149</a></span><span class="doccomment">/// Legacy Enhanced subdirectory.
-<a href=#150 id=150 data-nosnippet>150</a></span><span class="kw">pub mod </span><a href="Enhanced/mod.rs.html#1-320">Enhanced</a>;
-<a href=#151 id=151 data-nosnippet>151</a>
-<a href=#152 id=152 data-nosnippet>152</a><span class="doccomment">/// Legacy Permission subdirectory.
-<a href=#153 id=153 data-nosnippet>153</a></span><span class="kw">pub mod </span><a href="Permission/mod.rs.html#1-7">Permission</a>;
+<a href=#133 id=133 data-nosnippet>133</a><span class="doccomment">/// Shared `UriComponents` emitter. Every handler that returns a URI to the
+<a href=#134 id=134 data-nosnippet>134</a>/// renderer must route through this module so the `$mid: 1` marshalling
+<a href=#135 id=135 data-nosnippet>135</a>/// marker is never forgotten (without it VS Code's IPC reviver skips the
+<a href=#136 id=136 data-nosnippet>136</a>/// field and `uri.with is not a function` cascades through the sidebar).
+<a href=#137 id=137 data-nosnippet>137</a></span><span class="kw">pub mod </span><a href="UriComponents.rs.html#1-25">UriComponents</a>;
+<a href=#138 id=138 data-nosnippet>138</a>
+<a href=#139 id=139 data-nosnippet>139</a><span class="doccomment">/// Wind Service Handlers - dispatcher for every `MountainIPCInvoke` Tauri
+<a href=#140 id=140 data-nosnippet>140</a>/// call from Wind/Output/Sky. The `mod.rs` inside is the central `match`
+<a href=#141 id=141 data-nosnippet>141</a>/// that routes wire strings to per-domain atoms or handler files. Atoms
+<a href=#142 id=142 data-nosnippet>142</a>/// live under `WindServiceHandlers/&lt;Domain&gt;/&lt;Atom&gt;.rs` following the
+<a href=#143 id=143 data-nosnippet>143</a>/// one-export-per-file convention.
+<a href=#144 id=144 data-nosnippet>144</a>///
+<a href=#145 id=145 data-nosnippet>145</a>/// The previous `WindServiceHandler` (singular) sibling was merged here
+<a href=#146 id=146 data-nosnippet>146</a>/// on 2026-04-23: of its 24 files, only 3 functions were live
+<a href=#147 id=147 data-nosnippet>147</a>/// (extensions install/uninstall, nativeHost showOpenDialog) and those
+<a href=#148 id=148 data-nosnippet>148</a>/// now live as atoms under `WindServiceHandlers/Extension/` and
+<a href=#149 id=149 data-nosnippet>149</a>/// `WindServiceHandlers/NativeDialog/`. The remaining 21 files were
+<a href=#150 id=150 data-nosnippet>150</a>/// dead-code duplicates of plural-side implementations.
+<a href=#151 id=151 data-nosnippet>151</a></span><span class="kw">pub mod </span><a href="WindServiceHandlers/mod.rs.html#1-2549">WindServiceHandlers</a>;
+<a href=#152 id=152 data-nosnippet>152</a>
+<a href=#153 id=153 data-nosnippet>153</a><span class="comment">// --- Legacy Subdirectories ---
 <a href=#154 id=154 data-nosnippet>154</a>
-<a href=#155 id=155 data-nosnippet>155</a><span class="comment">// No `pub use` re-exports - callers spell the full path
-<a href=#156 id=156 data-nosnippet>156</a>// (`IPC::Connection::Manager::ConnectionManager`, etc.). The legacy single-
-<a href=#157 id=157 data-nosnippet>157</a>// file modules `TauriIPCServer_Old`, `AdvancedFeatures`, `StatusReporter`,
-<a href=#158 id=158 data-nosnippet>158</a>// `WindAdvancedSync`, `ConfigurationBridge` remain as roots for the
-<a href=#159 id=159 data-nosnippet>159</a>// in-progress atomic migration.
+<a href=#155 id=155 data-nosnippet>155</a></span><span class="doccomment">/// Legacy Enhanced subdirectory.
+<a href=#156 id=156 data-nosnippet>156</a></span><span class="kw">pub mod </span><a href="Enhanced/mod.rs.html#1-332">Enhanced</a>;
+<a href=#157 id=157 data-nosnippet>157</a>
+<a href=#158 id=158 data-nosnippet>158</a><span class="doccomment">/// Legacy Permission subdirectory.
+<a href=#159 id=159 data-nosnippet>159</a></span><span class="kw">pub mod </span><a href="Permission/mod.rs.html#1-7">Permission</a>;
 <a href=#160 id=160 data-nosnippet>160</a>
-<a href=#161 id=161 data-nosnippet>161</a>// --- Notes on Migration ---
-<a href=#162 id=162 data-nosnippet>162</a>
-<a href=#163 id=163 data-nosnippet>163</a>// MIGRATION PATH TO ATOMIC STRUCTURE:
-<a href=#164 id=164 data-nosnippet>164</a>//
-<a href=#165 id=165 data-nosnippet>165</a>// Phase 1: ✅ Create Atomic Structure
-<a href=#166 id=166 data-nosnippet>166</a>// - Created new atomic module directories
-<a href=#167 id=167 data-nosnippet>167</a>// - Implemented core functionality
-<a href=#168 id=168 data-nosnippet>168</a>// - Added comprehensive documentation
-<a href=#169 id=169 data-nosnippet>169</a>//
-<a href=#170 id=170 data-nosnippet>170</a>// Phase 2: 🔄 Backward Compatibility (Current)
-<a href=#171 id=171 data-nosnippet>171</a>// - Keeping legacy files for compatibility
-<a href=#172 id=172 data-nosnippet>172</a>// - Using #[path = "..."] to reference legacy files
-<a href=#173 id=173 data-nosnippet>173</a>// - Gradually migrating dependent code
-<a href=#174 id=174 data-nosnippet>174</a>//
-<a href=#175 id=175 data-nosnippet>175</a>// Phase 3: ⏳ Migration
-<a href=#176 id=176 data-nosnippet>176</a>// - Update dependent files to use new structure
-<a href=#177 id=177 data-nosnippet>177</a>// - Test migration incrementally
-<a href=#178 id=178 data-nosnippet>178</a>// - Monitor for issues
-<a href=#179 id=179 data-nosnippet>179</a>//
-<a href=#180 id=180 data-nosnippet>180</a>// Phase 4: ⏳ Cleanup
-<a href=#181 id=181 data-nosnippet>181</a>// - Remove legacy files
-<a href=#182 id=182 data-nosnippet>182</a>// - Update all documentation
-<a href=#183 id=183 data-nosnippet>183</a>// - Final verification
-<a href=#184 id=184 data-nosnippet>184</a>//
-<a href=#185 id=185 data-nosnippet>185</a>// The following atomic modules are ready for migration:
-<a href=#186 id=186 data-nosnippet>186</a>// - IPC/TauriIPCServer/ (Server.rs)
-<a href=#187 id=187 data-nosnippet>187</a>// - IPC/Message/ (Types.rs)
-<a href=#188 id=188 data-nosnippet>188</a>// - IPC/Connection/ (Manager.rs, Types.rs, Health.rs)
-<a href=#189 id=189 data-nosnippet>189</a>// - IPC/Encryption/ (MessageCompressor.rs, SecureChannel.rs)
-<a href=#190 id=190 data-nosnippet>190</a>// - IPC/Security/ (PermissionManager.rs, Role.rs, Permission.rs)
-<a href=#191 id=191 data-nosnippet>191</a>// - IPC/AdvancedFeatures/ (Features.rs)
-<a href=#192 id=192 data-nosnippet>192</a>// - IPC/ConfigurationBridge/ (mod.rs - placeholder)
-<a href=#193 id=193 data-nosnippet>193</a>// - IPC/StatusReporter/ (mod.rs - placeholder)
-<a href=#194 id=194 data-nosnippet>194</a>// - IPC/WindAdvancedSync/ (mod.rs - placeholder)
+<a href=#161 id=161 data-nosnippet>161</a><span class="comment">// No `pub use` re-exports - callers spell the full path
+<a href=#162 id=162 data-nosnippet>162</a>// (`IPC::Connection::Manager::ConnectionManager`, etc.). The legacy single-
+<a href=#163 id=163 data-nosnippet>163</a>// file modules `TauriIPCServer_Old`, `AdvancedFeatures`, `StatusReporter`,
+<a href=#164 id=164 data-nosnippet>164</a>// `WindAdvancedSync`, `ConfigurationBridge` remain as roots for the
+<a href=#165 id=165 data-nosnippet>165</a>// in-progress atomic migration.
+<a href=#166 id=166 data-nosnippet>166</a>
+<a href=#167 id=167 data-nosnippet>167</a>// --- Notes on Migration ---
+<a href=#168 id=168 data-nosnippet>168</a>
+<a href=#169 id=169 data-nosnippet>169</a>// MIGRATION PATH TO ATOMIC STRUCTURE:
+<a href=#170 id=170 data-nosnippet>170</a>//
+<a href=#171 id=171 data-nosnippet>171</a>// Phase 1: ✅ Create Atomic Structure
+<a href=#172 id=172 data-nosnippet>172</a>// - Created new atomic module directories
+<a href=#173 id=173 data-nosnippet>173</a>// - Implemented core functionality
+<a href=#174 id=174 data-nosnippet>174</a>// - Added comprehensive documentation
+<a href=#175 id=175 data-nosnippet>175</a>//
+<a href=#176 id=176 data-nosnippet>176</a>// Phase 2: 🔄 Backward Compatibility (Current)
+<a href=#177 id=177 data-nosnippet>177</a>// - Keeping legacy files for compatibility
+<a href=#178 id=178 data-nosnippet>178</a>// - Using #[path = "..."] to reference legacy files
+<a href=#179 id=179 data-nosnippet>179</a>// - Gradually migrating dependent code
+<a href=#180 id=180 data-nosnippet>180</a>//
+<a href=#181 id=181 data-nosnippet>181</a>// Phase 3: ⏳ Migration
+<a href=#182 id=182 data-nosnippet>182</a>// - Update dependent files to use new structure
+<a href=#183 id=183 data-nosnippet>183</a>// - Test migration incrementally
+<a href=#184 id=184 data-nosnippet>184</a>// - Monitor for issues
+<a href=#185 id=185 data-nosnippet>185</a>//
+<a href=#186 id=186 data-nosnippet>186</a>// Phase 4: ⏳ Cleanup
+<a href=#187 id=187 data-nosnippet>187</a>// - Remove legacy files
+<a href=#188 id=188 data-nosnippet>188</a>// - Update all documentation
+<a href=#189 id=189 data-nosnippet>189</a>// - Final verification
+<a href=#190 id=190 data-nosnippet>190</a>//
+<a href=#191 id=191 data-nosnippet>191</a>// The following atomic modules are ready for migration:
+<a href=#192 id=192 data-nosnippet>192</a>// - IPC/TauriIPCServer/ (Server.rs)
+<a href=#193 id=193 data-nosnippet>193</a>// - IPC/Message/ (Types.rs)
+<a href=#194 id=194 data-nosnippet>194</a>// - IPC/Connection/ (Manager.rs, Types.rs, Health.rs)
+<a href=#195 id=195 data-nosnippet>195</a>// - IPC/Encryption/ (MessageCompressor.rs, SecureChannel.rs)
+<a href=#196 id=196 data-nosnippet>196</a>// - IPC/Security/ (PermissionManager.rs, Role.rs, Permission.rs)
+<a href=#197 id=197 data-nosnippet>197</a>// - IPC/AdvancedFeatures/ (Features.rs)
+<a href=#198 id=198 data-nosnippet>198</a>// - IPC/ConfigurationBridge/ (mod.rs - placeholder)
+<a href=#199 id=199 data-nosnippet>199</a>// - IPC/StatusReporter/ (mod.rs - placeholder)
+<a href=#200 id=200 data-nosnippet>200</a>// - IPC/WindAdvancedSync/ (mod.rs - placeholder)
 </span></code></pre></div></section></main></body></html>
