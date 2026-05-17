@@ -3,17 +3,21 @@
 <a href=#3 id=3 data-nosnippet>3</a></span><span class="doccomment">//! Flush the consecutive-duplicate buffer - emits a `(xN)` tail
 <a href=#4 id=4 data-nosnippet>4</a>//! line if the pending count is greater than 1, then clears.
 <a href=#5 id=5 data-nosnippet>5</a>
-<a href=#6 id=6 data-nosnippet>6</a></span><span class="kw">use </span><span class="kw">crate</span>::IPC::DevLog::{<a href="mod.rs.html#20">DedupState</a>, <a href="mod.rs.html#29">WriteToFile</a>};
+<a href=#6 id=6 data-nosnippet>6</a></span><span class="kw">use </span><span class="kw">crate</span>::IPC::DevLog::{<a href="mod.rs.html#23">DedupState</a>, <a href="mod.rs.html#41">WriteToFile</a>};
 <a href=#7 id=7 data-nosnippet>7</a>
 <a href=#8 id=8 data-nosnippet>8</a><span class="kw">pub fn </span><a href="../../../../Mountain/IPC/DevLog/FlushDedup/fn.Fn.html">Fn</a>() {
-<a href=#9 id=9 data-nosnippet>9</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="kw-2">mut </span>State) = DedupState::<a href="DedupState.rs.html#15">DEDUP</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>() {
+<a href=#9 id=9 data-nosnippet>9</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="kw-2">mut </span>State) = DedupState::<a href="DedupState.rs.html#16">DEDUP</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>() {
 <a href=#10 id=10 data-nosnippet>10</a>		<span class="kw">if </span><a href="#9">State</a>.Count &gt; <span class="number">1 </span>{
 <a href=#11 id=11 data-nosnippet>11</a>			<span class="kw">let </span>Tail = <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"  (x{})"</span>, State.Count);
-<a href=#12 id=12 data-nosnippet>12</a>			<a href="https://doc.rust-lang.org/nightly/std/macro.eprintln.html">eprintln!</a>(<span class="string">"{}"</span>, Tail);
-<a href=#13 id=13 data-nosnippet>13</a>			WriteToFile::<a href="WriteToFile.rs.html#19-30">Fn</a>(<span class="kw-2">&amp;</span><a href="#11">Tail</a>);
-<a href=#14 id=14 data-nosnippet>14</a>		}
-<a href=#15 id=15 data-nosnippet>15</a>		<a href="#9">State</a>.LastKey.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.clear">clear</a>();
-<a href=#16 id=16 data-nosnippet>16</a>		<a href="#9">State</a>.Count = <span class="number">0</span>;
-<a href=#17 id=17 data-nosnippet>17</a>	}
-<a href=#18 id=18 data-nosnippet>18</a>}
+<a href=#12 id=12 data-nosnippet>12</a>
+<a href=#13 id=13 data-nosnippet>13</a>			<a href="https://doc.rust-lang.org/nightly/std/macro.eprintln.html">eprintln!</a>(<span class="string">"{}"</span>, Tail);
+<a href=#14 id=14 data-nosnippet>14</a>
+<a href=#15 id=15 data-nosnippet>15</a>			WriteToFile::<a href="WriteToFile.rs.html#19-33">Fn</a>(<span class="kw-2">&amp;</span><a href="#11">Tail</a>);
+<a href=#16 id=16 data-nosnippet>16</a>		}
+<a href=#17 id=17 data-nosnippet>17</a>
+<a href=#18 id=18 data-nosnippet>18</a>		<a href="#9">State</a>.LastKey.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.clear">clear</a>();
+<a href=#19 id=19 data-nosnippet>19</a>
+<a href=#20 id=20 data-nosnippet>20</a>		<a href="#9">State</a>.Count = <span class="number">0</span>;
+<a href=#21 id=21 data-nosnippet>21</a>	}
+<a href=#22 id=22 data-nosnippet>22</a>}
 </code></pre></div></section></main></body></html>

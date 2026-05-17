@@ -10,15 +10,17 @@
 <a href=#10 id=10 data-nosnippet>10</a>//! is distinct from `.env.Land.Diagnostics`'s `Disable`, which kills
 <a href=#11 id=11 data-nosnippet>11</a>//! polyfills/shims (not telemetry).
 <a href=#12 id=12 data-nosnippet>12</a>
-<a href=#13 id=13 data-nosnippet>13</a></span><span class="kw">use </span><a href="../PostHogPlugin.rs.html#35"><span class="kw">crate</span>::Binary::Build::PostHogPlugin::Constants</a>;
+<a href=#13 id=13 data-nosnippet>13</a></span><span class="kw">use </span><a href="../PostHogPlugin.rs.html#42"><span class="kw">crate</span>::Binary::Build::PostHogPlugin::Constants</a>;
 <a href=#14 id=14 data-nosnippet>14</a>
 <a href=#15 id=15 data-nosnippet>15</a><span class="kw">pub fn </span><a href="../../../../../Mountain/Binary/Build/PostHogPlugin/CaptureAllowed/fn.Fn.html">Fn</a>() -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
 <a href=#16 id=16 data-nosnippet>16</a>	<span class="kw">if </span>!<a href="https://doc.rust-lang.org/nightly/core/macro.cfg.html">cfg!</a>(debug_assertions) {
 <a href=#17 id=17 data-nosnippet>17</a>		<span class="kw">return </span><span class="bool-val">false</span>;
 <a href=#18 id=18 data-nosnippet>18</a>	}
-<a href=#19 id=19 data-nosnippet>19</a>	<span class="kw">if </span><a href="https://doc.rust-lang.org/nightly/core/macro.matches.html">matches!</a>(Constants::TELEMETRY_CAPTURE, <span class="string">"false" </span>| <span class="string">"0" </span>| <span class="string">"off"</span>) {
-<a href=#20 id=20 data-nosnippet>20</a>		<span class="kw">return </span><span class="bool-val">false</span>;
-<a href=#21 id=21 data-nosnippet>21</a>	}
-<a href=#22 id=22 data-nosnippet>22</a>	!<a href="https://doc.rust-lang.org/nightly/core/macro.matches.html">matches!</a>(Constants::POSTHOG_ENABLED, <span class="string">"false" </span>| <span class="string">"0" </span>| <span class="string">"off"</span>)
-<a href=#23 id=23 data-nosnippet>23</a>}
+<a href=#19 id=19 data-nosnippet>19</a>
+<a href=#20 id=20 data-nosnippet>20</a>	<span class="kw">if </span><a href="https://doc.rust-lang.org/nightly/core/macro.matches.html">matches!</a>(Constants::TELEMETRY_CAPTURE, <span class="string">"false" </span>| <span class="string">"0" </span>| <span class="string">"off"</span>) {
+<a href=#21 id=21 data-nosnippet>21</a>		<span class="kw">return </span><span class="bool-val">false</span>;
+<a href=#22 id=22 data-nosnippet>22</a>	}
+<a href=#23 id=23 data-nosnippet>23</a>
+<a href=#24 id=24 data-nosnippet>24</a>	!<a href="https://doc.rust-lang.org/nightly/core/macro.matches.html">matches!</a>(Constants::POSTHOG_ENABLED, <span class="string">"false" </span>| <span class="string">"0" </span>| <span class="string">"off"</span>)
+<a href=#25 id=25 data-nosnippet>25</a>}
 </code></pre></div></section></main></body></html>

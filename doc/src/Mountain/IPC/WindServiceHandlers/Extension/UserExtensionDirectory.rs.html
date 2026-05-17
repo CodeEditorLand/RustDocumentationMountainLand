@@ -18,13 +18,14 @@
 <a href=#18 id=18 data-nosnippet>18</a>				<span class="kw">return </span><a href="#17">HomeDirectory</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<a href="#16">Stripped</a>);
 <a href=#19 id=19 data-nosnippet>19</a>			}
 <a href=#20 id=20 data-nosnippet>20</a>		}
-<a href=#21 id=21 data-nosnippet>21</a>		<span class="kw">return </span><a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>::<a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from">from</a>(<a href="#15">Override</a>);
-<a href=#22 id=22 data-nosnippet>22</a>	}
-<a href=#23 id=23 data-nosnippet>23</a>
-<a href=#24 id=24 data-nosnippet>24</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(HomeDirectory) = dirs::home_dir() {
-<a href=#25 id=25 data-nosnippet>25</a>		<span class="kw">return </span><a href="#24">HomeDirectory</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">".land/extensions"</span>);
-<a href=#26 id=26 data-nosnippet>26</a>	}
-<a href=#27 id=27 data-nosnippet>27</a>
-<a href=#28 id=28 data-nosnippet>28</a>	<a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>::<a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from">from</a>(<span class="string">"extensions"</span>)
-<a href=#29 id=29 data-nosnippet>29</a>}
+<a href=#21 id=21 data-nosnippet>21</a>
+<a href=#22 id=22 data-nosnippet>22</a>		<span class="kw">return </span><a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>::<a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from">from</a>(<a href="#15">Override</a>);
+<a href=#23 id=23 data-nosnippet>23</a>	}
+<a href=#24 id=24 data-nosnippet>24</a>
+<a href=#25 id=25 data-nosnippet>25</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(HomeDirectory) = dirs::home_dir() {
+<a href=#26 id=26 data-nosnippet>26</a>		<span class="kw">return </span><a href="#25">HomeDirectory</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">".land/extensions"</span>);
+<a href=#27 id=27 data-nosnippet>27</a>	}
+<a href=#28 id=28 data-nosnippet>28</a>
+<a href=#29 id=29 data-nosnippet>29</a>	<a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>::<a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from">from</a>(<span class="string">"extensions"</span>)
+<a href=#30 id=30 data-nosnippet>30</a>}
 </code></pre></div></section></main></body></html>

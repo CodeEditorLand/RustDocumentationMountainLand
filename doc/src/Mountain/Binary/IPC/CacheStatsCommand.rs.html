@@ -56,6 +56,7 @@
 <a href=#56 id=56 data-nosnippet>56</a></span><span class="attr">#[tauri::command]
 <a href=#57 id=57 data-nosnippet>57</a></span><span class="kw">pub async fn </span><a href="#56">MountainGetCacheStats</a>(app_handle:AppHandle) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
 <a href=#58 id=58 data-nosnippet>58</a>	<span class="kw">let </span>stats = <span class="kw">crate</span>::IPC::AdvancedFeatures::mountain_get_cache_stats::mountain_get_cache_stats(app_handle).<span class="kw">await</span><span class="question-mark">?</span>;
-<a href=#59 id=59 data-nosnippet>59</a>	to_value(<span class="kw-2">&amp;</span>stats).map_err(|e| <span class="macro">format!</span>(<span class="string">"Failed to serialize cache stats: {}"</span>, e))
-<a href=#60 id=60 data-nosnippet>60</a>}
+<a href=#59 id=59 data-nosnippet>59</a>
+<a href=#60 id=60 data-nosnippet>60</a>	to_value(<span class="kw-2">&amp;</span>stats).map_err(|e| <span class="macro">format!</span>(<span class="string">"Failed to serialize cache stats: {}"</span>, e))
+<a href=#61 id=61 data-nosnippet>61</a>}
 </code></pre></div></section></main></body></html>

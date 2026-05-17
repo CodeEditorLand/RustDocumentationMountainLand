@@ -18,10 +18,10 @@
 <a href=#18 id=18 data-nosnippet>18</a>//!
 <a href=#19 id=19 data-nosnippet>19</a>//! ## Call Site
 <a href=#20 id=20 data-nosnippet>20</a>//!
-<a href=#21 id=21 data-nosnippet>21</a>//! `LogResolvedTiers()` is called unconditionally from `Binary/Main/Entry::Fn`
-<a href=#22 id=22 data-nosnippet>22</a>//! before the Tokio runtime begins spawning tasks. `dev_log!` is synchronous,
-<a href=#23 id=23 data-nosnippet>23</a>//! so the banner is guaranteed to land in the log before any extension code
-<a href=#24 id=24 data-nosnippet>24</a>//! runs.
+<a href=#21 id=21 data-nosnippet>21</a>//! `LogResolvedTiers()` is called unconditionally from
+<a href=#22 id=22 data-nosnippet>22</a>//! `Binary::Main::Entry::Fn` before the Tokio runtime begins spawning tasks.
+<a href=#23 id=23 data-nosnippet>23</a>//! `dev_log!` is synchronous, so the banner is guaranteed to land in the log
+<a href=#24 id=24 data-nosnippet>24</a>//! before any extension code runs.
 <a href=#25 id=25 data-nosnippet>25</a>//!
 <a href=#26 id=26 data-nosnippet>26</a>//! Runtime overhead is zero - all `env!(...)` invocations become string
 <a href=#27 id=27 data-nosnippet>27</a>//! literals at compile time and are inlined into a single write call.
@@ -33,14 +33,14 @@
 <a href=#33 id=33 data-nosnippet>33</a>//! Wind, and Sky. Every capability listed in the boot banner maps to one or
 <a href=#34 id=34 data-nosnippet>34</a>//! more `// Tier:&lt;Capability&gt;:&lt;Value&gt;` comments at its dispatch site.
 <a href=#35 id=35 data-nosnippet>35</a>
-<a href=#36 id=36 data-nosnippet>36</a></span><span class="kw">use </span><a href="IPC/DevLog/mod.rs.html#40-81"><span class="kw">crate</span>::dev_log</a>;
+<a href=#36 id=36 data-nosnippet>36</a></span><span class="kw">use </span><a href="IPC/DevLog/mod.rs.html#52-122"><span class="kw">crate</span>::dev_log</a>;
 <a href=#37 id=37 data-nosnippet>37</a>
 <a href=#38 id=38 data-nosnippet>38</a><span class="doccomment">/// Emits one ISO-timestamped line at boot listing the compiled-in value of all
 <a href=#39 id=39 data-nosnippet>39</a>/// 17 tier variables (`TierRemoteProcedureCall` … `TierTelemetry`). Call once,
-<a href=#40 id=40 data-nosnippet>40</a>/// from `Binary/Main/Entry::Fn`, after the logging infrastructure is ready and
-<a href=#41 id=41 data-nosnippet>41</a>/// before the Tokio runtime spawns any tasks.
+<a href=#40 id=40 data-nosnippet>40</a>/// from `Binary::Main::Entry::Fn`, after the logging infrastructure is ready
+<a href=#41 id=41 data-nosnippet>41</a>/// and before the Tokio runtime spawns any tasks.
 <a href=#42 id=42 data-nosnippet>42</a></span><span class="kw">pub fn </span><a href="../../Mountain/LandFixTier/fn.LogResolvedTiers.html">LogResolvedTiers</a>() {
-<a href=#43 id=43 data-nosnippet>43</a>	<a href="IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
+<a href=#43 id=43 data-nosnippet>43</a>	<a href="IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(
 <a href=#44 id=44 data-nosnippet>44</a>		<span class="string">"lifecycle"</span>,
 <a href=#45 id=45 data-nosnippet>45</a>		<span class="string">"[LandFix:Tier] Mountain tiers: RemoteProcedureCall={} HTTPProxy={} Logger={} FileSystem={} FindFiles={} \
 <a href=#46 id=46 data-nosnippet>46</a>		 Glob={} FileWatcher={} SchemeAssets={} Configuration={} Diagnostics={} Clipboard={} OpenExternal={} \

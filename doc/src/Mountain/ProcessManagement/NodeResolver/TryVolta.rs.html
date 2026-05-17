@@ -5,9 +5,9 @@
 <a href=#5 id=5 data-nosnippet>5</a>
 <a href=#6 id=6 data-nosnippet>6</a></span><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">std::path::PathBuf</a>;
 <a href=#7 id=7 data-nosnippet>7</a>
-<a href=#8 id=8 data-nosnippet>8</a><span class="kw">use </span><span class="kw">crate</span>::ProcessManagement::NodeResolver::{<a href="../NodeResolver.rs.html#13">NodeExecutableName</a>, <a href="../NodeResolver.rs.html#14">NodeSource</a>, <a href="../NodeResolver.rs.html#18">ResolvedNode</a>};
+<a href=#8 id=8 data-nosnippet>8</a><span class="kw">use </span><span class="kw">crate</span>::ProcessManagement::NodeResolver::{<a href="../NodeResolver.rs.html#15">NodeExecutableName</a>, <a href="../NodeResolver.rs.html#17">NodeSource</a>, <a href="../NodeResolver.rs.html#25">ResolvedNode</a>};
 <a href=#9 id=9 data-nosnippet>9</a>
-<a href=#10 id=10 data-nosnippet>10</a><span class="kw">pub fn </span><a href="../../../../Mountain/ProcessManagement/NodeResolver/TryVolta/fn.Fn.html">Fn</a>() -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;ResolvedNode::<a href="ResolvedNode.rs.html#11-14">Struct</a>&gt; {
+<a href=#10 id=10 data-nosnippet>10</a><span class="kw">pub fn </span><a href="../../../../Mountain/ProcessManagement/NodeResolver/TryVolta/fn.Fn.html">Fn</a>() -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;ResolvedNode::<a href="ResolvedNode.rs.html#11-15">Struct</a>&gt; {
 <a href=#11 id=11 data-nosnippet>11</a>	<span class="kw">let </span>VoltaHome = std::env::<a href="https://doc.rust-lang.org/nightly/std/env/fn.var.html">var</a>(<span class="string">"VOLTA_HOME"</span>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.or_else">or_else</a>(|| {
 <a href=#12 id=12 data-nosnippet>12</a>		std::env::<a href="https://doc.rust-lang.org/nightly/std/env/fn.var.html">var</a>(<span class="string">"HOME"</span>)
 <a href=#13 id=13 data-nosnippet>13</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>()
@@ -15,9 +15,11 @@
 <a href=#15 id=15 data-nosnippet>15</a>	})<span class="question-mark">?</span>;
 <a href=#16 id=16 data-nosnippet>16</a>
 <a href=#17 id=17 data-nosnippet>17</a>	<span class="kw">let </span>ShimCandidate = <a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>::<a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from">from</a>(<span class="kw-2">&amp;</span><a href="#11">VoltaHome</a>).<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">"bin"</span>).<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(NodeExecutableName::<a href="NodeExecutableName.rs.html#5">Fn</a>());
-<a href=#18 id=18 data-nosnippet>18</a>	<span class="kw">if </span><a href="#17">ShimCandidate</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.exists">exists</a>() {
-<a href=#19 id=19 data-nosnippet>19</a>		<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(ResolvedNode::<a href="ResolvedNode.rs.html#11-14">Struct</a> { Path:<a href="#17">ShimCandidate</a>, Source:NodeSource::Enum::<a href="NodeSource.rs.html#17">Volta</a> });
-<a href=#20 id=20 data-nosnippet>20</a>	}
-<a href=#21 id=21 data-nosnippet>21</a>	<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>
-<a href=#22 id=22 data-nosnippet>22</a>}
+<a href=#18 id=18 data-nosnippet>18</a>
+<a href=#19 id=19 data-nosnippet>19</a>	<span class="kw">if </span><a href="#17">ShimCandidate</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.exists">exists</a>() {
+<a href=#20 id=20 data-nosnippet>20</a>		<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(ResolvedNode::<a href="ResolvedNode.rs.html#11-15">Struct</a> { Path:<a href="#17">ShimCandidate</a>, Source:NodeSource::Enum::<a href="NodeSource.rs.html#20">Volta</a> });
+<a href=#21 id=21 data-nosnippet>21</a>	}
+<a href=#22 id=22 data-nosnippet>22</a>
+<a href=#23 id=23 data-nosnippet>23</a>	<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>
+<a href=#24 id=24 data-nosnippet>24</a>}
 </code></pre></div></section></main></body></html>

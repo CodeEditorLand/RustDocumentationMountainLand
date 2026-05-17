@@ -10,35 +10,37 @@
 <a href=#10 id=10 data-nosnippet>10</a><span class="kw">use </span>tauri::{State, command};
 <a href=#11 id=11 data-nosnippet>11</a>
 <a href=#12 id=12 data-nosnippet>12</a><span class="kw">use </span>crate::{
-<a href=#13 id=13 data-nosnippet>13</a>	ApplicationState::State::ApplicationState::{<a href="../../ApplicationState/State/ApplicationState.rs.html#64-87">ApplicationState</a>, <a href="../../ApplicationState/State/ApplicationState.rs.html#135-137">MapLockError</a>},
-<a href=#14 id=14 data-nosnippet>14</a>	<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log</a>,
+<a href=#13 id=13 data-nosnippet>13</a>	ApplicationState::State::ApplicationState::{<a href="../../ApplicationState/State/ApplicationState.rs.html#64-88">ApplicationState</a>, <a href="../../ApplicationState/State/ApplicationState.rs.html#143-145">MapLockError</a>},
+<a href=#14 id=14 data-nosnippet>14</a>	<a href="../../IPC/DevLog/mod.rs.html#52-122">dev_log</a>,
 <a href=#15 id=15 data-nosnippet>15</a>};
 <a href=#16 id=16 data-nosnippet>16</a>
 <a href=#17 id=17 data-nosnippet>17</a><span class="attr">#[command]
 <a href=#18 id=18 data-nosnippet>18</a></span><span class="kw">pub async fn </span><a href="#17">GetSCMResourceChanges</a>(
-<a href=#19 id=19 data-nosnippet>19</a>	State:State&lt;<span class="lifetime">'_</span>, <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../../ApplicationState/State/ApplicationState.rs.html#64-87">ApplicationState</a>&gt;&gt;,
-<a href=#20 id=20 data-nosnippet>20</a>	ProviderIdentifier:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
-<a href=#21 id=21 data-nosnippet>21</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
-<a href=#22 id=22 data-nosnippet>22</a>	<span class="macro">dev_log!</span>(<span class="string">"commands"</span>, <span class="string">"getting resource changes for provider: {}"</span>, ProviderIdentifier);
-<a href=#23 id=23 data-nosnippet>23</a>
-<a href=#24 id=24 data-nosnippet>24</a>	<span class="kw">let </span>resources_map = State
-<a href=#25 id=25 data-nosnippet>25</a>		.Feature
-<a href=#26 id=26 data-nosnippet>26</a>		.Markers
-<a href=#27 id=27 data-nosnippet>27</a>		.SourceControlManagementResources
-<a href=#28 id=28 data-nosnippet>28</a>		.lock()
-<a href=#29 id=29 data-nosnippet>29</a>		.map_err(MapLockError)
-<a href=#30 id=30 data-nosnippet>30</a>		.map_err(|Error| Error.to_string())<span class="question-mark">?
-<a href=#31 id=31 data-nosnippet>31</a>		</span>.clone();
-<a href=#32 id=32 data-nosnippet>32</a>
-<a href=#33 id=33 data-nosnippet>33</a>	<span class="kw">let </span>provider_handle_u32 = ProviderIdentifier.parse::&lt;u32&gt;().unwrap_or(<span class="number">0</span>);
-<a href=#34 id=34 data-nosnippet>34</a>	<span class="kw">let </span>ProviderResources:Vec&lt;<span class="kw">_</span>&gt; = resources_map
-<a href=#35 id=35 data-nosnippet>35</a>		.iter()
-<a href=#36 id=36 data-nosnippet>36</a>		.flat_map(|(_group_id, group_resources)| group_resources.values())
-<a href=#37 id=37 data-nosnippet>37</a>		.flat_map(|vec_resources| vec_resources.iter())
-<a href=#38 id=38 data-nosnippet>38</a>		.filter(|r| r.ProviderHandle == provider_handle_u32)
-<a href=#39 id=39 data-nosnippet>39</a>		.cloned()
-<a href=#40 id=40 data-nosnippet>40</a>		.collect();
-<a href=#41 id=41 data-nosnippet>41</a>
-<a href=#42 id=42 data-nosnippet>42</a>	<span class="prelude-val">Ok</span>(<span class="macro">json!</span>({ <span class="string">"resources"</span>: ProviderResources }))
-<a href=#43 id=43 data-nosnippet>43</a>}
+<a href=#19 id=19 data-nosnippet>19</a>	State:State&lt;<span class="lifetime">'_</span>, <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../../ApplicationState/State/ApplicationState.rs.html#64-88">ApplicationState</a>&gt;&gt;,
+<a href=#20 id=20 data-nosnippet>20</a>
+<a href=#21 id=21 data-nosnippet>21</a>	ProviderIdentifier:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#22 id=22 data-nosnippet>22</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
+<a href=#23 id=23 data-nosnippet>23</a>	<span class="macro">dev_log!</span>(<span class="string">"commands"</span>, <span class="string">"getting resource changes for provider: {}"</span>, ProviderIdentifier);
+<a href=#24 id=24 data-nosnippet>24</a>
+<a href=#25 id=25 data-nosnippet>25</a>	<span class="kw">let </span>resources_map = State
+<a href=#26 id=26 data-nosnippet>26</a>		.Feature
+<a href=#27 id=27 data-nosnippet>27</a>		.Markers
+<a href=#28 id=28 data-nosnippet>28</a>		.SourceControlManagementResources
+<a href=#29 id=29 data-nosnippet>29</a>		.lock()
+<a href=#30 id=30 data-nosnippet>30</a>		.map_err(MapLockError)
+<a href=#31 id=31 data-nosnippet>31</a>		.map_err(|Error| Error.to_string())<span class="question-mark">?
+<a href=#32 id=32 data-nosnippet>32</a>		</span>.clone();
+<a href=#33 id=33 data-nosnippet>33</a>
+<a href=#34 id=34 data-nosnippet>34</a>	<span class="kw">let </span>provider_handle_u32 = ProviderIdentifier.parse::&lt;u32&gt;().unwrap_or(<span class="number">0</span>);
+<a href=#35 id=35 data-nosnippet>35</a>
+<a href=#36 id=36 data-nosnippet>36</a>	<span class="kw">let </span>ProviderResources:Vec&lt;<span class="kw">_</span>&gt; = resources_map
+<a href=#37 id=37 data-nosnippet>37</a>		.iter()
+<a href=#38 id=38 data-nosnippet>38</a>		.flat_map(|(_group_id, group_resources)| group_resources.values())
+<a href=#39 id=39 data-nosnippet>39</a>		.flat_map(|vec_resources| vec_resources.iter())
+<a href=#40 id=40 data-nosnippet>40</a>		.filter(|r| r.ProviderHandle == provider_handle_u32)
+<a href=#41 id=41 data-nosnippet>41</a>		.cloned()
+<a href=#42 id=42 data-nosnippet>42</a>		.collect();
+<a href=#43 id=43 data-nosnippet>43</a>
+<a href=#44 id=44 data-nosnippet>44</a>	<span class="prelude-val">Ok</span>(<span class="macro">json!</span>({ <span class="string">"resources"</span>: ProviderResources }))
+<a href=#45 id=45 data-nosnippet>45</a>}
 </code></pre></div></section></main></body></html>

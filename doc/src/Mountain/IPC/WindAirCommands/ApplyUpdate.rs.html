@@ -4,8 +4,8 @@
 <a href=#4 id=4 data-nosnippet>4</a>//! previously downloaded update package.
 <a href=#5 id=5 data-nosnippet>5</a>
 <a href=#6 id=6 data-nosnippet>6</a></span><span class="kw">use </span>crate::{
-<a href=#7 id=7 data-nosnippet>7</a>	IPC::WindAirCommands::{<a href="mod.rs.html#23">GetAirAddress</a>, <a href="mod.rs.html#26">GetOrCreateAirClient</a>},
-<a href=#8 id=8 data-nosnippet>8</a>	<a href="../DevLog/mod.rs.html#40-81">dev_log</a>,
+<a href=#7 id=7 data-nosnippet>7</a>	IPC::WindAirCommands::{<a href="mod.rs.html#34">GetAirAddress</a>, <a href="mod.rs.html#40">GetOrCreateAirClient</a>},
+<a href=#8 id=8 data-nosnippet>8</a>	<a href="../DevLog/mod.rs.html#52-122">dev_log</a>,
 <a href=#9 id=9 data-nosnippet>9</a>};
 <a href=#10 id=10 data-nosnippet>10</a>
 <a href=#11 id=11 data-nosnippet>11</a><span class="attr">#[tauri::command]
@@ -18,16 +18,18 @@
 <a href=#18 id=18 data-nosnippet>18</a>	);
 <a href=#19 id=19 data-nosnippet>19</a>
 <a href=#20 id=20 data-nosnippet>20</a>	<span class="kw">let </span>air_address = GetAirAddress::Fn()<span class="question-mark">?</span>;
-<a href=#21 id=21 data-nosnippet>21</a>	<span class="kw">let </span>client = GetOrCreateAirClient::Fn(air_address).<span class="kw">await</span><span class="question-mark">?</span>;
-<a href=#22 id=22 data-nosnippet>22</a>
-<a href=#23 id=23 data-nosnippet>23</a>	<span class="kw">let </span>request_id = uuid::Uuid::new_v4().to_string();
-<a href=#24 id=24 data-nosnippet>24</a>
-<a href=#25 id=25 data-nosnippet>25</a>	client
-<a href=#26 id=26 data-nosnippet>26</a>		.apply_update(request_id, update_id, update_path)
-<a href=#27 id=27 data-nosnippet>27</a>		.<span class="kw">await
-<a href=#28 id=28 data-nosnippet>28</a>		</span>.map_err(|e| <span class="macro">format!</span>(<span class="string">"Update application failed: {:?}"</span>, e))<span class="question-mark">?</span>;
-<a href=#29 id=29 data-nosnippet>29</a>
-<a href=#30 id=30 data-nosnippet>30</a>	<span class="macro">dev_log!</span>(<span class="string">"grpc"</span>, <span class="string">"[WindAirCommands] Update applied successfully"</span>);
-<a href=#31 id=31 data-nosnippet>31</a>	<span class="prelude-val">Ok</span>(<span class="bool-val">true</span>)
-<a href=#32 id=32 data-nosnippet>32</a>}
+<a href=#21 id=21 data-nosnippet>21</a>
+<a href=#22 id=22 data-nosnippet>22</a>	<span class="kw">let </span>client = GetOrCreateAirClient::Fn(air_address).<span class="kw">await</span><span class="question-mark">?</span>;
+<a href=#23 id=23 data-nosnippet>23</a>
+<a href=#24 id=24 data-nosnippet>24</a>	<span class="kw">let </span>request_id = uuid::Uuid::new_v4().to_string();
+<a href=#25 id=25 data-nosnippet>25</a>
+<a href=#26 id=26 data-nosnippet>26</a>	client
+<a href=#27 id=27 data-nosnippet>27</a>		.apply_update(request_id, update_id, update_path)
+<a href=#28 id=28 data-nosnippet>28</a>		.<span class="kw">await
+<a href=#29 id=29 data-nosnippet>29</a>		</span>.map_err(|e| <span class="macro">format!</span>(<span class="string">"Update application failed: {:?}"</span>, e))<span class="question-mark">?</span>;
+<a href=#30 id=30 data-nosnippet>30</a>
+<a href=#31 id=31 data-nosnippet>31</a>	<span class="macro">dev_log!</span>(<span class="string">"grpc"</span>, <span class="string">"[WindAirCommands] Update applied successfully"</span>);
+<a href=#32 id=32 data-nosnippet>32</a>
+<a href=#33 id=33 data-nosnippet>33</a>	<span class="prelude-val">Ok</span>(<span class="bool-val">true</span>)
+<a href=#34 id=34 data-nosnippet>34</a>}
 </code></pre></div></section></main></body></html>

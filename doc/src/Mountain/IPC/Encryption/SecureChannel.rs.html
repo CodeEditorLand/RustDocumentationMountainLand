@@ -40,7 +40,7 @@
 <a href=#40 id=40 data-nosnippet>40</a><span class="kw">use </span>serde::{<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>};
 <a href=#41 id=41 data-nosnippet>41</a>
 <a href=#42 id=42 data-nosnippet>42</a><span class="kw">use </span><a href="../Message/Types.rs.html#77-90"><span class="kw">super</span>::<span class="kw">super</span>::Message::Types::TauriIPCMessage</a>;
-<a href=#43 id=43 data-nosnippet>43</a><span class="kw">use </span><a href="../DevLog/mod.rs.html#40-81"><span class="kw">crate</span>::dev_log</a>;
+<a href=#43 id=43 data-nosnippet>43</a><span class="kw">use </span><a href="../DevLog/mod.rs.html#52-122"><span class="kw">crate</span>::dev_log</a>;
 <a href=#44 id=44 data-nosnippet>44</a>
 <a href=#45 id=45 data-nosnippet>45</a><span class="doccomment">/// Encrypted message structure
 <a href=#46 id=46 data-nosnippet>46</a>///
@@ -177,316 +177,349 @@
 <a href=#177 id=177 data-nosnippet>177</a>	/// let secure_channel = SecureMessageChannel::new()?;
 <a href=#178 id=178 data-nosnippet>178</a>	/// ```
 <a href=#179 id=179 data-nosnippet>179</a>	</span><span class="kw">pub fn </span>new() -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<span class="self">Self</span>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
-<a href=#180 id=180 data-nosnippet>180</a>		<a href="../DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"encryption"</span>, <span class="string">"[SecureMessageChannel] Creating new secure channel"</span>);
+<a href=#180 id=180 data-nosnippet>180</a>		<a href="../DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"encryption"</span>, <span class="string">"[SecureMessageChannel] Creating new secure channel"</span>);
 <a href=#181 id=181 data-nosnippet>181</a>
 <a href=#182 id=182 data-nosnippet>182</a>		<span class="kw">let </span>rng = SystemRandom::new();
 <a href=#183 id=183 data-nosnippet>183</a>
 <a href=#184 id=184 data-nosnippet>184</a>		<span class="comment">// Generate 256-bit (32-byte) encryption key
 <a href=#185 id=185 data-nosnippet>185</a>		</span><span class="kw">let </span><span class="kw-2">mut </span>encryption_key_bytes = <a href="https://doc.rust-lang.org/nightly/alloc/macro.vec.html">vec!</a>[<span class="number">0u8</span>; <span class="number">32</span>];
-<a href=#186 id=186 data-nosnippet>186</a>		<a href="#182">rng</a>.fill(<span class="kw-2">&amp;mut </span><a href="#185">encryption_key_bytes</a>)
-<a href=#187 id=187 data-nosnippet>187</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Failed to generate encryption key: {}"</span>, e))<span class="question-mark">?</span>;
-<a href=#188 id=188 data-nosnippet>188</a>
-<a href=#189 id=189 data-nosnippet>189</a>		<span class="kw">let </span>unbound_key = UnboundKey::new(<span class="kw-2">&amp;</span>AES_256_GCM, <span class="kw-2">&amp;</span><a href="#185">encryption_key_bytes</a>)
-<a href=#190 id=190 data-nosnippet>190</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Failed to create unbound key: {}"</span>, e))<span class="question-mark">?</span>;
-<a href=#191 id=191 data-nosnippet>191</a>
-<a href=#192 id=192 data-nosnippet>192</a>		<span class="kw">let </span>encryption_key = LessSafeKey::new(<a href="#189">unbound_key</a>);
-<a href=#193 id=193 data-nosnippet>193</a>
-<a href=#194 id=194 data-nosnippet>194</a>		<span class="comment">// Generate 256-bit HMAC key
-<a href=#195 id=195 data-nosnippet>195</a>		</span><span class="kw">let </span><span class="kw-2">mut </span>hmac_key = <a href="https://doc.rust-lang.org/nightly/alloc/macro.vec.html">vec!</a>[<span class="number">0u8</span>; <span class="number">32</span>];
-<a href=#196 id=196 data-nosnippet>196</a>		<a href="#182">rng</a>.fill(<span class="kw-2">&amp;mut </span><a href="#195">hmac_key</a>)
-<a href=#197 id=197 data-nosnippet>197</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Failed to generate HMAC key: {}"</span>, e))<span class="question-mark">?</span>;
-<a href=#198 id=198 data-nosnippet>198</a>
-<a href=#199 id=199 data-nosnippet>199</a>		<a href="../DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"encryption"</span>, <span class="string">"[SecureMessageChannel] Secure channel created successfully"</span>);
+<a href=#186 id=186 data-nosnippet>186</a>
+<a href=#187 id=187 data-nosnippet>187</a>		<a href="#182">rng</a>.fill(<span class="kw-2">&amp;mut </span><a href="#185">encryption_key_bytes</a>)
+<a href=#188 id=188 data-nosnippet>188</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Failed to generate encryption key: {}"</span>, e))<span class="question-mark">?</span>;
+<a href=#189 id=189 data-nosnippet>189</a>
+<a href=#190 id=190 data-nosnippet>190</a>		<span class="kw">let </span>unbound_key = UnboundKey::new(<span class="kw-2">&amp;</span>AES_256_GCM, <span class="kw-2">&amp;</span><a href="#185">encryption_key_bytes</a>)
+<a href=#191 id=191 data-nosnippet>191</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Failed to create unbound key: {}"</span>, e))<span class="question-mark">?</span>;
+<a href=#192 id=192 data-nosnippet>192</a>
+<a href=#193 id=193 data-nosnippet>193</a>		<span class="kw">let </span>encryption_key = LessSafeKey::new(<a href="#190">unbound_key</a>);
+<a href=#194 id=194 data-nosnippet>194</a>
+<a href=#195 id=195 data-nosnippet>195</a>		<span class="comment">// Generate 256-bit HMAC key
+<a href=#196 id=196 data-nosnippet>196</a>		</span><span class="kw">let </span><span class="kw-2">mut </span>hmac_key = <a href="https://doc.rust-lang.org/nightly/alloc/macro.vec.html">vec!</a>[<span class="number">0u8</span>; <span class="number">32</span>];
+<a href=#197 id=197 data-nosnippet>197</a>
+<a href=#198 id=198 data-nosnippet>198</a>		<a href="#182">rng</a>.fill(<span class="kw-2">&amp;mut </span><a href="#196">hmac_key</a>)
+<a href=#199 id=199 data-nosnippet>199</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Failed to generate HMAC key: {}"</span>, e))<span class="question-mark">?</span>;
 <a href=#200 id=200 data-nosnippet>200</a>
-<a href=#201 id=201 data-nosnippet>201</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="self">Self </span>{ <a href="#192">encryption_key</a>, <a href="#195">hmac_key</a> })
-<a href=#202 id=202 data-nosnippet>202</a>	}
-<a href=#203 id=203 data-nosnippet>203</a>
-<a href=#204 id=204 data-nosnippet>204</a>	<span class="doccomment">/// Encrypt and authenticate a message
-<a href=#205 id=205 data-nosnippet>205</a>	///
-<a href=#206 id=206 data-nosnippet>206</a>	/// This method serializes the message, encrypts it with AES-256-GCM,
-<a href=#207 id=207 data-nosnippet>207</a>	/// and adds an HMAC tag for authentication.
-<a href=#208 id=208 data-nosnippet>208</a>	///
-<a href=#209 id=209 data-nosnippet>209</a>	/// ## Parameters
-<a href=#210 id=210 data-nosnippet>210</a>	/// - `message`: The message to encrypt
-<a href=#211 id=211 data-nosnippet>211</a>	///
-<a href=#212 id=212 data-nosnippet>212</a>	/// ## Returns
-<a href=#213 id=213 data-nosnippet>213</a>	/// - `Ok(EncryptedMessage)`: Encrypted message with nonce and HMAC tag
-<a href=#214 id=214 data-nosnippet>214</a>	/// - `Err(String)`: Error message if encryption fails
-<a href=#215 id=215 data-nosnippet>215</a>	///
-<a href=#216 id=216 data-nosnippet>216</a>	/// ## Example
+<a href=#201 id=201 data-nosnippet>201</a>		<a href="../DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"encryption"</span>, <span class="string">"[SecureMessageChannel] Secure channel created successfully"</span>);
+<a href=#202 id=202 data-nosnippet>202</a>
+<a href=#203 id=203 data-nosnippet>203</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="self">Self </span>{ <a href="#193">encryption_key</a>, <a href="#196">hmac_key</a> })
+<a href=#204 id=204 data-nosnippet>204</a>	}
+<a href=#205 id=205 data-nosnippet>205</a>
+<a href=#206 id=206 data-nosnippet>206</a>	<span class="doccomment">/// Encrypt and authenticate a message
+<a href=#207 id=207 data-nosnippet>207</a>	///
+<a href=#208 id=208 data-nosnippet>208</a>	/// This method serializes the message, encrypts it with AES-256-GCM,
+<a href=#209 id=209 data-nosnippet>209</a>	/// and adds an HMAC tag for authentication.
+<a href=#210 id=210 data-nosnippet>210</a>	///
+<a href=#211 id=211 data-nosnippet>211</a>	/// ## Parameters
+<a href=#212 id=212 data-nosnippet>212</a>	/// - `message`: The message to encrypt
+<a href=#213 id=213 data-nosnippet>213</a>	///
+<a href=#214 id=214 data-nosnippet>214</a>	/// ## Returns
+<a href=#215 id=215 data-nosnippet>215</a>	/// - `Ok(EncryptedMessage)`: Encrypted message with nonce and HMAC tag
+<a href=#216 id=216 data-nosnippet>216</a>	/// - `Err(String)`: Error message if encryption fails
 <a href=#217 id=217 data-nosnippet>217</a>	///
-<a href=#218 id=218 data-nosnippet>218</a>	/// ```rust,ignore
-<a href=#219 id=219 data-nosnippet>219</a>	/// let encrypted = secure_channel.encrypt_message(&amp;message)?;
-<a href=#220 id=220 data-nosnippet>220</a>	/// ```
-<a href=#221 id=221 data-nosnippet>221</a>	</span><span class="kw">pub fn </span>encrypt_message(<span class="kw-2">&amp;</span><span class="self">self</span>, message:<span class="kw-2">&amp;</span><a href="../Message/Types.rs.html#77-90">TauriIPCMessage</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="#70-79">EncryptedMessage</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
-<a href=#222 id=222 data-nosnippet>222</a>		<a href="../DevLog/mod.rs.html#40-81">dev_log!</a>(
-<a href=#223 id=223 data-nosnippet>223</a>			<span class="string">"encryption"</span>,
-<a href=#224 id=224 data-nosnippet>224</a>			<span class="string">"[SecureMessageChannel] Encrypting message on channel: {}"</span>,
-<a href=#225 id=225 data-nosnippet>225</a>			message.channel
-<a href=#226 id=226 data-nosnippet>226</a>		);
-<a href=#227 id=227 data-nosnippet>227</a>
-<a href=#228 id=228 data-nosnippet>228</a>		<span class="comment">// Serialize message to bytes
-<a href=#229 id=229 data-nosnippet>229</a>		</span><span class="kw">let </span>serialized_message =
-<a href=#230 id=230 data-nosnippet>230</a>			serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/ser/fn.to_vec.html">to_vec</a>(<a href="#221">message</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Failed to serialize message: {}"</span>, e))<span class="question-mark">?</span>;
-<a href=#231 id=231 data-nosnippet>231</a>
-<a href=#232 id=232 data-nosnippet>232</a>		<span class="comment">// Generate unique 12-byte nonce (required for AES-256-GCM)
-<a href=#233 id=233 data-nosnippet>233</a>		</span><span class="kw">let </span><span class="kw-2">mut </span>nonce = [<span class="number">0u8</span>; <span class="number">12</span>];
-<a href=#234 id=234 data-nosnippet>234</a>		SystemRandom::new()
-<a href=#235 id=235 data-nosnippet>235</a>			.fill(<span class="kw-2">&amp;mut </span><a href="#233">nonce</a>)
-<a href=#236 id=236 data-nosnippet>236</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Failed to generate nonce: {}"</span>, e))<span class="question-mark">?</span>;
-<a href=#237 id=237 data-nosnippet>237</a>
-<a href=#238 id=238 data-nosnippet>238</a>		<span class="comment">// Encrypt with AES-256-GCM (authenticated encryption)
-<a href=#239 id=239 data-nosnippet>239</a>		</span><span class="kw">let </span><span class="kw-2">mut </span>in_out = <a href="#229">serialized_message</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
-<a href=#240 id=240 data-nosnippet>240</a>		<a class="self" href="#221">self</a>.encryption_key
-<a href=#241 id=241 data-nosnippet>241</a>			.seal_in_place_append_tag(aead::Nonce::assume_unique_for_key(<a href="#233">nonce</a>), aead::Aad::empty(), <span class="kw-2">&amp;mut </span><a href="#239">in_out</a>)
-<a href=#242 id=242 data-nosnippet>242</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Encryption failed: {}"</span>, e))<span class="question-mark">?</span>;
+<a href=#218 id=218 data-nosnippet>218</a>	/// ## Example
+<a href=#219 id=219 data-nosnippet>219</a>	///
+<a href=#220 id=220 data-nosnippet>220</a>	/// ```rust,ignore
+<a href=#221 id=221 data-nosnippet>221</a>	/// let encrypted = secure_channel.encrypt_message(&amp;message)?;
+<a href=#222 id=222 data-nosnippet>222</a>	/// ```
+<a href=#223 id=223 data-nosnippet>223</a>	</span><span class="kw">pub fn </span>encrypt_message(<span class="kw-2">&amp;</span><span class="self">self</span>, message:<span class="kw-2">&amp;</span><a href="../Message/Types.rs.html#77-90">TauriIPCMessage</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="#70-79">EncryptedMessage</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
+<a href=#224 id=224 data-nosnippet>224</a>		<a href="../DevLog/mod.rs.html#52-122">dev_log!</a>(
+<a href=#225 id=225 data-nosnippet>225</a>			<span class="string">"encryption"</span>,
+<a href=#226 id=226 data-nosnippet>226</a>			<span class="string">"[SecureMessageChannel] Encrypting message on channel: {}"</span>,
+<a href=#227 id=227 data-nosnippet>227</a>			message.channel
+<a href=#228 id=228 data-nosnippet>228</a>		);
+<a href=#229 id=229 data-nosnippet>229</a>
+<a href=#230 id=230 data-nosnippet>230</a>		<span class="comment">// Serialize message to bytes
+<a href=#231 id=231 data-nosnippet>231</a>		</span><span class="kw">let </span>serialized_message =
+<a href=#232 id=232 data-nosnippet>232</a>			serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/ser/fn.to_vec.html">to_vec</a>(<a href="#223">message</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Failed to serialize message: {}"</span>, e))<span class="question-mark">?</span>;
+<a href=#233 id=233 data-nosnippet>233</a>
+<a href=#234 id=234 data-nosnippet>234</a>		<span class="comment">// Generate unique 12-byte nonce (required for AES-256-GCM)
+<a href=#235 id=235 data-nosnippet>235</a>		</span><span class="kw">let </span><span class="kw-2">mut </span>nonce = [<span class="number">0u8</span>; <span class="number">12</span>];
+<a href=#236 id=236 data-nosnippet>236</a>
+<a href=#237 id=237 data-nosnippet>237</a>		SystemRandom::new()
+<a href=#238 id=238 data-nosnippet>238</a>			.fill(<span class="kw-2">&amp;mut </span><a href="#235">nonce</a>)
+<a href=#239 id=239 data-nosnippet>239</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Failed to generate nonce: {}"</span>, e))<span class="question-mark">?</span>;
+<a href=#240 id=240 data-nosnippet>240</a>
+<a href=#241 id=241 data-nosnippet>241</a>		<span class="comment">// Encrypt with AES-256-GCM (authenticated encryption)
+<a href=#242 id=242 data-nosnippet>242</a>		</span><span class="kw">let </span><span class="kw-2">mut </span>in_out = <a href="#231">serialized_message</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
 <a href=#243 id=243 data-nosnippet>243</a>
-<a href=#244 id=244 data-nosnippet>244</a>		<span class="comment">// Generate HMAC for additional authentication
-<a href=#245 id=245 data-nosnippet>245</a>		</span><span class="kw">let </span>hmac_key = hmac::Key::new(hmac::HMAC_SHA256, <span class="kw-2">&amp;</span><a class="self" href="#221">self</a>.hmac_key);
-<a href=#246 id=246 data-nosnippet>246</a>		<span class="kw">let </span>hmac_tag = hmac::sign(<span class="kw-2">&amp;</span><a href="#245">hmac_key</a>, <span class="kw-2">&amp;</span><a href="#239">in_out</a>);
+<a href=#244 id=244 data-nosnippet>244</a>		<a class="self" href="#223">self</a>.encryption_key
+<a href=#245 id=245 data-nosnippet>245</a>			.seal_in_place_append_tag(aead::Nonce::assume_unique_for_key(<a href="#235">nonce</a>), aead::Aad::empty(), <span class="kw-2">&amp;mut </span><a href="#242">in_out</a>)
+<a href=#246 id=246 data-nosnippet>246</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Encryption failed: {}"</span>, e))<span class="question-mark">?</span>;
 <a href=#247 id=247 data-nosnippet>247</a>
-<a href=#248 id=248 data-nosnippet>248</a>		<span class="kw">let </span>encrypted_message =
-<a href=#249 id=249 data-nosnippet>249</a>			<a href="#70-79">EncryptedMessage</a> { nonce:<a href="#233">nonce</a>.<a href="https://doc.rust-lang.org/nightly/alloc/foreigntype.slice.html#method.to_vec">to_vec</a>(), ciphertext:<a href="#239">in_out</a>, hmac_tag:<a href="#246">hmac_tag</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://doc.rust-lang.org/nightly/alloc/foreigntype.slice.html#method.to_vec">to_vec</a>() };
+<a href=#248 id=248 data-nosnippet>248</a>		<span class="comment">// Generate HMAC for additional authentication
+<a href=#249 id=249 data-nosnippet>249</a>		</span><span class="kw">let </span>hmac_key = hmac::Key::new(hmac::HMAC_SHA256, <span class="kw-2">&amp;</span><a class="self" href="#223">self</a>.hmac_key);
 <a href=#250 id=250 data-nosnippet>250</a>
-<a href=#251 id=251 data-nosnippet>251</a>		<a href="../DevLog/mod.rs.html#40-81">dev_log!</a>(
-<a href=#252 id=252 data-nosnippet>252</a>			<span class="string">"encryption"</span>,
-<a href=#253 id=253 data-nosnippet>253</a>			<span class="string">"[SecureMessageChannel] Message encrypted: {} bytes -&gt; {} bytes"</span>,
-<a href=#254 id=254 data-nosnippet>254</a>			serialized_message.len(),
-<a href=#255 id=255 data-nosnippet>255</a>			encrypted_message.ciphertext.len()
-<a href=#256 id=256 data-nosnippet>256</a>		);
-<a href=#257 id=257 data-nosnippet>257</a>
-<a href=#258 id=258 data-nosnippet>258</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="#248">encrypted_message</a>)
-<a href=#259 id=259 data-nosnippet>259</a>	}
-<a href=#260 id=260 data-nosnippet>260</a>
-<a href=#261 id=261 data-nosnippet>261</a>	<span class="doccomment">/// Decrypt and verify a message
-<a href=#262 id=262 data-nosnippet>262</a>	///
-<a href=#263 id=263 data-nosnippet>263</a>	/// This method verifies the HMAC tag, decrypts the message with
-<a href=#264 id=264 data-nosnippet>264</a>	/// AES-256-GCM, and deserializes it back to the original format.
-<a href=#265 id=265 data-nosnippet>265</a>	///
-<a href=#266 id=266 data-nosnippet>266</a>	/// ## Parameters
-<a href=#267 id=267 data-nosnippet>267</a>	/// - `encrypted`: The encrypted message to decrypt
-<a href=#268 id=268 data-nosnippet>268</a>	///
-<a href=#269 id=269 data-nosnippet>269</a>	/// ## Returns
-<a href=#270 id=270 data-nosnippet>270</a>	/// - `Ok(TauriIPCMessage)`: Decrypted message
-<a href=#271 id=271 data-nosnippet>271</a>	/// - `Err(String)`: Error message if decryption or verification fails
-<a href=#272 id=272 data-nosnippet>272</a>	///
-<a href=#273 id=273 data-nosnippet>273</a>	/// ## Example
-<a href=#274 id=274 data-nosnippet>274</a>	///
-<a href=#275 id=275 data-nosnippet>275</a>	/// ```rust,ignore
-<a href=#276 id=276 data-nosnippet>276</a>	/// let decrypted = secure_channel.decrypt_message(&amp;encrypted)?;
-<a href=#277 id=277 data-nosnippet>277</a>	/// ```
-<a href=#278 id=278 data-nosnippet>278</a>	</span><span class="kw">pub fn </span>decrypt_message(<span class="kw-2">&amp;</span><span class="self">self</span>, encrypted:<span class="kw-2">&amp;</span><a href="#70-79">EncryptedMessage</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="../Message/Types.rs.html#77-90">TauriIPCMessage</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
-<a href=#279 id=279 data-nosnippet>279</a>		<a href="../DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"encryption"</span>, <span class="string">"[SecureMessageChannel] Decrypting message"</span>);
-<a href=#280 id=280 data-nosnippet>280</a>
-<a href=#281 id=281 data-nosnippet>281</a>		<span class="comment">// Verify HMAC first (detect tampering)
-<a href=#282 id=282 data-nosnippet>282</a>		</span><span class="kw">let </span>hmac_key = hmac::Key::new(hmac::HMAC_SHA256, <span class="kw-2">&amp;</span><a class="self" href="#278">self</a>.hmac_key);
-<a href=#283 id=283 data-nosnippet>283</a>		hmac::verify(<span class="kw-2">&amp;</span><a href="#282">hmac_key</a>, <span class="kw-2">&amp;</span><a href="#278">encrypted</a>.ciphertext, <span class="kw-2">&amp;</span><a href="#278">encrypted</a>.hmac_tag)
-<a href=#284 id=284 data-nosnippet>284</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|<span class="kw">_</span>| <span class="string">"HMAC verification failed - message may be tampered"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>())<span class="question-mark">?</span>;
+<a href=#251 id=251 data-nosnippet>251</a>		<span class="kw">let </span>hmac_tag = hmac::sign(<span class="kw-2">&amp;</span><a href="#249">hmac_key</a>, <span class="kw-2">&amp;</span><a href="#242">in_out</a>);
+<a href=#252 id=252 data-nosnippet>252</a>
+<a href=#253 id=253 data-nosnippet>253</a>		<span class="kw">let </span>encrypted_message =
+<a href=#254 id=254 data-nosnippet>254</a>			<a href="#70-79">EncryptedMessage</a> { nonce:<a href="#235">nonce</a>.<a href="https://doc.rust-lang.org/nightly/alloc/foreigntype.slice.html#method.to_vec">to_vec</a>(), ciphertext:<a href="#242">in_out</a>, hmac_tag:<a href="#251">hmac_tag</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="https://doc.rust-lang.org/nightly/alloc/foreigntype.slice.html#method.to_vec">to_vec</a>() };
+<a href=#255 id=255 data-nosnippet>255</a>
+<a href=#256 id=256 data-nosnippet>256</a>		<a href="../DevLog/mod.rs.html#52-122">dev_log!</a>(
+<a href=#257 id=257 data-nosnippet>257</a>			<span class="string">"encryption"</span>,
+<a href=#258 id=258 data-nosnippet>258</a>			<span class="string">"[SecureMessageChannel] Message encrypted: {} bytes -&gt; {} bytes"</span>,
+<a href=#259 id=259 data-nosnippet>259</a>			serialized_message.len(),
+<a href=#260 id=260 data-nosnippet>260</a>			encrypted_message.ciphertext.len()
+<a href=#261 id=261 data-nosnippet>261</a>		);
+<a href=#262 id=262 data-nosnippet>262</a>
+<a href=#263 id=263 data-nosnippet>263</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="#253">encrypted_message</a>)
+<a href=#264 id=264 data-nosnippet>264</a>	}
+<a href=#265 id=265 data-nosnippet>265</a>
+<a href=#266 id=266 data-nosnippet>266</a>	<span class="doccomment">/// Decrypt and verify a message
+<a href=#267 id=267 data-nosnippet>267</a>	///
+<a href=#268 id=268 data-nosnippet>268</a>	/// This method verifies the HMAC tag, decrypts the message with
+<a href=#269 id=269 data-nosnippet>269</a>	/// AES-256-GCM, and deserializes it back to the original format.
+<a href=#270 id=270 data-nosnippet>270</a>	///
+<a href=#271 id=271 data-nosnippet>271</a>	/// ## Parameters
+<a href=#272 id=272 data-nosnippet>272</a>	/// - `encrypted`: The encrypted message to decrypt
+<a href=#273 id=273 data-nosnippet>273</a>	///
+<a href=#274 id=274 data-nosnippet>274</a>	/// ## Returns
+<a href=#275 id=275 data-nosnippet>275</a>	/// - `Ok(TauriIPCMessage)`: Decrypted message
+<a href=#276 id=276 data-nosnippet>276</a>	/// - `Err(String)`: Error message if decryption or verification fails
+<a href=#277 id=277 data-nosnippet>277</a>	///
+<a href=#278 id=278 data-nosnippet>278</a>	/// ## Example
+<a href=#279 id=279 data-nosnippet>279</a>	///
+<a href=#280 id=280 data-nosnippet>280</a>	/// ```rust,ignore
+<a href=#281 id=281 data-nosnippet>281</a>	/// let decrypted = secure_channel.decrypt_message(&amp;encrypted)?;
+<a href=#282 id=282 data-nosnippet>282</a>	/// ```
+<a href=#283 id=283 data-nosnippet>283</a>	</span><span class="kw">pub fn </span>decrypt_message(<span class="kw-2">&amp;</span><span class="self">self</span>, encrypted:<span class="kw-2">&amp;</span><a href="#70-79">EncryptedMessage</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="../Message/Types.rs.html#77-90">TauriIPCMessage</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
+<a href=#284 id=284 data-nosnippet>284</a>		<a href="../DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"encryption"</span>, <span class="string">"[SecureMessageChannel] Decrypting message"</span>);
 <a href=#285 id=285 data-nosnippet>285</a>
-<a href=#286 id=286 data-nosnippet>286</a>		<span class="comment">// Convert nonce slice to array
-<a href=#287 id=287 data-nosnippet>287</a>		</span><span class="kw">let </span>nonce_slice:<span class="kw-2">&amp;</span>[<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>] = <span class="kw-2">&amp;</span><a href="#278">encrypted</a>.nonce;
-<a href=#288 id=288 data-nosnippet>288</a>		<span class="kw">let </span>nonce_array:[<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>; <span class="number">12</span>] = <a href="#287">nonce_slice</a>
-<a href=#289 id=289 data-nosnippet>289</a>			.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>()
-<a href=#290 id=290 data-nosnippet>290</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|<span class="kw">_</span>| <span class="string">"Invalid nonce length - must be 12 bytes"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>())<span class="question-mark">?</span>;
+<a href=#286 id=286 data-nosnippet>286</a>		<span class="comment">// Verify HMAC first (detect tampering)
+<a href=#287 id=287 data-nosnippet>287</a>		</span><span class="kw">let </span>hmac_key = hmac::Key::new(hmac::HMAC_SHA256, <span class="kw-2">&amp;</span><a class="self" href="#283">self</a>.hmac_key);
+<a href=#288 id=288 data-nosnippet>288</a>
+<a href=#289 id=289 data-nosnippet>289</a>		hmac::verify(<span class="kw-2">&amp;</span><a href="#287">hmac_key</a>, <span class="kw-2">&amp;</span><a href="#283">encrypted</a>.ciphertext, <span class="kw-2">&amp;</span><a href="#283">encrypted</a>.hmac_tag)
+<a href=#290 id=290 data-nosnippet>290</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|<span class="kw">_</span>| <span class="string">"HMAC verification failed - message may be tampered"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>())<span class="question-mark">?</span>;
 <a href=#291 id=291 data-nosnippet>291</a>
-<a href=#292 id=292 data-nosnippet>292</a>		<span class="kw">let </span>nonce = aead::Nonce::assume_unique_for_key(<a href="#288">nonce_array</a>);
-<a href=#293 id=293 data-nosnippet>293</a>
-<a href=#294 id=294 data-nosnippet>294</a>		<span class="comment">// Decrypt with AES-256-GCM
-<a href=#295 id=295 data-nosnippet>295</a>		</span><span class="kw">let </span><span class="kw-2">mut </span>in_out = <a href="#278">encrypted</a>.ciphertext.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
-<a href=#296 id=296 data-nosnippet>296</a>		<a class="self" href="#278">self</a>.encryption_key
-<a href=#297 id=297 data-nosnippet>297</a>			.open_in_place(<a href="#292">nonce</a>, aead::Aad::empty(), <span class="kw-2">&amp;mut </span><a href="#295">in_out</a>)
-<a href=#298 id=298 data-nosnippet>298</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Decryption failed: {}"</span>, e))<span class="question-mark">?</span>;
-<a href=#299 id=299 data-nosnippet>299</a>
-<a href=#300 id=300 data-nosnippet>300</a>		<span class="comment">// Remove the authentication tag (last 16 bytes for AES-256-GCM)
-<a href=#301 id=301 data-nosnippet>301</a>		</span><span class="kw">let </span>plaintext_len = <a href="#295">in_out</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.len">len</a>() - AES_256_GCM.tag_len();
-<a href=#302 id=302 data-nosnippet>302</a>		<a href="#295">in_out</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.truncate">truncate</a>(<a href="#301">plaintext_len</a>);
+<a href=#292 id=292 data-nosnippet>292</a>		<span class="comment">// Convert nonce slice to array
+<a href=#293 id=293 data-nosnippet>293</a>		</span><span class="kw">let </span>nonce_slice:<span class="kw-2">&amp;</span>[<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>] = <span class="kw-2">&amp;</span><a href="#283">encrypted</a>.nonce;
+<a href=#294 id=294 data-nosnippet>294</a>
+<a href=#295 id=295 data-nosnippet>295</a>		<span class="kw">let </span>nonce_array:[<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>; <span class="number">12</span>] = <a href="#293">nonce_slice</a>
+<a href=#296 id=296 data-nosnippet>296</a>			.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.TryInto.html#tymethod.try_into">try_into</a>()
+<a href=#297 id=297 data-nosnippet>297</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|<span class="kw">_</span>| <span class="string">"Invalid nonce length - must be 12 bytes"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>())<span class="question-mark">?</span>;
+<a href=#298 id=298 data-nosnippet>298</a>
+<a href=#299 id=299 data-nosnippet>299</a>		<span class="kw">let </span>nonce = aead::Nonce::assume_unique_for_key(<a href="#295">nonce_array</a>);
+<a href=#300 id=300 data-nosnippet>300</a>
+<a href=#301 id=301 data-nosnippet>301</a>		<span class="comment">// Decrypt with AES-256-GCM
+<a href=#302 id=302 data-nosnippet>302</a>		</span><span class="kw">let </span><span class="kw-2">mut </span>in_out = <a href="#283">encrypted</a>.ciphertext.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
 <a href=#303 id=303 data-nosnippet>303</a>
-<a href=#304 id=304 data-nosnippet>304</a>		<span class="comment">// Deserialize message
-<a href=#305 id=305 data-nosnippet>305</a>		</span><span class="kw">let </span>message:<a href="../Message/Types.rs.html#77-90">TauriIPCMessage</a> =
-<a href=#306 id=306 data-nosnippet>306</a>			serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/de/fn.from_slice.html">from_slice</a>(<span class="kw-2">&amp;</span><a href="#295">in_out</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Failed to deserialize message: {}"</span>, e))<span class="question-mark">?</span>;
+<a href=#304 id=304 data-nosnippet>304</a>		<a class="self" href="#283">self</a>.encryption_key
+<a href=#305 id=305 data-nosnippet>305</a>			.open_in_place(<a href="#299">nonce</a>, aead::Aad::empty(), <span class="kw-2">&amp;mut </span><a href="#302">in_out</a>)
+<a href=#306 id=306 data-nosnippet>306</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Decryption failed: {}"</span>, e))<span class="question-mark">?</span>;
 <a href=#307 id=307 data-nosnippet>307</a>
-<a href=#308 id=308 data-nosnippet>308</a>		<a href="../DevLog/mod.rs.html#40-81">dev_log!</a>(
-<a href=#309 id=309 data-nosnippet>309</a>			<span class="string">"encryption"</span>,
-<a href=#310 id=310 data-nosnippet>310</a>			<span class="string">"[SecureMessageChannel] Message decrypted successfully on channel: {}"</span>,
-<a href=#311 id=311 data-nosnippet>311</a>			message.channel
-<a href=#312 id=312 data-nosnippet>312</a>		);
-<a href=#313 id=313 data-nosnippet>313</a>
-<a href=#314 id=314 data-nosnippet>314</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="#305">message</a>)
-<a href=#315 id=315 data-nosnippet>315</a>	}
+<a href=#308 id=308 data-nosnippet>308</a>		<span class="comment">// Remove the authentication tag (last 16 bytes for AES-256-GCM)
+<a href=#309 id=309 data-nosnippet>309</a>		</span><span class="kw">let </span>plaintext_len = <a href="#302">in_out</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.len">len</a>() - AES_256_GCM.tag_len();
+<a href=#310 id=310 data-nosnippet>310</a>
+<a href=#311 id=311 data-nosnippet>311</a>		<a href="#302">in_out</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.truncate">truncate</a>(<a href="#309">plaintext_len</a>);
+<a href=#312 id=312 data-nosnippet>312</a>
+<a href=#313 id=313 data-nosnippet>313</a>		<span class="comment">// Deserialize message
+<a href=#314 id=314 data-nosnippet>314</a>		</span><span class="kw">let </span>message:<a href="../Message/Types.rs.html#77-90">TauriIPCMessage</a> =
+<a href=#315 id=315 data-nosnippet>315</a>			serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/de/fn.from_slice.html">from_slice</a>(<span class="kw-2">&amp;</span><a href="#302">in_out</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Failed to deserialize message: {}"</span>, e))<span class="question-mark">?</span>;
 <a href=#316 id=316 data-nosnippet>316</a>
-<a href=#317 id=317 data-nosnippet>317</a>	<span class="doccomment">/// Rotate encryption keys
-<a href=#318 id=318 data-nosnippet>318</a>	///
-<a href=#319 id=319 data-nosnippet>319</a>	/// This method generates new encryption and HMAC keys, effectively
-<a href=#320 id=320 data-nosnippet>320</a>	/// rotating the security credentials for the channel.
-<a href=#321 id=321 data-nosnippet>321</a>	///
-<a href=#322 id=322 data-nosnippet>322</a>	/// ## Returns
-<a href=#323 id=323 data-nosnippet>323</a>	/// - `Ok(())`: Keys rotated successfully
-<a href=#324 id=324 data-nosnippet>324</a>	/// - `Err(String)`: Error message if key rotation fails
-<a href=#325 id=325 data-nosnippet>325</a>	///
-<a href=#326 id=326 data-nosnippet>326</a>	/// ## Example
+<a href=#317 id=317 data-nosnippet>317</a>		<a href="../DevLog/mod.rs.html#52-122">dev_log!</a>(
+<a href=#318 id=318 data-nosnippet>318</a>			<span class="string">"encryption"</span>,
+<a href=#319 id=319 data-nosnippet>319</a>			<span class="string">"[SecureMessageChannel] Message decrypted successfully on channel: {}"</span>,
+<a href=#320 id=320 data-nosnippet>320</a>			message.channel
+<a href=#321 id=321 data-nosnippet>321</a>		);
+<a href=#322 id=322 data-nosnippet>322</a>
+<a href=#323 id=323 data-nosnippet>323</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="#314">message</a>)
+<a href=#324 id=324 data-nosnippet>324</a>	}
+<a href=#325 id=325 data-nosnippet>325</a>
+<a href=#326 id=326 data-nosnippet>326</a>	<span class="doccomment">/// Rotate encryption keys
 <a href=#327 id=327 data-nosnippet>327</a>	///
-<a href=#328 id=328 data-nosnippet>328</a>	/// ```rust,ignore
-<a href=#329 id=329 data-nosnippet>329</a>	/// secure_channel.rotate_keys()?;
-<a href=#330 id=330 data-nosnippet>330</a>	/// ```
-<a href=#331 id=331 data-nosnippet>331</a>	</span><span class="kw">pub fn </span>rotate_keys(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
-<a href=#332 id=332 data-nosnippet>332</a>		<a href="../DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"encryption"</span>, <span class="string">"[SecureMessageChannel] Rotating encryption keys"</span>);
-<a href=#333 id=333 data-nosnippet>333</a>
-<a href=#334 id=334 data-nosnippet>334</a>		<span class="kw-2">*</span><a class="self" href="#331">self</a> = <span class="self">Self</span>::<a href="#179-202">new</a>()<span class="question-mark">?</span>;
-<a href=#335 id=335 data-nosnippet>335</a>
-<a href=#336 id=336 data-nosnippet>336</a>		<a href="../DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"encryption"</span>, <span class="string">"[SecureMessageChannel] Keys rotated successfully"</span>);
-<a href=#337 id=337 data-nosnippet>337</a>
-<a href=#338 id=338 data-nosnippet>338</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
-<a href=#339 id=339 data-nosnippet>339</a>	}
-<a href=#340 id=340 data-nosnippet>340</a>
-<a href=#341 id=341 data-nosnippet>341</a>	<span class="doccomment">/// Get the HMAC tag length (in bytes)
-<a href=#342 id=342 data-nosnippet>342</a>	</span><span class="kw">pub fn </span>hmac_tag_length(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> {
-<a href=#343 id=343 data-nosnippet>343</a>		<span class="number">32 </span><span class="comment">// HMAC-SHA256 produces 32-byte tags
-<a href=#344 id=344 data-nosnippet>344</a>	</span>}
-<a href=#345 id=345 data-nosnippet>345</a>
-<a href=#346 id=346 data-nosnippet>346</a>	<span class="doccomment">/// Get the nonce length (in bytes)
-<a href=#347 id=347 data-nosnippet>347</a>	</span><span class="kw">pub fn </span>nonce_length(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> {
-<a href=#348 id=348 data-nosnippet>348</a>		<span class="number">12 </span><span class="comment">// AES-256-GCM requires 12-byte nonces
-<a href=#349 id=349 data-nosnippet>349</a>	</span>}
-<a href=#350 id=350 data-nosnippet>350</a>
-<a href=#351 id=351 data-nosnippet>351</a>	<span class="doccomment">/// Get the authentication tag length (in bytes)
-<a href=#352 id=352 data-nosnippet>352</a>	</span><span class="kw">pub fn </span>auth_tag_length(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> { AES_256_GCM.tag_len() }
-<a href=#353 id=353 data-nosnippet>353</a>
-<a href=#354 id=354 data-nosnippet>354</a>	<span class="doccomment">/// Get the key length (in bytes)
-<a href=#355 id=355 data-nosnippet>355</a>	</span><span class="kw">pub fn </span>key_length(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> {
-<a href=#356 id=356 data-nosnippet>356</a>		<span class="number">32 </span><span class="comment">// AES-256 uses 32-byte keys
-<a href=#357 id=357 data-nosnippet>357</a>	</span>}
-<a href=#358 id=358 data-nosnippet>358</a>}
+<a href=#328 id=328 data-nosnippet>328</a>	/// This method generates new encryption and HMAC keys, effectively
+<a href=#329 id=329 data-nosnippet>329</a>	/// rotating the security credentials for the channel.
+<a href=#330 id=330 data-nosnippet>330</a>	///
+<a href=#331 id=331 data-nosnippet>331</a>	/// ## Returns
+<a href=#332 id=332 data-nosnippet>332</a>	/// - `Ok(())`: Keys rotated successfully
+<a href=#333 id=333 data-nosnippet>333</a>	/// - `Err(String)`: Error message if key rotation fails
+<a href=#334 id=334 data-nosnippet>334</a>	///
+<a href=#335 id=335 data-nosnippet>335</a>	/// ## Example
+<a href=#336 id=336 data-nosnippet>336</a>	///
+<a href=#337 id=337 data-nosnippet>337</a>	/// ```rust,ignore
+<a href=#338 id=338 data-nosnippet>338</a>	/// secure_channel.rotate_keys()?;
+<a href=#339 id=339 data-nosnippet>339</a>	/// ```
+<a href=#340 id=340 data-nosnippet>340</a>	</span><span class="kw">pub fn </span>rotate_keys(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
+<a href=#341 id=341 data-nosnippet>341</a>		<a href="../DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"encryption"</span>, <span class="string">"[SecureMessageChannel] Rotating encryption keys"</span>);
+<a href=#342 id=342 data-nosnippet>342</a>
+<a href=#343 id=343 data-nosnippet>343</a>		<span class="kw-2">*</span><a class="self" href="#340">self</a> = <span class="self">Self</span>::<a href="#179-204">new</a>()<span class="question-mark">?</span>;
+<a href=#344 id=344 data-nosnippet>344</a>
+<a href=#345 id=345 data-nosnippet>345</a>		<a href="../DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"encryption"</span>, <span class="string">"[SecureMessageChannel] Keys rotated successfully"</span>);
+<a href=#346 id=346 data-nosnippet>346</a>
+<a href=#347 id=347 data-nosnippet>347</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
+<a href=#348 id=348 data-nosnippet>348</a>	}
+<a href=#349 id=349 data-nosnippet>349</a>
+<a href=#350 id=350 data-nosnippet>350</a>	<span class="doccomment">/// Get the HMAC tag length (in bytes)
+<a href=#351 id=351 data-nosnippet>351</a>	</span><span class="kw">pub fn </span>hmac_tag_length(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> {
+<a href=#352 id=352 data-nosnippet>352</a>		<span class="number">32 </span><span class="comment">// HMAC-SHA256 produces 32-byte tags
+<a href=#353 id=353 data-nosnippet>353</a>	</span>}
+<a href=#354 id=354 data-nosnippet>354</a>
+<a href=#355 id=355 data-nosnippet>355</a>	<span class="doccomment">/// Get the nonce length (in bytes)
+<a href=#356 id=356 data-nosnippet>356</a>	</span><span class="kw">pub fn </span>nonce_length(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> {
+<a href=#357 id=357 data-nosnippet>357</a>		<span class="number">12 </span><span class="comment">// AES-256-GCM requires 12-byte nonces
+<a href=#358 id=358 data-nosnippet>358</a>	</span>}
 <a href=#359 id=359 data-nosnippet>359</a>
-<a href=#360 id=360 data-nosnippet>360</a><span class="attr">#[cfg(test)]
-<a href=#361 id=361 data-nosnippet>361</a>#[allow(unused_imports)]
-<a href=#362 id=362 data-nosnippet>362</a></span><span class="kw">mod </span>tests {
-<a href=#363 id=363 data-nosnippet>363</a>	<span class="kw">use </span>super::<span class="kw-2">*</span>;
-<a href=#364 id=364 data-nosnippet>364</a>
-<a href=#365 id=365 data-nosnippet>365</a>	<span class="kw">fn </span>create_test_message() -&gt; TauriIPCMessage {
-<a href=#366 id=366 data-nosnippet>366</a>		TauriIPCMessage::new(
-<a href=#367 id=367 data-nosnippet>367</a>			<span class="string">"test_channel"</span>.to_string(),
-<a href=#368 id=368 data-nosnippet>368</a>			<span class="macro">serde_json::json!</span>({
-<a href=#369 id=369 data-nosnippet>369</a>				<span class="string">"data"</span>: <span class="string">"sensitive information that should be encrypted"</span>,
-<a href=#370 id=370 data-nosnippet>370</a>				<span class="string">"id"</span>: <span class="number">12345
-<a href=#371 id=371 data-nosnippet>371</a>			</span>}),
-<a href=#372 id=372 data-nosnippet>372</a>			<span class="prelude-val">Some</span>(<span class="string">"test_sender"</span>.to_string()),
-<a href=#373 id=373 data-nosnippet>373</a>		)
-<a href=#374 id=374 data-nosnippet>374</a>	}
-<a href=#375 id=375 data-nosnippet>375</a>
-<a href=#376 id=376 data-nosnippet>376</a>	<span class="attr">#[test]
-<a href=#377 id=377 data-nosnippet>377</a>	</span><span class="kw">fn </span>test_secure_channel_creation() {
-<a href=#378 id=378 data-nosnippet>378</a>		<span class="kw">let </span>channel = SecureMessageChannel::new();
-<a href=#379 id=379 data-nosnippet>379</a>		<span class="macro">assert!</span>(channel.is_ok());
-<a href=#380 id=380 data-nosnippet>380</a>	}
-<a href=#381 id=381 data-nosnippet>381</a>
-<a href=#382 id=382 data-nosnippet>382</a>	<span class="attr">#[test]
-<a href=#383 id=383 data-nosnippet>383</a>	</span><span class="kw">fn </span>test_encrypt_and_decrypt() {
-<a href=#384 id=384 data-nosnippet>384</a>		<span class="kw">let </span>channel = SecureMessageChannel::new().unwrap();
-<a href=#385 id=385 data-nosnippet>385</a>		<span class="kw">let </span>original_message = create_test_message();
-<a href=#386 id=386 data-nosnippet>386</a>
-<a href=#387 id=387 data-nosnippet>387</a>		<span class="comment">// Encrypt
-<a href=#388 id=388 data-nosnippet>388</a>		</span><span class="kw">let </span>encrypted = channel.encrypt_message(<span class="kw-2">&amp;</span>original_message).unwrap();
-<a href=#389 id=389 data-nosnippet>389</a>		<span class="macro">assert!</span>(encrypted.is_valid());
-<a href=#390 id=390 data-nosnippet>390</a>
-<a href=#391 id=391 data-nosnippet>391</a>		<span class="comment">// Decrypt
-<a href=#392 id=392 data-nosnippet>392</a>		</span><span class="kw">let </span>decrypted = channel.decrypt_message(<span class="kw-2">&amp;</span>encrypted).unwrap();
-<a href=#393 id=393 data-nosnippet>393</a>
-<a href=#394 id=394 data-nosnippet>394</a>		<span class="comment">// Verify content
-<a href=#395 id=395 data-nosnippet>395</a>		</span><span class="macro">assert_eq!</span>(decrypted.channel, original_message.channel);
-<a href=#396 id=396 data-nosnippet>396</a>		<span class="macro">assert_eq!</span>(decrypted.data, original_message.data);
-<a href=#397 id=397 data-nosnippet>397</a>		<span class="macro">assert_eq!</span>(decrypted.sender, original_message.sender);
-<a href=#398 id=398 data-nosnippet>398</a>	}
-<a href=#399 id=399 data-nosnippet>399</a>
-<a href=#400 id=400 data-nosnippet>400</a>	<span class="attr">#[test]
-<a href=#401 id=401 data-nosnippet>401</a>	</span><span class="kw">fn </span>test_encryption_produces_different_outputs() {
-<a href=#402 id=402 data-nosnippet>402</a>		<span class="kw">let </span>channel = SecureMessageChannel::new().unwrap();
-<a href=#403 id=403 data-nosnippet>403</a>		<span class="kw">let </span>message = create_test_message();
-<a href=#404 id=404 data-nosnippet>404</a>
-<a href=#405 id=405 data-nosnippet>405</a>		<span class="kw">let </span>encrypted1 = channel.encrypt_message(<span class="kw-2">&amp;</span>message).unwrap();
-<a href=#406 id=406 data-nosnippet>406</a>		<span class="kw">let </span>encrypted2 = channel.encrypt_message(<span class="kw-2">&amp;</span>message).unwrap();
-<a href=#407 id=407 data-nosnippet>407</a>
-<a href=#408 id=408 data-nosnippet>408</a>		<span class="comment">// Each encryption should produce different output (due to unique nonces)
-<a href=#409 id=409 data-nosnippet>409</a>		</span><span class="macro">assert_ne!</span>(encrypted1.nonce, encrypted2.nonce);
-<a href=#410 id=410 data-nosnippet>410</a>		<span class="macro">assert_ne!</span>(encrypted1.ciphertext, encrypted2.ciphertext);
-<a href=#411 id=411 data-nosnippet>411</a>	}
-<a href=#412 id=412 data-nosnippet>412</a>
-<a href=#413 id=413 data-nosnippet>413</a>	<span class="attr">#[test]
-<a href=#414 id=414 data-nosnippet>414</a>	</span><span class="kw">fn </span>test_tampered_message_fails_hmac_verification() {
-<a href=#415 id=415 data-nosnippet>415</a>		<span class="kw">let </span>channel = SecureMessageChannel::new().unwrap();
-<a href=#416 id=416 data-nosnippet>416</a>		<span class="kw">let </span>message = create_test_message();
-<a href=#417 id=417 data-nosnippet>417</a>
-<a href=#418 id=418 data-nosnippet>418</a>		<span class="kw">let </span><span class="kw-2">mut </span>encrypted = channel.encrypt_message(<span class="kw-2">&amp;</span>message).unwrap();
-<a href=#419 id=419 data-nosnippet>419</a>
-<a href=#420 id=420 data-nosnippet>420</a>		<span class="comment">// Tamper with the ciphertext
-<a href=#421 id=421 data-nosnippet>421</a>		</span><span class="kw">if </span>!encrypted.ciphertext.is_empty() {
-<a href=#422 id=422 data-nosnippet>422</a>			encrypted.ciphertext[<span class="number">0</span>] ^= <span class="number">0xFF</span>;
-<a href=#423 id=423 data-nosnippet>423</a>		}
+<a href=#360 id=360 data-nosnippet>360</a>	<span class="doccomment">/// Get the authentication tag length (in bytes)
+<a href=#361 id=361 data-nosnippet>361</a>	</span><span class="kw">pub fn </span>auth_tag_length(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> { AES_256_GCM.tag_len() }
+<a href=#362 id=362 data-nosnippet>362</a>
+<a href=#363 id=363 data-nosnippet>363</a>	<span class="doccomment">/// Get the key length (in bytes)
+<a href=#364 id=364 data-nosnippet>364</a>	</span><span class="kw">pub fn </span>key_length(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> {
+<a href=#365 id=365 data-nosnippet>365</a>		<span class="number">32 </span><span class="comment">// AES-256 uses 32-byte keys
+<a href=#366 id=366 data-nosnippet>366</a>	</span>}
+<a href=#367 id=367 data-nosnippet>367</a>}
+<a href=#368 id=368 data-nosnippet>368</a>
+<a href=#369 id=369 data-nosnippet>369</a><span class="attr">#[cfg(test)]
+<a href=#370 id=370 data-nosnippet>370</a>#[allow(unused_imports)]
+<a href=#371 id=371 data-nosnippet>371</a></span><span class="kw">mod </span>tests {
+<a href=#372 id=372 data-nosnippet>372</a>
+<a href=#373 id=373 data-nosnippet>373</a>	<span class="kw">use </span>super::<span class="kw-2">*</span>;
+<a href=#374 id=374 data-nosnippet>374</a>
+<a href=#375 id=375 data-nosnippet>375</a>	<span class="kw">fn </span>create_test_message() -&gt; TauriIPCMessage {
+<a href=#376 id=376 data-nosnippet>376</a>		TauriIPCMessage::new(
+<a href=#377 id=377 data-nosnippet>377</a>			<span class="string">"test_channel"</span>.to_string(),
+<a href=#378 id=378 data-nosnippet>378</a>			<span class="macro">serde_json::json!</span>({
+<a href=#379 id=379 data-nosnippet>379</a>				<span class="string">"data"</span>: <span class="string">"sensitive information that should be encrypted"</span>,
+<a href=#380 id=380 data-nosnippet>380</a>				<span class="string">"id"</span>: <span class="number">12345
+<a href=#381 id=381 data-nosnippet>381</a>			</span>}),
+<a href=#382 id=382 data-nosnippet>382</a>			<span class="prelude-val">Some</span>(<span class="string">"test_sender"</span>.to_string()),
+<a href=#383 id=383 data-nosnippet>383</a>		)
+<a href=#384 id=384 data-nosnippet>384</a>	}
+<a href=#385 id=385 data-nosnippet>385</a>
+<a href=#386 id=386 data-nosnippet>386</a>	<span class="attr">#[test]
+<a href=#387 id=387 data-nosnippet>387</a>	</span><span class="kw">fn </span>test_secure_channel_creation() {
+<a href=#388 id=388 data-nosnippet>388</a>		<span class="kw">let </span>channel = SecureMessageChannel::new();
+<a href=#389 id=389 data-nosnippet>389</a>
+<a href=#390 id=390 data-nosnippet>390</a>		<span class="macro">assert!</span>(channel.is_ok());
+<a href=#391 id=391 data-nosnippet>391</a>	}
+<a href=#392 id=392 data-nosnippet>392</a>
+<a href=#393 id=393 data-nosnippet>393</a>	<span class="attr">#[test]
+<a href=#394 id=394 data-nosnippet>394</a>	</span><span class="kw">fn </span>test_encrypt_and_decrypt() {
+<a href=#395 id=395 data-nosnippet>395</a>		<span class="kw">let </span>channel = SecureMessageChannel::new().unwrap();
+<a href=#396 id=396 data-nosnippet>396</a>
+<a href=#397 id=397 data-nosnippet>397</a>		<span class="kw">let </span>original_message = create_test_message();
+<a href=#398 id=398 data-nosnippet>398</a>
+<a href=#399 id=399 data-nosnippet>399</a>		<span class="comment">// Encrypt
+<a href=#400 id=400 data-nosnippet>400</a>		</span><span class="kw">let </span>encrypted = channel.encrypt_message(<span class="kw-2">&amp;</span>original_message).unwrap();
+<a href=#401 id=401 data-nosnippet>401</a>
+<a href=#402 id=402 data-nosnippet>402</a>		<span class="macro">assert!</span>(encrypted.is_valid());
+<a href=#403 id=403 data-nosnippet>403</a>
+<a href=#404 id=404 data-nosnippet>404</a>		<span class="comment">// Decrypt
+<a href=#405 id=405 data-nosnippet>405</a>		</span><span class="kw">let </span>decrypted = channel.decrypt_message(<span class="kw-2">&amp;</span>encrypted).unwrap();
+<a href=#406 id=406 data-nosnippet>406</a>
+<a href=#407 id=407 data-nosnippet>407</a>		<span class="comment">// Verify content
+<a href=#408 id=408 data-nosnippet>408</a>		</span><span class="macro">assert_eq!</span>(decrypted.channel, original_message.channel);
+<a href=#409 id=409 data-nosnippet>409</a>
+<a href=#410 id=410 data-nosnippet>410</a>		<span class="macro">assert_eq!</span>(decrypted.data, original_message.data);
+<a href=#411 id=411 data-nosnippet>411</a>
+<a href=#412 id=412 data-nosnippet>412</a>		<span class="macro">assert_eq!</span>(decrypted.sender, original_message.sender);
+<a href=#413 id=413 data-nosnippet>413</a>	}
+<a href=#414 id=414 data-nosnippet>414</a>
+<a href=#415 id=415 data-nosnippet>415</a>	<span class="attr">#[test]
+<a href=#416 id=416 data-nosnippet>416</a>	</span><span class="kw">fn </span>test_encryption_produces_different_outputs() {
+<a href=#417 id=417 data-nosnippet>417</a>		<span class="kw">let </span>channel = SecureMessageChannel::new().unwrap();
+<a href=#418 id=418 data-nosnippet>418</a>
+<a href=#419 id=419 data-nosnippet>419</a>		<span class="kw">let </span>message = create_test_message();
+<a href=#420 id=420 data-nosnippet>420</a>
+<a href=#421 id=421 data-nosnippet>421</a>		<span class="kw">let </span>encrypted1 = channel.encrypt_message(<span class="kw-2">&amp;</span>message).unwrap();
+<a href=#422 id=422 data-nosnippet>422</a>
+<a href=#423 id=423 data-nosnippet>423</a>		<span class="kw">let </span>encrypted2 = channel.encrypt_message(<span class="kw-2">&amp;</span>message).unwrap();
 <a href=#424 id=424 data-nosnippet>424</a>
-<a href=#425 id=425 data-nosnippet>425</a>		<span class="comment">// Should fail HMAC verification
-<a href=#426 id=426 data-nosnippet>426</a>		</span><span class="kw">let </span>result = channel.decrypt_message(<span class="kw-2">&amp;</span>encrypted);
-<a href=#427 id=427 data-nosnippet>427</a>		<span class="macro">assert!</span>(result.is_err());
-<a href=#428 id=428 data-nosnippet>428</a>		<span class="macro">assert!</span>(result.unwrap_err().contains(<span class="string">"HMAC verification failed"</span>));
+<a href=#425 id=425 data-nosnippet>425</a>		<span class="comment">// Each encryption should produce different output (due to unique nonces)
+<a href=#426 id=426 data-nosnippet>426</a>		</span><span class="macro">assert_ne!</span>(encrypted1.nonce, encrypted2.nonce);
+<a href=#427 id=427 data-nosnippet>427</a>
+<a href=#428 id=428 data-nosnippet>428</a>		<span class="macro">assert_ne!</span>(encrypted1.ciphertext, encrypted2.ciphertext);
 <a href=#429 id=429 data-nosnippet>429</a>	}
 <a href=#430 id=430 data-nosnippet>430</a>
 <a href=#431 id=431 data-nosnippet>431</a>	<span class="attr">#[test]
-<a href=#432 id=432 data-nosnippet>432</a>	</span><span class="kw">fn </span>test_invalid_nonce_length() {
+<a href=#432 id=432 data-nosnippet>432</a>	</span><span class="kw">fn </span>test_tampered_message_fails_hmac_verification() {
 <a href=#433 id=433 data-nosnippet>433</a>		<span class="kw">let </span>channel = SecureMessageChannel::new().unwrap();
-<a href=#434 id=434 data-nosnippet>434</a>		<span class="kw">let </span>message = create_test_message();
-<a href=#435 id=435 data-nosnippet>435</a>
-<a href=#436 id=436 data-nosnippet>436</a>		<span class="kw">let </span><span class="kw-2">mut </span>encrypted = channel.encrypt_message(<span class="kw-2">&amp;</span>message).unwrap();
-<a href=#437 id=437 data-nosnippet>437</a>
-<a href=#438 id=438 data-nosnippet>438</a>		<span class="comment">// Corrupt the nonce length
-<a href=#439 id=439 data-nosnippet>439</a>		</span>encrypted.nonce = <span class="macro">vec!</span>[<span class="number">0u8</span>; <span class="number">16</span>]; <span class="comment">// Wrong length
-<a href=#440 id=440 data-nosnippet>440</a>
-<a href=#441 id=441 data-nosnippet>441</a>		</span><span class="kw">let </span>result = channel.decrypt_message(<span class="kw-2">&amp;</span>encrypted);
-<a href=#442 id=442 data-nosnippet>442</a>		<span class="macro">assert!</span>(result.is_err());
-<a href=#443 id=443 data-nosnippet>443</a>		<span class="macro">assert!</span>(result.unwrap_err().contains(<span class="string">"Invalid nonce length"</span>));
-<a href=#444 id=444 data-nosnippet>444</a>	}
-<a href=#445 id=445 data-nosnippet>445</a>
-<a href=#446 id=446 data-nosnippet>446</a>	<span class="attr">#[test]
-<a href=#447 id=447 data-nosnippet>447</a>	</span><span class="kw">fn </span>test_message_channel_key_lengths() {
-<a href=#448 id=448 data-nosnippet>448</a>		<span class="kw">let </span>channel = SecureMessageChannel::new().unwrap();
-<a href=#449 id=449 data-nosnippet>449</a>
-<a href=#450 id=450 data-nosnippet>450</a>		<span class="macro">assert_eq!</span>(channel.key_length(), <span class="number">32</span>);
-<a href=#451 id=451 data-nosnippet>451</a>		<span class="macro">assert_eq!</span>(channel.nonce_length(), <span class="number">12</span>);
-<a href=#452 id=452 data-nosnippet>452</a>		<span class="macro">assert_eq!</span>(channel.auth_tag_length(), <span class="number">16</span>); <span class="comment">// AES-256-GCM
-<a href=#453 id=453 data-nosnippet>453</a>		</span><span class="macro">assert_eq!</span>(channel.hmac_tag_length(), <span class="number">32</span>); <span class="comment">// HMAC-SHA256
-<a href=#454 id=454 data-nosnippet>454</a>	</span>}
+<a href=#434 id=434 data-nosnippet>434</a>
+<a href=#435 id=435 data-nosnippet>435</a>		<span class="kw">let </span>message = create_test_message();
+<a href=#436 id=436 data-nosnippet>436</a>
+<a href=#437 id=437 data-nosnippet>437</a>		<span class="kw">let </span><span class="kw-2">mut </span>encrypted = channel.encrypt_message(<span class="kw-2">&amp;</span>message).unwrap();
+<a href=#438 id=438 data-nosnippet>438</a>
+<a href=#439 id=439 data-nosnippet>439</a>		<span class="comment">// Tamper with the ciphertext
+<a href=#440 id=440 data-nosnippet>440</a>		</span><span class="kw">if </span>!encrypted.ciphertext.is_empty() {
+<a href=#441 id=441 data-nosnippet>441</a>			encrypted.ciphertext[<span class="number">0</span>] ^= <span class="number">0xFF</span>;
+<a href=#442 id=442 data-nosnippet>442</a>		}
+<a href=#443 id=443 data-nosnippet>443</a>
+<a href=#444 id=444 data-nosnippet>444</a>		<span class="comment">// Should fail HMAC verification
+<a href=#445 id=445 data-nosnippet>445</a>		</span><span class="kw">let </span>result = channel.decrypt_message(<span class="kw-2">&amp;</span>encrypted);
+<a href=#446 id=446 data-nosnippet>446</a>
+<a href=#447 id=447 data-nosnippet>447</a>		<span class="macro">assert!</span>(result.is_err());
+<a href=#448 id=448 data-nosnippet>448</a>
+<a href=#449 id=449 data-nosnippet>449</a>		<span class="macro">assert!</span>(result.unwrap_err().contains(<span class="string">"HMAC verification failed"</span>));
+<a href=#450 id=450 data-nosnippet>450</a>	}
+<a href=#451 id=451 data-nosnippet>451</a>
+<a href=#452 id=452 data-nosnippet>452</a>	<span class="attr">#[test]
+<a href=#453 id=453 data-nosnippet>453</a>	</span><span class="kw">fn </span>test_invalid_nonce_length() {
+<a href=#454 id=454 data-nosnippet>454</a>		<span class="kw">let </span>channel = SecureMessageChannel::new().unwrap();
 <a href=#455 id=455 data-nosnippet>455</a>
-<a href=#456 id=456 data-nosnippet>456</a>	<span class="attr">#[test]
-<a href=#457 id=457 data-nosnippet>457</a>	</span><span class="kw">fn </span>test_key_rotation() {
-<a href=#458 id=458 data-nosnippet>458</a>		<span class="kw">let </span><span class="kw-2">mut </span>channel = SecureMessageChannel::new().unwrap();
-<a href=#459 id=459 data-nosnippet>459</a>		<span class="kw">let </span>message = create_test_message();
-<a href=#460 id=460 data-nosnippet>460</a>
-<a href=#461 id=461 data-nosnippet>461</a>		<span class="comment">// Encrypt with original keys
-<a href=#462 id=462 data-nosnippet>462</a>		</span><span class="kw">let </span>encrypted1 = channel.encrypt_message(<span class="kw-2">&amp;</span>message).unwrap();
-<a href=#463 id=463 data-nosnippet>463</a>
-<a href=#464 id=464 data-nosnippet>464</a>		<span class="comment">// Rotate keys
-<a href=#465 id=465 data-nosnippet>465</a>		</span><span class="kw">let </span>result = channel.rotate_keys();
-<a href=#466 id=466 data-nosnippet>466</a>		<span class="macro">assert!</span>(result.is_ok());
-<a href=#467 id=467 data-nosnippet>467</a>
-<a href=#468 id=468 data-nosnippet>468</a>		<span class="comment">// Old encrypted message should still decode successfully
-<a href=#469 id=469 data-nosnippet>469</a>		</span><span class="kw">let </span>decrypted1 = channel.decrypt_message(<span class="kw-2">&amp;</span>encrypted1).unwrap();
-<a href=#470 id=470 data-nosnippet>470</a>		<span class="macro">assert_eq!</span>(decrypted1.channel, message.channel);
-<a href=#471 id=471 data-nosnippet>471</a>
-<a href=#472 id=472 data-nosnippet>472</a>		<span class="comment">// New encryption should work with new keys
-<a href=#473 id=473 data-nosnippet>473</a>		</span><span class="kw">let </span>encrypted2 = channel.encrypt_message(<span class="kw-2">&amp;</span>message).unwrap();
-<a href=#474 id=474 data-nosnippet>474</a>		<span class="kw">let </span>decrypted2 = channel.decrypt_message(<span class="kw-2">&amp;</span>encrypted2).unwrap();
-<a href=#475 id=475 data-nosnippet>475</a>		<span class="macro">assert_eq!</span>(decrypted2.channel, message.channel);
-<a href=#476 id=476 data-nosnippet>476</a>
-<a href=#477 id=477 data-nosnippet>477</a>		<span class="comment">// Encrypted versions should be different
-<a href=#478 id=478 data-nosnippet>478</a>		</span><span class="macro">assert_ne!</span>(encrypted1.nonce, encrypted2.nonce);
-<a href=#479 id=479 data-nosnippet>479</a>	}
-<a href=#480 id=480 data-nosnippet>480</a>
-<a href=#481 id=481 data-nosnippet>481</a>	<span class="attr">#[test]
-<a href=#482 id=482 data-nosnippet>482</a>	</span><span class="kw">fn </span>test_empty_message() {
-<a href=#483 id=483 data-nosnippet>483</a>		<span class="kw">let </span>channel = SecureMessageChannel::new().unwrap();
-<a href=#484 id=484 data-nosnippet>484</a>		<span class="kw">let </span>message = TauriIPCMessage::new(<span class="string">"test"</span>.to_string(), <span class="macro">serde_json::json!</span>(null), <span class="prelude-val">None</span>);
+<a href=#456 id=456 data-nosnippet>456</a>		<span class="kw">let </span>message = create_test_message();
+<a href=#457 id=457 data-nosnippet>457</a>
+<a href=#458 id=458 data-nosnippet>458</a>		<span class="kw">let </span><span class="kw-2">mut </span>encrypted = channel.encrypt_message(<span class="kw-2">&amp;</span>message).unwrap();
+<a href=#459 id=459 data-nosnippet>459</a>
+<a href=#460 id=460 data-nosnippet>460</a>		<span class="comment">// Corrupt the nonce length
+<a href=#461 id=461 data-nosnippet>461</a>		</span>encrypted.nonce = <span class="macro">vec!</span>[<span class="number">0u8</span>; <span class="number">16</span>]; <span class="comment">// Wrong length
+<a href=#462 id=462 data-nosnippet>462</a>
+<a href=#463 id=463 data-nosnippet>463</a>		</span><span class="kw">let </span>result = channel.decrypt_message(<span class="kw-2">&amp;</span>encrypted);
+<a href=#464 id=464 data-nosnippet>464</a>
+<a href=#465 id=465 data-nosnippet>465</a>		<span class="macro">assert!</span>(result.is_err());
+<a href=#466 id=466 data-nosnippet>466</a>
+<a href=#467 id=467 data-nosnippet>467</a>		<span class="macro">assert!</span>(result.unwrap_err().contains(<span class="string">"Invalid nonce length"</span>));
+<a href=#468 id=468 data-nosnippet>468</a>	}
+<a href=#469 id=469 data-nosnippet>469</a>
+<a href=#470 id=470 data-nosnippet>470</a>	<span class="attr">#[test]
+<a href=#471 id=471 data-nosnippet>471</a>	</span><span class="kw">fn </span>test_message_channel_key_lengths() {
+<a href=#472 id=472 data-nosnippet>472</a>		<span class="kw">let </span>channel = SecureMessageChannel::new().unwrap();
+<a href=#473 id=473 data-nosnippet>473</a>
+<a href=#474 id=474 data-nosnippet>474</a>		<span class="macro">assert_eq!</span>(channel.key_length(), <span class="number">32</span>);
+<a href=#475 id=475 data-nosnippet>475</a>
+<a href=#476 id=476 data-nosnippet>476</a>		<span class="macro">assert_eq!</span>(channel.nonce_length(), <span class="number">12</span>);
+<a href=#477 id=477 data-nosnippet>477</a>
+<a href=#478 id=478 data-nosnippet>478</a>		<span class="macro">assert_eq!</span>(channel.auth_tag_length(), <span class="number">16</span>); <span class="comment">// AES-256-GCM
+<a href=#479 id=479 data-nosnippet>479</a>		</span><span class="macro">assert_eq!</span>(channel.hmac_tag_length(), <span class="number">32</span>); <span class="comment">// HMAC-SHA256
+<a href=#480 id=480 data-nosnippet>480</a>	</span>}
+<a href=#481 id=481 data-nosnippet>481</a>
+<a href=#482 id=482 data-nosnippet>482</a>	<span class="attr">#[test]
+<a href=#483 id=483 data-nosnippet>483</a>	</span><span class="kw">fn </span>test_key_rotation() {
+<a href=#484 id=484 data-nosnippet>484</a>		<span class="kw">let </span><span class="kw-2">mut </span>channel = SecureMessageChannel::new().unwrap();
 <a href=#485 id=485 data-nosnippet>485</a>
-<a href=#486 id=486 data-nosnippet>486</a>		<span class="kw">let </span>encrypted = channel.encrypt_message(<span class="kw-2">&amp;</span>message).unwrap();
-<a href=#487 id=487 data-nosnippet>487</a>		<span class="kw">let </span>decrypted = channel.decrypt_message(<span class="kw-2">&amp;</span>encrypted).unwrap();
-<a href=#488 id=488 data-nosnippet>488</a>
-<a href=#489 id=489 data-nosnippet>489</a>		<span class="macro">assert_eq!</span>(decrypted.channel, <span class="string">"test"</span>);
-<a href=#490 id=490 data-nosnippet>490</a>	}
-<a href=#491 id=491 data-nosnippet>491</a>}
+<a href=#486 id=486 data-nosnippet>486</a>		<span class="kw">let </span>message = create_test_message();
+<a href=#487 id=487 data-nosnippet>487</a>
+<a href=#488 id=488 data-nosnippet>488</a>		<span class="comment">// Encrypt with original keys
+<a href=#489 id=489 data-nosnippet>489</a>		</span><span class="kw">let </span>encrypted1 = channel.encrypt_message(<span class="kw-2">&amp;</span>message).unwrap();
+<a href=#490 id=490 data-nosnippet>490</a>
+<a href=#491 id=491 data-nosnippet>491</a>		<span class="comment">// Rotate keys
+<a href=#492 id=492 data-nosnippet>492</a>		</span><span class="kw">let </span>result = channel.rotate_keys();
+<a href=#493 id=493 data-nosnippet>493</a>
+<a href=#494 id=494 data-nosnippet>494</a>		<span class="macro">assert!</span>(result.is_ok());
+<a href=#495 id=495 data-nosnippet>495</a>
+<a href=#496 id=496 data-nosnippet>496</a>		<span class="comment">// Old encrypted message should still decode successfully
+<a href=#497 id=497 data-nosnippet>497</a>		</span><span class="kw">let </span>decrypted1 = channel.decrypt_message(<span class="kw-2">&amp;</span>encrypted1).unwrap();
+<a href=#498 id=498 data-nosnippet>498</a>
+<a href=#499 id=499 data-nosnippet>499</a>		<span class="macro">assert_eq!</span>(decrypted1.channel, message.channel);
+<a href=#500 id=500 data-nosnippet>500</a>
+<a href=#501 id=501 data-nosnippet>501</a>		<span class="comment">// New encryption should work with new keys
+<a href=#502 id=502 data-nosnippet>502</a>		</span><span class="kw">let </span>encrypted2 = channel.encrypt_message(<span class="kw-2">&amp;</span>message).unwrap();
+<a href=#503 id=503 data-nosnippet>503</a>
+<a href=#504 id=504 data-nosnippet>504</a>		<span class="kw">let </span>decrypted2 = channel.decrypt_message(<span class="kw-2">&amp;</span>encrypted2).unwrap();
+<a href=#505 id=505 data-nosnippet>505</a>
+<a href=#506 id=506 data-nosnippet>506</a>		<span class="macro">assert_eq!</span>(decrypted2.channel, message.channel);
+<a href=#507 id=507 data-nosnippet>507</a>
+<a href=#508 id=508 data-nosnippet>508</a>		<span class="comment">// Encrypted versions should be different
+<a href=#509 id=509 data-nosnippet>509</a>		</span><span class="macro">assert_ne!</span>(encrypted1.nonce, encrypted2.nonce);
+<a href=#510 id=510 data-nosnippet>510</a>	}
+<a href=#511 id=511 data-nosnippet>511</a>
+<a href=#512 id=512 data-nosnippet>512</a>	<span class="attr">#[test]
+<a href=#513 id=513 data-nosnippet>513</a>	</span><span class="kw">fn </span>test_empty_message() {
+<a href=#514 id=514 data-nosnippet>514</a>		<span class="kw">let </span>channel = SecureMessageChannel::new().unwrap();
+<a href=#515 id=515 data-nosnippet>515</a>
+<a href=#516 id=516 data-nosnippet>516</a>		<span class="kw">let </span>message = TauriIPCMessage::new(<span class="string">"test"</span>.to_string(), <span class="macro">serde_json::json!</span>(null), <span class="prelude-val">None</span>);
+<a href=#517 id=517 data-nosnippet>517</a>
+<a href=#518 id=518 data-nosnippet>518</a>		<span class="kw">let </span>encrypted = channel.encrypt_message(<span class="kw-2">&amp;</span>message).unwrap();
+<a href=#519 id=519 data-nosnippet>519</a>
+<a href=#520 id=520 data-nosnippet>520</a>		<span class="kw">let </span>decrypted = channel.decrypt_message(<span class="kw-2">&amp;</span>encrypted).unwrap();
+<a href=#521 id=521 data-nosnippet>521</a>
+<a href=#522 id=522 data-nosnippet>522</a>		<span class="macro">assert_eq!</span>(decrypted.channel, <span class="string">"test"</span>);
+<a href=#523 id=523 data-nosnippet>523</a>	}
+<a href=#524 id=524 data-nosnippet>524</a>}
 </code></pre></div></section></main></body></html>

@@ -49,19 +49,25 @@
 <a href=#49 id=49 data-nosnippet>49</a>
 <a href=#50 id=50 data-nosnippet>50</a><span class="kw">pub fn </span><a href="../../../../Mountain/IPC/DevLog/IsEnabled/fn.Fn.html">Fn</a>(Tag:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
 <a href=#51 id=51 data-nosnippet>51</a>	<span class="kw">let </span>Tags = <a href="#41-48">EnabledTags</a>();
-<a href=#52 id=52 data-nosnippet>52</a>	<span class="kw">if </span><a href="#51">Tags</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.is_empty">is_empty</a>() {
-<a href=#53 id=53 data-nosnippet>53</a>		<span class="kw">return </span><span class="bool-val">false</span>;
-<a href=#54 id=54 data-nosnippet>54</a>	}
-<a href=#55 id=55 data-nosnippet>55</a>	<span class="kw">let </span>Lower = <a href="#50">Tag</a>.<a href="https://doc.rust-lang.org/nightly/alloc/foreigntype.str.html#method.to_lowercase">to_lowercase</a>();
-<a href=#56 id=56 data-nosnippet>56</a>	<span class="kw">if </span><a href="#51">Tags</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.iter">iter</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.any">any</a>(|T| <a href="#56">T</a> == <a href="#55">Lower</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.as_str">as_str</a>()) {
-<a href=#57 id=57 data-nosnippet>57</a>		<span class="kw">return </span><span class="bool-val">true</span>;
-<a href=#58 id=58 data-nosnippet>58</a>	}
-<a href=#59 id=59 data-nosnippet>59</a>	<span class="kw">if </span><a href="#51">Tags</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.iter">iter</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.any">any</a>(|T| <a href="#59">T</a> == <span class="string">"all"</span>) {
+<a href=#52 id=52 data-nosnippet>52</a>
+<a href=#53 id=53 data-nosnippet>53</a>	<span class="kw">if </span><a href="#51">Tags</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.is_empty">is_empty</a>() {
+<a href=#54 id=54 data-nosnippet>54</a>		<span class="kw">return </span><span class="bool-val">false</span>;
+<a href=#55 id=55 data-nosnippet>55</a>	}
+<a href=#56 id=56 data-nosnippet>56</a>
+<a href=#57 id=57 data-nosnippet>57</a>	<span class="kw">let </span>Lower = <a href="#50">Tag</a>.<a href="https://doc.rust-lang.org/nightly/alloc/foreigntype.str.html#method.to_lowercase">to_lowercase</a>();
+<a href=#58 id=58 data-nosnippet>58</a>
+<a href=#59 id=59 data-nosnippet>59</a>	<span class="kw">if </span><a href="#51">Tags</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.iter">iter</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.any">any</a>(|T| <a href="#59">T</a> == <a href="#57">Lower</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.as_str">as_str</a>()) {
 <a href=#60 id=60 data-nosnippet>60</a>		<span class="kw">return </span><span class="bool-val">true</span>;
 <a href=#61 id=61 data-nosnippet>61</a>	}
-<a href=#62 id=62 data-nosnippet>62</a>	<span class="kw">if </span><a href="#51">Tags</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.iter">iter</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.any">any</a>(|T| <a href="#62">T</a> == <span class="string">"short"</span>) {
-<a href=#63 id=63 data-nosnippet>63</a>		<span class="kw">return </span>!<a href="#16-39">SHORT_MODE_MUTED_TAGS</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.iter">iter</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.any">any</a>(|Muted| <span class="kw-2">*</span><a href="#63">Muted</a> == <a href="#55">Lower</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.as_str">as_str</a>());
-<a href=#64 id=64 data-nosnippet>64</a>	}
-<a href=#65 id=65 data-nosnippet>65</a>	<span class="bool-val">false
-<a href=#66 id=66 data-nosnippet>66</a></span>}
+<a href=#62 id=62 data-nosnippet>62</a>
+<a href=#63 id=63 data-nosnippet>63</a>	<span class="kw">if </span><a href="#51">Tags</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.iter">iter</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.any">any</a>(|T| <a href="#63">T</a> == <span class="string">"all"</span>) {
+<a href=#64 id=64 data-nosnippet>64</a>		<span class="kw">return </span><span class="bool-val">true</span>;
+<a href=#65 id=65 data-nosnippet>65</a>	}
+<a href=#66 id=66 data-nosnippet>66</a>
+<a href=#67 id=67 data-nosnippet>67</a>	<span class="kw">if </span><a href="#51">Tags</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.iter">iter</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.any">any</a>(|T| <a href="#67">T</a> == <span class="string">"short"</span>) {
+<a href=#68 id=68 data-nosnippet>68</a>		<span class="kw">return </span>!<a href="#16-39">SHORT_MODE_MUTED_TAGS</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.iter">iter</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.any">any</a>(|Muted| <span class="kw-2">*</span><a href="#68">Muted</a> == <a href="#57">Lower</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.as_str">as_str</a>());
+<a href=#69 id=69 data-nosnippet>69</a>	}
+<a href=#70 id=70 data-nosnippet>70</a>
+<a href=#71 id=71 data-nosnippet>71</a>	<span class="bool-val">false
+<a href=#72 id=72 data-nosnippet>72</a></span>}
 </code></pre></div></section></main></body></html>

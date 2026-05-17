@@ -33,7 +33,7 @@
 <a href=#33 id=33 data-nosnippet>33</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#34 id=34 data-nosnippet>34</a><span class="kw">use </span>CommonLibrary::Error::CommonError::CommonError;
 <a href=#35 id=35 data-nosnippet>35</a>
-<a href=#36 id=36 data-nosnippet>36</a><span class="kw">use </span><a href="../../../IPC/DevLog/mod.rs.html#40-81"><span class="kw">crate</span>::dev_log</a>;
+<a href=#36 id=36 data-nosnippet>36</a><span class="kw">use </span><a href="../../../IPC/DevLog/mod.rs.html#52-122"><span class="kw">crate</span>::dev_log</a>;
 <a href=#37 id=37 data-nosnippet>37</a>
 <a href=#38 id=38 data-nosnippet>38</a><span class="doccomment">/// Asynchronously saves Memento storage data to a JSON file.
 <a href=#39 id=39 data-nosnippet>39</a>///
@@ -67,50 +67,52 @@
 <a href=#67 id=67 data-nosnippet>67</a>					Description:<span class="macro">format!</span>(<span class="string">"Failed to create directory: {}"</span>, e),
 <a href=#68 id=68 data-nosnippet>68</a>				}
 <a href=#69 id=69 data-nosnippet>69</a>			})<span class="question-mark">?</span>;
-<a href=#70 id=70 data-nosnippet>70</a>			<span class="macro">dev_log!</span>(<span class="string">"storage"</span>, <span class="string">"[MementoSaver] Created directory: {}"</span>, parent.display());
-<a href=#71 id=71 data-nosnippet>71</a>		}
-<a href=#72 id=72 data-nosnippet>72</a>	}
-<a href=#73 id=73 data-nosnippet>73</a>
-<a href=#74 id=74 data-nosnippet>74</a>	<span class="comment">// Serialize memento data to JSON
-<a href=#75 id=75 data-nosnippet>75</a>	</span><span class="kw">let </span>json_content = serde_json::to_string_pretty(MementoData).map_err(|e| {
-<a href=#76 id=76 data-nosnippet>76</a>		<span class="macro">dev_log!</span>(<span class="string">"storage"</span>, <span class="string">"error: [MementoSaver] Failed to serialize memento data: {}"</span>, e);
-<a href=#77 id=77 data-nosnippet>77</a>		CommonError::SerializationError { Description:<span class="macro">format!</span>(<span class="string">"Failed to serialize memento data: {}"</span>, e) }
-<a href=#78 id=78 data-nosnippet>78</a>	})<span class="question-mark">?</span>;
-<a href=#79 id=79 data-nosnippet>79</a>
-<a href=#80 id=80 data-nosnippet>80</a>	<span class="comment">// Write to temporary file first, then rename for atomic write
-<a href=#81 id=81 data-nosnippet>81</a>	</span><span class="kw">let </span>temp_path = StorageFilePath.with_extension(<span class="string">"json.tmp"</span>);
-<a href=#82 id=82 data-nosnippet>82</a>	fs::write(<span class="kw-2">&amp;</span>temp_path, json_content).map_err(|e| {
-<a href=#83 id=83 data-nosnippet>83</a>		<span class="macro">dev_log!</span>(
-<a href=#84 id=84 data-nosnippet>84</a>			<span class="string">"storage"</span>,
-<a href=#85 id=85 data-nosnippet>85</a>			<span class="string">"error: [MementoSaver] Failed to write memento to temp file '{}': {}"</span>,
-<a href=#86 id=86 data-nosnippet>86</a>			temp_path.display(),
-<a href=#87 id=87 data-nosnippet>87</a>			e
-<a href=#88 id=88 data-nosnippet>88</a>		);
-<a href=#89 id=89 data-nosnippet>89</a>		CommonError::FileSystemIO { Path:temp_path.clone(), Description:<span class="macro">format!</span>(<span class="string">"Failed to write memento: {}"</span>, e) }
-<a href=#90 id=90 data-nosnippet>90</a>	})<span class="question-mark">?</span>;
-<a href=#91 id=91 data-nosnippet>91</a>
-<a href=#92 id=92 data-nosnippet>92</a>	<span class="comment">// Atomic rename from temp to actual file
-<a href=#93 id=93 data-nosnippet>93</a>	</span>fs::rename(<span class="kw-2">&amp;</span>temp_path, StorageFilePath).map_err(|e| {
-<a href=#94 id=94 data-nosnippet>94</a>		<span class="macro">dev_log!</span>(
-<a href=#95 id=95 data-nosnippet>95</a>			<span class="string">"storage"</span>,
-<a href=#96 id=96 data-nosnippet>96</a>			<span class="string">"error: [MementoSaver] Failed to rename temp file to '{}': {}"</span>,
-<a href=#97 id=97 data-nosnippet>97</a>			StorageFilePath.display(),
-<a href=#98 id=98 data-nosnippet>98</a>			e
-<a href=#99 id=99 data-nosnippet>99</a>		);
-<a href=#100 id=100 data-nosnippet>100</a>		<span class="comment">// Clean up temp file if rename fails
-<a href=#101 id=101 data-nosnippet>101</a>		</span><span class="kw">let _ </span>= fs::remove_file(<span class="kw-2">&amp;</span>temp_path);
-<a href=#102 id=102 data-nosnippet>102</a>		CommonError::FileSystemIO {
-<a href=#103 id=103 data-nosnippet>103</a>			Path:StorageFilePath.to_path_buf(),
-<a href=#104 id=104 data-nosnippet>104</a>			Description:<span class="macro">format!</span>(<span class="string">"Failed to rename memento file: {}"</span>, e),
-<a href=#105 id=105 data-nosnippet>105</a>		}
-<a href=#106 id=106 data-nosnippet>106</a>	})<span class="question-mark">?</span>;
-<a href=#107 id=107 data-nosnippet>107</a>
-<a href=#108 id=108 data-nosnippet>108</a>	<span class="macro">dev_log!</span>(
-<a href=#109 id=109 data-nosnippet>109</a>		<span class="string">"storage"</span>,
-<a href=#110 id=110 data-nosnippet>110</a>		<span class="string">"[MementoSaver] Successfully saved memento to: {}"</span>,
-<a href=#111 id=111 data-nosnippet>111</a>		StorageFilePath.display()
-<a href=#112 id=112 data-nosnippet>112</a>	);
-<a href=#113 id=113 data-nosnippet>113</a>
-<a href=#114 id=114 data-nosnippet>114</a>	<span class="prelude-val">Ok</span>(())
-<a href=#115 id=115 data-nosnippet>115</a>}
+<a href=#70 id=70 data-nosnippet>70</a>
+<a href=#71 id=71 data-nosnippet>71</a>			<span class="macro">dev_log!</span>(<span class="string">"storage"</span>, <span class="string">"[MementoSaver] Created directory: {}"</span>, parent.display());
+<a href=#72 id=72 data-nosnippet>72</a>		}
+<a href=#73 id=73 data-nosnippet>73</a>	}
+<a href=#74 id=74 data-nosnippet>74</a>
+<a href=#75 id=75 data-nosnippet>75</a>	<span class="comment">// Serialize memento data to JSON
+<a href=#76 id=76 data-nosnippet>76</a>	</span><span class="kw">let </span>json_content = serde_json::to_string_pretty(MementoData).map_err(|e| {
+<a href=#77 id=77 data-nosnippet>77</a>		<span class="macro">dev_log!</span>(<span class="string">"storage"</span>, <span class="string">"error: [MementoSaver] Failed to serialize memento data: {}"</span>, e);
+<a href=#78 id=78 data-nosnippet>78</a>		CommonError::SerializationError { Description:<span class="macro">format!</span>(<span class="string">"Failed to serialize memento data: {}"</span>, e) }
+<a href=#79 id=79 data-nosnippet>79</a>	})<span class="question-mark">?</span>;
+<a href=#80 id=80 data-nosnippet>80</a>
+<a href=#81 id=81 data-nosnippet>81</a>	<span class="comment">// Write to temporary file first, then rename for atomic write
+<a href=#82 id=82 data-nosnippet>82</a>	</span><span class="kw">let </span>temp_path = StorageFilePath.with_extension(<span class="string">"json.tmp"</span>);
+<a href=#83 id=83 data-nosnippet>83</a>
+<a href=#84 id=84 data-nosnippet>84</a>	fs::write(<span class="kw-2">&amp;</span>temp_path, json_content).map_err(|e| {
+<a href=#85 id=85 data-nosnippet>85</a>		<span class="macro">dev_log!</span>(
+<a href=#86 id=86 data-nosnippet>86</a>			<span class="string">"storage"</span>,
+<a href=#87 id=87 data-nosnippet>87</a>			<span class="string">"error: [MementoSaver] Failed to write memento to temp file '{}': {}"</span>,
+<a href=#88 id=88 data-nosnippet>88</a>			temp_path.display(),
+<a href=#89 id=89 data-nosnippet>89</a>			e
+<a href=#90 id=90 data-nosnippet>90</a>		);
+<a href=#91 id=91 data-nosnippet>91</a>		CommonError::FileSystemIO { Path:temp_path.clone(), Description:<span class="macro">format!</span>(<span class="string">"Failed to write memento: {}"</span>, e) }
+<a href=#92 id=92 data-nosnippet>92</a>	})<span class="question-mark">?</span>;
+<a href=#93 id=93 data-nosnippet>93</a>
+<a href=#94 id=94 data-nosnippet>94</a>	<span class="comment">// Atomic rename from temp to actual file
+<a href=#95 id=95 data-nosnippet>95</a>	</span>fs::rename(<span class="kw-2">&amp;</span>temp_path, StorageFilePath).map_err(|e| {
+<a href=#96 id=96 data-nosnippet>96</a>		<span class="macro">dev_log!</span>(
+<a href=#97 id=97 data-nosnippet>97</a>			<span class="string">"storage"</span>,
+<a href=#98 id=98 data-nosnippet>98</a>			<span class="string">"error: [MementoSaver] Failed to rename temp file to '{}': {}"</span>,
+<a href=#99 id=99 data-nosnippet>99</a>			StorageFilePath.display(),
+<a href=#100 id=100 data-nosnippet>100</a>			e
+<a href=#101 id=101 data-nosnippet>101</a>		);
+<a href=#102 id=102 data-nosnippet>102</a>		<span class="comment">// Clean up temp file if rename fails
+<a href=#103 id=103 data-nosnippet>103</a>		</span><span class="kw">let _ </span>= fs::remove_file(<span class="kw-2">&amp;</span>temp_path);
+<a href=#104 id=104 data-nosnippet>104</a>		CommonError::FileSystemIO {
+<a href=#105 id=105 data-nosnippet>105</a>			Path:StorageFilePath.to_path_buf(),
+<a href=#106 id=106 data-nosnippet>106</a>			Description:<span class="macro">format!</span>(<span class="string">"Failed to rename memento file: {}"</span>, e),
+<a href=#107 id=107 data-nosnippet>107</a>		}
+<a href=#108 id=108 data-nosnippet>108</a>	})<span class="question-mark">?</span>;
+<a href=#109 id=109 data-nosnippet>109</a>
+<a href=#110 id=110 data-nosnippet>110</a>	<span class="macro">dev_log!</span>(
+<a href=#111 id=111 data-nosnippet>111</a>		<span class="string">"storage"</span>,
+<a href=#112 id=112 data-nosnippet>112</a>		<span class="string">"[MementoSaver] Successfully saved memento to: {}"</span>,
+<a href=#113 id=113 data-nosnippet>113</a>		StorageFilePath.display()
+<a href=#114 id=114 data-nosnippet>114</a>	);
+<a href=#115 id=115 data-nosnippet>115</a>
+<a href=#116 id=116 data-nosnippet>116</a>	<span class="prelude-val">Ok</span>(())
+<a href=#117 id=117 data-nosnippet>117</a>}
 </code></pre></div></section></main></body></html>

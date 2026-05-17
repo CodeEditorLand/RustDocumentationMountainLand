@@ -16,11 +16,14 @@
 <a href=#16 id=16 data-nosnippet>16</a><span class="kw">impl </span><a href="#12-14">Struct</a> {
 <a href=#17 id=17 data-nosnippet>17</a>	<span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">fn </span>new() -&gt; <span class="self">Self </span>{ <span class="self">Self </span>{ ping_timeout:<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html">Duration</a>::<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html#method.from_secs">from_secs</a>(<span class="number">5</span>) } }
 <a href=#18 id=18 data-nosnippet>18</a>
-<a href=#19 id=19 data-nosnippet>19</a>	<span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span>check_connection_health(<span class="kw-2">&amp;</span><span class="self">self</span>, _handle:<span class="kw-2">&amp;mut </span>ConnectionHandle::<a href="ConnectionHandle.rs.html#16-27">Struct</a>) -&gt; bool {
+<a href=#19 id=19 data-nosnippet>19</a>	<span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span>check_connection_health(<span class="kw-2">&amp;</span><span class="self">self</span>, _handle:<span class="kw-2">&amp;mut </span>ConnectionHandle::<a href="ConnectionHandle.rs.html#16-36">Struct</a>) -&gt; bool {
 <a href=#20 id=20 data-nosnippet>20</a>		<span class="kw">let </span>start_time = Instant::now();
-<a href=#21 id=21 data-nosnippet>21</a>		tokio::time::sleep(Duration::from_millis(<span class="number">10</span>)).<span class="kw">await</span>;
-<a href=#22 id=22 data-nosnippet>22</a>		<span class="kw">let </span>response_time = start_time.elapsed();
-<a href=#23 id=23 data-nosnippet>23</a>		response_time &lt; <span class="self">self</span>.ping_timeout
-<a href=#24 id=24 data-nosnippet>24</a>	}
-<a href=#25 id=25 data-nosnippet>25</a>}
+<a href=#21 id=21 data-nosnippet>21</a>
+<a href=#22 id=22 data-nosnippet>22</a>		tokio::time::sleep(Duration::from_millis(<span class="number">10</span>)).<span class="kw">await</span>;
+<a href=#23 id=23 data-nosnippet>23</a>
+<a href=#24 id=24 data-nosnippet>24</a>		<span class="kw">let </span>response_time = start_time.elapsed();
+<a href=#25 id=25 data-nosnippet>25</a>
+<a href=#26 id=26 data-nosnippet>26</a>		response_time &lt; <span class="self">self</span>.ping_timeout
+<a href=#27 id=27 data-nosnippet>27</a>	}
+<a href=#28 id=28 data-nosnippet>28</a>}
 </code></pre></div></section></main></body></html>

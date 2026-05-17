@@ -76,40 +76,43 @@
 <a href=#76 id=76 data-nosnippet>76</a>		}
 <a href=#77 id=77 data-nosnippet>77</a>
 <a href=#78 id=78 data-nosnippet>78</a>		<a class="self" href="#70">self</a>.ZoomLevel = <a href="#70">ZoomLevel</a>;
-<a href=#79 id=79 data-nosnippet>79</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
-<a href=#80 id=80 data-nosnippet>80</a>	}
-<a href=#81 id=81 data-nosnippet>81</a>
-<a href=#82 id=82 data-nosnippet>82</a>	<span class="doccomment">/// Increases the zoom level by a step.
-<a href=#83 id=83 data-nosnippet>83</a>	///
-<a href=#84 id=84 data-nosnippet>84</a>	/// # Arguments
-<a href=#85 id=85 data-nosnippet>85</a>	/// * `Step` - Zoom increment amount
-<a href=#86 id=86 data-nosnippet>86</a>	///
-<a href=#87 id=87 data-nosnippet>87</a>	/// # Returns
-<a href=#88 id=88 data-nosnippet>88</a>	/// Result indicating success or error if would exceed range
-<a href=#89 id=89 data-nosnippet>89</a>	</span><span class="kw">pub fn </span>ZoomIn(<span class="kw-2">&amp;mut </span><span class="self">self</span>, Step:<a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
-<a href=#90 id=90 data-nosnippet>90</a>		<span class="kw">let </span>NewZoom = <a class="self" href="#89">self</a>.ZoomLevel + <a href="#89">Step</a>;
-<a href=#91 id=91 data-nosnippet>91</a>		<a class="self" href="#89">self</a>.<a href="#70-80">SetZoomLevel</a>(<a href="#90">NewZoom</a>)
-<a href=#92 id=92 data-nosnippet>92</a>	}
-<a href=#93 id=93 data-nosnippet>93</a>
-<a href=#94 id=94 data-nosnippet>94</a>	<span class="doccomment">/// Decreases the zoom level by a step.
-<a href=#95 id=95 data-nosnippet>95</a>	///
-<a href=#96 id=96 data-nosnippet>96</a>	/// # Arguments
-<a href=#97 id=97 data-nosnippet>97</a>	/// * `Step` - Zoom decrement amount
-<a href=#98 id=98 data-nosnippet>98</a>	///
-<a href=#99 id=99 data-nosnippet>99</a>	/// # Returns
-<a href=#100 id=100 data-nosnippet>100</a>	/// Result indicating success or error if would exceed range
-<a href=#101 id=101 data-nosnippet>101</a>	</span><span class="kw">pub fn </span>ZoomOut(<span class="kw-2">&amp;mut </span><span class="self">self</span>, Step:<a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
-<a href=#102 id=102 data-nosnippet>102</a>		<span class="kw">let </span>NewZoom = <a class="self" href="#101">self</a>.ZoomLevel - <a href="#101">Step</a>;
-<a href=#103 id=103 data-nosnippet>103</a>		<a class="self" href="#101">self</a>.<a href="#70-80">SetZoomLevel</a>(<a href="#102">NewZoom</a>)
-<a href=#104 id=104 data-nosnippet>104</a>	}
+<a href=#79 id=79 data-nosnippet>79</a>
+<a href=#80 id=80 data-nosnippet>80</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
+<a href=#81 id=81 data-nosnippet>81</a>	}
+<a href=#82 id=82 data-nosnippet>82</a>
+<a href=#83 id=83 data-nosnippet>83</a>	<span class="doccomment">/// Increases the zoom level by a step.
+<a href=#84 id=84 data-nosnippet>84</a>	///
+<a href=#85 id=85 data-nosnippet>85</a>	/// # Arguments
+<a href=#86 id=86 data-nosnippet>86</a>	/// * `Step` - Zoom increment amount
+<a href=#87 id=87 data-nosnippet>87</a>	///
+<a href=#88 id=88 data-nosnippet>88</a>	/// # Returns
+<a href=#89 id=89 data-nosnippet>89</a>	/// Result indicating success or error if would exceed range
+<a href=#90 id=90 data-nosnippet>90</a>	</span><span class="kw">pub fn </span>ZoomIn(<span class="kw-2">&amp;mut </span><span class="self">self</span>, Step:<a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
+<a href=#91 id=91 data-nosnippet>91</a>		<span class="kw">let </span>NewZoom = <a class="self" href="#90">self</a>.ZoomLevel + <a href="#90">Step</a>;
+<a href=#92 id=92 data-nosnippet>92</a>
+<a href=#93 id=93 data-nosnippet>93</a>		<a class="self" href="#90">self</a>.<a href="#70-81">SetZoomLevel</a>(<a href="#91">NewZoom</a>)
+<a href=#94 id=94 data-nosnippet>94</a>	}
+<a href=#95 id=95 data-nosnippet>95</a>
+<a href=#96 id=96 data-nosnippet>96</a>	<span class="doccomment">/// Decreases the zoom level by a step.
+<a href=#97 id=97 data-nosnippet>97</a>	///
+<a href=#98 id=98 data-nosnippet>98</a>	/// # Arguments
+<a href=#99 id=99 data-nosnippet>99</a>	/// * `Step` - Zoom decrement amount
+<a href=#100 id=100 data-nosnippet>100</a>	///
+<a href=#101 id=101 data-nosnippet>101</a>	/// # Returns
+<a href=#102 id=102 data-nosnippet>102</a>	/// Result indicating success or error if would exceed range
+<a href=#103 id=103 data-nosnippet>103</a>	</span><span class="kw">pub fn </span>ZoomOut(<span class="kw-2">&amp;mut </span><span class="self">self</span>, Step:<a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
+<a href=#104 id=104 data-nosnippet>104</a>		<span class="kw">let </span>NewZoom = <a class="self" href="#103">self</a>.ZoomLevel - <a href="#103">Step</a>;
 <a href=#105 id=105 data-nosnippet>105</a>
-<a href=#106 id=106 data-nosnippet>106</a>	<span class="doccomment">/// Resets the zoom level to default.
-<a href=#107 id=107 data-nosnippet>107</a>	</span><span class="kw">pub fn </span>ResetZoom(<span class="kw-2">&amp;mut </span><span class="self">self</span>) { <a class="self" href="#107">self</a>.ZoomLevel = <a href="#21">DEFAULT_ZOOM_LEVEL</a>; }
+<a href=#106 id=106 data-nosnippet>106</a>		<a class="self" href="#103">self</a>.<a href="#70-81">SetZoomLevel</a>(<a href="#104">NewZoom</a>)
+<a href=#107 id=107 data-nosnippet>107</a>	}
 <a href=#108 id=108 data-nosnippet>108</a>
-<a href=#109 id=109 data-nosnippet>109</a>	<span class="doccomment">/// Gets the current zoom level as a percentage.
-<a href=#110 id=110 data-nosnippet>110</a>	/// A zoom level of 0 corresponds to 100%.
-<a href=#111 id=111 data-nosnippet>111</a>	</span><span class="kw">pub fn </span>GetZoomPercent(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a> { <span class="number">100.0 </span>+ (<a class="self" href="#111">self</a>.ZoomLevel * <span class="number">10.0</span>) }
-<a href=#112 id=112 data-nosnippet>112</a>}
-<a href=#113 id=113 data-nosnippet>113</a>
-<a href=#114 id=114 data-nosnippet>114</a><span class="kw">fn </span><a href="../../../../Mountain/ApplicationState/DTO/WindowStateDTO/fn.DefaultZoomLevel.html">DefaultZoomLevel</a>() -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a> { <a href="#21">DEFAULT_ZOOM_LEVEL</a> }
+<a href=#109 id=109 data-nosnippet>109</a>	<span class="doccomment">/// Resets the zoom level to default.
+<a href=#110 id=110 data-nosnippet>110</a>	</span><span class="kw">pub fn </span>ResetZoom(<span class="kw-2">&amp;mut </span><span class="self">self</span>) { <a class="self" href="#110">self</a>.ZoomLevel = <a href="#21">DEFAULT_ZOOM_LEVEL</a>; }
+<a href=#111 id=111 data-nosnippet>111</a>
+<a href=#112 id=112 data-nosnippet>112</a>	<span class="doccomment">/// Gets the current zoom level as a percentage.
+<a href=#113 id=113 data-nosnippet>113</a>	/// A zoom level of 0 corresponds to 100%.
+<a href=#114 id=114 data-nosnippet>114</a>	</span><span class="kw">pub fn </span>GetZoomPercent(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a> { <span class="number">100.0 </span>+ (<a class="self" href="#114">self</a>.ZoomLevel * <span class="number">10.0</span>) }
+<a href=#115 id=115 data-nosnippet>115</a>}
+<a href=#116 id=116 data-nosnippet>116</a>
+<a href=#117 id=117 data-nosnippet>117</a><span class="kw">fn </span><a href="../../../../Mountain/ApplicationState/DTO/WindowStateDTO/fn.DefaultZoomLevel.html">DefaultZoomLevel</a>() -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a> { <a href="#21">DEFAULT_ZOOM_LEVEL</a> }
 </code></pre></div></section></main></body></html>

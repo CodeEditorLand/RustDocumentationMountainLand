@@ -9,12 +9,12 @@
 <a href=#9 id=9 data-nosnippet>9</a><span class="kw">use </span>crate::{
 <a href=#10 id=10 data-nosnippet>10</a>	Vine::{
 <a href=#11 id=11 data-nosnippet>11</a>		Client::{
-<a href=#12 id=12 data-nosnippet>12</a>			Shared::{<a href="Shared.rs.html#50-58">CONNECTION_METADATA</a>, <a href="Shared.rs.html#44-48">ConnectionMetadata</a>, <a href="Shared.rs.html#27">MAX_RETRY_ATTEMPTS</a>, <a href="Shared.rs.html#29">RETRY_BASE_DELAY_MS</a>},
-<a href=#13 id=13 data-nosnippet>13</a>			<a href="../Client.rs.html#40">TryConnectSingle</a>,
+<a href=#12 id=12 data-nosnippet>12</a>			Shared::{<a href="Shared.rs.html#57-66">CONNECTION_METADATA</a>, <a href="Shared.rs.html#49-55">ConnectionMetadata</a>, <a href="Shared.rs.html#28">MAX_RETRY_ATTEMPTS</a>, <a href="Shared.rs.html#31">RETRY_BASE_DELAY_MS</a>},
+<a href=#13 id=13 data-nosnippet>13</a>			<a href="../Client.rs.html#54">TryConnectSingle</a>,
 <a href=#14 id=14 data-nosnippet>14</a>		},
 <a href=#15 id=15 data-nosnippet>15</a>		<a href="../Error.rs.html#77-168">Error::VineError</a>,
 <a href=#16 id=16 data-nosnippet>16</a>	},
-<a href=#17 id=17 data-nosnippet>17</a>	<a href="../../IPC/DevLog/mod.rs.html#40-81">dev_log</a>,
+<a href=#17 id=17 data-nosnippet>17</a>	<a href="../../IPC/DevLog/mod.rs.html#52-122">dev_log</a>,
 <a href=#18 id=18 data-nosnippet>18</a>};
 <a href=#19 id=19 data-nosnippet>19</a>
 <a href=#20 id=20 data-nosnippet>20</a><span class="kw">pub async fn </span><a href="../../../../Mountain/Vine/Client/ConnectToSideCar/fn.Fn.html">Fn</a>(SideCarIdentifier:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, Address:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), VineError&gt; {
@@ -53,10 +53,11 @@
 <a href=#53 id=53 data-nosnippet>53</a>
 <a href=#54 id=54 data-nosnippet>54</a>		<span class="kw">if </span>Attempt &lt; MAX_RETRY_ATTEMPTS {
 <a href=#55 id=55 data-nosnippet>55</a>			<span class="kw">let </span>DelayMilliseconds = RETRY_BASE_DELAY_MS * <span class="number">2_u64</span>.pow(Attempt <span class="kw">as </span>u32);
-<a href=#56 id=56 data-nosnippet>56</a>			tokio::time::sleep(Duration::from_millis(DelayMilliseconds)).<span class="kw">await</span>;
-<a href=#57 id=57 data-nosnippet>57</a>		}
-<a href=#58 id=58 data-nosnippet>58</a>	}
-<a href=#59 id=59 data-nosnippet>59</a>
-<a href=#60 id=60 data-nosnippet>60</a>	<span class="prelude-val">Err</span>(LastError.unwrap_or_else(|| VineError::RPCError(<span class="string">"Connection failed"</span>.to_string())))
-<a href=#61 id=61 data-nosnippet>61</a>}
+<a href=#56 id=56 data-nosnippet>56</a>
+<a href=#57 id=57 data-nosnippet>57</a>			tokio::time::sleep(Duration::from_millis(DelayMilliseconds)).<span class="kw">await</span>;
+<a href=#58 id=58 data-nosnippet>58</a>		}
+<a href=#59 id=59 data-nosnippet>59</a>	}
+<a href=#60 id=60 data-nosnippet>60</a>
+<a href=#61 id=61 data-nosnippet>61</a>	<span class="prelude-val">Err</span>(LastError.unwrap_or_else(|| VineError::RPCError(<span class="string">"Connection failed"</span>.to_string())))
+<a href=#62 id=62 data-nosnippet>62</a>}
 </code></pre></div></section></main></body></html>

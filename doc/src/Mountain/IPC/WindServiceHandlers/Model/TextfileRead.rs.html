@@ -9,9 +9,9 @@
 <a href=#9 id=9 data-nosnippet>9</a>
 <a href=#10 id=10 data-nosnippet>10</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#11 id=11 data-nosnippet>11</a>
-<a href=#12 id=12 data-nosnippet>12</a><span class="kw">use </span><a href="../../../RunTime/ApplicationRunTime/mod.rs.html#16-21"><span class="kw">crate</span>::RunTime::ApplicationRunTime::ApplicationRunTime</a>;
+<a href=#12 id=12 data-nosnippet>12</a><span class="kw">use </span><a href="../../../RunTime/ApplicationRunTime/mod.rs.html#16-22"><span class="kw">crate</span>::RunTime::ApplicationRunTime::ApplicationRunTime</a>;
 <a href=#13 id=13 data-nosnippet>13</a>
-<a href=#14 id=14 data-nosnippet>14</a><span class="kw">pub async fn </span><a href="../../../../../Mountain/IPC/WindServiceHandlers/Model/TextfileRead/fn.TextfileRead.html">TextfileRead</a>(_runtime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../../../RunTime/ApplicationRunTime/mod.rs.html#16-21">ApplicationRunTime</a>&gt;, Arguments:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
+<a href=#14 id=14 data-nosnippet>14</a><span class="kw">pub async fn </span><a href="../../../../../Mountain/IPC/WindServiceHandlers/Model/TextfileRead/fn.TextfileRead.html">TextfileRead</a>(_runtime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../../../RunTime/ApplicationRunTime/mod.rs.html#16-22">ApplicationRunTime</a>&gt;, Arguments:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
 <a href=#15 id=15 data-nosnippet>15</a>	<span class="kw">let </span>Path = Arguments
 <a href=#16 id=16 data-nosnippet>16</a>		.first()
 <a href=#17 id=17 data-nosnippet>17</a>		.and_then(|V| V.as_str())

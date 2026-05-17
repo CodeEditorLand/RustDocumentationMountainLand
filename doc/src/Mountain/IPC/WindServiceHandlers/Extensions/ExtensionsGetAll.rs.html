@@ -12,9 +12,9 @@
 <a href=#12 id=12 data-nosnippet>12</a><span class="kw">use </span>CommonLibrary::ExtensionManagement::ExtensionManagementService::ExtensionManagementService;
 <a href=#13 id=13 data-nosnippet>13</a><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json</a>};
 <a href=#14 id=14 data-nosnippet>14</a>
-<a href=#15 id=15 data-nosnippet>15</a><span class="kw">use </span>crate::{<a href="../../../RunTime/ApplicationRunTime/mod.rs.html#16-21">RunTime::ApplicationRunTime::ApplicationRunTime</a>, <a href="../../DevLog/mod.rs.html#40-81">dev_log</a>};
+<a href=#15 id=15 data-nosnippet>15</a><span class="kw">use </span>crate::{<a href="../../../RunTime/ApplicationRunTime/mod.rs.html#16-22">RunTime::ApplicationRunTime::ApplicationRunTime</a>, <a href="../../DevLog/mod.rs.html#52-122">dev_log</a>};
 <a href=#16 id=16 data-nosnippet>16</a>
-<a href=#17 id=17 data-nosnippet>17</a><span class="kw">pub async fn </span><a href="../../../../../Mountain/IPC/WindServiceHandlers/Extensions/ExtensionsGetAll/fn.ExtensionsGetAll.html">ExtensionsGetAll</a>(RunTime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../../../RunTime/ApplicationRunTime/mod.rs.html#16-21">ApplicationRunTime</a>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
+<a href=#17 id=17 data-nosnippet>17</a><span class="kw">pub async fn </span><a href="../../../../../Mountain/IPC/WindServiceHandlers/Extensions/ExtensionsGetAll/fn.ExtensionsGetAll.html">ExtensionsGetAll</a>(RunTime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../../../RunTime/ApplicationRunTime/mod.rs.html#16-22">ApplicationRunTime</a>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
 <a href=#18 id=18 data-nosnippet>18</a>	<span class="kw">let </span>Extensions = RunTime
 <a href=#19 id=19 data-nosnippet>19</a>		.Environment
 <a href=#20 id=20 data-nosnippet>20</a>		.GetExtensions()
@@ -22,17 +22,19 @@
 <a href=#22 id=22 data-nosnippet>22</a>		</span>.map_err(|Error| <span class="macro">format!</span>(<span class="string">"extensions:getAll failed: {}"</span>, Error))<span class="question-mark">?</span>;
 <a href=#23 id=23 data-nosnippet>23</a>
 <a href=#24 id=24 data-nosnippet>24</a>	<span class="macro">dev_log!</span>(<span class="string">"extensions"</span>, <span class="string">"extensions:getAll returning {} extensions"</span>, Extensions.len());
-<a href=#25 id=25 data-nosnippet>25</a>	<span class="kw">if let </span><span class="prelude-val">Some</span>(First) = Extensions.first() {
-<a href=#26 id=26 data-nosnippet>26</a>		<span class="macro">dev_log!</span>(
-<a href=#27 id=27 data-nosnippet>27</a>			<span class="string">"extensions"</span>,
-<a href=#28 id=28 data-nosnippet>28</a>			<span class="string">"extensions:getAll sample: {}"</span>,
-<a href=#29 id=29 data-nosnippet>29</a>			serde_json::to_string(First)
-<a href=#30 id=30 data-nosnippet>30</a>				.unwrap_or_default()
-<a href=#31 id=31 data-nosnippet>31</a>				.chars()
-<a href=#32 id=32 data-nosnippet>32</a>				.take(<span class="number">300</span>)
-<a href=#33 id=33 data-nosnippet>33</a>				.collect::&lt;String&gt;()
-<a href=#34 id=34 data-nosnippet>34</a>		);
-<a href=#35 id=35 data-nosnippet>35</a>	}
-<a href=#36 id=36 data-nosnippet>36</a>	<span class="prelude-val">Ok</span>(<span class="macro">json!</span>(Extensions))
-<a href=#37 id=37 data-nosnippet>37</a>}
+<a href=#25 id=25 data-nosnippet>25</a>
+<a href=#26 id=26 data-nosnippet>26</a>	<span class="kw">if let </span><span class="prelude-val">Some</span>(First) = Extensions.first() {
+<a href=#27 id=27 data-nosnippet>27</a>		<span class="macro">dev_log!</span>(
+<a href=#28 id=28 data-nosnippet>28</a>			<span class="string">"extensions"</span>,
+<a href=#29 id=29 data-nosnippet>29</a>			<span class="string">"extensions:getAll sample: {}"</span>,
+<a href=#30 id=30 data-nosnippet>30</a>			serde_json::to_string(First)
+<a href=#31 id=31 data-nosnippet>31</a>				.unwrap_or_default()
+<a href=#32 id=32 data-nosnippet>32</a>				.chars()
+<a href=#33 id=33 data-nosnippet>33</a>				.take(<span class="number">300</span>)
+<a href=#34 id=34 data-nosnippet>34</a>				.collect::&lt;String&gt;()
+<a href=#35 id=35 data-nosnippet>35</a>		);
+<a href=#36 id=36 data-nosnippet>36</a>	}
+<a href=#37 id=37 data-nosnippet>37</a>
+<a href=#38 id=38 data-nosnippet>38</a>	<span class="prelude-val">Ok</span>(<span class="macro">json!</span>(Extensions))
+<a href=#39 id=39 data-nosnippet>39</a>}
 </code></pre></div></section></main></body></html>

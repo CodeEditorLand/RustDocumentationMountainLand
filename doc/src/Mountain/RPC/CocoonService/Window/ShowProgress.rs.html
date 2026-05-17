@@ -10,32 +10,33 @@
 <a href=#10 id=10 data-nosnippet>10</a><span class="kw">use </span>tonic::{Response, Status};
 <a href=#11 id=11 data-nosnippet>11</a>
 <a href=#12 id=12 data-nosnippet>12</a><span class="kw">use </span>crate::{
-<a href=#13 id=13 data-nosnippet>13</a>	<a href="../mod.rs.html#270-277">RPC::CocoonService::CocoonServiceImpl</a>,
+<a href=#13 id=13 data-nosnippet>13</a>	<a href="../mod.rs.html#285-292">RPC::CocoonService::CocoonServiceImpl</a>,
 <a href=#14 id=14 data-nosnippet>14</a>	Vine::Generated::{<a href="../../../Vine/Generated/vine.rs.html#1337-1348">ShowProgressRequest</a>, <a href="../../../Vine/Generated/vine.rs.html#1351-1354">ShowProgressResponse</a>},
-<a href=#15 id=15 data-nosnippet>15</a>	<a href="../../../IPC/DevLog/mod.rs.html#40-81">dev_log</a>,
+<a href=#15 id=15 data-nosnippet>15</a>	<a href="../../../IPC/DevLog/mod.rs.html#52-122">dev_log</a>,
 <a href=#16 id=16 data-nosnippet>16</a>};
 <a href=#17 id=17 data-nosnippet>17</a>
 <a href=#18 id=18 data-nosnippet>18</a><span class="kw">pub async fn </span><a href="../../../../../Mountain/RPC/CocoonService/Window/ShowProgress/fn.Fn.html">Fn</a>(
-<a href=#19 id=19 data-nosnippet>19</a>	Service:<span class="kw-2">&amp;</span><a href="../mod.rs.html#270-277">CocoonServiceImpl</a>,
-<a href=#20 id=20 data-nosnippet>20</a>	Request:<a href="../../../Vine/Generated/vine.rs.html#1337-1348">ShowProgressRequest</a>,
-<a href=#21 id=21 data-nosnippet>21</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Response&lt;ShowProgressResponse&gt;, Status&gt; {
-<a href=#22 id=22 data-nosnippet>22</a>	<span class="macro">dev_log!</span>(<span class="string">"cocoon"</span>, <span class="string">"[CocoonService] show_progress: title={}"</span>, Request.title);
-<a href=#23 id=23 data-nosnippet>23</a>
-<a href=#24 id=24 data-nosnippet>24</a>	<span class="kw">let </span>Handle = SystemTime::now()
-<a href=#25 id=25 data-nosnippet>25</a>		.duration_since(UNIX_EPOCH)
-<a href=#26 id=26 data-nosnippet>26</a>		.map(|D| D.as_millis() <span class="kw">as </span>u32)
-<a href=#27 id=27 data-nosnippet>27</a>		.unwrap_or(<span class="number">0</span>);
-<a href=#28 id=28 data-nosnippet>28</a>
-<a href=#29 id=29 data-nosnippet>29</a>	<span class="kw">let _ </span>= Service.environment.ApplicationHandle.emit(
-<a href=#30 id=30 data-nosnippet>30</a>		<span class="string">"sky://progress/start"</span>,
-<a href=#31 id=31 data-nosnippet>31</a>		<span class="macro">json!</span>({
-<a href=#32 id=32 data-nosnippet>32</a>			<span class="string">"handle"</span>: Handle,
-<a href=#33 id=33 data-nosnippet>33</a>			<span class="string">"title"</span>: Request.title,
-<a href=#34 id=34 data-nosnippet>34</a>			<span class="string">"cancellable"</span>: Request.cancellable,
-<a href=#35 id=35 data-nosnippet>35</a>			<span class="string">"location"</span>: Request.location,
-<a href=#36 id=36 data-nosnippet>36</a>		}),
-<a href=#37 id=37 data-nosnippet>37</a>	);
-<a href=#38 id=38 data-nosnippet>38</a>
-<a href=#39 id=39 data-nosnippet>39</a>	<span class="prelude-val">Ok</span>(Response::new(ShowProgressResponse { handle:Handle }))
-<a href=#40 id=40 data-nosnippet>40</a>}
+<a href=#19 id=19 data-nosnippet>19</a>	Service:<span class="kw-2">&amp;</span><a href="../mod.rs.html#285-292">CocoonServiceImpl</a>,
+<a href=#20 id=20 data-nosnippet>20</a>
+<a href=#21 id=21 data-nosnippet>21</a>	Request:<a href="../../../Vine/Generated/vine.rs.html#1337-1348">ShowProgressRequest</a>,
+<a href=#22 id=22 data-nosnippet>22</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Response&lt;ShowProgressResponse&gt;, Status&gt; {
+<a href=#23 id=23 data-nosnippet>23</a>	<span class="macro">dev_log!</span>(<span class="string">"cocoon"</span>, <span class="string">"[CocoonService] show_progress: title={}"</span>, Request.title);
+<a href=#24 id=24 data-nosnippet>24</a>
+<a href=#25 id=25 data-nosnippet>25</a>	<span class="kw">let </span>Handle = SystemTime::now()
+<a href=#26 id=26 data-nosnippet>26</a>		.duration_since(UNIX_EPOCH)
+<a href=#27 id=27 data-nosnippet>27</a>		.map(|D| D.as_millis() <span class="kw">as </span>u32)
+<a href=#28 id=28 data-nosnippet>28</a>		.unwrap_or(<span class="number">0</span>);
+<a href=#29 id=29 data-nosnippet>29</a>
+<a href=#30 id=30 data-nosnippet>30</a>	<span class="kw">let _ </span>= Service.environment.ApplicationHandle.emit(
+<a href=#31 id=31 data-nosnippet>31</a>		<span class="string">"sky://progress/start"</span>,
+<a href=#32 id=32 data-nosnippet>32</a>		<span class="macro">json!</span>({
+<a href=#33 id=33 data-nosnippet>33</a>			<span class="string">"handle"</span>: Handle,
+<a href=#34 id=34 data-nosnippet>34</a>			<span class="string">"title"</span>: Request.title,
+<a href=#35 id=35 data-nosnippet>35</a>			<span class="string">"cancellable"</span>: Request.cancellable,
+<a href=#36 id=36 data-nosnippet>36</a>			<span class="string">"location"</span>: Request.location,
+<a href=#37 id=37 data-nosnippet>37</a>		}),
+<a href=#38 id=38 data-nosnippet>38</a>	);
+<a href=#39 id=39 data-nosnippet>39</a>
+<a href=#40 id=40 data-nosnippet>40</a>	<span class="prelude-val">Ok</span>(Response::new(ShowProgressResponse { handle:Handle }))
+<a href=#41 id=41 data-nosnippet>41</a>}
 </code></pre></div></section></main></body></html>

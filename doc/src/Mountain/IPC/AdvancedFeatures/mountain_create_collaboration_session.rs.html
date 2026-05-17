@@ -8,24 +8,26 @@
 <a href=#8 id=8 data-nosnippet>8</a>
 <a href=#9 id=9 data-nosnippet>9</a><span class="kw">use </span>crate::{
 <a href=#10 id=10 data-nosnippet>10</a>	IPC::AdvancedFeatures::{
-<a href=#11 id=11 data-nosnippet>11</a>		<a href="CollaborationPermissions.rs.html#10-15">CollaborationPermissions::Struct</a> <span class="kw">as </span>CollaborationPermissions,
-<a href=#12 id=12 data-nosnippet>12</a>		<a href="Features.rs.html#34-39">Features::Struct</a> <span class="kw">as </span>Features,
+<a href=#11 id=11 data-nosnippet>11</a>		<a href="CollaborationPermissions.rs.html#10-18">CollaborationPermissions::Struct</a> <span class="kw">as </span>CollaborationPermissions,
+<a href=#12 id=12 data-nosnippet>12</a>		<a href="Features.rs.html#34-42">Features::Struct</a> <span class="kw">as </span>Features,
 <a href=#13 id=13 data-nosnippet>13</a>	},
-<a href=#14 id=14 data-nosnippet>14</a>	<a href="../DevLog/mod.rs.html#40-81">dev_log</a>,
+<a href=#14 id=14 data-nosnippet>14</a>	<a href="../DevLog/mod.rs.html#52-122">dev_log</a>,
 <a href=#15 id=15 data-nosnippet>15</a>};
 <a href=#16 id=16 data-nosnippet>16</a>
 <a href=#17 id=17 data-nosnippet>17</a><span class="attr">#[tauri::command]
 <a href=#18 id=18 data-nosnippet>18</a></span><span class="kw">pub async fn </span><a href="#17">mountain_create_collaboration_session</a>(
 <a href=#19 id=19 data-nosnippet>19</a>	app_handle:tauri::AppHandle,
-<a href=#20 id=20 data-nosnippet>20</a>	session_id:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
-<a href=#21 id=21 data-nosnippet>21</a>	permissions:<a href="CollaborationPermissions.rs.html#10-15">CollaborationPermissions</a>,
-<a href=#22 id=22 data-nosnippet>22</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
-<a href=#23 id=23 data-nosnippet>23</a>	<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Tauri command: create_collaboration_session"</span>);
-<a href=#24 id=24 data-nosnippet>24</a>
-<a href=#25 id=25 data-nosnippet>25</a>	<span class="kw">if let </span><span class="prelude-val">Some</span>(features) = app_handle.try_state::&lt;Features&gt;() {
-<a href=#26 id=26 data-nosnippet>26</a>		features.create_collaboration_session(session_id, permissions).<span class="kw">await
-<a href=#27 id=27 data-nosnippet>27</a>	</span>} <span class="kw">else </span>{
-<a href=#28 id=28 data-nosnippet>28</a>		<span class="prelude-val">Err</span>(<span class="string">"AdvancedFeatures not found in application state"</span>.to_string())
-<a href=#29 id=29 data-nosnippet>29</a>	}
-<a href=#30 id=30 data-nosnippet>30</a>}
+<a href=#20 id=20 data-nosnippet>20</a>
+<a href=#21 id=21 data-nosnippet>21</a>	session_id:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#22 id=22 data-nosnippet>22</a>
+<a href=#23 id=23 data-nosnippet>23</a>	permissions:<a href="CollaborationPermissions.rs.html#10-18">CollaborationPermissions</a>,
+<a href=#24 id=24 data-nosnippet>24</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
+<a href=#25 id=25 data-nosnippet>25</a>	<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Tauri command: create_collaboration_session"</span>);
+<a href=#26 id=26 data-nosnippet>26</a>
+<a href=#27 id=27 data-nosnippet>27</a>	<span class="kw">if let </span><span class="prelude-val">Some</span>(features) = app_handle.try_state::&lt;Features&gt;() {
+<a href=#28 id=28 data-nosnippet>28</a>		features.create_collaboration_session(session_id, permissions).<span class="kw">await
+<a href=#29 id=29 data-nosnippet>29</a>	</span>} <span class="kw">else </span>{
+<a href=#30 id=30 data-nosnippet>30</a>		<span class="prelude-val">Err</span>(<span class="string">"AdvancedFeatures not found in application state"</span>.to_string())
+<a href=#31 id=31 data-nosnippet>31</a>	}
+<a href=#32 id=32 data-nosnippet>32</a>}
 </code></pre></div></section></main></body></html>

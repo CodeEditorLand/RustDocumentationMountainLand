@@ -13,21 +13,24 @@
 <a href=#13 id=13 data-nosnippet>13</a></span><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json</a>};
 <a href=#14 id=14 data-nosnippet>14</a><span class="kw">use </span>tauri::Emitter;
 <a href=#15 id=15 data-nosnippet>15</a>
-<a href=#16 id=16 data-nosnippet>16</a><span class="kw">use </span>crate::{<a href="../MountainVinegRPCService.rs.html#77-87">Vine::Server::MountainVinegRPCService::MountainVinegRPCService</a>, <a href="../../../IPC/DevLog/mod.rs.html#40-81">dev_log</a>};
+<a href=#16 id=16 data-nosnippet>16</a><span class="kw">use </span>crate::{<a href="../MountainVinegRPCService.rs.html#78-88">Vine::Server::MountainVinegRPCService::MountainVinegRPCService</a>, <a href="../../../IPC/DevLog/mod.rs.html#52-122">dev_log</a>};
 <a href=#17 id=17 data-nosnippet>17</a>
-<a href=#18 id=18 data-nosnippet>18</a><span class="kw">pub async fn </span><a href="../../../../../Mountain/Vine/Server/Notification/SetStatusBarText/fn.SetStatusBarText.html">SetStatusBarText</a>(Service:<span class="kw-2">&amp;</span><a href="../MountainVinegRPCService.rs.html#77-87">MountainVinegRPCService</a>, Parameter:<span class="kw-2">&amp;</span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) {
+<a href=#18 id=18 data-nosnippet>18</a><span class="kw">pub async fn </span><a href="../../../../../Mountain/Vine/Server/Notification/SetStatusBarText/fn.SetStatusBarText.html">SetStatusBarText</a>(Service:<span class="kw-2">&amp;</span><a href="../MountainVinegRPCService.rs.html#78-88">MountainVinegRPCService</a>, Parameter:<span class="kw-2">&amp;</span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) {
 <a href=#19 id=19 data-nosnippet>19</a>	<span class="kw">let </span>Id = Parameter.get(<span class="string">"id"</span>).and_then(Value::as_str).unwrap_or(<span class="string">""</span>);
-<a href=#20 id=20 data-nosnippet>20</a>	<span class="kw">let </span>Text = Parameter.get(<span class="string">"text"</span>).and_then(Value::as_str).unwrap_or(<span class="string">""</span>);
-<a href=#21 id=21 data-nosnippet>21</a>	<span class="kw">let </span>Tooltip = Parameter.get(<span class="string">"tooltip"</span>).and_then(Value::as_str).unwrap_or(<span class="string">""</span>);
+<a href=#20 id=20 data-nosnippet>20</a>
+<a href=#21 id=21 data-nosnippet>21</a>	<span class="kw">let </span>Text = Parameter.get(<span class="string">"text"</span>).and_then(Value::as_str).unwrap_or(<span class="string">""</span>);
 <a href=#22 id=22 data-nosnippet>22</a>
-<a href=#23 id=23 data-nosnippet>23</a>	<span class="kw">let _ </span>= Service.ApplicationHandle().emit(
-<a href=#24 id=24 data-nosnippet>24</a>		<span class="string">"sky://statusbar/set-entry"</span>,
-<a href=#25 id=25 data-nosnippet>25</a>		<span class="macro">json!</span>({
-<a href=#26 id=26 data-nosnippet>26</a>			<span class="string">"id"</span>: Id,
-<a href=#27 id=27 data-nosnippet>27</a>			<span class="string">"text"</span>: Text,
-<a href=#28 id=28 data-nosnippet>28</a>			<span class="string">"tooltip"</span>: Tooltip,
-<a href=#29 id=29 data-nosnippet>29</a>		}),
-<a href=#30 id=30 data-nosnippet>30</a>	);
-<a href=#31 id=31 data-nosnippet>31</a>	<span class="macro">dev_log!</span>(<span class="string">"grpc"</span>, <span class="string">"[StatusBar] set-text id={} len={}"</span>, Id, Text.len());
-<a href=#32 id=32 data-nosnippet>32</a>}
+<a href=#23 id=23 data-nosnippet>23</a>	<span class="kw">let </span>Tooltip = Parameter.get(<span class="string">"tooltip"</span>).and_then(Value::as_str).unwrap_or(<span class="string">""</span>);
+<a href=#24 id=24 data-nosnippet>24</a>
+<a href=#25 id=25 data-nosnippet>25</a>	<span class="kw">let _ </span>= Service.ApplicationHandle().emit(
+<a href=#26 id=26 data-nosnippet>26</a>		<span class="string">"sky://statusbar/set-entry"</span>,
+<a href=#27 id=27 data-nosnippet>27</a>		<span class="macro">json!</span>({
+<a href=#28 id=28 data-nosnippet>28</a>			<span class="string">"id"</span>: Id,
+<a href=#29 id=29 data-nosnippet>29</a>			<span class="string">"text"</span>: Text,
+<a href=#30 id=30 data-nosnippet>30</a>			<span class="string">"tooltip"</span>: Tooltip,
+<a href=#31 id=31 data-nosnippet>31</a>		}),
+<a href=#32 id=32 data-nosnippet>32</a>	);
+<a href=#33 id=33 data-nosnippet>33</a>
+<a href=#34 id=34 data-nosnippet>34</a>	<span class="macro">dev_log!</span>(<span class="string">"grpc"</span>, <span class="string">"[StatusBar] set-text id={} len={}"</span>, Id, Text.len());
+<a href=#35 id=35 data-nosnippet>35</a>}
 </code></pre></div></section></main></body></html>

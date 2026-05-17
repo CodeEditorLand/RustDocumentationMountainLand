@@ -11,7 +11,7 @@
 <a href=#11 id=11 data-nosnippet>11</a>	sync::{<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">Mutex</a>, <a href="https://doc.rust-lang.org/nightly/std/sync/once_lock/struct.OnceLock.html">OnceLock</a>},
 <a href=#12 id=12 data-nosnippet>12</a>};
 <a href=#13 id=13 data-nosnippet>13</a>
-<a href=#14 id=14 data-nosnippet>14</a><span class="kw">use </span><span class="kw">crate</span>::IPC::DevLog::{<a href="mod.rs.html#25">IsEnabled</a>, <a href="mod.rs.html#29">WriteToFile</a>};
+<a href=#14 id=14 data-nosnippet>14</a><span class="kw">use </span><span class="kw">crate</span>::IPC::DevLog::{<a href="mod.rs.html#33">IsEnabled</a>, <a href="mod.rs.html#41">WriteToFile</a>};
 <a href=#15 id=15 data-nosnippet>15</a>
 <a href=#16 id=16 data-nosnippet>16</a><span class="kw">static </span><a href="../../../../Mountain/IPC/DevLog/DebugOnce/static.DEBUG_ONCE_KEYS.html">DEBUG_ONCE_KEYS</a>:<a href="https://doc.rust-lang.org/nightly/std/sync/once_lock/struct.OnceLock.html">OnceLock</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">Mutex</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/collections/hash/set/struct.HashSet.html">HashSet</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;&gt;&gt; = <a href="https://doc.rust-lang.org/nightly/std/sync/once_lock/struct.OnceLock.html">OnceLock</a>::<a href="https://doc.rust-lang.org/nightly/std/sync/once_lock/struct.OnceLock.html#method.new">new</a>();
 <a href=#17 id=17 data-nosnippet>17</a>
@@ -23,13 +23,17 @@
 <a href=#23 id=23 data-nosnippet>23</a>			<span class="kw">return</span>;
 <a href=#24 id=24 data-nosnippet>24</a>		}
 <a href=#25 id=25 data-nosnippet>25</a>	}
-<a href=#26 id=26 data-nosnippet>26</a>	<span class="kw">if </span>IsEnabled::<a href="IsEnabled.rs.html#50-66">Fn</a>(<a href="#20">Tag</a>) || IsEnabled::<a href="IsEnabled.rs.html#50-66">Fn</a>(<span class="string">"all"</span>) {
-<a href=#27 id=27 data-nosnippet>27</a>		<span class="kw">let </span>Formatted = <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"[DEV:{}] {}"</span>, Tag.to_uppercase(), Line);
-<a href=#28 id=28 data-nosnippet>28</a>		<a href="https://doc.rust-lang.org/nightly/std/macro.eprintln.html">eprintln!</a>(<span class="string">"{}"</span>, Formatted);
-<a href=#29 id=29 data-nosnippet>29</a>		WriteToFile::<a href="WriteToFile.rs.html#19-30">Fn</a>(<span class="kw-2">&amp;</span><a href="#27">Formatted</a>);
-<a href=#30 id=30 data-nosnippet>30</a>	} <span class="kw">else </span>{
-<a href=#31 id=31 data-nosnippet>31</a>		<span class="kw">let </span>Formatted = <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"[DEV:{}/once] {}"</span>, Tag.to_uppercase(), Line);
-<a href=#32 id=32 data-nosnippet>32</a>		WriteToFile::<a href="WriteToFile.rs.html#19-30">Fn</a>(<span class="kw-2">&amp;</span><a href="#31">Formatted</a>);
-<a href=#33 id=33 data-nosnippet>33</a>	}
-<a href=#34 id=34 data-nosnippet>34</a>}
+<a href=#26 id=26 data-nosnippet>26</a>
+<a href=#27 id=27 data-nosnippet>27</a>	<span class="kw">if </span>IsEnabled::<a href="IsEnabled.rs.html#50-72">Fn</a>(<a href="#20">Tag</a>) || IsEnabled::<a href="IsEnabled.rs.html#50-72">Fn</a>(<span class="string">"all"</span>) {
+<a href=#28 id=28 data-nosnippet>28</a>		<span class="kw">let </span>Formatted = <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"[DEV:{}] {}"</span>, Tag.to_uppercase(), Line);
+<a href=#29 id=29 data-nosnippet>29</a>
+<a href=#30 id=30 data-nosnippet>30</a>		<a href="https://doc.rust-lang.org/nightly/std/macro.eprintln.html">eprintln!</a>(<span class="string">"{}"</span>, Formatted);
+<a href=#31 id=31 data-nosnippet>31</a>
+<a href=#32 id=32 data-nosnippet>32</a>		WriteToFile::<a href="WriteToFile.rs.html#19-33">Fn</a>(<span class="kw-2">&amp;</span><a href="#28">Formatted</a>);
+<a href=#33 id=33 data-nosnippet>33</a>	} <span class="kw">else </span>{
+<a href=#34 id=34 data-nosnippet>34</a>		<span class="kw">let </span>Formatted = <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"[DEV:{}/once] {}"</span>, Tag.to_uppercase(), Line);
+<a href=#35 id=35 data-nosnippet>35</a>
+<a href=#36 id=36 data-nosnippet>36</a>		WriteToFile::<a href="WriteToFile.rs.html#19-33">Fn</a>(<span class="kw-2">&amp;</span><a href="#34">Formatted</a>);
+<a href=#37 id=37 data-nosnippet>37</a>	}
+<a href=#38 id=38 data-nosnippet>38</a>}
 </code></pre></div></section></main></body></html>

@@ -52,30 +52,31 @@
 <a href=#52 id=52 data-nosnippet>52</a>//! - `vs/workbench/services/search/common/search.ts` - search service
 <a href=#53 id=53 data-nosnippet>53</a>//!   architecture
 <a href=#54 id=54 data-nosnippet>54</a>//!
-<a href=#55 id=55 data-nosnippet>55</a>//! TODO:
-<a href=#56 id=56 data-nosnippet>56</a>//! - Implement connection retry with exponential backoff
-<a href=#57 id=57 data-nosnippet>57</a>//! - Add connection pooling for multiple concurrent requests
-<a href=#58 id=58 data-nosnippet>58</a>//! - Implement request caching for frequently accessed data (auth tokens, etc.)
-<a href=#59 id=59 data-nosnippet>59</a>//! - Add metrics collection for Air service calls (latency, success rate,
-<a href=#60 id=60 data-nosnippet>60</a>//!   errors)
-<a href=#61 id=61 data-nosnippet>61</a>//! - Implement fallback strategies when Air unavailable (local search, etc.)
+<a href=#55 id=55 data-nosnippet>55</a>//! ## Planned Work
+<a href=#56 id=56 data-nosnippet>56</a>//!
+<a href=#57 id=57 data-nosnippet>57</a>//! - Connection retry with exponential backoff
+<a href=#58 id=58 data-nosnippet>58</a>//! - Connection pooling for concurrent requests
+<a href=#59 id=59 data-nosnippet>59</a>//! - Request caching for frequently accessed data (auth tokens)
+<a href=#60 id=60 data-nosnippet>60</a>//! - Metrics collection for Air service calls (latency, success rate, errors)
+<a href=#61 id=61 data-nosnippet>61</a>//! - Fallback strategies when Air is unavailable (local search)
 <a href=#62 id=62 data-nosnippet>62</a>//! - Support for multiple Air daemons (load balancing/failover)
-<a href=#63 id=63 data-nosnippet>63</a>//! - Add request timeout configuration (configurable per operation type)
-<a href=#64 id=64 data-nosnippet>64</a>//! - Implement request/response logging for debugging
-<a href=#65 id=65 data-nosnippet>65</a>//! - Add telemetry for Air service health and usage
-<a href=#66 id=66 data-nosnippet>66</a>//! - Implement bidirectional streaming for real-time updates
-<a href=#67 id=67 data-nosnippet>67</a>//!
+<a href=#63 id=63 data-nosnippet>63</a>//! - Configurable request timeouts per operation type
+<a href=#64 id=64 data-nosnippet>64</a>//! - Request/response logging for debugging
+<a href=#65 id=65 data-nosnippet>65</a>//! - Telemetry for Air service health and usage
+<a href=#66 id=66 data-nosnippet>66</a>//! - Bidirectional streaming for real-time updates
+<a href=#67 id=67 data-nosnippet>67</a>
 <a href=#68 id=68 data-nosnippet>68</a>//! MODULE CONTENTS:
 <a href=#69 id=69 data-nosnippet>69</a>//! - Re-exports: `AirClient`, `AirServiceProvider`, response types, and helper
 <a href=#70 id=70 data-nosnippet>70</a>//!   functions
 <a href=#71 id=71 data-nosnippet>71</a>
 <a href=#72 id=72 data-nosnippet>72</a></span><span class="comment">// Module sub-modules
-<a href=#73 id=73 data-nosnippet>73</a></span><span class="kw">pub mod </span><a href="AirClient.rs.html#1-1124">AirClient</a>;
-<a href=#74 id=74 data-nosnippet>74</a><span class="kw">pub mod </span><a href="AirServiceProvider.rs.html#1-754">AirServiceProvider</a>;
-<a href=#75 id=75 data-nosnippet>75</a>
-<a href=#76 id=76 data-nosnippet>76</a><span class="comment">// Stub types for Air integration when AirLibrary is not available (legacy)
-<a href=#77 id=77 data-nosnippet>77</a>// Note: These are kept for backward compatibility but should not be used in new
-<a href=#78 id=78 data-nosnippet>78</a>// code
-<a href=#79 id=79 data-nosnippet>79</a></span><span class="attr">#[deprecated(note = <span class="string">"Use AirClient and AirServiceProvider instead"</span>)]
-<a href=#80 id=80 data-nosnippet>80</a></span><span class="kw">pub mod </span><a href="AirServiceTypesStub.rs.html#1-31">AirServiceTypesStub</a>;
+<a href=#73 id=73 data-nosnippet>73</a></span><span class="kw">pub mod </span><a href="AirClient.rs.html#1-1269">AirClient</a>;
+<a href=#74 id=74 data-nosnippet>74</a>
+<a href=#75 id=75 data-nosnippet>75</a><span class="kw">pub mod </span><a href="AirServiceProvider.rs.html#1-771">AirServiceProvider</a>;
+<a href=#76 id=76 data-nosnippet>76</a>
+<a href=#77 id=77 data-nosnippet>77</a><span class="comment">// Stub types for Air integration when AirLibrary is not available (legacy)
+<a href=#78 id=78 data-nosnippet>78</a>// Note: These are kept for backward compatibility but should not be used in new
+<a href=#79 id=79 data-nosnippet>79</a>// code
+<a href=#80 id=80 data-nosnippet>80</a></span><span class="attr">#[deprecated(note = <span class="string">"Use AirClient and AirServiceProvider instead"</span>)]
+<a href=#81 id=81 data-nosnippet>81</a></span><span class="kw">pub mod </span><a href="AirServiceTypesStub.rs.html#1-52">AirServiceTypesStub</a>;
 </code></pre></div></section></main></body></html>

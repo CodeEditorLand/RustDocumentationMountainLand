@@ -131,12 +131,12 @@
 <a href=#131 id=131 data-nosnippet>131</a><span class="kw">use </span>crate::{
 <a href=#132 id=132 data-nosnippet>132</a>	ApplicationState::{
 <a href=#133 id=133 data-nosnippet>133</a>		<a href="../ApplicationState/DTO/TreeViewStateDTO.rs.html#52-84">DTO::TreeViewStateDTO::TreeViewStateDTO</a>,
-<a href=#134 id=134 data-nosnippet>134</a>		State::ApplicationState::{<a href="../ApplicationState/State/ApplicationState.rs.html#64-87">ApplicationState</a>, <a href="../ApplicationState/State/ApplicationState.rs.html#135-137">MapLockError</a>},
+<a href=#134 id=134 data-nosnippet>134</a>		State::ApplicationState::{<a href="../ApplicationState/State/ApplicationState.rs.html#64-88">ApplicationState</a>, <a href="../ApplicationState/State/ApplicationState.rs.html#143-145">MapLockError</a>},
 <a href=#135 id=135 data-nosnippet>135</a>	},
-<a href=#136 id=136 data-nosnippet>136</a>	<a href="../Environment/CommandProvider.rs.html#192-208">Environment::CommandProvider::CommandHandler</a>,
+<a href=#136 id=136 data-nosnippet>136</a>	<a href="../Environment/CommandProvider.rs.html#62-78">Environment::CommandProvider::CommandHandler</a>,
 <a href=#137 id=137 data-nosnippet>137</a>	<a href="../FileSystem/FileExplorerViewProvider.rs.html#28-30">FileSystem::FileExplorerViewProvider::Struct</a> <span class="kw">as </span>FileExplorerViewProvider,
-<a href=#138 id=138 data-nosnippet>138</a>	<a href="../RunTime/ApplicationRunTime/mod.rs.html#16-21">RunTime::ApplicationRunTime::ApplicationRunTime</a>,
-<a href=#139 id=139 data-nosnippet>139</a>	<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log</a>,
+<a href=#138 id=138 data-nosnippet>138</a>	<a href="../RunTime/ApplicationRunTime/mod.rs.html#16-22">RunTime::ApplicationRunTime::ApplicationRunTime</a>,
+<a href=#139 id=139 data-nosnippet>139</a>	<a href="../IPC/DevLog/mod.rs.html#52-122">dev_log</a>,
 <a href=#140 id=140 data-nosnippet>140</a>};
 <a href=#141 id=141 data-nosnippet>141</a>
 <a href=#142 id=142 data-nosnippet>142</a><span class="comment">// --- Command Implementations ---
@@ -147,12 +147,12 @@
 <a href=#147 id=147 data-nosnippet>147</a>
 <a href=#148 id=148 data-nosnippet>148</a>	_Window:WebviewWindow&lt;Wry&gt;,
 <a href=#149 id=149 data-nosnippet>149</a>
-<a href=#150 id=150 data-nosnippet>150</a>	_RunTime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/mod.rs.html#16-21">ApplicationRunTime</a>&gt;,
+<a href=#150 id=150 data-nosnippet>150</a>	_RunTime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/mod.rs.html#16-22">ApplicationRunTime</a>&gt;,
 <a href=#151 id=151 data-nosnippet>151</a>
 <a href=#152 id=152 data-nosnippet>152</a>	_Argument:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#153 id=153 data-nosnippet>153</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html">Pin</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<span class="kw">dyn </span><a href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html">Future</a>&lt;Output = <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;&gt; + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a>&gt;&gt; {
 <a href=#154 id=154 data-nosnippet>154</a>	<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>::<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.pin">pin</a>(<span class="kw">async move </span>{
-<a href=#155 id=155 data-nosnippet>155</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"commands"</span>, <span class="string">"[Native Command] Hello from Mountain!"</span>);
+<a href=#155 id=155 data-nosnippet>155</a>		<a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"commands"</span>, <span class="string">"[Native Command] Hello from Mountain!"</span>);
 <a href=#156 id=156 data-nosnippet>156</a>
 <a href=#157 id=157 data-nosnippet>157</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json!</a>(<span class="string">"Hello from Mountain's native command!"</span>))
 <a href=#158 id=158 data-nosnippet>158</a>	})
@@ -164,12 +164,12 @@
 <a href=#164 id=164 data-nosnippet>164</a>
 <a href=#165 id=165 data-nosnippet>165</a>	_Window:WebviewWindow&lt;Wry&gt;,
 <a href=#166 id=166 data-nosnippet>166</a>
-<a href=#167 id=167 data-nosnippet>167</a>	RunTime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/mod.rs.html#16-21">ApplicationRunTime</a>&gt;,
+<a href=#167 id=167 data-nosnippet>167</a>	RunTime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/mod.rs.html#16-22">ApplicationRunTime</a>&gt;,
 <a href=#168 id=168 data-nosnippet>168</a>
 <a href=#169 id=169 data-nosnippet>169</a>	_Argument:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#170 id=170 data-nosnippet>170</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html">Pin</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<span class="kw">dyn </span><a href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html">Future</a>&lt;Output = <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;&gt; + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a>&gt;&gt; {
 <a href=#171 id=171 data-nosnippet>171</a>	<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>::<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.pin">pin</a>(<span class="kw">async move </span>{
-<a href=#172 id=172 data-nosnippet>172</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"commands"</span>, <span class="string">"[Native Command] Executing Open File..."</span>);
+<a href=#172 id=172 data-nosnippet>172</a>		<a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"commands"</span>, <span class="string">"[Native Command] Executing Open File..."</span>);
 <a href=#173 id=173 data-nosnippet>173</a>
 <a href=#174 id=174 data-nosnippet>174</a>		<span class="kw">let </span>DialogResult = <a href="#167">RunTime</a>.Run(ShowOpenDialog(<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>)).<span class="kw">await</span>.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| <a href="#174">Error</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>())<span class="question-mark">?</span>;
 <a href=#175 id=175 data-nosnippet>175</a>
@@ -194,12 +194,12 @@
 <a href=#194 id=194 data-nosnippet>194</a>
 <a href=#195 id=195 data-nosnippet>195</a>	_Window:WebviewWindow&lt;Wry&gt;,
 <a href=#196 id=196 data-nosnippet>196</a>
-<a href=#197 id=197 data-nosnippet>197</a>	RunTime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/mod.rs.html#16-21">ApplicationRunTime</a>&gt;,
+<a href=#197 id=197 data-nosnippet>197</a>	RunTime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/mod.rs.html#16-22">ApplicationRunTime</a>&gt;,
 <a href=#198 id=198 data-nosnippet>198</a>
 <a href=#199 id=199 data-nosnippet>199</a>	_Argument:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#200 id=200 data-nosnippet>200</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html">Pin</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<span class="kw">dyn </span><a href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html">Future</a>&lt;Output = <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;&gt; + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a>&gt;&gt; {
 <a href=#201 id=201 data-nosnippet>201</a>	<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>::<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.pin">pin</a>(<span class="kw">async move </span>{
-<a href=#202 id=202 data-nosnippet>202</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"commands"</span>, <span class="string">"[Native Command] Executing Format Document..."</span>);
+<a href=#202 id=202 data-nosnippet>202</a>		<a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"commands"</span>, <span class="string">"[Native Command] Executing Format Document..."</span>);
 <a href=#203 id=203 data-nosnippet>203</a>
 <a href=#204 id=204 data-nosnippet>204</a>		<span class="kw">let </span>AppState = <span class="kw-2">&amp;</span><a href="#197">RunTime</a>.Environment.ApplicationState;
 <a href=#205 id=205 data-nosnippet>205</a>
@@ -207,7 +207,7 @@
 <a href=#207 id=207 data-nosnippet>207</a>			.Workspace
 <a href=#208 id=208 data-nosnippet>208</a>			.ActiveDocumentURI
 <a href=#209 id=209 data-nosnippet>209</a>			.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>()
-<a href=#210 id=210 data-nosnippet>210</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(<a href="../ApplicationState/State/ApplicationState.rs.html#135-137">MapLockError</a>)
+<a href=#210 id=210 data-nosnippet>210</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(<a href="../ApplicationState/State/ApplicationState.rs.html#143-145">MapLockError</a>)
 <a href=#211 id=211 data-nosnippet>211</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| <a href="#211">Error</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>())<span class="question-mark">?
 <a href=#212 id=212 data-nosnippet>212</a>			</span>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>()
 <a href=#213 id=213 data-nosnippet>213</a>			.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.ok_or">ok_or</a>(<span class="string">"No active document URI found in state"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>())<span class="question-mark">?</span>;
@@ -227,7 +227,7 @@
 <a href=#227 id=227 data-nosnippet>227</a>
 <a href=#228 id=228 data-nosnippet>228</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Edits) = <a href="#223">EditsOption</a> {
 <a href=#229 id=229 data-nosnippet>229</a>			<span class="kw">if </span><a href="#228">Edits</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.is_empty">is_empty</a>() {
-<a href=#230 id=230 data-nosnippet>230</a>				<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"commands"</span>, <span class="string">"[Native Command] No formatting changes to apply."</span>);
+<a href=#230 id=230 data-nosnippet>230</a>				<a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"commands"</span>, <span class="string">"[Native Command] No formatting changes to apply."</span>);
 <a href=#231 id=231 data-nosnippet>231</a>
 <a href=#232 id=232 data-nosnippet>232</a>				<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Value::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#variant.Null">Null</a>);
 <a href=#233 id=233 data-nosnippet>233</a>			}
@@ -245,14 +245,14 @@
 <a href=#245 id=245 data-nosnippet>245</a>			};
 <a href=#246 id=246 data-nosnippet>246</a>
 <a href=#247 id=247 data-nosnippet>247</a>			<span class="comment">// 3. Apply the workspace edit.
-<a href=#248 id=248 data-nosnippet>248</a>			</span><a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"commands"</span>, <span class="string">"[Native Command] Applying formatting edits..."</span>);
+<a href=#248 id=248 data-nosnippet>248</a>			</span><a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"commands"</span>, <span class="string">"[Native Command] Applying formatting edits..."</span>);
 <a href=#249 id=249 data-nosnippet>249</a>
 <a href=#250 id=250 data-nosnippet>250</a>			<a href="#197">RunTime</a>
 <a href=#251 id=251 data-nosnippet>251</a>				.Run(ApplyWorkspaceEdit(<a href="#236">WorkspaceEdit</a>))
 <a href=#252 id=252 data-nosnippet>252</a>				.<span class="kw">await
 <a href=#253 id=253 data-nosnippet>253</a>				</span>.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| <a href="#253">Error</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>())<span class="question-mark">?</span>;
 <a href=#254 id=254 data-nosnippet>254</a>		} <span class="kw">else </span>{
-<a href=#255 id=255 data-nosnippet>255</a>			<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"commands"</span>, <span class="string">"[Native Command] No formatting provider found for this document."</span>);
+<a href=#255 id=255 data-nosnippet>255</a>			<a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"commands"</span>, <span class="string">"[Native Command] No formatting provider found for this document."</span>);
 <a href=#256 id=256 data-nosnippet>256</a>		}
 <a href=#257 id=257 data-nosnippet>257</a>
 <a href=#258 id=258 data-nosnippet>258</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Value::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#variant.Null">Null</a>)
@@ -265,12 +265,12 @@
 <a href=#265 id=265 data-nosnippet>265</a>
 <a href=#266 id=266 data-nosnippet>266</a>	_Window:WebviewWindow&lt;Wry&gt;,
 <a href=#267 id=267 data-nosnippet>267</a>
-<a href=#268 id=268 data-nosnippet>268</a>	RunTime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/mod.rs.html#16-21">ApplicationRunTime</a>&gt;,
+<a href=#268 id=268 data-nosnippet>268</a>	RunTime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/mod.rs.html#16-22">ApplicationRunTime</a>&gt;,
 <a href=#269 id=269 data-nosnippet>269</a>
 <a href=#270 id=270 data-nosnippet>270</a>	_Argument:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#271 id=271 data-nosnippet>271</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html">Pin</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<span class="kw">dyn </span><a href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html">Future</a>&lt;Output = <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;&gt; + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a>&gt;&gt; {
 <a href=#272 id=272 data-nosnippet>272</a>	<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>::<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.pin">pin</a>(<span class="kw">async move </span>{
-<a href=#273 id=273 data-nosnippet>273</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"commands"</span>, <span class="string">"[Native Command] Executing Save Document..."</span>);
+<a href=#273 id=273 data-nosnippet>273</a>		<a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"commands"</span>, <span class="string">"[Native Command] Executing Save Document..."</span>);
 <a href=#274 id=274 data-nosnippet>274</a>
 <a href=#275 id=275 data-nosnippet>275</a>		<span class="kw">let </span>AppState = <span class="kw-2">&amp;</span><a href="#268">RunTime</a>.Environment.ApplicationState;
 <a href=#276 id=276 data-nosnippet>276</a>
@@ -278,7 +278,7 @@
 <a href=#278 id=278 data-nosnippet>278</a>			.Workspace
 <a href=#279 id=279 data-nosnippet>279</a>			.ActiveDocumentURI
 <a href=#280 id=280 data-nosnippet>280</a>			.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>()
-<a href=#281 id=281 data-nosnippet>281</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(<a href="../ApplicationState/State/ApplicationState.rs.html#135-137">MapLockError</a>)
+<a href=#281 id=281 data-nosnippet>281</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(<a href="../ApplicationState/State/ApplicationState.rs.html#143-145">MapLockError</a>)
 <a href=#282 id=282 data-nosnippet>282</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| <a href="#282">Error</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>())<span class="question-mark">?
 <a href=#283 id=283 data-nosnippet>283</a>			</span>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>()
 <a href=#284 id=284 data-nosnippet>284</a>			.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.ok_or">ok_or</a>(<span class="string">"No active document URI found in state"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>())<span class="question-mark">?</span>;
@@ -291,7 +291,7 @@
 <a href=#291 id=291 data-nosnippet>291</a>		// handling, atomic writes, and backup creation. Current implementation only
 <a href=#292 id=292 data-nosnippet>292</a>		// logs the action; full implementation requires integration with the document
 <a href=#293 id=293 data-nosnippet>293</a>		// lifecycle and file system provider.
-<a href=#294 id=294 data-nosnippet>294</a>		</span><a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"commands"</span>, <span class="string">"[Native Command] Saving document: {}"</span>, URI);
+<a href=#294 id=294 data-nosnippet>294</a>		</span><a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"commands"</span>, <span class="string">"[Native Command] Saving document: {}"</span>, URI);
 <a href=#295 id=295 data-nosnippet>295</a>
 <a href=#296 id=296 data-nosnippet>296</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Value::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#variant.Null">Null</a>)
 <a href=#297 id=297 data-nosnippet>297</a>	})
@@ -303,12 +303,12 @@
 <a href=#303 id=303 data-nosnippet>303</a>
 <a href=#304 id=304 data-nosnippet>304</a>	_Window:WebviewWindow&lt;Wry&gt;,
 <a href=#305 id=305 data-nosnippet>305</a>
-<a href=#306 id=306 data-nosnippet>306</a>	RunTime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/mod.rs.html#16-21">ApplicationRunTime</a>&gt;,
+<a href=#306 id=306 data-nosnippet>306</a>	RunTime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/mod.rs.html#16-22">ApplicationRunTime</a>&gt;,
 <a href=#307 id=307 data-nosnippet>307</a>
 <a href=#308 id=308 data-nosnippet>308</a>	_Argument:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#309 id=309 data-nosnippet>309</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html">Pin</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<span class="kw">dyn </span><a href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html">Future</a>&lt;Output = <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;&gt; + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a>&gt;&gt; {
 <a href=#310 id=310 data-nosnippet>310</a>	<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>::<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.pin">pin</a>(<span class="kw">async move </span>{
-<a href=#311 id=311 data-nosnippet>311</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"commands"</span>, <span class="string">"[Native Command] Executing Close Document..."</span>);
+<a href=#311 id=311 data-nosnippet>311</a>		<a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"commands"</span>, <span class="string">"[Native Command] Executing Close Document..."</span>);
 <a href=#312 id=312 data-nosnippet>312</a>
 <a href=#313 id=313 data-nosnippet>313</a>		<span class="kw">let </span>AppState = <span class="kw-2">&amp;</span><a href="#306">RunTime</a>.Environment.ApplicationState;
 <a href=#314 id=314 data-nosnippet>314</a>
@@ -316,7 +316,7 @@
 <a href=#316 id=316 data-nosnippet>316</a>			.Workspace
 <a href=#317 id=317 data-nosnippet>317</a>			.ActiveDocumentURI
 <a href=#318 id=318 data-nosnippet>318</a>			.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>()
-<a href=#319 id=319 data-nosnippet>319</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(<a href="../ApplicationState/State/ApplicationState.rs.html#135-137">MapLockError</a>)
+<a href=#319 id=319 data-nosnippet>319</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(<a href="../ApplicationState/State/ApplicationState.rs.html#143-145">MapLockError</a>)
 <a href=#320 id=320 data-nosnippet>320</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| <a href="#320">Error</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>())<span class="question-mark">?
 <a href=#321 id=321 data-nosnippet>321</a>			</span>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>()
 <a href=#322 id=322 data-nosnippet>322</a>			.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.ok_or">ok_or</a>(<span class="string">"No active document URI found in state"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>())<span class="question-mark">?</span>;
@@ -329,7 +329,7 @@
 <a href=#329 id=329 data-nosnippet>329</a>		// lifecycle manager to release resources and update the UI. May invoke
 <a href=#330 id=330 data-nosnippet>330</a>		// Workbench::closeEditor or equivalent command. Current implementation only
 <a href=#331 id=331 data-nosnippet>331</a>		// logs the action.
-<a href=#332 id=332 data-nosnippet>332</a>		</span><a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"commands"</span>, <span class="string">"[Native Command] Closing document: {}"</span>, URI);
+<a href=#332 id=332 data-nosnippet>332</a>		</span><a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"commands"</span>, <span class="string">"[Native Command] Closing document: {}"</span>, URI);
 <a href=#333 id=333 data-nosnippet>333</a>
 <a href=#334 id=334 data-nosnippet>334</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Value::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#variant.Null">Null</a>)
 <a href=#335 id=335 data-nosnippet>335</a>	})
@@ -345,7 +345,7 @@
 <a href=#345 id=345 data-nosnippet>345</a>
 <a href=#346 id=346 data-nosnippet>346</a>	_Window:WebviewWindow&lt;Wry&gt;,
 <a href=#347 id=347 data-nosnippet>347</a>
-<a href=#348 id=348 data-nosnippet>348</a>	_RunTime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/mod.rs.html#16-21">ApplicationRunTime</a>&gt;,
+<a href=#348 id=348 data-nosnippet>348</a>	_RunTime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/mod.rs.html#16-22">ApplicationRunTime</a>&gt;,
 <a href=#349 id=349 data-nosnippet>349</a>
 <a href=#350 id=350 data-nosnippet>350</a>	Argument:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#351 id=351 data-nosnippet>351</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html">Pin</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<span class="kw">dyn </span><a href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html">Future</a>&lt;Output = <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;&gt; + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a>&gt;&gt; {
@@ -354,7 +354,7 @@
 <a href=#354 id=354 data-nosnippet>354</a>		// gitlens mode, SCM repo change). ~130 calls per session. Route
 <a href=#355 id=355 data-nosnippet>355</a>		// to `commands-verbose` so per-keypress context changes don't
 <a href=#356 id=356 data-nosnippet>356</a>		// flood the default log.
-<a href=#357 id=357 data-nosnippet>357</a>		</span><a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"commands-verbose"</span>, <span class="string">"[Native Command] setContext: {}"</span>, Argument);
+<a href=#357 id=357 data-nosnippet>357</a>		</span><a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"commands-verbose"</span>, <span class="string">"[Native Command] setContext: {}"</span>, Argument);
 <a href=#358 id=358 data-nosnippet>358</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Value::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#variant.Null">Null</a>)
 <a href=#359 id=359 data-nosnippet>359</a>	})
 <a href=#360 id=360 data-nosnippet>360</a>}
@@ -369,12 +369,12 @@
 <a href=#369 id=369 data-nosnippet>369</a>
 <a href=#370 id=370 data-nosnippet>370</a>	_Window:WebviewWindow&lt;Wry&gt;,
 <a href=#371 id=371 data-nosnippet>371</a>
-<a href=#372 id=372 data-nosnippet>372</a>	_RunTime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/mod.rs.html#16-21">ApplicationRunTime</a>&gt;,
+<a href=#372 id=372 data-nosnippet>372</a>	_RunTime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/mod.rs.html#16-22">ApplicationRunTime</a>&gt;,
 <a href=#373 id=373 data-nosnippet>373</a>
 <a href=#374 id=374 data-nosnippet>374</a>	Argument:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#375 id=375 data-nosnippet>375</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html">Pin</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<span class="kw">dyn </span><a href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html">Future</a>&lt;Output = <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;&gt; + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a>&gt;&gt; {
 <a href=#376 id=376 data-nosnippet>376</a>	<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>::<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.pin">pin</a>(<span class="kw">async move </span>{
-<a href=#377 id=377 data-nosnippet>377</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"commands"</span>, <span class="string">"[Native Command] openWalkthrough (no-op): {}"</span>, Argument);
+<a href=#377 id=377 data-nosnippet>377</a>		<a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"commands"</span>, <span class="string">"[Native Command] openWalkthrough (no-op): {}"</span>, Argument);
 <a href=#378 id=378 data-nosnippet>378</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Value::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#variant.Null">Null</a>)
 <a href=#379 id=379 data-nosnippet>379</a>	})
 <a href=#380 id=380 data-nosnippet>380</a>}
@@ -385,19 +385,19 @@
 <a href=#385 id=385 data-nosnippet>385</a>
 <a href=#386 id=386 data-nosnippet>386</a>	Window:WebviewWindow&lt;Wry&gt;,
 <a href=#387 id=387 data-nosnippet>387</a>
-<a href=#388 id=388 data-nosnippet>388</a>	_RunTime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/mod.rs.html#16-21">ApplicationRunTime</a>&gt;,
+<a href=#388 id=388 data-nosnippet>388</a>	_RunTime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/mod.rs.html#16-22">ApplicationRunTime</a>&gt;,
 <a href=#389 id=389 data-nosnippet>389</a>
 <a href=#390 id=390 data-nosnippet>390</a>	_Argument:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#391 id=391 data-nosnippet>391</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html">Pin</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<span class="kw">dyn </span><a href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html">Future</a>&lt;Output = <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;&gt; + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a>&gt;&gt; {
 <a href=#392 id=392 data-nosnippet>392</a>	<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>::<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html#method.pin">pin</a>(<span class="kw">async move </span>{
-<a href=#393 id=393 data-nosnippet>393</a>		<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"commands"</span>, <span class="string">"[Native Command] Executing Reload Window..."</span>);
+<a href=#393 id=393 data-nosnippet>393</a>		<a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"commands"</span>, <span class="string">"[Native Command] Executing Reload Window..."</span>);
 <a href=#394 id=394 data-nosnippet>394</a>
 <a href=#395 id=395 data-nosnippet>395</a>		<span class="comment">// Drive the real webview reload so extensions, settings, and locale
 <a href=#396 id=396 data-nosnippet>396</a>		// changes take effect without restarting the process. Swallow the
 <a href=#397 id=397 data-nosnippet>397</a>		// error - VS Code's contract returns `{ success: true }` on
 <a href=#398 id=398 data-nosnippet>398</a>		// best-effort reload and extensions don't inspect it further.
 <a href=#399 id=399 data-nosnippet>399</a>		</span><span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error) = <a href="#386">Window</a>.eval(<span class="string">"location.reload()"</span>) {
-<a href=#400 id=400 data-nosnippet>400</a>			<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"commands"</span>, <span class="string">"warn: [Native Command] Reload Window eval failed: {}"</span>, Error);
+<a href=#400 id=400 data-nosnippet>400</a>			<a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"commands"</span>, <span class="string">"warn: [Native Command] Reload Window eval failed: {}"</span>, Error);
 <a href=#401 id=401 data-nosnippet>401</a>		}
 <a href=#402 id=402 data-nosnippet>402</a>
 <a href=#403 id=403 data-nosnippet>403</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json!</a>({ <span class="string">"success"</span>: <span class="bool-val">true </span>}))
@@ -413,7 +413,7 @@
 <a href=#413 id=413 data-nosnippet>413</a>
 <a href=#414 id=414 data-nosnippet>414</a>	_Window:WebviewWindow&lt;Wry&gt;,
 <a href=#415 id=415 data-nosnippet>415</a>
-<a href=#416 id=416 data-nosnippet>416</a>	_RunTime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/mod.rs.html#16-21">ApplicationRunTime</a>&gt;,
+<a href=#416 id=416 data-nosnippet>416</a>	_RunTime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/mod.rs.html#16-22">ApplicationRunTime</a>&gt;,
 <a href=#417 id=417 data-nosnippet>417</a>
 <a href=#418 id=418 data-nosnippet>418</a>	Argument:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
 <a href=#419 id=419 data-nosnippet>419</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/core/pin/struct.Pin.html">Pin</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<span class="kw">dyn </span><a href="https://doc.rust-lang.org/nightly/core/future/future/trait.Future.html">Future</a>&lt;Output = <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;&gt; + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a>&gt;&gt; {
@@ -444,7 +444,7 @@
 <a href=#444 id=444 data-nosnippet>444</a>		<span class="kw">let </span>IsFileLike = <a href="#428">UriString</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.starts_with">starts_with</a>(<span class="string">"file:"</span>) || <a href="#428">UriString</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.starts_with">starts_with</a>(<span class="string">'/'</span>);
 <a href=#445 id=445 data-nosnippet>445</a>		<span class="kw">if </span><a href="#444">IsFileLike</a> {
 <a href=#446 id=446 data-nosnippet>446</a>			<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error) = <a href="#412">ApplicationHandle</a>.emit(<span class="string">"sky://window/showTextDocument"</span>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json!</a>({ <span class="string">"uri"</span>: UriString })) {
-<a href=#447 id=447 data-nosnippet>447</a>				<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
+<a href=#447 id=447 data-nosnippet>447</a>				<a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(
 <a href=#448 id=448 data-nosnippet>448</a>					<span class="string">"commands"</span>,
 <a href=#449 id=449 data-nosnippet>449</a>					<span class="string">"warn: [vscode.open] sky://window/showTextDocument emit failed: {}"</span>,
 <a href=#450 id=450 data-nosnippet>450</a>					Error
@@ -476,147 +476,152 @@
 <a href=#476 id=476 data-nosnippet>476</a>			<span class="comment">// No specific validation needed for open file
 <a href=#477 id=477 data-nosnippet>477</a>			</span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#478 id=478 data-nosnippet>478</a>		},
-<a href=#479 id=479 data-nosnippet>479</a>		<span class="string">"editor.action.formatDocument" </span>=&gt; {
-<a href=#480 id=480 data-nosnippet>480</a>			<span class="comment">// Ensure there's an active document
-<a href=#481 id=481 data-nosnippet>481</a>			</span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
-<a href=#482 id=482 data-nosnippet>482</a>		},
-<a href=#483 id=483 data-nosnippet>483</a>		<span class="kw">_ </span>=&gt; <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(()),
-<a href=#484 id=484 data-nosnippet>484</a>	}
-<a href=#485 id=485 data-nosnippet>485</a>}
-<a href=#486 id=486 data-nosnippet>486</a>
-<a href=#487 id=487 data-nosnippet>487</a><span class="comment">// --- Registration Function ---
+<a href=#479 id=479 data-nosnippet>479</a>
+<a href=#480 id=480 data-nosnippet>480</a>		<span class="string">"editor.action.formatDocument" </span>=&gt; {
+<a href=#481 id=481 data-nosnippet>481</a>			<span class="comment">// Ensure there's an active document
+<a href=#482 id=482 data-nosnippet>482</a>			</span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
+<a href=#483 id=483 data-nosnippet>483</a>		},
+<a href=#484 id=484 data-nosnippet>484</a>
+<a href=#485 id=485 data-nosnippet>485</a>		<span class="kw">_ </span>=&gt; <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(()),
+<a href=#486 id=486 data-nosnippet>486</a>	}
+<a href=#487 id=487 data-nosnippet>487</a>}
 <a href=#488 id=488 data-nosnippet>488</a>
-<a href=#489 id=489 data-nosnippet>489</a></span><span class="doccomment">/// Registers all native commands and providers with the application state.
-<a href=#490 id=490 data-nosnippet>490</a></span><span class="kw">pub fn </span><a href="../../../Mountain/Command/Bootstrap/fn.RegisterNativeCommands.html">RegisterNativeCommands</a>(
-<a href=#491 id=491 data-nosnippet>491</a>	AppHandle:<span class="kw-2">&amp;</span>AppHandle&lt;Wry&gt;,
-<a href=#492 id=492 data-nosnippet>492</a>
-<a href=#493 id=493 data-nosnippet>493</a>	ApplicationState:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../ApplicationState/State/ApplicationState.rs.html#64-87">ApplicationState</a>&gt;,
-<a href=#494 id=494 data-nosnippet>494</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
-<a href=#495 id=495 data-nosnippet>495</a>	<span class="comment">// --- Command Registration ---
-<a href=#496 id=496 data-nosnippet>496</a>	</span><span class="kw">let </span><span class="kw-2">mut </span>CommandRegistry = <a href="#493">ApplicationState</a>
-<a href=#497 id=497 data-nosnippet>497</a>		.Extension
-<a href=#498 id=498 data-nosnippet>498</a>		.Registry
-<a href=#499 id=499 data-nosnippet>499</a>		.CommandRegistry
-<a href=#500 id=500 data-nosnippet>500</a>		.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>()
-<a href=#501 id=501 data-nosnippet>501</a>		.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(<a href="../ApplicationState/State/ApplicationState.rs.html#135-137">MapLockError</a>)<span class="question-mark">?</span>;
-<a href=#502 id=502 data-nosnippet>502</a>
-<a href=#503 id=503 data-nosnippet>503</a>	<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"commands"</span>, <span class="string">"[Bootstrap] Registering native commands..."</span>);
+<a href=#489 id=489 data-nosnippet>489</a><span class="comment">// --- Registration Function ---
+<a href=#490 id=490 data-nosnippet>490</a>
+<a href=#491 id=491 data-nosnippet>491</a></span><span class="doccomment">/// Registers all native commands and providers with the application state.
+<a href=#492 id=492 data-nosnippet>492</a></span><span class="kw">pub fn </span><a href="../../../Mountain/Command/Bootstrap/fn.RegisterNativeCommands.html">RegisterNativeCommands</a>(
+<a href=#493 id=493 data-nosnippet>493</a>	AppHandle:<span class="kw-2">&amp;</span>AppHandle&lt;Wry&gt;,
+<a href=#494 id=494 data-nosnippet>494</a>
+<a href=#495 id=495 data-nosnippet>495</a>	ApplicationState:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../ApplicationState/State/ApplicationState.rs.html#64-88">ApplicationState</a>&gt;,
+<a href=#496 id=496 data-nosnippet>496</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
+<a href=#497 id=497 data-nosnippet>497</a>	<span class="comment">// --- Command Registration ---
+<a href=#498 id=498 data-nosnippet>498</a>	</span><span class="kw">let </span><span class="kw-2">mut </span>CommandRegistry = <a href="#495">ApplicationState</a>
+<a href=#499 id=499 data-nosnippet>499</a>		.Extension
+<a href=#500 id=500 data-nosnippet>500</a>		.Registry
+<a href=#501 id=501 data-nosnippet>501</a>		.CommandRegistry
+<a href=#502 id=502 data-nosnippet>502</a>		.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>()
+<a href=#503 id=503 data-nosnippet>503</a>		.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(<a href="../ApplicationState/State/ApplicationState.rs.html#143-145">MapLockError</a>)<span class="question-mark">?</span>;
 <a href=#504 id=504 data-nosnippet>504</a>
-<a href=#505 id=505 data-nosnippet>505</a>	<span class="comment">// Register core commands
-<a href=#506 id=506 data-nosnippet>506</a>	</span><a href="#496">CommandRegistry</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(<span class="string">"mountain.helloWorld"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(), CommandHandler::<a href="../Environment/CommandProvider.rs.html#194-204">Native</a>(<a href="#145-159">CommandHelloWorld</a>));
-<a href=#507 id=507 data-nosnippet>507</a>
-<a href=#508 id=508 data-nosnippet>508</a>	<a href="#496">CommandRegistry</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(<span class="string">"mountain.openFile"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(), CommandHandler::<a href="../Environment/CommandProvider.rs.html#194-204">Native</a>(<a href="#162-189">CommandOpenFile</a>));
+<a href=#505 id=505 data-nosnippet>505</a>	<a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"commands"</span>, <span class="string">"[Bootstrap] Registering native commands..."</span>);
+<a href=#506 id=506 data-nosnippet>506</a>
+<a href=#507 id=507 data-nosnippet>507</a>	<span class="comment">// Register core commands
+<a href=#508 id=508 data-nosnippet>508</a>	</span><a href="#498">CommandRegistry</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(<span class="string">"mountain.helloWorld"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(), CommandHandler::<a href="../Environment/CommandProvider.rs.html#64-74">Native</a>(<a href="#145-159">CommandHelloWorld</a>));
 <a href=#509 id=509 data-nosnippet>509</a>
-<a href=#510 id=510 data-nosnippet>510</a>	<a href="#496">CommandRegistry</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(
-<a href=#511 id=511 data-nosnippet>511</a>		<span class="string">"workbench.action.files.openFile"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
-<a href=#512 id=512 data-nosnippet>512</a>		CommandHandler::<a href="../Environment/CommandProvider.rs.html#194-204">Native</a>(<a href="#162-189">CommandOpenFile</a>),
-<a href=#513 id=513 data-nosnippet>513</a>	);
-<a href=#514 id=514 data-nosnippet>514</a>
-<a href=#515 id=515 data-nosnippet>515</a>	<a href="#496">CommandRegistry</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(
-<a href=#516 id=516 data-nosnippet>516</a>		<span class="string">"editor.action.formatDocument"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
-<a href=#517 id=517 data-nosnippet>517</a>		CommandHandler::<a href="../Environment/CommandProvider.rs.html#194-204">Native</a>(<a href="#192-260">CommandFormatDocument</a>),
-<a href=#518 id=518 data-nosnippet>518</a>	);
-<a href=#519 id=519 data-nosnippet>519</a>
-<a href=#520 id=520 data-nosnippet>520</a>	<a href="#496">CommandRegistry</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(
-<a href=#521 id=521 data-nosnippet>521</a>		<span class="string">"workbench.action.files.save"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
-<a href=#522 id=522 data-nosnippet>522</a>		CommandHandler::<a href="../Environment/CommandProvider.rs.html#194-204">Native</a>(<a href="#263-298">CommandSaveDocument</a>),
-<a href=#523 id=523 data-nosnippet>523</a>	);
-<a href=#524 id=524 data-nosnippet>524</a>
-<a href=#525 id=525 data-nosnippet>525</a>	<a href="#496">CommandRegistry</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(
-<a href=#526 id=526 data-nosnippet>526</a>		<span class="string">"workbench.action.closeActiveEditor"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
-<a href=#527 id=527 data-nosnippet>527</a>		CommandHandler::<a href="../Environment/CommandProvider.rs.html#194-204">Native</a>(<a href="#301-336">CommandCloseDocument</a>),
-<a href=#528 id=528 data-nosnippet>528</a>	);
-<a href=#529 id=529 data-nosnippet>529</a>
-<a href=#530 id=530 data-nosnippet>530</a>	<a href="#496">CommandRegistry</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(
-<a href=#531 id=531 data-nosnippet>531</a>		<span class="string">"workbench.action.reloadWindow"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
-<a href=#532 id=532 data-nosnippet>532</a>		CommandHandler::<a href="../Environment/CommandProvider.rs.html#194-204">Native</a>(<a href="#383-405">CommandReloadWindow</a>),
-<a href=#533 id=533 data-nosnippet>533</a>	);
-<a href=#534 id=534 data-nosnippet>534</a>
-<a href=#535 id=535 data-nosnippet>535</a>	<span class="comment">// setContext is VS Code built-in - extensions invoke it on activation to
-<a href=#536 id=536 data-nosnippet>536</a>	// declare UI context keys. Registering as a no-op silences the routing
-<a href=#537 id=537 data-nosnippet>537</a>	// error until Wind/Sky wire through a real context key service.
-<a href=#538 id=538 data-nosnippet>538</a>	</span><a href="#496">CommandRegistry</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(<span class="string">"setContext"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(), CommandHandler::<a href="../Environment/CommandProvider.rs.html#194-204">Native</a>(<a href="#343-360">CommandSetContext</a>));
-<a href=#539 id=539 data-nosnippet>539</a>
-<a href=#540 id=540 data-nosnippet>540</a>	<span class="comment">// `vscode.open(uri)` - dispatches to the editor for file URIs and to the
-<a href=#541 id=541 data-nosnippet>541</a>	// platform shell for everything else. Extensions call this without
-<a href=#542 id=542 data-nosnippet>542</a>	// guarding on whether we've registered it; a missing registration shows
-<a href=#543 id=543 data-nosnippet>543</a>	// up as "command 'vscode.open' not found" in user-visible error toasts.
-<a href=#544 id=544 data-nosnippet>544</a>	</span><a href="#496">CommandRegistry</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(<span class="string">"vscode.open"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(), CommandHandler::<a href="../Environment/CommandProvider.rs.html#194-204">Native</a>(<a href="#411-469">CommandVscodeOpen</a>));
-<a href=#545 id=545 data-nosnippet>545</a>	<a href="#496">CommandRegistry</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(<span class="string">"vscode.openFolder"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(), CommandHandler::<a href="../Environment/CommandProvider.rs.html#194-204">Native</a>(<a href="#411-469">CommandVscodeOpen</a>));
-<a href=#546 id=546 data-nosnippet>546</a>
-<a href=#547 id=547 data-nosnippet>547</a>	<span class="comment">// `workbench.action.openWalkthrough` is VS Code's welcome/getting-started
-<a href=#548 id=548 data-nosnippet>548</a>	// walkthrough entry point; the `claude-code` extension wraps it with its
-<a href=#549 id=549 data-nosnippet>549</a>	// own `claude-vscode.openWalkthrough` command and invokes both at
-<a href=#550 id=550 data-nosnippet>550</a>	// activation. Land has no walkthrough UI yet - register both as no-ops so
-<a href=#551 id=551 data-nosnippet>551</a>	// extension activation doesn't surface "command not found" errors.
-<a href=#552 id=552 data-nosnippet>552</a>	</span><a href="#496">CommandRegistry</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(
-<a href=#553 id=553 data-nosnippet>553</a>		<span class="string">"workbench.action.openWalkthrough"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
-<a href=#554 id=554 data-nosnippet>554</a>		CommandHandler::<a href="../Environment/CommandProvider.rs.html#194-204">Native</a>(<a href="#367-380">CommandOpenWalkthrough</a>),
-<a href=#555 id=555 data-nosnippet>555</a>	);
-<a href=#556 id=556 data-nosnippet>556</a>	<a href="#496">CommandRegistry</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(
-<a href=#557 id=557 data-nosnippet>557</a>		<span class="string">"claude-vscode.openWalkthrough"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
-<a href=#558 id=558 data-nosnippet>558</a>		CommandHandler::<a href="../Environment/CommandProvider.rs.html#194-204">Native</a>(<a href="#367-380">CommandOpenWalkthrough</a>),
-<a href=#559 id=559 data-nosnippet>559</a>	);
-<a href=#560 id=560 data-nosnippet>560</a>
-<a href=#561 id=561 data-nosnippet>561</a>	<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"commands"</span>, <span class="string">"[Bootstrap] {} native commands registered."</span>, CommandRegistry.len());
-<a href=#562 id=562 data-nosnippet>562</a>
-<a href=#563 id=563 data-nosnippet>563</a>	<a href="https://doc.rust-lang.org/nightly/core/mem/fn.drop.html">drop</a>(<a href="#496">CommandRegistry</a>);
+<a href=#510 id=510 data-nosnippet>510</a>	<a href="#498">CommandRegistry</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(<span class="string">"mountain.openFile"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(), CommandHandler::<a href="../Environment/CommandProvider.rs.html#64-74">Native</a>(<a href="#162-189">CommandOpenFile</a>));
+<a href=#511 id=511 data-nosnippet>511</a>
+<a href=#512 id=512 data-nosnippet>512</a>	<a href="#498">CommandRegistry</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(
+<a href=#513 id=513 data-nosnippet>513</a>		<span class="string">"workbench.action.files.openFile"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
+<a href=#514 id=514 data-nosnippet>514</a>		CommandHandler::<a href="../Environment/CommandProvider.rs.html#64-74">Native</a>(<a href="#162-189">CommandOpenFile</a>),
+<a href=#515 id=515 data-nosnippet>515</a>	);
+<a href=#516 id=516 data-nosnippet>516</a>
+<a href=#517 id=517 data-nosnippet>517</a>	<a href="#498">CommandRegistry</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(
+<a href=#518 id=518 data-nosnippet>518</a>		<span class="string">"editor.action.formatDocument"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
+<a href=#519 id=519 data-nosnippet>519</a>		CommandHandler::<a href="../Environment/CommandProvider.rs.html#64-74">Native</a>(<a href="#192-260">CommandFormatDocument</a>),
+<a href=#520 id=520 data-nosnippet>520</a>	);
+<a href=#521 id=521 data-nosnippet>521</a>
+<a href=#522 id=522 data-nosnippet>522</a>	<a href="#498">CommandRegistry</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(
+<a href=#523 id=523 data-nosnippet>523</a>		<span class="string">"workbench.action.files.save"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
+<a href=#524 id=524 data-nosnippet>524</a>		CommandHandler::<a href="../Environment/CommandProvider.rs.html#64-74">Native</a>(<a href="#263-298">CommandSaveDocument</a>),
+<a href=#525 id=525 data-nosnippet>525</a>	);
+<a href=#526 id=526 data-nosnippet>526</a>
+<a href=#527 id=527 data-nosnippet>527</a>	<a href="#498">CommandRegistry</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(
+<a href=#528 id=528 data-nosnippet>528</a>		<span class="string">"workbench.action.closeActiveEditor"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
+<a href=#529 id=529 data-nosnippet>529</a>		CommandHandler::<a href="../Environment/CommandProvider.rs.html#64-74">Native</a>(<a href="#301-336">CommandCloseDocument</a>),
+<a href=#530 id=530 data-nosnippet>530</a>	);
+<a href=#531 id=531 data-nosnippet>531</a>
+<a href=#532 id=532 data-nosnippet>532</a>	<a href="#498">CommandRegistry</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(
+<a href=#533 id=533 data-nosnippet>533</a>		<span class="string">"workbench.action.reloadWindow"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
+<a href=#534 id=534 data-nosnippet>534</a>		CommandHandler::<a href="../Environment/CommandProvider.rs.html#64-74">Native</a>(<a href="#383-405">CommandReloadWindow</a>),
+<a href=#535 id=535 data-nosnippet>535</a>	);
+<a href=#536 id=536 data-nosnippet>536</a>
+<a href=#537 id=537 data-nosnippet>537</a>	<span class="comment">// setContext is VS Code built-in - extensions invoke it on activation to
+<a href=#538 id=538 data-nosnippet>538</a>	// declare UI context keys. Registering as a no-op silences the routing
+<a href=#539 id=539 data-nosnippet>539</a>	// error until Wind/Sky wire through a real context key service.
+<a href=#540 id=540 data-nosnippet>540</a>	</span><a href="#498">CommandRegistry</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(<span class="string">"setContext"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(), CommandHandler::<a href="../Environment/CommandProvider.rs.html#64-74">Native</a>(<a href="#343-360">CommandSetContext</a>));
+<a href=#541 id=541 data-nosnippet>541</a>
+<a href=#542 id=542 data-nosnippet>542</a>	<span class="comment">// `vscode.open(uri)` - dispatches to the editor for file URIs and to the
+<a href=#543 id=543 data-nosnippet>543</a>	// platform shell for everything else. Extensions call this without
+<a href=#544 id=544 data-nosnippet>544</a>	// guarding on whether we've registered it; a missing registration shows
+<a href=#545 id=545 data-nosnippet>545</a>	// up as "command 'vscode.open' not found" in user-visible error toasts.
+<a href=#546 id=546 data-nosnippet>546</a>	</span><a href="#498">CommandRegistry</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(<span class="string">"vscode.open"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(), CommandHandler::<a href="../Environment/CommandProvider.rs.html#64-74">Native</a>(<a href="#411-469">CommandVscodeOpen</a>));
+<a href=#547 id=547 data-nosnippet>547</a>
+<a href=#548 id=548 data-nosnippet>548</a>	<a href="#498">CommandRegistry</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(<span class="string">"vscode.openFolder"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(), CommandHandler::<a href="../Environment/CommandProvider.rs.html#64-74">Native</a>(<a href="#411-469">CommandVscodeOpen</a>));
+<a href=#549 id=549 data-nosnippet>549</a>
+<a href=#550 id=550 data-nosnippet>550</a>	<span class="comment">// `workbench.action.openWalkthrough` is VS Code's welcome/getting-started
+<a href=#551 id=551 data-nosnippet>551</a>	// walkthrough entry point; the `claude-code` extension wraps it with its
+<a href=#552 id=552 data-nosnippet>552</a>	// own `claude-vscode.openWalkthrough` command and invokes both at
+<a href=#553 id=553 data-nosnippet>553</a>	// activation. Land has no walkthrough UI yet - register both as no-ops so
+<a href=#554 id=554 data-nosnippet>554</a>	// extension activation doesn't surface "command not found" errors.
+<a href=#555 id=555 data-nosnippet>555</a>	</span><a href="#498">CommandRegistry</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(
+<a href=#556 id=556 data-nosnippet>556</a>		<span class="string">"workbench.action.openWalkthrough"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
+<a href=#557 id=557 data-nosnippet>557</a>		CommandHandler::<a href="../Environment/CommandProvider.rs.html#64-74">Native</a>(<a href="#367-380">CommandOpenWalkthrough</a>),
+<a href=#558 id=558 data-nosnippet>558</a>	);
+<a href=#559 id=559 data-nosnippet>559</a>
+<a href=#560 id=560 data-nosnippet>560</a>	<a href="#498">CommandRegistry</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(
+<a href=#561 id=561 data-nosnippet>561</a>		<span class="string">"claude-vscode.openWalkthrough"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
+<a href=#562 id=562 data-nosnippet>562</a>		CommandHandler::<a href="../Environment/CommandProvider.rs.html#64-74">Native</a>(<a href="#367-380">CommandOpenWalkthrough</a>),
+<a href=#563 id=563 data-nosnippet>563</a>	);
 <a href=#564 id=564 data-nosnippet>564</a>
-<a href=#565 id=565 data-nosnippet>565</a>	<span class="comment">// --- Command Validation ---
-<a href=#566 id=566 data-nosnippet>566</a>	</span><a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"commands"</span>, <span class="string">"[Bootstrap] Validating registered commands..."</span>);
-<a href=#567 id=567 data-nosnippet>567</a>	<span class="comment">// Validate all registered commands at startup to catch configuration errors
-<a href=#568 id=568 data-nosnippet>568</a>	// early. Verification includes command signature correctness, parameter type
-<a href=#569 id=569 data-nosnippet>569</a>	// matching, required permissions and capabilities, and extension metadata
-<a href=#570 id=570 data-nosnippet>570</a>	// validity. This prevents runtime errors from malformed registrations and
-<a href=#571 id=571 data-nosnippet>571</a>	// provides immediate feedback to extension developers during development.
-<a href=#572 id=572 data-nosnippet>572</a>	// Current implementation logs without performing actual validation checks.
-<a href=#573 id=573 data-nosnippet>573</a>
-<a href=#574 id=574 data-nosnippet>574</a>	// --- Tree View Provider Registration ---
-<a href=#575 id=575 data-nosnippet>575</a>	</span><span class="kw">let </span><span class="kw-2">mut </span>TreeViewRegistry = <a href="#493">ApplicationState</a>
-<a href=#576 id=576 data-nosnippet>576</a>		.Feature
-<a href=#577 id=577 data-nosnippet>577</a>		.TreeViews
-<a href=#578 id=578 data-nosnippet>578</a>		.ActiveTreeViews
-<a href=#579 id=579 data-nosnippet>579</a>		.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>()
-<a href=#580 id=580 data-nosnippet>580</a>		.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(<a href="../ApplicationState/State/ApplicationState.rs.html#135-137">MapLockError</a>)<span class="question-mark">?</span>;
-<a href=#581 id=581 data-nosnippet>581</a>
-<a href=#582 id=582 data-nosnippet>582</a>	<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(<span class="string">"commands"</span>, <span class="string">"[Bootstrap] Registering native tree view providers..."</span>);
-<a href=#583 id=583 data-nosnippet>583</a>
-<a href=#584 id=584 data-nosnippet>584</a>	<span class="kw">let </span>ExplorerViewID = <span class="string">"workbench.view.explorer"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>();
-<a href=#585 id=585 data-nosnippet>585</a>
-<a href=#586 id=586 data-nosnippet>586</a>	<span class="kw">let </span>ExplorerProvider = <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(<a href="../FileSystem/FileExplorerViewProvider.rs.html#28-30">FileExplorerViewProvider</a>::<a href="../FileSystem/FileExplorerViewProvider.rs.html#35">New</a>(<a href="#491">AppHandle</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>()));
-<a href=#587 id=587 data-nosnippet>587</a>
-<a href=#588 id=588 data-nosnippet>588</a>	<a href="#575">TreeViewRegistry</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(
-<a href=#589 id=589 data-nosnippet>589</a>		<a href="#584">ExplorerViewID</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>(),
-<a href=#590 id=590 data-nosnippet>590</a>		<a href="../ApplicationState/DTO/TreeViewStateDTO.rs.html#52-84">TreeViewStateDTO</a> {
-<a href=#591 id=591 data-nosnippet>591</a>			ViewIdentifier:<a href="#584">ExplorerViewID</a>,
+<a href=#565 id=565 data-nosnippet>565</a>	<a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"commands"</span>, <span class="string">"[Bootstrap] {} native commands registered."</span>, CommandRegistry.len());
+<a href=#566 id=566 data-nosnippet>566</a>
+<a href=#567 id=567 data-nosnippet>567</a>	<a href="https://doc.rust-lang.org/nightly/core/mem/fn.drop.html">drop</a>(<a href="#498">CommandRegistry</a>);
+<a href=#568 id=568 data-nosnippet>568</a>
+<a href=#569 id=569 data-nosnippet>569</a>	<span class="comment">// --- Command Validation ---
+<a href=#570 id=570 data-nosnippet>570</a>	</span><a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"commands"</span>, <span class="string">"[Bootstrap] Validating registered commands..."</span>);
+<a href=#571 id=571 data-nosnippet>571</a>
+<a href=#572 id=572 data-nosnippet>572</a>	<span class="comment">// Validate all registered commands at startup to catch configuration errors
+<a href=#573 id=573 data-nosnippet>573</a>	// early. Verification includes command signature correctness, parameter type
+<a href=#574 id=574 data-nosnippet>574</a>	// matching, required permissions and capabilities, and extension metadata
+<a href=#575 id=575 data-nosnippet>575</a>	// validity. This prevents runtime errors from malformed registrations and
+<a href=#576 id=576 data-nosnippet>576</a>	// provides immediate feedback to extension developers during development.
+<a href=#577 id=577 data-nosnippet>577</a>	// Current implementation logs without performing actual validation checks.
+<a href=#578 id=578 data-nosnippet>578</a>
+<a href=#579 id=579 data-nosnippet>579</a>	// --- Tree View Provider Registration ---
+<a href=#580 id=580 data-nosnippet>580</a>	</span><span class="kw">let </span><span class="kw-2">mut </span>TreeViewRegistry = <a href="#495">ApplicationState</a>
+<a href=#581 id=581 data-nosnippet>581</a>		.Feature
+<a href=#582 id=582 data-nosnippet>582</a>		.TreeViews
+<a href=#583 id=583 data-nosnippet>583</a>		.ActiveTreeViews
+<a href=#584 id=584 data-nosnippet>584</a>		.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>()
+<a href=#585 id=585 data-nosnippet>585</a>		.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(<a href="../ApplicationState/State/ApplicationState.rs.html#143-145">MapLockError</a>)<span class="question-mark">?</span>;
+<a href=#586 id=586 data-nosnippet>586</a>
+<a href=#587 id=587 data-nosnippet>587</a>	<a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"commands"</span>, <span class="string">"[Bootstrap] Registering native tree view providers..."</span>);
+<a href=#588 id=588 data-nosnippet>588</a>
+<a href=#589 id=589 data-nosnippet>589</a>	<span class="kw">let </span>ExplorerViewID = <span class="string">"workbench.view.explorer"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>();
+<a href=#590 id=590 data-nosnippet>590</a>
+<a href=#591 id=591 data-nosnippet>591</a>	<span class="kw">let </span>ExplorerProvider = <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(<a href="../FileSystem/FileExplorerViewProvider.rs.html#28-30">FileExplorerViewProvider</a>::<a href="../FileSystem/FileExplorerViewProvider.rs.html#35">New</a>(<a href="#493">AppHandle</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>()));
 <a href=#592 id=592 data-nosnippet>592</a>
-<a href=#593 id=593 data-nosnippet>593</a>			Provider:<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<a href="#586">ExplorerProvider</a>),
-<a href=#594 id=594 data-nosnippet>594</a>
-<a href=#595 id=595 data-nosnippet>595</a>			<span class="comment">// This is a native provider
-<a href=#596 id=596 data-nosnippet>596</a>			</span>SideCarIdentifier:<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>,
+<a href=#593 id=593 data-nosnippet>593</a>	<a href="#580">TreeViewRegistry</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(
+<a href=#594 id=594 data-nosnippet>594</a>		<a href="#589">ExplorerViewID</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>(),
+<a href=#595 id=595 data-nosnippet>595</a>		<a href="../ApplicationState/DTO/TreeViewStateDTO.rs.html#52-84">TreeViewStateDTO</a> {
+<a href=#596 id=596 data-nosnippet>596</a>			ViewIdentifier:<a href="#589">ExplorerViewID</a>,
 <a href=#597 id=597 data-nosnippet>597</a>
-<a href=#598 id=598 data-nosnippet>598</a>			CanSelectMany:<span class="bool-val">true</span>,
+<a href=#598 id=598 data-nosnippet>598</a>			Provider:<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<a href="#591">ExplorerProvider</a>),
 <a href=#599 id=599 data-nosnippet>599</a>
-<a href=#600 id=600 data-nosnippet>600</a>			HasHandleDrag:<span class="bool-val">false</span>,
-<a href=#601 id=601 data-nosnippet>601</a>
-<a href=#602 id=602 data-nosnippet>602</a>			HasHandleDrop:<span class="bool-val">false</span>,
-<a href=#603 id=603 data-nosnippet>603</a>
-<a href=#604 id=604 data-nosnippet>604</a>			Message:<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>,
-<a href=#605 id=605 data-nosnippet>605</a>
-<a href=#606 id=606 data-nosnippet>606</a>			Title:<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<span class="string">"Explorer"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>()),
-<a href=#607 id=607 data-nosnippet>607</a>
-<a href=#608 id=608 data-nosnippet>608</a>			Description:<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>,
-<a href=#609 id=609 data-nosnippet>609</a>
-<a href=#610 id=610 data-nosnippet>610</a>			Badge:<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>,
-<a href=#611 id=611 data-nosnippet>611</a>		},
-<a href=#612 id=612 data-nosnippet>612</a>	);
-<a href=#613 id=613 data-nosnippet>613</a>
-<a href=#614 id=614 data-nosnippet>614</a>	<a href="../IPC/DevLog/mod.rs.html#40-81">dev_log!</a>(
-<a href=#615 id=615 data-nosnippet>615</a>		<span class="string">"commands"</span>,
-<a href=#616 id=616 data-nosnippet>616</a>		<span class="string">"[Bootstrap] {} native tree view providers registered."</span>,
-<a href=#617 id=617 data-nosnippet>617</a>		TreeViewRegistry.len()
-<a href=#618 id=618 data-nosnippet>618</a>	);
-<a href=#619 id=619 data-nosnippet>619</a>
-<a href=#620 id=620 data-nosnippet>620</a>	<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
-<a href=#621 id=621 data-nosnippet>621</a>}
+<a href=#600 id=600 data-nosnippet>600</a>			<span class="comment">// This is a native provider
+<a href=#601 id=601 data-nosnippet>601</a>			</span>SideCarIdentifier:<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>,
+<a href=#602 id=602 data-nosnippet>602</a>
+<a href=#603 id=603 data-nosnippet>603</a>			CanSelectMany:<span class="bool-val">true</span>,
+<a href=#604 id=604 data-nosnippet>604</a>
+<a href=#605 id=605 data-nosnippet>605</a>			HasHandleDrag:<span class="bool-val">false</span>,
+<a href=#606 id=606 data-nosnippet>606</a>
+<a href=#607 id=607 data-nosnippet>607</a>			HasHandleDrop:<span class="bool-val">false</span>,
+<a href=#608 id=608 data-nosnippet>608</a>
+<a href=#609 id=609 data-nosnippet>609</a>			Message:<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>,
+<a href=#610 id=610 data-nosnippet>610</a>
+<a href=#611 id=611 data-nosnippet>611</a>			Title:<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<span class="string">"Explorer"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>()),
+<a href=#612 id=612 data-nosnippet>612</a>
+<a href=#613 id=613 data-nosnippet>613</a>			Description:<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>,
+<a href=#614 id=614 data-nosnippet>614</a>
+<a href=#615 id=615 data-nosnippet>615</a>			Badge:<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>,
+<a href=#616 id=616 data-nosnippet>616</a>		},
+<a href=#617 id=617 data-nosnippet>617</a>	);
+<a href=#618 id=618 data-nosnippet>618</a>
+<a href=#619 id=619 data-nosnippet>619</a>	<a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(
+<a href=#620 id=620 data-nosnippet>620</a>		<span class="string">"commands"</span>,
+<a href=#621 id=621 data-nosnippet>621</a>		<span class="string">"[Bootstrap] {} native tree view providers registered."</span>,
+<a href=#622 id=622 data-nosnippet>622</a>		TreeViewRegistry.len()
+<a href=#623 id=623 data-nosnippet>623</a>	);
+<a href=#624 id=624 data-nosnippet>624</a>
+<a href=#625 id=625 data-nosnippet>625</a>	<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
+<a href=#626 id=626 data-nosnippet>626</a>}
 </code></pre></div></section></main></body></html>

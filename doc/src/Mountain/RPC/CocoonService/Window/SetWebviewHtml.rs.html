@@ -9,12 +9,12 @@
 <a href=#9 id=9 data-nosnippet>9</a><span class="kw">use </span>CommonLibrary::Webview::WebviewProvider::WebviewProvider;
 <a href=#10 id=10 data-nosnippet>10</a>
 <a href=#11 id=11 data-nosnippet>11</a><span class="kw">use </span>crate::{
-<a href=#12 id=12 data-nosnippet>12</a>	<a href="../mod.rs.html#270-277">RPC::CocoonService::CocoonServiceImpl</a>,
+<a href=#12 id=12 data-nosnippet>12</a>	<a href="../mod.rs.html#285-292">RPC::CocoonService::CocoonServiceImpl</a>,
 <a href=#13 id=13 data-nosnippet>13</a>	Vine::Generated::{<a href="../../../Vine/Generated/vine.rs.html#4">Empty</a>, <a href="../../../Vine/Generated/vine.rs.html#408-413">SetWebviewHtmlRequest</a>},
-<a href=#14 id=14 data-nosnippet>14</a>	<a href="../../../IPC/DevLog/mod.rs.html#40-81">dev_log</a>,
+<a href=#14 id=14 data-nosnippet>14</a>	<a href="../../../IPC/DevLog/mod.rs.html#52-122">dev_log</a>,
 <a href=#15 id=15 data-nosnippet>15</a>};
 <a href=#16 id=16 data-nosnippet>16</a>
-<a href=#17 id=17 data-nosnippet>17</a><span class="kw">pub async fn </span><a href="../../../../../Mountain/RPC/CocoonService/Window/SetWebviewHtml/fn.Fn.html">Fn</a>(Service:<span class="kw-2">&amp;</span><a href="../mod.rs.html#270-277">CocoonServiceImpl</a>, Request:<a href="../../../Vine/Generated/vine.rs.html#408-413">SetWebviewHtmlRequest</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Response&lt;Empty&gt;, Status&gt; {
+<a href=#17 id=17 data-nosnippet>17</a><span class="kw">pub async fn </span><a href="../../../../../Mountain/RPC/CocoonService/Window/SetWebviewHtml/fn.Fn.html">Fn</a>(Service:<span class="kw-2">&amp;</span><a href="../mod.rs.html#285-292">CocoonServiceImpl</a>, Request:<a href="../../../Vine/Generated/vine.rs.html#408-413">SetWebviewHtmlRequest</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Response&lt;Empty&gt;, Status&gt; {
 <a href=#18 id=18 data-nosnippet>18</a>	<span class="macro">dev_log!</span>(
 <a href=#19 id=19 data-nosnippet>19</a>		<span class="string">"cocoon"</span>,
 <a href=#20 id=20 data-nosnippet>20</a>		<span class="string">"[CocoonService] set_webview_html: handle={} ({} bytes)"</span>,
@@ -28,12 +28,13 @@
 <a href=#28 id=28 data-nosnippet>28</a>		.<span class="kw">await
 <a href=#29 id=29 data-nosnippet>29</a>	</span>{
 <a href=#30 id=30 data-nosnippet>30</a>		<span class="macro">dev_log!</span>(<span class="string">"cocoon"</span>, <span class="string">"warn: [CocoonService] set_webview_html trait failed: {}"</span>, Error);
-<a href=#31 id=31 data-nosnippet>31</a>		<span class="kw">let _ </span>= Service.environment.ApplicationHandle.emit(
-<a href=#32 id=32 data-nosnippet>32</a>			<span class="string">"sky://webview/set-html"</span>,
-<a href=#33 id=33 data-nosnippet>33</a>			<span class="macro">json!</span>({ <span class="string">"handle"</span>: Request.handle, <span class="string">"html"</span>: Request.html }),
-<a href=#34 id=34 data-nosnippet>34</a>		);
-<a href=#35 id=35 data-nosnippet>35</a>	}
-<a href=#36 id=36 data-nosnippet>36</a>
-<a href=#37 id=37 data-nosnippet>37</a>	<span class="prelude-val">Ok</span>(Response::new(Empty {}))
-<a href=#38 id=38 data-nosnippet>38</a>}
+<a href=#31 id=31 data-nosnippet>31</a>
+<a href=#32 id=32 data-nosnippet>32</a>		<span class="kw">let _ </span>= Service.environment.ApplicationHandle.emit(
+<a href=#33 id=33 data-nosnippet>33</a>			<span class="string">"sky://webview/set-html"</span>,
+<a href=#34 id=34 data-nosnippet>34</a>			<span class="macro">json!</span>({ <span class="string">"handle"</span>: Request.handle, <span class="string">"html"</span>: Request.html }),
+<a href=#35 id=35 data-nosnippet>35</a>		);
+<a href=#36 id=36 data-nosnippet>36</a>	}
+<a href=#37 id=37 data-nosnippet>37</a>
+<a href=#38 id=38 data-nosnippet>38</a>	<span class="prelude-val">Ok</span>(Response::new(Empty {}))
+<a href=#39 id=39 data-nosnippet>39</a>}
 </code></pre></div></section></main></body></html>

@@ -6,22 +6,23 @@
 <a href=#6 id=6 data-nosnippet>6</a>
 <a href=#7 id=7 data-nosnippet>7</a></span><span class="kw">use </span>tauri::Manager;
 <a href=#8 id=8 data-nosnippet>8</a>
-<a href=#9 id=9 data-nosnippet>9</a><span class="kw">use </span>crate::{<a href="Reporter.rs.html#42-52">IPC::StatusReporter::Reporter::Struct</a> <span class="kw">as </span>Reporter, <a href="../DevLog/mod.rs.html#40-81">dev_log</a>};
+<a href=#9 id=9 data-nosnippet>9</a><span class="kw">use </span>crate::{<a href="Reporter.rs.html#42-60">IPC::StatusReporter::Reporter::Struct</a> <span class="kw">as </span>Reporter, <a href="../DevLog/mod.rs.html#52-122">dev_log</a>};
 <a href=#10 id=10 data-nosnippet>10</a>
 <a href=#11 id=11 data-nosnippet>11</a><span class="attr">#[tauri::command]
 <a href=#12 id=12 data-nosnippet>12</a></span><span class="kw">pub async fn </span><a href="#11">mountain_start_ipc_status_reporting</a>(
 <a href=#13 id=13 data-nosnippet>13</a>	app_handle:tauri::AppHandle,
-<a href=#14 id=14 data-nosnippet>14</a>	interval_seconds:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
-<a href=#15 id=15 data-nosnippet>15</a>) -&gt; <span class="prelude-ty">Result</span>&lt;serde_json::Value, String&gt; {
-<a href=#16 id=16 data-nosnippet>16</a>	<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Tauri command: start_ipc_status_reporting"</span>);
-<a href=#17 id=17 data-nosnippet>17</a>
-<a href=#18 id=18 data-nosnippet>18</a>	<span class="kw">if let </span><span class="prelude-val">Some</span>(reporter) = app_handle.try_state::&lt;Reporter&gt;() {
-<a href=#19 id=19 data-nosnippet>19</a>		reporter
-<a href=#20 id=20 data-nosnippet>20</a>			.start_periodic_reporting(interval_seconds)
-<a href=#21 id=21 data-nosnippet>21</a>			.<span class="kw">await
-<a href=#22 id=22 data-nosnippet>22</a>			</span>.map(|<span class="kw">_</span>| <span class="macro">serde_json::json!</span>({ <span class="string">"status"</span>: <span class="string">"started"</span>, <span class="string">"interval_seconds"</span>: interval_seconds }))
-<a href=#23 id=23 data-nosnippet>23</a>	} <span class="kw">else </span>{
-<a href=#24 id=24 data-nosnippet>24</a>		<span class="prelude-val">Err</span>(<span class="string">"StatusReporter not found in application state"</span>.to_string())
-<a href=#25 id=25 data-nosnippet>25</a>	}
-<a href=#26 id=26 data-nosnippet>26</a>}
+<a href=#14 id=14 data-nosnippet>14</a>
+<a href=#15 id=15 data-nosnippet>15</a>	interval_seconds:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>,
+<a href=#16 id=16 data-nosnippet>16</a>) -&gt; <span class="prelude-ty">Result</span>&lt;serde_json::Value, String&gt; {
+<a href=#17 id=17 data-nosnippet>17</a>	<span class="macro">dev_log!</span>(<span class="string">"lifecycle"</span>, <span class="string">"Tauri command: start_ipc_status_reporting"</span>);
+<a href=#18 id=18 data-nosnippet>18</a>
+<a href=#19 id=19 data-nosnippet>19</a>	<span class="kw">if let </span><span class="prelude-val">Some</span>(reporter) = app_handle.try_state::&lt;Reporter&gt;() {
+<a href=#20 id=20 data-nosnippet>20</a>		reporter
+<a href=#21 id=21 data-nosnippet>21</a>			.start_periodic_reporting(interval_seconds)
+<a href=#22 id=22 data-nosnippet>22</a>			.<span class="kw">await
+<a href=#23 id=23 data-nosnippet>23</a>			</span>.map(|<span class="kw">_</span>| <span class="macro">serde_json::json!</span>({ <span class="string">"status"</span>: <span class="string">"started"</span>, <span class="string">"interval_seconds"</span>: interval_seconds }))
+<a href=#24 id=24 data-nosnippet>24</a>	} <span class="kw">else </span>{
+<a href=#25 id=25 data-nosnippet>25</a>		<span class="prelude-val">Err</span>(<span class="string">"StatusReporter not found in application state"</span>.to_string())
+<a href=#26 id=26 data-nosnippet>26</a>	}
+<a href=#27 id=27 data-nosnippet>27</a>}
 </code></pre></div></section></main></body></html>

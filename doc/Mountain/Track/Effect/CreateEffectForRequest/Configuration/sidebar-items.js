@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["CreateEffect"]};
+window.SIDEBAR_ITEMS = {"fn":["CreateEffect","UpdateConfigurationValueAndNotify"]};
