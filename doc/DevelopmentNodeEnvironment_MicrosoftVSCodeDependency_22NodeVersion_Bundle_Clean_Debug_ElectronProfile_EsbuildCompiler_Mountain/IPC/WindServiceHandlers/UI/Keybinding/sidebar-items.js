@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["KeybindingAdd","KeybindingGetAll","KeybindingLookup","KeybindingRemove"]};

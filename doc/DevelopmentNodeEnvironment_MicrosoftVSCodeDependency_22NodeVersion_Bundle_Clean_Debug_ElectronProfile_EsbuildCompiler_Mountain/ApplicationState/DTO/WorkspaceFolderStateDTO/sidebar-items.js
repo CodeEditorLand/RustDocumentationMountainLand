@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["MAX_FOLDER_NAME_LENGTH","MAX_WORKSPACE_FOLDERS"],"struct":["WorkspaceFolderStateDTO"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["Fn"],"mod":["Authentication","Clipboard","Commands","Configuration","Debug","Diagnostics","Documents","FileReadAlias","FileSystem","FileWatcher","Git","Keybinding","LanguageFeatures","Languages","NativeHost","SCM","Search","Secrets","StatusBar","Storage","Task","Terminal","TreeView","UserInterface","Webview","WindowUI","Workspace"]};

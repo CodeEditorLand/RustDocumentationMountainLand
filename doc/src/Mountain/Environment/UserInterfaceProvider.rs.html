@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `Element/Mountain/Source/Environment/UserInterfaceProvider.rs`."><title>UserInterfaceProvider.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-b7b9f40b.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-41dd4d93.js"></script><script defer src="../../../static.files/src-script-813739b1.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><h1><div class="sub-heading">Mountain/Environment/</div>UserInterfaceProvider.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="doccomment">//! # UserInterfaceProvider (Environment)
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `Element/Mountain/Source/Environment/UserInterfaceProvider.rs`."><title>UserInterfaceProvider.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.97.0-nightly (d3cd04068 2026-05-16)" data-channel="nightly" data-search-js="search-fd9372ac.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-41dd4d93.js"></script><script defer src="../../../static.files/src-script-813739b1.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-fcd733ba.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><h1><div class="sub-heading">Mountain/Environment/</div>UserInterfaceProvider.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="doccomment">//! # UserInterfaceProvider (Environment)
 <a href=#2 id=2 data-nosnippet>2</a>//!
 <a href=#3 id=3 data-nosnippet>3</a>//! Implements the `UserInterfaceProvider` trait for `MountainEnvironment`,
 <a href=#4 id=4 data-nosnippet>4</a>//! orchestrating all modal UI interactions (dialogs, messages, quick picks)
@@ -57,7 +57,7 @@
 <a href=#57 id=57 data-nosnippet>57</a><span class="kw">use </span>tokio::time::{<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html">Duration</a>, timeout};
 <a href=#58 id=58 data-nosnippet>58</a><span class="kw">use </span><a href="https://docs.rs/uuid/1.23.1/uuid/struct.Uuid.html">uuid::Uuid</a>;
 <a href=#59 id=59 data-nosnippet>59</a>
-<a href=#60 id=60 data-nosnippet>60</a><span class="kw">use </span>super::{<a href="MountainEnvironment.rs.html#72-85">MountainEnvironment::MountainEnvironment</a>, <a href="mod.rs.html#117">Utility</a>};
+<a href=#60 id=60 data-nosnippet>60</a><span class="kw">use </span>super::{<a href="MountainEnvironment.rs.html#72-85">MountainEnvironment::MountainEnvironment</a>, <a href="mod.rs.html#121">Utility</a>};
 <a href=#61 id=61 data-nosnippet>61</a><span class="kw">use </span><a href="../IPC/DevLog/mod.rs.html#52-122"><span class="kw">crate</span>::dev_log</a>;
 <a href=#62 id=62 data-nosnippet>62</a>
 <a href=#63 id=63 data-nosnippet>63</a><span class="comment">// TODO: custom dialog buttons/layouts, glob-pattern file-type filters,
@@ -93,7 +93,7 @@
 <a href=#93 id=93 data-nosnippet>93</a>		// `?? severity` fallbacks; emit camelCase as the canonical form.
 <a href=#94 id=94 data-nosnippet>94</a>		</span><span class="kw">let </span>Payload = <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json!</a>({ <span class="string">"severity"</span>: Severity, <span class="string">"message"</span>: Message, <span class="string">"options"</span>: Options });
 <a href=#95 id=95 data-nosnippet>95</a>
-<a href=#96 id=96 data-nosnippet>96</a>		<span class="kw">let </span>ResponseValue = <a href="#254-317">SendUserInterfaceRequest</a>(<a class="self" href="#81">self</a>, SkyEvent::UIShowMessageRequest.AsStr(), <a href="#94">Payload</a>).<span class="kw">await</span><span class="question-mark">?</span>;
+<a href=#96 id=96 data-nosnippet>96</a>		<span class="kw">let </span>ResponseValue = SendUserInterfaceRequest(<span class="self">self</span>, SkyEvent::UIShowMessageRequest.AsStr(), Payload).<span class="kw">await</span><span class="question-mark">?</span>;
 <a href=#97 id=97 data-nosnippet>97</a>
 <a href=#98 id=98 data-nosnippet>98</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="#96">ResponseValue</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#method.as_str">as_str</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>::<a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from">from</a>))
 <a href=#99 id=99 data-nosnippet>99</a>	}
@@ -132,24 +132,24 @@
 <a href=#132 id=132 data-nosnippet>132</a>		};
 <a href=#133 id=133 data-nosnippet>133</a>
 <a href=#134 id=134 data-nosnippet>134</a>		<span class="kw">let </span>PickedPaths:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;FilePath&gt;&gt; = tokio::task::spawn_blocking(<span class="kw">move </span>|| {
-<a href=#135 id=135 data-nosnippet>135</a>			<span class="kw">if </span><a href="#108">CanSelectFolders</a> {
-<a href=#136 id=136 data-nosnippet>136</a>				<span class="kw">if </span><a href="#108">CanSelectMany</a> {
-<a href=#137 id=137 data-nosnippet>137</a>					<a href="#106">Builder</a>.blocking_pick_folders()
+<a href=#135 id=135 data-nosnippet>135</a>			<span class="kw">if </span>CanSelectFolders {
+<a href=#136 id=136 data-nosnippet>136</a>				<span class="kw">if </span>CanSelectMany {
+<a href=#137 id=137 data-nosnippet>137</a>					Builder.blocking_pick_folders()
 <a href=#138 id=138 data-nosnippet>138</a>				} <span class="kw">else </span>{
-<a href=#139 id=139 data-nosnippet>139</a>					<a href="#106">Builder</a>.blocking_pick_folder().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|p| <a href="https://doc.rust-lang.org/nightly/alloc/macro.vec.html">vec!</a>[p])
+<a href=#139 id=139 data-nosnippet>139</a>					Builder.blocking_pick_folder().map(|p| <span class="macro">vec!</span>[p])
 <a href=#140 id=140 data-nosnippet>140</a>				}
-<a href=#141 id=141 data-nosnippet>141</a>			} <span class="kw">else if </span><a href="#108">CanSelectFiles</a> {
-<a href=#142 id=142 data-nosnippet>142</a>				<span class="kw">if </span><a href="#108">CanSelectMany</a> {
-<a href=#143 id=143 data-nosnippet>143</a>					<a href="#106">Builder</a>.blocking_pick_files()
+<a href=#141 id=141 data-nosnippet>141</a>			} <span class="kw">else if </span>CanSelectFiles {
+<a href=#142 id=142 data-nosnippet>142</a>				<span class="kw">if </span>CanSelectMany {
+<a href=#143 id=143 data-nosnippet>143</a>					Builder.blocking_pick_files()
 <a href=#144 id=144 data-nosnippet>144</a>				} <span class="kw">else </span>{
-<a href=#145 id=145 data-nosnippet>145</a>					<a href="#106">Builder</a>.blocking_pick_file().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|p| <a href="https://doc.rust-lang.org/nightly/alloc/macro.vec.html">vec!</a>[p])
+<a href=#145 id=145 data-nosnippet>145</a>					Builder.blocking_pick_file().map(|p| <span class="macro">vec!</span>[p])
 <a href=#146 id=146 data-nosnippet>146</a>				}
 <a href=#147 id=147 data-nosnippet>147</a>			} <span class="kw">else </span>{
-<a href=#148 id=148 data-nosnippet>148</a>				<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>
-<a href=#149 id=149 data-nosnippet>149</a>			}
+<a href=#148 id=148 data-nosnippet>148</a>				<span class="prelude-val">None
+<a href=#149 id=149 data-nosnippet>149</a>			</span>}
 <a href=#150 id=150 data-nosnippet>150</a>		})
 <a href=#151 id=151 data-nosnippet>151</a>		.<span class="kw">await
-<a href=#152 id=152 data-nosnippet>152</a>		</span>.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| CommonError::UserInterfaceInteraction { Reason:<a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Dialog task failed: {}"</span>, Error) })<span class="question-mark">?</span>;
+<a href=#152 id=152 data-nosnippet>152</a>		</span>.map_err(|Error| CommonError::UserInterfaceInteraction { Reason:<span class="macro">format!</span>(<span class="string">"Dialog task failed: {}"</span>, Error) })<span class="question-mark">?</span>;
 <a href=#153 id=153 data-nosnippet>153</a>
 <a href=#154 id=154 data-nosnippet>154</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="#134">PickedPaths</a>.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|paths| <a href="#154">paths</a>.<a href="https://doc.rust-lang.org/nightly/core/iter/traits/collect/trait.IntoIterator.html#tymethod.into_iter">into_iter</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.filter_map">filter_map</a>(|p| <a href="#154">p</a>.into_path().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>()).<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.collect">collect</a>()))
 <a href=#155 id=155 data-nosnippet>155</a>	}
@@ -186,10 +186,10 @@
 <a href=#186 id=186 data-nosnippet>186</a>			}
 <a href=#187 id=187 data-nosnippet>187</a>		}
 <a href=#188 id=188 data-nosnippet>188</a>
-<a href=#189 id=189 data-nosnippet>189</a>		<span class="kw">let </span>PickedFile = tokio::task::spawn_blocking(<span class="kw">move </span>|| <a href="#161">Builder</a>.blocking_save_file())
+<a href=#189 id=189 data-nosnippet>189</a>		<span class="kw">let </span>PickedFile = tokio::task::spawn_blocking(<span class="kw">move </span>|| Builder.blocking_save_file())
 <a href=#190 id=190 data-nosnippet>190</a>			.<span class="kw">await
-<a href=#191 id=191 data-nosnippet>191</a>			</span>.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| {
-<a href=#192 id=192 data-nosnippet>192</a>				CommonError::UserInterfaceInteraction { Reason:<a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Dialog task failed: {}"</span>, Error) }
+<a href=#191 id=191 data-nosnippet>191</a>			</span>.map_err(|Error| {
+<a href=#192 id=192 data-nosnippet>192</a>				CommonError::UserInterfaceInteraction { Reason:<span class="macro">format!</span>(<span class="string">"Dialog task failed: {}"</span>, Error) }
 <a href=#193 id=193 data-nosnippet>193</a>			})<span class="question-mark">?</span>;
 <a href=#194 id=194 data-nosnippet>194</a>
 <a href=#195 id=195 data-nosnippet>195</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="#189">PickedFile</a>.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|p| <a href="#195">p</a>.into_path().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>()))
@@ -216,7 +216,7 @@
 <a href=#216 id=216 data-nosnippet>216</a>		// The legacy `UIShowQuickPickRequest` channel
 <a href=#217 id=217 data-nosnippet>217</a>		// (`sky://ui/show-quick-pick-request`) had no Sky listener and
 <a href=#218 id=218 data-nosnippet>218</a>		// every emit silently disappeared.
-<a href=#219 id=219 data-nosnippet>219</a>		</span><span class="kw">let </span>ResponseValue = <a href="#254-317">SendUserInterfaceRequest</a>(<a class="self" href="#200">self</a>, SkyEvent::QuickPickShow.AsStr(), <a href="#213">Payload</a>).<span class="kw">await</span><span class="question-mark">?</span>;
+<a href=#219 id=219 data-nosnippet>219</a>		</span><span class="kw">let </span>ResponseValue = SendUserInterfaceRequest(<span class="self">self</span>, SkyEvent::QuickPickShow.AsStr(), Payload).<span class="kw">await</span><span class="question-mark">?</span>;
 <a href=#220 id=220 data-nosnippet>220</a>
 <a href=#221 id=221 data-nosnippet>221</a>		serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/fn.from_value.html">from_value</a>(<a href="#219">ResponseValue</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| {
 <a href=#222 id=222 data-nosnippet>222</a>			CommonError::SerializationError {
@@ -232,7 +232,7 @@
 <a href=#232 id=232 data-nosnippet>232</a>		<span class="comment">// Use the Sky-listener-aligned channel (`sky://input-box/show`).
 <a href=#233 id=233 data-nosnippet>233</a>		// The legacy `UIShowInputBoxRequest` channel
 <a href=#234 id=234 data-nosnippet>234</a>		// (`sky://ui/show-input-box-request`) had no Sky listener.
-<a href=#235 id=235 data-nosnippet>235</a>		</span><span class="kw">let </span>ResponseValue = <a href="#254-317">SendUserInterfaceRequest</a>(<a class="self" href="#229">self</a>, SkyEvent::InputBoxShow.AsStr(), <a href="#229">Options</a>).<span class="kw">await</span><span class="question-mark">?</span>;
+<a href=#235 id=235 data-nosnippet>235</a>		</span><span class="kw">let </span>ResponseValue = SendUserInterfaceRequest(<span class="self">self</span>, SkyEvent::InputBoxShow.AsStr(), Options).<span class="kw">await</span><span class="question-mark">?</span>;
 <a href=#236 id=236 data-nosnippet>236</a>
 <a href=#237 id=237 data-nosnippet>237</a>		serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/fn.from_value.html">from_value</a>(<a href="#235">ResponseValue</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| {
 <a href=#238 id=238 data-nosnippet>238</a>			CommonError::SerializationError {

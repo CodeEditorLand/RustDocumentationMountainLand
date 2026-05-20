@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `Element/Mountain/Source/Binary/Main/Entry.rs`."><title>Entry.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../../static.files/rustdoc-b7b9f40b.css"><meta name="rustdoc-vars" data-root-path="../../../../" data-static-root-path="../../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../../static.files/storage-41dd4d93.js"></script><script defer src="../../../../static.files/src-script-813739b1.js"></script><script defer src="../../../../src-files.js"></script><script defer src="../../../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><h1><div class="sub-heading">Mountain/Binary/Main/</div>Entry.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="attr">#![allow(unused_imports)]
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `Element/Mountain/Source/Binary/Main/Entry.rs`."><title>Entry.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../../../../" data-static-root-path="../../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.97.0-nightly (d3cd04068 2026-05-16)" data-channel="nightly" data-search-js="search-fd9372ac.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../../static.files/storage-41dd4d93.js"></script><script defer src="../../../../static.files/src-script-813739b1.js"></script><script defer src="../../../../src-files.js"></script><script defer src="../../../../static.files/main-fcd733ba.js"></script><noscript><link rel="stylesheet" href="../../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><h1><div class="sub-heading">Mountain/Binary/Main/</div>Entry.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="attr">#![allow(unused_imports)]
 <a href=#2 id=2 data-nosnippet>2</a>
 <a href=#3 id=3 data-nosnippet>3</a></span><span class="doccomment">//! # Entry (Binary/Main)
 <a href=#4 id=4 data-nosnippet>4</a>//!
@@ -75,7 +75,7 @@
 <a href=#75 id=75 data-nosnippet>75</a>		<a href="../Build/DnsCommands/dns_get_forward_allowlist.rs.html#11-17">dns_get_forward_allowlist::dns_get_forward_allowlist</a>,
 <a href=#76 id=76 data-nosnippet>76</a>		<a href="../Build/DnsCommands/dns_get_health_status.rs.html#11-29">dns_get_health_status::dns_get_health_status</a>,
 <a href=#77 id=77 data-nosnippet>77</a>		<a href="../Build/DnsCommands/dns_get_server_info.rs.html#14-22">dns_get_server_info::dns_get_server_info</a>,
-<a href=#78 id=78 data-nosnippet>78</a>		<a href="../Build/DnsCommands/dns_get_zone_info.rs.html#15-100">dns_get_zone_info::dns_get_zone_info</a>,
+<a href=#78 id=78 data-nosnippet>78</a>		<a href="../Build/DnsCommands/dns_get_zone_info.rs.html#15-105">dns_get_zone_info::dns_get_zone_info</a>,
 <a href=#79 id=79 data-nosnippet>79</a>		<a href="../Build/DnsCommands/dns_health_check.rs.html#12-19">dns_health_check::dns_health_check</a>,
 <a href=#80 id=80 data-nosnippet>80</a>		<a href="../Build/DnsCommands/dns_resolve.rs.html#15-57">dns_resolve::dns_resolve</a>,
 <a href=#81 id=81 data-nosnippet>81</a>		<a href="../Build/DnsCommands/dns_test_resolution.rs.html#12-16">dns_test_resolution::dns_test_resolution</a>,
@@ -83,12 +83,12 @@
 <a href=#83 id=83 data-nosnippet>83</a>	<span class="comment">// Binary submodule imports
 <a href=#84 id=84 data-nosnippet>84</a>	</span><a href="../Build/LocalhostPlugin.rs.html#129-238">Binary::Build::LocalhostPlugin::LocalhostPlugin</a> <span class="kw">as </span>LocalhostPluginFn,
 <a href=#85 id=85 data-nosnippet>85</a>	<a href="../Build/LoggingPlugin.rs.html#61-136">Binary::Build::LoggingPlugin::LoggingPlugin</a> <span class="kw">as </span>LoggingPluginFn,
-<a href=#86 id=86 data-nosnippet>86</a>	Binary::Build::Scheme::{<a class="self" href="../Build/mod.rs.html#23">self</a>, <a href="../Build/Scheme.rs.html#85">DnsPort</a>, <a href="../Build/Scheme.rs.html#57-61">init_service_registry</a>, <a href="../Build/Scheme.rs.html#428-611">land_scheme_handler</a>, <a href="../Build/Scheme.rs.html#669-675">register_land_service</a>},
+<a href=#86 id=86 data-nosnippet>86</a>	Binary::Build::Scheme::{<a class="self" href="../Build/mod.rs.html#23">self</a>, <a href="../Build/Scheme.rs.html#86">DnsPort</a>, <a href="../Build/Scheme.rs.html#58-62">init_service_registry</a>, <a href="../Build/Scheme.rs.html#430-613">land_scheme_handler</a>, <a href="../Build/Scheme.rs.html#671-677">register_land_service</a>},
 <a href=#87 id=87 data-nosnippet>87</a>	<a href="../Build/ServiceRegistry.rs.html#89-95">Binary::Build::ServiceRegistry::ServiceRegistry</a> <span class="kw">as </span>ServiceRegistryFn,
 <a href=#88 id=88 data-nosnippet>88</a>	<a href="../Build/TauriBuild.rs.html#19-32">Binary::Build::TauriBuild::TauriBuild</a> <span class="kw">as </span>TauriBuildFn,
-<a href=#89 id=89 data-nosnippet>89</a>	<a href="../Build/WindowBuild.rs.html#33-169">Binary::Build::WindowBuild::WindowBuild</a> <span class="kw">as </span>WindowBuildFn,
+<a href=#89 id=89 data-nosnippet>89</a>	<a href="../Build/WindowBuild.rs.html#33-200">Binary::Build::WindowBuild::WindowBuild</a> <span class="kw">as </span>WindowBuildFn,
 <a href=#90 id=90 data-nosnippet>90</a>	<a href="../Extension/ExtensionPopulate.rs.html#29-55">Binary::Extension::ExtensionPopulate::ExtensionPopulate</a> <span class="kw">as </span>ExtensionPopulateFn,
-<a href=#91 id=91 data-nosnippet>91</a>	<a href="../Extension/ScanPathConfigure.rs.html#32-214">Binary::Extension::ScanPathConfigure::ScanPathConfigure</a> <span class="kw">as </span>ScanPathConfigureFn,
+<a href=#91 id=91 data-nosnippet>91</a>	<a href="../Extension/ScanPathConfigure.rs.html#32-216">Binary::Extension::ScanPathConfigure::ScanPathConfigure</a> <span class="kw">as </span>ScanPathConfigureFn,
 <a href=#92 id=92 data-nosnippet>92</a>	<a href="../Initialize/CliParse.rs.html#45-51">Binary::Initialize::CliParse::Parse</a> <span class="kw">as </span>CliParseFn,
 <a href=#93 id=93 data-nosnippet>93</a>	<a href="../Initialize/LogLevel.rs.html#46-52">Binary::Initialize::LogLevel::Resolve</a> <span class="kw">as </span>ResolveLogLevel,
 <a href=#94 id=94 data-nosnippet>94</a>	<a href="../Initialize/PortSelector.rs.html#61">Binary::Initialize::PortSelector::BuildUrl</a> <span class="kw">as </span>BuildPortUrl,
@@ -110,7 +110,7 @@
 <a href=#110 id=110 data-nosnippet>110</a>	<a href="../../RunTime/ApplicationRunTime/mod.rs.html#16-22">RunTime::ApplicationRunTime::ApplicationRunTime</a>,
 <a href=#111 id=111 data-nosnippet>111</a>	<a href="../../Library.rs.html#123">Track</a>,
 <a href=#112 id=112 data-nosnippet>112</a>};
-<a href=#113 id=113 data-nosnippet>113</a><span class="kw">use </span><a href="AppLifecycle.rs.html#149-685"><span class="kw">super</span>::AppLifecycle::AppLifecycleSetup</a>;
+<a href=#113 id=113 data-nosnippet>113</a><span class="kw">use </span><a href="AppLifecycle.rs.html#149-690"><span class="kw">super</span>::AppLifecycle::AppLifecycleSetup</a>;
 <a href=#114 id=114 data-nosnippet>114</a>
 <a href=#115 id=115 data-nosnippet>115</a><span class="comment">// Note: Tauri commands are used with fully qualified paths in generate_handler
 <a href=#116 id=116 data-nosnippet>116</a>// because the __cmd_* macros generated by #[tauri::command] are module-local.
@@ -190,7 +190,7 @@
 <a href=#190 id=190 data-nosnippet>190</a>		std::env::<a href="https://doc.rust-lang.org/nightly/std/env/fn.var.html">var</a>(<span class="string">"TERM_PROGRAM"</span>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.is_ok">is_ok</a>() || std::env::<a href="https://doc.rust-lang.org/nightly/std/env/fn.var.html">var</a>(<span class="string">"TERM"</span>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_or">map_or</a>(<span class="bool-val">false</span>, |V| <a href="#190">V</a> != <span class="string">"dumb" </span>&amp;&amp; <a href="#190">V</a> != <span class="string">"unknown"</span>);
 <a href=#191 id=191 data-nosnippet>191</a>
 <a href=#192 id=192 data-nosnippet>192</a>	<span class="kw">if </span>!<a href="#189">IsTtyLaunch</a> {
-<a href=#193 id=193 data-nosnippet>193</a>		<span class="kw">crate</span>::Environment::Utility::EnhanceShellEnvironment::<a href="../../Environment/Utility/EnhanceShellEnvironment.rs.html#33-116">Fn</a>();
+<a href=#193 id=193 data-nosnippet>193</a>		<span class="kw">crate</span>::Environment::Utility::EnhanceShellEnvironment::<a href="../../Environment/Utility/EnhanceShellEnvironment.rs.html#33-120">Fn</a>();
 <a href=#194 id=194 data-nosnippet>194</a>	}
 <a href=#195 id=195 data-nosnippet>195</a>
 <a href=#196 id=196 data-nosnippet>196</a>	<span class="comment">// -------------------------------------------------------------------------
@@ -281,7 +281,7 @@
 <a href=#281 id=281 data-nosnippet>281</a>	<span class="comment">// -------------------------------------------------------------------------
 <a href=#282 id=282 data-nosnippet>282</a>	// [Boot] [Tier] Resolved tier banner (Plan A Wave 1.7 runtime banner)
 <a href=#283 id=283 data-nosnippet>283</a>	// -------------------------------------------------------------------------
-<a href=#284 id=284 data-nosnippet>284</a>	</span><span class="kw">crate</span>::LandFixTier::<a href="../../LandFixTier.rs.html#42-66">LogResolvedTiers</a>();
+<a href=#284 id=284 data-nosnippet>284</a>	</span><span class="kw">crate</span>::LandFixTier::<a href="../../LandFixTier.rs.html#42-70">LogResolvedTiers</a>();
 <a href=#285 id=285 data-nosnippet>285</a>
 <a href=#286 id=286 data-nosnippet>286</a>	<span class="comment">// -------------------------------------------------------------------------
 <a href=#287 id=287 data-nosnippet>287</a>	// [Boot] [Profile] Self-report (BATCH-13 step 6)
@@ -341,7 +341,7 @@
 <a href=#341 id=341 data-nosnippet>341</a>		// error captured during the rest of boot lands in the project.
 <a href=#342 id=342 data-nosnippet>342</a>		// No-op in release builds or when Report=false.
 <a href=#343 id=343 data-nosnippet>343</a>		// ---------------------------------------------------------------------
-<a href=#344 id=344 data-nosnippet>344</a>		</span><span class="kw">crate</span>::Binary::Build::PostHogPlugin::Initialize::<a href="../Build/PostHogPlugin/Initialize.rs.html#17-46">Fn</a>().<span class="kw">await</span>;
+<a href=#344 id=344 data-nosnippet>344</a>		</span><span class="kw">crate</span>::Binary::Build::PostHogPlugin::Initialize::Fn().<span class="kw">await</span>;
 <a href=#345 id=345 data-nosnippet>345</a>
 <a href=#346 id=346 data-nosnippet>346</a>		<span class="comment">// ---------------------------------------------------------------------
 <a href=#347 id=347 data-nosnippet>347</a>		// [Boot] [Common::Telemetry] Initialize the shared dual-pipe
@@ -479,7 +479,7 @@
 <a href=#479 id=479 data-nosnippet>479</a>						<span class="string">"[Lifecycle] [Setup] Initializing ServiceRegistry for land:// scheme..."
 <a href=#480 id=480 data-nosnippet>480</a>					</span>);
 <a href=#481 id=481 data-nosnippet>481</a>					<span class="kw">let </span>service_registry = <a href="../Build/ServiceRegistry.rs.html#89-95">ServiceRegistryFn</a>::<a href="../Build/ServiceRegistry.rs.html#101-105">new</a>();
-<a href=#482 id=482 data-nosnippet>482</a>					<a href="../Build/Scheme.rs.html#57-61">init_service_registry</a>(<a href="#481">service_registry</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>());
+<a href=#482 id=482 data-nosnippet>482</a>					<a href="../Build/Scheme.rs.html#58-62">init_service_registry</a>(<a href="#481">service_registry</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>());
 <a href=#483 id=483 data-nosnippet>483</a>
 <a href=#484 id=484 data-nosnippet>484</a>					<span class="comment">// ---------------------------------------------------------
 <a href=#485 id=485 data-nosnippet>485</a>					// [Service Registry] Register local HTTP services
@@ -487,16 +487,16 @@
 <a href=#487 id=487 data-nosnippet>487</a>					// Register the main code editor service
 <a href=#488 id=488 data-nosnippet>488</a>					</span><a href="../../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(
 <a href=#489 id=489 data-nosnippet>489</a>						<span class="string">"lifecycle"</span>,
-<a href=#490 id=490 data-nosnippet>490</a>						<span class="string">"[Lifecycle] [Setup] Registering code.editor.land service on port {}"</span>,
+<a href=#490 id=490 data-nosnippet>490</a>						<span class="string">"[Lifecycle] [Setup] Registering code.land.playform.cloud service on port {}"</span>,
 <a href=#491 id=491 data-nosnippet>491</a>						ServerPortForClosure
 <a href=#492 id=492 data-nosnippet>492</a>					);
-<a href=#493 id=493 data-nosnippet>493</a>					<a href="../Build/Scheme.rs.html#669-675">register_land_service</a>(<span class="string">"code.editor.land"</span>, <a href="#469">ServerPortForClosure</a>);
+<a href=#493 id=493 data-nosnippet>493</a>					<a href="../Build/Scheme.rs.html#671-677">register_land_service</a>(<span class="string">"code.land.playform.cloud"</span>, <a href="#469">ServerPortForClosure</a>);
 <a href=#494 id=494 data-nosnippet>494</a>
 <a href=#495 id=495 data-nosnippet>495</a>					<span class="comment">// Register API editor service (same port for now, can be separate later)
-<a href=#496 id=496 data-nosnippet>496</a>					</span><a href="../Build/Scheme.rs.html#669-675">register_land_service</a>(<span class="string">"api.editor.land"</span>, <a href="#469">ServerPortForClosure</a>);
+<a href=#496 id=496 data-nosnippet>496</a>					</span><a href="../Build/Scheme.rs.html#671-677">register_land_service</a>(<span class="string">"api.land.playform.cloud"</span>, <a href="#469">ServerPortForClosure</a>);
 <a href=#497 id=497 data-nosnippet>497</a>
 <a href=#498 id=498 data-nosnippet>498</a>					<span class="comment">// Register assets editor service (same port for now, can be separate later)
-<a href=#499 id=499 data-nosnippet>499</a>					</span><a href="../Build/Scheme.rs.html#669-675">register_land_service</a>(<span class="string">"assets.editor.land"</span>, <a href="#469">ServerPortForClosure</a>);
+<a href=#499 id=499 data-nosnippet>499</a>					</span><a href="../Build/Scheme.rs.html#671-677">register_land_service</a>(<span class="string">"assets.land.playform.cloud"</span>, <a href="#469">ServerPortForClosure</a>);
 <a href=#500 id=500 data-nosnippet>500</a>
 <a href=#501 id=501 data-nosnippet>501</a>					<span class="comment">// Make the registry available as managed state for Tauri commands
 <a href=#502 id=502 data-nosnippet>502</a>					</span><a href="#470">app</a>.manage(<a href="#481">service_registry</a>);
@@ -545,7 +545,7 @@
 <a href=#545 id=545 data-nosnippet>545</a>					}
 <a href=#546 id=546 data-nosnippet>546</a>
 <a href=#547 id=547 data-nosnippet>547</a>					<span class="comment">// Register DnsPort as managed state for Tauri commands
-<a href=#548 id=548 data-nosnippet>548</a>					</span><a href="#470">app</a>.manage(<a href="../Build/Scheme.rs.html#85">DnsPort</a>(<a href="#514">dns_port</a>));
+<a href=#548 id=548 data-nosnippet>548</a>					</span><a href="#470">app</a>.manage(<a href="../Build/Scheme.rs.html#86">DnsPort</a>(<a href="#514">dns_port</a>));
 <a href=#549 id=549 data-nosnippet>549</a>
 <a href=#550 id=550 data-nosnippet>550</a>					<span class="kw">let </span>AppHandle = <a href="#470">app</a>.handle().<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
 <a href=#551 id=551 data-nosnippet>551</a>					<a href="#119-125">TraceStep!</a>(<span class="string">"[Lifecycle] [Setup] AppHandle acquired."</span>);
@@ -555,7 +555,7 @@
 <a href=#555 id=555 data-nosnippet>555</a>					// ---------------------------------------------------------
 <a href=#556 id=556 data-nosnippet>556</a>					</span><span class="kw">let </span>AppStateArcFromClosure = <a href="#438">AppStateArcForClosure</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
 <a href=#557 id=557 data-nosnippet>557</a>
-<a href=#558 id=558 data-nosnippet>558</a>					<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(e) = <a href="AppLifecycle.rs.html#149-685">AppLifecycleSetup</a>(
+<a href=#558 id=558 data-nosnippet>558</a>					<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(e) = <a href="AppLifecycle.rs.html#149-690">AppLifecycleSetup</a>(
 <a href=#559 id=559 data-nosnippet>559</a>						<a href="#470">app</a>,
 <a href=#560 id=560 data-nosnippet>560</a>						<a href="#550">AppHandle</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>(),
 <a href=#561 id=561 data-nosnippet>561</a>						<a href="#468">LocalhostUrl</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>(),
@@ -568,9 +568,9 @@
 <a href=#568 id=568 data-nosnippet>568</a>					<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#569 id=569 data-nosnippet>569</a>				}
 <a href=#570 id=570 data-nosnippet>570</a>			})
-<a href=#571 id=571 data-nosnippet>571</a>			.register_asynchronous_uri_scheme_protocol(<span class="string">"land"</span>, |_ctx, request, responder| {
+<a href=#571 id=571 data-nosnippet>571</a>			.register_asynchronous_uri_scheme_protocol(<span class="string">"fiddee"</span>, |_ctx, request, responder| {
 <a href=#572 id=572 data-nosnippet>572</a>				<span class="comment">// Implemented: delegate to synchronous scheme handler
-<a href=#573 id=573 data-nosnippet>573</a>				</span><span class="kw">let </span>response = <span class="kw">crate</span>::Binary::Build::Scheme::<a href="../Build/Scheme.rs.html#428-611">land_scheme_handler</a>(<span class="kw-2">&amp;</span><a href="#571">request</a>);
+<a href=#573 id=573 data-nosnippet>573</a>				</span><span class="kw">let </span>response = <span class="kw">crate</span>::Binary::Build::Scheme::<a href="../Build/Scheme.rs.html#430-613">land_scheme_handler</a>(<span class="kw-2">&amp;</span><a href="#571">request</a>);
 <a href=#574 id=574 data-nosnippet>574</a>				<a href="#571">responder</a>.respond(<a href="#573">response</a>);
 <a href=#575 id=575 data-nosnippet>575</a>			})
 <a href=#576 id=576 data-nosnippet>576</a>			.register_asynchronous_uri_scheme_protocol(<span class="string">"vscode-file"</span>, |ctx, request, responder| {
@@ -578,7 +578,7 @@
 <a href=#578 id=578 data-nosnippet>578</a>				// Maps to embedded frontend assets from Sky/Target.
 <a href=#579 id=579 data-nosnippet>579</a>				</span><span class="kw">let </span>AppHandle = <a href="#576">ctx</a>.app_handle().<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
 <a href=#580 id=580 data-nosnippet>580</a>				std::thread::<a href="https://doc.rust-lang.org/nightly/std/thread/functions/fn.spawn.html">spawn</a>(<span class="kw">move </span>|| {
-<a href=#581 id=581 data-nosnippet>581</a>					<span class="kw">let </span>response = <span class="kw">crate</span>::Binary::Build::Scheme::<a href="../Build/Scheme.rs.html#829-862">VscodeFileSchemeHandler</a>(<span class="kw-2">&amp;</span><a href="#579">AppHandle</a>, <span class="kw-2">&amp;</span><a href="#576">request</a>);
+<a href=#581 id=581 data-nosnippet>581</a>					<span class="kw">let </span>response = <span class="kw">crate</span>::Binary::Build::Scheme::<a href="../Build/Scheme.rs.html#831-864">VscodeFileSchemeHandler</a>(<span class="kw-2">&amp;</span><a href="#579">AppHandle</a>, <span class="kw-2">&amp;</span><a href="#576">request</a>);
 <a href=#582 id=582 data-nosnippet>582</a>					<a href="#576">responder</a>.respond(<a href="#581">response</a>);
 <a href=#583 id=583 data-nosnippet>583</a>				});
 <a href=#584 id=584 data-nosnippet>584</a>			})
@@ -594,7 +594,7 @@
 <a href=#594 id=594 data-nosnippet>594</a>				// `swMessage` postMessage channel, not this scheme.
 <a href=#595 id=595 data-nosnippet>595</a>				</span><span class="kw">let </span>AppHandle = <a href="#585">ctx</a>.app_handle().<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
 <a href=#596 id=596 data-nosnippet>596</a>				std::thread::<a href="https://doc.rust-lang.org/nightly/std/thread/functions/fn.spawn.html">spawn</a>(<span class="kw">move </span>|| {
-<a href=#597 id=597 data-nosnippet>597</a>					<span class="kw">let </span>response = <span class="kw">crate</span>::Binary::Build::Scheme::<a href="../Build/Scheme.rs.html#1298-1326">VscodeWebviewSchemeHandler</a>(<span class="kw-2">&amp;</span><a href="#595">AppHandle</a>, <span class="kw-2">&amp;</span><a href="#585">request</a>);
+<a href=#597 id=597 data-nosnippet>597</a>					<span class="kw">let </span>response = <span class="kw">crate</span>::Binary::Build::Scheme::<a href="../Build/Scheme.rs.html#1300-1328">VscodeWebviewSchemeHandler</a>(<span class="kw-2">&amp;</span><a href="#595">AppHandle</a>, <span class="kw-2">&amp;</span><a href="#585">request</a>);
 <a href=#598 id=598 data-nosnippet>598</a>					<a href="#585">responder</a>.respond(<a href="#597">response</a>);
 <a href=#599 id=599 data-nosnippet>599</a>				});
 <a href=#600 id=600 data-nosnippet>600</a>			})
@@ -635,7 +635,7 @@
 <a href=#635 id=635 data-nosnippet>635</a>						.method(<a href="#601">request</a>.method().<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>())
 <a href=#636 id=636 data-nosnippet>636</a>						.body(<a href="#601">request</a>.body().<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>())
 <a href=#637 id=637 data-nosnippet>637</a>						.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|<span class="kw">_</span>| <a href="#601">request</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>());
-<a href=#638 id=638 data-nosnippet>638</a>					<span class="kw">let </span>response = <span class="kw">crate</span>::Binary::Build::Scheme::<a href="../Build/Scheme.rs.html#829-862">VscodeFileSchemeHandler</a>(<span class="kw-2">&amp;</span><a href="#614">AppHandle</a>, <span class="kw-2">&amp;</span><a href="#634">Forwarded</a>);
+<a href=#638 id=638 data-nosnippet>638</a>					<span class="kw">let </span>response = <span class="kw">crate</span>::Binary::Build::Scheme::<a href="../Build/Scheme.rs.html#831-864">VscodeFileSchemeHandler</a>(<span class="kw-2">&amp;</span><a href="#614">AppHandle</a>, <span class="kw-2">&amp;</span><a href="#634">Forwarded</a>);
 <a href=#639 id=639 data-nosnippet>639</a>					<a href="#601">responder</a>.respond(<a href="#638">response</a>);
 <a href=#640 id=640 data-nosnippet>640</a>				});
 <a href=#641 id=641 data-nosnippet>641</a>			})
@@ -662,7 +662,7 @@
 <a href=#662 id=662 data-nosnippet>662</a>						.method(<a href="#642">request</a>.method().<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>())
 <a href=#663 id=663 data-nosnippet>663</a>						.body(<a href="#642">request</a>.body().<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>())
 <a href=#664 id=664 data-nosnippet>664</a>						.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|<span class="kw">_</span>| <a href="#642">request</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>());
-<a href=#665 id=665 data-nosnippet>665</a>					<span class="kw">let </span>response = <span class="kw">crate</span>::Binary::Build::Scheme::<a href="../Build/Scheme.rs.html#829-862">VscodeFileSchemeHandler</a>(<span class="kw-2">&amp;</span><a href="#646">AppHandle</a>, <span class="kw-2">&amp;</span><a href="#661">Forwarded</a>);
+<a href=#665 id=665 data-nosnippet>665</a>					<span class="kw">let </span>response = <span class="kw">crate</span>::Binary::Build::Scheme::<a href="../Build/Scheme.rs.html#831-864">VscodeFileSchemeHandler</a>(<span class="kw-2">&amp;</span><a href="#646">AppHandle</a>, <span class="kw-2">&amp;</span><a href="#661">Forwarded</a>);
 <a href=#666 id=666 data-nosnippet>666</a>					<a href="#642">responder</a>.respond(<a href="#665">response</a>);
 <a href=#667 id=667 data-nosnippet>667</a>				});
 <a href=#668 id=668 data-nosnippet>668</a>			})
@@ -823,10 +823,10 @@
 <a href=#823 id=823 data-nosnippet>823</a>
 <a href=#824 id=824 data-nosnippet>824</a>					tokio::spawn(<span class="kw">async move </span>{
 <a href=#825 id=825 data-nosnippet>825</a>						<a href="../../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[Lifecycle] [Shutdown] Shutting down ApplicationRunTime..."</span>);
-<a href=#826 id=826 data-nosnippet>826</a>						<span class="kw">let _ </span>= <a href="../Shutdown/RuntimeShutdown.rs.html#32-42">RuntimeShutdownFn</a>(<span class="kw-2">&amp;</span><a href="#822">app_handle_clone</a>).<span class="kw">await</span>;
+<a href=#826 id=826 data-nosnippet>826</a>						<span class="kw">let _ </span>= RuntimeShutdownFn(<span class="kw-2">&amp;</span>app_handle_clone).<span class="kw">await</span>;
 <a href=#827 id=827 data-nosnippet>827</a>
 <a href=#828 id=828 data-nosnippet>828</a>						<a href="../../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[Lifecycle] [Shutdown] Stopping Echo scheduler..."</span>);
-<a href=#829 id=829 data-nosnippet>829</a>						<span class="kw">let _ </span>= <a href="../Shutdown/SchedulerShutdown.rs.html#32-47">SchedulerShutdownFn</a>(<a href="#821">SchedulerHandle</a>).<span class="kw">await</span>;
+<a href=#829 id=829 data-nosnippet>829</a>						<span class="kw">let _ </span>= SchedulerShutdownFn(SchedulerHandle).<span class="kw">await</span>;
 <a href=#830 id=830 data-nosnippet>830</a>
 <a href=#831 id=831 data-nosnippet>831</a>						<a href="../../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[Lifecycle] [Shutdown] Done. Exiting process."</span>);
 <a href=#832 id=832 data-nosnippet>832</a>						<a href="#822">app_handle_clone</a>.exit(<span class="number">0</span>);

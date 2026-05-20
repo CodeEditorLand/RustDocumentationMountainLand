@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["DEFAULT_AIR_SERVER_ADDRESS"],"mod":["AirMetrics","AirStatus","DownloadStream","DownloadStreamChunk","ExtendedFileInfo","FileInfo","FileResult","IndexInfo","ResourceUsage","UpdateInfo"],"struct":["AirClient"],"trait":["IntoRequestExt"]};

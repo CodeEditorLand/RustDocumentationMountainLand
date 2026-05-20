@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["DEFAULT_IGNORE_SEGMENTS"],"fn":["IgnoreSegments","Path_ContainsSegment","ShouldIgnore"]};

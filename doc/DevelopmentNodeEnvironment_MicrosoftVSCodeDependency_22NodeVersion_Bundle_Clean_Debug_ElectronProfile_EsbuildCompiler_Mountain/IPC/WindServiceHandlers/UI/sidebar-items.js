@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["Decoration","Keybinding","Lifecycle","Notification","Progress","QuickInput","Theme","WorkingCopy","Workspace"]};

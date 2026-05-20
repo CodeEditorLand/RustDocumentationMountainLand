@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `Element/Mountain/Source/Environment/MountainEnvironment.rs`."><title>MountainEnvironment.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-b7b9f40b.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-41dd4d93.js"></script><script defer src="../../../static.files/src-script-813739b1.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><h1><div class="sub-heading">Mountain/Environment/</div>MountainEnvironment.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="doccomment">//! # MountainEnvironment
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `Element/Mountain/Source/Environment/MountainEnvironment.rs`."><title>MountainEnvironment.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.97.0-nightly (d3cd04068 2026-05-16)" data-channel="nightly" data-search-js="search-fd9372ac.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-41dd4d93.js"></script><script defer src="../../../static.files/src-script-813739b1.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-fcd733ba.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><h1><div class="sub-heading">Mountain/Environment/</div>MountainEnvironment.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="doccomment">//! # MountainEnvironment
 <a href=#2 id=2 data-nosnippet>2</a>//!
 <a href=#3 id=3 data-nosnippet>3</a>//! Top-level dependency injection container wrapping application state,
 <a href=#4 id=4 data-nosnippet>4</a>//! runtime, and optional Air service client.
@@ -276,13 +276,13 @@
 <a href=#276 id=276 data-nosnippet>276</a>
 <a href=#277 id=277 data-nosnippet>277</a>		<span class="comment">// Get the extension scan paths from ApplicationState
 <a href=#278 id=278 data-nosnippet>278</a>		</span><span class="kw">let </span>ScanPaths:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;std::path::<a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>&gt; = {
-<a href=#279 id=279 data-nosnippet>279</a>			<span class="kw">let </span>ScanPathsGuard = <a class="self" href="#274">self</a>
-<a href=#280 id=280 data-nosnippet>280</a>				.ApplicationState
+<a href=#279 id=279 data-nosnippet>279</a>			<span class="kw">let </span>ScanPathsGuard = <span class="self">self
+<a href=#280 id=280 data-nosnippet>280</a>				</span>.ApplicationState
 <a href=#281 id=281 data-nosnippet>281</a>				.Extension
 <a href=#282 id=282 data-nosnippet>282</a>				.Registry
 <a href=#283 id=283 data-nosnippet>283</a>				.ExtensionScanPaths
-<a href=#284 id=284 data-nosnippet>284</a>				.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>()
-<a href=#285 id=285 data-nosnippet>285</a>				.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| CommonError::StateLockPoisoned { Context:<a href="#285">Error</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>() })<span class="question-mark">?</span>;
+<a href=#284 id=284 data-nosnippet>284</a>				.lock()
+<a href=#285 id=285 data-nosnippet>285</a>				.map_err(|Error| CommonError::StateLockPoisoned { Context:Error.to_string() })<span class="question-mark">?</span>;
 <a href=#286 id=286 data-nosnippet>286</a>
 <a href=#287 id=287 data-nosnippet>287</a>			<a href="#279">ScanPathsGuard</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>()
 <a href=#288 id=288 data-nosnippet>288</a>		};
@@ -297,13 +297,13 @@
 <a href=#297 id=297 data-nosnippet>297</a>		}
 <a href=#298 id=298 data-nosnippet>298</a>
 <a href=#299 id=299 data-nosnippet>299</a>		<span class="comment">// Update ApplicationState with scanned extensions
-<a href=#300 id=300 data-nosnippet>300</a>		</span><span class="kw">let </span><span class="kw-2">mut </span>ScannedExtensionsGuard = <a class="self" href="#274">self</a>
-<a href=#301 id=301 data-nosnippet>301</a>			.ApplicationState
+<a href=#300 id=300 data-nosnippet>300</a>		</span><span class="kw">let </span><span class="kw-2">mut </span>ScannedExtensionsGuard = <span class="self">self
+<a href=#301 id=301 data-nosnippet>301</a>			</span>.ApplicationState
 <a href=#302 id=302 data-nosnippet>302</a>			.Extension
 <a href=#303 id=303 data-nosnippet>303</a>			.ScannedExtensions
 <a href=#304 id=304 data-nosnippet>304</a>			.ScannedExtensions
-<a href=#305 id=305 data-nosnippet>305</a>			.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>()
-<a href=#306 id=306 data-nosnippet>306</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| CommonError::StateLockPoisoned { Context:<a href="#306">Error</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>() })<span class="question-mark">?</span>;
+<a href=#305 id=305 data-nosnippet>305</a>			.lock()
+<a href=#306 id=306 data-nosnippet>306</a>			.map_err(|Error| CommonError::StateLockPoisoned { Context:Error.to_string() })<span class="question-mark">?</span>;
 <a href=#307 id=307 data-nosnippet>307</a>
 <a href=#308 id=308 data-nosnippet>308</a>		<a href="#300">ScannedExtensionsGuard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.clear">clear</a>();
 <a href=#309 id=309 data-nosnippet>309</a>
@@ -354,13 +354,13 @@
 <a href=#354 id=354 data-nosnippet>354</a>	/// serialize (these are logged and skipped rather than causing
 <a href=#355 id=355 data-nosnippet>355</a>	/// an error).
 <a href=#356 id=356 data-nosnippet>356</a>	</span><span class="kw">async fn </span>GetExtensions(<span class="kw-2">&amp;</span><a class="self" href="#356">self</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;, CommonError&gt; {
-<a href=#357 id=357 data-nosnippet>357</a>		<span class="kw">let </span>ScannedExtensionsGuard = <a class="self" href="#356">self</a>
-<a href=#358 id=358 data-nosnippet>358</a>			.ApplicationState
+<a href=#357 id=357 data-nosnippet>357</a>		<span class="kw">let </span>ScannedExtensionsGuard = <span class="self">self
+<a href=#358 id=358 data-nosnippet>358</a>			</span>.ApplicationState
 <a href=#359 id=359 data-nosnippet>359</a>			.Extension
 <a href=#360 id=360 data-nosnippet>360</a>			.ScannedExtensions
 <a href=#361 id=361 data-nosnippet>361</a>			.ScannedExtensions
-<a href=#362 id=362 data-nosnippet>362</a>			.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>()
-<a href=#363 id=363 data-nosnippet>363</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| CommonError::StateLockPoisoned { Context:<a href="#363">Error</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>() })<span class="question-mark">?</span>;
+<a href=#362 id=362 data-nosnippet>362</a>			.lock()
+<a href=#363 id=363 data-nosnippet>363</a>			.map_err(|Error| CommonError::StateLockPoisoned { Context:Error.to_string() })<span class="question-mark">?</span>;
 <a href=#364 id=364 data-nosnippet>364</a>
 <a href=#365 id=365 data-nosnippet>365</a>		<span class="kw">let </span>GuardLen = <a href="#357">ScannedExtensionsGuard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.len">len</a>();
 <a href=#366 id=366 data-nosnippet>366</a>
@@ -386,13 +386,13 @@
 <a href=#386 id=386 data-nosnippet>386</a>	/// Reconstructs the JSON from the stored `ExtensionDescriptionStateDTO`.
 <a href=#387 id=387 data-nosnippet>387</a>	/// Returns `Ok(None)` if the extension is not found.
 <a href=#388 id=388 data-nosnippet>388</a>	</span><span class="kw">async fn </span>GetExtension(<span class="kw-2">&amp;</span><a class="self" href="#388">self</a>, <a href="#388">id</a>:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;, CommonError&gt; {
-<a href=#389 id=389 data-nosnippet>389</a>		<span class="kw">let </span>ScannedExtensionsGuard = <a class="self" href="#388">self</a>
-<a href=#390 id=390 data-nosnippet>390</a>			.ApplicationState
+<a href=#389 id=389 data-nosnippet>389</a>		<span class="kw">let </span>ScannedExtensionsGuard = <span class="self">self
+<a href=#390 id=390 data-nosnippet>390</a>			</span>.ApplicationState
 <a href=#391 id=391 data-nosnippet>391</a>			.Extension
 <a href=#392 id=392 data-nosnippet>392</a>			.ScannedExtensions
 <a href=#393 id=393 data-nosnippet>393</a>			.ScannedExtensions
-<a href=#394 id=394 data-nosnippet>394</a>			.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>()
-<a href=#395 id=395 data-nosnippet>395</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| CommonError::StateLockPoisoned { Context:<a href="#395">Error</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>() })<span class="question-mark">?</span>;
+<a href=#394 id=394 data-nosnippet>394</a>			.lock()
+<a href=#395 id=395 data-nosnippet>395</a>			.map_err(|Error| CommonError::StateLockPoisoned { Context:Error.to_string() })<span class="question-mark">?</span>;
 <a href=#396 id=396 data-nosnippet>396</a>
 <a href=#397 id=397 data-nosnippet>397</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(extension_dto) = <a href="#389">ScannedExtensionsGuard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.get">get</a>(<span class="kw-2">&amp;</span><a href="#388">id</a>) {
 <a href=#398 id=398 data-nosnippet>398</a>			<span class="comment">// Convert ExtensionDescriptionStateDTO back to JSON Value

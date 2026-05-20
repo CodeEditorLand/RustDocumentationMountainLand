@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["WorkspacesAddFolder","WorkspacesGetFolders","WorkspacesGetName","WorkspacesRemoveFolder"]};

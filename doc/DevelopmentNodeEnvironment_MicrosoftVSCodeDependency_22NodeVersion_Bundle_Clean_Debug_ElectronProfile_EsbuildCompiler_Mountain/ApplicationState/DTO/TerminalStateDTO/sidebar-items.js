@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["MAX_ARGUMENT_LENGTH","MAX_ENV_VARS","MAX_SHELL_ARGUMENTS","MAX_SHELL_PATH_LENGTH","MAX_TERMINAL_NAME_LENGTH"],"struct":["TerminalStateDTO"],"type":["PtyMasterHandle"]};

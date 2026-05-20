@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["MANIFEST_ENTRY","PAYLOAD_PREFIX"],"enum":["InstallError"],"fn":["BuildDescription","CreateParent","ExtractPayload","HealExecutableBits","InstallVsix","ReadFullManifest","ReadManifestFacts","ReadStringField","UninstallExtension"],"struct":["InstallOutcome","ManifestFacts"]};

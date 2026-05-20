@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["HandleDeleteSecret","HandleGetSecret","HandleStoreSecret"]};
