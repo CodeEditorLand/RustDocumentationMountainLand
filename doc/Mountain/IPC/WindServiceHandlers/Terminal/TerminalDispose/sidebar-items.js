@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["TerminalDispose"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

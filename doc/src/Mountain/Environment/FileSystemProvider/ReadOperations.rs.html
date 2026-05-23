@@ -27,11 +27,11 @@
 <a href=#27 id=27 data-nosnippet>27</a>};
 <a href=#28 id=28 data-nosnippet>28</a><span class="kw">use </span>tokio::fs;
 <a href=#29 id=29 data-nosnippet>29</a>
-<a href=#30 id=30 data-nosnippet>30</a><span class="kw">use </span><span class="kw">super</span>::super::{<a href="../MountainEnvironment.rs.html#72-85">MountainEnvironment::MountainEnvironment</a>, <a href="../mod.rs.html#121">Utility</a>};
+<a href=#30 id=30 data-nosnippet>30</a><span class="kw">use </span><span class="kw">super</span>::super::{<a href="../MountainEnvironment.rs.html#72-85">MountainEnvironment::MountainEnvironment</a>, <a href="../mod.rs.html#120">Utility</a>};
 <a href=#31 id=31 data-nosnippet>31</a>
 <a href=#32 id=32 data-nosnippet>32</a><span class="doccomment">/// Read operations implementation for MountainEnvironment
 <a href=#33 id=33 data-nosnippet>33</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/FileSystemProvider/ReadOperations/fn.read_file_impl.html">read_file_impl</a>(env:<span class="kw-2">&amp;</span><a href="../MountainEnvironment.rs.html#72-85">MountainEnvironment</a>, path:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;u8&gt;, CommonError&gt; {
-<a href=#34 id=34 data-nosnippet>34</a>	Utility::PathSecurity::IsPathAllowedForAccess(<span class="kw-2">&amp;</span>env.ApplicationState, path)<span class="question-mark">?</span>;
+<a href=#34 id=34 data-nosnippet>34</a>	Utility::PathSecurity::Fn(<span class="kw-2">&amp;</span>env.ApplicationState, path)<span class="question-mark">?</span>;
 <a href=#35 id=35 data-nosnippet>35</a>
 <a href=#36 id=36 data-nosnippet>36</a>	<span class="comment">// Validate that the path exists and is a file, not a directory
 <a href=#37 id=37 data-nosnippet>37</a>	</span><span class="kw">let </span>metadata = fs::metadata(path)
@@ -52,7 +52,7 @@
 <a href=#52 id=52 data-nosnippet>52</a>
 <a href=#53 id=53 data-nosnippet>53</a><span class="doccomment">/// Stat operations implementation for MountainEnvironment
 <a href=#54 id=54 data-nosnippet>54</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">async fn </span><a href="../../../../Mountain/Environment/FileSystemProvider/ReadOperations/fn.stat_file_impl.html">stat_file_impl</a>(env:<span class="kw-2">&amp;</span><a href="../MountainEnvironment.rs.html#72-85">MountainEnvironment</a>, path:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>) -&gt; <span class="prelude-ty">Result</span>&lt;FileSystemStatDTO, CommonError&gt; {
-<a href=#55 id=55 data-nosnippet>55</a>	Utility::PathSecurity::IsPathAllowedForAccess(<span class="kw-2">&amp;</span>env.ApplicationState, path)<span class="question-mark">?</span>;
+<a href=#55 id=55 data-nosnippet>55</a>	Utility::PathSecurity::Fn(<span class="kw-2">&amp;</span>env.ApplicationState, path)<span class="question-mark">?</span>;
 <a href=#56 id=56 data-nosnippet>56</a>
 <a href=#57 id=57 data-nosnippet>57</a>	<span class="kw">let </span>metadata = fs::metadata(path)
 <a href=#58 id=58 data-nosnippet>58</a>		.<span class="kw">await
@@ -110,7 +110,7 @@
 <a href=#110 id=110 data-nosnippet>110</a>
 <a href=#111 id=111 data-nosnippet>111</a>	path:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>,
 <a href=#112 id=112 data-nosnippet>112</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;(String, FileTypeDTO)&gt;, CommonError&gt; {
-<a href=#113 id=113 data-nosnippet>113</a>	Utility::PathSecurity::IsPathAllowedForAccess(<span class="kw-2">&amp;</span>env.ApplicationState, path)<span class="question-mark">?</span>;
+<a href=#113 id=113 data-nosnippet>113</a>	Utility::PathSecurity::Fn(<span class="kw-2">&amp;</span>env.ApplicationState, path)<span class="question-mark">?</span>;
 <a href=#114 id=114 data-nosnippet>114</a>
 <a href=#115 id=115 data-nosnippet>115</a>	<span class="comment">// Validate that the path exists and is a directory
 <a href=#116 id=116 data-nosnippet>116</a>	</span><span class="kw">let </span>metadata = fs::metadata(path)

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["FileRenameNative"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

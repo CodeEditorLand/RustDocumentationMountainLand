@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["ComputeKey","DeriveKey","ReadMachineId"],"static":["DERIVED_KEY"]};
+window.SIDEBAR_ITEMS = {"fn":["ComputeKey","Fn","ReadMachineId"],"static":["DERIVED_KEY"]};

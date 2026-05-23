@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["FileExistsNative"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

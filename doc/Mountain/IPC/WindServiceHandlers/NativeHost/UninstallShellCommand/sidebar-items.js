@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"constant":["CLI_NAME","SYMLINK_DIR"],"fn":["UninstallShellCommand"]};
+window.SIDEBAR_ITEMS = {"constant":["CLI_NAME","SYMLINK_DIR"],"fn":["Fn"]};

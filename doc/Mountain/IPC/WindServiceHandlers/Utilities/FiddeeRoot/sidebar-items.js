@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"constant":["DOTFILE_NAME"],"fn":["FiddeeRoot"]};
+window.SIDEBAR_ITEMS = {"constant":["DOTFILE_NAME"],"fn":["Fn"]};

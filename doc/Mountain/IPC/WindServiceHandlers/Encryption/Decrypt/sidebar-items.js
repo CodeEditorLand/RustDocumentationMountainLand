@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["Decrypt"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

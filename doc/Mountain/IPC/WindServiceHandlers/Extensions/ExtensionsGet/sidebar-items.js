@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["ExtensionsGet"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

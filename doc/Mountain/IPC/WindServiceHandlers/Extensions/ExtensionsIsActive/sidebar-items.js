@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["ExtensionsIsActive"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["HandleRegisterCommand","HandleUnregisterCommand"]};
+window.SIDEBAR_ITEMS = {"mod":["RegisterCommand","UnregisterCommand"]};

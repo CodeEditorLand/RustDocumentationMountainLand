@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["CocoonNotify"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

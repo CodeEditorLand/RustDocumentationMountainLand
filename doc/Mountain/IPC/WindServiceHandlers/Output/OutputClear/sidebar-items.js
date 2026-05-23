@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["OutputClear"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

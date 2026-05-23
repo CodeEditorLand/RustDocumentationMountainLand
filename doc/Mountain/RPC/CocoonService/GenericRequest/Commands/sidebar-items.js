@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["HandleCommandsExecute","HandleExecuteCommand","HandleUnregisterCommand"]};
+window.SIDEBAR_ITEMS = {"mod":["Execute","ExecuteCommand","UnregisterCommand"]};

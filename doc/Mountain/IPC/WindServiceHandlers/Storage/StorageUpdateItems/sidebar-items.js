@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["StorageUpdateItems"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

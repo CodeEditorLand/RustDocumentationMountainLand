@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["HandleClone"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["NativeShowMessageBox"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

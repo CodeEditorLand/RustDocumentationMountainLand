@@ -57,8 +57,8 @@
 <a href=#57 id=57 data-nosnippet>57</a><span class="kw">use </span>tokio::time::{<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html">Duration</a>, timeout};
 <a href=#58 id=58 data-nosnippet>58</a><span class="kw">use </span><a href="https://docs.rs/uuid/1.23.1/uuid/struct.Uuid.html">uuid::Uuid</a>;
 <a href=#59 id=59 data-nosnippet>59</a>
-<a href=#60 id=60 data-nosnippet>60</a><span class="kw">use </span>super::{<a href="MountainEnvironment.rs.html#72-85">MountainEnvironment::MountainEnvironment</a>, <a href="mod.rs.html#121">Utility</a>};
-<a href=#61 id=61 data-nosnippet>61</a><span class="kw">use </span><a href="../IPC/DevLog/mod.rs.html#52-122"><span class="kw">crate</span>::dev_log</a>;
+<a href=#60 id=60 data-nosnippet>60</a><span class="kw">use </span>super::{<a href="MountainEnvironment.rs.html#72-85">MountainEnvironment::MountainEnvironment</a>, <a href="mod.rs.html#120">Utility</a>};
+<a href=#61 id=61 data-nosnippet>61</a><span class="kw">use </span><a href="../IPC/DevLog/mod.rs.html#51-121"><span class="kw">crate</span>::dev_log</a>;
 <a href=#62 id=62 data-nosnippet>62</a>
 <a href=#63 id=63 data-nosnippet>63</a><span class="comment">// TODO: custom dialog buttons/layouts, glob-pattern file-type filters,
 <a href=#64 id=64 data-nosnippet>64</a>// dialog position + sizing, modal vs non-modal, accessibility (screen reader),
@@ -86,7 +86,7 @@
 <a href=#86 id=86 data-nosnippet>86</a>
 <a href=#87 id=87 data-nosnippet>87</a>		<a href="#87">Options</a>:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;,
 <a href=#88 id=88 data-nosnippet>88</a>	) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;, CommonError&gt; {
-<a href=#89 id=89 data-nosnippet>89</a>		<a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"window"</span>, <span class="string">"[UserInterfaceProvider] Showing interactive message: {}"</span>, Message);
+<a href=#89 id=89 data-nosnippet>89</a>		<a href="../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"window"</span>, <span class="string">"[UserInterfaceProvider] Showing interactive message: {}"</span>, Message);
 <a href=#90 id=90 data-nosnippet>90</a>
 <a href=#91 id=91 data-nosnippet>91</a>		<span class="comment">// camelCase wire shape per the project-wide audit. Sky's listener
 <a href=#92 id=92 data-nosnippet>92</a>		// at `SkyBridge.ts:2444` already tolerates both casings via the
@@ -101,7 +101,7 @@
 <a href=#101 id=101 data-nosnippet>101</a>	<span class="doccomment">/// Shows a dialog for opening files or folders using the
 <a href=#102 id=102 data-nosnippet>102</a>	/// tauri-plugin-dialog.
 <a href=#103 id=103 data-nosnippet>103</a>	</span><span class="kw">async fn </span>ShowOpenDialog(<span class="kw-2">&amp;</span><a class="self" href="#103">self</a>, <a href="#103">Options</a>:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;OpenDialogOptionsDTO&gt;) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>&gt;&gt;, CommonError&gt; {
-<a href=#104 id=104 data-nosnippet>104</a>		<a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"window"</span>, <span class="string">"[UserInterfaceProvider] Showing open dialog."</span>);
+<a href=#104 id=104 data-nosnippet>104</a>		<a href="../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"window"</span>, <span class="string">"[UserInterfaceProvider] Showing open dialog."</span>);
 <a href=#105 id=105 data-nosnippet>105</a>
 <a href=#106 id=106 data-nosnippet>106</a>		<span class="kw">let </span><span class="kw-2">mut </span>Builder = <a class="self" href="#103">self</a>.ApplicationHandle.dialog().file();
 <a href=#107 id=107 data-nosnippet>107</a>
@@ -156,7 +156,7 @@
 <a href=#156 id=156 data-nosnippet>156</a>
 <a href=#157 id=157 data-nosnippet>157</a>	<span class="doccomment">/// Shows a dialog for saving a file using the tauri-plugin-dialog.
 <a href=#158 id=158 data-nosnippet>158</a>	</span><span class="kw">async fn </span>ShowSaveDialog(<span class="kw-2">&amp;</span><a class="self" href="#158">self</a>, <a href="#158">Options</a>:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;SaveDialogOptionsDTO&gt;) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>&gt;, CommonError&gt; {
-<a href=#159 id=159 data-nosnippet>159</a>		<a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"window"</span>, <span class="string">"[UserInterfaceProvider] Showing save dialog."</span>);
+<a href=#159 id=159 data-nosnippet>159</a>		<a href="../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"window"</span>, <span class="string">"[UserInterfaceProvider] Showing save dialog."</span>);
 <a href=#160 id=160 data-nosnippet>160</a>
 <a href=#161 id=161 data-nosnippet>161</a>		<span class="kw">let </span><span class="kw-2">mut </span>Builder = <a class="self" href="#158">self</a>.ApplicationHandle.dialog().file();
 <a href=#162 id=162 data-nosnippet>162</a>
@@ -203,7 +203,7 @@
 <a href=#203 id=203 data-nosnippet>203</a>
 <a href=#204 id=204 data-nosnippet>204</a>		<a href="#204">Options</a>:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;QuickPickOptionsDTO&gt;,
 <a href=#205 id=205 data-nosnippet>205</a>	) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;&gt;, CommonError&gt; {
-<a href=#206 id=206 data-nosnippet>206</a>		<a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(
+<a href=#206 id=206 data-nosnippet>206</a>		<a href="../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(
 <a href=#207 id=207 data-nosnippet>207</a>			<span class="string">"window"</span>,
 <a href=#208 id=208 data-nosnippet>208</a>			<span class="string">"[UserInterfaceProvider] Showing quick pick with {} items."</span>,
 <a href=#209 id=209 data-nosnippet>209</a>			Items.len()
@@ -227,7 +227,7 @@
 <a href=#227 id=227 data-nosnippet>227</a>
 <a href=#228 id=228 data-nosnippet>228</a>	<span class="doccomment">/// Shows an input box to solicit a string input from the user.
 <a href=#229 id=229 data-nosnippet>229</a>	</span><span class="kw">async fn </span>ShowInputBox(<span class="kw-2">&amp;</span><a class="self" href="#229">self</a>, <a href="#229">Options</a>:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;InputBoxOptionsDTO&gt;) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;, CommonError&gt; {
-<a href=#230 id=230 data-nosnippet>230</a>		<a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"window"</span>, <span class="string">"[UserInterfaceProvider] Showing input box."</span>);
+<a href=#230 id=230 data-nosnippet>230</a>		<a href="../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"window"</span>, <span class="string">"[UserInterfaceProvider] Showing input box."</span>);
 <a href=#231 id=231 data-nosnippet>231</a>
 <a href=#232 id=232 data-nosnippet>232</a>		<span class="comment">// Use the Sky-listener-aligned channel (`sky://input-box/show`).
 <a href=#233 id=233 data-nosnippet>233</a>		// The legacy `UIShowInputBoxRequest` channel

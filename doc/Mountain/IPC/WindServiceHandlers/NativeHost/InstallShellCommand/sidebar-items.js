@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"constant":["CLI_NAME","SYMLINK_DIR"],"fn":["InstallShellCommand"]};
+window.SIDEBAR_ITEMS = {"constant":["CLI_NAME","SYMLINK_DIR"],"fn":["Fn"]};

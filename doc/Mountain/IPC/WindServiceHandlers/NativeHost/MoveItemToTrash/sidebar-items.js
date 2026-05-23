@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["NativeMoveItemToTrash"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

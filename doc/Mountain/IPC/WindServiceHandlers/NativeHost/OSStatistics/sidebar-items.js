@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["NativeOSStatistics"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

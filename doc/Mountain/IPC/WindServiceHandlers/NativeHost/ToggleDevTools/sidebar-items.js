@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["ToggleDevTools"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

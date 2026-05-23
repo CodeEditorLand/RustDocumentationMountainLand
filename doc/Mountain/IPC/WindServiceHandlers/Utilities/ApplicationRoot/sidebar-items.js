@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["get_static_application_root","set_static_application_root"],"static":["STATIC_APPLICATION_ROOT"]};
+window.SIDEBAR_ITEMS = {"mod":["Get","Set"],"static":["ROOT"]};

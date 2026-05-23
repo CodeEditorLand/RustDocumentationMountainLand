@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["LocalPTYGetDefaultShell"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

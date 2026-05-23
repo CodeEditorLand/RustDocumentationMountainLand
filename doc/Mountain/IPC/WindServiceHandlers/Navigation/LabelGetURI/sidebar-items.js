@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["LabelGetURI"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

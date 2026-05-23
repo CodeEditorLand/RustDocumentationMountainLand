@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["NativeIsRunningUnderARM64Translation"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["HandleCheckout"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

@@ -284,9 +284,9 @@
 <a href=#284 id=284 data-nosnippet>284</a><span class="kw">use </span>tauri::{Emitter, Manager};
 <a href=#285 id=285 data-nosnippet>285</a>
 <a href=#286 id=286 data-nosnippet>286</a><span class="kw">use </span>crate::{
-<a href=#287 id=287 data-nosnippet>287</a>	<a href="AdvancedFeatures/PerformanceStats.rs.html#11-25">IPC::AdvancedFeatures::PerformanceStats::Struct</a> <span class="kw">as </span>PerformanceStats,
-<a href=#288 id=288 data-nosnippet>288</a>	<a href="../RunTime/ApplicationRunTime/mod.rs.html#16-22">RunTime::ApplicationRunTime::ApplicationRunTime</a>,
-<a href=#289 id=289 data-nosnippet>289</a>	<a href="DevLog/mod.rs.html#52-122">dev_log</a>,
+<a href=#287 id=287 data-nosnippet>287</a>	<a href="AdvancedFeatures/PerformanceStats.rs.html#10-24">IPC::AdvancedFeatures::PerformanceStats::Struct</a> <span class="kw">as </span>PerformanceStats,
+<a href=#288 id=288 data-nosnippet>288</a>	<a href="../RunTime/ApplicationRunTime/mod.rs.html#15-21">RunTime::ApplicationRunTime::ApplicationRunTime</a>,
+<a href=#289 id=289 data-nosnippet>289</a>	<a href="DevLog/mod.rs.html#51-121">dev_log</a>,
 <a href=#290 id=290 data-nosnippet>290</a>};
 <a href=#291 id=291 data-nosnippet>291</a>
 <a href=#292 id=292 data-nosnippet>292</a><span class="comment">// TEMPORARY: MountainIPC module not yet implemented
@@ -447,7 +447,7 @@
 <a href=#447 id=447 data-nosnippet>447</a><span class="doccomment">/// Advanced Wind synchronization features
 <a href=#448 id=448 data-nosnippet>448</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>)]
 <a href=#449 id=449 data-nosnippet>449</a></span><span class="kw">pub struct </span><a href="#449-460">WindAdvancedSync</a> {
-<a href=#450 id=450 data-nosnippet>450</a>	runtime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/mod.rs.html#16-22">ApplicationRunTime</a>&gt;,
+<a href=#450 id=450 data-nosnippet>450</a>	runtime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/mod.rs.html#15-21">ApplicationRunTime</a>&gt;,
 <a href=#451 id=451 data-nosnippet>451</a>
 <a href=#452 id=452 data-nosnippet>452</a>	document_sync:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">Mutex</a>&lt;<a href="#368-376">DocumentSynchronization</a>&gt;&gt;,
 <a href=#453 id=453 data-nosnippet>453</a>
@@ -455,13 +455,13 @@
 <a href=#455 id=455 data-nosnippet>455</a>
 <a href=#456 id=456 data-nosnippet>456</a>	real_time_updates:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">Mutex</a>&lt;<a href="#387-395">RealTimeUpdateManager</a>&gt;&gt;,
 <a href=#457 id=457 data-nosnippet>457</a>
-<a href=#458 id=458 data-nosnippet>458</a>	performance_stats:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">Mutex</a>&lt;<a href="AdvancedFeatures/PerformanceStats.rs.html#11-25">PerformanceStats</a>&gt;&gt;,
+<a href=#458 id=458 data-nosnippet>458</a>	performance_stats:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">Mutex</a>&lt;<a href="AdvancedFeatures/PerformanceStats.rs.html#10-24">PerformanceStats</a>&gt;&gt;,
 <a href=#459 id=459 data-nosnippet>459</a>	<span class="comment">// mountain_ipc: Arc&lt;MountainIPC&gt;, // Module doesn't exist
 <a href=#460 id=460 data-nosnippet>460</a></span>}
 <a href=#461 id=461 data-nosnippet>461</a>
 <a href=#462 id=462 data-nosnippet>462</a><span class="kw">impl </span><a href="#449-460">WindAdvancedSync</a> {
 <a href=#463 id=463 data-nosnippet>463</a>	<span class="doccomment">/// Create a new WindAdvancedSync instance
-<a href=#464 id=464 data-nosnippet>464</a>	</span><span class="kw">pub fn </span>new(runtime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/mod.rs.html#16-22">ApplicationRunTime</a>&gt;) -&gt; <span class="self">Self </span>{
+<a href=#464 id=464 data-nosnippet>464</a>	</span><span class="kw">pub fn </span>new(runtime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/mod.rs.html#15-21">ApplicationRunTime</a>&gt;) -&gt; <span class="self">Self </span>{
 <a href=#465 id=465 data-nosnippet>465</a>		<span class="self">Self </span>{
 <a href=#466 id=466 data-nosnippet>466</a>			runtime:<a href="#464">runtime</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>(),
 <a href=#467 id=467 data-nosnippet>467</a>
@@ -503,7 +503,7 @@
 <a href=#503 id=503 data-nosnippet>503</a>				LastBroadcast:<span class="number">0</span>,
 <a href=#504 id=504 data-nosnippet>504</a>			})),
 <a href=#505 id=505 data-nosnippet>505</a>
-<a href=#506 id=506 data-nosnippet>506</a>			performance_stats:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">Mutex</a>::<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.new">new</a>(<a href="AdvancedFeatures/PerformanceStats.rs.html#11-25">PerformanceStats</a> {
+<a href=#506 id=506 data-nosnippet>506</a>			performance_stats:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">Mutex</a>::<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.new">new</a>(<a href="AdvancedFeatures/PerformanceStats.rs.html#10-24">PerformanceStats</a> {
 <a href=#507 id=507 data-nosnippet>507</a>				total_messages_sent:<span class="number">0</span>,
 <a href=#508 id=508 data-nosnippet>508</a>				total_messages_received:<span class="number">0</span>,
 <a href=#509 id=509 data-nosnippet>509</a>				average_processing_time_ms:<span class="number">0.0</span>,
@@ -637,7 +637,7 @@
 <a href=#637 id=637 data-nosnippet>637</a>
 <a href=#638 id=638 data-nosnippet>638</a>	<span class="doccomment">/// Register IPC commands
 <a href=#639 id=639 data-nosnippet>639</a>	</span><span class="kw">pub fn </span>register_commands(_app:<span class="kw-2">&amp;mut </span>tauri::App) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<span class="kw">dyn </span><a href="https://doc.rust-lang.org/nightly/core/error/trait.Error.html">std::error::Error</a>&gt;&gt; {
-<a href=#640 id=640 data-nosnippet>640</a>		<a href="DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"Registering Wind Advanced Sync IPC commands"</span>);
+<a href=#640 id=640 data-nosnippet>640</a>		<a href="DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"Registering Wind Advanced Sync IPC commands"</span>);
 <a href=#641 id=641 data-nosnippet>641</a>
 <a href=#642 id=642 data-nosnippet>642</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#643 id=643 data-nosnippet>643</a>	}
@@ -1146,9 +1146,9 @@
 <a href=#1146 id=1146 data-nosnippet>1146</a></span><span class="kw">pub fn </span><a href="../../../Mountain/IPC/WindAdvancedSync/fn.initialize_wind_advanced_sync.html">initialize_wind_advanced_sync</a>(
 <a href=#1147 id=1147 data-nosnippet>1147</a>	app_handle:<span class="kw-2">&amp;</span>tauri::AppHandle,
 <a href=#1148 id=1148 data-nosnippet>1148</a>
-<a href=#1149 id=1149 data-nosnippet>1149</a>	runtime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/mod.rs.html#16-22">ApplicationRunTime</a>&gt;,
+<a href=#1149 id=1149 data-nosnippet>1149</a>	runtime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/mod.rs.html#15-21">ApplicationRunTime</a>&gt;,
 <a href=#1150 id=1150 data-nosnippet>1150</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
-<a href=#1151 id=1151 data-nosnippet>1151</a>	<a href="DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"Initializing Wind advanced synchronization"</span>);
+<a href=#1151 id=1151 data-nosnippet>1151</a>	<a href="DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"Initializing Wind advanced synchronization"</span>);
 <a href=#1152 id=1152 data-nosnippet>1152</a>
 <a href=#1153 id=1153 data-nosnippet>1153</a>	<span class="kw">let </span>sync = <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(<a href="#449-460">WindAdvancedSync</a>::<a href="#464-517">new</a>(<a href="#1149">runtime</a>));
 <a href=#1154 id=1154 data-nosnippet>1154</a>
@@ -1160,7 +1160,7 @@
 <a href=#1160 id=1160 data-nosnippet>1160</a>
 <a href=#1161 id=1161 data-nosnippet>1161</a>	tokio::spawn(<span class="kw">async move </span>{
 <a href=#1162 id=1162 data-nosnippet>1162</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(e) = sync_clone.start_synchronization().<span class="kw">await </span>{
-<a href=#1163 id=1163 data-nosnippet>1163</a>			<a href="DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"error: [WindAdvancedSync] Failed to start synchronization: {}"</span>, e);
+<a href=#1163 id=1163 data-nosnippet>1163</a>			<a href="DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"error: [WindAdvancedSync] Failed to start synchronization: {}"</span>, e);
 <a href=#1164 id=1164 data-nosnippet>1164</a>		}
 <a href=#1165 id=1165 data-nosnippet>1165</a>	});
 <a href=#1166 id=1166 data-nosnippet>1166</a>

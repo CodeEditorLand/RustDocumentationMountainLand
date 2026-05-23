@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["LocalPTYResize"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

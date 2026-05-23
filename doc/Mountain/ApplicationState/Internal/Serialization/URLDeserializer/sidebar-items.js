@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["DeserializeURL"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

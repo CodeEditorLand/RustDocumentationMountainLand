@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["ResolveChannelPriority"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

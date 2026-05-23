@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["SkyReplayEvents"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

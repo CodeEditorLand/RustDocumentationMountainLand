@@ -592,27 +592,29 @@
 <a href=#592 id=592 data-nosnippet>592</a>		</span>stats.available_permits = <span class="number">50</span>;
 <a href=#593 id=593 data-nosnippet>593</a>
 <a href=#594 id=594 data-nosnippet>594</a>		stats.healthy_connections = <span class="number">30</span>; <span class="comment">// 60%
-<a href=#595 id=595 data-nosnippet>595</a>		</span><span class="macro">assert!</span>(stats.is_under_stress());
-<a href=#596 id=596 data-nosnippet>596</a>	}
-<a href=#597 id=597 data-nosnippet>597</a>
-<a href=#598 id=598 data-nosnippet>598</a>	<span class="attr">#[test]
-<a href=#599 id=599 data-nosnippet>599</a>	</span><span class="kw">fn </span>test_connection_stats_empty_pool() {
-<a href=#600 id=600 data-nosnippet>600</a>		<span class="kw">let </span>stats = ConnectionStats {
-<a href=#601 id=601 data-nosnippet>601</a>			total_connections:<span class="number">0</span>,
-<a href=#602 id=602 data-nosnippet>602</a>
-<a href=#603 id=603 data-nosnippet>603</a>			healthy_connections:<span class="number">0</span>,
-<a href=#604 id=604 data-nosnippet>604</a>
-<a href=#605 id=605 data-nosnippet>605</a>			max_connections:<span class="number">100</span>,
-<a href=#606 id=606 data-nosnippet>606</a>
-<a href=#607 id=607 data-nosnippet>607</a>			available_permits:<span class="number">100</span>,
-<a href=#608 id=608 data-nosnippet>608</a>
-<a href=#609 id=609 data-nosnippet>609</a>			connection_timeout:std::time::Duration::from_secs(<span class="number">30</span>),
-<a href=#610 id=610 data-nosnippet>610</a>		};
-<a href=#611 id=611 data-nosnippet>611</a>
-<a href=#612 id=612 data-nosnippet>612</a>		<span class="macro">assert_eq!</span>(stats.utilization(), <span class="number">0.0</span>);
-<a href=#613 id=613 data-nosnippet>613</a>
-<a href=#614 id=614 data-nosnippet>614</a>		<span class="macro">assert_eq!</span>(stats.health_percentage(), <span class="number">100.0</span>); <span class="comment">// Empty pool is healthy
-<a href=#615 id=615 data-nosnippet>615</a>		</span><span class="macro">assert!</span>(!stats.is_under_stress());
-<a href=#616 id=616 data-nosnippet>616</a>	}
-<a href=#617 id=617 data-nosnippet>617</a>}
+<a href=#595 id=595 data-nosnippet>595</a>
+<a href=#596 id=596 data-nosnippet>596</a>		</span><span class="macro">assert!</span>(stats.is_under_stress());
+<a href=#597 id=597 data-nosnippet>597</a>	}
+<a href=#598 id=598 data-nosnippet>598</a>
+<a href=#599 id=599 data-nosnippet>599</a>	<span class="attr">#[test]
+<a href=#600 id=600 data-nosnippet>600</a>	</span><span class="kw">fn </span>test_connection_stats_empty_pool() {
+<a href=#601 id=601 data-nosnippet>601</a>		<span class="kw">let </span>stats = ConnectionStats {
+<a href=#602 id=602 data-nosnippet>602</a>			total_connections:<span class="number">0</span>,
+<a href=#603 id=603 data-nosnippet>603</a>
+<a href=#604 id=604 data-nosnippet>604</a>			healthy_connections:<span class="number">0</span>,
+<a href=#605 id=605 data-nosnippet>605</a>
+<a href=#606 id=606 data-nosnippet>606</a>			max_connections:<span class="number">100</span>,
+<a href=#607 id=607 data-nosnippet>607</a>
+<a href=#608 id=608 data-nosnippet>608</a>			available_permits:<span class="number">100</span>,
+<a href=#609 id=609 data-nosnippet>609</a>
+<a href=#610 id=610 data-nosnippet>610</a>			connection_timeout:std::time::Duration::from_secs(<span class="number">30</span>),
+<a href=#611 id=611 data-nosnippet>611</a>		};
+<a href=#612 id=612 data-nosnippet>612</a>
+<a href=#613 id=613 data-nosnippet>613</a>		<span class="macro">assert_eq!</span>(stats.utilization(), <span class="number">0.0</span>);
+<a href=#614 id=614 data-nosnippet>614</a>
+<a href=#615 id=615 data-nosnippet>615</a>		<span class="macro">assert_eq!</span>(stats.health_percentage(), <span class="number">100.0</span>); <span class="comment">// Empty pool is healthy
+<a href=#616 id=616 data-nosnippet>616</a>
+<a href=#617 id=617 data-nosnippet>617</a>		</span><span class="macro">assert!</span>(!stats.is_under_stress());
+<a href=#618 id=618 data-nosnippet>618</a>	}
+<a href=#619 id=619 data-nosnippet>619</a>}
 </code></pre></div></section></main></body></html>

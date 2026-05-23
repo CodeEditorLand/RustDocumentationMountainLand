@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["DetachFromProcess"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

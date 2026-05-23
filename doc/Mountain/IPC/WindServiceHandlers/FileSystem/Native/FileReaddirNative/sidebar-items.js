@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["FileReaddirNative"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["NativeIsFullscreen"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

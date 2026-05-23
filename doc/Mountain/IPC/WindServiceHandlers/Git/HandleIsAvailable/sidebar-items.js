@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["HandleIsAvailable"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

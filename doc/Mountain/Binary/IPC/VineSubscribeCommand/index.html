@@ -2,7 +2,7 @@
 <h2 id="vinesubscribecommand"><a class="doc-anchor" href="#vinesubscribecommand">§</a>VineSubscribeCommand</h2>
 <p>Tauri command surface that exposes the process-wide Vine
 notification broadcast (<code>Vine::Client::SubscribeNotifications</code>)
-to Sky / Wind via a Tauri Channel<NotificationFramePayload>.</p>
+to Sky / Wind via a Tauri <code>Channel&lt;NotificationFramePayload&gt;</code>.</p>
 <p>Wind / Sky subscribers consume each frame as it arrives - same
 ordering, same drop-oldest semantics as the in-process Rust
 subscribers. The Effect-TS Layer in

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"constant":["EXTENSION_TYPE_SYSTEM","EXTENSION_TYPE_USER","SCAN_WAIT_CAP_MS"],"fn":["ExtensionsGetInstalled"]};
+window.SIDEBAR_ITEMS = {"constant":["EXTENSION_TYPE_SYSTEM","EXTENSION_TYPE_USER","SCAN_WAIT_CAP_MS"],"fn":["CacheIndex","Fn"],"static":["INSTALLED_CACHE"]};

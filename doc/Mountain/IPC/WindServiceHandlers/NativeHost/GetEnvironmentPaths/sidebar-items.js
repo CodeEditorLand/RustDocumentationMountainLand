@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["NativeGetEnvironmentPaths"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

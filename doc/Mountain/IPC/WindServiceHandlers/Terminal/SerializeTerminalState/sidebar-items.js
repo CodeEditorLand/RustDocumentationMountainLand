@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["SerializeTerminalState"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

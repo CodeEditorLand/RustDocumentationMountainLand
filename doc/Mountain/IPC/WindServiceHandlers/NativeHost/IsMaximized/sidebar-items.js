@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["NativeIsMaximized"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

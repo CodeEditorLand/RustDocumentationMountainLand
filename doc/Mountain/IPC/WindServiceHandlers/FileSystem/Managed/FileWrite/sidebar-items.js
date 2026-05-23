@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["FileWrite"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

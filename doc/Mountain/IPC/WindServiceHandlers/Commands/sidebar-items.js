@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["CommandsExecute","CommandsGetAll"]};
+window.SIDEBAR_ITEMS = {"mod":["Execute","GetAll"]};

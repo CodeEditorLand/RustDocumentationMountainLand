@@ -41,7 +41,7 @@
 <a href=#41 id=41 data-nosnippet>41</a>
 <a href=#42 id=42 data-nosnippet>42</a><span class="kw">mod </span><a href="ProviderLookup.rs.html#1-120">ProviderLookup</a>;
 <a href=#43 id=43 data-nosnippet>43</a>
-<a href=#44 id=44 data-nosnippet>44</a><span class="kw">mod </span><a href="FeatureMethods.rs.html#1-933">FeatureMethods</a>;
+<a href=#44 id=44 data-nosnippet>44</a><span class="kw">mod </span><a href="FeatureMethods.rs.html#1-1010">FeatureMethods</a>;
 <a href=#45 id=45 data-nosnippet>45</a>
 <a href=#46 id=46 data-nosnippet>46</a><span class="attr">#[async_trait]
 <a href=#47 id=47 data-nosnippet>47</a></span><span class="kw">impl </span>LanguageFeatureProviderRegistry <span class="kw">for </span><a href="../MountainEnvironment.rs.html#72-85">MountainEnvironment</a> {
@@ -231,58 +231,78 @@
 <a href=#231 id=231 data-nosnippet>231</a>
 <a href=#232 id=232 data-nosnippet>232</a>	<span class="kw">async fn </span>PrepareCallHierarchy(
 <a href=#233 id=233 data-nosnippet>233</a>		<span class="kw-2">&amp;</span><a class="self" href="#233">self</a>,
-<a href=#234 id=234 data-nosnippet>234</a>		<a href="#234">DocumentURI</a>:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
-<a href=#235 id=235 data-nosnippet>235</a>		<a href="#235">PositionDTO</a>:PositionDTO,
-<a href=#236 id=236 data-nosnippet>236</a>	) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;, CommonError&gt; {
-<a href=#237 id=237 data-nosnippet>237</a>		FeatureMethods::prepare_call_hierarchy(<span class="self">self</span>, DocumentURI, PositionDTO).<span class="kw">await
-<a href=#238 id=238 data-nosnippet>238</a>	</span>}
-<a href=#239 id=239 data-nosnippet>239</a>
-<a href=#240 id=240 data-nosnippet>240</a>	<span class="kw">async fn </span>PrepareTypeHierarchy(
-<a href=#241 id=241 data-nosnippet>241</a>		<span class="kw-2">&amp;</span><a class="self" href="#241">self</a>,
-<a href=#242 id=242 data-nosnippet>242</a>		<a href="#242">DocumentURI</a>:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
-<a href=#243 id=243 data-nosnippet>243</a>		<a href="#243">PositionDTO</a>:PositionDTO,
-<a href=#244 id=244 data-nosnippet>244</a>	) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;, CommonError&gt; {
-<a href=#245 id=245 data-nosnippet>245</a>		FeatureMethods::prepare_type_hierarchy(<span class="self">self</span>, DocumentURI, PositionDTO).<span class="kw">await
-<a href=#246 id=246 data-nosnippet>246</a>	</span>}
-<a href=#247 id=247 data-nosnippet>247</a>
-<a href=#248 id=248 data-nosnippet>248</a>	<span class="kw">async fn </span>ProvideTypeHierarchySupertypes(<span class="kw-2">&amp;</span><a class="self" href="#248">self</a>, <a href="#248">ItemDTO</a>:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;, CommonError&gt; {
-<a href=#249 id=249 data-nosnippet>249</a>		FeatureMethods::provide_type_hierarchy_supertypes(<span class="self">self</span>, ItemDTO).<span class="kw">await
+<a href=#234 id=234 data-nosnippet>234</a>
+<a href=#235 id=235 data-nosnippet>235</a>		<a href="#235">DocumentURI</a>:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
+<a href=#236 id=236 data-nosnippet>236</a>
+<a href=#237 id=237 data-nosnippet>237</a>		<a href="#237">PositionDTO</a>:PositionDTO,
+<a href=#238 id=238 data-nosnippet>238</a>	) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;, CommonError&gt; {
+<a href=#239 id=239 data-nosnippet>239</a>		FeatureMethods::prepare_call_hierarchy(<span class="self">self</span>, DocumentURI, PositionDTO).<span class="kw">await
+<a href=#240 id=240 data-nosnippet>240</a>	</span>}
+<a href=#241 id=241 data-nosnippet>241</a>
+<a href=#242 id=242 data-nosnippet>242</a>	<span class="kw">async fn </span>PrepareTypeHierarchy(
+<a href=#243 id=243 data-nosnippet>243</a>		<span class="kw-2">&amp;</span><a class="self" href="#243">self</a>,
+<a href=#244 id=244 data-nosnippet>244</a>
+<a href=#245 id=245 data-nosnippet>245</a>		<a href="#245">DocumentURI</a>:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
+<a href=#246 id=246 data-nosnippet>246</a>
+<a href=#247 id=247 data-nosnippet>247</a>		<a href="#247">PositionDTO</a>:PositionDTO,
+<a href=#248 id=248 data-nosnippet>248</a>	) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;, CommonError&gt; {
+<a href=#249 id=249 data-nosnippet>249</a>		FeatureMethods::prepare_type_hierarchy(<span class="self">self</span>, DocumentURI, PositionDTO).<span class="kw">await
 <a href=#250 id=250 data-nosnippet>250</a>	</span>}
 <a href=#251 id=251 data-nosnippet>251</a>
-<a href=#252 id=252 data-nosnippet>252</a>	<span class="kw">async fn </span>ProvideTypeHierarchySubtypes(<span class="kw-2">&amp;</span><a class="self" href="#252">self</a>, <a href="#252">ItemDTO</a>:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;, CommonError&gt; {
-<a href=#253 id=253 data-nosnippet>253</a>		FeatureMethods::provide_type_hierarchy_subtypes(<span class="self">self</span>, ItemDTO).<span class="kw">await
+<a href=#252 id=252 data-nosnippet>252</a>	<span class="kw">async fn </span>ProvideTypeHierarchySupertypes(<span class="kw-2">&amp;</span><a class="self" href="#252">self</a>, <a href="#252">ItemDTO</a>:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;, CommonError&gt; {
+<a href=#253 id=253 data-nosnippet>253</a>		FeatureMethods::provide_type_hierarchy_supertypes(<span class="self">self</span>, ItemDTO).<span class="kw">await
 <a href=#254 id=254 data-nosnippet>254</a>	</span>}
 <a href=#255 id=255 data-nosnippet>255</a>
-<a href=#256 id=256 data-nosnippet>256</a>	<span class="kw">async fn </span>ProvideCallHierarchyIncomingCalls(<span class="kw-2">&amp;</span><a class="self" href="#256">self</a>, <a href="#256">ItemDTO</a>:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;, CommonError&gt; {
-<a href=#257 id=257 data-nosnippet>257</a>		FeatureMethods::provide_call_hierarchy_incoming_calls(<span class="self">self</span>, ItemDTO).<span class="kw">await
+<a href=#256 id=256 data-nosnippet>256</a>	<span class="kw">async fn </span>ProvideTypeHierarchySubtypes(<span class="kw-2">&amp;</span><a class="self" href="#256">self</a>, <a href="#256">ItemDTO</a>:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;, CommonError&gt; {
+<a href=#257 id=257 data-nosnippet>257</a>		FeatureMethods::provide_type_hierarchy_subtypes(<span class="self">self</span>, ItemDTO).<span class="kw">await
 <a href=#258 id=258 data-nosnippet>258</a>	</span>}
 <a href=#259 id=259 data-nosnippet>259</a>
-<a href=#260 id=260 data-nosnippet>260</a>	<span class="kw">async fn </span>ProvideCallHierarchyOutgoingCalls(<span class="kw-2">&amp;</span><a class="self" href="#260">self</a>, <a href="#260">ItemDTO</a>:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;, CommonError&gt; {
-<a href=#261 id=261 data-nosnippet>261</a>		FeatureMethods::provide_call_hierarchy_outgoing_calls(<span class="self">self</span>, ItemDTO).<span class="kw">await
+<a href=#260 id=260 data-nosnippet>260</a>	<span class="kw">async fn </span>ProvideCallHierarchyIncomingCalls(<span class="kw-2">&amp;</span><a class="self" href="#260">self</a>, <a href="#260">ItemDTO</a>:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;, CommonError&gt; {
+<a href=#261 id=261 data-nosnippet>261</a>		FeatureMethods::provide_call_hierarchy_incoming_calls(<span class="self">self</span>, ItemDTO).<span class="kw">await
 <a href=#262 id=262 data-nosnippet>262</a>	</span>}
 <a href=#263 id=263 data-nosnippet>263</a>
-<a href=#264 id=264 data-nosnippet>264</a>	<span class="kw">async fn </span>ProvideLinkedEditingRanges(
-<a href=#265 id=265 data-nosnippet>265</a>		<span class="kw-2">&amp;</span><a class="self" href="#265">self</a>,
-<a href=#266 id=266 data-nosnippet>266</a>
-<a href=#267 id=267 data-nosnippet>267</a>		<a href="#267">DocumentURI</a>:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
-<a href=#268 id=268 data-nosnippet>268</a>
-<a href=#269 id=269 data-nosnippet>269</a>		<a href="#269">PositionDTO</a>:PositionDTO,
-<a href=#270 id=270 data-nosnippet>270</a>	) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;, CommonError&gt; {
-<a href=#271 id=271 data-nosnippet>271</a>		FeatureMethods::provide_linked_editing_ranges(<span class="self">self</span>, DocumentURI, PositionDTO).<span class="kw">await
-<a href=#272 id=272 data-nosnippet>272</a>	</span>}
-<a href=#273 id=273 data-nosnippet>273</a>
-<a href=#274 id=274 data-nosnippet>274</a>	<span class="kw">async fn </span>ProvideOnTypeFormattingEdits(
-<a href=#275 id=275 data-nosnippet>275</a>		<span class="kw-2">&amp;</span><a class="self" href="#275">self</a>,
-<a href=#276 id=276 data-nosnippet>276</a>
-<a href=#277 id=277 data-nosnippet>277</a>		<a href="#277">DocumentURI</a>:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
-<a href=#278 id=278 data-nosnippet>278</a>
-<a href=#279 id=279 data-nosnippet>279</a>		<a href="#279">PositionDTO</a>:PositionDTO,
-<a href=#280 id=280 data-nosnippet>280</a>
-<a href=#281 id=281 data-nosnippet>281</a>		<a href="#281">Character</a>:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
-<a href=#282 id=282 data-nosnippet>282</a>
-<a href=#283 id=283 data-nosnippet>283</a>		<a href="#283">OptionsDTO</a>:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
-<a href=#284 id=284 data-nosnippet>284</a>	) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;TextEditDTO&gt;&gt;, CommonError&gt; {
-<a href=#285 id=285 data-nosnippet>285</a>		FeatureMethods::provide_on_type_formatting_edits(<span class="self">self</span>, DocumentURI, PositionDTO, Character, OptionsDTO).<span class="kw">await
-<a href=#286 id=286 data-nosnippet>286</a>	</span>}
-<a href=#287 id=287 data-nosnippet>287</a>}
+<a href=#264 id=264 data-nosnippet>264</a>	<span class="kw">async fn </span>ProvideCallHierarchyOutgoingCalls(<span class="kw-2">&amp;</span><a class="self" href="#264">self</a>, <a href="#264">ItemDTO</a>:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;, CommonError&gt; {
+<a href=#265 id=265 data-nosnippet>265</a>		FeatureMethods::provide_call_hierarchy_outgoing_calls(<span class="self">self</span>, ItemDTO).<span class="kw">await
+<a href=#266 id=266 data-nosnippet>266</a>	</span>}
+<a href=#267 id=267 data-nosnippet>267</a>
+<a href=#268 id=268 data-nosnippet>268</a>	<span class="kw">async fn </span>ProvideLinkedEditingRanges(
+<a href=#269 id=269 data-nosnippet>269</a>		<span class="kw-2">&amp;</span><a class="self" href="#269">self</a>,
+<a href=#270 id=270 data-nosnippet>270</a>
+<a href=#271 id=271 data-nosnippet>271</a>		<a href="#271">DocumentURI</a>:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
+<a href=#272 id=272 data-nosnippet>272</a>
+<a href=#273 id=273 data-nosnippet>273</a>		<a href="#273">PositionDTO</a>:PositionDTO,
+<a href=#274 id=274 data-nosnippet>274</a>	) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;, CommonError&gt; {
+<a href=#275 id=275 data-nosnippet>275</a>		FeatureMethods::provide_linked_editing_ranges(<span class="self">self</span>, DocumentURI, PositionDTO).<span class="kw">await
+<a href=#276 id=276 data-nosnippet>276</a>	</span>}
+<a href=#277 id=277 data-nosnippet>277</a>
+<a href=#278 id=278 data-nosnippet>278</a>	<span class="kw">async fn </span>ProvideFileDecoration(<span class="kw-2">&amp;</span><a class="self" href="#278">self</a>, <a href="#278">ResourceURI</a>:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;, CommonError&gt; {
+<a href=#279 id=279 data-nosnippet>279</a>		FeatureMethods::provide_file_decoration(<span class="self">self</span>, ResourceURI).<span class="kw">await
+<a href=#280 id=280 data-nosnippet>280</a>	</span>}
+<a href=#281 id=281 data-nosnippet>281</a>
+<a href=#282 id=282 data-nosnippet>282</a>	<span class="kw">async fn </span>ProvideInlineCompletionItems(
+<a href=#283 id=283 data-nosnippet>283</a>		<span class="kw-2">&amp;</span><a class="self" href="#283">self</a>,
+<a href=#284 id=284 data-nosnippet>284</a>
+<a href=#285 id=285 data-nosnippet>285</a>		<a href="#285">DocumentURI</a>:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
+<a href=#286 id=286 data-nosnippet>286</a>
+<a href=#287 id=287 data-nosnippet>287</a>		<a href="#287">PositionDTO_</a>:PositionDTO,
+<a href=#288 id=288 data-nosnippet>288</a>
+<a href=#289 id=289 data-nosnippet>289</a>		<a href="#289">ContextDTO</a>:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
+<a href=#290 id=290 data-nosnippet>290</a>	) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;, CommonError&gt; {
+<a href=#291 id=291 data-nosnippet>291</a>		FeatureMethods::provide_inline_completion_items(<span class="self">self</span>, DocumentURI, PositionDTO_, ContextDTO).<span class="kw">await
+<a href=#292 id=292 data-nosnippet>292</a>	</span>}
+<a href=#293 id=293 data-nosnippet>293</a>
+<a href=#294 id=294 data-nosnippet>294</a>	<span class="kw">async fn </span>ProvideOnTypeFormattingEdits(
+<a href=#295 id=295 data-nosnippet>295</a>		<span class="kw-2">&amp;</span><a class="self" href="#295">self</a>,
+<a href=#296 id=296 data-nosnippet>296</a>
+<a href=#297 id=297 data-nosnippet>297</a>		<a href="#297">DocumentURI</a>:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>,
+<a href=#298 id=298 data-nosnippet>298</a>
+<a href=#299 id=299 data-nosnippet>299</a>		<a href="#299">PositionDTO</a>:PositionDTO,
+<a href=#300 id=300 data-nosnippet>300</a>
+<a href=#301 id=301 data-nosnippet>301</a>		<a href="#301">Character</a>:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#302 id=302 data-nosnippet>302</a>
+<a href=#303 id=303 data-nosnippet>303</a>		<a href="#303">OptionsDTO</a>:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
+<a href=#304 id=304 data-nosnippet>304</a>	) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;TextEditDTO&gt;&gt;, CommonError&gt; {
+<a href=#305 id=305 data-nosnippet>305</a>		FeatureMethods::provide_on_type_formatting_edits(<span class="self">self</span>, DocumentURI, PositionDTO, Character, OptionsDTO).<span class="kw">await
+<a href=#306 id=306 data-nosnippet>306</a>	</span>}
+<a href=#307 id=307 data-nosnippet>307</a>}
 </code></pre></div></section></main></body></html>

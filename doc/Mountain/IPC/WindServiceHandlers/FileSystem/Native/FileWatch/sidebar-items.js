@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["FileWatch"],"static":["WATCH_HANDLE_SEQ"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"],"static":["WATCH_HANDLE_SEQ"]};

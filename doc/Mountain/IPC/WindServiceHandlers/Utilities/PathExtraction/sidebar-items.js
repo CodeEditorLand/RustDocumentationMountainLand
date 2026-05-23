@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["extract_path_from_arg","hex_digit","normalize_uri_path","percent_decode","resolve_static_application_path","resolve_userdata_path"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn","hex_digit","normalize_uri_path","percent_decode","resolve_static_application_path","resolve_userdata_path"]};

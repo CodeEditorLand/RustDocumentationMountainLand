@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["LocalPTYCreateProcess"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

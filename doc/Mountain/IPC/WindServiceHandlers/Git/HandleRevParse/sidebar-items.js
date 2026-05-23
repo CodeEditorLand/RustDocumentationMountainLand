@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["HandleRevParse"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

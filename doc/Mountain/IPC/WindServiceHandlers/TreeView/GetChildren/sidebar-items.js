@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["TreeGetChildren"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

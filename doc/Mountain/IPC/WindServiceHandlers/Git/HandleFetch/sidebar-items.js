@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["HandleFetch"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

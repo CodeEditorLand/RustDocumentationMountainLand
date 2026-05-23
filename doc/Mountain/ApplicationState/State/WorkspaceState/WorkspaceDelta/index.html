@@ -5,7 +5,7 @@ flips the folder list (boot-time seed, the <code>MountainWorkspaceOpen*</code>
 commands, pick-folder navigation, Wind add/remove, and the Cocoon-driven
 <code>$updateWorkspaceFolders</code> request).</p>
 <p>The delta is computed by
-[<code>WorkspaceState::SetWorkspaceFoldersReturnDelta</code>] and shipped as a
+<code>WorkspaceState::SetWorkspaceFoldersReturnDelta</code> and shipped as a
 fire-and-forget Vine notification: Cocoon’s <code>NotificationHandler</code> converts
 it into a <code>didChangeWorkspaceFolders</code> event on
 <code>WorkspaceEventEmitter</code>, which powers every extension’s

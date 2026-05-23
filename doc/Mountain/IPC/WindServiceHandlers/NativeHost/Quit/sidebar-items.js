@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["Quit"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

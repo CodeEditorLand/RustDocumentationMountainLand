@@ -2,7 +2,7 @@
 <a href=#2 id=2 data-nosnippet>2</a>//!
 <a href=#3 id=3 data-nosnippet>3</a>//! Tauri command surface that exposes the process-wide Vine
 <a href=#4 id=4 data-nosnippet>4</a>//! notification broadcast (`Vine::Client::SubscribeNotifications`)
-<a href=#5 id=5 data-nosnippet>5</a>//! to Sky / Wind via a Tauri Channel&lt;NotificationFramePayload&gt;.
+<a href=#5 id=5 data-nosnippet>5</a>//! to Sky / Wind via a Tauri `Channel&lt;NotificationFramePayload&gt;`.
 <a href=#6 id=6 data-nosnippet>6</a>//!
 <a href=#7 id=7 data-nosnippet>7</a>//! Wind / Sky subscribers consume each frame as it arrives - same
 <a href=#8 id=8 data-nosnippet>8</a>//! ordering, same drop-oldest semantics as the in-process Rust
@@ -25,7 +25,7 @@
 <a href=#25 id=25 data-nosnippet>25</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#26 id=26 data-nosnippet>26</a><span class="kw">use </span>tauri::ipc::Channel;
 <a href=#27 id=27 data-nosnippet>27</a>
-<a href=#28 id=28 data-nosnippet>28</a><span class="kw">use </span>crate::{<a href="../../Vine/Client/SubscribeNotifications.rs.html#10-12">Vine::Client::SubscribeNotifications::Fn</a> <span class="kw">as </span>SubscribeNotifications, <a href="../../IPC/DevLog/mod.rs.html#52-122">dev_log</a>};
+<a href=#28 id=28 data-nosnippet>28</a><span class="kw">use </span>crate::{<a href="../../Vine/Client/SubscribeNotifications.rs.html#9-11">Vine::Client::SubscribeNotifications::Fn</a> <span class="kw">as </span>SubscribeNotifications, <a href="../../IPC/DevLog/mod.rs.html#51-121">dev_log</a>};
 <a href=#29 id=29 data-nosnippet>29</a>
 <a href=#30 id=30 data-nosnippet>30</a><span class="doccomment">/// Webview-facing notification frame. Mirror of the Rust
 <a href=#31 id=31 data-nosnippet>31</a>/// `Vine::Client::NotificationFrame` with camelCase field names per

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["ModelClose"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

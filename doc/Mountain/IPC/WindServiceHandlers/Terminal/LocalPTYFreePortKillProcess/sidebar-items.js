@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["LocalPTYFreePortKillProcess"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["OpenExternal"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

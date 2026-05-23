@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["HandleRevListCount"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

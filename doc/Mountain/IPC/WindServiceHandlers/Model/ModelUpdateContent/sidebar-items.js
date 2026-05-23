@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["ModelUpdateContent"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

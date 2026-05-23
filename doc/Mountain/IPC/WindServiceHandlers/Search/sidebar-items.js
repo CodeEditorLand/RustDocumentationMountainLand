@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["SearchFindFiles","SearchFindInFiles"]};
+window.SIDEBAR_ITEMS = {"mod":["FindFiles","FindInFiles"]};

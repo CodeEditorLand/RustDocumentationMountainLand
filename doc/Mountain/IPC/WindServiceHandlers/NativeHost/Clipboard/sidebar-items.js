@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["NativeHasClipboard","NativeReadClipboardBuffer","NativeReadClipboardFindText","NativeReadClipboardText","NativeReadImage","NativeTriggerPaste","NativeWriteClipboardBuffer","NativeWriteClipboardFindText","NativeWriteClipboardText"]};

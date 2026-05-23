@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["ParticipateInSave"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

@@ -5,7 +5,7 @@
 <a href=#5 id=5 data-nosnippet>5</a>
 <a href=#6 id=6 data-nosnippet>6</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#7 id=7 data-nosnippet>7</a>
-<a href=#8 id=8 data-nosnippet>8</a><span class="kw">use </span><a href="../../../../IPC/DevLog/mod.rs.html#52-122"><span class="kw">crate</span>::dev_log</a>;
+<a href=#8 id=8 data-nosnippet>8</a><span class="kw">use </span><a href="../../../../IPC/DevLog/mod.rs.html#51-121"><span class="kw">crate</span>::dev_log</a>;
 <a href=#9 id=9 data-nosnippet>9</a>
 <a href=#10 id=10 data-nosnippet>10</a><span class="doccomment">/// A single file/folder decoration: badge letter, tooltip, color hint.
 <a href=#11 id=11 data-nosnippet>11</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">serde::Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">serde::Deserialize</a>)]
@@ -33,7 +33,7 @@
 <a href=#33 id=33 data-nosnippet>33</a>
 <a href=#34 id=34 data-nosnippet>34</a><span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a> <span class="kw">for </span><a href="#30-32">DecorationsState</a> {
 <a href=#35 id=35 data-nosnippet>35</a>	<span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{
-<a href=#36 id=36 data-nosnippet>36</a>		<a href="../../../../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"decorations"</span>, <span class="string">"[DecorationsState] Initializing default decorations state..."</span>);
+<a href=#36 id=36 data-nosnippet>36</a>		<a href="../../../../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"decorations"</span>, <span class="string">"[DecorationsState] Initializing default decorations state..."</span>);
 <a href=#37 id=37 data-nosnippet>37</a>
 <a href=#38 id=38 data-nosnippet>38</a>		<span class="self">Self </span>{ Entries:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">StandardMutex</a>::<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.new">new</a>(<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>::<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.new">new</a>())) }
 <a href=#39 id=39 data-nosnippet>39</a>	}
@@ -50,7 +50,7 @@
 <a href=#50 id=50 data-nosnippet>50</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="kw-2">mut </span>Guard) = <a class="self" href="#49">self</a>.Entries.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>() {
 <a href=#51 id=51 data-nosnippet>51</a>			<a href="#50">Guard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(<a href="#49">Uri</a>.<a href="https://doc.rust-lang.org/nightly/alloc/borrow/trait.ToOwned.html#tymethod.to_owned">to_owned</a>(), <a href="#49">Decoration</a>);
 <a href=#52 id=52 data-nosnippet>52</a>
-<a href=#53 id=53 data-nosnippet>53</a>			<a href="../../../../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"decorations"</span>, <span class="string">"[DecorationsState] Decoration set for: {}"</span>, Uri);
+<a href=#53 id=53 data-nosnippet>53</a>			<a href="../../../../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"decorations"</span>, <span class="string">"[DecorationsState] Decoration set for: {}"</span>, Uri);
 <a href=#54 id=54 data-nosnippet>54</a>		}
 <a href=#55 id=55 data-nosnippet>55</a>	}
 <a href=#56 id=56 data-nosnippet>56</a>
@@ -59,7 +59,7 @@
 <a href=#59 id=59 data-nosnippet>59</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="kw-2">mut </span>Guard) = <a class="self" href="#58">self</a>.Entries.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>() {
 <a href=#60 id=60 data-nosnippet>60</a>			<a href="#59">Guard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.remove">remove</a>(<a href="#58">Uri</a>);
 <a href=#61 id=61 data-nosnippet>61</a>
-<a href=#62 id=62 data-nosnippet>62</a>			<a href="../../../../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"decorations"</span>, <span class="string">"[DecorationsState] Decoration cleared for: {}"</span>, Uri);
+<a href=#62 id=62 data-nosnippet>62</a>			<a href="../../../../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"decorations"</span>, <span class="string">"[DecorationsState] Decoration cleared for: {}"</span>, Uri);
 <a href=#63 id=63 data-nosnippet>63</a>		}
 <a href=#64 id=64 data-nosnippet>64</a>	}
 <a href=#65 id=65 data-nosnippet>65</a>

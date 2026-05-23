@@ -61,8 +61,8 @@
 <a href=#61 id=61 data-nosnippet>61</a><span class="kw">use </span>tauri::Emitter;
 <a href=#62 id=62 data-nosnippet>62</a><span class="kw">use </span>tokio::sync::mpsc <span class="kw">as </span>TokioMPSC;
 <a href=#63 id=63 data-nosnippet>63</a>
-<a href=#64 id=64 data-nosnippet>64</a><span class="kw">use </span>super::{<a href="MountainEnvironment.rs.html#72-85">MountainEnvironment::MountainEnvironment</a>, <a href="mod.rs.html#121">Utility</a>};
-<a href=#65 id=65 data-nosnippet>65</a><span class="kw">use </span>crate::{<a href="../ApplicationState/DTO/TerminalStateDTO.rs.html#65-113">ApplicationState::DTO::TerminalStateDTO::TerminalStateDTO</a>, <a href="../IPC/SkyEmit.rs.html#45-70">IPC::SkyEmit::LogSkyEmit</a>, <a href="../IPC/DevLog/mod.rs.html#52-122">dev_log</a>};
+<a href=#64 id=64 data-nosnippet>64</a><span class="kw">use </span>super::{<a href="MountainEnvironment.rs.html#72-85">MountainEnvironment::MountainEnvironment</a>, <a href="mod.rs.html#120">Utility</a>};
+<a href=#65 id=65 data-nosnippet>65</a><span class="kw">use </span>crate::{<a href="../ApplicationState/DTO/TerminalStateDTO.rs.html#65-113">ApplicationState::DTO::TerminalStateDTO::TerminalStateDTO</a>, <a href="../IPC/SkyEmit.rs.html#44-69">IPC::SkyEmit::LogSkyEmit</a>, <a href="../IPC/DevLog/mod.rs.html#51-121">dev_log</a>};
 <a href=#66 id=66 data-nosnippet>66</a>
 <a href=#67 id=67 data-nosnippet>67</a><span class="comment">// Per-terminal recent-output buffer. The PTY reader task races SkyBridge's
 <a href=#68 id=68 data-nosnippet>68</a>// `listen("sky://terminal/data", ...)` install: in the bundled-electron
@@ -86,7 +86,7 @@
 <a href=#86 id=86 data-nosnippet>86</a>	<a href="#82-83">TERMINAL_OUTPUT_BUFFER</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/once_lock/struct.OnceLock.html#method.get_or_init">get_or_init</a>(|| std::sync::<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">Mutex</a>::<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.new">new</a>(std::collections::<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>::<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.new">new</a>()))
 <a href=#87 id=87 data-nosnippet>87</a>}
 <a href=#88 id=88 data-nosnippet>88</a>
-<a href=#89 id=89 data-nosnippet>89</a><span class="kw">pub fn </span><a href="../../../Mountain/Environment/TerminalProvider/fn.AppendTerminalOutput.html">AppendTerminalOutput</a>(TerminalId:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>, Bytes:<span class="kw-2">&amp;</span>[<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>]) {
+<a href=#89 id=89 data-nosnippet>89</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span><a href="../../../Mountain/Environment/TerminalProvider/fn.AppendTerminalOutput.html">AppendTerminalOutput</a>(TerminalId:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>, Bytes:<span class="kw-2">&amp;</span>[<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>]) {
 <a href=#90 id=90 data-nosnippet>90</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="kw-2">mut </span>Map) = <a href="#85-87">TerminalOutputBuffer</a>().<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>() {
 <a href=#91 id=91 data-nosnippet>91</a>		<span class="kw">let </span>Entry = <a href="#90">Map</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.entry">entry</a>(<a href="#89">TerminalId</a>).<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/enum.Entry.html#method.or_insert_with">or_insert_with</a>(<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>::<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.new">new</a>);
 <a href=#92 id=92 data-nosnippet>92</a>
@@ -102,7 +102,7 @@
 <a href=#102 id=102 data-nosnippet>102</a>	}
 <a href=#103 id=103 data-nosnippet>103</a>}
 <a href=#104 id=104 data-nosnippet>104</a>
-<a href=#105 id=105 data-nosnippet>105</a><span class="kw">pub fn </span><a href="../../../Mountain/Environment/TerminalProvider/fn.DrainTerminalOutputBuffer.html">DrainTerminalOutputBuffer</a>() -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;(<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>, <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;)&gt; {
+<a href=#105 id=105 data-nosnippet>105</a><span class="kw">pub fn </span><a href="../../../Mountain/Environment/TerminalProvider/fn.Fn.html">Fn</a>() -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;(<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>, <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;)&gt; {
 <a href=#106 id=106 data-nosnippet>106</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Map) = <a href="#85-87">TerminalOutputBuffer</a>().<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>() {
 <a href=#107 id=107 data-nosnippet>107</a>		<a href="#106">Map</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.iter">iter</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.map">map</a>(|(K, V)| (<span class="kw-2">*</span><a href="#107">K</a>, <a href="#107">V</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>())).<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.collect">collect</a>()
 <a href=#108 id=108 data-nosnippet>108</a>	} <span class="kw">else </span>{
@@ -110,7 +110,7 @@
 <a href=#110 id=110 data-nosnippet>110</a>	}
 <a href=#111 id=111 data-nosnippet>111</a>}
 <a href=#112 id=112 data-nosnippet>112</a>
-<a href=#113 id=113 data-nosnippet>113</a><span class="kw">pub fn </span><a href="../../../Mountain/Environment/TerminalProvider/fn.RemoveTerminalOutputBuffer.html">RemoveTerminalOutputBuffer</a>(TerminalId:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>) {
+<a href=#113 id=113 data-nosnippet>113</a><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span><a href="../../../Mountain/Environment/TerminalProvider/fn.RemoveTerminalOutputBuffer.html">RemoveTerminalOutputBuffer</a>(TerminalId:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>) {
 <a href=#114 id=114 data-nosnippet>114</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="kw-2">mut </span>Map) = <a href="#85-87">TerminalOutputBuffer</a>().<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>() {
 <a href=#115 id=115 data-nosnippet>115</a>		<a href="#114">Map</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.remove">remove</a>(<span class="kw-2">&amp;</span><a href="#113">TerminalId</a>);
 <a href=#116 id=116 data-nosnippet>116</a>	}
@@ -140,7 +140,7 @@
 <a href=#140 id=140 data-nosnippet>140</a>			.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or">unwrap_or</a>(<span class="string">"terminal"</span>)
 <a href=#141 id=141 data-nosnippet>141</a>			.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>();
 <a href=#142 id=142 data-nosnippet>142</a>
-<a href=#143 id=143 data-nosnippet>143</a>		<a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(
+<a href=#143 id=143 data-nosnippet>143</a>		<a href="../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(
 <a href=#144 id=144 data-nosnippet>144</a>			<span class="string">"terminal"</span>,
 <a href=#145 id=145 data-nosnippet>145</a>			<span class="string">"[TerminalProvider] Creating terminal ID: {}, Name: '{}'"</span>,
 <a href=#146 id=146 data-nosnippet>146</a>			TerminalIdentifier,
@@ -260,7 +260,7 @@
 <a href=#260 id=260 data-nosnippet>260</a>							)
 <a href=#261 id=261 data-nosnippet>261</a>							.<span class="kw">await
 <a href=#262 id=262 data-nosnippet>262</a>						</span>{
-<a href=#263 id=263 data-nosnippet>263</a>							<a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(
+<a href=#263 id=263 data-nosnippet>263</a>							<a href="../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(
 <a href=#264 id=264 data-nosnippet>264</a>								<span class="string">"terminal"</span>,
 <a href=#265 id=265 data-nosnippet>265</a>								<span class="string">"warn: [TerminalProvider] Failed to send process data for ID {}: {}"</span>,
 <a href=#266 id=266 data-nosnippet>266</a>								TermIDForOutput,
@@ -275,7 +275,7 @@
 <a href=#275 id=275 data-nosnippet>275</a>								<span class="string">"data"</span>: DataString,
 <a href=#276 id=276 data-nosnippet>276</a>							}),
 <a href=#277 id=277 data-nosnippet>277</a>						) {
-<a href=#278 id=278 data-nosnippet>278</a>							<a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(
+<a href=#278 id=278 data-nosnippet>278</a>							<a href="../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(
 <a href=#279 id=279 data-nosnippet>279</a>								<span class="string">"terminal"</span>,
 <a href=#280 id=280 data-nosnippet>280</a>								<span class="string">"warn: [TerminalProvider] sky://terminal/data emit failed for ID {}: {}"</span>,
 <a href=#281 id=281 data-nosnippet>281</a>								TermIDForOutput,
@@ -316,7 +316,7 @@
 <a href=#316 id=316 data-nosnippet>316</a>				<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error) =&gt; <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"wait failed: {}"</span>, Error),
 <a href=#317 id=317 data-nosnippet>317</a>			};
 <a href=#318 id=318 data-nosnippet>318</a>
-<a href=#319 id=319 data-nosnippet>319</a>			<a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(
+<a href=#319 id=319 data-nosnippet>319</a>			<a href="../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(
 <a href=#320 id=320 data-nosnippet>320</a>				<span class="string">"terminal"</span>,
 <a href=#321 id=321 data-nosnippet>321</a>				<span class="string">"[TerminalProvider] Process for terminal ID {} pid={:?} {}"</span>,
 <a href=#322 id=322 data-nosnippet>322</a>				TermIDForExit,
@@ -334,7 +334,7 @@
 <a href=#334 id=334 data-nosnippet>334</a>				)
 <a href=#335 id=335 data-nosnippet>335</a>				.<span class="kw">await
 <a href=#336 id=336 data-nosnippet>336</a>			</span>{
-<a href=#337 id=337 data-nosnippet>337</a>				<a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(
+<a href=#337 id=337 data-nosnippet>337</a>				<a href="../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(
 <a href=#338 id=338 data-nosnippet>338</a>					<span class="string">"terminal"</span>,
 <a href=#339 id=339 data-nosnippet>339</a>					<span class="string">"warn: [TerminalProvider] Failed to send process exit notification for ID {}: {}"</span>,
 <a href=#340 id=340 data-nosnippet>340</a>					TermIDForExit,
@@ -354,243 +354,272 @@
 <a href=#354 id=354 data-nosnippet>354</a>			// create emit above. Without this, the UI keeps a ghost panel
 <a href=#355 id=355 data-nosnippet>355</a>			// after the shell exits (user types `exit` and the pane still
 <a href=#356 id=356 data-nosnippet>356</a>			// lingers until the next render cycle).
-<a href=#357 id=357 data-nosnippet>357</a>			</span><span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error) = <a href="../IPC/SkyEmit.rs.html#45-70">LogSkyEmit</a>(
+<a href=#357 id=357 data-nosnippet>357</a>			</span><span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error) = <a href="../IPC/SkyEmit.rs.html#44-69">LogSkyEmit</a>(
 <a href=#358 id=358 data-nosnippet>358</a>				<span class="kw-2">&amp;</span><a href="#305">EnvironmentClone</a>.ApplicationHandle,
 <a href=#359 id=359 data-nosnippet>359</a>				SkyEvent::TerminalExit.AsStr(),
 <a href=#360 id=360 data-nosnippet>360</a>				<a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json!</a>({ <span class="string">"id"</span>: TermIDForExit }),
 <a href=#361 id=361 data-nosnippet>361</a>			) {
-<a href=#362 id=362 data-nosnippet>362</a>				<a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(
+<a href=#362 id=362 data-nosnippet>362</a>				<a href="../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(
 <a href=#363 id=363 data-nosnippet>363</a>					<span class="string">"terminal"</span>,
 <a href=#364 id=364 data-nosnippet>364</a>					<span class="string">"warn: [TerminalProvider] sky://terminal/exit emit failed for ID {}: {}"</span>,
 <a href=#365 id=365 data-nosnippet>365</a>					TermIDForExit,
 <a href=#366 id=366 data-nosnippet>366</a>					Error
 <a href=#367 id=367 data-nosnippet>367</a>				);
 <a href=#368 id=368 data-nosnippet>368</a>			}
-<a href=#369 id=369 data-nosnippet>369</a>		});
-<a href=#370 id=370 data-nosnippet>370</a>
-<a href=#371 id=371 data-nosnippet>371</a>		<span class="self">self</span>.ApplicationState
-<a href=#372 id=372 data-nosnippet>372</a>			.Feature
-<a href=#373 id=373 data-nosnippet>373</a>			.Terminals
-<a href=#374 id=374 data-nosnippet>374</a>			.ActiveTerminals
-<a href=#375 id=375 data-nosnippet>375</a>			.lock()
-<a href=#376 id=376 data-nosnippet>376</a>			.map_err(Utility::ErrorMapping::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?
-<a href=#377 id=377 data-nosnippet>377</a>			</span>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(<a href="#129">TerminalIdentifier</a>, <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(std::sync::<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">Mutex</a>::<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.new">new</a>(<a href="#150">TerminalState</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>())));
-<a href=#378 id=378 data-nosnippet>378</a>
-<a href=#379 id=379 data-nosnippet>379</a>		<span class="comment">// BATCH-19 Part B: let Sky render the new terminal panel without
-<a href=#380 id=380 data-nosnippet>380</a>		// waiting for Cocoon to round-trip a notification. The `sky://` event
-<a href=#381 id=381 data-nosnippet>381</a>		// channel is already how ShowTerminal / HideTerminal talk to the UI.
-<a href=#382 id=382 data-nosnippet>382</a>		//
-<a href=#383 id=383 data-nosnippet>383</a>		// RACE FIX: emit on a deferred tokio task (~120 ms) instead of
-<a href=#384 id=384 data-nosnippet>384</a>		// synchronously. The workbench's `LocalTerminalBackend.createProcess`
-<a href=#385 id=385 data-nosnippet>385</a>		// flow is:
-<a href=#386 id=386 data-nosnippet>386</a>		//   1. await this._proxy.createProcess(...)   // RPC IN-FLIGHT
-<a href=#387 id=387 data-nosnippet>387</a>		//   2. const pty = new LocalPty(id, …)        // POST-await
-<a href=#388 id=388 data-nosnippet>388</a>		//   3. this._ptys.set(id, pty)                // POST-await
-<a href=#389 id=389 data-nosnippet>389</a>		// The patched `_connectToDirectProxy` listener for
-<a href=#390 id=390 data-nosnippet>390</a>		// `_localPtyService.onProcessReady` does
-<a href=#391 id=391 data-nosnippet>391</a>		// `this._ptys.get(e.id)?.handleReady(e.event)`. If we emit
-<a href=#392 id=392 data-nosnippet>392</a>		// synchronously while CreateTerminal is still inside step (1),
-<a href=#393 id=393 data-nosnippet>393</a>		// the Tauri event fires before step (3) - `_ptys.get(id)` returns
-<a href=#394 id=394 data-nosnippet>394</a>		// `undefined`, `handleReady` is skipped, `BasePty._onProcessReady`
-<a href=#395 id=395 data-nosnippet>395</a>		// never fires, `processManager._onProcessReady` never fires,
-<a href=#396 id=396 data-nosnippet>396</a>		// `ptyProcessReady` never resolves - and every `processManager.
-<a href=#397 id=397 data-nosnippet>397</a>		// write(data)` call (which `terminalInstance._handleOnData`
-<a href=#398 id=398 data-nosnippet>398</a>		// `await`s) hangs forever. The user sees the panel render but
-<a href=#399 id=399 data-nosnippet>399</a>		// every keystroke is silently dropped because `LocalPty.input`
-<a href=#400 id=400 data-nosnippet>400</a>		// is never reached. A 120 ms delay gives the RPC response
-<a href=#401 id=401 data-nosnippet>401</a>		// roundtrip + `_ptys.set` plenty of headroom on real hardware.
-<a href=#402 id=402 data-nosnippet>402</a>		// Same race applies to `sky://terminal/data` for the shell's
-<a href=#403 id=403 data-nosnippet>403</a>		// first prompt - the existing `AppendTerminalOutput` replay
-<a href=#404 id=404 data-nosnippet>404</a>		// buffer covers data, but the create event needs explicit
-<a href=#405 id=405 data-nosnippet>405</a>		// deferral because there's no replay path for ready.
-<a href=#406 id=406 data-nosnippet>406</a>		</span><span class="kw">let </span>CreateAppHandle = <a class="self" href="#128">self</a>.ApplicationHandle.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
-<a href=#407 id=407 data-nosnippet>407</a>
-<a href=#408 id=408 data-nosnippet>408</a>		<span class="kw">let </span>CreateTermId = <a href="#129">TerminalIdentifier</a>;
-<a href=#409 id=409 data-nosnippet>409</a>
-<a href=#410 id=410 data-nosnippet>410</a>		<span class="kw">let </span>CreateName = <a href="#137">Name</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
-<a href=#411 id=411 data-nosnippet>411</a>
-<a href=#412 id=412 data-nosnippet>412</a>		<span class="kw">let </span>CreatePid = <a href="#150">TerminalState</a>.OSProcessIdentifier;
-<a href=#413 id=413 data-nosnippet>413</a>
-<a href=#414 id=414 data-nosnippet>414</a>		tokio::spawn(<span class="kw">async move </span>{
-<a href=#415 id=415 data-nosnippet>415</a>			<span class="comment">// 20 ms: enough for the Tauri invoke round-trip + `_ptys.set(id,pty)`
-<a href=#416 id=416 data-nosnippet>416</a>			// to complete before `onProcessReady` fires. The original 120 ms was
-<a href=#417 id=417 data-nosnippet>417</a>			// measured on a slow test machine; modern M-series hardware completes
-<a href=#418 id=418 data-nosnippet>418</a>			// the full cycle in &lt;5 ms. 20 ms gives 4× headroom.
-<a href=#419 id=419 data-nosnippet>419</a>			</span>tokio::time::sleep(std::time::Duration::from_millis(<span class="number">20</span>)).<span class="kw">await</span>;
-<a href=#420 id=420 data-nosnippet>420</a>			<span class="kw">let </span>CreatePayload = <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json!</a>({
-<a href=#421 id=421 data-nosnippet>421</a>				<span class="string">"id"</span>: CreateTermId,
-<a href=#422 id=422 data-nosnippet>422</a>				<span class="string">"name"</span>: CreateName,
-<a href=#423 id=423 data-nosnippet>423</a>				<span class="string">"pid"</span>: CreatePid,
-<a href=#424 id=424 data-nosnippet>424</a>			});
-<a href=#425 id=425 data-nosnippet>425</a>			<span class="comment">// `LogSkyEmit` makes the deferred emit visible under
-<a href=#426 id=426 data-nosnippet>426</a>			// `[DEV:SKY-EMIT]` so the next log dissection can confirm
-<a href=#427 id=427 data-nosnippet>427</a>			// the deferral landed (and how many `localPty:input` calls
-<a href=#428 id=428 data-nosnippet>428</a>			// arrived afterwards). The bare `.emit()` we replaced was
-<a href=#429 id=429 data-nosnippet>429</a>			// invisible to the histogram.
-<a href=#430 id=430 data-nosnippet>430</a>			</span><span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error) = <a href="../IPC/SkyEmit.rs.html#45-70">LogSkyEmit</a>(<span class="kw-2">&amp;</span><a href="#406">CreateAppHandle</a>, SkyEvent::TerminalCreate.AsStr(), <a href="#420">CreatePayload</a>) {
-<a href=#431 id=431 data-nosnippet>431</a>				<a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(
-<a href=#432 id=432 data-nosnippet>432</a>					<span class="string">"terminal"</span>,
-<a href=#433 id=433 data-nosnippet>433</a>					<span class="string">"warn: [TerminalProvider] sky://terminal/create emit failed for ID {}: {}"</span>,
-<a href=#434 id=434 data-nosnippet>434</a>					CreateTermId,
-<a href=#435 id=435 data-nosnippet>435</a>					Error
-<a href=#436 id=436 data-nosnippet>436</a>				);
-<a href=#437 id=437 data-nosnippet>437</a>			}
-<a href=#438 id=438 data-nosnippet>438</a>		});
-<a href=#439 id=439 data-nosnippet>439</a>
-<a href=#440 id=440 data-nosnippet>440</a>		<a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(
-<a href=#441 id=441 data-nosnippet>441</a>			<span class="string">"terminal"</span>,
-<a href=#442 id=442 data-nosnippet>442</a>			<span class="string">"[TerminalProvider] localPty:spawn OK id={} pid={:?}"</span>,
-<a href=#443 id=443 data-nosnippet>443</a>			TerminalIdentifier,
-<a href=#444 id=444 data-nosnippet>444</a>			TerminalState.OSProcessIdentifier
-<a href=#445 id=445 data-nosnippet>445</a>		);
-<a href=#446 id=446 data-nosnippet>446</a>
-<a href=#447 id=447 data-nosnippet>447</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json!</a>({ <span class="string">"id"</span>: TerminalIdentifier, <span class="string">"name"</span>: Name, <span class="string">"pid"</span>: TerminalState.OSProcessIdentifier }))
-<a href=#448 id=448 data-nosnippet>448</a>	}
-<a href=#449 id=449 data-nosnippet>449</a>
-<a href=#450 id=450 data-nosnippet>450</a>	<span class="kw">async fn </span>SendTextToTerminal(<span class="kw-2">&amp;</span><a class="self" href="#450">self</a>, <a href="#450">TerminalId</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>, <a href="#450">Text</a>:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
-<a href=#451 id=451 data-nosnippet>451</a>		<a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"terminal"</span>, <span class="string">"[TerminalProvider] Sending text to terminal ID: {}"</span>, TerminalId);
-<a href=#452 id=452 data-nosnippet>452</a>
-<a href=#453 id=453 data-nosnippet>453</a>		<span class="kw">let </span>SenderOption = {
-<a href=#454 id=454 data-nosnippet>454</a>			<span class="kw">let </span>TerminalsGuard = <span class="self">self
-<a href=#455 id=455 data-nosnippet>455</a>				</span>.ApplicationState
-<a href=#456 id=456 data-nosnippet>456</a>				.Feature
-<a href=#457 id=457 data-nosnippet>457</a>				.Terminals
-<a href=#458 id=458 data-nosnippet>458</a>				.ActiveTerminals
-<a href=#459 id=459 data-nosnippet>459</a>				.lock()
-<a href=#460 id=460 data-nosnippet>460</a>				.map_err(Utility::ErrorMapping::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?</span>;
-<a href=#461 id=461 data-nosnippet>461</a>
-<a href=#462 id=462 data-nosnippet>462</a>			<a href="#454">TerminalsGuard</a>
-<a href=#463 id=463 data-nosnippet>463</a>				.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.get">get</a>(<span class="kw-2">&amp;</span><a href="#450">TerminalId</a>)
-<a href=#464 id=464 data-nosnippet>464</a>				.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|TerminalArc| <a href="#464">TerminalArc</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>())
-<a href=#465 id=465 data-nosnippet>465</a>				.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|TerminalStateGuard| <a href="#465">TerminalStateGuard</a>.PTYInputTransmitter.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>())
-<a href=#466 id=466 data-nosnippet>466</a>		};
-<a href=#467 id=467 data-nosnippet>467</a>
-<a href=#468 id=468 data-nosnippet>468</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Sender) = <a href="#453">SenderOption</a> {
-<a href=#469 id=469 data-nosnippet>469</a>			Sender
-<a href=#470 id=470 data-nosnippet>470</a>				.send(Text)
-<a href=#471 id=471 data-nosnippet>471</a>				.<span class="kw">await
-<a href=#472 id=472 data-nosnippet>472</a>				</span>.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| CommonError::IPCError { Description:<a href="#472">Error</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>() })
-<a href=#473 id=473 data-nosnippet>473</a>		} <span class="kw">else </span>{
-<a href=#474 id=474 data-nosnippet>474</a>			<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(CommonError::IPCError {
-<a href=#475 id=475 data-nosnippet>475</a>				Description:<a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Terminal with ID {} not found or has no input channel."</span>, TerminalId),
-<a href=#476 id=476 data-nosnippet>476</a>			})
-<a href=#477 id=477 data-nosnippet>477</a>		}
-<a href=#478 id=478 data-nosnippet>478</a>	}
-<a href=#479 id=479 data-nosnippet>479</a>
-<a href=#480 id=480 data-nosnippet>480</a>	<span class="kw">async fn </span>DisposeTerminal(<span class="kw-2">&amp;</span><a class="self" href="#480">self</a>, <a href="#480">TerminalId</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
-<a href=#481 id=481 data-nosnippet>481</a>		<a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"terminal"</span>, <span class="string">"[TerminalProvider] Disposing terminal ID: {}"</span>, TerminalId);
-<a href=#482 id=482 data-nosnippet>482</a>
-<a href=#483 id=483 data-nosnippet>483</a>		<span class="kw">let </span>TerminalArc = <span class="self">self
-<a href=#484 id=484 data-nosnippet>484</a>			</span>.ApplicationState
-<a href=#485 id=485 data-nosnippet>485</a>			.Feature
-<a href=#486 id=486 data-nosnippet>486</a>			.Terminals
-<a href=#487 id=487 data-nosnippet>487</a>			.ActiveTerminals
-<a href=#488 id=488 data-nosnippet>488</a>			.lock()
-<a href=#489 id=489 data-nosnippet>489</a>			.map_err(Utility::ErrorMapping::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?
-<a href=#490 id=490 data-nosnippet>490</a>			</span>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.remove">remove</a>(<span class="kw-2">&amp;</span><a href="#480">TerminalId</a>);
-<a href=#491 id=491 data-nosnippet>491</a>
-<a href=#492 id=492 data-nosnippet>492</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(TerminalArc) = <a href="#483">TerminalArc</a> {
-<a href=#493 id=493 data-nosnippet>493</a>			<span class="comment">// Dropping the PTY master's writer and reader handles will signal the
-<a href=#494 id=494 data-nosnippet>494</a>			// underlying process to terminate.
-<a href=#495 id=495 data-nosnippet>495</a>			</span><a href="https://doc.rust-lang.org/nightly/core/mem/fn.drop.html">drop</a>(<a href="#492">TerminalArc</a>);
-<a href=#496 id=496 data-nosnippet>496</a>		}
-<a href=#497 id=497 data-nosnippet>497</a>
-<a href=#498 id=498 data-nosnippet>498</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
-<a href=#499 id=499 data-nosnippet>499</a>	}
-<a href=#500 id=500 data-nosnippet>500</a>
-<a href=#501 id=501 data-nosnippet>501</a>	<span class="kw">async fn </span>ShowTerminal(<span class="kw-2">&amp;</span><a class="self" href="#501">self</a>, <a href="#501">TerminalId</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>, <a href="#501">PreserveFocus</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
-<a href=#502 id=502 data-nosnippet>502</a>		<a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"terminal"</span>, <span class="string">"[TerminalProvider] Showing terminal ID: {}"</span>, TerminalId);
-<a href=#503 id=503 data-nosnippet>503</a>
-<a href=#504 id=504 data-nosnippet>504</a>		<a class="self" href="#501">self</a>.ApplicationHandle
-<a href=#505 id=505 data-nosnippet>505</a>			.emit(
-<a href=#506 id=506 data-nosnippet>506</a>				SkyEvent::TerminalShow.AsStr(),
-<a href=#507 id=507 data-nosnippet>507</a>				<a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json!</a>({ <span class="string">"id"</span>: TerminalId, <span class="string">"preserveFocus"</span>: PreserveFocus }),
-<a href=#508 id=508 data-nosnippet>508</a>			)
-<a href=#509 id=509 data-nosnippet>509</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| CommonError::UserInterfaceInteraction { Reason:<a href="#509">Error</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>() })
-<a href=#510 id=510 data-nosnippet>510</a>	}
+<a href=#369 id=369 data-nosnippet>369</a>
+<a href=#370 id=370 data-nosnippet>370</a>			<span class="comment">// B6: Notify Cocoon so vscode.window.terminals removes the entry.
+<a href=#371 id=371 data-nosnippet>371</a>			// Cocoon's NotificationHandler maps `$acceptTerminalClosed` →
+<a href=#372 id=372 data-nosnippet>372</a>			// filters `__terminals` by id.
+<a href=#373 id=373 data-nosnippet>373</a>			</span><span class="kw">let _ </span>= <span class="kw">crate</span>::Vine::Client::SendNotification::Fn(
+<a href=#374 id=374 data-nosnippet>374</a>				<span class="string">"cocoon-main"</span>.to_string(),
+<a href=#375 id=375 data-nosnippet>375</a>				<span class="string">"$acceptTerminalClosed"</span>.to_string(),
+<a href=#376 id=376 data-nosnippet>376</a>				<span class="macro">serde_json::json!</span>({ <span class="string">"id"</span>: TermIDForExit }),
+<a href=#377 id=377 data-nosnippet>377</a>			)
+<a href=#378 id=378 data-nosnippet>378</a>			.<span class="kw">await</span>;
+<a href=#379 id=379 data-nosnippet>379</a>		});
+<a href=#380 id=380 data-nosnippet>380</a>
+<a href=#381 id=381 data-nosnippet>381</a>		<span class="self">self</span>.ApplicationState
+<a href=#382 id=382 data-nosnippet>382</a>			.Feature
+<a href=#383 id=383 data-nosnippet>383</a>			.Terminals
+<a href=#384 id=384 data-nosnippet>384</a>			.ActiveTerminals
+<a href=#385 id=385 data-nosnippet>385</a>			.lock()
+<a href=#386 id=386 data-nosnippet>386</a>			.map_err(Utility::ErrorMapping::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?
+<a href=#387 id=387 data-nosnippet>387</a>			</span>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(<a href="#129">TerminalIdentifier</a>, <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(std::sync::<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">Mutex</a>::<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.new">new</a>(<a href="#150">TerminalState</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>())));
+<a href=#388 id=388 data-nosnippet>388</a>
+<a href=#389 id=389 data-nosnippet>389</a>		<span class="comment">// BATCH-19 Part B: let Sky render the new terminal panel without
+<a href=#390 id=390 data-nosnippet>390</a>		// waiting for Cocoon to round-trip a notification. The `sky://` event
+<a href=#391 id=391 data-nosnippet>391</a>		// channel is already how ShowTerminal / HideTerminal talk to the UI.
+<a href=#392 id=392 data-nosnippet>392</a>		//
+<a href=#393 id=393 data-nosnippet>393</a>		// RACE FIX: emit on a deferred tokio task (~120 ms) instead of
+<a href=#394 id=394 data-nosnippet>394</a>		// synchronously. The workbench's `LocalTerminalBackend.createProcess`
+<a href=#395 id=395 data-nosnippet>395</a>		// flow is:
+<a href=#396 id=396 data-nosnippet>396</a>		//   1. await this._proxy.createProcess(...)   // RPC IN-FLIGHT
+<a href=#397 id=397 data-nosnippet>397</a>		//   2. const pty = new LocalPty(id, …)        // POST-await
+<a href=#398 id=398 data-nosnippet>398</a>		//   3. this._ptys.set(id, pty)                // POST-await
+<a href=#399 id=399 data-nosnippet>399</a>		// The patched `_connectToDirectProxy` listener for
+<a href=#400 id=400 data-nosnippet>400</a>		// `_localPtyService.onProcessReady` does
+<a href=#401 id=401 data-nosnippet>401</a>		// `this._ptys.get(e.id)?.handleReady(e.event)`. If we emit
+<a href=#402 id=402 data-nosnippet>402</a>		// synchronously while CreateTerminal is still inside step (1),
+<a href=#403 id=403 data-nosnippet>403</a>		// the Tauri event fires before step (3) - `_ptys.get(id)` returns
+<a href=#404 id=404 data-nosnippet>404</a>		// `undefined`, `handleReady` is skipped, `BasePty._onProcessReady`
+<a href=#405 id=405 data-nosnippet>405</a>		// never fires, `processManager._onProcessReady` never fires,
+<a href=#406 id=406 data-nosnippet>406</a>		// `ptyProcessReady` never resolves - and every `processManager.
+<a href=#407 id=407 data-nosnippet>407</a>		// write(data)` call (which `terminalInstance._handleOnData`
+<a href=#408 id=408 data-nosnippet>408</a>		// `await`s) hangs forever. The user sees the panel render but
+<a href=#409 id=409 data-nosnippet>409</a>		// every keystroke is silently dropped because `LocalPty.input`
+<a href=#410 id=410 data-nosnippet>410</a>		// is never reached. A 120 ms delay gives the RPC response
+<a href=#411 id=411 data-nosnippet>411</a>		// roundtrip + `_ptys.set` plenty of headroom on real hardware.
+<a href=#412 id=412 data-nosnippet>412</a>		// Same race applies to `sky://terminal/data` for the shell's
+<a href=#413 id=413 data-nosnippet>413</a>		// first prompt - the existing `AppendTerminalOutput` replay
+<a href=#414 id=414 data-nosnippet>414</a>		// buffer covers data, but the create event needs explicit
+<a href=#415 id=415 data-nosnippet>415</a>		// deferral because there's no replay path for ready.
+<a href=#416 id=416 data-nosnippet>416</a>		</span><span class="kw">let </span>CreateAppHandle = <a class="self" href="#128">self</a>.ApplicationHandle.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
+<a href=#417 id=417 data-nosnippet>417</a>
+<a href=#418 id=418 data-nosnippet>418</a>		<span class="kw">let </span>CreateTermId = <a href="#129">TerminalIdentifier</a>;
+<a href=#419 id=419 data-nosnippet>419</a>
+<a href=#420 id=420 data-nosnippet>420</a>		<span class="kw">let </span>CreateName = <a href="#137">Name</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
+<a href=#421 id=421 data-nosnippet>421</a>
+<a href=#422 id=422 data-nosnippet>422</a>		<span class="kw">let </span>CreatePid = <a href="#150">TerminalState</a>.OSProcessIdentifier;
+<a href=#423 id=423 data-nosnippet>423</a>
+<a href=#424 id=424 data-nosnippet>424</a>		tokio::spawn(<span class="kw">async move </span>{
+<a href=#425 id=425 data-nosnippet>425</a>			<span class="comment">// 20 ms: enough for the Tauri invoke round-trip + `_ptys.set(id,pty)`
+<a href=#426 id=426 data-nosnippet>426</a>			// to complete before `onProcessReady` fires. The original 120 ms was
+<a href=#427 id=427 data-nosnippet>427</a>			// measured on a slow test machine; modern M-series hardware completes
+<a href=#428 id=428 data-nosnippet>428</a>			// the full cycle in &lt;5 ms. 20 ms gives 4× headroom.
+<a href=#429 id=429 data-nosnippet>429</a>			</span>tokio::time::sleep(std::time::Duration::from_millis(<span class="number">20</span>)).<span class="kw">await</span>;
+<a href=#430 id=430 data-nosnippet>430</a>			<span class="kw">let </span>CreatePayload = <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json!</a>({
+<a href=#431 id=431 data-nosnippet>431</a>				<span class="string">"id"</span>: CreateTermId,
+<a href=#432 id=432 data-nosnippet>432</a>				<span class="string">"name"</span>: CreateName.clone(),
+<a href=#433 id=433 data-nosnippet>433</a>				<span class="string">"pid"</span>: CreatePid,
+<a href=#434 id=434 data-nosnippet>434</a>			});
+<a href=#435 id=435 data-nosnippet>435</a>			<span class="comment">// `LogSkyEmit` makes the deferred emit visible under
+<a href=#436 id=436 data-nosnippet>436</a>			// `[DEV:SKY-EMIT]` so the next log dissection can confirm
+<a href=#437 id=437 data-nosnippet>437</a>			// the deferral landed (and how many `localPty:input` calls
+<a href=#438 id=438 data-nosnippet>438</a>			// arrived afterwards). The bare `.emit()` we replaced was
+<a href=#439 id=439 data-nosnippet>439</a>			// invisible to the histogram.
+<a href=#440 id=440 data-nosnippet>440</a>			</span><span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error) = <a href="../IPC/SkyEmit.rs.html#44-69">LogSkyEmit</a>(<span class="kw-2">&amp;</span><a href="#416">CreateAppHandle</a>, SkyEvent::TerminalCreate.AsStr(), <a href="#430">CreatePayload</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>()) {
+<a href=#441 id=441 data-nosnippet>441</a>				<a href="../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(
+<a href=#442 id=442 data-nosnippet>442</a>					<span class="string">"terminal"</span>,
+<a href=#443 id=443 data-nosnippet>443</a>					<span class="string">"warn: [TerminalProvider] sky://terminal/create emit failed for ID {}: {}"</span>,
+<a href=#444 id=444 data-nosnippet>444</a>					CreateTermId,
+<a href=#445 id=445 data-nosnippet>445</a>					Error
+<a href=#446 id=446 data-nosnippet>446</a>				);
+<a href=#447 id=447 data-nosnippet>447</a>			}
+<a href=#448 id=448 data-nosnippet>448</a>
+<a href=#449 id=449 data-nosnippet>449</a>			<span class="comment">// B6: Also notify Cocoon so vscode.window.terminals stays current
+<a href=#450 id=450 data-nosnippet>450</a>			// when terminals are created from the UI rather than via the
+<a href=#451 id=451 data-nosnippet>451</a>			// extension API (createTerminal()). Cocoon's NotificationHandler
+<a href=#452 id=452 data-nosnippet>452</a>			// maps `$acceptTerminalOpened` → pushes a stub to `__terminals`.
+<a href=#453 id=453 data-nosnippet>453</a>			</span><span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(E) = <span class="kw">crate</span>::Vine::Client::SendNotification::Fn(
+<a href=#454 id=454 data-nosnippet>454</a>				<span class="string">"cocoon-main"</span>.to_string(),
+<a href=#455 id=455 data-nosnippet>455</a>				<span class="string">"$acceptTerminalOpened"</span>.to_string(),
+<a href=#456 id=456 data-nosnippet>456</a>				<span class="macro">serde_json::json!</span>({ <span class="string">"id"</span>: CreateTermId, <span class="string">"name"</span>: CreateName, <span class="string">"pid"</span>: CreatePid }),
+<a href=#457 id=457 data-nosnippet>457</a>			)
+<a href=#458 id=458 data-nosnippet>458</a>			.<span class="kw">await
+<a href=#459 id=459 data-nosnippet>459</a>			</span>{
+<a href=#460 id=460 data-nosnippet>460</a>				<a href="../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(
+<a href=#461 id=461 data-nosnippet>461</a>					<span class="string">"terminal"</span>,
+<a href=#462 id=462 data-nosnippet>462</a>					<span class="string">"warn: [TerminalProvider] $acceptTerminalOpened notify failed ID={}: {}"</span>,
+<a href=#463 id=463 data-nosnippet>463</a>					CreateTermId,
+<a href=#464 id=464 data-nosnippet>464</a>					E
+<a href=#465 id=465 data-nosnippet>465</a>				);
+<a href=#466 id=466 data-nosnippet>466</a>			}
+<a href=#467 id=467 data-nosnippet>467</a>		});
+<a href=#468 id=468 data-nosnippet>468</a>
+<a href=#469 id=469 data-nosnippet>469</a>		<a href="../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(
+<a href=#470 id=470 data-nosnippet>470</a>			<span class="string">"terminal"</span>,
+<a href=#471 id=471 data-nosnippet>471</a>			<span class="string">"[TerminalProvider] localPty:spawn OK id={} pid={:?}"</span>,
+<a href=#472 id=472 data-nosnippet>472</a>			TerminalIdentifier,
+<a href=#473 id=473 data-nosnippet>473</a>			TerminalState.OSProcessIdentifier
+<a href=#474 id=474 data-nosnippet>474</a>		);
+<a href=#475 id=475 data-nosnippet>475</a>
+<a href=#476 id=476 data-nosnippet>476</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json!</a>({ <span class="string">"id"</span>: TerminalIdentifier, <span class="string">"name"</span>: Name, <span class="string">"pid"</span>: TerminalState.OSProcessIdentifier }))
+<a href=#477 id=477 data-nosnippet>477</a>	}
+<a href=#478 id=478 data-nosnippet>478</a>
+<a href=#479 id=479 data-nosnippet>479</a>	<span class="kw">async fn </span>SendTextToTerminal(<span class="kw-2">&amp;</span><a class="self" href="#479">self</a>, <a href="#479">TerminalId</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>, <a href="#479">Text</a>:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
+<a href=#480 id=480 data-nosnippet>480</a>		<a href="../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"terminal"</span>, <span class="string">"[TerminalProvider] Sending text to terminal ID: {}"</span>, TerminalId);
+<a href=#481 id=481 data-nosnippet>481</a>
+<a href=#482 id=482 data-nosnippet>482</a>		<span class="kw">let </span>SenderOption = {
+<a href=#483 id=483 data-nosnippet>483</a>			<span class="kw">let </span>TerminalsGuard = <span class="self">self
+<a href=#484 id=484 data-nosnippet>484</a>				</span>.ApplicationState
+<a href=#485 id=485 data-nosnippet>485</a>				.Feature
+<a href=#486 id=486 data-nosnippet>486</a>				.Terminals
+<a href=#487 id=487 data-nosnippet>487</a>				.ActiveTerminals
+<a href=#488 id=488 data-nosnippet>488</a>				.lock()
+<a href=#489 id=489 data-nosnippet>489</a>				.map_err(Utility::ErrorMapping::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?</span>;
+<a href=#490 id=490 data-nosnippet>490</a>
+<a href=#491 id=491 data-nosnippet>491</a>			<a href="#483">TerminalsGuard</a>
+<a href=#492 id=492 data-nosnippet>492</a>				.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.get">get</a>(<span class="kw-2">&amp;</span><a href="#479">TerminalId</a>)
+<a href=#493 id=493 data-nosnippet>493</a>				.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|TerminalArc| <a href="#493">TerminalArc</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>())
+<a href=#494 id=494 data-nosnippet>494</a>				.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|TerminalStateGuard| <a href="#494">TerminalStateGuard</a>.PTYInputTransmitter.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>())
+<a href=#495 id=495 data-nosnippet>495</a>		};
+<a href=#496 id=496 data-nosnippet>496</a>
+<a href=#497 id=497 data-nosnippet>497</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Sender) = <a href="#482">SenderOption</a> {
+<a href=#498 id=498 data-nosnippet>498</a>			Sender
+<a href=#499 id=499 data-nosnippet>499</a>				.send(Text)
+<a href=#500 id=500 data-nosnippet>500</a>				.<span class="kw">await
+<a href=#501 id=501 data-nosnippet>501</a>				</span>.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| CommonError::IPCError { Description:<a href="#501">Error</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>() })
+<a href=#502 id=502 data-nosnippet>502</a>		} <span class="kw">else </span>{
+<a href=#503 id=503 data-nosnippet>503</a>			<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(CommonError::IPCError {
+<a href=#504 id=504 data-nosnippet>504</a>				Description:<a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Terminal with ID {} not found or has no input channel."</span>, TerminalId),
+<a href=#505 id=505 data-nosnippet>505</a>			})
+<a href=#506 id=506 data-nosnippet>506</a>		}
+<a href=#507 id=507 data-nosnippet>507</a>	}
+<a href=#508 id=508 data-nosnippet>508</a>
+<a href=#509 id=509 data-nosnippet>509</a>	<span class="kw">async fn </span>DisposeTerminal(<span class="kw-2">&amp;</span><a class="self" href="#509">self</a>, <a href="#509">TerminalId</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
+<a href=#510 id=510 data-nosnippet>510</a>		<a href="../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"terminal"</span>, <span class="string">"[TerminalProvider] Disposing terminal ID: {}"</span>, TerminalId);
 <a href=#511 id=511 data-nosnippet>511</a>
-<a href=#512 id=512 data-nosnippet>512</a>	<span class="kw">async fn </span>HideTerminal(<span class="kw-2">&amp;</span><a class="self" href="#512">self</a>, <a href="#512">TerminalId</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
-<a href=#513 id=513 data-nosnippet>513</a>		<a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"terminal"</span>, <span class="string">"[TerminalProvider] Hiding terminal ID: {}"</span>, TerminalId);
-<a href=#514 id=514 data-nosnippet>514</a>
-<a href=#515 id=515 data-nosnippet>515</a>		<span class="comment">// Low-frequency lifecycle event - safe to route through
-<a href=#516 id=516 data-nosnippet>516</a>		// `LogSkyEmit` for histogram visibility.
-<a href=#517 id=517 data-nosnippet>517</a>		</span><a href="../IPC/SkyEmit.rs.html#45-70">LogSkyEmit</a>(
-<a href=#518 id=518 data-nosnippet>518</a>			<span class="kw-2">&amp;</span><a class="self" href="#512">self</a>.ApplicationHandle,
-<a href=#519 id=519 data-nosnippet>519</a>			SkyEvent::TerminalHide.AsStr(),
-<a href=#520 id=520 data-nosnippet>520</a>			<a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json!</a>({ <span class="string">"id"</span>: TerminalId }),
-<a href=#521 id=521 data-nosnippet>521</a>		)
-<a href=#522 id=522 data-nosnippet>522</a>		.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| CommonError::UserInterfaceInteraction { Reason:<a href="#522">Error</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>() })
-<a href=#523 id=523 data-nosnippet>523</a>	}
-<a href=#524 id=524 data-nosnippet>524</a>
-<a href=#525 id=525 data-nosnippet>525</a>	<span class="kw">async fn </span>GetTerminalProcessId(<span class="kw-2">&amp;</span><a class="self" href="#525">self</a>, <a href="#525">TerminalId</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;, CommonError&gt; {
-<a href=#526 id=526 data-nosnippet>526</a>		<span class="kw">let </span>TerminalsGuard = <span class="self">self
-<a href=#527 id=527 data-nosnippet>527</a>			</span>.ApplicationState
-<a href=#528 id=528 data-nosnippet>528</a>			.Feature
-<a href=#529 id=529 data-nosnippet>529</a>			.Terminals
-<a href=#530 id=530 data-nosnippet>530</a>			.ActiveTerminals
-<a href=#531 id=531 data-nosnippet>531</a>			.lock()
-<a href=#532 id=532 data-nosnippet>532</a>			.map_err(Utility::ErrorMapping::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?</span>;
-<a href=#533 id=533 data-nosnippet>533</a>
-<a href=#534 id=534 data-nosnippet>534</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="#526">TerminalsGuard</a>
-<a href=#535 id=535 data-nosnippet>535</a>			.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.get">get</a>(<span class="kw-2">&amp;</span><a href="#525">TerminalId</a>)
-<a href=#536 id=536 data-nosnippet>536</a>			.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|t| <a href="#536">t</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|g| <a href="#536">g</a>.OSProcessIdentifier)))
-<a href=#537 id=537 data-nosnippet>537</a>	}
-<a href=#538 id=538 data-nosnippet>538</a>
-<a href=#539 id=539 data-nosnippet>539</a>	<span class="kw">async fn </span>ResizeTerminal(<span class="kw-2">&amp;</span><a class="self" href="#539">self</a>, <a href="#539">TerminalId</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>, <a href="#539">Columns</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.u16.html">u16</a>, <a href="#539">Rows</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.u16.html">u16</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
-<a href=#540 id=540 data-nosnippet>540</a>		<span class="kw">if </span><a href="#539">Columns</a> == <span class="number">0 </span>|| <a href="#539">Rows</a> == <span class="number">0 </span>{
-<a href=#541 id=541 data-nosnippet>541</a>			<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(CommonError::InvalidArgument {
-<a href=#542 id=542 data-nosnippet>542</a>				ArgumentName:<span class="string">"Columns/Rows"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
-<a href=#543 id=543 data-nosnippet>543</a>				Reason:<a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Columns and Rows must be ≥ 1 (got {}×{})"</span>, Columns, Rows),
-<a href=#544 id=544 data-nosnippet>544</a>			});
-<a href=#545 id=545 data-nosnippet>545</a>		}
-<a href=#546 id=546 data-nosnippet>546</a>
-<a href=#547 id=547 data-nosnippet>547</a>		<span class="comment">// Pull the shared master-PTY handle out of the state lock before touching
-<a href=#548 id=548 data-nosnippet>548</a>		// it so we never hold the outer terminals map while performing IO.
-<a href=#549 id=549 data-nosnippet>549</a>		</span><span class="kw">let </span>MasterOption = {
-<a href=#550 id=550 data-nosnippet>550</a>			<span class="kw">let </span>TerminalsGuard = <span class="self">self
-<a href=#551 id=551 data-nosnippet>551</a>				</span>.ApplicationState
-<a href=#552 id=552 data-nosnippet>552</a>				.Feature
-<a href=#553 id=553 data-nosnippet>553</a>				.Terminals
-<a href=#554 id=554 data-nosnippet>554</a>				.ActiveTerminals
-<a href=#555 id=555 data-nosnippet>555</a>				.lock()
-<a href=#556 id=556 data-nosnippet>556</a>				.map_err(Utility::ErrorMapping::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?</span>;
-<a href=#557 id=557 data-nosnippet>557</a>
-<a href=#558 id=558 data-nosnippet>558</a>			<a href="#550">TerminalsGuard</a>
-<a href=#559 id=559 data-nosnippet>559</a>				.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.get">get</a>(<span class="kw-2">&amp;</span><a href="#539">TerminalId</a>)
-<a href=#560 id=560 data-nosnippet>560</a>				.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|TerminalArc| <a href="#560">TerminalArc</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>())
-<a href=#561 id=561 data-nosnippet>561</a>				.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|TerminalStateGuard| <a href="#561">TerminalStateGuard</a>.PTYMaster.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>())
-<a href=#562 id=562 data-nosnippet>562</a>		};
-<a href=#563 id=563 data-nosnippet>563</a>
-<a href=#564 id=564 data-nosnippet>564</a>		<span class="kw">let </span>Master = MasterOption.ok_or_else(|| {
-<a href=#565 id=565 data-nosnippet>565</a>			CommonError::IPCError {
-<a href=#566 id=566 data-nosnippet>566</a>				Description:<span class="macro">format!</span>(<span class="string">"Terminal with ID {} not found or has no PTY master handle."</span>, TerminalId),
-<a href=#567 id=567 data-nosnippet>567</a>			}
-<a href=#568 id=568 data-nosnippet>568</a>		})<span class="question-mark">?</span>;
-<a href=#569 id=569 data-nosnippet>569</a>
-<a href=#570 id=570 data-nosnippet>570</a>		<span class="kw">let </span>Size = PtySize { rows:<a href="#539">Rows</a>, cols:<a href="#539">Columns</a>, pixel_width:<span class="number">0</span>, pixel_height:<span class="number">0 </span>};
-<a href=#571 id=571 data-nosnippet>571</a>
-<a href=#572 id=572 data-nosnippet>572</a>		<span class="comment">// Method resolution walks through MutexGuard → Box → dyn MasterPty,
-<a href=#573 id=573 data-nosnippet>573</a>		// so `Guard.resize(...)` dispatches straight to the trait impl. Keep
-<a href=#574 id=574 data-nosnippet>574</a>		// the call inside `spawn_blocking` even though portable-pty's resize
-<a href=#575 id=575 data-nosnippet>575</a>		// is nominally fast - SIGWINCH delivery can stall briefly when the
-<a href=#576 id=576 data-nosnippet>576</a>		// child shell is ptrace-frozen or mid-syscall.
-<a href=#577 id=577 data-nosnippet>577</a>		</span>tokio::task::spawn_blocking(<span class="kw">move </span>|| {
-<a href=#578 id=578 data-nosnippet>578</a>			<span class="kw">let </span>Guard = Master.lock().map_err(|<span class="kw">_</span>| <span class="string">"PTY master mutex poisoned"</span>.to_string())<span class="question-mark">?</span>;
-<a href=#579 id=579 data-nosnippet>579</a>			Guard.resize(Size).map_err(|Error| Error.to_string())
-<a href=#580 id=580 data-nosnippet>580</a>		})
-<a href=#581 id=581 data-nosnippet>581</a>		.<span class="kw">await
-<a href=#582 id=582 data-nosnippet>582</a>		</span>.map_err(|Error| CommonError::IPCError { Description:<span class="macro">format!</span>(<span class="string">"resize join error: {}"</span>, Error) })<span class="question-mark">?
-<a href=#583 id=583 data-nosnippet>583</a>		</span>.map_err(|Error| CommonError::IPCError { Description:<span class="macro">format!</span>(<span class="string">"PTY resize failed: {}"</span>, Error) })<span class="question-mark">?</span>;
-<a href=#584 id=584 data-nosnippet>584</a>
-<a href=#585 id=585 data-nosnippet>585</a>		<a href="../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(
-<a href=#586 id=586 data-nosnippet>586</a>			<span class="string">"terminal"</span>,
-<a href=#587 id=587 data-nosnippet>587</a>			<span class="string">"[TerminalProvider] Resized terminal ID {} to {}×{}"</span>,
-<a href=#588 id=588 data-nosnippet>588</a>			TerminalId,
-<a href=#589 id=589 data-nosnippet>589</a>			Columns,
-<a href=#590 id=590 data-nosnippet>590</a>			Rows
-<a href=#591 id=591 data-nosnippet>591</a>		);
+<a href=#512 id=512 data-nosnippet>512</a>		<span class="kw">let </span>TerminalArc = <span class="self">self
+<a href=#513 id=513 data-nosnippet>513</a>			</span>.ApplicationState
+<a href=#514 id=514 data-nosnippet>514</a>			.Feature
+<a href=#515 id=515 data-nosnippet>515</a>			.Terminals
+<a href=#516 id=516 data-nosnippet>516</a>			.ActiveTerminals
+<a href=#517 id=517 data-nosnippet>517</a>			.lock()
+<a href=#518 id=518 data-nosnippet>518</a>			.map_err(Utility::ErrorMapping::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?
+<a href=#519 id=519 data-nosnippet>519</a>			</span>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.remove">remove</a>(<span class="kw-2">&amp;</span><a href="#509">TerminalId</a>);
+<a href=#520 id=520 data-nosnippet>520</a>
+<a href=#521 id=521 data-nosnippet>521</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(TerminalArc) = <a href="#512">TerminalArc</a> {
+<a href=#522 id=522 data-nosnippet>522</a>			<span class="comment">// Dropping the PTY master's writer and reader handles will signal the
+<a href=#523 id=523 data-nosnippet>523</a>			// underlying process to terminate.
+<a href=#524 id=524 data-nosnippet>524</a>			</span><a href="https://doc.rust-lang.org/nightly/core/mem/fn.drop.html">drop</a>(<a href="#521">TerminalArc</a>);
+<a href=#525 id=525 data-nosnippet>525</a>		}
+<a href=#526 id=526 data-nosnippet>526</a>
+<a href=#527 id=527 data-nosnippet>527</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
+<a href=#528 id=528 data-nosnippet>528</a>	}
+<a href=#529 id=529 data-nosnippet>529</a>
+<a href=#530 id=530 data-nosnippet>530</a>	<span class="kw">async fn </span>ShowTerminal(<span class="kw-2">&amp;</span><a class="self" href="#530">self</a>, <a href="#530">TerminalId</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>, <a href="#530">PreserveFocus</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
+<a href=#531 id=531 data-nosnippet>531</a>		<a href="../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"terminal"</span>, <span class="string">"[TerminalProvider] Showing terminal ID: {}"</span>, TerminalId);
+<a href=#532 id=532 data-nosnippet>532</a>
+<a href=#533 id=533 data-nosnippet>533</a>		<a class="self" href="#530">self</a>.ApplicationHandle
+<a href=#534 id=534 data-nosnippet>534</a>			.emit(
+<a href=#535 id=535 data-nosnippet>535</a>				SkyEvent::TerminalShow.AsStr(),
+<a href=#536 id=536 data-nosnippet>536</a>				<a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json!</a>({ <span class="string">"id"</span>: TerminalId, <span class="string">"preserveFocus"</span>: PreserveFocus }),
+<a href=#537 id=537 data-nosnippet>537</a>			)
+<a href=#538 id=538 data-nosnippet>538</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| CommonError::UserInterfaceInteraction { Reason:<a href="#538">Error</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>() })
+<a href=#539 id=539 data-nosnippet>539</a>	}
+<a href=#540 id=540 data-nosnippet>540</a>
+<a href=#541 id=541 data-nosnippet>541</a>	<span class="kw">async fn </span>HideTerminal(<span class="kw-2">&amp;</span><a class="self" href="#541">self</a>, <a href="#541">TerminalId</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
+<a href=#542 id=542 data-nosnippet>542</a>		<a href="../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"terminal"</span>, <span class="string">"[TerminalProvider] Hiding terminal ID: {}"</span>, TerminalId);
+<a href=#543 id=543 data-nosnippet>543</a>
+<a href=#544 id=544 data-nosnippet>544</a>		<span class="comment">// Low-frequency lifecycle event - safe to route through
+<a href=#545 id=545 data-nosnippet>545</a>		// `LogSkyEmit` for histogram visibility.
+<a href=#546 id=546 data-nosnippet>546</a>		</span><a href="../IPC/SkyEmit.rs.html#44-69">LogSkyEmit</a>(
+<a href=#547 id=547 data-nosnippet>547</a>			<span class="kw-2">&amp;</span><a class="self" href="#541">self</a>.ApplicationHandle,
+<a href=#548 id=548 data-nosnippet>548</a>			SkyEvent::TerminalHide.AsStr(),
+<a href=#549 id=549 data-nosnippet>549</a>			<a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json!</a>({ <span class="string">"id"</span>: TerminalId }),
+<a href=#550 id=550 data-nosnippet>550</a>		)
+<a href=#551 id=551 data-nosnippet>551</a>		.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| CommonError::UserInterfaceInteraction { Reason:<a href="#551">Error</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>() })
+<a href=#552 id=552 data-nosnippet>552</a>	}
+<a href=#553 id=553 data-nosnippet>553</a>
+<a href=#554 id=554 data-nosnippet>554</a>	<span class="kw">async fn </span>GetTerminalProcessId(<span class="kw-2">&amp;</span><a class="self" href="#554">self</a>, <a href="#554">TerminalId</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;, CommonError&gt; {
+<a href=#555 id=555 data-nosnippet>555</a>		<span class="kw">let </span>TerminalsGuard = <span class="self">self
+<a href=#556 id=556 data-nosnippet>556</a>			</span>.ApplicationState
+<a href=#557 id=557 data-nosnippet>557</a>			.Feature
+<a href=#558 id=558 data-nosnippet>558</a>			.Terminals
+<a href=#559 id=559 data-nosnippet>559</a>			.ActiveTerminals
+<a href=#560 id=560 data-nosnippet>560</a>			.lock()
+<a href=#561 id=561 data-nosnippet>561</a>			.map_err(Utility::ErrorMapping::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?</span>;
+<a href=#562 id=562 data-nosnippet>562</a>
+<a href=#563 id=563 data-nosnippet>563</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="#555">TerminalsGuard</a>
+<a href=#564 id=564 data-nosnippet>564</a>			.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.get">get</a>(<span class="kw-2">&amp;</span><a href="#554">TerminalId</a>)
+<a href=#565 id=565 data-nosnippet>565</a>			.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|t| <a href="#565">t</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|g| <a href="#565">g</a>.OSProcessIdentifier)))
+<a href=#566 id=566 data-nosnippet>566</a>	}
+<a href=#567 id=567 data-nosnippet>567</a>
+<a href=#568 id=568 data-nosnippet>568</a>	<span class="kw">async fn </span>ResizeTerminal(<span class="kw-2">&amp;</span><a class="self" href="#568">self</a>, <a href="#568">TerminalId</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>, <a href="#568">Columns</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.u16.html">u16</a>, <a href="#568">Rows</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.u16.html">u16</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
+<a href=#569 id=569 data-nosnippet>569</a>		<span class="kw">if </span><a href="#568">Columns</a> == <span class="number">0 </span>|| <a href="#568">Rows</a> == <span class="number">0 </span>{
+<a href=#570 id=570 data-nosnippet>570</a>			<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(CommonError::InvalidArgument {
+<a href=#571 id=571 data-nosnippet>571</a>				ArgumentName:<span class="string">"Columns/Rows"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
+<a href=#572 id=572 data-nosnippet>572</a>				Reason:<a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Columns and Rows must be ≥ 1 (got {}×{})"</span>, Columns, Rows),
+<a href=#573 id=573 data-nosnippet>573</a>			});
+<a href=#574 id=574 data-nosnippet>574</a>		}
+<a href=#575 id=575 data-nosnippet>575</a>
+<a href=#576 id=576 data-nosnippet>576</a>		<span class="comment">// Pull the shared master-PTY handle out of the state lock before touching
+<a href=#577 id=577 data-nosnippet>577</a>		// it so we never hold the outer terminals map while performing IO.
+<a href=#578 id=578 data-nosnippet>578</a>		</span><span class="kw">let </span>MasterOption = {
+<a href=#579 id=579 data-nosnippet>579</a>			<span class="kw">let </span>TerminalsGuard = <span class="self">self
+<a href=#580 id=580 data-nosnippet>580</a>				</span>.ApplicationState
+<a href=#581 id=581 data-nosnippet>581</a>				.Feature
+<a href=#582 id=582 data-nosnippet>582</a>				.Terminals
+<a href=#583 id=583 data-nosnippet>583</a>				.ActiveTerminals
+<a href=#584 id=584 data-nosnippet>584</a>				.lock()
+<a href=#585 id=585 data-nosnippet>585</a>				.map_err(Utility::ErrorMapping::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?</span>;
+<a href=#586 id=586 data-nosnippet>586</a>
+<a href=#587 id=587 data-nosnippet>587</a>			<a href="#579">TerminalsGuard</a>
+<a href=#588 id=588 data-nosnippet>588</a>				.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.get">get</a>(<span class="kw-2">&amp;</span><a href="#568">TerminalId</a>)
+<a href=#589 id=589 data-nosnippet>589</a>				.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|TerminalArc| <a href="#589">TerminalArc</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>())
+<a href=#590 id=590 data-nosnippet>590</a>				.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|TerminalStateGuard| <a href="#590">TerminalStateGuard</a>.PTYMaster.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>())
+<a href=#591 id=591 data-nosnippet>591</a>		};
 <a href=#592 id=592 data-nosnippet>592</a>
-<a href=#593 id=593 data-nosnippet>593</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
-<a href=#594 id=594 data-nosnippet>594</a>	}
-<a href=#595 id=595 data-nosnippet>595</a>}
+<a href=#593 id=593 data-nosnippet>593</a>		<span class="kw">let </span>Master = MasterOption.ok_or_else(|| {
+<a href=#594 id=594 data-nosnippet>594</a>			CommonError::IPCError {
+<a href=#595 id=595 data-nosnippet>595</a>				Description:<span class="macro">format!</span>(<span class="string">"Terminal with ID {} not found or has no PTY master handle."</span>, TerminalId),
+<a href=#596 id=596 data-nosnippet>596</a>			}
+<a href=#597 id=597 data-nosnippet>597</a>		})<span class="question-mark">?</span>;
+<a href=#598 id=598 data-nosnippet>598</a>
+<a href=#599 id=599 data-nosnippet>599</a>		<span class="kw">let </span>Size = PtySize { rows:<a href="#568">Rows</a>, cols:<a href="#568">Columns</a>, pixel_width:<span class="number">0</span>, pixel_height:<span class="number">0 </span>};
+<a href=#600 id=600 data-nosnippet>600</a>
+<a href=#601 id=601 data-nosnippet>601</a>		<span class="comment">// Method resolution walks through MutexGuard → Box → dyn MasterPty,
+<a href=#602 id=602 data-nosnippet>602</a>		// so `Guard.resize(...)` dispatches straight to the trait impl. Keep
+<a href=#603 id=603 data-nosnippet>603</a>		// the call inside `spawn_blocking` even though portable-pty's resize
+<a href=#604 id=604 data-nosnippet>604</a>		// is nominally fast - SIGWINCH delivery can stall briefly when the
+<a href=#605 id=605 data-nosnippet>605</a>		// child shell is ptrace-frozen or mid-syscall.
+<a href=#606 id=606 data-nosnippet>606</a>		</span>tokio::task::spawn_blocking(<span class="kw">move </span>|| {
+<a href=#607 id=607 data-nosnippet>607</a>			<span class="kw">let </span>Guard = Master.lock().map_err(|<span class="kw">_</span>| <span class="string">"PTY master mutex poisoned"</span>.to_string())<span class="question-mark">?</span>;
+<a href=#608 id=608 data-nosnippet>608</a>			Guard.resize(Size).map_err(|Error| Error.to_string())
+<a href=#609 id=609 data-nosnippet>609</a>		})
+<a href=#610 id=610 data-nosnippet>610</a>		.<span class="kw">await
+<a href=#611 id=611 data-nosnippet>611</a>		</span>.map_err(|Error| CommonError::IPCError { Description:<span class="macro">format!</span>(<span class="string">"resize join error: {}"</span>, Error) })<span class="question-mark">?
+<a href=#612 id=612 data-nosnippet>612</a>		</span>.map_err(|Error| CommonError::IPCError { Description:<span class="macro">format!</span>(<span class="string">"PTY resize failed: {}"</span>, Error) })<span class="question-mark">?</span>;
+<a href=#613 id=613 data-nosnippet>613</a>
+<a href=#614 id=614 data-nosnippet>614</a>		<a href="../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(
+<a href=#615 id=615 data-nosnippet>615</a>			<span class="string">"terminal"</span>,
+<a href=#616 id=616 data-nosnippet>616</a>			<span class="string">"[TerminalProvider] Resized terminal ID {} to {}×{}"</span>,
+<a href=#617 id=617 data-nosnippet>617</a>			TerminalId,
+<a href=#618 id=618 data-nosnippet>618</a>			Columns,
+<a href=#619 id=619 data-nosnippet>619</a>			Rows
+<a href=#620 id=620 data-nosnippet>620</a>		);
+<a href=#621 id=621 data-nosnippet>621</a>
+<a href=#622 id=622 data-nosnippet>622</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
+<a href=#623 id=623 data-nosnippet>623</a>	}
+<a href=#624 id=624 data-nosnippet>624</a>}
 </code></pre></div></section></main></body></html>

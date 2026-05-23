@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["ModelGet"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["NativeShowOpenDialog"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

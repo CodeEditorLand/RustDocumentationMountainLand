@@ -26,23 +26,23 @@
 <a href=#26 id=26 data-nosnippet>26</a>
 <a href=#27 id=27 data-nosnippet>27</a><span class="kw">use </span>crate::{
 <a href=#28 id=28 data-nosnippet>28</a>	Command::Hover::Interface::{
-<a href=#29 id=29 data-nosnippet>29</a>		<a href="Interface/HoverRequest.rs.html#10-14">HoverRequest::Struct</a> <span class="kw">as </span>HoverRequest,
-<a href=#30 id=30 data-nosnippet>30</a>		<a href="Interface/HoverResponse.rs.html#12-17">HoverResponse::Struct</a> <span class="kw">as </span>HoverResponse,
-<a href=#31 id=31 data-nosnippet>31</a>		<a href="Interface/Position.rs.html#8-12">Position::Struct</a> <span class="kw">as </span>Position,
+<a href=#29 id=29 data-nosnippet>29</a>		<a href="Interface/HoverRequest.rs.html#9-13">HoverRequest::Struct</a> <span class="kw">as </span>HoverRequest,
+<a href=#30 id=30 data-nosnippet>30</a>		<a href="Interface/HoverResponse.rs.html#11-16">HoverResponse::Struct</a> <span class="kw">as </span>HoverResponse,
+<a href=#31 id=31 data-nosnippet>31</a>		<a href="Interface/Position.rs.html#7-11">Position::Struct</a> <span class="kw">as </span>Position,
 <a href=#32 id=32 data-nosnippet>32</a>	},
-<a href=#33 id=33 data-nosnippet>33</a>	<a href="../../IPC/DevLog/mod.rs.html#52-122">dev_log</a>,
+<a href=#33 id=33 data-nosnippet>33</a>	<a href="../../IPC/DevLog/mod.rs.html#51-121">dev_log</a>,
 <a href=#34 id=34 data-nosnippet>34</a>};
 <a href=#35 id=35 data-nosnippet>35</a>
 <a href=#36 id=36 data-nosnippet>36</a><span class="doccomment">/// Validates a hover request
-<a href=#37 id=37 data-nosnippet>37</a></span><span class="kw">fn </span><a href="../../../../Mountain/Command/Hover/Fn/fn.ValidateRequest.html">ValidateRequest</a>(uri:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, position:<span class="kw-2">&amp;</span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="Interface/HoverRequest.rs.html#10-14">HoverRequest</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
+<a href=#37 id=37 data-nosnippet>37</a></span><span class="kw">fn </span><a href="../../../../Mountain/Command/Hover/Fn/fn.ValidateRequest.html">ValidateRequest</a>(uri:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, position:<span class="kw-2">&amp;</span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="Interface/HoverRequest.rs.html#9-13">HoverRequest</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
 <a href=#38 id=38 data-nosnippet>38</a>	<span class="comment">// Parse URI
 <a href=#39 id=39 data-nosnippet>39</a>	</span><span class="kw">let </span>document_uri = Url::parse(uri).map_err(|e| <span class="macro">format!</span>(<span class="string">"Invalid URI: {}"</span>, e))<span class="question-mark">?</span>;
 <a href=#40 id=40 data-nosnippet>40</a>
 <a href=#41 id=41 data-nosnippet>41</a>	<span class="comment">// Parse position from JSON value
-<a href=#42 id=42 data-nosnippet>42</a>	</span><span class="kw">let </span>position_dto:<a href="Interface/Position.rs.html#8-12">Position</a> =
+<a href=#42 id=42 data-nosnippet>42</a>	</span><span class="kw">let </span>position_dto:<a href="Interface/Position.rs.html#7-11">Position</a> =
 <a href=#43 id=43 data-nosnippet>43</a>		serde_json::from_value(position.clone()).map_err(|e| <span class="macro">format!</span>(<span class="string">"Invalid position: {}"</span>, e))<span class="question-mark">?</span>;
 <a href=#44 id=44 data-nosnippet>44</a>
-<a href=#45 id=45 data-nosnippet>45</a>	<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="Interface/HoverRequest.rs.html#10-14">HoverRequest</a> { uri:<a href="#39">document_uri</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(), position:<a href="#42">position_dto</a> })
+<a href=#45 id=45 data-nosnippet>45</a>	<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="Interface/HoverRequest.rs.html#9-13">HoverRequest</a> { uri:<a href="#39">document_uri</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(), position:<a href="#42">position_dto</a> })
 <a href=#46 id=46 data-nosnippet>46</a>}
 <a href=#47 id=47 data-nosnippet>47</a>
 <a href=#48 id=48 data-nosnippet>48</a><span class="doccomment">/// Provides hover information at the given document position.
@@ -82,7 +82,7 @@
 <a href=#82 id=82 data-nosnippet>82</a>///
 <a href=#83 id=83 data-nosnippet>83</a>/// This would typically invoke the language feature provider registry
 <a href=#84 id=84 data-nosnippet>84</a>/// to find an appropriate provider for the document.
-<a href=#85 id=85 data-nosnippet>85</a></span><span class="kw">async fn </span><a href="../../../../Mountain/Command/Hover/Fn/fn.ProvideHover.html">ProvideHover</a>(_uri:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>, _position:<a href="Interface/Position.rs.html#8-12">Position</a>) -&gt; <span class="prelude-ty">Result</span>&lt;HoverResponse, String&gt; {
+<a href=#85 id=85 data-nosnippet>85</a></span><span class="kw">async fn </span><a href="../../../../Mountain/Command/Hover/Fn/fn.ProvideHover.html">ProvideHover</a>(_uri:<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>, _position:<a href="Interface/Position.rs.html#7-11">Position</a>) -&gt; <span class="prelude-ty">Result</span>&lt;HoverResponse, String&gt; {
 <a href=#86 id=86 data-nosnippet>86</a>	<span class="comment">// DEPENDENCY: Provider invocation requires:
 <a href=#87 id=87 data-nosnippet>87</a>	// 1. Provider registry lookup in ApplicationState by document URI
 <a href=#88 id=88 data-nosnippet>88</a>	// 2. RPC call to language server via CocoonService

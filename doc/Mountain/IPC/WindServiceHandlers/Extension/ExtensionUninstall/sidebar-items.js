@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["ExtensionUninstall"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

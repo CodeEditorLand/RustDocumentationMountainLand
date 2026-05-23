@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["FileRead"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["HistoryClear"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

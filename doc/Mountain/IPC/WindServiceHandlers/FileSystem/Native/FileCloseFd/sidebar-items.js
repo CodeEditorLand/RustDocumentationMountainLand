@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["FileCloseFd"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

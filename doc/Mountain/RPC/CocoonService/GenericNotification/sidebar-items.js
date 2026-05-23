@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["Commands","LanguageProviders","SkyEmit"]};
+window.SIDEBAR_ITEMS = {"mod":["Commands","Dispatcher","LanguageProviders","SkyEmit"]};

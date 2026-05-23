@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["HandleDeleteSecret","HandleGetSecret","HandleStoreSecret"]};
+window.SIDEBAR_ITEMS = {"mod":["Delete","Get","Store"]};

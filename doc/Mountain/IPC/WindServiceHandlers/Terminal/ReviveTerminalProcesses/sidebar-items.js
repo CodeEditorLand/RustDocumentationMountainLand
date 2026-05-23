@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["ReviveTerminalProcesses"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

@@ -127,9 +127,9 @@
 <a href=#127 id=127 data-nosnippet>127</a>		<a href="../ApplicationState/DTO/ExtensionDescriptionStateDTO.rs.html#49-207">DTO::ExtensionDescriptionStateDTO::ExtensionDescriptionStateDTO</a>,
 <a href=#128 id=128 data-nosnippet>128</a>		<a href="../ApplicationState/State/ApplicationState.rs.html#64-88">State::ApplicationState::ApplicationState</a>,
 <a href=#129 id=129 data-nosnippet>129</a>	},
-<a href=#130 id=130 data-nosnippet>130</a>	<a href="../Environment/mod.rs.html#121">Environment::Utility</a>,
-<a href=#131 id=131 data-nosnippet>131</a>	<a href="../RunTime/ApplicationRunTime/mod.rs.html#16-22">RunTime::ApplicationRunTime::ApplicationRunTime</a>,
-<a href=#132 id=132 data-nosnippet>132</a>	<a href="../IPC/DevLog/mod.rs.html#52-122">dev_log</a>,
+<a href=#130 id=130 data-nosnippet>130</a>	<a href="../Environment/mod.rs.html#120">Environment::Utility</a>,
+<a href=#131 id=131 data-nosnippet>131</a>	<a href="../RunTime/ApplicationRunTime/mod.rs.html#15-21">RunTime::ApplicationRunTime::ApplicationRunTime</a>,
+<a href=#132 id=132 data-nosnippet>132</a>	<a href="../IPC/DevLog/mod.rs.html#51-121">dev_log</a>,
 <a href=#133 id=133 data-nosnippet>133</a>};
 <a href=#134 id=134 data-nosnippet>134</a>
 <a href=#135 id=135 data-nosnippet>135</a><span class="doccomment">/// Directory names that are never extensions themselves even though they
@@ -195,7 +195,7 @@
 <a href=#195 id=195 data-nosnippet>195</a>	// `VsixInstaller::InstallVsix` for local VSIX drops and by the scan
 <a href=#196 id=196 data-nosnippet>196</a>	// path list in `ScanPathConfigure`. Resolved through the
 <a href=#197 id=197 data-nosnippet>197</a>	// `Utilities::FiddeeRoot` atom so the dotfile name lives in one place.
-<a href=#198 id=198 data-nosnippet>198</a>	</span><span class="kw">let </span>UserRoot = <span class="kw">crate</span>::IPC::WindServiceHandlers::Utilities::FiddeeRoot::<a href="../IPC/WindServiceHandlers/Utilities/FiddeeRoot.rs.html#24-34">FiddeeRoot</a>().<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">"extensions"</span>);
+<a href=#198 id=198 data-nosnippet>198</a>	</span><span class="kw">let </span>UserRoot = <span class="kw">crate</span>::IPC::WindServiceHandlers::Utilities::FiddeeRoot::<a href="../IPC/WindServiceHandlers/Utilities/FiddeeRoot.rs.html#23-33">Fn</a>().<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">"extensions"</span>);
 <a href=#199 id=199 data-nosnippet>199</a>
 <a href=#200 id=200 data-nosnippet>200</a>	<span class="kw">if </span><a href="#181">Normalised</a> == <a href="#198">UserRoot</a> {
 <a href=#201 id=201 data-nosnippet>201</a>		<span class="kw">return </span><span class="bool-val">true</span>;
@@ -509,7 +509,7 @@
 <a href=#509 id=509 data-nosnippet>509</a>/// resolve - in that case the bundle is optional and its absence is benign
 <a href=#510 id=510 data-nosnippet>510</a>/// (BATCH-18).
 <a href=#511 id=511 data-nosnippet>511</a></span><span class="kw">async fn </span><a href="../../../Mountain/ExtensionManagement/Scanner/fn.LoadNLSBundle.html">LoadNLSBundle</a>(
-<a href=#512 id=512 data-nosnippet>512</a>	RunTime:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/mod.rs.html#16-22">ApplicationRunTime</a>&gt;,
+<a href=#512 id=512 data-nosnippet>512</a>	RunTime:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/mod.rs.html#15-21">ApplicationRunTime</a>&gt;,
 <a href=#513 id=513 data-nosnippet>513</a>
 <a href=#514 id=514 data-nosnippet>514</a>	ExtensionPath:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>,
 <a href=#515 id=515 data-nosnippet>515</a>

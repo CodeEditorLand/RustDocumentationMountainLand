@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["VsixPathFromArgs"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

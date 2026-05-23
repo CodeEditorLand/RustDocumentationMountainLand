@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["TextfileSave"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

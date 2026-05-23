@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["FileUnwatch"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

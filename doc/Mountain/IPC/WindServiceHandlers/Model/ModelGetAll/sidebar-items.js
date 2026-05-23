@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["ModelGetAll"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["ErrResponse","HandleCreateDir","HandleDelete","HandleReadFile","HandleReadFileUri","HandleReaddir","HandleReaddirUri","HandleRename","HandleStat","HandleStatUri","HandleWriteFile","HandleWriteFileUri","OkResponse"]};
+window.SIDEBAR_ITEMS = {"fn":["ErrResponse","OkResponse"],"mod":["CreateDir","Delete","ReadFile","ReadFileUri","Readdir","ReaddirUri","Rename","Stat","StatUri","WriteFile","WriteFileUri"]};

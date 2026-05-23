@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["HandleApplyEdit","HandleCreateStatusBarItem","HandleCreateWebviewPanel","HandleOpenDocument","HandleOpenExternal","HandleSaveAll","HandleSetStatusBarText","HandleSetWebviewHtml","HandleShowInputBox","HandleShowMessage","HandleShowOpenDialog","HandleShowSaveDialog","HandleShowTextDocument"]};
+window.SIDEBAR_ITEMS = {"mod":["ApplyEdit","CreateStatusBarItem","CreateWebviewPanel","OpenDocument","OpenExternal","SaveAll","SetStatusBarText","SetWebviewHtml","ShowInputBox","ShowMessage","ShowOpenDialog","ShowSaveDialog","ShowTextDocument"]};

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["Relaunch"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

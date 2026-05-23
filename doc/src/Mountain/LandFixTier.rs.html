@@ -33,7 +33,7 @@
 <a href=#33 id=33 data-nosnippet>33</a>//! Wind, and Sky. Every capability listed in the boot banner maps to one or
 <a href=#34 id=34 data-nosnippet>34</a>//! more `// Tier:&lt;Capability&gt;:&lt;Value&gt;` comments at its dispatch site.
 <a href=#35 id=35 data-nosnippet>35</a>
-<a href=#36 id=36 data-nosnippet>36</a></span><span class="kw">use </span><a href="IPC/DevLog/mod.rs.html#52-122"><span class="kw">crate</span>::dev_log</a>;
+<a href=#36 id=36 data-nosnippet>36</a></span><span class="kw">use </span><a href="IPC/DevLog/mod.rs.html#51-121"><span class="kw">crate</span>::dev_log</a>;
 <a href=#37 id=37 data-nosnippet>37</a>
 <a href=#38 id=38 data-nosnippet>38</a><span class="doccomment">/// Emits one ISO-timestamped line at boot listing the compiled-in value of all
 <a href=#39 id=39 data-nosnippet>39</a>/// 17 build-baked tier variables + 1 runtime tier. Call once from
@@ -41,7 +41,7 @@
 <a href=#41 id=41 data-nosnippet>41</a>/// and before the Tokio runtime spawns any tasks.
 <a href=#42 id=42 data-nosnippet>42</a></span><span class="kw">pub fn </span><a href="../../Mountain/LandFixTier/fn.LogResolvedTiers.html">LogResolvedTiers</a>() {
 <a href=#43 id=43 data-nosnippet>43</a>	<span class="comment">// Build-baked tiers use env!() - values are baked from .env.Land at build time.
-<a href=#44 id=44 data-nosnippet>44</a>	</span><a href="IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(
+<a href=#44 id=44 data-nosnippet>44</a>	</span><a href="IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(
 <a href=#45 id=45 data-nosnippet>45</a>		<span class="string">"lifecycle"</span>,
 <a href=#46 id=46 data-nosnippet>46</a>		<span class="string">"[LandFix:Tier] Mountain tiers: RemoteProcedureCall={} HTTPProxy={} Logger={} FileSystem={} FindFiles={} \
 <a href=#47 id=47 data-nosnippet>47</a>		 Glob={} FileWatcher={} SchemeAssets={} Configuration={} Diagnostics={} Clipboard={} OpenExternal={} \
@@ -64,8 +64,10 @@
 <a href=#64 id=64 data-nosnippet>64</a>		<span class="macro">env!</span>(<span class="string">"TierModuleCache"</span>),
 <a href=#65 id=65 data-nosnippet>65</a>		<span class="macro">env!</span>(<span class="string">"TierTelemetry"</span>),
 <a href=#66 id=66 data-nosnippet>66</a>	);
-<a href=#67 id=67 data-nosnippet>67</a>	<span class="comment">// Runtime-only tiers use std::env::var - readable without a rebuild.
-<a href=#68 id=68 data-nosnippet>68</a>	</span><span class="kw">let </span>IPC = std::env::<a href="https://doc.rust-lang.org/nightly/std/env/fn.var.html">var</a>(<span class="string">"TierIPC"</span>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|<span class="kw">_</span>| <span class="string">"Mountain"</span>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into">into</a>());
-<a href=#69 id=69 data-nosnippet>69</a>	<a href="IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[LandFix:Tier] Runtime: IPC={}"</span>, IPC);
-<a href=#70 id=70 data-nosnippet>70</a>}
+<a href=#67 id=67 data-nosnippet>67</a>
+<a href=#68 id=68 data-nosnippet>68</a>	<span class="comment">// Runtime-only tiers use std::env::var - readable without a rebuild.
+<a href=#69 id=69 data-nosnippet>69</a>	</span><span class="kw">let </span>IPC = std::env::<a href="https://doc.rust-lang.org/nightly/std/env/fn.var.html">var</a>(<span class="string">"TierIPC"</span>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|<span class="kw">_</span>| <span class="string">"Mountain"</span>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into">into</a>());
+<a href=#70 id=70 data-nosnippet>70</a>
+<a href=#71 id=71 data-nosnippet>71</a>	<a href="IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[LandFix:Tier] Runtime: IPC={}"</span>, IPC);
+<a href=#72 id=72 data-nosnippet>72</a>}
 </code></pre></div></section></main></body></html>

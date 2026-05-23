@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["UpdateService"]};
+window.SIDEBAR_ITEMS = {"mod":["ApplyUpdate","CheckForUpdates","DownloadUpdate","GetInitialState","IsLatestVersion","QuitAndInstall"]};

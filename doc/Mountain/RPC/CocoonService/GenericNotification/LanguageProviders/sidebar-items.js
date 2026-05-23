@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["DispatchRegisterProvider","HandleRegisterProvider"]};
+window.SIDEBAR_ITEMS = {"mod":["Dispatch","Register"]};

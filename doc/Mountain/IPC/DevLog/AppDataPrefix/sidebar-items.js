@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["BinarySignature","DetectAppDataPrefix","Fn","SplitPascalCaseIntoWords"],"static":["APP_DATA_PREFIX"]};
+window.SIDEBAR_ITEMS = {"fn":["BinarySignature","DetectAppDataPrefix","Fn","SplitPascalCaseIntoWords"],"static":["RESOLVED","RETRY"]};

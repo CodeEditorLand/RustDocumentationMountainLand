@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["MutateRecentlyOpened","ReadRecentlyOpened","RecentlyOpenedPath"]};
+window.SIDEBAR_ITEMS = {"mod":["Mutate","Path","Read"]};

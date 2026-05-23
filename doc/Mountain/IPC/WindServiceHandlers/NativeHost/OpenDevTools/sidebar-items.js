@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["OpenDevTools"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

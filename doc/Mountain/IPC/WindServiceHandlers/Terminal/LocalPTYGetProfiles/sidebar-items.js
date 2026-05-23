@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["LocalPTYGetProfiles"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

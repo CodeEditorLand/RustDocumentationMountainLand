@@ -25,7 +25,7 @@
 <a href=#25 id=25 data-nosnippet>25</a>
 <a href=#26 id=26 data-nosnippet>26</a><span class="kw">use </span>tauri::AppHandle;
 <a href=#27 id=27 data-nosnippet>27</a>
-<a href=#28 id=28 data-nosnippet>28</a><span class="kw">use </span>crate::{<a href="../../Environment/MountainEnvironment.rs.html#72-85">Environment::MountainEnvironment::MountainEnvironment</a>, <a href="../../IPC/DevLog/mod.rs.html#52-122">dev_log</a>};
+<a href=#28 id=28 data-nosnippet>28</a><span class="kw">use </span>crate::{<a href="../../Environment/MountainEnvironment.rs.html#72-85">Environment::MountainEnvironment::MountainEnvironment</a>, <a href="../../IPC/DevLog/mod.rs.html#51-121">dev_log</a>};
 <a href=#29 id=29 data-nosnippet>29</a>
 <a href=#30 id=30 data-nosnippet>30</a><span class="doccomment">/// Default gRPC address used by Air. Mirror of
 <a href=#31 id=31 data-nosnippet>31</a>/// `AirClient::DEFAULT_AIR_SERVER_ADDRESS` for the connect step.
@@ -38,7 +38,7 @@
 <a href=#38 id=38 data-nosnippet>38</a>/// Spawn is gated on:
 <a href=#39 id=39 data-nosnippet>39</a>///   - The `AirIntegration` Cargo feature (compile-time).
 <a href=#40 id=40 data-nosnippet>40</a>///   - The `Spawn` env var (runtime; mirrors `CocoonStart` semantics).
-<a href=#41 id=41 data-nosnippet>41</a></span><span class="kw">pub async fn </span><a href="../../../../Mountain/Binary/Service/AirStart/fn.AirStart.html">AirStart</a>(_ApplicationHandle:<span class="kw-2">&amp;</span>AppHandle, _Environment:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../../Environment/MountainEnvironment.rs.html#72-85">MountainEnvironment</a>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
+<a href=#41 id=41 data-nosnippet>41</a></span><span class="kw">pub async fn </span><a href="../../../../Mountain/Binary/Service/AirStart/fn.Fn.html">Fn</a>(_ApplicationHandle:<span class="kw-2">&amp;</span>AppHandle, _Environment:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../../Environment/MountainEnvironment.rs.html#72-85">MountainEnvironment</a>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
 <a href=#42 id=42 data-nosnippet>42</a>	<span class="comment">// Atom N1 mirror: respect the `Spawn=false` env that disables
 <a href=#43 id=43 data-nosnippet>43</a>	// sidecar spawn for tests and the smallest-shippable-surface
 <a href=#44 id=44 data-nosnippet>44</a>	// Mountain-only profile.

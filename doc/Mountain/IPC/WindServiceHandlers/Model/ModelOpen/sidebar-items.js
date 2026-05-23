@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["ModelOpen"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

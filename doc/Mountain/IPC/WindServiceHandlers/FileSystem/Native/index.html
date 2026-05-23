@@ -16,4 +16,6 @@ symlinks (matches Electron behaviour). Noise from benign ENOENTs on
 known VS Code probe paths is squelched via <code>IsBenignEnoent</code> +
 <code>DebugOnce</code>.</dd><dt><a class="mod" href="FileUnwatch/index.html" title="mod Mountain::IPC::WindServiceHandlers::FileSystem::Native::FileUnwatch">File<wbr>Unwatch</a></dt><dd><code>file:unwatch</code> - unregister a native filesystem watcher by its token.</dd><dt><a class="mod" href="FileWatch/index.html" title="mod Mountain::IPC::WindServiceHandlers::FileSystem::Native::FileWatch">File<wbr>Watch</a></dt><dd><code>file:watch</code> - register a native filesystem watcher for a URI.</dd><dt><a class="mod" href="FileWriteNative/index.html" title="mod Mountain::IPC::WindServiceHandlers::FileSystem::Native::FileWriteNative">File<wbr>Write<wbr>Native</a></dt><dd>Wire method <code>file:write</code> / <code>file:writeFile</code>. Accepts either a plain
 string body or a <code>{ buffer: number[] | base64 }</code> VSBuffer. Parent
-directory is created best-effort.</dd></dl></section></div></main></body></html>
+directory is created best-effort. After a successful write, fires
+<code>$acceptModelSaved</code> to Cocoon so <code>onDidSaveTextDocument</code> reaches
+extensions (T1.4 save notification).</dd></dl></section></div></main></body></html>

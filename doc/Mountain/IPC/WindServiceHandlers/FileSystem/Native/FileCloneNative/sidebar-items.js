@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["FileCloneNative"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["OutputAppendLine"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

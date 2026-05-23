@@ -1,229 +1,224 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `Element/Mountain/Source/Vine/Server/Notification/OutputChannelCoalesce.rs`."><title>OutputChannelCoalesce.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../../../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../../../../../" data-static-root-path="../../../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.97.0-nightly (d3cd04068 2026-05-16)" data-channel="nightly" data-search-js="search-fd9372ac.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../../../static.files/storage-41dd4d93.js"></script><script defer src="../../../../../static.files/src-script-813739b1.js"></script><script defer src="../../../../../src-files.js"></script><script defer src="../../../../../static.files/main-fcd733ba.js"></script><noscript><link rel="stylesheet" href="../../../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><h1><div class="sub-heading">Mountain/Vine/Server/Notification/</div>OutputChannelCoalesce.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="attr">#![allow(non_snake_case)]
-<a href=#2 id=2 data-nosnippet>2</a>
-<a href=#3 id=3 data-nosnippet>3</a></span><span class="doccomment">//! Per-channel coalescing buffer for `outputChannel.append` notifications.
-<a href=#4 id=4 data-nosnippet>4</a>//!
-<a href=#5 id=5 data-nosnippet>5</a>//! Cocoon's Git extension emits 30+ `append` notifications per `git status`
-<a href=#6 id=6 data-nosnippet>6</a>//! (one per `[trace] [OperationManager][...]` line, one per executed
-<a href=#7 id=7 data-nosnippet>7</a>//! sub-command). Each one previously:
-<a href=#8 id=8 data-nosnippet>8</a>//!
-<a href=#9 id=9 data-nosnippet>9</a>//!   1. Crossed the Cocoon → Mountain gRPC notification boundary.
-<a href=#10 id=10 data-nosnippet>10</a>//!   2. Fired its own `Tauri::Emitter::emit("sky://output/append")` round-trip.
-<a href=#11 id=11 data-nosnippet>11</a>//!   3. Wrote its own dev_log entry.
-<a href=#12 id=12 data-nosnippet>12</a>//!
-<a href=#13 id=13 data-nosnippet>13</a>//! For a workspace with the Git extension actively probing repo state on
-<a href=#14 id=14 data-nosnippet>14</a>//! file changes, the volume of `[OperationManager]` traces alone accounted
-<a href=#15 id=15 data-nosnippet>15</a>//! for ~1.9k lines of one 28k-line session log.
-<a href=#16 id=16 data-nosnippet>16</a>//!
-<a href=#17 id=17 data-nosnippet>17</a>//! This atom buffers appends per-channel for a short window
-<a href=#18 id=18 data-nosnippet>18</a>//! (`COALESCE_WINDOW`) and flushes the concatenated payload as a single
-<a href=#19 id=19 data-nosnippet>19</a>//! Sky emit + a single dev_log line. The downstream Output panel still
-<a href=#20 id=20 data-nosnippet>20</a>//! sees identical text - just delivered in larger chunks - which matches
-<a href=#21 id=21 data-nosnippet>21</a>//! the user-perceived UX of an output channel (it scrolls in chunks, not
-<a href=#22 id=22 data-nosnippet>22</a>//! character-by-character).
-<a href=#23 id=23 data-nosnippet>23</a>//!
-<a href=#24 id=24 data-nosnippet>24</a>//! ## Why this is safe
-<a href=#25 id=25 data-nosnippet>25</a>//!
-<a href=#26 id=26 data-nosnippet>26</a>//! - Per-channel buffer means ordering is preserved within a channel.
-<a href=#27 id=27 data-nosnippet>27</a>//! - Append-only semantics mean partial-payload visibility cannot expose torn
-<a href=#28 id=28 data-nosnippet>28</a>//!   writes - the buffered text is always a prefix of the eventual full
-<a href=#29 id=29 data-nosnippet>29</a>//!   payload.
-<a href=#30 id=30 data-nosnippet>30</a>//! - `Tauri::Emitter` serialises emits per channel; the flush task running on
-<a href=#31 id=31 data-nosnippet>31</a>//!   the tokio runtime keeps the same back-pressure shape the per-call path
-<a href=#32 id=32 data-nosnippet>32</a>//!   had.
-<a href=#33 id=33 data-nosnippet>33</a>//!
-<a href=#34 id=34 data-nosnippet>34</a>//! ## Disable hook
-<a href=#35 id=35 data-nosnippet>35</a>//!
-<a href=#36 id=36 data-nosnippet>36</a>//! `OutputCoalesce=0` reverts to per-append emit (debugging
-<a href=#37 id=37 data-nosnippet>37</a>//! synchronisation issues where a single append must be flushed
-<a href=#38 id=38 data-nosnippet>38</a>//! immediately to disk).
-<a href=#39 id=39 data-nosnippet>39</a>
-<a href=#40 id=40 data-nosnippet>40</a></span><span class="kw">use </span>std::{
-<a href=#41 id=41 data-nosnippet>41</a>	<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">collections::HashMap</a>,
-<a href=#42 id=42 data-nosnippet>42</a>	sync::{<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">Mutex</a> <span class="kw">as </span>StandardMutex, <a href="https://doc.rust-lang.org/nightly/std/sync/once_lock/struct.OnceLock.html">OnceLock</a>},
-<a href=#43 id=43 data-nosnippet>43</a>	<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html">time::Duration</a>,
-<a href=#44 id=44 data-nosnippet>44</a>};
-<a href=#45 id=45 data-nosnippet>45</a>
-<a href=#46 id=46 data-nosnippet>46</a><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json</a>};
-<a href=#47 id=47 data-nosnippet>47</a><span class="kw">use </span>tauri::{AppHandle, Emitter};
-<a href=#48 id=48 data-nosnippet>48</a><span class="kw">use </span>tokio::sync::mpsc::{UnboundedSender, unbounded_channel};
-<a href=#49 id=49 data-nosnippet>49</a>
-<a href=#50 id=50 data-nosnippet>50</a><span class="kw">use </span><a href="../../../IPC/DevLog/mod.rs.html#52-122"><span class="kw">crate</span>::dev_log</a>;
-<a href=#51 id=51 data-nosnippet>51</a>
-<a href=#52 id=52 data-nosnippet>52</a><span class="doccomment">/// Maximum delay between an append arriving and its flush to Sky. Tuned
-<a href=#53 id=53 data-nosnippet>53</a>/// against the FSEvents / Git-extension 16ms tick - one frame is enough
-<a href=#54 id=54 data-nosnippet>54</a>/// for a `git status` burst to fully accumulate without introducing a
-<a href=#55 id=55 data-nosnippet>55</a>/// human-perceptible scroll lag.
-<a href=#56 id=56 data-nosnippet>56</a></span><span class="kw">const </span><a href="../../../../../Mountain/Vine/Server/Notification/OutputChannelCoalesce/constant.COALESCE_WINDOW.html">COALESCE_WINDOW</a>:<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html">Duration</a> = <a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html">Duration</a>::<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html#method.from_millis">from_millis</a>(<span class="number">50</span>);
-<a href=#57 id=57 data-nosnippet>57</a>
-<a href=#58 id=58 data-nosnippet>58</a><span class="doccomment">/// Maximum buffered bytes per channel before a forced flush. Caps memory
-<a href=#59 id=59 data-nosnippet>59</a>/// for any channel emitting unbounded text (a build extension piping
-<a href=#60 id=60 data-nosnippet>60</a>/// `cargo build` stdout) before the timer fires.
-<a href=#61 id=61 data-nosnippet>61</a></span><span class="kw">const </span><a href="../../../../../Mountain/Vine/Server/Notification/OutputChannelCoalesce/constant.MAX_BUFFERED_BYTES.html">MAX_BUFFERED_BYTES</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> = <span class="number">64 </span>* <span class="number">1024</span>;
-<a href=#62 id=62 data-nosnippet>62</a>
-<a href=#63 id=63 data-nosnippet>63</a><span class="kw">struct </span><a href="../../../../../Mountain/Vine/Server/Notification/OutputChannelCoalesce/struct.PendingAppend.html">PendingAppend</a> {
-<a href=#64 id=64 data-nosnippet>64</a>	Channel:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
-<a href=#65 id=65 data-nosnippet>65</a>
-<a href=#66 id=66 data-nosnippet>66</a>	Value:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
-<a href=#67 id=67 data-nosnippet>67</a>}
-<a href=#68 id=68 data-nosnippet>68</a>
-<a href=#69 id=69 data-nosnippet>69</a><span class="kw">struct </span><a href="../../../../../Mountain/Vine/Server/Notification/OutputChannelCoalesce/struct.CoalesceChannel.html">CoalesceChannel</a> {
-<a href=#70 id=70 data-nosnippet>70</a>	Sender:UnboundedSender&lt;(AppHandle, <a href="#63-67">PendingAppend</a>)&gt;,
-<a href=#71 id=71 data-nosnippet>71</a>}
-<a href=#72 id=72 data-nosnippet>72</a>
-<a href=#73 id=73 data-nosnippet>73</a><span class="kw">static </span><a href="../../../../../Mountain/Vine/Server/Notification/OutputChannelCoalesce/static.COALESCE_CHANNEL.html">COALESCE_CHANNEL</a>:<a href="https://doc.rust-lang.org/nightly/std/sync/once_lock/struct.OnceLock.html">OnceLock</a>&lt;<a href="#69-71">CoalesceChannel</a>&gt; = <a href="https://doc.rust-lang.org/nightly/std/sync/once_lock/struct.OnceLock.html">OnceLock</a>::<a href="https://doc.rust-lang.org/nightly/std/sync/once_lock/struct.OnceLock.html#method.new">new</a>();
-<a href=#74 id=74 data-nosnippet>74</a>
-<a href=#75 id=75 data-nosnippet>75</a><span class="kw">fn </span><a href="../../../../../Mountain/Vine/Server/Notification/OutputChannelCoalesce/fn.IsDisabled.html">IsDisabled</a>() -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> { <a href="https://doc.rust-lang.org/nightly/core/macro.matches.html">matches!</a>(std::env::var(<span class="string">"OutputCoalesce"</span>).as_deref(), <span class="prelude-val">Ok</span>(<span class="string">"0"</span>) | <span class="prelude-val">Ok</span>(<span class="string">"false"</span>)) }
-<a href=#76 id=76 data-nosnippet>76</a>
-<a href=#77 id=77 data-nosnippet>77</a><span class="kw">fn </span><a href="../../../../../Mountain/Vine/Server/Notification/OutputChannelCoalesce/fn.GetOrInitChannel.html">GetOrInitChannel</a>() -&gt; <span class="kw-2">&amp;</span><span class="lifetime">'static </span><a href="#69-71">CoalesceChannel</a> {
-<a href=#78 id=78 data-nosnippet>78</a>	<a href="#73">COALESCE_CHANNEL</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/once_lock/struct.OnceLock.html#method.get_or_init">get_or_init</a>(|| {
-<a href=#79 id=79 data-nosnippet>79</a>		<span class="kw">let </span>(Tx, <span class="kw-2">mut </span>Rx) = unbounded_channel::&lt;(AppHandle, <a href="#63-67">PendingAppend</a>)&gt;();
-<a href=#80 id=80 data-nosnippet>80</a>
-<a href=#81 id=81 data-nosnippet>81</a>		tokio::spawn(<span class="kw">async move </span>{
-<a href=#82 id=82 data-nosnippet>82</a>			<span class="comment">// Per-channel pending buffer. Two-level map: channel name →
-<a href=#83 id=83 data-nosnippet>83</a>			// accumulated text. AppHandle is shared across channels (one
-<a href=#84 id=84 data-nosnippet>84</a>			// per process) so we stash it alongside.
-<a href=#85 id=85 data-nosnippet>85</a>			</span><span class="kw">let </span>Buffers:<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">StandardMutex</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;&gt; = <a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">StandardMutex</a>::<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.new">new</a>(<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>::<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.new">new</a>());
-<a href=#86 id=86 data-nosnippet>86</a>
-<a href=#87 id=87 data-nosnippet>87</a>			<span class="kw">let </span><span class="kw-2">mut </span>HandleSlot:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;AppHandle&gt; = <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>;
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `Element/Mountain/Source/Vine/Server/Notification/OutputChannelCoalesce.rs`."><title>OutputChannelCoalesce.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../../../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../../../../../" data-static-root-path="../../../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.97.0-nightly (d3cd04068 2026-05-16)" data-channel="nightly" data-search-js="search-fd9372ac.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../../../static.files/storage-41dd4d93.js"></script><script defer src="../../../../../static.files/src-script-813739b1.js"></script><script defer src="../../../../../src-files.js"></script><script defer src="../../../../../static.files/main-fcd733ba.js"></script><noscript><link rel="stylesheet" href="../../../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><h1><div class="sub-heading">Mountain/Vine/Server/Notification/</div>OutputChannelCoalesce.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a>
+<a href=#2 id=2 data-nosnippet>2</a><span class="doccomment">//! Per-channel coalescing buffer for `outputChannel.append` notifications.
+<a href=#3 id=3 data-nosnippet>3</a>//!
+<a href=#4 id=4 data-nosnippet>4</a>//! Cocoon's Git extension emits 30+ `append` notifications per `git status`
+<a href=#5 id=5 data-nosnippet>5</a>//! (one per `[trace] [OperationManager][...]` line, one per executed
+<a href=#6 id=6 data-nosnippet>6</a>//! sub-command). Each one previously:
+<a href=#7 id=7 data-nosnippet>7</a>//!
+<a href=#8 id=8 data-nosnippet>8</a>//!   1. Crossed the Cocoon → Mountain gRPC notification boundary.
+<a href=#9 id=9 data-nosnippet>9</a>//!   2. Fired its own `Tauri::Emitter::emit("sky://output/append")` round-trip.
+<a href=#10 id=10 data-nosnippet>10</a>//!   3. Wrote its own dev_log entry.
+<a href=#11 id=11 data-nosnippet>11</a>//!
+<a href=#12 id=12 data-nosnippet>12</a>//! For a workspace with the Git extension actively probing repo state on
+<a href=#13 id=13 data-nosnippet>13</a>//! file changes, the volume of `[OperationManager]` traces alone accounted
+<a href=#14 id=14 data-nosnippet>14</a>//! for ~1.9k lines of one 28k-line session log.
+<a href=#15 id=15 data-nosnippet>15</a>//!
+<a href=#16 id=16 data-nosnippet>16</a>//! This atom buffers appends per-channel for a short window
+<a href=#17 id=17 data-nosnippet>17</a>//! (`COALESCE_WINDOW`) and flushes the concatenated payload as a single
+<a href=#18 id=18 data-nosnippet>18</a>//! Sky emit + a single dev_log line. The downstream Output panel still
+<a href=#19 id=19 data-nosnippet>19</a>//! sees identical text - just delivered in larger chunks - which matches
+<a href=#20 id=20 data-nosnippet>20</a>//! the user-perceived UX of an output channel (it scrolls in chunks, not
+<a href=#21 id=21 data-nosnippet>21</a>//! character-by-character).
+<a href=#22 id=22 data-nosnippet>22</a>//!
+<a href=#23 id=23 data-nosnippet>23</a>//! ## Why this is safe
+<a href=#24 id=24 data-nosnippet>24</a>//!
+<a href=#25 id=25 data-nosnippet>25</a>//! - Per-channel buffer means ordering is preserved within a channel.
+<a href=#26 id=26 data-nosnippet>26</a>//! - Append-only semantics mean partial-payload visibility cannot expose torn
+<a href=#27 id=27 data-nosnippet>27</a>//!   writes - the buffered text is always a prefix of the eventual full
+<a href=#28 id=28 data-nosnippet>28</a>//!   payload.
+<a href=#29 id=29 data-nosnippet>29</a>//! - `Tauri::Emitter` serialises emits per channel; the flush task running on
+<a href=#30 id=30 data-nosnippet>30</a>//!   the tokio runtime keeps the same back-pressure shape the per-call path
+<a href=#31 id=31 data-nosnippet>31</a>//!   had.
+<a href=#32 id=32 data-nosnippet>32</a>//!
+<a href=#33 id=33 data-nosnippet>33</a>//! ## Disable hook
+<a href=#34 id=34 data-nosnippet>34</a>//!
+<a href=#35 id=35 data-nosnippet>35</a>//! `OutputCoalesce=0` reverts to per-append emit (debugging
+<a href=#36 id=36 data-nosnippet>36</a>//! synchronisation issues where a single append must be flushed
+<a href=#37 id=37 data-nosnippet>37</a>//! immediately to disk).
+<a href=#38 id=38 data-nosnippet>38</a>
+<a href=#39 id=39 data-nosnippet>39</a></span><span class="kw">use </span>std::{
+<a href=#40 id=40 data-nosnippet>40</a>	<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">collections::HashMap</a>,
+<a href=#41 id=41 data-nosnippet>41</a>	sync::{<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">Mutex</a> <span class="kw">as </span>StandardMutex, <a href="https://doc.rust-lang.org/nightly/std/sync/once_lock/struct.OnceLock.html">OnceLock</a>},
+<a href=#42 id=42 data-nosnippet>42</a>	<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html">time::Duration</a>,
+<a href=#43 id=43 data-nosnippet>43</a>};
+<a href=#44 id=44 data-nosnippet>44</a>
+<a href=#45 id=45 data-nosnippet>45</a><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json</a>};
+<a href=#46 id=46 data-nosnippet>46</a><span class="kw">use </span>tauri::{AppHandle, Emitter};
+<a href=#47 id=47 data-nosnippet>47</a><span class="kw">use </span>tokio::sync::mpsc::{UnboundedSender, unbounded_channel};
+<a href=#48 id=48 data-nosnippet>48</a>
+<a href=#49 id=49 data-nosnippet>49</a><span class="kw">use </span><a href="../../../IPC/DevLog/mod.rs.html#51-121"><span class="kw">crate</span>::dev_log</a>;
+<a href=#50 id=50 data-nosnippet>50</a>
+<a href=#51 id=51 data-nosnippet>51</a><span class="doccomment">/// Maximum delay between an append arriving and its flush to Sky. Tuned
+<a href=#52 id=52 data-nosnippet>52</a>/// against the FSEvents / Git-extension 16ms tick - one frame is enough
+<a href=#53 id=53 data-nosnippet>53</a>/// for a `git status` burst to fully accumulate without introducing a
+<a href=#54 id=54 data-nosnippet>54</a>/// human-perceptible scroll lag.
+<a href=#55 id=55 data-nosnippet>55</a></span><span class="kw">const </span><a href="../../../../../Mountain/Vine/Server/Notification/OutputChannelCoalesce/constant.COALESCE_WINDOW.html">COALESCE_WINDOW</a>:<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html">Duration</a> = <a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html">Duration</a>::<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html#method.from_millis">from_millis</a>(<span class="number">50</span>);
+<a href=#56 id=56 data-nosnippet>56</a>
+<a href=#57 id=57 data-nosnippet>57</a><span class="doccomment">/// Maximum buffered bytes per channel before a forced flush. Caps memory
+<a href=#58 id=58 data-nosnippet>58</a>/// for any channel emitting unbounded text (a build extension piping
+<a href=#59 id=59 data-nosnippet>59</a>/// `cargo build` stdout) before the timer fires.
+<a href=#60 id=60 data-nosnippet>60</a></span><span class="kw">const </span><a href="../../../../../Mountain/Vine/Server/Notification/OutputChannelCoalesce/constant.MAX_BUFFERED_BYTES.html">MAX_BUFFERED_BYTES</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> = <span class="number">64 </span>* <span class="number">1024</span>;
+<a href=#61 id=61 data-nosnippet>61</a>
+<a href=#62 id=62 data-nosnippet>62</a><span class="kw">struct </span><a href="../../../../../Mountain/Vine/Server/Notification/OutputChannelCoalesce/struct.PendingAppend.html">PendingAppend</a> {
+<a href=#63 id=63 data-nosnippet>63</a>	Channel:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#64 id=64 data-nosnippet>64</a>
+<a href=#65 id=65 data-nosnippet>65</a>	Value:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
+<a href=#66 id=66 data-nosnippet>66</a>}
+<a href=#67 id=67 data-nosnippet>67</a>
+<a href=#68 id=68 data-nosnippet>68</a><span class="kw">struct </span><a href="../../../../../Mountain/Vine/Server/Notification/OutputChannelCoalesce/struct.CoalesceChannel.html">CoalesceChannel</a> {
+<a href=#69 id=69 data-nosnippet>69</a>	Sender:UnboundedSender&lt;(AppHandle, <a href="#62-66">PendingAppend</a>)&gt;,
+<a href=#70 id=70 data-nosnippet>70</a>}
+<a href=#71 id=71 data-nosnippet>71</a>
+<a href=#72 id=72 data-nosnippet>72</a><span class="kw">static </span><a href="../../../../../Mountain/Vine/Server/Notification/OutputChannelCoalesce/static.COALESCE_CHANNEL.html">COALESCE_CHANNEL</a>:<a href="https://doc.rust-lang.org/nightly/std/sync/once_lock/struct.OnceLock.html">OnceLock</a>&lt;<a href="#68-70">CoalesceChannel</a>&gt; = <a href="https://doc.rust-lang.org/nightly/std/sync/once_lock/struct.OnceLock.html">OnceLock</a>::<a href="https://doc.rust-lang.org/nightly/std/sync/once_lock/struct.OnceLock.html#method.new">new</a>();
+<a href=#73 id=73 data-nosnippet>73</a>
+<a href=#74 id=74 data-nosnippet>74</a><span class="kw">fn </span><a href="../../../../../Mountain/Vine/Server/Notification/OutputChannelCoalesce/fn.IsDisabled.html">IsDisabled</a>() -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> { <a href="https://doc.rust-lang.org/nightly/core/macro.matches.html">matches!</a>(std::env::var(<span class="string">"OutputCoalesce"</span>).as_deref(), <span class="prelude-val">Ok</span>(<span class="string">"0"</span>) | <span class="prelude-val">Ok</span>(<span class="string">"false"</span>)) }
+<a href=#75 id=75 data-nosnippet>75</a>
+<a href=#76 id=76 data-nosnippet>76</a><span class="kw">fn </span><a href="../../../../../Mountain/Vine/Server/Notification/OutputChannelCoalesce/fn.GetOrInitChannel.html">GetOrInitChannel</a>() -&gt; <span class="kw-2">&amp;</span><span class="lifetime">'static </span><a href="#68-70">CoalesceChannel</a> {
+<a href=#77 id=77 data-nosnippet>77</a>	<a href="#72">COALESCE_CHANNEL</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/once_lock/struct.OnceLock.html#method.get_or_init">get_or_init</a>(|| {
+<a href=#78 id=78 data-nosnippet>78</a>		<span class="kw">let </span>(Tx, <span class="kw-2">mut </span>Rx) = unbounded_channel::&lt;(AppHandle, <a href="#62-66">PendingAppend</a>)&gt;();
+<a href=#79 id=79 data-nosnippet>79</a>
+<a href=#80 id=80 data-nosnippet>80</a>		tokio::spawn(<span class="kw">async move </span>{
+<a href=#81 id=81 data-nosnippet>81</a>			<span class="comment">// Per-channel pending buffer. Two-level map: channel name →
+<a href=#82 id=82 data-nosnippet>82</a>			// accumulated text. AppHandle is shared across channels (one
+<a href=#83 id=83 data-nosnippet>83</a>			// per process) so we stash it alongside.
+<a href=#84 id=84 data-nosnippet>84</a>			</span><span class="kw">let </span>Buffers:<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">StandardMutex</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;&gt; = <a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">StandardMutex</a>::<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.new">new</a>(<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>::<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.new">new</a>());
+<a href=#85 id=85 data-nosnippet>85</a>
+<a href=#86 id=86 data-nosnippet>86</a>			<span class="kw">loop </span>{
+<a href=#87 id=87 data-nosnippet>87</a>				<span class="kw">let </span>Received = Rx.recv().<span class="kw">await</span>;
 <a href=#88 id=88 data-nosnippet>88</a>
-<a href=#89 id=89 data-nosnippet>89</a>			<span class="kw">loop </span>{
-<a href=#90 id=90 data-nosnippet>90</a>				<span class="kw">let </span>Received = Rx.recv().<span class="kw">await</span>;
-<a href=#91 id=91 data-nosnippet>91</a>
-<a href=#92 id=92 data-nosnippet>92</a>				<span class="kw">let </span>(Handle, First) = <span class="kw">match </span><a href="#90">Received</a> {
-<a href=#93 id=93 data-nosnippet>93</a>					<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a> =&gt; <span class="kw">break</span>,
-<a href=#94 id=94 data-nosnippet>94</a>					<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Pair) =&gt; <a href="#94">Pair</a>,
-<a href=#95 id=95 data-nosnippet>95</a>				};
-<a href=#96 id=96 data-nosnippet>96</a>
-<a href=#97 id=97 data-nosnippet>97</a>				<a href="#87">HandleSlot</a> = <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<a href="#92">Handle</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>());
-<a href=#98 id=98 data-nosnippet>98</a>
-<a href=#99 id=99 data-nosnippet>99</a>				<span class="comment">// Append to per-channel buffer.
-<a href=#100 id=100 data-nosnippet>100</a>				</span>{
-<a href=#101 id=101 data-nosnippet>101</a>					<span class="kw">let </span><span class="kw-2">mut </span>Guard = <span class="kw">match </span><a href="#85">Buffers</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>() {
-<a href=#102 id=102 data-nosnippet>102</a>						<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(G) =&gt; <a href="#102">G</a>,
-<a href=#103 id=103 data-nosnippet>103</a>						<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<span class="kw">_</span>) =&gt; <span class="kw">continue</span>,
-<a href=#104 id=104 data-nosnippet>104</a>					};
-<a href=#105 id=105 data-nosnippet>105</a>
-<a href=#106 id=106 data-nosnippet>106</a>					<span class="kw">let </span>Slot = <a href="#101">Guard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.entry">entry</a>(<a href="#92">First</a>.Channel.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>()).<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/enum.Entry.html#method.or_default">or_default</a>();
+<a href=#89 id=89 data-nosnippet>89</a>				<span class="kw">let </span>(Handle, First) = <span class="kw">match </span><a href="#87">Received</a> {
+<a href=#90 id=90 data-nosnippet>90</a>					<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a> =&gt; <span class="kw">break</span>,
+<a href=#91 id=91 data-nosnippet>91</a>					<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Pair) =&gt; <a href="#91">Pair</a>,
+<a href=#92 id=92 data-nosnippet>92</a>				};
+<a href=#93 id=93 data-nosnippet>93</a>
+<a href=#94 id=94 data-nosnippet>94</a>				<span class="comment">// Append to per-channel buffer.
+<a href=#95 id=95 data-nosnippet>95</a>				</span>{
+<a href=#96 id=96 data-nosnippet>96</a>					<span class="kw">let </span><span class="kw-2">mut </span>Guard = <span class="kw">match </span><a href="#84">Buffers</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>() {
+<a href=#97 id=97 data-nosnippet>97</a>						<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(G) =&gt; <a href="#97">G</a>,
+<a href=#98 id=98 data-nosnippet>98</a>						<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<span class="kw">_</span>) =&gt; <span class="kw">continue</span>,
+<a href=#99 id=99 data-nosnippet>99</a>					};
+<a href=#100 id=100 data-nosnippet>100</a>
+<a href=#101 id=101 data-nosnippet>101</a>					<span class="kw">let </span>Slot = <a href="#96">Guard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.entry">entry</a>(<a href="#89">First</a>.Channel.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>()).<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/enum.Entry.html#method.or_default">or_default</a>();
+<a href=#102 id=102 data-nosnippet>102</a>
+<a href=#103 id=103 data-nosnippet>103</a>					<a href="#101">Slot</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.push_str">push_str</a>(<span class="kw-2">&amp;</span><a href="#89">First</a>.Value);
+<a href=#104 id=104 data-nosnippet>104</a>
+<a href=#105 id=105 data-nosnippet>105</a>					<span class="kw">if </span><a href="#101">Slot</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.len">len</a>() &gt;= <a href="#60">MAX_BUFFERED_BYTES</a> {
+<a href=#106 id=106 data-nosnippet>106</a>						<span class="kw">let </span>Payload = std::mem::<a href="https://doc.rust-lang.org/nightly/core/mem/fn.take.html">take</a>(<a href="#101">Slot</a>);
 <a href=#107 id=107 data-nosnippet>107</a>
-<a href=#108 id=108 data-nosnippet>108</a>					<a href="#106">Slot</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.push_str">push_str</a>(<span class="kw-2">&amp;</span><a href="#92">First</a>.Value);
+<a href=#108 id=108 data-nosnippet>108</a>						<a href="https://doc.rust-lang.org/nightly/core/mem/fn.drop.html">drop</a>(<a href="#96">Guard</a>);
 <a href=#109 id=109 data-nosnippet>109</a>
-<a href=#110 id=110 data-nosnippet>110</a>					<span class="kw">if </span><a href="#106">Slot</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.len">len</a>() &gt;= <a href="#61">MAX_BUFFERED_BYTES</a> {
-<a href=#111 id=111 data-nosnippet>111</a>						<span class="kw">let </span>Payload = std::mem::<a href="https://doc.rust-lang.org/nightly/core/mem/fn.take.html">take</a>(<a href="#106">Slot</a>);
-<a href=#112 id=112 data-nosnippet>112</a>
-<a href=#113 id=113 data-nosnippet>113</a>						<a href="https://doc.rust-lang.org/nightly/core/mem/fn.drop.html">drop</a>(<a href="#101">Guard</a>);
-<a href=#114 id=114 data-nosnippet>114</a>
-<a href=#115 id=115 data-nosnippet>115</a>						<a href="#177-212">FlushOne</a>(<span class="kw-2">&amp;</span><a href="#92">Handle</a>, <span class="kw-2">&amp;</span><a href="#92">First</a>.Channel, <span class="kw-2">&amp;</span><a href="#111">Payload</a>);
-<a href=#116 id=116 data-nosnippet>116</a>
-<a href=#117 id=117 data-nosnippet>117</a>						<span class="kw">continue</span>;
-<a href=#118 id=118 data-nosnippet>118</a>					}
-<a href=#119 id=119 data-nosnippet>119</a>				}
+<a href=#110 id=110 data-nosnippet>110</a>						<a href="#172-207">FlushOne</a>(<span class="kw-2">&amp;</span><a href="#89">Handle</a>, <span class="kw-2">&amp;</span><a href="#89">First</a>.Channel, <span class="kw-2">&amp;</span><a href="#106">Payload</a>);
+<a href=#111 id=111 data-nosnippet>111</a>
+<a href=#112 id=112 data-nosnippet>112</a>						<span class="kw">continue</span>;
+<a href=#113 id=113 data-nosnippet>113</a>					}
+<a href=#114 id=114 data-nosnippet>114</a>				}
+<a href=#115 id=115 data-nosnippet>115</a>
+<a href=#116 id=116 data-nosnippet>116</a>				<span class="comment">// Drain everything already queued without blocking.
+<a href=#117 id=117 data-nosnippet>117</a>				</span><span class="kw">let </span><span class="kw-2">mut </span>Drain:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;(AppHandle, <a href="#62-66">PendingAppend</a>)&gt; = <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>::<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.new">new</a>();
+<a href=#118 id=118 data-nosnippet>118</a>
+<a href=#119 id=119 data-nosnippet>119</a>				<span class="kw">let </span>Drained = Rx.recv_many(<span class="kw-2">&amp;mut </span>Drain, <span class="number">4096</span>).<span class="kw">await</span>;
 <a href=#120 id=120 data-nosnippet>120</a>
-<a href=#121 id=121 data-nosnippet>121</a>				<span class="comment">// Drain everything already queued without blocking.
-<a href=#122 id=122 data-nosnippet>122</a>				</span><span class="kw">let </span><span class="kw-2">mut </span>Drain:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;(AppHandle, <a href="#63-67">PendingAppend</a>)&gt; = <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>::<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.new">new</a>();
-<a href=#123 id=123 data-nosnippet>123</a>
-<a href=#124 id=124 data-nosnippet>124</a>				<span class="kw">let </span>Drained = Rx.recv_many(<span class="kw-2">&amp;mut </span>Drain, <span class="number">4096</span>).<span class="kw">await</span>;
-<a href=#125 id=125 data-nosnippet>125</a>
-<a href=#126 id=126 data-nosnippet>126</a>				<span class="kw">let _ </span>= <a href="#124">Drained</a>;
-<a href=#127 id=127 data-nosnippet>127</a>
-<a href=#128 id=128 data-nosnippet>128</a>				<span class="kw">for </span>(<span class="kw">_</span>, Pending) <span class="kw">in </span>Drain.drain(..) {
-<a href=#129 id=129 data-nosnippet>129</a>					<span class="kw">if let </span><span class="prelude-val">Ok</span>(<span class="kw-2">mut </span>Guard) = Buffers.lock() {
-<a href=#130 id=130 data-nosnippet>130</a>						<span class="kw">let </span>Slot = Guard.entry(Pending.Channel).or_default();
-<a href=#131 id=131 data-nosnippet>131</a>						Slot.push_str(<span class="kw-2">&amp;</span>Pending.Value);
-<a href=#132 id=132 data-nosnippet>132</a>					}
-<a href=#133 id=133 data-nosnippet>133</a>				}
+<a href=#121 id=121 data-nosnippet>121</a>				<span class="kw">let _ </span>= <a href="#119">Drained</a>;
+<a href=#122 id=122 data-nosnippet>122</a>
+<a href=#123 id=123 data-nosnippet>123</a>				<span class="kw">for </span>(<span class="kw">_</span>, Pending) <span class="kw">in </span>Drain.drain(..) {
+<a href=#124 id=124 data-nosnippet>124</a>					<span class="kw">if let </span><span class="prelude-val">Ok</span>(<span class="kw-2">mut </span>Guard) = Buffers.lock() {
+<a href=#125 id=125 data-nosnippet>125</a>						<span class="kw">let </span>Slot = Guard.entry(Pending.Channel).or_default();
+<a href=#126 id=126 data-nosnippet>126</a>						Slot.push_str(<span class="kw-2">&amp;</span>Pending.Value);
+<a href=#127 id=127 data-nosnippet>127</a>					}
+<a href=#128 id=128 data-nosnippet>128</a>				}
+<a href=#129 id=129 data-nosnippet>129</a>
+<a href=#130 id=130 data-nosnippet>130</a>				<span class="comment">// Window pause - let stragglers accumulate inside the
+<a href=#131 id=131 data-nosnippet>131</a>				// 50 ms frame. Anything received during the sleep is
+<a href=#132 id=132 data-nosnippet>132</a>				// drained again before flush.
+<a href=#133 id=133 data-nosnippet>133</a>				</span>tokio::time::sleep(COALESCE_WINDOW).<span class="kw">await</span>;
 <a href=#134 id=134 data-nosnippet>134</a>
-<a href=#135 id=135 data-nosnippet>135</a>				<span class="comment">// Window pause - let stragglers accumulate inside the
-<a href=#136 id=136 data-nosnippet>136</a>				// 50 ms frame. Anything received during the sleep is
-<a href=#137 id=137 data-nosnippet>137</a>				// drained again before flush.
-<a href=#138 id=138 data-nosnippet>138</a>				</span>tokio::time::sleep(COALESCE_WINDOW).<span class="kw">await</span>;
-<a href=#139 id=139 data-nosnippet>139</a>
-<a href=#140 id=140 data-nosnippet>140</a>				<span class="kw">let </span><span class="kw-2">mut </span>LateDrain:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;(AppHandle, <a href="#63-67">PendingAppend</a>)&gt; = <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>::<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.new">new</a>();
-<a href=#141 id=141 data-nosnippet>141</a>
-<a href=#142 id=142 data-nosnippet>142</a>				<span class="kw">let _ </span>= Rx.recv_many(<span class="kw-2">&amp;mut </span>LateDrain, <span class="number">4096</span>).<span class="kw">await</span>;
-<a href=#143 id=143 data-nosnippet>143</a>
-<a href=#144 id=144 data-nosnippet>144</a>				<span class="kw">for </span>(<span class="kw">_</span>, Pending) <span class="kw">in </span>LateDrain.drain(..) {
-<a href=#145 id=145 data-nosnippet>145</a>					<span class="kw">if let </span><span class="prelude-val">Ok</span>(<span class="kw-2">mut </span>Guard) = Buffers.lock() {
-<a href=#146 id=146 data-nosnippet>146</a>						<span class="kw">let </span>Slot = Guard.entry(Pending.Channel).or_default();
-<a href=#147 id=147 data-nosnippet>147</a>						Slot.push_str(<span class="kw-2">&amp;</span>Pending.Value);
-<a href=#148 id=148 data-nosnippet>148</a>					}
-<a href=#149 id=149 data-nosnippet>149</a>				}
-<a href=#150 id=150 data-nosnippet>150</a>
-<a href=#151 id=151 data-nosnippet>151</a>				<span class="comment">// Flush every non-empty channel.
-<a href=#152 id=152 data-nosnippet>152</a>				</span><span class="kw">let </span>HandleForFlush = <a href="#87">HandleSlot</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or_else">unwrap_or_else</a>(|| <a href="#92">Handle</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>());
-<a href=#153 id=153 data-nosnippet>153</a>
-<a href=#154 id=154 data-nosnippet>154</a>				<span class="kw">let </span>Snapshots = {
-<a href=#155 id=155 data-nosnippet>155</a>					<span class="kw">match </span><a href="#85">Buffers</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>() {
-<a href=#156 id=156 data-nosnippet>156</a>						<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="kw-2">mut </span>Guard) =&gt; {
-<a href=#157 id=157 data-nosnippet>157</a>							<a href="#156">Guard</a>
-<a href=#158 id=158 data-nosnippet>158</a>								.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.iter_mut">iter_mut</a>()
-<a href=#159 id=159 data-nosnippet>159</a>								.<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.filter">filter</a>(|(<span class="kw">_</span>, V)| !<a href="#159">V</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.is_empty">is_empty</a>())
-<a href=#160 id=160 data-nosnippet>160</a>								.<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.map">map</a>(|(K, V)| (<a href="#160">K</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>(), std::mem::<a href="https://doc.rust-lang.org/nightly/core/mem/fn.take.html">take</a>(<a href="#160">V</a>)))
-<a href=#161 id=161 data-nosnippet>161</a>								.collect::&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<span class="kw">_</span>&gt;&gt;()
-<a href=#162 id=162 data-nosnippet>162</a>						},
-<a href=#163 id=163 data-nosnippet>163</a>						<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<span class="kw">_</span>) =&gt; <span class="kw">continue</span>,
-<a href=#164 id=164 data-nosnippet>164</a>					}
-<a href=#165 id=165 data-nosnippet>165</a>				};
-<a href=#166 id=166 data-nosnippet>166</a>
-<a href=#167 id=167 data-nosnippet>167</a>				<span class="kw">for </span>(Channel, Payload) <span class="kw">in </span>Snapshots {
-<a href=#168 id=168 data-nosnippet>168</a>					FlushOne(<span class="kw-2">&amp;</span>HandleForFlush, <span class="kw-2">&amp;</span>Channel, <span class="kw-2">&amp;</span>Payload);
-<a href=#169 id=169 data-nosnippet>169</a>				}
-<a href=#170 id=170 data-nosnippet>170</a>			}
-<a href=#171 id=171 data-nosnippet>171</a>		});
-<a href=#172 id=172 data-nosnippet>172</a>
-<a href=#173 id=173 data-nosnippet>173</a>		<a href="#69-71">CoalesceChannel</a> { Sender:<a href="#79">Tx</a> }
-<a href=#174 id=174 data-nosnippet>174</a>	})
-<a href=#175 id=175 data-nosnippet>175</a>}
-<a href=#176 id=176 data-nosnippet>176</a>
-<a href=#177 id=177 data-nosnippet>177</a><span class="kw">fn </span><a href="../../../../../Mountain/Vine/Server/Notification/OutputChannelCoalesce/fn.FlushOne.html">FlushOne</a>(Handle:<span class="kw-2">&amp;</span>AppHandle, Channel:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, Payload:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) {
-<a href=#178 id=178 data-nosnippet>178</a>	<span class="kw">let _ </span>= <a href="#177">Handle</a>.emit(
-<a href=#179 id=179 data-nosnippet>179</a>		<span class="string">"sky://output/append"</span>,
-<a href=#180 id=180 data-nosnippet>180</a>		<a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json!</a>({
-<a href=#181 id=181 data-nosnippet>181</a>			<span class="string">"channel"</span>: Channel,
-<a href=#182 id=182 data-nosnippet>182</a>			<span class="string">"value"</span>: Payload,
-<a href=#183 id=183 data-nosnippet>183</a>		}),
-<a href=#184 id=184 data-nosnippet>184</a>	);
-<a href=#185 id=185 data-nosnippet>185</a>
-<a href=#186 id=186 data-nosnippet>186</a>	<span class="comment">// One log line per flush instead of one per append. The git
-<a href=#187 id=187 data-nosnippet>187</a>	// channel keeps its `grpc`-tag visibility for SCM activation
-<a href=#188 id=188 data-nosnippet>188</a>	// diagnosis; other channels stay under `output-verbose`.
-<a href=#189 id=189 data-nosnippet>189</a>	</span><span class="kw">let </span>IsGitFamily = <a href="#177">Channel</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.eq_ignore_ascii_case">eq_ignore_ascii_case</a>(<span class="string">"git"</span>)
-<a href=#190 id=190 data-nosnippet>190</a>		|| <a href="#177">Channel</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.eq_ignore_ascii_case">eq_ignore_ascii_case</a>(<span class="string">"source control"</span>)
-<a href=#191 id=191 data-nosnippet>191</a>		|| <a href="#177">Channel</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.eq_ignore_ascii_case">eq_ignore_ascii_case</a>(<span class="string">"scm"</span>);
-<a href=#192 id=192 data-nosnippet>192</a>
-<a href=#193 id=193 data-nosnippet>193</a>	<span class="kw">let </span>LineCount = <a href="#177">Payload</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.matches">matches</a>(<span class="string">'\n'</span>).<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.count">count</a>();
-<a href=#194 id=194 data-nosnippet>194</a>
-<a href=#195 id=195 data-nosnippet>195</a>	<span class="kw">if </span><a href="#189">IsGitFamily</a> {
-<a href=#196 id=196 data-nosnippet>196</a>		<a href="../../../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(
-<a href=#197 id=197 data-nosnippet>197</a>			<span class="string">"grpc"</span>,
-<a href=#198 id=198 data-nosnippet>198</a>			<span class="string">"[OutputChannel:{}] flush bytes={} lines~{}"</span>,
-<a href=#199 id=199 data-nosnippet>199</a>			Channel,
-<a href=#200 id=200 data-nosnippet>200</a>			Payload.len(),
-<a href=#201 id=201 data-nosnippet>201</a>			LineCount
-<a href=#202 id=202 data-nosnippet>202</a>		);
-<a href=#203 id=203 data-nosnippet>203</a>	} <span class="kw">else </span>{
-<a href=#204 id=204 data-nosnippet>204</a>		<a href="../../../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(
-<a href=#205 id=205 data-nosnippet>205</a>			<span class="string">"output-verbose"</span>,
-<a href=#206 id=206 data-nosnippet>206</a>			<span class="string">"[OutputChannel] flush channel={} bytes={} lines~{}"</span>,
-<a href=#207 id=207 data-nosnippet>207</a>			Channel,
-<a href=#208 id=208 data-nosnippet>208</a>			Payload.len(),
-<a href=#209 id=209 data-nosnippet>209</a>			LineCount
-<a href=#210 id=210 data-nosnippet>210</a>		);
-<a href=#211 id=211 data-nosnippet>211</a>	}
-<a href=#212 id=212 data-nosnippet>212</a>}
-<a href=#213 id=213 data-nosnippet>213</a>
-<a href=#214 id=214 data-nosnippet>214</a><span class="doccomment">/// Submit a pending append for coalescing. Returns `true` when the
-<a href=#215 id=215 data-nosnippet>215</a>/// item was enqueued (the coalescer will flush within `COALESCE_WINDOW`),
-<a href=#216 id=216 data-nosnippet>216</a>/// `false` when coalescing is disabled and the caller must flush
-<a href=#217 id=217 data-nosnippet>217</a>/// inline.
-<a href=#218 id=218 data-nosnippet>218</a></span><span class="kw">pub fn </span><a href="../../../../../Mountain/Vine/Server/Notification/OutputChannelCoalesce/fn.TryEnqueue.html">TryEnqueue</a>(Handle:<span class="kw-2">&amp;</span>AppHandle, Channel:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, Value:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
-<a href=#219 id=219 data-nosnippet>219</a>	<span class="kw">if </span><a href="#75">IsDisabled</a>() {
-<a href=#220 id=220 data-nosnippet>220</a>		<span class="kw">return </span><span class="bool-val">false</span>;
-<a href=#221 id=221 data-nosnippet>221</a>	}
-<a href=#222 id=222 data-nosnippet>222</a>
-<a href=#223 id=223 data-nosnippet>223</a>	<span class="kw">let </span>Ch = <a href="#77-175">GetOrInitChannel</a>();
-<a href=#224 id=224 data-nosnippet>224</a>
-<a href=#225 id=225 data-nosnippet>225</a>	<span class="kw">let _ </span>= <a href="#223">Ch</a>.Sender.send((<a href="#218">Handle</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>(), <a href="#63-67">PendingAppend</a> { <a href="#218">Channel</a>, <a href="#218">Value</a> }));
-<a href=#226 id=226 data-nosnippet>226</a>
-<a href=#227 id=227 data-nosnippet>227</a>	<span class="bool-val">true
-<a href=#228 id=228 data-nosnippet>228</a></span>}
+<a href=#135 id=135 data-nosnippet>135</a>				<span class="kw">let </span><span class="kw-2">mut </span>LateDrain:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;(AppHandle, <a href="#62-66">PendingAppend</a>)&gt; = <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>::<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.new">new</a>();
+<a href=#136 id=136 data-nosnippet>136</a>
+<a href=#137 id=137 data-nosnippet>137</a>				<span class="kw">let _ </span>= Rx.recv_many(<span class="kw-2">&amp;mut </span>LateDrain, <span class="number">4096</span>).<span class="kw">await</span>;
+<a href=#138 id=138 data-nosnippet>138</a>
+<a href=#139 id=139 data-nosnippet>139</a>				<span class="kw">for </span>(<span class="kw">_</span>, Pending) <span class="kw">in </span>LateDrain.drain(..) {
+<a href=#140 id=140 data-nosnippet>140</a>					<span class="kw">if let </span><span class="prelude-val">Ok</span>(<span class="kw-2">mut </span>Guard) = Buffers.lock() {
+<a href=#141 id=141 data-nosnippet>141</a>						<span class="kw">let </span>Slot = Guard.entry(Pending.Channel).or_default();
+<a href=#142 id=142 data-nosnippet>142</a>						Slot.push_str(<span class="kw-2">&amp;</span>Pending.Value);
+<a href=#143 id=143 data-nosnippet>143</a>					}
+<a href=#144 id=144 data-nosnippet>144</a>				}
+<a href=#145 id=145 data-nosnippet>145</a>
+<a href=#146 id=146 data-nosnippet>146</a>				<span class="comment">// Flush every non-empty channel.
+<a href=#147 id=147 data-nosnippet>147</a>				</span><span class="kw">let </span>HandleForFlush = <a href="#89">Handle</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>();
+<a href=#148 id=148 data-nosnippet>148</a>
+<a href=#149 id=149 data-nosnippet>149</a>				<span class="kw">let </span>Snapshots = {
+<a href=#150 id=150 data-nosnippet>150</a>					<span class="kw">match </span><a href="#84">Buffers</a>.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>() {
+<a href=#151 id=151 data-nosnippet>151</a>						<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="kw-2">mut </span>Guard) =&gt; {
+<a href=#152 id=152 data-nosnippet>152</a>							<a href="#151">Guard</a>
+<a href=#153 id=153 data-nosnippet>153</a>								.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.iter_mut">iter_mut</a>()
+<a href=#154 id=154 data-nosnippet>154</a>								.<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.filter">filter</a>(|(<span class="kw">_</span>, V)| !<a href="#154">V</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.is_empty">is_empty</a>())
+<a href=#155 id=155 data-nosnippet>155</a>								.<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.map">map</a>(|(K, V)| (<a href="#155">K</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>(), std::mem::<a href="https://doc.rust-lang.org/nightly/core/mem/fn.take.html">take</a>(<a href="#155">V</a>)))
+<a href=#156 id=156 data-nosnippet>156</a>								.collect::&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<span class="kw">_</span>&gt;&gt;()
+<a href=#157 id=157 data-nosnippet>157</a>						},
+<a href=#158 id=158 data-nosnippet>158</a>						<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<span class="kw">_</span>) =&gt; <span class="kw">continue</span>,
+<a href=#159 id=159 data-nosnippet>159</a>					}
+<a href=#160 id=160 data-nosnippet>160</a>				};
+<a href=#161 id=161 data-nosnippet>161</a>
+<a href=#162 id=162 data-nosnippet>162</a>				<span class="kw">for </span>(Channel, Payload) <span class="kw">in </span>Snapshots {
+<a href=#163 id=163 data-nosnippet>163</a>					FlushOne(<span class="kw-2">&amp;</span>HandleForFlush, <span class="kw-2">&amp;</span>Channel, <span class="kw-2">&amp;</span>Payload);
+<a href=#164 id=164 data-nosnippet>164</a>				}
+<a href=#165 id=165 data-nosnippet>165</a>			}
+<a href=#166 id=166 data-nosnippet>166</a>		});
+<a href=#167 id=167 data-nosnippet>167</a>
+<a href=#168 id=168 data-nosnippet>168</a>		<a href="#68-70">CoalesceChannel</a> { Sender:<a href="#78">Tx</a> }
+<a href=#169 id=169 data-nosnippet>169</a>	})
+<a href=#170 id=170 data-nosnippet>170</a>}
+<a href=#171 id=171 data-nosnippet>171</a>
+<a href=#172 id=172 data-nosnippet>172</a><span class="kw">fn </span><a href="../../../../../Mountain/Vine/Server/Notification/OutputChannelCoalesce/fn.FlushOne.html">FlushOne</a>(Handle:<span class="kw-2">&amp;</span>AppHandle, Channel:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, Payload:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) {
+<a href=#173 id=173 data-nosnippet>173</a>	<span class="kw">let _ </span>= <a href="#172">Handle</a>.emit(
+<a href=#174 id=174 data-nosnippet>174</a>		<span class="string">"sky://output/append"</span>,
+<a href=#175 id=175 data-nosnippet>175</a>		<a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json!</a>({
+<a href=#176 id=176 data-nosnippet>176</a>			<span class="string">"channel"</span>: Channel,
+<a href=#177 id=177 data-nosnippet>177</a>			<span class="string">"value"</span>: Payload,
+<a href=#178 id=178 data-nosnippet>178</a>		}),
+<a href=#179 id=179 data-nosnippet>179</a>	);
+<a href=#180 id=180 data-nosnippet>180</a>
+<a href=#181 id=181 data-nosnippet>181</a>	<span class="comment">// One log line per flush instead of one per append. The git
+<a href=#182 id=182 data-nosnippet>182</a>	// channel keeps its `grpc`-tag visibility for SCM activation
+<a href=#183 id=183 data-nosnippet>183</a>	// diagnosis; other channels stay under `output-verbose`.
+<a href=#184 id=184 data-nosnippet>184</a>	</span><span class="kw">let </span>IsGitFamily = <a href="#172">Channel</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.eq_ignore_ascii_case">eq_ignore_ascii_case</a>(<span class="string">"git"</span>)
+<a href=#185 id=185 data-nosnippet>185</a>		|| <a href="#172">Channel</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.eq_ignore_ascii_case">eq_ignore_ascii_case</a>(<span class="string">"source control"</span>)
+<a href=#186 id=186 data-nosnippet>186</a>		|| <a href="#172">Channel</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.eq_ignore_ascii_case">eq_ignore_ascii_case</a>(<span class="string">"scm"</span>);
+<a href=#187 id=187 data-nosnippet>187</a>
+<a href=#188 id=188 data-nosnippet>188</a>	<span class="kw">let </span>LineCount = <a href="#172">Payload</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.matches">matches</a>(<span class="string">'\n'</span>).<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.count">count</a>();
+<a href=#189 id=189 data-nosnippet>189</a>
+<a href=#190 id=190 data-nosnippet>190</a>	<span class="kw">if </span><a href="#184">IsGitFamily</a> {
+<a href=#191 id=191 data-nosnippet>191</a>		<a href="../../../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(
+<a href=#192 id=192 data-nosnippet>192</a>			<span class="string">"grpc"</span>,
+<a href=#193 id=193 data-nosnippet>193</a>			<span class="string">"[OutputChannel:{}] flush bytes={} lines~{}"</span>,
+<a href=#194 id=194 data-nosnippet>194</a>			Channel,
+<a href=#195 id=195 data-nosnippet>195</a>			Payload.len(),
+<a href=#196 id=196 data-nosnippet>196</a>			LineCount
+<a href=#197 id=197 data-nosnippet>197</a>		);
+<a href=#198 id=198 data-nosnippet>198</a>	} <span class="kw">else </span>{
+<a href=#199 id=199 data-nosnippet>199</a>		<a href="../../../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(
+<a href=#200 id=200 data-nosnippet>200</a>			<span class="string">"output-verbose"</span>,
+<a href=#201 id=201 data-nosnippet>201</a>			<span class="string">"[OutputChannel] flush channel={} bytes={} lines~{}"</span>,
+<a href=#202 id=202 data-nosnippet>202</a>			Channel,
+<a href=#203 id=203 data-nosnippet>203</a>			Payload.len(),
+<a href=#204 id=204 data-nosnippet>204</a>			LineCount
+<a href=#205 id=205 data-nosnippet>205</a>		);
+<a href=#206 id=206 data-nosnippet>206</a>	}
+<a href=#207 id=207 data-nosnippet>207</a>}
+<a href=#208 id=208 data-nosnippet>208</a>
+<a href=#209 id=209 data-nosnippet>209</a><span class="doccomment">/// Submit a pending append for coalescing. Returns `true` when the
+<a href=#210 id=210 data-nosnippet>210</a>/// item was enqueued (the coalescer will flush within `COALESCE_WINDOW`),
+<a href=#211 id=211 data-nosnippet>211</a>/// `false` when coalescing is disabled and the caller must flush
+<a href=#212 id=212 data-nosnippet>212</a>/// inline.
+<a href=#213 id=213 data-nosnippet>213</a></span><span class="kw">pub fn </span><a href="../../../../../Mountain/Vine/Server/Notification/OutputChannelCoalesce/fn.TryEnqueue.html">TryEnqueue</a>(Handle:<span class="kw-2">&amp;</span>AppHandle, Channel:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, Value:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
+<a href=#214 id=214 data-nosnippet>214</a>	<span class="kw">if </span><a href="#74">IsDisabled</a>() {
+<a href=#215 id=215 data-nosnippet>215</a>		<span class="kw">return </span><span class="bool-val">false</span>;
+<a href=#216 id=216 data-nosnippet>216</a>	}
+<a href=#217 id=217 data-nosnippet>217</a>
+<a href=#218 id=218 data-nosnippet>218</a>	<span class="kw">let </span>Ch = <a href="#76-170">GetOrInitChannel</a>();
+<a href=#219 id=219 data-nosnippet>219</a>
+<a href=#220 id=220 data-nosnippet>220</a>	<span class="kw">let _ </span>= <a href="#218">Ch</a>.Sender.send((<a href="#213">Handle</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>(), <a href="#62-66">PendingAppend</a> { <a href="#213">Channel</a>, <a href="#213">Value</a> }));
+<a href=#221 id=221 data-nosnippet>221</a>
+<a href=#222 id=222 data-nosnippet>222</a>	<span class="bool-val">true
+<a href=#223 id=223 data-nosnippet>223</a></span>}
 </code></pre></div></section></main></body></html>

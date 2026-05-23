@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["FileDelete"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

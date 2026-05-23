@@ -57,7 +57,7 @@
 <a href=#57 id=57 data-nosnippet>57</a>	<a href="UIState/UIState.rs.html#46-52">UIState::UIState::State</a> <span class="kw">as </span>UIState,
 <a href=#58 id=58 data-nosnippet>58</a>	<a href="WorkspaceState/WorkspaceState.rs.html#54-69">WorkspaceState::WorkspaceState::State</a> <span class="kw">as </span>WorkspaceState,
 <a href=#59 id=59 data-nosnippet>59</a>};
-<a href=#60 id=60 data-nosnippet>60</a><span class="kw">use </span>crate::{<a href="../../Environment/TestProvider/TestProviderState.rs.html#12-16">Environment::TestProvider::TestProviderState::Struct</a> <span class="kw">as </span>TestProviderState, <a href="../../IPC/DevLog/mod.rs.html#52-122">dev_log</a>};
+<a href=#60 id=60 data-nosnippet>60</a><span class="kw">use </span>crate::{<a href="../../Environment/TestProvider/TestProviderState.rs.html#11-15">Environment::TestProvider::TestProviderState::Struct</a> <span class="kw">as </span>TestProviderState, <a href="../../IPC/DevLog/mod.rs.html#51-121">dev_log</a>};
 <a href=#61 id=61 data-nosnippet>61</a>
 <a href=#62 id=62 data-nosnippet>62</a><span class="doccomment">/// The central, shared, thread-safe state for the entire Mountain application.
 <a href=#63 id=63 data-nosnippet>63</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>)]
@@ -79,7 +79,7 @@
 <a href=#79 id=79 data-nosnippet>79</a>	</span><span class="kw">pub </span>UI:<a href="UIState/UIState.rs.html#46-52">UIState</a>,
 <a href=#80 id=80 data-nosnippet>80</a>
 <a href=#81 id=81 data-nosnippet>81</a>	<span class="doccomment">/// Test provider state.
-<a href=#82 id=82 data-nosnippet>82</a>	</span><span class="kw">pub </span>TestProviderState:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;tokio::sync::RwLock&lt;<a href="../../Environment/TestProvider/TestProviderState.rs.html#12-16">TestProviderState</a>&gt;&gt;,
+<a href=#82 id=82 data-nosnippet>82</a>	</span><span class="kw">pub </span>TestProviderState:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;tokio::sync::RwLock&lt;<a href="../../Environment/TestProvider/TestProviderState.rs.html#11-15">TestProviderState</a>&gt;&gt;,
 <a href=#83 id=83 data-nosnippet>83</a>
 <a href=#84 id=84 data-nosnippet>84</a>	<span class="doccomment">/// Memento storage paths.
 <a href=#85 id=85 data-nosnippet>85</a>	</span><span class="kw">pub </span>GlobalMementoPath:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">StandardMutex</a>&lt;std::path::<a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>&gt;&gt;,
@@ -89,7 +89,7 @@
 <a href=#89 id=89 data-nosnippet>89</a>
 <a href=#90 id=90 data-nosnippet>90</a><span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a> <span class="kw">for </span><a href="#64-88">ApplicationState</a> {
 <a href=#91 id=91 data-nosnippet>91</a>	<span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{
-<a href=#92 id=92 data-nosnippet>92</a>		<a href="../../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[ApplicationState] Initializing default application state..."</span>);
+<a href=#92 id=92 data-nosnippet>92</a>		<a href="../../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"lifecycle"</span>, <span class="string">"[ApplicationState] Initializing default application state..."</span>);
 <a href=#93 id=93 data-nosnippet>93</a>
 <a href=#94 id=94 data-nosnippet>94</a>		<span class="self">Self </span>{
 <a href=#95 id=95 data-nosnippet>95</a>			Workspace:Default::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>(),
@@ -102,7 +102,7 @@
 <a href=#102 id=102 data-nosnippet>102</a>
 <a href=#103 id=103 data-nosnippet>103</a>			UI:Default::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>(),
 <a href=#104 id=104 data-nosnippet>104</a>
-<a href=#105 id=105 data-nosnippet>105</a>			TestProviderState:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(tokio::sync::RwLock::new(<a href="../../Environment/TestProvider/TestProviderState.rs.html#12-16">TestProviderState</a>::<a href="../../Environment/TestProvider/TestProviderState.rs.html#19">new</a>())),
+<a href=#105 id=105 data-nosnippet>105</a>			TestProviderState:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(tokio::sync::RwLock::new(<a href="../../Environment/TestProvider/TestProviderState.rs.html#11-15">TestProviderState</a>::<a href="../../Environment/TestProvider/TestProviderState.rs.html#18">new</a>())),
 <a href=#106 id=106 data-nosnippet>106</a>
 <a href=#107 id=107 data-nosnippet>107</a>			GlobalMementoPath:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">StandardMutex</a>::<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.new">new</a>(Default::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>())),
 <a href=#108 id=108 data-nosnippet>108</a>
@@ -146,7 +146,7 @@
 <a href=#146 id=146 data-nosnippet>146</a>
 <a href=#147 id=147 data-nosnippet>147</a><span class="doccomment">/// A helper to map a mutex poison error with recovery attempt.
 <a href=#148 id=148 data-nosnippet>148</a></span><span class="kw">pub fn </span><a href="../../../../Mountain/ApplicationState/State/ApplicationState/fn.MapLockErrorWithRecovery.html">MapLockErrorWithRecovery</a>&lt;T&gt;(Error:<a href="https://doc.rust-lang.org/nightly/std/sync/poison/struct.PoisonError.html">PoisonError</a>&lt;T&gt;, RecoveryContext:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; CommonError {
-<a href=#149 id=149 data-nosnippet>149</a>	<a href="../../IPC/DevLog/mod.rs.html#52-122">dev_log!</a>(
+<a href=#149 id=149 data-nosnippet>149</a>	<a href="../../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(
 <a href=#150 id=150 data-nosnippet>150</a>		<span class="string">"lifecycle"</span>,
 <a href=#151 id=151 data-nosnippet>151</a>		<span class="string">"warn: [ApplicationState] Attempting recovery from poisoned lock in context: {}"</span>,
 <a href=#152 id=152 data-nosnippet>152</a>		RecoveryContext

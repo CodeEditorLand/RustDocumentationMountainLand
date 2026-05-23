@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["DetectLanguageIdentifierFromFilePath"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

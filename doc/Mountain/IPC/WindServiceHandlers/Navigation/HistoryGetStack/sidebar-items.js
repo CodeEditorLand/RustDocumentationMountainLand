@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["HistoryGetStack"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

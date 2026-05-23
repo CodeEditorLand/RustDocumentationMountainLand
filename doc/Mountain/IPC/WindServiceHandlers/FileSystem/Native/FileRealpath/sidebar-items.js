@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["FileRealpath"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

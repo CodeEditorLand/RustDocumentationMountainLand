@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["LabelGetWorkspace"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

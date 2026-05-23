@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["HistoryGoForward"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

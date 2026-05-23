@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["KillProcess"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["StorageKeys"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

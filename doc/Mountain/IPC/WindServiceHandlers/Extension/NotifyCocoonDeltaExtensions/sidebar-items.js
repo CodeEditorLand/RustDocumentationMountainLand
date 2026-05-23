@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"constant":["COCOON_DELTA_TIMEOUT_MS","COCOON_SIDE_CAR_IDENTIFIER"],"fn":["NotifyCocoonDeltaExtensions"]};
+window.SIDEBAR_ITEMS = {"constant":["COCOON_DELTA_TIMEOUT_MS","COCOON_SIDE_CAR_IDENTIFIER"],"fn":["Fn"]};

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["CocoonExtensionHostMessage"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

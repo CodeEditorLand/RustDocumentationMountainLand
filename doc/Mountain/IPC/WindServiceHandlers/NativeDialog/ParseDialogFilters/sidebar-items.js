@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["ParseDialogFilters"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

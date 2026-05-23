@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["HandleCancel"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

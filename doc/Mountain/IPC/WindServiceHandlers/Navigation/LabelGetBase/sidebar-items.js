@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["LabelGetBase"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["FileMkdir"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

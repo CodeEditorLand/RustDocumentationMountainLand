@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["CocoonRequest"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

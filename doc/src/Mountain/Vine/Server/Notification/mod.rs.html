@@ -39,148 +39,148 @@
 <a href=#39 id=39 data-nosnippet>39</a>//!   `notif-drop` / `grpc` tag; the caller always returns `Empty` to Cocoon
 <a href=#40 id=40 data-nosnippet>40</a>//!   because notifications are fire-and-forget.
 <a href=#41 id=41 data-nosnippet>41</a>
-<a href=#42 id=42 data-nosnippet>42</a></span><span class="attr">#![allow(non_snake_case)]
-<a href=#43 id=43 data-nosnippet>43</a>
-<a href=#44 id=44 data-nosnippet>44</a></span><span class="comment">// --- Shared support utilities ---
-<a href=#45 id=45 data-nosnippet>45</a></span><span class="kw">pub mod </span><a href="Support/mod.rs.html#1-9">Support</a>;
-<a href=#46 id=46 data-nosnippet>46</a>
-<a href=#47 id=47 data-nosnippet>47</a><span class="comment">// --- Batch 8: provider-unregister cleanup ---
-<a href=#48 id=48 data-nosnippet>48</a></span><span class="kw">pub mod </span><a href="UnregisterAuthenticationProvider.rs.html#1-11">UnregisterAuthenticationProvider</a>;
-<a href=#49 id=49 data-nosnippet>49</a>
-<a href=#50 id=50 data-nosnippet>50</a><span class="kw">pub mod </span><a href="UnregisterDebugAdapter.rs.html#1-11">UnregisterDebugAdapter</a>;
-<a href=#51 id=51 data-nosnippet>51</a>
-<a href=#52 id=52 data-nosnippet>52</a><span class="kw">pub mod </span><a href="UnregisterDebugConfigurationProvider.rs.html#1-11">UnregisterDebugConfigurationProvider</a>;
-<a href=#53 id=53 data-nosnippet>53</a>
-<a href=#54 id=54 data-nosnippet>54</a><span class="kw">pub mod </span><a href="UnregisterFileSystemProvider.rs.html#1-14">UnregisterFileSystemProvider</a>;
-<a href=#55 id=55 data-nosnippet>55</a>
-<a href=#56 id=56 data-nosnippet>56</a><span class="kw">pub mod </span><a href="UnregisterScmProvider.rs.html#1-59">UnregisterScmProvider</a>;
-<a href=#57 id=57 data-nosnippet>57</a>
-<a href=#58 id=58 data-nosnippet>58</a><span class="kw">pub mod </span><a href="UnregisterTaskProvider.rs.html#1-11">UnregisterTaskProvider</a>;
-<a href=#59 id=59 data-nosnippet>59</a>
-<a href=#60 id=60 data-nosnippet>60</a><span class="kw">pub mod </span><a href="UnregisterUriHandler.rs.html#1-14">UnregisterUriHandler</a>;
-<a href=#61 id=61 data-nosnippet>61</a>
-<a href=#62 id=62 data-nosnippet>62</a><span class="kw">pub mod </span><a href="UpdateScmGroup.rs.html#1-129">UpdateScmGroup</a>;
-<a href=#63 id=63 data-nosnippet>63</a>
-<a href=#64 id=64 data-nosnippet>64</a><span class="comment">// --- Batch 11: progress lifecycle name alignment ---
-<a href=#65 id=65 data-nosnippet>65</a></span><span class="kw">pub mod </span><a href="ProgressComplete.rs.html#1-8">ProgressComplete</a>;
-<a href=#66 id=66 data-nosnippet>66</a>
-<a href=#67 id=67 data-nosnippet>67</a><span class="kw">pub mod </span><a href="ProgressUpdate.rs.html#1-14">ProgressUpdate</a>;
-<a href=#68 id=68 data-nosnippet>68</a>
-<a href=#69 id=69 data-nosnippet>69</a><span class="comment">// --- Batch 10: status-bar text + disposal ---
-<a href=#70 id=70 data-nosnippet>70</a></span><span class="kw">pub mod </span><a href="DisposeStatusBarItem.rs.html#1-28">DisposeStatusBarItem</a>;
-<a href=#71 id=71 data-nosnippet>71</a>
-<a href=#72 id=72 data-nosnippet>72</a><span class="kw">pub mod </span><a href="SetStatusBarText.rs.html#1-35">SetStatusBarText</a>;
-<a href=#73 id=73 data-nosnippet>73</a>
-<a href=#74 id=74 data-nosnippet>74</a><span class="comment">// --- Batch 9: output channel lifecycle (`output.*` + `outputChannel.*`) ---
-<a href=#75 id=75 data-nosnippet>75</a></span><span class="kw">pub mod </span><a href="OutputAppend.rs.html#1-8">OutputAppend</a>;
-<a href=#76 id=76 data-nosnippet>76</a>
-<a href=#77 id=77 data-nosnippet>77</a><span class="kw">pub mod </span><a href="OutputAppendLine.rs.html#1-28">OutputAppendLine</a>;
-<a href=#78 id=78 data-nosnippet>78</a>
-<a href=#79 id=79 data-nosnippet>79</a><span class="kw">pub mod </span><a href="OutputChannelAppend.rs.html#1-89">OutputChannelAppend</a>;
-<a href=#80 id=80 data-nosnippet>80</a>
-<a href=#81 id=81 data-nosnippet>81</a><span class="kw">pub mod </span><a href="OutputChannelCoalesce.rs.html#1-228">OutputChannelCoalesce</a>;
-<a href=#82 id=82 data-nosnippet>82</a>
-<a href=#83 id=83 data-nosnippet>83</a><span class="kw">pub mod </span><a href="OutputChannelClear.rs.html#1-8">OutputChannelClear</a>;
-<a href=#84 id=84 data-nosnippet>84</a>
-<a href=#85 id=85 data-nosnippet>85</a><span class="kw">pub mod </span><a href="OutputChannelCreate.rs.html#1-14">OutputChannelCreate</a>;
-<a href=#86 id=86 data-nosnippet>86</a>
-<a href=#87 id=87 data-nosnippet>87</a><span class="kw">pub mod </span><a href="OutputChannelDispose.rs.html#1-8">OutputChannelDispose</a>;
-<a href=#88 id=88 data-nosnippet>88</a>
-<a href=#89 id=89 data-nosnippet>89</a><span class="kw">pub mod </span><a href="OutputChannelHide.rs.html#1-19">OutputChannelHide</a>;
-<a href=#90 id=90 data-nosnippet>90</a>
-<a href=#91 id=91 data-nosnippet>91</a><span class="kw">pub mod </span><a href="OutputChannelShow.rs.html#1-8">OutputChannelShow</a>;
-<a href=#92 id=92 data-nosnippet>92</a>
-<a href=#93 id=93 data-nosnippet>93</a><span class="kw">pub mod </span><a href="OutputClear.rs.html#1-8">OutputClear</a>;
-<a href=#94 id=94 data-nosnippet>94</a>
-<a href=#95 id=95 data-nosnippet>95</a><span class="kw">pub mod </span><a href="OutputCreate.rs.html#1-8">OutputCreate</a>;
-<a href=#96 id=96 data-nosnippet>96</a>
-<a href=#97 id=97 data-nosnippet>97</a><span class="kw">pub mod </span><a href="OutputDispose.rs.html#1-8">OutputDispose</a>;
-<a href=#98 id=98 data-nosnippet>98</a>
-<a href=#99 id=99 data-nosnippet>99</a><span class="kw">pub mod </span><a href="OutputReplace.rs.html#1-26">OutputReplace</a>;
-<a href=#100 id=100 data-nosnippet>100</a>
-<a href=#101 id=101 data-nosnippet>101</a><span class="kw">pub mod </span><a href="OutputShow.rs.html#1-8">OutputShow</a>;
-<a href=#102 id=102 data-nosnippet>102</a>
-<a href=#103 id=103 data-nosnippet>103</a><span class="comment">// --- Batch 13: webview reverse messaging ---
-<a href=#104 id=104 data-nosnippet>104</a></span><span class="kw">pub mod </span><a href="WebviewDispose.rs.html#1-21">WebviewDispose</a>;
-<a href=#105 id=105 data-nosnippet>105</a>
-<a href=#106 id=106 data-nosnippet>106</a><span class="kw">pub mod </span><a href="WebviewPostMessage.rs.html#1-23">WebviewPostMessage</a>;
-<a href=#107 id=107 data-nosnippet>107</a>
-<a href=#108 id=108 data-nosnippet>108</a><span class="comment">// --- Batch 14: grammar, security, external ---
-<a href=#109 id=109 data-nosnippet>109</a></span><span class="kw">pub mod </span><a href="OpenExternal.rs.html#1-27">OpenExternal</a>;
-<a href=#110 id=110 data-nosnippet>110</a>
-<a href=#111 id=111 data-nosnippet>111</a><span class="kw">pub mod </span><a href="SecurityIncident.rs.html#1-25">SecurityIncident</a>;
-<a href=#112 id=112 data-nosnippet>112</a>
-<a href=#113 id=113 data-nosnippet>113</a><span class="kw">pub mod </span><a href="SetLanguageConfiguration.rs.html#1-22">SetLanguageConfiguration</a>;
-<a href=#114 id=114 data-nosnippet>114</a>
-<a href=#115 id=115 data-nosnippet>115</a><span class="comment">// --- Batch 15: inline arms atomised from `MountainVinegRPCService` dispatcher.
-<a href=#116 id=116 data-nosnippet>116</a>// These were previously ~300 lines of inline match-arm bodies; now each
-<a href=#117 id=117 data-nosnippet>117</a>// wire method is a one-fn file that the dispatcher delegates into.
-<a href=#118 id=118 data-nosnippet>118</a></span><span class="kw">pub mod </span><a href="ExtensionActivated.rs.html#1-21">ExtensionActivated</a>;
-<a href=#119 id=119 data-nosnippet>119</a>
-<a href=#120 id=120 data-nosnippet>120</a><span class="kw">pub mod </span><a href="ExtensionDeactivated.rs.html#1-18">ExtensionDeactivated</a>;
-<a href=#121 id=121 data-nosnippet>121</a>
-<a href=#122 id=122 data-nosnippet>122</a><span class="kw">pub mod </span><a href="ExtensionHostMessage.rs.html#1-20">ExtensionHostMessage</a>;
-<a href=#123 id=123 data-nosnippet>123</a>
-<a href=#124 id=124 data-nosnippet>124</a><span class="kw">pub mod </span><a href="LanguagesSetDocumentLanguage.rs.html#1-24">LanguagesSetDocumentLanguage</a>;
-<a href=#125 id=125 data-nosnippet>125</a>
-<a href=#126 id=126 data-nosnippet>126</a><span class="kw">pub mod </span><a href="ProgressEnd.rs.html#1-25">ProgressEnd</a>;
-<a href=#127 id=127 data-nosnippet>127</a>
-<a href=#128 id=128 data-nosnippet>128</a><span class="kw">pub mod </span><a href="ProgressReport.rs.html#1-111">ProgressReport</a>;
-<a href=#129 id=129 data-nosnippet>129</a>
-<a href=#130 id=130 data-nosnippet>130</a><span class="kw">pub mod </span><a href="ProgressStart.rs.html#1-34">ProgressStart</a>;
-<a href=#131 id=131 data-nosnippet>131</a>
-<a href=#132 id=132 data-nosnippet>132</a><span class="kw">pub mod </span><a href="WebviewReady.rs.html#1-18">WebviewReady</a>;
-<a href=#133 id=133 data-nosnippet>133</a>
-<a href=#134 id=134 data-nosnippet>134</a><span class="kw">pub mod </span><a href="WindowShowTextDocument.rs.html#1-21">WindowShowTextDocument</a>;
-<a href=#135 id=135 data-nosnippet>135</a>
-<a href=#136 id=136 data-nosnippet>136</a><span class="kw">pub mod </span><a href="WorkspaceApplyEdit.rs.html#1-21">WorkspaceApplyEdit</a>;
-<a href=#137 id=137 data-nosnippet>137</a>
-<a href=#138 id=138 data-nosnippet>138</a><span class="comment">// --- Batch 16: the remaining inline arms - command register/unregister,
-<a href=#139 id=139 data-nosnippet>139</a>// status-bar lifecycle / message, window show-message / create-terminal,
-<a href=#140 id=140 data-nosnippet>140</a>// decoration / debug / webview / terminal fan-outs. A handful are
-<a href=#141 id=141 data-nosnippet>141</a>// "group" atoms (`TerminalLifecycle` covers 4 wire methods that share a
-<a href=#142 id=142 data-nosnippet>142</a>// relay + provider-drive pattern) - kept together where the handling
-<a href=#143 id=143 data-nosnippet>143</a>// is truly identical and splitting would duplicate 5-line files.
-<a href=#144 id=144 data-nosnippet>144</a></span><span class="kw">pub mod </span><a href="DebugLifecycle.rs.html#1-18">DebugLifecycle</a>;
-<a href=#145 id=145 data-nosnippet>145</a>
-<a href=#146 id=146 data-nosnippet>146</a><span class="kw">pub mod </span><a href="DecorationTypeLifecycle.rs.html#1-94">DecorationTypeLifecycle</a>;
-<a href=#147 id=147 data-nosnippet>147</a>
-<a href=#148 id=148 data-nosnippet>148</a><span class="kw">pub mod </span><a href="RegisterCommand.rs.html#1-141">RegisterCommand</a>;
-<a href=#149 id=149 data-nosnippet>149</a>
-<a href=#150 id=150 data-nosnippet>150</a><span class="kw">pub mod </span><a href="StatusBarLifecycle.rs.html#1-22">StatusBarLifecycle</a>;
-<a href=#151 id=151 data-nosnippet>151</a>
-<a href=#152 id=152 data-nosnippet>152</a><span class="kw">pub mod </span><a href="StatusBarMessage.rs.html#1-30">StatusBarMessage</a>;
-<a href=#153 id=153 data-nosnippet>153</a>
-<a href=#154 id=154 data-nosnippet>154</a><span class="kw">pub mod </span><a href="TerminalLifecycle.rs.html#1-53">TerminalLifecycle</a>;
-<a href=#155 id=155 data-nosnippet>155</a>
-<a href=#156 id=156 data-nosnippet>156</a><span class="kw">pub mod </span><a href="UnregisterCommand.rs.html#1-44">UnregisterCommand</a>;
-<a href=#157 id=157 data-nosnippet>157</a>
-<a href=#158 id=158 data-nosnippet>158</a><span class="kw">pub mod </span><a href="WebviewLifecycle.rs.html#1-106">WebviewLifecycle</a>;
-<a href=#159 id=159 data-nosnippet>159</a>
-<a href=#160 id=160 data-nosnippet>160</a><span class="kw">pub mod </span><a href="WindowCreateTerminal.rs.html#1-60">WindowCreateTerminal</a>;
-<a href=#161 id=161 data-nosnippet>161</a>
-<a href=#162 id=162 data-nosnippet>162</a><span class="kw">pub mod </span><a href="WindowShowMessage.rs.html#1-31">WindowShowMessage</a>;
-<a href=#163 id=163 data-nosnippet>163</a>
-<a href=#164 id=164 data-nosnippet>164</a><span class="comment">// --- Batch 17 (post-§14): SCM register pair pulled out of the
-<a href=#165 id=165 data-nosnippet>165</a>// language-providers OR-block in `MountainVinegRPCService.rs`. The
-<a href=#166 id=166 data-nosnippet>166</a>// catch-all fallthrough was registering SCM providers in the
-<a href=#167 id=167 data-nosnippet>167</a>// language-feature provider registry, which the SCM viewlet never
-<a href=#168 id=168 data-nosnippet>168</a>// reads. These atoms route through `SourceControlManagementProvider`
-<a href=#169 id=169 data-nosnippet>169</a>// + emit the `sky://scm/*` events the renderer actually subscribes to.
-<a href=#170 id=170 data-nosnippet>170</a></span><span class="kw">pub mod </span><a href="RegisterScmProvider.rs.html#1-254">RegisterScmProvider</a>;
-<a href=#171 id=171 data-nosnippet>171</a><span class="kw">pub mod </span><a href="RegisterScmResourceGroup.rs.html#1-102">RegisterScmResourceGroup</a>;
+<a href=#42 id=42 data-nosnippet>42</a>
+<a href=#43 id=43 data-nosnippet>43</a></span><span class="comment">// --- Shared support utilities ---
+<a href=#44 id=44 data-nosnippet>44</a></span><span class="kw">pub mod </span><a href="Support/mod.rs.html#1-9">Support</a>;
+<a href=#45 id=45 data-nosnippet>45</a>
+<a href=#46 id=46 data-nosnippet>46</a><span class="comment">// --- Batch 8: provider-unregister cleanup ---
+<a href=#47 id=47 data-nosnippet>47</a></span><span class="kw">pub mod </span><a href="UnregisterAuthenticationProvider.rs.html#1-10">UnregisterAuthenticationProvider</a>;
+<a href=#48 id=48 data-nosnippet>48</a>
+<a href=#49 id=49 data-nosnippet>49</a><span class="kw">pub mod </span><a href="UnregisterDebugAdapter.rs.html#1-10">UnregisterDebugAdapter</a>;
+<a href=#50 id=50 data-nosnippet>50</a>
+<a href=#51 id=51 data-nosnippet>51</a><span class="kw">pub mod </span><a href="UnregisterDebugConfigurationProvider.rs.html#1-10">UnregisterDebugConfigurationProvider</a>;
+<a href=#52 id=52 data-nosnippet>52</a>
+<a href=#53 id=53 data-nosnippet>53</a><span class="kw">pub mod </span><a href="UnregisterFileSystemProvider.rs.html#1-15">UnregisterFileSystemProvider</a>;
+<a href=#54 id=54 data-nosnippet>54</a>
+<a href=#55 id=55 data-nosnippet>55</a><span class="kw">pub mod </span><a href="UnregisterScmProvider.rs.html#1-58">UnregisterScmProvider</a>;
+<a href=#56 id=56 data-nosnippet>56</a>
+<a href=#57 id=57 data-nosnippet>57</a><span class="kw">pub mod </span><a href="UnregisterTaskProvider.rs.html#1-10">UnregisterTaskProvider</a>;
+<a href=#58 id=58 data-nosnippet>58</a>
+<a href=#59 id=59 data-nosnippet>59</a><span class="kw">pub mod </span><a href="UnregisterUriHandler.rs.html#1-15">UnregisterUriHandler</a>;
+<a href=#60 id=60 data-nosnippet>60</a>
+<a href=#61 id=61 data-nosnippet>61</a><span class="kw">pub mod </span><a href="UpdateScmGroup.rs.html#1-128">UpdateScmGroup</a>;
+<a href=#62 id=62 data-nosnippet>62</a>
+<a href=#63 id=63 data-nosnippet>63</a><span class="comment">// --- Batch 11: progress lifecycle name alignment ---
+<a href=#64 id=64 data-nosnippet>64</a></span><span class="kw">pub mod </span><a href="ProgressComplete.rs.html#1-8">ProgressComplete</a>;
+<a href=#65 id=65 data-nosnippet>65</a>
+<a href=#66 id=66 data-nosnippet>66</a><span class="kw">pub mod </span><a href="ProgressUpdate.rs.html#1-14">ProgressUpdate</a>;
+<a href=#67 id=67 data-nosnippet>67</a>
+<a href=#68 id=68 data-nosnippet>68</a><span class="comment">// --- Batch 10: status-bar text + disposal ---
+<a href=#69 id=69 data-nosnippet>69</a></span><span class="kw">pub mod </span><a href="DisposeStatusBarItem.rs.html#1-27">DisposeStatusBarItem</a>;
+<a href=#70 id=70 data-nosnippet>70</a>
+<a href=#71 id=71 data-nosnippet>71</a><span class="kw">pub mod </span><a href="SetStatusBarText.rs.html#1-34">SetStatusBarText</a>;
+<a href=#72 id=72 data-nosnippet>72</a>
+<a href=#73 id=73 data-nosnippet>73</a><span class="comment">// --- Batch 9: output channel lifecycle (`output.*` + `outputChannel.*`) ---
+<a href=#74 id=74 data-nosnippet>74</a></span><span class="kw">pub mod </span><a href="OutputAppend.rs.html#1-8">OutputAppend</a>;
+<a href=#75 id=75 data-nosnippet>75</a>
+<a href=#76 id=76 data-nosnippet>76</a><span class="kw">pub mod </span><a href="OutputAppendLine.rs.html#1-27">OutputAppendLine</a>;
+<a href=#77 id=77 data-nosnippet>77</a>
+<a href=#78 id=78 data-nosnippet>78</a><span class="kw">pub mod </span><a href="OutputChannelAppend.rs.html#1-89">OutputChannelAppend</a>;
+<a href=#79 id=79 data-nosnippet>79</a>
+<a href=#80 id=80 data-nosnippet>80</a><span class="kw">pub mod </span><a href="OutputChannelCoalesce.rs.html#2-223">OutputChannelCoalesce</a>;
+<a href=#81 id=81 data-nosnippet>81</a>
+<a href=#82 id=82 data-nosnippet>82</a><span class="kw">pub mod </span><a href="OutputChannelClear.rs.html#1-8">OutputChannelClear</a>;
+<a href=#83 id=83 data-nosnippet>83</a>
+<a href=#84 id=84 data-nosnippet>84</a><span class="kw">pub mod </span><a href="OutputChannelCreate.rs.html#1-14">OutputChannelCreate</a>;
+<a href=#85 id=85 data-nosnippet>85</a>
+<a href=#86 id=86 data-nosnippet>86</a><span class="kw">pub mod </span><a href="OutputChannelDispose.rs.html#1-8">OutputChannelDispose</a>;
+<a href=#87 id=87 data-nosnippet>87</a>
+<a href=#88 id=88 data-nosnippet>88</a><span class="kw">pub mod </span><a href="OutputChannelHide.rs.html#1-18">OutputChannelHide</a>;
+<a href=#89 id=89 data-nosnippet>89</a>
+<a href=#90 id=90 data-nosnippet>90</a><span class="kw">pub mod </span><a href="OutputChannelShow.rs.html#1-8">OutputChannelShow</a>;
+<a href=#91 id=91 data-nosnippet>91</a>
+<a href=#92 id=92 data-nosnippet>92</a><span class="kw">pub mod </span><a href="OutputClear.rs.html#1-8">OutputClear</a>;
+<a href=#93 id=93 data-nosnippet>93</a>
+<a href=#94 id=94 data-nosnippet>94</a><span class="kw">pub mod </span><a href="OutputCreate.rs.html#1-8">OutputCreate</a>;
+<a href=#95 id=95 data-nosnippet>95</a>
+<a href=#96 id=96 data-nosnippet>96</a><span class="kw">pub mod </span><a href="OutputDispose.rs.html#1-8">OutputDispose</a>;
+<a href=#97 id=97 data-nosnippet>97</a>
+<a href=#98 id=98 data-nosnippet>98</a><span class="kw">pub mod </span><a href="OutputReplace.rs.html#1-25">OutputReplace</a>;
+<a href=#99 id=99 data-nosnippet>99</a>
+<a href=#100 id=100 data-nosnippet>100</a><span class="kw">pub mod </span><a href="OutputShow.rs.html#1-8">OutputShow</a>;
+<a href=#101 id=101 data-nosnippet>101</a>
+<a href=#102 id=102 data-nosnippet>102</a><span class="comment">// --- Batch 13: webview reverse messaging ---
+<a href=#103 id=103 data-nosnippet>103</a></span><span class="kw">pub mod </span><a href="WebviewDispose.rs.html#1-20">WebviewDispose</a>;
+<a href=#104 id=104 data-nosnippet>104</a>
+<a href=#105 id=105 data-nosnippet>105</a><span class="kw">pub mod </span><a href="WebviewPostMessage.rs.html#1-22">WebviewPostMessage</a>;
+<a href=#106 id=106 data-nosnippet>106</a>
+<a href=#107 id=107 data-nosnippet>107</a><span class="comment">// --- Batch 14: grammar, security, external ---
+<a href=#108 id=108 data-nosnippet>108</a></span><span class="kw">pub mod </span><a href="OpenExternal.rs.html#1-26">OpenExternal</a>;
+<a href=#109 id=109 data-nosnippet>109</a>
+<a href=#110 id=110 data-nosnippet>110</a><span class="kw">pub mod </span><a href="SecurityIncident.rs.html#1-24">SecurityIncident</a>;
+<a href=#111 id=111 data-nosnippet>111</a>
+<a href=#112 id=112 data-nosnippet>112</a><span class="kw">pub mod </span><a href="SetLanguageConfiguration.rs.html#1-21">SetLanguageConfiguration</a>;
+<a href=#113 id=113 data-nosnippet>113</a>
+<a href=#114 id=114 data-nosnippet>114</a><span class="comment">// --- Batch 15: inline arms atomised from `MountainVinegRPCService` dispatcher.
+<a href=#115 id=115 data-nosnippet>115</a>// These were previously ~300 lines of inline match-arm bodies; now each
+<a href=#116 id=116 data-nosnippet>116</a>// wire method is a one-fn file that the dispatcher delegates into.
+<a href=#117 id=117 data-nosnippet>117</a></span><span class="kw">pub mod </span><a href="ExtensionActivated.rs.html#1-20">ExtensionActivated</a>;
+<a href=#118 id=118 data-nosnippet>118</a>
+<a href=#119 id=119 data-nosnippet>119</a><span class="kw">pub mod </span><a href="ExtensionDeactivated.rs.html#1-17">ExtensionDeactivated</a>;
+<a href=#120 id=120 data-nosnippet>120</a>
+<a href=#121 id=121 data-nosnippet>121</a><span class="kw">pub mod </span><a href="ExtensionHostMessage.rs.html#1-19">ExtensionHostMessage</a>;
+<a href=#122 id=122 data-nosnippet>122</a>
+<a href=#123 id=123 data-nosnippet>123</a><span class="kw">pub mod </span><a href="LanguagesSetDocumentLanguage.rs.html#1-23">LanguagesSetDocumentLanguage</a>;
+<a href=#124 id=124 data-nosnippet>124</a>
+<a href=#125 id=125 data-nosnippet>125</a><span class="kw">pub mod </span><a href="ProgressEnd.rs.html#1-24">ProgressEnd</a>;
+<a href=#126 id=126 data-nosnippet>126</a>
+<a href=#127 id=127 data-nosnippet>127</a><span class="kw">pub mod </span><a href="ProgressReport.rs.html#2-110">ProgressReport</a>;
+<a href=#128 id=128 data-nosnippet>128</a>
+<a href=#129 id=129 data-nosnippet>129</a><span class="kw">pub mod </span><a href="ProgressStart.rs.html#1-33">ProgressStart</a>;
+<a href=#130 id=130 data-nosnippet>130</a>
+<a href=#131 id=131 data-nosnippet>131</a><span class="kw">pub mod </span><a href="WebviewReady.rs.html#1-17">WebviewReady</a>;
+<a href=#132 id=132 data-nosnippet>132</a>
+<a href=#133 id=133 data-nosnippet>133</a><span class="kw">pub mod </span><a href="WindowShowTextDocument.rs.html#1-20">WindowShowTextDocument</a>;
+<a href=#134 id=134 data-nosnippet>134</a>
+<a href=#135 id=135 data-nosnippet>135</a><span class="kw">pub mod </span><a href="WorkspaceApplyEdit.rs.html#1-20">WorkspaceApplyEdit</a>;
+<a href=#136 id=136 data-nosnippet>136</a>
+<a href=#137 id=137 data-nosnippet>137</a><span class="comment">// --- Batch 16: the remaining inline arms - command register/unregister,
+<a href=#138 id=138 data-nosnippet>138</a>// status-bar lifecycle / message, window show-message / create-terminal,
+<a href=#139 id=139 data-nosnippet>139</a>// decoration / debug / webview / terminal fan-outs. A handful are
+<a href=#140 id=140 data-nosnippet>140</a>// "group" atoms (`TerminalLifecycle` covers 4 wire methods that share a
+<a href=#141 id=141 data-nosnippet>141</a>// relay + provider-drive pattern) - kept together where the handling
+<a href=#142 id=142 data-nosnippet>142</a>// is truly identical and splitting would duplicate 5-line files.
+<a href=#143 id=143 data-nosnippet>143</a></span><span class="kw">pub mod </span><a href="DebugLifecycle.rs.html#1-17">DebugLifecycle</a>;
+<a href=#144 id=144 data-nosnippet>144</a>
+<a href=#145 id=145 data-nosnippet>145</a><span class="kw">pub mod </span><a href="DecorationTypeLifecycle.rs.html#2-93">DecorationTypeLifecycle</a>;
+<a href=#146 id=146 data-nosnippet>146</a>
+<a href=#147 id=147 data-nosnippet>147</a><span class="kw">pub mod </span><a href="RegisterCommand.rs.html#2-140">RegisterCommand</a>;
+<a href=#148 id=148 data-nosnippet>148</a>
+<a href=#149 id=149 data-nosnippet>149</a><span class="kw">pub mod </span><a href="StatusBarLifecycle.rs.html#1-22">StatusBarLifecycle</a>;
+<a href=#150 id=150 data-nosnippet>150</a>
+<a href=#151 id=151 data-nosnippet>151</a><span class="kw">pub mod </span><a href="StatusBarMessage.rs.html#1-29">StatusBarMessage</a>;
+<a href=#152 id=152 data-nosnippet>152</a>
+<a href=#153 id=153 data-nosnippet>153</a><span class="kw">pub mod </span><a href="TerminalLifecycle.rs.html#1-60">TerminalLifecycle</a>;
+<a href=#154 id=154 data-nosnippet>154</a>
+<a href=#155 id=155 data-nosnippet>155</a><span class="kw">pub mod </span><a href="UnregisterCommand.rs.html#1-43">UnregisterCommand</a>;
+<a href=#156 id=156 data-nosnippet>156</a>
+<a href=#157 id=157 data-nosnippet>157</a><span class="kw">pub mod </span><a href="WebviewLifecycle.rs.html#1-105">WebviewLifecycle</a>;
+<a href=#158 id=158 data-nosnippet>158</a>
+<a href=#159 id=159 data-nosnippet>159</a><span class="kw">pub mod </span><a href="WindowCreateTerminal.rs.html#1-59">WindowCreateTerminal</a>;
+<a href=#160 id=160 data-nosnippet>160</a>
+<a href=#161 id=161 data-nosnippet>161</a><span class="kw">pub mod </span><a href="WindowShowMessage.rs.html#1-30">WindowShowMessage</a>;
+<a href=#162 id=162 data-nosnippet>162</a>
+<a href=#163 id=163 data-nosnippet>163</a><span class="comment">// --- Batch 17 (post-§14): SCM register pair pulled out of the
+<a href=#164 id=164 data-nosnippet>164</a>// language-providers OR-block in `MountainVinegRPCService.rs`. The
+<a href=#165 id=165 data-nosnippet>165</a>// catch-all fallthrough was registering SCM providers in the
+<a href=#166 id=166 data-nosnippet>166</a>// language-feature provider registry, which the SCM viewlet never
+<a href=#167 id=167 data-nosnippet>167</a>// reads. These atoms route through `SourceControlManagementProvider`
+<a href=#168 id=168 data-nosnippet>168</a>// + emit the `sky://scm/*` events the renderer actually subscribes to.
+<a href=#169 id=169 data-nosnippet>169</a></span><span class="kw">pub mod </span><a href="RegisterScmProvider.rs.html#1-253">RegisterScmProvider</a>;
+<a href=#170 id=170 data-nosnippet>170</a>
+<a href=#171 id=171 data-nosnippet>171</a><span class="kw">pub mod </span><a href="RegisterScmResourceGroup.rs.html#1-101">RegisterScmResourceGroup</a>;
 <a href=#172 id=172 data-nosnippet>172</a>
 <a href=#173 id=173 data-nosnippet>173</a><span class="comment">// --- Batch 18: language-provider OR-block extracted from the inline match
 <a href=#174 id=174 data-nosnippet>174</a>// in `MountainVinegRPCService::send_cocoon_notification`. All 46+
 <a href=#175 id=175 data-nosnippet>175</a>// `register_*` / `register_*_provider` variants now delegate here via a
 <a href=#176 id=176 data-nosnippet>176</a>// single `RegisterLanguageProvider(service, method, params).await` call.
-<a href=#177 id=177 data-nosnippet>177</a></span><span class="kw">pub mod </span><a href="RegisterLanguageProvider.rs.html#1-151">RegisterLanguageProvider</a>;
+<a href=#177 id=177 data-nosnippet>177</a></span><span class="kw">pub mod </span><a href="RegisterLanguageProvider.rs.html#1-210">RegisterLanguageProvider</a>;
 <a href=#178 id=178 data-nosnippet>178</a>
 <a href=#179 id=179 data-nosnippet>179</a><span class="comment">// --- Text editor API ---
 <a href=#180 id=180 data-nosnippet>180</a>// Atoms for `editor.setDecorations(type, ranges)` and `editor.edit(cb)`.
 <a href=#181 id=181 data-nosnippet>181</a>// These complete the decoration pipeline and enable in-place text mutations
 <a href=#182 id=182 data-nosnippet>182</a>// from extensions (formatters, code actions, vim-mode, Error Lens, etc.).
-<a href=#183 id=183 data-nosnippet>183</a></span><span class="kw">pub mod </span><a href="SetTextEditorDecorations.rs.html#1-85">SetTextEditorDecorations</a>;
+<a href=#183 id=183 data-nosnippet>183</a></span><span class="kw">pub mod </span><a href="SetTextEditorDecorations.rs.html#2-86">SetTextEditorDecorations</a>;
 <a href=#184 id=184 data-nosnippet>184</a>
-<a href=#185 id=185 data-nosnippet>185</a><span class="kw">pub mod </span><a href="ApplyTextEdits.rs.html#1-40">ApplyTextEdits</a>;
+<a href=#185 id=185 data-nosnippet>185</a><span class="kw">pub mod </span><a href="ApplyTextEdits.rs.html#2-39">ApplyTextEdits</a>;
 </code></pre></div></section></main></body></html>

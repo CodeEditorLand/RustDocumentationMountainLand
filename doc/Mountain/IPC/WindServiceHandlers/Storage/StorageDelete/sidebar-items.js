@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["StorageDelete"]};
+window.SIDEBAR_ITEMS = {"fn":["Fn"]};

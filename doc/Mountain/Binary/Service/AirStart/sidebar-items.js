@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"constant":["AIR_GRPC_ADDRESS"],"fn":["AirStart","LaunchAndConnectAir"]};
+window.SIDEBAR_ITEMS = {"constant":["AIR_GRPC_ADDRESS"],"fn":["Fn","LaunchAndConnectAir"]};
