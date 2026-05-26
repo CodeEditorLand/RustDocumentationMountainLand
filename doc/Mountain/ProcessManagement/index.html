@@ -1,0 +1,62 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Sidecar process lifecycle: launch, monitor, and restart."><title>Mountain::ProcessManagement - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.97.0-nightly (d3cd04068 2026-05-16)" data-channel="nightly" data-search-js="search-fd9372ac.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../static.files/storage-41dd4d93.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../static.files/main-fcd733ba.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module ProcessManagement</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Process<wbr>Management</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#process-management-module" title="Process Management Module">Process Management Module</a><ul><li><a href="#core-responsibilities" title="Core Responsibilities">Core Responsibilities</a></li><li><a href="#architecture" title="Architecture">Architecture</a></li><li><a href="#port-allocation" title="Port Allocation">Port Allocation</a></li><li><a href="#feature-flags" title="Feature Flags">Feature Flags</a></li><li><a href="#error-handling" title="Error Handling">Error Handling</a></li></ul></li><li><a href="#module-contents" title="Module Contents">Module Contents</a></li></ul><h3><a href="#modules">Module Items</a></h3><ul class="block"><li><a href="#modules" title="Modules">Modules</a></li></ul></section><div id="rustdoc-modnav"><h2 class="in-crate"><a href="../index.html">In crate Mountain</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../index.html">Mountain</a></div><h1>Module <span>Process<wbr>Management</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../src/Mountain/ProcessManagement/mod.rs.html#1-61">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Sidecar process lifecycle: launch, monitor, and restart.</p>
+<h2 id="process-management-module"><a class="doc-anchor" href="#process-management-module">§</a>Process Management Module</h2>
+<p>This module provides comprehensive lifecycle management for external sidecar
+processes within the Mountain editor ecosystem. It is responsible for:</p>
+<h3 id="core-responsibilities"><a class="doc-anchor" href="#core-responsibilities">§</a>Core Responsibilities</h3>
+<ol>
+<li>
+<p><strong>Process Spawning</strong>: Launching and configuring sidecar processes with
+proper environment variables, IPC channels, and communication endpoints</p>
+</li>
+<li>
+<p><strong>Lifecycle Management</strong>: Monitoring process health, handling automatic
+restarts on failure, managing graceful shutdowns, and tracking process
+state</p>
+</li>
+<li>
+<p><strong>Communication Setup</strong>: Establishing IPC connections via gRPC/Vine,
+performing initial handshakes, and ensuring bidirectional communication</p>
+</li>
+<li>
+<p><strong>Initialization Data</strong>: Constructing comprehensive initialization
+payloads for both the Sky frontend and Cocoon extension host</p>
+</li>
+</ol>
+<h3 id="architecture"><a class="doc-anchor" href="#architecture">§</a>Architecture</h3>
+<p>The module is divided into two main components:</p>
+<ul>
+<li>
+<p><strong>CocoonManagement</strong>: Handles the VS Code extension host process (Cocoon)
+which provides compatibility with VS Code extensions</p>
+</li>
+<li>
+<p><strong>InitializationData</strong>: Constructs and validates initialization payloads
+containing workspace information, extension manifests, and system
+configuration</p>
+</li>
+</ul>
+<h3 id="port-allocation"><a class="doc-anchor" href="#port-allocation">§</a>Port Allocation</h3>
+<p>The module reserves specific ports for gRPC communication:</p>
+<ul>
+<li>50051: Mountain Vine server (main process)</li>
+<li>50052: Cocoon Vine server (extension host)</li>
+</ul>
+<h3 id="feature-flags"><a class="doc-anchor" href="#feature-flags">§</a>Feature Flags</h3>
+<ul>
+<li><code>ExtensionHostCocoon</code>: Enables Cocoon extension host (required for VS Code
+extension compatibility)</li>
+</ul>
+<h3 id="error-handling"><a class="doc-anchor" href="#error-handling">§</a>Error Handling</h3>
+<p>All operations return <code>Result&lt;(), CommonError&gt;</code> with detailed error context
+for graceful degradation when sidecar processes are unavailable.</p>
+<h2 id="module-contents"><a class="doc-anchor" href="#module-contents">§</a>Module Contents</h2>
+<ul>
+<li>[<code>self::CocoonManagement</code>]: Cocoon sidecar process lifecycle management</li>
+<li>[<code>self::InitializationData</code>]: Initialization data construction</li>
+</ul>
+</div></details><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="CocoonManagement/index.html" title="mod Mountain::ProcessManagement::CocoonManagement">Cocoon<wbr>Management</a></dt><dd>Cocoon Management</dd><dt><a class="mod" href="ExtractDevTag/index.html" title="mod Mountain::ProcessManagement::ExtractDevTag">Extract<wbr>DevTag</a></dt><dd>Cocoon stdout-line inspector. Detects the <code>[DEV:&lt;TAG&gt;]</code> prefix written by
+<code>Cocoon/Source/Services/DevLog.ts::CocoonDevLog</code> and returns the lower-
+cased tag for dispatch into Mountain’s per-tag <code>dev_log!</code> sinks. Returns
+<code>None</code> for bare stdout so the caller falls back to the catch-all <code>cocoon</code>
+tag.</dd><dt><a class="mod" href="InitializationData/index.html" title="mod Mountain::ProcessManagement::InitializationData">Initialization<wbr>Data</a></dt><dd>InitializationData (ProcessManagement)</dd><dt><a class="mod" href="NodeResolver/index.html" title="mod Mountain::ProcessManagement::NodeResolver">Node<wbr>Resolver</a></dt><dd>Resolve the Node.js binary used to spawn Cocoon.</dd><dt><a class="mod" href="WorkspaceContainsGlob/index.html" title="mod Mountain::ProcessManagement::WorkspaceContainsGlob">Workspace<wbr>Contains<wbr>Glob</a></dt><dd>Workspace-contains glob matcher for VS Code <code>workspaceContains:&lt;pattern&gt;</code>
+activation events.</dd></dl></section></div></main></body></html>

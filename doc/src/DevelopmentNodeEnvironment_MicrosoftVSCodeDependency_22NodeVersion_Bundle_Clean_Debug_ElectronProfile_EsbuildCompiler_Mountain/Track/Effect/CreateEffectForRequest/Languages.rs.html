@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `Element/Mountain/Source/Track/Effect/CreateEffectForRequest/Languages.rs`."><title>Languages.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../../../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../../../../../" data-static-root-path="../../../../../static.files/" data-current-crate="DevelopmentNodeEnvironment_MicrosoftVSCodeDependency_22NodeVersion_Bundle_Clean_Debug_ElectronProfile_EsbuildCompiler_Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.97.0-nightly (d3cd04068 2026-05-16)" data-channel="nightly" data-search-js="search-fd9372ac.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../../../static.files/storage-41dd4d93.js"></script><script defer src="../../../../../static.files/src-script-813739b1.js"></script><script defer src="../../../../../src-files.js"></script><script defer src="../../../../../static.files/main-fcd733ba.js"></script><noscript><link rel="stylesheet" href="../../../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><h1><div class="sub-heading">DevelopmentNodeEnvironment_MicrosoftVSCodeDependency_22NodeVersion_Bundle_Clean_Debug_ElectronProfile_EsbuildCompiler_Mountain/Track/Effect/CreateEffectForRequest/</div>Languages.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="doccomment">//! # Languages Effect (CreateEffectForRequest)
+<a href=#2 id=2 data-nosnippet>2</a>//!
+<a href=#3 id=3 data-nosnippet>3</a>//! Effect constructor for the `Languages.GetAll` RPC method. Aggregates
+<a href=#4 id=4 data-nosnippet>4</a>//! language contribution metadata from all scanned extensions (from
+<a href=#5 id=5 data-nosnippet>5</a>//! `ApplicationState.Extension.ScannedExtensions`) and merges duplicate
+<a href=#6 id=6 data-nosnippet>6</a>//! language IDs by unioning their aliases, extensions, filenames, filename
+<a href=#7 id=7 data-nosnippet>7</a>//! patterns, and mimetypes. The result is returned as a flat JSON array
+<a href=#8 id=8 data-nosnippet>8</a>//! matching the shape expected by Cocoon's `languages.getAll` API.
+<a href=#9 id=9 data-nosnippet>9</a>//!
+<a href=#10 id=10 data-nosnippet>10</a>//! ## Aggregation behavior
+<a href=#11 id=11 data-nosnippet>11</a>//!
+<a href=#12 id=12 data-nosnippet>12</a>//! - Each extension's `contributes.languages` array is scanned.
+<a href=#13 id=13 data-nosnippet>13</a>//! - Languages with the same `id` are merged (first-wins for `configuration`).
+<a href=#14 id=14 data-nosnippet>14</a>//! - Array fields (aliases, extensions, filenames, filenamePatterns, mimetypes)
+<a href=#15 id=15 data-nosnippet>15</a>//!   are deduplicated across all contributing extensions.
+<a href=#16 id=16 data-nosnippet>16</a>
+<a href=#17 id=17 data-nosnippet>17</a></span><span class="kw">use </span>std::{<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">collections::HashMap</a>, <a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">sync::Arc</a>};
+<a href=#18 id=18 data-nosnippet>18</a>
+<a href=#19 id=19 data-nosnippet>19</a><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>, <a href="https://docs.rs/serde_json/1.0.150/serde_json/macro.json.html">json</a>};
+<a href=#20 id=20 data-nosnippet>20</a><span class="kw">use </span>tauri::Runtime;
+<a href=#21 id=21 data-nosnippet>21</a>
+<a href=#22 id=22 data-nosnippet>22</a><span class="kw">use </span>crate::{<a href="../MappedEffectType.rs.html#47-48">Track::Effect::MappedEffectType::MappedEffect</a>, <a href="../../../IPC/DevLog/mod.rs.html#50-120">dev_log</a>};
+<a href=#23 id=23 data-nosnippet>23</a>
+<a href=#24 id=24 data-nosnippet>24</a><span class="kw">pub fn </span><a href="../../../../../DevelopmentNodeEnvironment_MicrosoftVSCodeDependency_22NodeVersion_Bundle_Clean_Debug_ElectronProfile_EsbuildCompiler_Mountain/Track/Effect/CreateEffectForRequest/Languages/fn.CreateEffect.html">CreateEffect</a>&lt;R:Runtime&gt;(MethodName:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, Parameters:<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="../MappedEffectType.rs.html#47-48">MappedEffect</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;&gt; {
+<a href=#25 id=25 data-nosnippet>25</a>	<span class="kw">match </span><a href="#24">MethodName</a> {
+<a href=#26 id=26 data-nosnippet>26</a>		<span class="string">"Languages.GetAll" </span>=&gt; {
+<a href=#27 id=27 data-nosnippet>27</a>			<a href="../MappedEffectType.rs.html#63-78">crate::effect!</a>(run_time, {
+<a href=#28 id=28 data-nosnippet>28</a>				<span class="kw">let </span>scanned = run_time
+<a href=#29 id=29 data-nosnippet>29</a>					.Environment
+<a href=#30 id=30 data-nosnippet>30</a>					.ApplicationState
+<a href=#31 id=31 data-nosnippet>31</a>					.Extension
+<a href=#32 id=32 data-nosnippet>32</a>					.ScannedExtensions
+<a href=#33 id=33 data-nosnippet>33</a>					.ScannedExtensions
+<a href=#34 id=34 data-nosnippet>34</a>					.clone();
+<a href=#35 id=35 data-nosnippet>35</a>
+<a href=#36 id=36 data-nosnippet>36</a>				<span class="kw">let </span>Snapshot = {
+<a href=#37 id=37 data-nosnippet>37</a>					<span class="kw">let </span>Guard = <span class="kw">match </span>scanned.lock() {
+<a href=#38 id=38 data-nosnippet>38</a>						<span class="prelude-val">Ok</span>(g) =&gt; g,
+<a href=#39 id=39 data-nosnippet>39</a>						<span class="prelude-val">Err</span>(error) =&gt; {
+<a href=#40 id=40 data-nosnippet>40</a>							<span class="kw">return </span><span class="prelude-val">Err</span>(<span class="macro">format!</span>(<span class="string">"Languages.GetAll: scanned-extensions lock poisoned: {}"</span>, error));
+<a href=#41 id=41 data-nosnippet>41</a>						},
+<a href=#42 id=42 data-nosnippet>42</a>					};
+<a href=#43 id=43 data-nosnippet>43</a>					Guard.clone()
+<a href=#44 id=44 data-nosnippet>44</a>				};
+<a href=#45 id=45 data-nosnippet>45</a>
+<a href=#46 id=46 data-nosnippet>46</a>				<span class="kw">let </span><span class="kw-2">mut </span>merged:HashMap&lt;String, serde_json::Map&lt;String, Value&gt;&gt; = HashMap::new();
+<a href=#47 id=47 data-nosnippet>47</a>				<span class="kw">for </span>Dto <span class="kw">in </span>Snapshot.values() {
+<a href=#48 id=48 data-nosnippet>48</a>					<span class="kw">let </span>Contributes = <span class="kw">match </span>Dto.Contributes.as_ref() {
+<a href=#49 id=49 data-nosnippet>49</a>						<span class="prelude-val">Some</span>(c) =&gt; c,
+<a href=#50 id=50 data-nosnippet>50</a>						<span class="prelude-val">None </span>=&gt; <span class="kw">continue</span>,
+<a href=#51 id=51 data-nosnippet>51</a>					};
+<a href=#52 id=52 data-nosnippet>52</a>					<span class="kw">let </span>Languages = Contributes.get(<span class="string">"languages"</span>).and_then(Value::as_array);
+<a href=#53 id=53 data-nosnippet>53</a>					<span class="kw">let </span><span class="prelude-val">Some</span>(Languages) = Languages <span class="kw">else </span>{ <span class="kw">continue </span>};
+<a href=#54 id=54 data-nosnippet>54</a>					<span class="kw">for </span>Entry <span class="kw">in </span>Languages {
+<a href=#55 id=55 data-nosnippet>55</a>						<span class="kw">let </span>Id = <span class="kw">match </span>Entry.get(<span class="string">"id"</span>).and_then(Value::as_str) {
+<a href=#56 id=56 data-nosnippet>56</a>							<span class="prelude-val">Some</span>(id) <span class="kw">if </span>!id.is_empty() =&gt; id.to_string(),
+<a href=#57 id=57 data-nosnippet>57</a>							<span class="kw">_ </span>=&gt; <span class="kw">continue</span>,
+<a href=#58 id=58 data-nosnippet>58</a>						};
+<a href=#59 id=59 data-nosnippet>59</a>						<span class="kw">let </span>Existing = merged.entry(Id.clone()).or_insert_with(|| {
+<a href=#60 id=60 data-nosnippet>60</a>							<span class="kw">let </span><span class="kw-2">mut </span>seed = serde_json::Map::new();
+<a href=#61 id=61 data-nosnippet>61</a>							seed.insert(<span class="string">"id"</span>.to_string(), <span class="macro">json!</span>(Id));
+<a href=#62 id=62 data-nosnippet>62</a>							seed.insert(<span class="string">"aliases"</span>.to_string(), <span class="macro">json!</span>([]));
+<a href=#63 id=63 data-nosnippet>63</a>							seed.insert(<span class="string">"extensions"</span>.to_string(), <span class="macro">json!</span>([]));
+<a href=#64 id=64 data-nosnippet>64</a>							seed.insert(<span class="string">"filenames"</span>.to_string(), <span class="macro">json!</span>([]));
+<a href=#65 id=65 data-nosnippet>65</a>							seed.insert(<span class="string">"filenamePatterns"</span>.to_string(), <span class="macro">json!</span>([]));
+<a href=#66 id=66 data-nosnippet>66</a>							seed.insert(<span class="string">"mimetypes"</span>.to_string(), <span class="macro">json!</span>([]));
+<a href=#67 id=67 data-nosnippet>67</a>							seed.insert(<span class="string">"configuration"</span>.to_string(), Value::Null);
+<a href=#68 id=68 data-nosnippet>68</a>							seed
+<a href=#69 id=69 data-nosnippet>69</a>						});
+<a href=#70 id=70 data-nosnippet>70</a>						<span class="kw">let </span>merge_array = |target:<span class="kw-2">&amp;mut </span>serde_json::Map&lt;String, Value&gt;, key:<span class="kw-2">&amp;</span>str, incoming:<span class="kw-2">&amp;</span>Value| {
+<a href=#71 id=71 data-nosnippet>71</a>							<span class="kw">let </span><span class="prelude-val">Some</span>(incoming_arr) = incoming.get(key).and_then(Value::as_array) <span class="kw">else </span>{
+<a href=#72 id=72 data-nosnippet>72</a>								<span class="kw">return</span>;
+<a href=#73 id=73 data-nosnippet>73</a>							};
+<a href=#74 id=74 data-nosnippet>74</a>							<span class="kw">let </span>bucket = target.entry(key.to_string()).or_insert_with(|| <span class="macro">json!</span>([]));
+<a href=#75 id=75 data-nosnippet>75</a>							<span class="kw">if let </span><span class="prelude-val">Some</span>(bucket_arr) = bucket.as_array_mut() {
+<a href=#76 id=76 data-nosnippet>76</a>								<span class="kw">for </span>v <span class="kw">in </span>incoming_arr {
+<a href=#77 id=77 data-nosnippet>77</a>									<span class="kw">if </span>!bucket_arr.iter().any(|e| e == v) {
+<a href=#78 id=78 data-nosnippet>78</a>										bucket_arr.push(v.clone());
+<a href=#79 id=79 data-nosnippet>79</a>									}
+<a href=#80 id=80 data-nosnippet>80</a>								}
+<a href=#81 id=81 data-nosnippet>81</a>							}
+<a href=#82 id=82 data-nosnippet>82</a>						};
+<a href=#83 id=83 data-nosnippet>83</a>						merge_array(Existing, <span class="string">"aliases"</span>, Entry);
+<a href=#84 id=84 data-nosnippet>84</a>						merge_array(Existing, <span class="string">"extensions"</span>, Entry);
+<a href=#85 id=85 data-nosnippet>85</a>						merge_array(Existing, <span class="string">"filenames"</span>, Entry);
+<a href=#86 id=86 data-nosnippet>86</a>						merge_array(Existing, <span class="string">"filenamePatterns"</span>, Entry);
+<a href=#87 id=87 data-nosnippet>87</a>						merge_array(Existing, <span class="string">"mimetypes"</span>, Entry);
+<a href=#88 id=88 data-nosnippet>88</a>						<span class="kw">if </span>Existing.get(<span class="string">"configuration"</span>).map(Value::is_null).unwrap_or(<span class="bool-val">true</span>) {
+<a href=#89 id=89 data-nosnippet>89</a>							<span class="kw">if let </span><span class="prelude-val">Some</span>(cfg) = Entry.get(<span class="string">"configuration"</span>) {
+<a href=#90 id=90 data-nosnippet>90</a>								Existing.insert(<span class="string">"configuration"</span>.to_string(), cfg.clone());
+<a href=#91 id=91 data-nosnippet>91</a>							}
+<a href=#92 id=92 data-nosnippet>92</a>						}
+<a href=#93 id=93 data-nosnippet>93</a>					}
+<a href=#94 id=94 data-nosnippet>94</a>				}
+<a href=#95 id=95 data-nosnippet>95</a>
+<a href=#96 id=96 data-nosnippet>96</a>				<span class="kw">let </span>result:Vec&lt;Value&gt; = merged.into_values().map(Value::Object).collect();
+<a href=#97 id=97 data-nosnippet>97</a>				<span class="macro">dev_log!</span>(<span class="string">"ipc"</span>, <span class="string">"[Languages.GetAll] returning {} languages"</span>, result.len());
+<a href=#98 id=98 data-nosnippet>98</a>				<span class="prelude-val">Ok</span>(<span class="macro">json!</span>(result))
+<a href=#99 id=99 data-nosnippet>99</a>			})
+<a href=#100 id=100 data-nosnippet>100</a>		},
+<a href=#101 id=101 data-nosnippet>101</a>
+<a href=#102 id=102 data-nosnippet>102</a>		<span class="kw">_ </span>=&gt; <a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>,
+<a href=#103 id=103 data-nosnippet>103</a>	}
+<a href=#104 id=104 data-nosnippet>104</a>}
+</code></pre></div></section></main></body></html>

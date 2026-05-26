@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["SETTINGS_FILE_CACHE_TTL_MS"],"fn":["ClearSettingsFileCache","Fn","InsertDottedDefault","SettingsFileCache","collect_default_configurations","read_and_parse_configuration_file"],"struct":["CachedSettingsValue"]};

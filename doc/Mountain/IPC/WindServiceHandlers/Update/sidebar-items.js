@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["ApplyUpdate","CheckForUpdates","DownloadUpdate","GetInitialState","IsLatestVersion","QuitAndInstall"]};

@@ -1,0 +1,78 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Vine gRPC Server Module"><title>Mountain::Vine::Server - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.97.0-nightly (d3cd04068 2026-05-16)" data-channel="nightly" data-search-js="search-fd9372ac.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-41dd4d93.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-fcd733ba.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module Server</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Server</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#vine-grpc-server-module" title="Vine gRPC Server Module">Vine gRPC Server Module</a><ul><li><a href="#architecture" title="Architecture">Architecture</a></li><li><a href="#lifecycle-management" title="Lifecycle Management">Lifecycle Management</a></li><li><a href="#data-flow" title="Data Flow">Data Flow</a></li><li><a href="#error-handling" title="Error Handling">Error Handling</a></li><li><a href="#security-considerations" title="Security Considerations">Security Considerations</a></li><li><a href="#modules" title="Modules">Modules</a></li></ul></li></ul><h3><a href="#modules-1">Module Items</a></h3><ul class="block"><li><a href="#modules-1" title="Modules">Modules</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Vine</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Vine</a></div><h1>Module <span>Server</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Vine/Server/mod.rs.html#1-91">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="vine-grpc-server-module"><a class="doc-anchor" href="#vine-grpc-server-module">§</a>Vine gRPC Server Module</h2>
+<p>This module contains the implementation for the Mountain gRPC server. It is
+responsible for listening for incoming connections from sidecars like
+<code>Cocoon</code>, handling RPC requests, and dispatching them into the Mountain
+application logic.</p>
+<h3 id="architecture"><a class="doc-anchor" href="#architecture">§</a>Architecture</h3>
+<p>The Vine server implements two complementary gRPC services:</p>
+<h4 id="mountainservice-listens-on-one-port"><a class="doc-anchor" href="#mountainservice-listens-on-one-port">§</a>MountainService (Listens on one port)</h4>
+<ul>
+<li><strong>ProcessCocoonRequest</strong>: Handles request-response calls from Cocoon</li>
+<li><strong>SendCocoonNotification</strong>: Processes fire-and-forget notifications from
+Cocoon</li>
+<li><strong>CancelOperation</strong>: Cancels long-running operations requested by Cocoon</li>
+</ul>
+<h4 id="cocoonservice-listens-on-separate-port"><a class="doc-anchor" href="#cocoonservice-listens-on-separate-port">§</a>CocoonService (Listens on separate port)</h4>
+<ul>
+<li><strong>ProcessMountainRequest</strong>: Handles request-response calls from Mountain
+to Cocoon</li>
+<li><strong>SendMountainNotification</strong>: Processes notifications from Mountain to
+Cocoon</li>
+<li><strong>CancelOperation</strong>: Cancels operations in Cocoon</li>
+</ul>
+<h3 id="lifecycle-management"><a class="doc-anchor" href="#lifecycle-management">§</a>Lifecycle Management</h3>
+<ol>
+<li><strong>Initialization</strong>: Servers are spawned as background tasks via
+<code>Initialize::Initialize</code></li>
+<li><strong>Service Registration</strong>: gRPC services are registered with tonic’s
+Server builder</li>
+<li><strong>Request Handling</strong>: Each RPC call is dispatched to appropriate handlers</li>
+<li><strong>Graceful Shutdown</strong>: Servers terminate when tokio runtime is shut down</li>
+</ol>
+<h3 id="data-flow"><a class="doc-anchor" href="#data-flow">§</a>Data Flow</h3><div class="example-wrap"><pre class="language-text"><code>Cocoon Sidecar                          Mountain Extension Host
+     │                                          │
+     │  ┌──────────────────────────────────►    │
+     │  │ MountainService::ProcessCocoonRequest │
+     │  │ (extensions, queries, state)          │
+     │  ◄───────────────────────────────────    │
+     │                                          │
+     │  ┌──────────────────────────────────►    │
+     │  │ MountainService::SendCocoonNotification
+     │  │ (status updates, events)              │
+     │  ◄───────────────────────────────────    │
+     │                                          │
+     │  ◄────────────────────────────────────── │
+     │  │ CocoonService::ProcessMountainRequest │
+     │  │ (Webview operations, IPC)             │
+     │  ┌──────────────────────────────────►    │
+     │                                          │
+     │  ◄────────────────────────────────────── │
+     │  │ CocoonService::SendMountainNotification
+     │  │ (config changes, commands)             │
+     │  ┌──────────────────────────────────►    │
+     │                                          │</code></pre></div><h3 id="error-handling"><a class="doc-anchor" href="#error-handling">§</a>Error Handling</h3>
+<ul>
+<li>Request validation before processing</li>
+<li>Comprehensive error conversion to tonic::Status</li>
+<li>Detailed logging of all errors</li>
+<li>Graceful error responses to clients</li>
+</ul>
+<h3 id="security-considerations"><a class="doc-anchor" href="#security-considerations">§</a>Security Considerations</h3>
+<ul>
+<li>Request size limits (4MB default)</li>
+<li>Method whitelisting (prevents arbitrary method calls)</li>
+<li>Parameter validation before processing</li>
+<li>Safe error messages (no sensitive data leakage)</li>
+</ul>
+<h3 id="modules"><a class="doc-anchor" href="#modules">§</a>Modules</h3>
+<ul>
+<li><a href="Initialize/index.html" title="mod Mountain::Vine::Server::Initialize"><code>Initialize</code></a>: Server initialization and startup logic</li>
+<li><a href="MountainVinegRPCService/index.html" title="mod Mountain::Vine::Server::MountainVinegRPCService"><code>MountainVinegRPCService</code></a>: Implementation of MountainService (Cocoon →
+Mountain)</li>
+<li><code>CocoonServiceImpl</code>: Implementation of CocoonService (Mountain → Cocoon)</li>
+</ul>
+</div></details><h2 id="modules-1" class="section-header">Modules<a href="#modules-1" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="Initialize/index.html" title="mod Mountain::Vine::Server::Initialize">Initialize</a></dt><dd>Initialize (Vine Server)</dd><dt><a class="mod" href="MountainVinegRPCService/index.html" title="mod Mountain::Vine::Server::MountainVinegRPCService">Mountain<wbr>VinegRPC<wbr>Service</a></dt><dd>MountainVinegRPCService</dd><dt><a class="mod" href="Notification/index.html" title="mod Mountain::Vine::Server::Notification">Notification</a></dt><dd>Cocoon → Mountain notification atoms. One handler per file so the
+dispatcher in <code>MountainVinegRPCService::send_cocoon_notification</code>
+stays a thin match; each wire method lives at
+<code>Vine::Server::Notification::&lt;Atom&gt;::&lt;Atom&gt;</code> for grep-friendly
+navigation. See <code>Notification/mod.rs</code> for the contract.</dd></dl></section></div></main></body></html>

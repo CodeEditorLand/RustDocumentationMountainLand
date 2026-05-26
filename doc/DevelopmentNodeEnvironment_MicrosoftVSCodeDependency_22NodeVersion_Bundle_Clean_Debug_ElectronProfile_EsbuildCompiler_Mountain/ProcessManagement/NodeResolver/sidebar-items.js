@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["CheckMinMajor","ExpandHome","NodeExecutableName","NodeSource","QueryNodeVersion","ResolveNodeBinary","ResolveUncached","ResolvedNode","TryAsdf","TryFnm","TryHomebrew","TryNvm","TryOverride","TryShipped","TryVolta"]};

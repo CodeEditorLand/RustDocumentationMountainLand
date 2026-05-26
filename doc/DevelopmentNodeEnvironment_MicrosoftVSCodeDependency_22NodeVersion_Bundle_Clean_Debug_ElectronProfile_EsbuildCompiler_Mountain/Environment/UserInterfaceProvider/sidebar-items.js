@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["SendUserInterfaceRequest"],"struct":["UserInterfaceRequest"]};

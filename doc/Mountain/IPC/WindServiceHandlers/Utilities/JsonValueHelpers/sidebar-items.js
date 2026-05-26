@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["Fn","arg_bool","arg_bool_true","arg_f64","arg_i64","arg_str","arg_string","arg_string_or","arg_u64","arg_u64_or","arg_val","req_str","req_string"]};

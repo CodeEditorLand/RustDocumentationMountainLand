@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["MAX_BUFFER_SIZE","MAX_CHANNEL_NAME_LENGTH","MAX_LANGUAGE_ID_LENGTH"],"fn":["FormatBytes"],"struct":["OutputChannelStateDTO"]};

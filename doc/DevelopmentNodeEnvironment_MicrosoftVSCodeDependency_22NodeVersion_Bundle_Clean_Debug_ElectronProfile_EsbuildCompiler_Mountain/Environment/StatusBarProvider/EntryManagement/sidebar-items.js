@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["dispose_status_bar_entry_impl","set_status_bar_entry_impl"]};

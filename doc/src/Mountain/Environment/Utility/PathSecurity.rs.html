@@ -1,0 +1,393 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `Element/Mountain/Source/Environment/Utility/PathSecurity.rs`."><title>PathSecurity.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../../../../" data-static-root-path="../../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.97.0-nightly (d3cd04068 2026-05-16)" data-channel="nightly" data-search-js="search-fd9372ac.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../../static.files/storage-41dd4d93.js"></script><script defer src="../../../../static.files/src-script-813739b1.js"></script><script defer src="../../../../src-files.js"></script><script defer src="../../../../static.files/main-fcd733ba.js"></script><noscript><link rel="stylesheet" href="../../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><h1><div class="sub-heading">Mountain/Environment/Utility/</div>PathSecurity.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="doccomment">//! # Path Security Utilities
+<a href=#2 id=2 data-nosnippet>2</a>//!
+<a href=#3 id=3 data-nosnippet>3</a>//! Functions for validating filesystem access and enforcing workspace trust.
+<a href=#4 id=4 data-nosnippet>4</a>
+<a href=#5 id=5 data-nosnippet>5</a></span><span class="kw">use </span>std::path::{<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html">Path</a>, <a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>};
+<a href=#6 id=6 data-nosnippet>6</a>
+<a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span>CommonLibrary::Error::CommonError::CommonError;
+<a href=#8 id=8 data-nosnippet>8</a>
+<a href=#9 id=9 data-nosnippet>9</a><span class="kw">use </span>crate::{<a href="../../ApplicationState/State/ApplicationState.rs.html#64-88">ApplicationState::State::ApplicationState::ApplicationState</a>, <a href="../../IPC/DevLog/mod.rs.html#50-120">dev_log</a>};
+<a href=#10 id=10 data-nosnippet>10</a>
+<a href=#11 id=11 data-nosnippet>11</a><span class="doccomment">/// A critical security helper that checks if a given filesystem path is
+<a href=#12 id=12 data-nosnippet>12</a>/// allowed for access.
+<a href=#13 id=13 data-nosnippet>13</a>///
+<a href=#14 id=14 data-nosnippet>14</a>/// The access model has two tiers:
+<a href=#15 id=15 data-nosnippet>15</a>///
+<a href=#16 id=16 data-nosnippet>16</a>/// 1. **Trusted system paths** - directories Land itself owns (user extensions,
+<a href=#17 id=17 data-nosnippet>17</a>///    agent plugins, app-support storage, bundled extension roots). These are
+<a href=#18 id=18 data-nosnippet>18</a>///    never "user content" and the extension scanner, VSIX installer, and
+<a href=#19 id=19 data-nosnippet>19</a>///    global-storage probes must be able to read/write them regardless of which
+<a href=#20 id=20 data-nosnippet>20</a>///    workspace folder is open. They bypass the workspace-folder check
+<a href=#21 id=21 data-nosnippet>21</a>///    entirely.
+<a href=#22 id=22 data-nosnippet>22</a>///
+<a href=#23 id=23 data-nosnippet>23</a>/// 2. **Workspace content** - everything else is only reachable when the
+<a href=#24 id=24 data-nosnippet>24</a>///    resolved path is a descendant of a currently registered, trusted
+<a href=#25 id=25 data-nosnippet>25</a>///    workspace folder. That's the sandbox boundary that keeps extensions from
+<a href=#26 id=26 data-nosnippet>26</a>///    rifling through `$HOME` via `vscode.workspace.fs`.
+<a href=#27 id=27 data-nosnippet>27</a>///
+<a href=#28 id=28 data-nosnippet>28</a>/// Without tier 1, the scanner's read of `~/.fiddee/extensions` is
+<a href=#29 id=29 data-nosnippet>29</a>/// rejected as "Path is outside of the registered workspace folders", so
+<a href=#30 id=30 data-nosnippet>30</a>/// user-installed VSIXes never reach the Extensions sidebar even though
+<a href=#31 id=31 data-nosnippet>31</a>/// they are present on disk.
+<a href=#32 id=32 data-nosnippet>32</a></span><span class="kw">pub fn </span><a href="../../../../Mountain/Environment/Utility/PathSecurity/fn.Fn.html">Fn</a>(ApplicationState:<span class="kw-2">&amp;</span><a href="../../ApplicationState/State/ApplicationState.rs.html#64-88">ApplicationState</a>, PathToCheck:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html">Path</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
+<a href=#33 id=33 data-nosnippet>33</a>	<span class="comment">// Per-call verification line is one of the highest-volume tags
+<a href=#34 id=34 data-nosnippet>34</a>	// (~15k hits per long session). The failure path below logs its own
+<a href=#35 id=35 data-nosnippet>35</a>	// line; the success path is auditable from IPC-side request logs.
+<a href=#36 id=36 data-nosnippet>36</a>	// Keep under `vfs-verbose` for deep debugging only.
+<a href=#37 id=37 data-nosnippet>37</a>	</span><a href="../../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"vfs-verbose"</span>, <span class="string">"[EnvironmentSecurity] Verifying path: {}"</span>, PathToCheck.display());
+<a href=#38 id=38 data-nosnippet>38</a>
+<a href=#39 id=39 data-nosnippet>39</a>	<span class="comment">// Defensive: empty path would slip through the trusted-system
+<a href=#40 id=40 data-nosnippet>40</a>	// check (no allow-list segment matches) AND the workspace-
+<a href=#41 id=41 data-nosnippet>41</a>	// descendant check (`Path::starts_with("")` returns true). Without
+<a href=#42 id=42 data-nosnippet>42</a>	// this guard, an extension probing `vscode.workspace.fs.stat("")`
+<a href=#43 id=43 data-nosnippet>43</a>	// would be authorised against ANY registered workspace folder.
+<a href=#44 id=44 data-nosnippet>44</a>	// Reject up front so the caller falls through to its not-found
+<a href=#45 id=45 data-nosnippet>45</a>	// handler.
+<a href=#46 id=46 data-nosnippet>46</a>	</span><span class="kw">if </span><a href="#32">PathToCheck</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.as_os_str">as_os_str</a>().<a href="https://doc.rust-lang.org/nightly/std/ffi/os_str/struct.OsStr.html#method.is_empty">is_empty</a>() {
+<a href=#47 id=47 data-nosnippet>47</a>		<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(CommonError::FileSystemPermissionDenied {
+<a href=#48 id=48 data-nosnippet>48</a>			Path:<a href="#32">PathToCheck</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.to_path_buf">to_path_buf</a>(),
+<a href=#49 id=49 data-nosnippet>49</a>			Reason:<span class="string">"Empty path: caller must supply an explicit filesystem path."</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
+<a href=#50 id=50 data-nosnippet>50</a>		});
+<a href=#51 id=51 data-nosnippet>51</a>	}
+<a href=#52 id=52 data-nosnippet>52</a>
+<a href=#53 id=53 data-nosnippet>53</a>	<span class="comment">// Tier 1: trusted system paths bypass workspace gating. See
+<a href=#54 id=54 data-nosnippet>54</a>	// `IsTrustedSystemPath` for the complete allow-list. Scanner reads,
+<a href=#55 id=55 data-nosnippet>55</a>	// VSIX installs, agent-plugin probes, and per-extension global-storage
+<a href=#56 id=56 data-nosnippet>56</a>	// stats hit this path on every boot.
+<a href=#57 id=57 data-nosnippet>57</a>	</span><span class="kw">if </span><a href="#171-363">IsTrustedSystemPath</a>(<a href="#32">PathToCheck</a>) {
+<a href=#58 id=58 data-nosnippet>58</a>		<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(());
+<a href=#59 id=59 data-nosnippet>59</a>	}
+<a href=#60 id=60 data-nosnippet>60</a>
+<a href=#61 id=61 data-nosnippet>61</a>	<span class="kw">if </span>!<a href="#32">ApplicationState</a>.Workspace.IsTrusted.<a href="https://doc.rust-lang.org/nightly/core/sync/atomic/struct.Atomic.html#method.load">load</a>(std::sync::atomic::Ordering::<a href="https://doc.rust-lang.org/nightly/core/sync/atomic/enum.Ordering.html#variant.Relaxed">Relaxed</a>) {
+<a href=#62 id=62 data-nosnippet>62</a>		<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(CommonError::FileSystemPermissionDenied {
+<a href=#63 id=63 data-nosnippet>63</a>			Path:<a href="#32">PathToCheck</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.to_path_buf">to_path_buf</a>(),
+<a href=#64 id=64 data-nosnippet>64</a>			Reason:<span class="string">"Workspace is not trusted. File access is denied."</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
+<a href=#65 id=65 data-nosnippet>65</a>		});
+<a href=#66 id=66 data-nosnippet>66</a>	}
+<a href=#67 id=67 data-nosnippet>67</a>
+<a href=#68 id=68 data-nosnippet>68</a>	<span class="kw">let </span>FoldersGuard = ApplicationState
+<a href=#69 id=69 data-nosnippet>69</a>		.Workspace
+<a href=#70 id=70 data-nosnippet>70</a>		.WorkspaceFolders
+<a href=#71 id=71 data-nosnippet>71</a>		.lock()
+<a href=#72 id=72 data-nosnippet>72</a>		.map_err(<span class="kw">super</span>::ErrorMapping::MapApplicationStateLockErrorToCommonError)<span class="question-mark">?</span>;
+<a href=#73 id=73 data-nosnippet>73</a>
+<a href=#74 id=74 data-nosnippet>74</a>	<span class="kw">if </span><a href="#68">FoldersGuard</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.is_empty">is_empty</a>() {
+<a href=#75 id=75 data-nosnippet>75</a>		<span class="comment">// Allow access if no folder is open, as operations are likely on user-chosen
+<a href=#76 id=76 data-nosnippet>76</a>		// files. A stricter model could deny this.
+<a href=#77 id=77 data-nosnippet>77</a>		</span><span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(());
+<a href=#78 id=78 data-nosnippet>78</a>	}
+<a href=#79 id=79 data-nosnippet>79</a>
+<a href=#80 id=80 data-nosnippet>80</a>	<span class="comment">// Use canonical paths on both sides so that prefix-matching survives
+<a href=#81 id=81 data-nosnippet>81</a>	// macOS's `/Volumes/&lt;vol&gt;/...` vs `/private/var/...` resolution and
+<a href=#82 id=82 data-nosnippet>82</a>	// any symlinked submodule roots. Cocoon's URI strip yields the user-
+<a href=#83 id=83 data-nosnippet>83</a>	// visible path (`/Volumes/&lt;vol&gt;/.../Land/Dependency/...`) while the
+<a href=#84 id=84 data-nosnippet>84</a>	// workspace folder URL stays as built from `from_directory_path` -
+<a href=#85 id=85 data-nosnippet>85</a>	// these can disagree on platforms where the resolved canonical path
+<a href=#86 id=86 data-nosnippet>86</a>	// differs from the URI-derived one (encoded mount-point indirection,
+<a href=#87 id=87 data-nosnippet>87</a>	// case-insensitive HFS+, etc.). Without this, a workspace with deep
+<a href=#88 id=88 data-nosnippet>88</a>	// submodule trees rejects every read that walks past the first level
+<a href=#89 id=89 data-nosnippet>89</a>	// even though the path is a literal descendant of the open folder.
+<a href=#90 id=90 data-nosnippet>90</a>	</span><span class="kw">let </span>CanonicalPathToCheck =
+<a href=#91 id=91 data-nosnippet>91</a>		<span class="kw">crate</span>::Cache::PathCanon::Canonicalize::<a href="../../Cache/PathCanon/Canonicalize.rs.html#12-22">Fn</a>(<a href="#32">PathToCheck</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|<span class="kw">_</span>| <a href="#32">PathToCheck</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.to_path_buf">to_path_buf</a>());
+<a href=#92 id=92 data-nosnippet>92</a>
+<a href=#93 id=93 data-nosnippet>93</a>	<span class="kw">let </span>IsAllowed = <a href="#68">FoldersGuard</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.iter">iter</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.any">any</a>(|Folder| {
+<a href=#94 id=94 data-nosnippet>94</a>		<span class="kw">let </span>FolderPath = <span class="kw">match </span><a href="#93">Folder</a>.URI.<a href="https://docs.rs/url/2.5.7/url/struct.Url.html#method.to_file_path">to_file_path</a>() {
+<a href=#95 id=95 data-nosnippet>95</a>			<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(P) =&gt; <a href="#95">P</a>,
+<a href=#96 id=96 data-nosnippet>96</a>			<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<span class="kw">_</span>) =&gt; <span class="kw">return </span><span class="bool-val">false</span>,
+<a href=#97 id=97 data-nosnippet>97</a>		};
+<a href=#98 id=98 data-nosnippet>98</a>		<span class="kw">let </span>CanonicalFolderPath =
+<a href=#99 id=99 data-nosnippet>99</a>			<span class="kw">crate</span>::Cache::PathCanon::Canonicalize::<a href="../../Cache/PathCanon/Canonicalize.rs.html#12-22">Fn</a>(<span class="kw-2">&amp;</span><a href="#94">FolderPath</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|<span class="kw">_</span>| <a href="#94">FolderPath</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>());
+<a href=#100 id=100 data-nosnippet>100</a>		<span class="comment">// Try both canonical-canonical AND raw-raw - either match wins.
+<a href=#101 id=101 data-nosnippet>101</a>		</span><a href="#32">PathToCheck</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.starts_with">starts_with</a>(<span class="kw-2">&amp;</span><a href="#94">FolderPath</a>)
+<a href=#102 id=102 data-nosnippet>102</a>			|| <a href="#32">PathToCheck</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.starts_with">starts_with</a>(<span class="kw-2">&amp;</span><a href="#98">CanonicalFolderPath</a>)
+<a href=#103 id=103 data-nosnippet>103</a>			|| <a href="#90">CanonicalPathToCheck</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.starts_with">starts_with</a>(<span class="kw-2">&amp;</span><a href="#94">FolderPath</a>)
+<a href=#104 id=104 data-nosnippet>104</a>			|| <a href="#90">CanonicalPathToCheck</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.starts_with">starts_with</a>(<span class="kw-2">&amp;</span><a href="#98">CanonicalFolderPath</a>)
+<a href=#105 id=105 data-nosnippet>105</a>	});
+<a href=#106 id=106 data-nosnippet>106</a>
+<a href=#107 id=107 data-nosnippet>107</a>	<span class="kw">if </span><a href="#93">IsAllowed</a> {
+<a href=#108 id=108 data-nosnippet>108</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
+<a href=#109 id=109 data-nosnippet>109</a>	} <span class="kw">else </span>{
+<a href=#110 id=110 data-nosnippet>110</a>		<span class="comment">// Surface the comparison details so a workspace-mismatch bug
+<a href=#111 id=111 data-nosnippet>111</a>		// (URL-to-path conversion, canonicalisation drift) is debuggable
+<a href=#112 id=112 data-nosnippet>112</a>		// without rebuilding. Tag is `vfs` so it appears under the
+<a href=#113 id=113 data-nosnippet>113</a>		// default `short` trace set.
+<a href=#114 id=114 data-nosnippet>114</a>		</span><span class="kw">let </span>FolderPaths:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; = <a href="#68">FoldersGuard</a>
+<a href=#115 id=115 data-nosnippet>115</a>			.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.iter">iter</a>()
+<a href=#116 id=116 data-nosnippet>116</a>			.<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.map">map</a>(|F| {
+<a href=#117 id=117 data-nosnippet>117</a>				<a href="#116">F</a>.URI
+<a href=#118 id=118 data-nosnippet>118</a>					.<a href="https://docs.rs/url/2.5.7/url/struct.Url.html#method.to_file_path">to_file_path</a>()
+<a href=#119 id=119 data-nosnippet>119</a>					.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map">map</a>(|P| <a href="#119">P</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.display">display</a>().<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>())
+<a href=#120 id=120 data-nosnippet>120</a>					.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|<span class="kw">_</span>| <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"&lt;bad-uri:{}&gt;"</span>, F.URI))
+<a href=#121 id=121 data-nosnippet>121</a>			})
+<a href=#122 id=122 data-nosnippet>122</a>			.<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.collect">collect</a>();
+<a href=#123 id=123 data-nosnippet>123</a>
+<a href=#124 id=124 data-nosnippet>124</a>		<a href="../../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(
+<a href=#125 id=125 data-nosnippet>125</a>			<span class="string">"vfs"</span>,
+<a href=#126 id=126 data-nosnippet>126</a>			<span class="string">"[PathSecurity] reject path={} canonical={} folders=[{}]"</span>,
+<a href=#127 id=127 data-nosnippet>127</a>			PathToCheck.display(),
+<a href=#128 id=128 data-nosnippet>128</a>			CanonicalPathToCheck.display(),
+<a href=#129 id=129 data-nosnippet>129</a>			FolderPaths.join(<span class="string">", "</span>)
+<a href=#130 id=130 data-nosnippet>130</a>		);
+<a href=#131 id=131 data-nosnippet>131</a>
+<a href=#132 id=132 data-nosnippet>132</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(CommonError::FileSystemPermissionDenied {
+<a href=#133 id=133 data-nosnippet>133</a>			Path:<a href="#32">PathToCheck</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.to_path_buf">to_path_buf</a>(),
+<a href=#134 id=134 data-nosnippet>134</a>			Reason:<span class="string">"Path is outside of the registered workspace folders."</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
+<a href=#135 id=135 data-nosnippet>135</a>		})
+<a href=#136 id=136 data-nosnippet>136</a>	}
+<a href=#137 id=137 data-nosnippet>137</a>}
+<a href=#138 id=138 data-nosnippet>138</a>
+<a href=#139 id=139 data-nosnippet>139</a><span class="doccomment">/// Return `true` when `PathToCheck` falls under a directory that Land itself
+<a href=#140 id=140 data-nosnippet>140</a>/// manages and the sandbox should not gate.
+<a href=#141 id=141 data-nosnippet>141</a>///
+<a href=#142 id=142 data-nosnippet>142</a>/// Covered roots:
+<a href=#143 id=143 data-nosnippet>143</a>///
+<a href=#144 id=144 data-nosnippet>144</a>/// - `${Lodge}` (explicit override, if set).
+<a href=#145 id=145 data-nosnippet>145</a>/// - `$HOME/.fiddee/**` - the canonical namespace for user-installed
+<a href=#146 id=146 data-nosnippet>146</a>///   extensions, agent plugins, global storage, and any other FIDDEE-owned
+<a href=#147 id=147 data-nosnippet>147</a>///   state that lives outside the VS Code-style profile tree. Resolved through
+<a href=#148 id=148 data-nosnippet>148</a>///   the `Utilities::FiddeeRoot` atom.
+<a href=#149 id=149 data-nosnippet>149</a>/// - `$HOME/.land/**` - legacy alias kept for forward-compat reads of
+<a href=#150 id=150 data-nosnippet>150</a>///   pre-rename install trees so existing user data stays reachable until the
+<a href=#151 id=151 data-nosnippet>151</a>///   next install migrates it.
+<a href=#152 id=152 data-nosnippet>152</a>/// - The Mountain executable's own `extensions/`, `../Resources/extensions/`,
+<a href=#153 id=153 data-nosnippet>153</a>///   `../Resources/app/extensions/`, and
+<a href=#154 id=154 data-nosnippet>154</a>///   `../Resources/Static/Application/extensions/` neighbours - built-in
+<a href=#155 id=155 data-nosnippet>155</a>///   extension roots that ship inside the `.app` bundle.
+<a href=#156 id=156 data-nosnippet>156</a>/// - `$APPDATA`-equivalents: Tauri's resolved app-data / app-config / app-local
+<a href=#157 id=157 data-nosnippet>157</a>///   directories (via `$XDG_DATA_HOME`, `$XDG_CONFIG_HOME` if set; on macOS the
+<a href=#158 id=158 data-nosnippet>158</a>///   `Library/Application Support/land.editor.*` tree).
+<a href=#159 id=159 data-nosnippet>159</a>/// - `${TMPDIR}` + `/tmp`, `/private/tmp`, `/var/tmp` - scratch dirs language
+<a href=#160 id=160 data-nosnippet>160</a>///   servers write their port-handoff / socket / lock files to. `TMPDIR` on
+<a href=#161 id=161 data-nosnippet>161</a>///   macOS points at `/var/folders/.../T/` but extensions hardcode
+<a href=#162 id=162 data-nosnippet>162</a>///   `/tmp/&lt;tool&gt;` directly.
+<a href=#163 id=163 data-nosnippet>163</a>/// - Third-party tool state under `$HOME/{.gitkraken,.gk,.copilot,
+<a href=#164 id=164 data-nosnippet>164</a>///   .config/git}` - probed by GitLens, copilot-chat, etc. Application state,
+<a href=#165 id=165 data-nosnippet>165</a>///   not user content.
+<a href=#166 id=166 data-nosnippet>166</a>///
+<a href=#167 id=167 data-nosnippet>167</a>/// Anything outside this list still flows through the workspace-folder
+<a href=#168 id=168 data-nosnippet>168</a>/// check. The set is intentionally narrow: it unblocks Land's *own*
+<a href=#169 id=169 data-nosnippet>169</a>/// bookkeeping reads + cooperating neighbour-tool probes without
+<a href=#170 id=170 data-nosnippet>170</a>/// handing extensions an unbounded filesystem.
+<a href=#171 id=171 data-nosnippet>171</a></span><span class="kw">fn </span><a href="../../../../Mountain/Environment/Utility/PathSecurity/fn.IsTrustedSystemPath.html">IsTrustedSystemPath</a>(PathToCheck:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html">Path</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
+<a href=#172 id=172 data-nosnippet>172</a>	<span class="comment">// Canonicalising is best-effort - when the path doesn't exist yet
+<a href=#173 id=173 data-nosnippet>173</a>	// (e.g. first-boot probes for `globalStorage/&lt;extension&gt;/state.json`)
+<a href=#174 id=174 data-nosnippet>174</a>	// `canonicalize` returns Err and we compare against the raw path.
+<a href=#175 id=175 data-nosnippet>175</a>	</span><span class="kw">let </span>Candidate =
+<a href=#176 id=176 data-nosnippet>176</a>		<span class="kw">crate</span>::Cache::PathCanon::Canonicalize::<a href="../../Cache/PathCanon/Canonicalize.rs.html#12-22">Fn</a>(<a href="#171">PathToCheck</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|<span class="kw">_</span>| <a href="#171">PathToCheck</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.to_path_buf">to_path_buf</a>());
+<a href=#177 id=177 data-nosnippet>177</a>
+<a href=#178 id=178 data-nosnippet>178</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Override) = std::env::<a href="https://doc.rust-lang.org/nightly/std/env/fn.var.html">var</a>(<span class="string">"Lodge"</span>) {
+<a href=#179 id=179 data-nosnippet>179</a>		<span class="kw">if </span>!<a href="#178">Override</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.is_empty">is_empty</a>() {
+<a href=#180 id=180 data-nosnippet>180</a>			<span class="kw">let </span>OverridePath = <a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>::<a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from">from</a>(<span class="kw-2">&amp;</span><a href="#178">Override</a>);
+<a href=#181 id=181 data-nosnippet>181</a>
+<a href=#182 id=182 data-nosnippet>182</a>			<span class="kw">if </span><a href="#175">Candidate</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.starts_with">starts_with</a>(<span class="kw-2">&amp;</span><a href="#180">OverridePath</a>) || <a href="#171">PathToCheck</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.starts_with">starts_with</a>(<span class="kw-2">&amp;</span><a href="#180">OverridePath</a>) {
+<a href=#183 id=183 data-nosnippet>183</a>				<span class="kw">return </span><span class="bool-val">true</span>;
+<a href=#184 id=184 data-nosnippet>184</a>			}
+<a href=#185 id=185 data-nosnippet>185</a>		}
+<a href=#186 id=186 data-nosnippet>186</a>	}
+<a href=#187 id=187 data-nosnippet>187</a>
+<a href=#188 id=188 data-nosnippet>188</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Home) = std::env::<a href="https://doc.rust-lang.org/nightly/std/env/fn.var.html">var</a>(<span class="string">"HOME"</span>) {
+<a href=#189 id=189 data-nosnippet>189</a>		<span class="comment">// Primary user-scope root post-rename. Resolved through the
+<a href=#190 id=190 data-nosnippet>190</a>		// `FiddeeRoot` atom so any future rename touches a single file.
+<a href=#191 id=191 data-nosnippet>191</a>		</span><span class="kw">let </span>FiddeeRoot = <span class="kw">crate</span>::IPC::WindServiceHandlers::Utilities::FiddeeRoot::<a href="../../IPC/WindServiceHandlers/Utilities/FiddeeRoot.rs.html#22-32">Fn</a>();
+<a href=#192 id=192 data-nosnippet>192</a>
+<a href=#193 id=193 data-nosnippet>193</a>		<span class="kw">if </span><a href="#175">Candidate</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.starts_with">starts_with</a>(<span class="kw-2">&amp;</span><a href="#191">FiddeeRoot</a>) || <a href="#171">PathToCheck</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.starts_with">starts_with</a>(<span class="kw-2">&amp;</span><a href="#191">FiddeeRoot</a>) {
+<a href=#194 id=194 data-nosnippet>194</a>			<span class="kw">return </span><span class="bool-val">true</span>;
+<a href=#195 id=195 data-nosnippet>195</a>		}
+<a href=#196 id=196 data-nosnippet>196</a>
+<a href=#197 id=197 data-nosnippet>197</a>		<span class="comment">// Legacy alias - pre-rename installs still hold extensions and
+<a href=#198 id=198 data-nosnippet>198</a>		// recently-opened state under `~/.land`. Reads stay allow-listed
+<a href=#199 id=199 data-nosnippet>199</a>		// so existing data remains visible until the user reinstalls or
+<a href=#200 id=200 data-nosnippet>200</a>		// migrates to `~/.fiddee`.
+<a href=#201 id=201 data-nosnippet>201</a>		</span><span class="kw">let </span>LandRoot = <a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>::<a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from">from</a>(<span class="kw-2">&amp;</span><a href="#188">Home</a>).<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">".land"</span>);
+<a href=#202 id=202 data-nosnippet>202</a>
+<a href=#203 id=203 data-nosnippet>203</a>		<span class="kw">if </span><a href="#175">Candidate</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.starts_with">starts_with</a>(<span class="kw-2">&amp;</span><a href="#201">LandRoot</a>) || <a href="#171">PathToCheck</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.starts_with">starts_with</a>(<span class="kw-2">&amp;</span><a href="#201">LandRoot</a>) {
+<a href=#204 id=204 data-nosnippet>204</a>			<span class="kw">return </span><span class="bool-val">true</span>;
+<a href=#205 id=205 data-nosnippet>205</a>		}
+<a href=#206 id=206 data-nosnippet>206</a>
+<a href=#207 id=207 data-nosnippet>207</a>		<span class="comment">// macOS / Linux Application-Support trees that host Land's per-profile
+<a href=#208 id=208 data-nosnippet>208</a>		// state. `land.editor.*` prefix matches every build profile variant.
+<a href=#209 id=209 data-nosnippet>209</a>		</span><span class="kw">let </span>MacAppSupport = <a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>::<a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from">from</a>(<span class="kw-2">&amp;</span><a href="#188">Home</a>).<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">"Library/Application Support"</span>);
+<a href=#210 id=210 data-nosnippet>210</a>
+<a href=#211 id=211 data-nosnippet>211</a>		<span class="kw">if </span>(<a href="#175">Candidate</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.starts_with">starts_with</a>(<span class="kw-2">&amp;</span><a href="#209">MacAppSupport</a>) || <a href="#171">PathToCheck</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.starts_with">starts_with</a>(<span class="kw-2">&amp;</span><a href="#209">MacAppSupport</a>))
+<a href=#212 id=212 data-nosnippet>212</a>			&amp;&amp; <a href="#369-377">ContainsLandEditorSegment</a>(<a href="#171">PathToCheck</a>)
+<a href=#213 id=213 data-nosnippet>213</a>		{
+<a href=#214 id=214 data-nosnippet>214</a>			<span class="kw">return </span><span class="bool-val">true</span>;
+<a href=#215 id=215 data-nosnippet>215</a>		}
+<a href=#216 id=216 data-nosnippet>216</a>
+<a href=#217 id=217 data-nosnippet>217</a>		<span class="kw">let </span>XdgConfig = std::env::<a href="https://doc.rust-lang.org/nightly/std/env/fn.var.html">var</a>(<span class="string">"XDG_CONFIG_HOME"</span>)
+<a href=#218 id=218 data-nosnippet>218</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map">map</a>(<a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>::<a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from">from</a>)
+<a href=#219 id=219 data-nosnippet>219</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|<span class="kw">_</span>| <a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>::<a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from">from</a>(<span class="kw-2">&amp;</span><a href="#188">Home</a>).<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">".config"</span>));
+<a href=#220 id=220 data-nosnippet>220</a>
+<a href=#221 id=221 data-nosnippet>221</a>		<span class="kw">if </span>(<a href="#175">Candidate</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.starts_with">starts_with</a>(<span class="kw-2">&amp;</span><a href="#217">XdgConfig</a>) || <a href="#171">PathToCheck</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.starts_with">starts_with</a>(<span class="kw-2">&amp;</span><a href="#217">XdgConfig</a>))
+<a href=#222 id=222 data-nosnippet>222</a>			&amp;&amp; <a href="#369-377">ContainsLandEditorSegment</a>(<a href="#171">PathToCheck</a>)
+<a href=#223 id=223 data-nosnippet>223</a>		{
+<a href=#224 id=224 data-nosnippet>224</a>			<span class="kw">return </span><span class="bool-val">true</span>;
+<a href=#225 id=225 data-nosnippet>225</a>		}
+<a href=#226 id=226 data-nosnippet>226</a>
+<a href=#227 id=227 data-nosnippet>227</a>		<span class="kw">let </span>XdgData = std::env::<a href="https://doc.rust-lang.org/nightly/std/env/fn.var.html">var</a>(<span class="string">"XDG_DATA_HOME"</span>)
+<a href=#228 id=228 data-nosnippet>228</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map">map</a>(<a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>::<a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from">from</a>)
+<a href=#229 id=229 data-nosnippet>229</a>			.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|<span class="kw">_</span>| <a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>::<a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from">from</a>(<span class="kw-2">&amp;</span><a href="#188">Home</a>).<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">".local/share"</span>));
+<a href=#230 id=230 data-nosnippet>230</a>
+<a href=#231 id=231 data-nosnippet>231</a>		<span class="kw">if </span>(<a href="#175">Candidate</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.starts_with">starts_with</a>(<span class="kw-2">&amp;</span><a href="#227">XdgData</a>) || <a href="#171">PathToCheck</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.starts_with">starts_with</a>(<span class="kw-2">&amp;</span><a href="#227">XdgData</a>))
+<a href=#232 id=232 data-nosnippet>232</a>			&amp;&amp; <a href="#369-377">ContainsLandEditorSegment</a>(<a href="#171">PathToCheck</a>)
+<a href=#233 id=233 data-nosnippet>233</a>		{
+<a href=#234 id=234 data-nosnippet>234</a>			<span class="kw">return </span><span class="bool-val">true</span>;
+<a href=#235 id=235 data-nosnippet>235</a>		}
+<a href=#236 id=236 data-nosnippet>236</a>	}
+<a href=#237 id=237 data-nosnippet>237</a>
+<a href=#238 id=238 data-nosnippet>238</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Exe) = std::env::<a href="https://doc.rust-lang.org/nightly/std/env/fn.current_exe.html">current_exe</a>() {
+<a href=#239 id=239 data-nosnippet>239</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(ExeParent) = <a href="#238">Exe</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.parent">parent</a>() {
+<a href=#240 id=240 data-nosnippet>240</a>			<span class="kw">let </span>BundleRoots = [
+<a href=#241 id=241 data-nosnippet>241</a>				<a href="#239">ExeParent</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">"extensions"</span>),
+<a href=#242 id=242 data-nosnippet>242</a>				<a href="#239">ExeParent</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">"../Resources/extensions"</span>),
+<a href=#243 id=243 data-nosnippet>243</a>				<a href="#239">ExeParent</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">"../Resources/app/extensions"</span>),
+<a href=#244 id=244 data-nosnippet>244</a>				<span class="comment">// Canonical bundle layout: tauri.conf.json maps Sky's
+<a href=#245 id=245 data-nosnippet>245</a>				// Static/Application/extensions into Contents/Resources/Static/
+<a href=#246 id=246 data-nosnippet>246</a>				// Application/extensions. This is the path ScanPathConfigure
+<a href=#247 id=247 data-nosnippet>247</a>				// adds first and it must bypass the workspace-folder gate.
+<a href=#248 id=248 data-nosnippet>248</a>				</span><a href="#239">ExeParent</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">"../Resources/Static/Application/extensions"</span>),
+<a href=#249 id=249 data-nosnippet>249</a>			];
+<a href=#250 id=250 data-nosnippet>250</a>
+<a href=#251 id=251 data-nosnippet>251</a>			<span class="kw">for </span>Root <span class="kw">in </span>BundleRoots {
+<a href=#252 id=252 data-nosnippet>252</a>				<span class="kw">let </span>Normalised = <span class="kw">crate</span>::Cache::PathCanon::Canonicalize::Fn(<span class="kw-2">&amp;</span>Root).unwrap_or(Root.clone());
+<a href=#253 id=253 data-nosnippet>253</a>
+<a href=#254 id=254 data-nosnippet>254</a>				<span class="kw">if </span>Candidate.starts_with(<span class="kw-2">&amp;</span>Normalised) || PathToCheck.starts_with(<span class="kw-2">&amp;</span>Root) {
+<a href=#255 id=255 data-nosnippet>255</a>					<span class="kw">return </span><span class="bool-val">true</span>;
+<a href=#256 id=256 data-nosnippet>256</a>				}
+<a href=#257 id=257 data-nosnippet>257</a>			}
+<a href=#258 id=258 data-nosnippet>258</a>		}
+<a href=#259 id=259 data-nosnippet>259</a>	}
+<a href=#260 id=260 data-nosnippet>260</a>
+<a href=#261 id=261 data-nosnippet>261</a>	<span class="comment">// Sky / Dependency bundled extension trees. These are debug-profile
+<a href=#262 id=262 data-nosnippet>262</a>	// layouts where the scanner reaches the bundle root via relative hops
+<a href=#263 id=263 data-nosnippet>263</a>	// from the Mountain executable directory - canonicalising already
+<a href=#264 id=264 data-nosnippet>264</a>	// resolves that, but we also fall back to a path-segment match so a
+<a href=#265 id=265 data-nosnippet>265</a>	// missing file (first-boot probe) still clears the check.
+<a href=#266 id=266 data-nosnippet>266</a>	</span><span class="kw">if </span><a href="#382-392">ContainsPathSegments</a>(<a href="#171">PathToCheck</a>, <span class="kw-2">&amp;</span>[<span class="string">"Sky"</span>, <span class="string">"Target"</span>, <span class="string">"Static"</span>, <span class="string">"Application"</span>, <span class="string">"extensions"</span>])
+<a href=#267 id=267 data-nosnippet>267</a>		|| <a href="#382-392">ContainsPathSegments</a>(<a href="#171">PathToCheck</a>, <span class="kw-2">&amp;</span>[<span class="string">"Dependency"</span>, <span class="string">"Microsoft"</span>, <span class="string">"Dependency"</span>, <span class="string">"Editor"</span>, <span class="string">"extensions"</span>])
+<a href=#268 id=268 data-nosnippet>268</a>	{
+<a href=#269 id=269 data-nosnippet>269</a>		<span class="kw">return </span><span class="bool-val">true</span>;
+<a href=#270 id=270 data-nosnippet>270</a>	}
+<a href=#271 id=271 data-nosnippet>271</a>
+<a href=#272 id=272 data-nosnippet>272</a>	<span class="comment">// Sky's Target tree as a whole is build output Land controls (product.json,
+<a href=#273 id=273 data-nosnippet>273</a>	// nls bundles, package.json, workbench bundle artifacts). gitlens reads
+<a href=#274 id=274 data-nosnippet>274</a>	// `Sky/Target/product.json` to detect the host product; the workbench reads
+<a href=#275 id=275 data-nosnippet>275</a>	// its own bundled metadata. None of these are user content - allowing the
+<a href=#276 id=276 data-nosnippet>276</a>	// whole `Sky/Target/` subtree mirrors the bundled-extension carve-out
+<a href=#277 id=277 data-nosnippet>277</a>	// above and keeps third-party probes from getting "outside workspace"
+<a href=#278 id=278 data-nosnippet>278</a>	// rejections for files Land itself shipped.
+<a href=#279 id=279 data-nosnippet>279</a>	</span><span class="kw">if </span><a href="#382-392">ContainsPathSegments</a>(<a href="#171">PathToCheck</a>, <span class="kw-2">&amp;</span>[<span class="string">"Sky"</span>, <span class="string">"Target"</span>])
+<a href=#280 id=280 data-nosnippet>280</a>		|| <a href="#382-392">ContainsPathSegments</a>(<a href="#171">PathToCheck</a>, <span class="kw-2">&amp;</span>[<span class="string">"Output"</span>, <span class="string">"Target"</span>])
+<a href=#281 id=281 data-nosnippet>281</a>		|| <a href="#382-392">ContainsPathSegments</a>(<a href="#171">PathToCheck</a>, <span class="kw-2">&amp;</span>[<span class="string">"Dependency"</span>, <span class="string">"Microsoft"</span>, <span class="string">"Dependency"</span>, <span class="string">"Editor"</span>, <span class="string">"out"</span>])
+<a href=#282 id=282 data-nosnippet>282</a>		|| <a href="#382-392">ContainsPathSegments</a>(
+<a href=#283 id=283 data-nosnippet>283</a>			<a href="#171">PathToCheck</a>,
+<a href=#284 id=284 data-nosnippet>284</a>			<span class="kw-2">&amp;</span>[<span class="string">"Dependency"</span>, <span class="string">"Microsoft"</span>, <span class="string">"Dependency"</span>, <span class="string">"Editor"</span>, <span class="string">"product.json"</span>],
+<a href=#285 id=285 data-nosnippet>285</a>		) {
+<a href=#286 id=286 data-nosnippet>286</a>		<span class="kw">return </span><span class="bool-val">true</span>;
+<a href=#287 id=287 data-nosnippet>287</a>	}
+<a href=#288 id=288 data-nosnippet>288</a>
+<a href=#289 id=289 data-nosnippet>289</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(TempDir) = std::env::<a href="https://doc.rust-lang.org/nightly/std/env/fn.var.html">var</a>(<span class="string">"TMPDIR"</span>) {
+<a href=#290 id=290 data-nosnippet>290</a>		<span class="kw">let </span>TempPath = <a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>::<a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from">from</a>(<span class="kw-2">&amp;</span><a href="#289">TempDir</a>);
+<a href=#291 id=291 data-nosnippet>291</a>
+<a href=#292 id=292 data-nosnippet>292</a>		<span class="kw">if </span>!<a href="#290">TempPath</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.as_os_str">as_os_str</a>().<a href="https://doc.rust-lang.org/nightly/std/ffi/os_str/struct.OsStr.html#method.is_empty">is_empty</a>() &amp;&amp; (<a href="#175">Candidate</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.starts_with">starts_with</a>(<span class="kw-2">&amp;</span><a href="#290">TempPath</a>) || <a href="#171">PathToCheck</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.starts_with">starts_with</a>(<span class="kw-2">&amp;</span><a href="#290">TempPath</a>))
+<a href=#293 id=293 data-nosnippet>293</a>		{
+<a href=#294 id=294 data-nosnippet>294</a>			<span class="kw">return </span><span class="bool-val">true</span>;
+<a href=#295 id=295 data-nosnippet>295</a>		}
+<a href=#296 id=296 data-nosnippet>296</a>	}
+<a href=#297 id=297 data-nosnippet>297</a>
+<a href=#298 id=298 data-nosnippet>298</a>	<span class="comment">// Platform-conventional scratch roots that don't show up in `TMPDIR`
+<a href=#299 id=299 data-nosnippet>299</a>	// on macOS/Linux. Language servers (ruby-lsp, solargraph, jdtls,
+<a href=#300 id=300 data-nosnippet>300</a>	// pyright, …) write port-handoff / reporter / socket files under
+<a href=#301 id=301 data-nosnippet>301</a>	// `/tmp/&lt;tool&gt;/` as a matter of course. `/var/folders/.../T/` IS
+<a href=#302 id=302 data-nosnippet>302</a>	// covered by `TMPDIR` on macOS, but `/tmp` and `/private/tmp` are
+<a href=#303 id=303 data-nosnippet>303</a>	// the ones extensions actually target. Guarding these under the
+<a href=#304 id=304 data-nosnippet>304</a>	// system-trust tier is safe: extensions run inside Cocoon's Node
+<a href=#305 id=305 data-nosnippet>305</a>	// host, which already has unconstrained process-level filesystem
+<a href=#306 id=306 data-nosnippet>306</a>	// access - the sandbox only gates IPC round-trips through Mountain,
+<a href=#307 id=307 data-nosnippet>307</a>	// not the extension's own `fs.writeFileSync`.
+<a href=#308 id=308 data-nosnippet>308</a>	</span><span class="kw">for </span>Root <span class="kw">in </span>[<span class="string">"/tmp"</span>, <span class="string">"/private/tmp"</span>, <span class="string">"/var/tmp"</span>] {
+<a href=#309 id=309 data-nosnippet>309</a>		<span class="kw">let </span>RootPath = PathBuf::from(Root);
+<a href=#310 id=310 data-nosnippet>310</a>
+<a href=#311 id=311 data-nosnippet>311</a>		<span class="kw">if </span>Candidate.starts_with(<span class="kw-2">&amp;</span>RootPath) || PathToCheck.starts_with(<span class="kw-2">&amp;</span>RootPath) {
+<a href=#312 id=312 data-nosnippet>312</a>			<span class="kw">return </span><span class="bool-val">true</span>;
+<a href=#313 id=313 data-nosnippet>313</a>		}
+<a href=#314 id=314 data-nosnippet>314</a>	}
+<a href=#315 id=315 data-nosnippet>315</a>
+<a href=#316 id=316 data-nosnippet>316</a>	<span class="comment">// Third-party tool state directories extensions commonly probe.
+<a href=#317 id=317 data-nosnippet>317</a>	// GitLens stats `~/.gitkraken/workspaces/workspaces.json` to offer a
+<a href=#318 id=318 data-nosnippet>318</a>	// "Open in GitKraken" menu; copilot-chat stats `~/.copilot/` for
+<a href=#319 id=319 data-nosnippet>319</a>	// cached completions. These live outside Land's namespace but are
+<a href=#320 id=320 data-nosnippet>320</a>	// not user-content either - they're application state from another
+<a href=#321 id=321 data-nosnippet>321</a>	// tool, safe to read/stat.
+<a href=#322 id=322 data-nosnippet>322</a>	</span><span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Home) = std::env::<a href="https://doc.rust-lang.org/nightly/std/env/fn.var.html">var</a>(<span class="string">"HOME"</span>) {
+<a href=#323 id=323 data-nosnippet>323</a>		<span class="kw">for </span>Suffix <span class="kw">in </span>[<span class="string">".gitkraken"</span>, <span class="string">".gk"</span>, <span class="string">".copilot"</span>, <span class="string">".config/git"</span>] {
+<a href=#324 id=324 data-nosnippet>324</a>			<span class="kw">let </span>ToolRoot = PathBuf::from(<span class="kw-2">&amp;</span>Home).join(Suffix);
+<a href=#325 id=325 data-nosnippet>325</a>
+<a href=#326 id=326 data-nosnippet>326</a>			<span class="kw">if </span>Candidate.starts_with(<span class="kw-2">&amp;</span>ToolRoot) || PathToCheck.starts_with(<span class="kw-2">&amp;</span>ToolRoot) {
+<a href=#327 id=327 data-nosnippet>327</a>				<span class="kw">return </span><span class="bool-val">true</span>;
+<a href=#328 id=328 data-nosnippet>328</a>			}
+<a href=#329 id=329 data-nosnippet>329</a>		}
+<a href=#330 id=330 data-nosnippet>330</a>	}
+<a href=#331 id=331 data-nosnippet>331</a>
+<a href=#332 id=332 data-nosnippet>332</a>	<span class="comment">// Read-only POSIX OS-info files. Many extensions (csharp, ruby-lsp,
+<a href=#333 id=333 data-nosnippet>333</a>	// rust-analyzer, debug adapters, telemetry SDKs) probe these to
+<a href=#334 id=334 data-nosnippet>334</a>	// branch on distro / kernel for spawning the correct binary. They
+<a href=#335 id=335 data-nosnippet>335</a>	// are world-readable system files - the workspace-folder check
+<a href=#336 id=336 data-nosnippet>336</a>	// rejects them as "outside workspace" but there's no plausible
+<a href=#337 id=337 data-nosnippet>337</a>	// abuse vector. Match by full equality to keep the carve-out tight.
+<a href=#338 id=338 data-nosnippet>338</a>	</span><span class="kw">for </span>SystemFile <span class="kw">in </span>[
+<a href=#339 id=339 data-nosnippet>339</a>		<span class="string">"/etc/os-release"</span>,
+<a href=#340 id=340 data-nosnippet>340</a>		<span class="string">"/etc/lsb-release"</span>,
+<a href=#341 id=341 data-nosnippet>341</a>		<span class="string">"/etc/system-release"</span>,
+<a href=#342 id=342 data-nosnippet>342</a>		<span class="string">"/etc/redhat-release"</span>,
+<a href=#343 id=343 data-nosnippet>343</a>		<span class="string">"/etc/SuSE-release"</span>,
+<a href=#344 id=344 data-nosnippet>344</a>		<span class="string">"/etc/debian_version"</span>,
+<a href=#345 id=345 data-nosnippet>345</a>		<span class="string">"/etc/alpine-release"</span>,
+<a href=#346 id=346 data-nosnippet>346</a>		<span class="string">"/etc/machine-id"</span>,
+<a href=#347 id=347 data-nosnippet>347</a>		<span class="string">"/etc/timezone"</span>,
+<a href=#348 id=348 data-nosnippet>348</a>		<span class="string">"/etc/localtime"</span>,
+<a href=#349 id=349 data-nosnippet>349</a>		<span class="string">"/proc/version"</span>,
+<a href=#350 id=350 data-nosnippet>350</a>		<span class="string">"/proc/cpuinfo"</span>,
+<a href=#351 id=351 data-nosnippet>351</a>		<span class="string">"/proc/meminfo"</span>,
+<a href=#352 id=352 data-nosnippet>352</a>		<span class="string">"/proc/self/status"</span>,
+<a href=#353 id=353 data-nosnippet>353</a>		<span class="string">"/proc/self/cgroup"</span>,
+<a href=#354 id=354 data-nosnippet>354</a>	] {
+<a href=#355 id=355 data-nosnippet>355</a>		<span class="kw">let </span>SysPath = PathBuf::from(SystemFile);
+<a href=#356 id=356 data-nosnippet>356</a>
+<a href=#357 id=357 data-nosnippet>357</a>		<span class="kw">if </span>Candidate == SysPath || PathToCheck == SysPath {
+<a href=#358 id=358 data-nosnippet>358</a>			<span class="kw">return </span><span class="bool-val">true</span>;
+<a href=#359 id=359 data-nosnippet>359</a>		}
+<a href=#360 id=360 data-nosnippet>360</a>	}
+<a href=#361 id=361 data-nosnippet>361</a>
+<a href=#362 id=362 data-nosnippet>362</a>	<span class="bool-val">false
+<a href=#363 id=363 data-nosnippet>363</a></span>}
+<a href=#364 id=364 data-nosnippet>364</a>
+<a href=#365 id=365 data-nosnippet>365</a><span class="doccomment">/// True when `path` contains a directory segment whose name starts with
+<a href=#366 id=366 data-nosnippet>366</a>/// `land.editor.`. Used to tighten the Application-Support / XDG checks so
+<a href=#367 id=367 data-nosnippet>367</a>/// we only trust directories that Land itself provisioned, not every file
+<a href=#368 id=368 data-nosnippet>368</a>/// under `$HOME/Library/Application Support`.
+<a href=#369 id=369 data-nosnippet>369</a></span><span class="kw">fn </span><a href="../../../../Mountain/Environment/Utility/PathSecurity/fn.ContainsLandEditorSegment.html">ContainsLandEditorSegment</a>(path:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html">Path</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
+<a href=#370 id=370 data-nosnippet>370</a>	<a href="#369">path</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.components">components</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.any">any</a>(|Component| {
+<a href=#371 id=371 data-nosnippet>371</a>		<a href="#370">Component</a>
+<a href=#372 id=372 data-nosnippet>372</a>			.<a href="https://doc.rust-lang.org/nightly/std/path/enum.Component.html#method.as_os_str">as_os_str</a>()
+<a href=#373 id=373 data-nosnippet>373</a>			.<a href="https://doc.rust-lang.org/nightly/std/ffi/os_str/struct.OsStr.html#method.to_str">to_str</a>()
+<a href=#374 id=374 data-nosnippet>374</a>			.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|Name| <a href="#374">Name</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.starts_with">starts_with</a>(<span class="string">"land.editor."</span>))
+<a href=#375 id=375 data-nosnippet>375</a>			.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or">unwrap_or</a>(<span class="bool-val">false</span>)
+<a href=#376 id=376 data-nosnippet>376</a>	})
+<a href=#377 id=377 data-nosnippet>377</a>}
+<a href=#378 id=378 data-nosnippet>378</a>
+<a href=#379 id=379 data-nosnippet>379</a><span class="doccomment">/// True when every element of `segments` appears in order as consecutive
+<a href=#380 id=380 data-nosnippet>380</a>/// path components of `path`. Used to match Sky / Dependency extension
+<a href=#381 id=381 data-nosnippet>381</a>/// roots regardless of which relative-path prefix the scanner used.
+<a href=#382 id=382 data-nosnippet>382</a></span><span class="kw">fn </span><a href="../../../../Mountain/Environment/Utility/PathSecurity/fn.ContainsPathSegments.html">ContainsPathSegments</a>(path:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html">Path</a>, segments:<span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>]) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
+<a href=#383 id=383 data-nosnippet>383</a>	<span class="kw">let </span>Names:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt; = <a href="#382">path</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.components">components</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.filter_map">filter_map</a>(|C| <a href="#383">C</a>.<a href="https://doc.rust-lang.org/nightly/std/path/enum.Component.html#method.as_os_str">as_os_str</a>().<a href="https://doc.rust-lang.org/nightly/std/ffi/os_str/struct.OsStr.html#method.to_str">to_str</a>()).<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.collect">collect</a>();
+<a href=#384 id=384 data-nosnippet>384</a>
+<a href=#385 id=385 data-nosnippet>385</a>	<span class="kw">if </span><a href="#382">segments</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.is_empty">is_empty</a>() || <a href="#383">Names</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.len">len</a>() &lt; <a href="#382">segments</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.len">len</a>() {
+<a href=#386 id=386 data-nosnippet>386</a>		<span class="kw">return </span><span class="bool-val">false</span>;
+<a href=#387 id=387 data-nosnippet>387</a>	}
+<a href=#388 id=388 data-nosnippet>388</a>
+<a href=#389 id=389 data-nosnippet>389</a>	<a href="#383">Names</a>
+<a href=#390 id=390 data-nosnippet>390</a>		.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.windows">windows</a>(<a href="#382">segments</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.len">len</a>())
+<a href=#391 id=391 data-nosnippet>391</a>		.<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.any">any</a>(|Window| <a href="#391">Window</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.iter">iter</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.zip">zip</a>(<a href="#382">segments</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.iter">iter</a>()).<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.all">all</a>(|(A, B)| <a href="#391">A</a> == <a href="#391">B</a>))
+<a href=#392 id=392 data-nosnippet>392</a>}
+</code></pre></div></section></main></body></html>

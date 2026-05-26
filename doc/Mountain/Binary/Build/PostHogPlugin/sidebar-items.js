@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["CaptureAllowed","CaptureError","CaptureEvent","CaptureHandler","CaptureIPC","Client","Constants","DistinctId","HydrateRuntimeEnvironment","Initialize"]};

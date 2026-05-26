@@ -1,0 +1,39 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="TLS certificate lifecycle management (generation, renewal, trust store)."><title>Mountain::Binary::Build::CertificateManager - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../../../../" data-static-root-path="../../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.97.0-nightly (d3cd04068 2026-05-16)" data-channel="nightly" data-search-js="search-fd9372ac.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../../static.files/storage-41dd4d93.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../../static.files/main-fcd733ba.js"></script><noscript><link rel="stylesheet" href="../../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module CertificateManager</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Certificate<wbr>Manager</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#tls-certificate-management-module" title="TLS Certificate Management Module">TLS Certificate Management Module</a><ul><li><a href="#certificate-hierarchy" title="Certificate Hierarchy">Certificate Hierarchy</a></li><li><a href="#trust-model" title="Trust Model">Trust Model</a></li><li><a href="#usage-example" title="Usage Example">Usage Example</a></li><li><a href="#security-considerations" title="Security Considerations">Security Considerations</a></li></ul></li></ul><h3><a href="#structs">Module Items</a></h3><ul class="block"><li><a href="#structs" title="Structs">Structs</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Binary::<wbr>Build</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../../index.html">Mountain</a>::<wbr><a href="../../index.html">Binary</a>::<wbr><a href="../index.html">Build</a></div><h1>Module <span>Certificate<wbr>Manager</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../../src/Mountain/Binary/Build/CertificateManager.rs.html#1-814">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>TLS certificate lifecycle management (generation, renewal, trust store).</p>
+<h2 id="tls-certificate-management-module"><a class="doc-anchor" href="#tls-certificate-management-module">§</a>TLS Certificate Management Module</h2>
+<p>This module provides a comprehensive certificate management system for HTTPS
+services. It manages a root CA certificate and generates server certificates
+signed by the CA.</p>
+<h3 id="certificate-hierarchy"><a class="doc-anchor" href="#certificate-hierarchy">§</a>Certificate Hierarchy</h3><div class="example-wrap"><pre class="language-text"><code>Root CA (stored in keyring)
+  └── Server Certificates (cached, per hostname)
+       ├── code.land.playform.cloud
+       ├── api.land.playform.cloud
+       └── ...other services</code></pre></div><h3 id="trust-model"><a class="doc-anchor" href="#trust-model">§</a>Trust Model</h3>
+<ul>
+<li>The webview must trust the CA certificate to validate server certificates</li>
+<li>CA certificate is stored in OS keyring for persistence</li>
+<li>Server certificates are automatically generated and renewed</li>
+</ul>
+<h3 id="usage-example"><a class="doc-anchor" href="#usage-example">§</a>Usage Example</h3>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>Binary::Build::CertificateManager::{CertificateInfo, CertificateManager};
+
+<span class="kw">async fn </span>setup_tls() -&gt; anyhow::Result&lt;()&gt; {
+	<span class="kw">let </span><span class="kw-2">mut </span>cert_manager = CertificateManager::new(<span class="string">"myapp"</span>).<span class="kw">await</span><span class="question-mark">?</span>;
+
+	<span class="comment">// Initialize or load CA certificate
+	</span>cert_manager.initialize_ca().<span class="kw">await</span><span class="question-mark">?</span>;
+
+	<span class="comment">// Get server configuration for a service
+	</span><span class="kw">let </span>server_config = cert_manager.get_server_cert(<span class="string">"code.land.playform.cloud"</span>).<span class="kw">await</span><span class="question-mark">?</span>;
+
+	<span class="comment">// Get CA certificate PEM for webview installation
+	</span><span class="kw">let </span>ca_cert = cert_manager.get_ca_cert_pem().unwrap();
+
+	<span class="prelude-val">Ok</span>(())
+}</code></pre></div><h3 id="security-considerations"><a class="doc-anchor" href="#security-considerations">§</a>Security Considerations</h3>
+<ul>
+<li>All certificates use ECDSA P-256 curve (matching DNSSEC algorithm)</li>
+<li>CA private key is stored securely in OS keyring</li>
+<li>Private keys are never logged or exposed</li>
+<li>Certificates have automatic renewal before expiry</li>
+</ul>
+</div></details><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.CertValidityResult.html" title="struct Mountain::Binary::Build::CertificateManager::CertValidityResult">Cert<wbr>Validity<wbr>Result</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Certificate validity check result</dd><dt><a class="struct" href="struct.CertificateInfo.html" title="struct Mountain::Binary::Build::CertificateManager::CertificateInfo">Certificate<wbr>Info</a></dt><dd>Certificate information for display and validation</dd><dt><a class="struct" href="struct.CertificateManager.html" title="struct Mountain::Binary::Build::CertificateManager::CertificateManager">Certificate<wbr>Manager</a></dt><dd>Main certificate manager for TLS infrastructure</dd><dt><a class="struct" href="struct.ServerCertData.html" title="struct Mountain::Binary::Build::CertificateManager::ServerCertData">Server<wbr>Cert<wbr>Data</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Server certificate data including PEM formats and rustls configuration</dd></dl></section></div></main></body></html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Tag-filtered development logging (Trace env var). Must be declared before WindServiceHandlers so the dev_log! macro is available."><title>Mountain::IPC::DevLog - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.97.0-nightly (d3cd04068 2026-05-16)" data-channel="nightly" data-search-js="search-fd9372ac.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-41dd4d93.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-fcd733ba.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module DevLog</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module DevLog</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#devlog---tag-filtered-development-logging" title="DevLog - Tag-filtered development logging">DevLog - Tag-filtered development logging</a></li></ul><h3><a href="#modules">Module Items</a></h3><ul class="block"><li><a href="#modules" title="Modules">Modules</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>IPC</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">IPC</a></div><h1>Module <span>DevLog</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/IPC/DevLog/mod.rs.html#1-133">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Tag-filtered development logging (Trace env var).
+Must be declared before WindServiceHandlers so the dev_log! macro is
+available.</p>
+<h2 id="devlog---tag-filtered-development-logging"><a class="doc-anchor" href="#devlog---tag-filtered-development-logging">§</a>DevLog - Tag-filtered development logging</h2>
+<p>Tag-gated logging used across Mountain. Controlled by the
+<code>Trace</code> env var: <code>Trace=vfs,ipc</code> for selective tags,
+<code>Trace=all</code> for everything, <code>Trace=short</code> for the
+everything-but-firehose preset (path aliasing + dedupe).
+Mirror to a session log file when <code>Record=1</code> (or when
+<code>Trace</code> is set in a debug build).</p>
+<p>Layout: every public Fn/Struct lives in its own sibling
+file. The two macros (<code>dev_log!</code>, <code>otel_span!</code>) live here
+so <code>#[macro_export]</code> puts them at the crate root and the
+callsite spelling stays <code>dev_log!("ipc", "…")</code>.</p>
+</div></details><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="AliasPath/index.html" title="mod Mountain::IPC::DevLog::AliasPath">Alias<wbr>Path</a></dt><dd>Replace the long Tauri app-data prefix with <code>$APP</code> so
+<code>Trace=short</code> lines stay readable.</dd><dt><a class="mod" href="AppDataPrefix/index.html" title="mod Mountain::IPC::DevLog::AppDataPrefix">AppData<wbr>Prefix</a></dt><dd>Resolve the Tauri app-data prefix for THIS profile so logs
+and aliasing pick the right <code>~/Library/Application Support/ land.editor.*.mountain</code> directory. The detection walks the
+Application Support tree, prefers a strict suffix match
+against the binary signature, falls back to the first
+<code>*.mountain</code> candidate so a mismatch still produces a
+usable path.</dd><dt><a class="mod" href="DebugOnce/index.html" title="mod Mountain::IPC::DevLog::DebugOnce">Debug<wbr>Once</a></dt><dd>Emit a tagged dev-log line exactly once per process, keyed
+on <code>Key</code>. Subsequent calls with the same key are dropped
+from the console; the file sink still records the first
+occurrence so post-mortems show every probe path that
+fired.</dd><dt><a class="mod" href="DedupState/index.html" title="mod Mountain::IPC::DevLog::DedupState">Dedup<wbr>State</a></dt><dd>Consecutive-duplicate suppression buffer used by the
+<code>dev_log!</code> macro under <code>Trace=short</code>. Holds the last logged
+key + a repeat count; the macro flushes a <code>(xN)</code> tail when
+the key changes.</dd><dt><a class="mod" href="EmitOTLPSpan/index.html" title="mod Mountain::IPC::DevLog::EmitOTLPSpan">EmitOTLP<wbr>Span</a></dt><dd>Fire-and-forget OTLP span exporter. Sends a single
+<code>resourceSpans</code> payload over plain HTTP to the collector at
+<code>Pipe</code> (default <code>127.0.0.1:4318</code>, configurable via
+<code>.env.Land.PostHog</code>). Stops trying after the first failure
+(<code>OTLP_AVAILABLE</code> flips to <code>false</code>) so a missing collector
+doesn’t tax every IPC call. Release builds are compiled out
+via <code>cfg!(debug_assertions)</code>. Honors the <code>Capture</code> master
+telemetry kill switch and the per-pipe <code>Emit</code> toggle.</dd><dt><a class="mod" href="FlushDedup/index.html" title="mod Mountain::IPC::DevLog::FlushDedup">Flush<wbr>Dedup</a></dt><dd>Flush the consecutive-duplicate buffer - emits a <code>(xN)</code> tail
+line if the pending count is greater than 1, then clears.</dd><dt><a class="mod" href="InitEager/index.html" title="mod Mountain::IPC::DevLog::InitEager">Init<wbr>Eager</a></dt><dd>Force the file sink to initialise before the first
+<code>dev_log!</code> so a panic on the boot path still produces a
+header line + opt-in path. Harmless to call multiple times.</dd><dt><a class="mod" href="IsBenignEnoent/index.html" title="mod Mountain::IPC::DevLog::IsBenignEnoent">IsBenign<wbr>Enoent</a></dt><dd>Recognise known-optional probe paths so <code>stat ENOENT</code>
+lines for them downgrade to debug-once instead of full
+error noise. The list is the union of:</dd><dt><a class="mod" href="IsEnabled/index.html" title="mod Mountain::IPC::DevLog::IsEnabled">IsEnabled</a></dt><dd>Tag-resolution helper. Reads <code>Trace</code> once into a static
+list, then matches against four rules per call:</dd><dt><a class="mod" href="IsShort/index.html" title="mod Mountain::IPC::DevLog::IsShort">IsShort</a></dt><dd><code>true</code> when <code>Trace=short</code> is set - enables path aliasing
+and consecutive-duplicate compression in <code>dev_log!</code>.</dd><dt><a class="mod" href="NowNano/index.html" title="mod Mountain::IPC::DevLog::NowNano">NowNano</a></dt><dd>Wall-clock nanoseconds since UNIX epoch. Used as the start
+tick for OTLP spans and per-IPC latency measurements.</dd><dt><a class="mod" href="SessionTimestamp/index.html" title="mod Mountain::IPC::DevLog::SessionTimestamp">Session<wbr>Timestamp</a></dt><dd>Local-time session timestamp (<code>%Y%m%dT%H%M%S</code>) cached once
+per process. Must agree with
+<code>WindServiceHandlers::nativeHost:getEnvironmentPaths</code> so the
+Mountain dev log and VS Code’s <code>window&lt;N&gt;/output_*</code> log
+land in the same session directory.</dd><dt><a class="mod" href="WriteToFile/index.html" title="mod Mountain::IPC::DevLog::WriteToFile">Write<wbr>ToFile</a></dt><dd>Append a single formatted line to the session’s
+<code>Mountain.dev.log</code>. The file sink is lazy: opens on first
+call, no-ops if <code>Record=0</code> or the directory cannot be
+created. Flushes per line so <code>tail -f</code> shows live output.</dd></dl></section></div></main></body></html>

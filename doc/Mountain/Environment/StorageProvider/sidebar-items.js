@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["GetGlobalDebouncer","GetWorkspaceDebouncer","SaveStorageToDisk"],"static":["GLOBAL_DEBOUNCER","WORKSPACE_DEBOUNCER"],"struct":["StorageWriteDebouncer"]};

@@ -1,0 +1,33 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="`IPCProvider`: routes IPC messages between the frontend and backend."><title>DevelopmentNodeEnvironment_MicrosoftVSCodeDependency_22NodeVersion_Bundle_Clean_Debug_ElectronProfile_EsbuildCompiler_Mountain::Environment::IPCProvider - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="DevelopmentNodeEnvironment_MicrosoftVSCodeDependency_22NodeVersion_Bundle_Clean_Debug_ElectronProfile_EsbuildCompiler_Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.97.0-nightly (d3cd04068 2026-05-16)" data-channel="nightly" data-search-js="search-fd9372ac.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-41dd4d93.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-fcd733ba.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module IPCProvider</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../DevelopmentNodeEnvironment_MicrosoftVSCodeDependency_22NodeVersion_Bundle_Clean_Debug_ElectronProfile_EsbuildCompiler_Mountain/index.html">Development<wbr>Node<wbr>Environment_<wbr>MicrosoftVS<wbr>Code<wbr>Dependency_<wbr>22Node<wbr>Version_<wbr>Bundle_<wbr>Clean_<wbr>Debug_<wbr>Electron<wbr>Profile_<wbr>Esbuild<wbr>Compiler_<wbr>Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module IPCProvider</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#ipcprovider-environment" title="IPCProvider (Environment)">IPCProvider (Environment)</a><ul><li><a href="#communication-patterns" title="Communication patterns">Communication patterns</a></li><li><a href="#vs-code-reference" title="VS Code reference">VS Code reference</a></li><li><a href="#planned-work" title="Planned Work">Planned Work</a></li></ul></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Development<wbr>Node<wbr>Environment_<wbr>MicrosoftVS<wbr>Code<wbr>Dependency_<wbr>22Node<wbr>Version_<wbr>Bundle_<wbr>Clean_<wbr>Debug_<wbr>Electron<wbr>Profile_<wbr>Esbuild<wbr>Compiler_<wbr>Mountain::<wbr>Environment</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">DevelopmentNodeEnvironment_MicrosoftVSCodeDependency_22NodeVersion_Bundle_Clean_Debug_ElectronProfile_EsbuildCompiler_Mountain</a>::<wbr><a href="../index.html">Environment</a></div><h1>Module <span>IPCProvider</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/DevelopmentNodeEnvironment_MicrosoftVSCodeDependency_22NodeVersion_Bundle_Clean_Debug_ElectronProfile_EsbuildCompiler_Mountain/Environment/IPCProvider.rs.html#1-79">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p><code>IPCProvider</code>: routes IPC messages between the frontend and backend.</p>
+<h2 id="ipcprovider-environment"><a class="doc-anchor" href="#ipcprovider-environment">§</a>IPCProvider (Environment)</h2>
+<p>Implements <a href="CommonLibrary::IPC::IPCProvider"><code>IPCProvider</code></a> for
+<code>MountainEnvironment</code>. Serves as the IPC bridge between Mountain and
+extension sidecar processes (Cocoon), delegating all transport to the
+Vine gRPC client with JSON-RPC 2.0 over the wire.</p>
+<h3 id="communication-patterns"><a class="doc-anchor" href="#communication-patterns">§</a>Communication patterns</h3>
+<ul>
+<li><strong>Request/response</strong> (<code>SendRequestToSideCar</code>) - synchronous RPC with
+caller-specified timeout; used for config resolution, URI lookup, and
+content retrieval.</li>
+<li><strong>Notification</strong> (<code>SendNotificationToSideCar</code>) - fire-and-forget; used for
+document changes, diagnostics, and UI events. Returns <code>Result&lt;(), CommonError&gt;</code> indicating send success only.</li>
+</ul>
+<h3 id="vs-code-reference"><a class="doc-anchor" href="#vs-code-reference">§</a>VS Code reference</h3>
+<ul>
+<li><code>vs/workbench/services/extensions/common/extensionHostProtocol.ts</code></li>
+<li><code>vs/base/parts/ipc/common/ipc.net.ts</code></li>
+<li><code>vs/workbench/services/extensions/common/rpcProtocol.ts</code></li>
+</ul>
+<h3 id="planned-work"><a class="doc-anchor" href="#planned-work">§</a>Planned Work</h3>
+<ul>
+<li>Message queuing for offline scenarios</li>
+<li>Bidirectional request handling (sidecar → main)</li>
+<li>Streaming support</li>
+<li>Request cancellation</li>
+<li>Priority queue and batch operations</li>
+<li>Request deduplication</li>
+<li>Connection health checking</li>
+<li>Unix domain socket support</li>
+<li>Latency/success-rate telemetry</li>
+</ul>
+</div></details></section></div></main></body></html>

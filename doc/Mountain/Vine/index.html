@@ -1,0 +1,81 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="gRPC server and client for Cocoon extension host communication."><title>Mountain::Vine - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.97.0-nightly (d3cd04068 2026-05-16)" data-channel="nightly" data-search-js="search-fd9372ac.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../static.files/storage-41dd4d93.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../static.files/main-fcd733ba.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module Vine</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Vine</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#vine-grpc-module" title="Vine gRPC Module">Vine gRPC Module</a><ul><li><a href="#architecture-overview" title="Architecture Overview">Architecture Overview</a></li><li><a href="#communication-protocol" title="Communication Protocol">Communication Protocol</a></li><li><a href="#data-flow" title="Data Flow">Data Flow</a></li><li><a href="#key-features" title="Key Features">Key Features</a></li><li><a href="#message-validation" title="Message Validation">Message Validation</a></li><li><a href="#modules" title="Modules">Modules</a></li></ul></li></ul><h3><a href="#modules-1">Module Items</a></h3><ul class="block"><li><a href="#modules-1" title="Modules">Modules</a></li></ul></section><div id="rustdoc-modnav"><h2 class="in-crate"><a href="../index.html">In crate Mountain</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../index.html">Mountain</a></div><h1>Module <span>Vine</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../src/Mountain/Vine/mod.rs.html#1-94">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>gRPC server and client for Cocoon extension host communication.</p>
+<h2 id="vine-grpc-module"><a class="doc-anchor" href="#vine-grpc-module">§</a>Vine gRPC Module</h2>
+<p>This module encapsulates all logic related to the gRPC-based
+Inter-Process Communication (IPC) system, codenamed “Vine”.</p>
+<h3 id="architecture-overview"><a class="doc-anchor" href="#architecture-overview">§</a>Architecture Overview</h3>
+<p>Vine implements a bidirectional gRPC communication protocol between:</p>
+<ul>
+<li><strong>Mountain</strong>: The main VS Code extension host process</li>
+<li><strong>Cocoon</strong>: The sidecar process handling web-based operations</li>
+</ul>
+<p>The system uses two complementary gRPC services:</p>
+<h4 id="mountainservice-cocoon--mountain"><a class="doc-anchor" href="#mountainservice-cocoon--mountain">§</a>MountainService (Cocoon → Mountain)</h4>
+<ul>
+<li><strong>ProcessCocoonRequest</strong>: Request-response pattern for Cocoon to query
+Mountain</li>
+<li><strong>SendCocoonNotification</strong>: Fire-and-forget notifications from Cocoon to
+Mountain</li>
+<li><strong>CancelOperation</strong>: Request cancellation of long-running operations</li>
+</ul>
+<h4 id="cocoonservice-mountain--cocoon"><a class="doc-anchor" href="#cocoonservice-mountain--cocoon">§</a>CocoonService (Mountain → Cocoon)</h4>
+<ul>
+<li><strong>ProcessMountainRequest</strong>: Request-response pattern for Mountain to query
+Cocoon</li>
+<li><strong>SendMountainNotification</strong>: Fire-and-forget notifications from Mountain
+to Cocoon</li>
+<li><strong>CancelOperation</strong>: Request cancellation of long-running operations</li>
+</ul>
+<h3 id="communication-protocol"><a class="doc-anchor" href="#communication-protocol">§</a>Communication Protocol</h3>
+<p>All RPC messages use Protocol Buffers for serialization:</p>
+<ul>
+<li><strong>GenericRequest</strong>: Contains request ID, method name, and JSON parameters</li>
+<li><strong>GenericResponse</strong>: Contains request ID, JSON result, or optional error</li>
+<li><strong>GenericNotification</strong>: Fire-and-forget message with method name and JSON
+parameters</li>
+<li><strong>RpcError</strong>: JSON-RPC compliant error structure with code, message, and
+optional data</li>
+</ul>
+<h3 id="data-flow"><a class="doc-anchor" href="#data-flow">§</a>Data Flow</h3><div class="example-wrap"><pre class="language-text"><code>Cocoon (Sidecar)          Mountain (Extension Host)
+      │                            │
+      ├──────────────────────────►│ ProcessCocoonRequest
+      │  Extension/Query           │ (returns GenericResponse)
+      │                            │
+      ├──────────────────────────►│ SendCocoonNotification
+      │  Status Updates            │ (returns Empty)
+      │                            │
+      │◄───────────────────────────┤ ProcessMountainRequest
+      │  Webview Operations         │ (returns GenericResponse)
+      │                            │
+      │◄───────────────────────────┤ SendMountainNotification
+      │  Configuration Changes      │ (returns Empty)
+      │                            │
+      ◄═════════════════════════════╡ CancelOperation
+                             Cancels either process</code></pre></div><h3 id="key-features"><a class="doc-anchor" href="#key-features">§</a>Key Features</h3>
+<ul>
+<li><strong>Thread-Safe Client</strong>: Connection pool with Arc&lt;Mutex&lt;&gt;&gt; for concurrent
+access</li>
+<li><strong>Request Timeout</strong>: Configurable timeout per RPC call</li>
+<li><strong>Error Handling</strong>: Comprehensive error types with gRPC status conversion</li>
+<li><strong>Graceful Degradation</strong>: System continues when Cocoon is unavailable</li>
+<li><strong>Health Checks</strong>: Connection validation before RPC calls</li>
+<li><strong>Retry Logic</strong>: Automatic reconnection attempts for transient failures</li>
+</ul>
+<h3 id="message-validation"><a class="doc-anchor" href="#message-validation">§</a>Message Validation</h3>
+<ul>
+<li>Maximum message size: 4MB (default tonic limit)</li>
+<li>JSON serialization validation on all parameters</li>
+<li>Request ID tracking for operation correlation</li>
+<li>Method whitelisting for security</li>
+</ul>
+<h3 id="modules"><a class="doc-anchor" href="#modules">§</a>Modules</h3>
+<ul>
+<li>[<code>self::Client</code>]: gRPC client for connecting to Cocoon services</li>
+<li><a href="../Error/index.html" title="mod Mountain::Error"><code>self::Error</code></a>: Comprehensive error types for Vine operations</li>
+<li>[<code>self::Generated</code>]: Auto-generated protobuf code from Vine.proto</li>
+<li>[<code>self::Server</code>]: gRPC server implementations for Mountain services</li>
+</ul>
+</div></details><h2 id="modules-1" class="section-header">Modules<a href="#modules-1" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="Client/index.html" title="mod Mountain::Vine::Client">Client</a></dt><dd>Vine client - thread-safe gRPC client for a Cocoon sidecar process.
+Pool of <code>CocoonClient</code> connections keyed by identifier, automatic
+reconnect with exponential back-off, per-connection health metadata,
+per-call timeouts, message-size validation, and a broadcast fan-out
+of every observed notification.</dd><dt><a class="mod" href="Error/index.html" title="mod Mountain::Vine::Error">Error</a></dt><dd>VineError</dd><dt><a class="mod" href="Generated/index.html" title="mod Mountain::Vine::Generated">Generated</a></dt><dd>Vine Generated Code</dd><dt><a class="mod" href="Multiplexer/index.html" title="mod Mountain::Vine::Multiplexer">Multiplexer</a></dt><dd>Bidirectional streaming multiplexer for the Vine gRPC bus.</dd><dt><a class="mod" href="Server/index.html" title="mod Mountain::Vine::Server">Server</a></dt><dd>Vine gRPC Server Module</dd></dl></section></div></main></body></html>

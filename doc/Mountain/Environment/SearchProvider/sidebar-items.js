@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":["ColumnRange","FileMatch","PerFileSink","TextMatch","TextSearchQuery"]};

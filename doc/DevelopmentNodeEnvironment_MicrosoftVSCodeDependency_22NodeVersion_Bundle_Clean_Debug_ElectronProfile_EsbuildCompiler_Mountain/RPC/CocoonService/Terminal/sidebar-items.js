@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["AcceptTerminalClosed","AcceptTerminalOpened","AcceptTerminalProcessData","AcceptTerminalProcessId","CloseTerminal","OpenTerminal","ResizeTerminal","TerminalInput"]};

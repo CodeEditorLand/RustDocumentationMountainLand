@@ -1,0 +1,41 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Keybinding (Tauri command surface)"><title>Mountain::Command::Keybinding - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.97.0-nightly (d3cd04068 2026-05-16)" data-channel="nightly" data-search-js="search-fd9372ac.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-41dd4d93.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-fcd733ba.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module Keybinding</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Keybinding</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#keybinding-tauri-command-surface" title="Keybinding (Tauri command surface)">Keybinding (Tauri command surface)</a><ul><li><a href="#planned-work" title="Planned Work">Planned Work</a></li></ul></li></ul><h3><a href="#modules">Module Items</a></h3><ul class="block"><li><a href="#modules" title="Modules">Modules</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Command</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Command</a></div><h1>Module <span>Keybinding</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Command/Keybinding.rs.html#1-40">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="keybinding-tauri-command-surface"><a class="doc-anchor" href="#keybinding-tauri-command-surface">§</a>Keybinding (Tauri command surface)</h2>
+<p>Bridges keyboard-shortcut UI requests from Sky into the
+<code>KeybindingProvider</code> registry. Five wire-bound commands, each in its
+own file (file name = Tauri command identifier per the
+Naming-Convention exception):</p>
+<ul>
+<li><code>GetResolvedKeybinding::GetResolvedKeybinding</code> - final resolved bindings
+after merging defaults + extension contributions + user.</li>
+<li><code>GetUserKeybindings::GetUserKeybindings</code> - user overrides (stub).</li>
+<li><code>RegisterExtensionKeybindings::RegisterExtensionKeybindings</code> (stub).</li>
+<li><code>UnregisterExtensionKeybindings::UnregisterExtensionKeybindings</code> (stub).</li>
+<li><code>CheckKeybindingConflicts::CheckKeybindingConflicts</code> - chord overlap
+detection (stub).</li>
+</ul>
+<p>Errors propagate as <code>Result&lt;Value, String&gt;</code> for direct frontend
+display.</p>
+<p>VS Code reference:
+<code>vs/workbench/services/keybinding/browser/keybindingService.ts</code>,
+<code>vs/platform/keybinding/common/keybindingResolver.ts</code>.</p>
+<h3 id="planned-work"><a class="doc-anchor" href="#planned-work">§</a>Planned Work</h3>
+<ul>
+<li>Weighted resolution (user &gt; extension &gt; default)</li>
+<li>Persistence to ApplicationState</li>
+<li>When-clause context evaluation</li>
+<li>Chord (multi-stroke) sequences</li>
+<li>Platform-specific bindings</li>
+<li>Conflict-resolution UI</li>
+</ul>
+</div></details><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="CheckKeybindingConflicts/index.html" title="mod Mountain::Command::Keybinding::CheckKeybindingConflicts">Check<wbr>Keybinding<wbr>Conflicts</a></dt><dd>Tauri command - detect chord-sequence overlaps in the current
+keybinding registry. Stub returns no conflicts; pending real
+implementation that scans the resolved set and reports source +
+command for each clash.</dd><dt><a class="mod" href="GetResolvedKeybinding/index.html" title="mod Mountain::Command::Keybinding::GetResolvedKeybinding">GetResolved<wbr>Keybinding</a></dt><dd>Tauri command - fetch the final resolved keybindings (default +
+extension contributions + user overrides, weighted) for the keyboard
+shortcuts UI.</dd><dt><a class="mod" href="GetUserKeybindings/index.html" title="mod Mountain::Command::Keybinding::GetUserKeybindings">GetUser<wbr>Keybindings</a></dt><dd>Tauri command - return user-defined keybinding overrides. Stub
+returns an empty array; pending persistence layer wired through
+<code>KeybindingProvider</code>.</dd><dt><a class="mod" href="RegisterExtensionKeybindings/index.html" title="mod Mountain::Command::Keybinding::RegisterExtensionKeybindings">Register<wbr>Extension<wbr>Keybindings</a></dt><dd>Tauri command - register keybindings contributed by an extension.
+Stub returns success; pending real implementation that validates,
+checks permissions, persists to ApplicationState, and updates the
+resolution cache.</dd><dt><a class="mod" href="UnregisterExtensionKeybindings/index.html" title="mod Mountain::Command::Keybinding::UnregisterExtensionKeybindings">Unregister<wbr>Extension<wbr>Keybindings</a></dt><dd>Tauri command - remove keybindings registered by a given extension.
+Stub returns success; pending real implementation that filters by
+source identifier and clears the affected resolution cache.</dd></dl></section></div></main></body></html>

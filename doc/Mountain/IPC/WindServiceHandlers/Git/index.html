@@ -1,0 +1,52 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Local Git subprocess handlers"><title>Mountain::IPC::WindServiceHandlers::Git - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../../../../" data-static-root-path="../../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.97.0-nightly (d3cd04068 2026-05-16)" data-channel="nightly" data-search-js="search-fd9372ac.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../../static.files/storage-41dd4d93.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../../static.files/main-fcd733ba.js"></script><noscript><link rel="stylesheet" href="../../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module Git</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Git</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#local-git-subprocess-handlers" title="Local Git subprocess handlers">Local Git subprocess handlers</a></li></ul><h3><a href="#modules">Module Items</a></h3><ul class="block"><li><a href="#modules" title="Modules">Modules</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>IPC::<wbr>Wind<wbr>Service<wbr>Handlers</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../../index.html">Mountain</a>::<wbr><a href="../../index.html">IPC</a>::<wbr><a href="../index.html">WindServiceHandlers</a></div><h1>Module <span>Git</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../../src/Mountain/IPC/WindServiceHandlers/Git.rs.html#1-48">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="local-git-subprocess-handlers"><a class="doc-anchor" href="#local-git-subprocess-handlers">§</a>Local Git subprocess handlers</h2>
+<p>Mirrors stock VS Code’s <code>ILocalGitService</code> API
+(<code>src/vs/platform/git/common/localGitService.ts</code>) plus two
+Land-specific extensions: <code>HandleExec</code> for arbitrary argv
+(used by the Git extension) and <code>HandleIsAvailable</code> for
+synchronous feature detection.</p>
+<p>Cancellation discipline: every long-running entry point
+takes an <code>operationId</code>; the spawned PID is registered in
+<code>Shared::RunningProcesses</code> for the duration of the run.
+<code>HandleCancel(operationId)</code> looks the PID up and
+SIGTERMs / <code>taskkill</code>s it so the renderer can fire cancel
+from a different <code>tauri::invoke</code> than the one that started
+the operation.</p>
+<p>Layout (one export per file, file name = identity):</p>
+<ul>
+<li><code>HandleExec::HandleExec</code> - arbitrary argv (object or positional shape).</li>
+<li><code>HandleClone::HandleClone</code>, <code>HandlePull::HandlePull</code>,
+<code>HandleCheckout::HandleCheckout</code>, <code>HandleRevParse::HandleRevParse</code>,
+<code>HandleFetch::HandleFetch</code>, <code>HandleRevListCount::HandleRevListCount</code> -
+curated <code>git</code> operations.</li>
+<li><code>HandleCancel::HandleCancel</code> - SIGTERM / taskkill by op id.</li>
+<li><code>HandleIsAvailable::HandleIsAvailable</code> - cached <code>git --version</code> probe.</li>
+</ul>
+<p><code>Shared</code> (private) - <code>RunGit</code>, the process registry,
+and small parsers.</p>
+</div></details><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="HandleCancel/index.html" title="mod Mountain::IPC::WindServiceHandlers::Git::HandleCancel">Handle<wbr>Cancel</a></dt><dd><code>localGit:cancel(operationId)</code> - SIGTERM (Unix) or
+<code>taskkill /T /F</code> (Windows) the pid stashed for
+<code>OperationId</code>. Silent no-op when the id is unknown so
+late-arriving cancels for already-finished operations
+don’t spam errors.</dd><dt><a class="mod" href="HandleCheckout/index.html" title="mod Mountain::IPC::WindServiceHandlers::Git::HandleCheckout">Handle<wbr>Checkout</a></dt><dd><code>localGit:checkout(operationId, repoPath, treeish, detached?)</code>.
+<code>Detached=true</code> adds <code>--detach</code> so the caller can land on a
+commit hash without creating a tracking branch.</dd><dt><a class="mod" href="HandleClone/index.html" title="mod Mountain::IPC::WindServiceHandlers::Git::HandleClone">Handle<wbr>Clone</a></dt><dd><code>localGit:clone(operationId, cloneUrl, targetPath, ref?)</code>.
+Optional <code>ref</code> becomes <code>--branch &lt;ref&gt;</code> so callers can
+shallow-clone a tag or branch.</dd><dt><a class="mod" href="HandleExec/index.html" title="mod Mountain::IPC::WindServiceHandlers::Git::HandleExec">Handle<wbr>Exec</a></dt><dd><code>localGit:exec</code> - arbitrary <code>git</code> argv. Used by the Git
+extension for commands not on the curated <code>clone/pull/…</code>
+list. Accepts both the modern <code>{ Arguments, cwd?, operationId? }</code> shape and the legacy positional
+<code>(argv: string[], cwd?: string)</code>.</dd><dt><a class="mod" href="HandleFetch/index.html" title="mod Mountain::IPC::WindServiceHandlers::Git::HandleFetch">Handle<wbr>Fetch</a></dt><dd><code>localGit:fetch(operationId, repoPath)</code>. Plain <code>git fetch</code>
+against the configured upstream - no remote argument, no
+<code>--all</code>, mirroring stock VS Code’s <code>LocalGitService.fetch</code>.</dd><dt><a class="mod" href="HandleIsAvailable/index.html" title="mod Mountain::IPC::WindServiceHandlers::Git::HandleIsAvailable">Handle<wbr>IsAvailable</a></dt><dd><code>localGit:isAvailable -&gt; bool</code>. Cheap <code>git --version</code> probe
+cached in a <code>OnceLock</code> for the process lifetime so the UI’s
+periodic poll doesn’t re-exec git every interval.</dd><dt><a class="mod" href="HandlePull/index.html" title="mod Mountain::IPC::WindServiceHandlers::Git::HandlePull">Handle<wbr>Pull</a></dt><dd><code>localGit:pull(operationId, repoPath) -&gt; bool</code>. Three-call
+sequence: read HEAD, <code>pull --ff-only</code>, read HEAD again.
+Returns <code>true</code> when the second HEAD differs from the first
+(i.e. the pull actually moved the branch). <code>--ff-only</code>
+avoids surprise merge commits - callers handle non-FF cases
+explicitly.</dd><dt><a class="mod" href="HandleRevListCount/index.html" title="mod Mountain::IPC::WindServiceHandlers::Git::HandleRevListCount">Handle<wbr>RevList<wbr>Count</a></dt><dd><code>localGit:revListCount(repoPath, fromRef, toRef) -&gt; u64</code>.
+Equivalent to <code>git rev-list --count from..to</code> - counts
+commits the GitLens / SCM viewlet “ahead/behind” badges
+display.</dd><dt><a class="mod" href="HandleRevParse/index.html" title="mod Mountain::IPC::WindServiceHandlers::Git::HandleRevParse">Handle<wbr>RevParse</a></dt><dd><code>localGit:revParse(repoPath, ref) -&gt; string</code>. Defaults
+<code>ref=HEAD</code> so the caller can pass two args or three. Output
+is trimmed - <code>git rev-parse</code> ships a trailing newline that
+breaks string equality on the JS side.</dd><dt><a class="mod" href="Shared/index.html" title="mod Mountain::IPC::WindServiceHandlers::Git::Shared">Shared</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Shared state and utilities for <code>Git/*</code> atomic handlers.</dd></dl></section></div></main></body></html>

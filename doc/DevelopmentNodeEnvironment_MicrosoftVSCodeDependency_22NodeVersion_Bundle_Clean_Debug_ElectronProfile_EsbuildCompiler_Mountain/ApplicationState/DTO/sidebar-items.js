@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["CustomDocumentStateDTO","DocumentStateDTO","ExtensionDescriptionStateDTO","MarkerDataDTO","MarkerSeverity","MergedConfigurationStateDTO","OutputChannelStateDTO","ProviderRegistrationDTO","RPCModelContentChangeDTO","RPCRangeDTO","TerminalStateDTO","TreeViewStateDTO","WebviewStateDTO","WindowStateDTO","WorkspaceFolderStateDTO"]};

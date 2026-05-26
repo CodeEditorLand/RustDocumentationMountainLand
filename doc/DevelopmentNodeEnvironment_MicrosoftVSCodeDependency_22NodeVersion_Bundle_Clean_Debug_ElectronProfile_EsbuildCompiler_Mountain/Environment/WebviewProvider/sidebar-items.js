@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["Configuration","Lifecycle","Messaging","WebviewLifecycleState","WebviewMessage"],"struct":["WebviewMessageContext"]};
