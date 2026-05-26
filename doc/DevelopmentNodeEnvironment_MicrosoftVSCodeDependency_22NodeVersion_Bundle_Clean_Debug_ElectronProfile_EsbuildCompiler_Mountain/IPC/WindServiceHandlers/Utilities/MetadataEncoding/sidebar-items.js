@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["metadata_to_istat"]};

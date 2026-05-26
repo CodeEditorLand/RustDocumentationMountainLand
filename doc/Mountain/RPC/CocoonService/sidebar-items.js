@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"mod":["Auth","Command","Debug","Extension","FileSystem","GenericNotification","GenericRequest","Initialization","Output","Provider","SCM","Save","Secret","Task","Terminal","TreeView","Window","Workspace"],"struct":["CocoonServiceImpl"]};

@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["GetOrInitChannel","SetTextEditorDecorations"],"static":["DECO_SET_CH"],"struct":["DecoSetChannel","DecoSetItem"]};

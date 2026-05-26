@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"mod":["DnsHealthStatus","DnsResolutionResult","DnsServerInfo","ForwardAllowList","StartupTime","ZoneInfo","ZoneRecord","dns_get_forward_allowlist","dns_get_health_status","dns_get_server_info","dns_get_zone_info","dns_health_check","dns_resolve","dns_test_resolution"]};

@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["GetRegistry","LookupSidecarForViewType"],"static":["CUSTOM_EDITOR_REGISTRY"]};

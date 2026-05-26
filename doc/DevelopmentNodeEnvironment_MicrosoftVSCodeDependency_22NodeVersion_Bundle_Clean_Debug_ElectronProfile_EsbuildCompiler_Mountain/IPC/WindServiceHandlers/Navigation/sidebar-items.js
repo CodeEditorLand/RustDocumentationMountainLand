@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"mod":["HistoryCanGoBack","HistoryCanGoForward","HistoryClear","HistoryGetStack","HistoryGoBack","HistoryGoForward","HistoryPush","LabelGetBase","LabelGetURI","LabelGetWorkspace"]};

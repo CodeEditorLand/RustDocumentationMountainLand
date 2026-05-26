@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["DecorationTypeLifecycle","GetOrInitChannel"],"static":["DECO_CH"],"struct":["DecorationChannel","DecorationItem"]};

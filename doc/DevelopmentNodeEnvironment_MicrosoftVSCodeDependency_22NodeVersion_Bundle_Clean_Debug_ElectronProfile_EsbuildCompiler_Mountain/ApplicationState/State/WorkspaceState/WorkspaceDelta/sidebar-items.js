@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["DispatchDeltaWorkspaceFolders","FolderToWire","PersistRecentlyOpened","UpdateWorkspaceFoldersAndBroadcast","UpdateWorkspaceFoldersAndNotify"]};

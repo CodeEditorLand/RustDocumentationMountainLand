@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["provide_tooltip_impl"]};

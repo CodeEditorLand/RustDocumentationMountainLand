@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"mod":["ApplyChanges","Notifications","OpenDocument","SaveOperations"]};

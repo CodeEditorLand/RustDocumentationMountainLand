@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"constant":["EXTENSION_SCAN_DENY_LIST","TEST_ONLY_EXTENSIONS"],"fn":["CollectDefaultConfigurations","IncludeTestExtensions","IsDeniedDirectory","IsTestOnlyExtension","IsUserExtensionScanPath","LoadNLSBundle","ManifestContainsNLSPlaceholders","ResolveNLSPlaceholdersInner","ScanDirectoryForExtensions","process_configuration_properties"]};

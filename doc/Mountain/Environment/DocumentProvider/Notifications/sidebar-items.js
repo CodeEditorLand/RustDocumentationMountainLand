@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["notify_model_added","notify_model_changed","notify_model_removed","notify_model_saved"]};

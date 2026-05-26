@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["vine_subscribe_notifications","vine_subscriber_count"],"struct":["NotificationFramePayload"]};

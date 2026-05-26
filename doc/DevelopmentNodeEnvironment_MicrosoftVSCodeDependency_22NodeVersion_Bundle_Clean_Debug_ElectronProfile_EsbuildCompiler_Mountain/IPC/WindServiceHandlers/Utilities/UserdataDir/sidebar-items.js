@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["ensure_userdata_dirs","get_userdata_base_dir","set_userdata_base_dir"],"static":["USERDATA_BASE_DIR","USERDATA_INITIALIZED"]};

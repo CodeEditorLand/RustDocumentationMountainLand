@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["WorkingCopyGetAllDirty","WorkingCopyGetDirtyCount","WorkingCopyIsDirty","WorkingCopySetDirty"]};

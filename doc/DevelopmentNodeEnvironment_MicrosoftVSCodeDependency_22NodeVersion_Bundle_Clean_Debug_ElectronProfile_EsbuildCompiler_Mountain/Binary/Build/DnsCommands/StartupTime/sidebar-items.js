@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["Get","init_dns_startup_time"],"static":["DNS_STARTUP_TIME"]};

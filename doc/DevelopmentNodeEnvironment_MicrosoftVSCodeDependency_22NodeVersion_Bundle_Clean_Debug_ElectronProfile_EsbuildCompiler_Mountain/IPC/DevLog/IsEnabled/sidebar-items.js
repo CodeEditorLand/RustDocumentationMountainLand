@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"constant":["SHORT_MODE_MUTED_TAGS"],"fn":["EnabledTags","Fn"],"static":["ENABLED_TAGS"]};

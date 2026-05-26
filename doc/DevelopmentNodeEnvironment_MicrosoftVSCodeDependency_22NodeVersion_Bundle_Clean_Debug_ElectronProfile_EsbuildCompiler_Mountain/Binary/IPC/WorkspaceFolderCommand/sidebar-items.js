@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["MountainWorkspaceCloseAllFolders","MountainWorkspaceListFolders","MountainWorkspaceOpenFolder"],"struct":["WorkspaceFolderPayload"]};

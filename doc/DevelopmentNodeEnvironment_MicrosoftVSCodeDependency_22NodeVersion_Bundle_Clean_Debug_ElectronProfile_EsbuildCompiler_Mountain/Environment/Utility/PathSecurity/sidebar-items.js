@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["ContainsLandEditorSegment","ContainsPathSegments","IsPathAllowedForAccess","IsTrustedSystemPath"]};

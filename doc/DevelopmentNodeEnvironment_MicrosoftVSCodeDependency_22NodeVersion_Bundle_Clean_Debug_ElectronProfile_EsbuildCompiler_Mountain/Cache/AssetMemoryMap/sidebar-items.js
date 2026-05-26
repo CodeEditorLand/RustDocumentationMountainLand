@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"mod":["CacheStats","Clear","Entry","Invalidate","LoadOrInsert","Map","MimeFromExtension","Stats"]};

@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"enum":["MutatorType"],"fn":["Append","ApplyToEnv","Clear","Delete","Get","ParsePayload","Prepend","Replace","SetDescription","SetPersistent"],"static":["REGISTRY"],"struct":["ExtensionCollection","Mutator"]};

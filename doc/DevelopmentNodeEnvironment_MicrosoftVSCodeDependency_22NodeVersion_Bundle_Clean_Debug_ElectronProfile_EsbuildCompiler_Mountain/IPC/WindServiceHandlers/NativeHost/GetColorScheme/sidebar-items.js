@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["NativeGetColorScheme","detect_dark_mode"],"static":["DARK_MODE_CACHE"]};

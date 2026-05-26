@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"constant":["DEFAULT_IGNORE_SEGMENTS"],"fn":["Fn","IgnoreSegments","Path_ContainsSegment"]};

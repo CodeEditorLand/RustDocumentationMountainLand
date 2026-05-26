@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"mod":["ExtensionScanner","PathResolution","Persistence","Recovery","Serialization","TextProcessing"]};

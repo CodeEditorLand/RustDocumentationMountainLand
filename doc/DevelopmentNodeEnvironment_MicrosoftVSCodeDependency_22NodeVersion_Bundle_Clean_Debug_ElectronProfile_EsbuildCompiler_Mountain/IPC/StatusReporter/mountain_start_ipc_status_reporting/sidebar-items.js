@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["mountain_start_ipc_status_reporting"]};

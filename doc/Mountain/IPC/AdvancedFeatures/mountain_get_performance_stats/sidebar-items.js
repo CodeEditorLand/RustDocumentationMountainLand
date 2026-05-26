@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["mountain_get_performance_stats"]};

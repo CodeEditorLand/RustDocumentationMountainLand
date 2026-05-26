@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["AsStringArray","ClearPid","Generated","RegisterPid","ResolveCwd","RunGit","RunningProcesses","TakePid"]};

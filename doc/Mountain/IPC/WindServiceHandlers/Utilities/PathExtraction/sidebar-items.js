@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["Fn","hex_digit","normalize_uri_path","percent_decode","resolve_static_application_path","resolve_userdata_path"]};

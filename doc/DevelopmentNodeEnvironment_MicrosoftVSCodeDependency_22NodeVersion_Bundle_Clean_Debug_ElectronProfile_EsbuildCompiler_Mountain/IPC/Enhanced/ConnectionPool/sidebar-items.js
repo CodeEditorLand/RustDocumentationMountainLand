@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"mod":["ConnectionHandle","ConnectionHealth","HealthChecker","Pool","PoolConfig","PoolStats"]};

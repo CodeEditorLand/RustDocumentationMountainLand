@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"mod":["AttachToProcess","DetachFromProcess","LocalPTYCreateProcess","LocalPTYFreePortKillProcess","LocalPTYGetDefaultShell","LocalPTYGetEnvironment","LocalPTYGetProfiles","LocalPTYResize","ReviveTerminalProcesses","SerializeTerminalState","TerminalCreate","TerminalDispose","TerminalHide","TerminalSendText","TerminalShow"]};

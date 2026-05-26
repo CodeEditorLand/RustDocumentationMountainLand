@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["UpdateApplyUpdate","UpdateCheckForUpdates","UpdateDownloadUpdate","UpdateGetInitialState","UpdateIsLatestVersion","UpdateQuitAndInstall"]};

@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["Fn","GetTraceId","ParseEndpoint","RandU64"],"static":["OTLP_AVAILABLE","OTLP_TRACE_ID"]};

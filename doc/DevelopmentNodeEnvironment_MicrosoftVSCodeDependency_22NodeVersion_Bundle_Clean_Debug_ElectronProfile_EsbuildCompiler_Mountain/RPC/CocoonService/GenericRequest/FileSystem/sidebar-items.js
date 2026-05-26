@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["ErrResponse","HandleCreateDir","HandleDelete","HandleReadFile","HandleReadFileUri","HandleReaddir","HandleReaddirUri","HandleRename","HandleStat","HandleStatUri","HandleWriteFile","HandleWriteFileUri","OkResponse"]};

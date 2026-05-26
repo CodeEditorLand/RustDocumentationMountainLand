@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"struct":["DebugAdapterDescriptorFactoryRegistration","DebugConfigurationProviderRegistration","DebugSessionEntry","DebugState"]};

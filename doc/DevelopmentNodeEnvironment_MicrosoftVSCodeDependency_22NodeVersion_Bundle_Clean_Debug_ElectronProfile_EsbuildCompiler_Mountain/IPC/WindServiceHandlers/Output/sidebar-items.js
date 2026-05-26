@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"mod":["OutputAppend","OutputAppendLine","OutputClear","OutputCreate","OutputShow"]};

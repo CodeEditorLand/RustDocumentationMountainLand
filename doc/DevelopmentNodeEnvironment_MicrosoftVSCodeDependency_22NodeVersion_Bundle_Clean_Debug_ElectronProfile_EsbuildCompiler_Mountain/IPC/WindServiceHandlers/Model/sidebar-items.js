@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"mod":["ModelClose","ModelGet","ModelGetAll","ModelOpen","ModelUpdateContent","TextfileRead","TextfileSave","TextfileWrite"]};

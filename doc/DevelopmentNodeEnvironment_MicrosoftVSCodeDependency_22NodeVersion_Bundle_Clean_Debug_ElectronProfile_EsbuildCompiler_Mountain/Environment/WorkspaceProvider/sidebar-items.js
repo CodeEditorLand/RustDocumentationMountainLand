@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"constant":["FIND_FILES_CACHE_CAPACITY","FIND_FILES_CACHE_TTL"],"fn":["ApplyEditsToDisk","ClearFindFilesCache","ComputeLineOffsets","ExtractGlobPattern","ExtractRelativeBase","FindFilesCache","FindFilesCacheGet","FindFilesCachePut","FindFilesInFlight","HexDigit","LinePosToOffset","percent_decode"],"struct":["FindFilesCacheEntry","FindFilesCacheKey"]};

@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"mod":["process_get_arch","process_get_exec_path","process_get_memory_info","process_get_pid","process_get_platform","process_get_shell_env"]};
