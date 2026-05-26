@@ -3,11 +3,11 @@
 <a href=#3 id=3 data-nosnippet>3</a>//! Configures and creates the Tauri logging plugin with appropriate targets and
 <a href=#4 id=4 data-nosnippet>4</a>//! filters.
 <a href=#5 id=5 data-nosnippet>5</a>
-<a href=#6 id=6 data-nosnippet>6</a></span><span class="kw">use </span><a href="https://docs.rs/log/0.4.29/log/enum.LevelFilter.html">log::LevelFilter</a>;
+<a href=#6 id=6 data-nosnippet>6</a></span><span class="kw">use </span><a href="https://docs.rs/log/0.4.30/log/enum.LevelFilter.html">log::LevelFilter</a>;
 <a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span>tauri::plugin::TauriPlugin;
 <a href=#8 id=8 data-nosnippet>8</a><span class="kw">use </span>tauri_plugin_log::{RotationStrategy, Target, TargetKind, TimezoneStrategy};
 <a href=#9 id=9 data-nosnippet>9</a>
-<a href=#10 id=10 data-nosnippet>10</a><span class="kw">use </span><a href="../../IPC/mod.rs.html#60"><span class="kw">crate</span>::IPC::DevLog</a>;
+<a href=#10 id=10 data-nosnippet>10</a><span class="kw">use </span><a href="../../IPC/mod.rs.html#58"><span class="kw">crate</span>::IPC::DevLog</a>;
 <a href=#11 id=11 data-nosnippet>11</a>
 <a href=#12 id=12 data-nosnippet>12</a><span class="doccomment">/// Compress a Rust module target path to its final segment.
 <a href=#13 id=13 data-nosnippet>13</a>///
@@ -58,7 +58,7 @@
 <a href=#58 id=58 data-nosnippet>58</a>/// - polling: File watcher events (very noisy)
 <a href=#59 id=59 data-nosnippet>59</a>/// - tokio_reactor: Async reactor events
 <a href=#60 id=60 data-nosnippet>60</a>/// - want: Connection readiness logs
-<a href=#61 id=61 data-nosnippet>61</a></span><span class="kw">pub fn </span><a href="../../../../Mountain/Binary/Build/LoggingPlugin/fn.LoggingPlugin.html">LoggingPlugin</a>&lt;R:tauri::Runtime&gt;(LogLevel:<a href="https://docs.rs/log/0.4.29/log/enum.LevelFilter.html">LevelFilter</a>) -&gt; TauriPlugin&lt;R&gt; {
+<a href=#61 id=61 data-nosnippet>61</a></span><span class="kw">pub fn </span><a href="../../../../Mountain/Binary/Build/LoggingPlugin/fn.LoggingPlugin.html">LoggingPlugin</a>&lt;R:tauri::Runtime&gt;(LogLevel:<a href="https://docs.rs/log/0.4.30/log/enum.LevelFilter.html">LevelFilter</a>) -&gt; TauriPlugin&lt;R&gt; {
 <a href=#62 id=62 data-nosnippet>62</a>	tauri_plugin_log::Builder::new()
 <a href=#63 id=63 data-nosnippet>63</a>
 <a href=#64 id=64 data-nosnippet>64</a>		<span class="comment">// Configure output targets
@@ -80,10 +80,10 @@
 <a href=#80 id=80 data-nosnippet>80</a>		</span>.level(<a href="#61">LogLevel</a>)
 <a href=#81 id=81 data-nosnippet>81</a>
 <a href=#82 id=82 data-nosnippet>82</a>		<span class="comment">// Cap very noisy dependencies at Info level
-<a href=#83 id=83 data-nosnippet>83</a>		</span>.level_for(<span class="string">"hyper"</span>, LevelFilter::<a href="https://docs.rs/log/0.4.29/log/enum.LevelFilter.html#variant.Info">Info</a>)
-<a href=#84 id=84 data-nosnippet>84</a>		.level_for(<span class="string">"mio"</span>, LevelFilter::<a href="https://docs.rs/log/0.4.29/log/enum.LevelFilter.html#variant.Info">Info</a>)
-<a href=#85 id=85 data-nosnippet>85</a>		.level_for(<span class="string">"tao"</span>, LevelFilter::<a href="https://docs.rs/log/0.4.29/log/enum.LevelFilter.html#variant.Info">Info</a>)
-<a href=#86 id=86 data-nosnippet>86</a>		.level_for(<span class="string">"tracing"</span>, LevelFilter::<a href="https://docs.rs/log/0.4.29/log/enum.LevelFilter.html#variant.Info">Info</a>)
+<a href=#83 id=83 data-nosnippet>83</a>		</span>.level_for(<span class="string">"hyper"</span>, LevelFilter::<a href="https://docs.rs/log/0.4.30/log/enum.LevelFilter.html#variant.Info">Info</a>)
+<a href=#84 id=84 data-nosnippet>84</a>		.level_for(<span class="string">"mio"</span>, LevelFilter::<a href="https://docs.rs/log/0.4.30/log/enum.LevelFilter.html#variant.Info">Info</a>)
+<a href=#85 id=85 data-nosnippet>85</a>		.level_for(<span class="string">"tao"</span>, LevelFilter::<a href="https://docs.rs/log/0.4.30/log/enum.LevelFilter.html#variant.Info">Info</a>)
+<a href=#86 id=86 data-nosnippet>86</a>		.level_for(<span class="string">"tracing"</span>, LevelFilter::<a href="https://docs.rs/log/0.4.30/log/enum.LevelFilter.html#variant.Info">Info</a>)
 <a href=#87 id=87 data-nosnippet>87</a>
 <a href=#88 id=88 data-nosnippet>88</a>		<span class="comment">// `ignore` and `globset` (used by Mountain's extension scanner +
 <a href=#89 id=89 data-nosnippet>89</a>		// `WorkspaceProvider::FindFiles` walk) emit a DEBUG line per
@@ -93,10 +93,10 @@
 <a href=#93 id=93 data-nosnippet>93</a>		// extension activation / SCM register / GIT-MARK / IPC trace
 <a href=#94 id=94 data-nosnippet>94</a>		// the rest of Mountain emits at the same level. Cap to Warn so
 <a href=#95 id=95 data-nosnippet>95</a>		// the extension-activation signal is readable.
-<a href=#96 id=96 data-nosnippet>96</a>		</span>.level_for(<span class="string">"ignore"</span>, LevelFilter::<a href="https://docs.rs/log/0.4.29/log/enum.LevelFilter.html#variant.Warn">Warn</a>)
-<a href=#97 id=97 data-nosnippet>97</a>		.level_for(<span class="string">"ignore::walk"</span>, LevelFilter::<a href="https://docs.rs/log/0.4.29/log/enum.LevelFilter.html#variant.Warn">Warn</a>)
-<a href=#98 id=98 data-nosnippet>98</a>		.level_for(<span class="string">"ignore::gitignore"</span>, LevelFilter::<a href="https://docs.rs/log/0.4.29/log/enum.LevelFilter.html#variant.Warn">Warn</a>)
-<a href=#99 id=99 data-nosnippet>99</a>		.level_for(<span class="string">"globset"</span>, LevelFilter::<a href="https://docs.rs/log/0.4.29/log/enum.LevelFilter.html#variant.Warn">Warn</a>)
+<a href=#96 id=96 data-nosnippet>96</a>		</span>.level_for(<span class="string">"ignore"</span>, LevelFilter::<a href="https://docs.rs/log/0.4.30/log/enum.LevelFilter.html#variant.Warn">Warn</a>)
+<a href=#97 id=97 data-nosnippet>97</a>		.level_for(<span class="string">"ignore::walk"</span>, LevelFilter::<a href="https://docs.rs/log/0.4.30/log/enum.LevelFilter.html#variant.Warn">Warn</a>)
+<a href=#98 id=98 data-nosnippet>98</a>		.level_for(<span class="string">"ignore::gitignore"</span>, LevelFilter::<a href="https://docs.rs/log/0.4.30/log/enum.LevelFilter.html#variant.Warn">Warn</a>)
+<a href=#99 id=99 data-nosnippet>99</a>		.level_for(<span class="string">"globset"</span>, LevelFilter::<a href="https://docs.rs/log/0.4.30/log/enum.LevelFilter.html#variant.Warn">Warn</a>)
 <a href=#100 id=100 data-nosnippet>100</a>
 <a href=#101 id=101 data-nosnippet>101</a>		<span class="comment">// `keyring` (used by Mountain's secret-storage path on the
 <a href=#102 id=102 data-nosnippet>102</a>		// `dev1phpTools.license.data` lookup chain) emits a 3-line
@@ -104,21 +104,21 @@
 <a href=#104 id=104 data-nosnippet>104</a>		// "created entry", "get password from entry" - per refresh
 <a href=#105 id=105 data-nosnippet>105</a>		// tick. After the workbench paints these fire indefinitely.
 <a href=#106 id=106 data-nosnippet>106</a>		// Cap to Warn alongside the other dependency mutes.
-<a href=#107 id=107 data-nosnippet>107</a>		</span>.level_for(<span class="string">"keyring"</span>, LevelFilter::<a href="https://docs.rs/log/0.4.29/log/enum.LevelFilter.html#variant.Warn">Warn</a>)
+<a href=#107 id=107 data-nosnippet>107</a>		</span>.level_for(<span class="string">"keyring"</span>, LevelFilter::<a href="https://docs.rs/log/0.4.30/log/enum.LevelFilter.html#variant.Warn">Warn</a>)
 <a href=#108 id=108 data-nosnippet>108</a>
 <a href=#109 id=109 data-nosnippet>109</a>		<span class="comment">// Filter out extremely noisy targets
 <a href=#110 id=110 data-nosnippet>110</a>		</span>.filter(|Metadata| {
-<a href=#111 id=111 data-nosnippet>111</a>			!<a href="#110">Metadata</a>.<a href="https://docs.rs/log/0.4.29/log/struct.Metadata.html#method.target">target</a>().<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.starts_with">starts_with</a>(<span class="string">"polling"</span>)
-<a href=#112 id=112 data-nosnippet>112</a>				&amp;&amp; !<a href="#110">Metadata</a>.<a href="https://docs.rs/log/0.4.29/log/struct.Metadata.html#method.target">target</a>().<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.starts_with">starts_with</a>(<span class="string">"tokio_reactor"</span>)
-<a href=#113 id=113 data-nosnippet>113</a>				&amp;&amp; !<a href="#110">Metadata</a>.<a href="https://docs.rs/log/0.4.29/log/struct.Metadata.html#method.target">target</a>().<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.starts_with">starts_with</a>(<span class="string">"want"</span>)
+<a href=#111 id=111 data-nosnippet>111</a>			!<a href="#110">Metadata</a>.<a href="https://docs.rs/log/0.4.30/log/struct.Metadata.html#method.target">target</a>().<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.starts_with">starts_with</a>(<span class="string">"polling"</span>)
+<a href=#112 id=112 data-nosnippet>112</a>				&amp;&amp; !<a href="#110">Metadata</a>.<a href="https://docs.rs/log/0.4.30/log/struct.Metadata.html#method.target">target</a>().<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.starts_with">starts_with</a>(<span class="string">"tokio_reactor"</span>)
+<a href=#113 id=113 data-nosnippet>113</a>				&amp;&amp; !<a href="#110">Metadata</a>.<a href="https://docs.rs/log/0.4.30/log/struct.Metadata.html#method.target">target</a>().<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.starts_with">starts_with</a>(<span class="string">"want"</span>)
 <a href=#114 id=114 data-nosnippet>114</a>		})
 <a href=#115 id=115 data-nosnippet>115</a>
 <a href=#116 id=116 data-nosnippet>116</a>		<span class="comment">// Format logs with category-like structure: [LEVEL] [TARGET] message
 <a href=#117 id=117 data-nosnippet>117</a>		</span>.format(|out, message, record| {
-<a href=#118 id=118 data-nosnippet>118</a>			<span class="kw">if </span>DevLog::IsShort::<a href="../../IPC/DevLog/IsShort.rs.html#11">Fn</a>() {
-<a href=#119 id=119 data-nosnippet>119</a>				<span class="kw">let </span>ShortTarget = <a href="#16">CompressTarget</a>(<a href="#117">record</a>.<a href="https://docs.rs/log/0.4.29/log/struct.Record.html#method.target">target</a>());
+<a href=#118 id=118 data-nosnippet>118</a>			<span class="kw">if </span>DevLog::IsShort::<a href="../../IPC/DevLog/IsShort.rs.html#10">Fn</a>() {
+<a href=#119 id=119 data-nosnippet>119</a>				<span class="kw">let </span>ShortTarget = <a href="#16">CompressTarget</a>(<a href="#117">record</a>.<a href="https://docs.rs/log/0.4.30/log/struct.Record.html#method.target">target</a>());
 <a href=#120 id=120 data-nosnippet>120</a>				<span class="kw">let </span>RawMessage = <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"{}"</span>, message);
-<a href=#121 id=121 data-nosnippet>121</a>				<span class="kw">let </span>Aliased = DevLog::AliasPath::<a href="../../IPC/DevLog/AliasPath.rs.html#7-13">Fn</a>(<span class="kw-2">&amp;</span><a href="#120">RawMessage</a>);
+<a href=#121 id=121 data-nosnippet>121</a>				<span class="kw">let </span>Aliased = DevLog::AliasPath::<a href="../../IPC/DevLog/AliasPath.rs.html#6-12">Fn</a>(<span class="kw-2">&amp;</span><a href="#120">RawMessage</a>);
 <a href=#122 id=122 data-nosnippet>122</a>				<a href="#117">out</a>.<a href="https://docs.rs/fern/0.7.1/fern/log_impl/struct.FormatCallback.html#method.finish">finish</a>(<a href="https://doc.rust-lang.org/nightly/core/macro.format_args.html">format_args!</a>(
 <a href=#123 id=123 data-nosnippet>123</a>					<span class="string">"[{:&lt;5}] [{}] {}"</span>,
 <a href=#124 id=124 data-nosnippet>124</a>

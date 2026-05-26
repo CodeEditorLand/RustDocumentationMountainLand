@@ -6,7 +6,7 @@
 <a href=#6 id=6 data-nosnippet>6</a>
 <a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span>CommonLibrary::Error::CommonError::CommonError;
 <a href=#8 id=8 data-nosnippet>8</a>
-<a href=#9 id=9 data-nosnippet>9</a><span class="kw">use </span>crate::{<a href="../../ApplicationState/State/ApplicationState.rs.html#64-88">ApplicationState::State::ApplicationState::ApplicationState</a>, <a href="../../IPC/DevLog/mod.rs.html#51-121">dev_log</a>};
+<a href=#9 id=9 data-nosnippet>9</a><span class="kw">use </span>crate::{<a href="../../ApplicationState/State/ApplicationState.rs.html#64-88">ApplicationState::State::ApplicationState::ApplicationState</a>, <a href="../../IPC/DevLog/mod.rs.html#50-120">dev_log</a>};
 <a href=#10 id=10 data-nosnippet>10</a>
 <a href=#11 id=11 data-nosnippet>11</a><span class="doccomment">/// A critical security helper that checks if a given filesystem path is
 <a href=#12 id=12 data-nosnippet>12</a>/// allowed for access.
@@ -34,7 +34,7 @@
 <a href=#34 id=34 data-nosnippet>34</a>	// (~15k hits per long session). The failure path below logs its own
 <a href=#35 id=35 data-nosnippet>35</a>	// line; the success path is auditable from IPC-side request logs.
 <a href=#36 id=36 data-nosnippet>36</a>	// Keep under `vfs-verbose` for deep debugging only.
-<a href=#37 id=37 data-nosnippet>37</a>	</span><a href="../../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"vfs-verbose"</span>, <span class="string">"[EnvironmentSecurity] Verifying path: {}"</span>, PathToCheck.display());
+<a href=#37 id=37 data-nosnippet>37</a>	</span><a href="../../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"vfs-verbose"</span>, <span class="string">"[EnvironmentSecurity] Verifying path: {}"</span>, PathToCheck.display());
 <a href=#38 id=38 data-nosnippet>38</a>
 <a href=#39 id=39 data-nosnippet>39</a>	<span class="comment">// Defensive: empty path would slip through the trusted-system
 <a href=#40 id=40 data-nosnippet>40</a>	// check (no allow-list segment matches) AND the workspace-
@@ -88,7 +88,7 @@
 <a href=#88 id=88 data-nosnippet>88</a>	// submodule trees rejects every read that walks past the first level
 <a href=#89 id=89 data-nosnippet>89</a>	// even though the path is a literal descendant of the open folder.
 <a href=#90 id=90 data-nosnippet>90</a>	</span><span class="kw">let </span>CanonicalPathToCheck =
-<a href=#91 id=91 data-nosnippet>91</a>		<span class="kw">crate</span>::Cache::PathCanon::Canonicalize::<a href="../../Cache/PathCanon/Canonicalize.rs.html#13-23">Fn</a>(<a href="#32">PathToCheck</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|<span class="kw">_</span>| <a href="#32">PathToCheck</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.to_path_buf">to_path_buf</a>());
+<a href=#91 id=91 data-nosnippet>91</a>		<span class="kw">crate</span>::Cache::PathCanon::Canonicalize::<a href="../../Cache/PathCanon/Canonicalize.rs.html#12-22">Fn</a>(<a href="#32">PathToCheck</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|<span class="kw">_</span>| <a href="#32">PathToCheck</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.to_path_buf">to_path_buf</a>());
 <a href=#92 id=92 data-nosnippet>92</a>
 <a href=#93 id=93 data-nosnippet>93</a>	<span class="kw">let </span>IsAllowed = <a href="#68">FoldersGuard</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.iter">iter</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.any">any</a>(|Folder| {
 <a href=#94 id=94 data-nosnippet>94</a>		<span class="kw">let </span>FolderPath = <span class="kw">match </span><a href="#93">Folder</a>.URI.<a href="https://docs.rs/url/2.5.7/url/struct.Url.html#method.to_file_path">to_file_path</a>() {
@@ -96,7 +96,7 @@
 <a href=#96 id=96 data-nosnippet>96</a>			<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<span class="kw">_</span>) =&gt; <span class="kw">return </span><span class="bool-val">false</span>,
 <a href=#97 id=97 data-nosnippet>97</a>		};
 <a href=#98 id=98 data-nosnippet>98</a>		<span class="kw">let </span>CanonicalFolderPath =
-<a href=#99 id=99 data-nosnippet>99</a>			<span class="kw">crate</span>::Cache::PathCanon::Canonicalize::<a href="../../Cache/PathCanon/Canonicalize.rs.html#13-23">Fn</a>(<span class="kw-2">&amp;</span><a href="#94">FolderPath</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|<span class="kw">_</span>| <a href="#94">FolderPath</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>());
+<a href=#99 id=99 data-nosnippet>99</a>			<span class="kw">crate</span>::Cache::PathCanon::Canonicalize::<a href="../../Cache/PathCanon/Canonicalize.rs.html#12-22">Fn</a>(<span class="kw-2">&amp;</span><a href="#94">FolderPath</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|<span class="kw">_</span>| <a href="#94">FolderPath</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>());
 <a href=#100 id=100 data-nosnippet>100</a>		<span class="comment">// Try both canonical-canonical AND raw-raw - either match wins.
 <a href=#101 id=101 data-nosnippet>101</a>		</span><a href="#32">PathToCheck</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.starts_with">starts_with</a>(<span class="kw-2">&amp;</span><a href="#94">FolderPath</a>)
 <a href=#102 id=102 data-nosnippet>102</a>			|| <a href="#32">PathToCheck</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.starts_with">starts_with</a>(<span class="kw-2">&amp;</span><a href="#98">CanonicalFolderPath</a>)
@@ -121,7 +121,7 @@
 <a href=#121 id=121 data-nosnippet>121</a>			})
 <a href=#122 id=122 data-nosnippet>122</a>			.<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.collect">collect</a>();
 <a href=#123 id=123 data-nosnippet>123</a>
-<a href=#124 id=124 data-nosnippet>124</a>		<a href="../../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(
+<a href=#124 id=124 data-nosnippet>124</a>		<a href="../../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(
 <a href=#125 id=125 data-nosnippet>125</a>			<span class="string">"vfs"</span>,
 <a href=#126 id=126 data-nosnippet>126</a>			<span class="string">"[PathSecurity] reject path={} canonical={} folders=[{}]"</span>,
 <a href=#127 id=127 data-nosnippet>127</a>			PathToCheck.display(),
@@ -173,7 +173,7 @@
 <a href=#173 id=173 data-nosnippet>173</a>	// (e.g. first-boot probes for `globalStorage/&lt;extension&gt;/state.json`)
 <a href=#174 id=174 data-nosnippet>174</a>	// `canonicalize` returns Err and we compare against the raw path.
 <a href=#175 id=175 data-nosnippet>175</a>	</span><span class="kw">let </span>Candidate =
-<a href=#176 id=176 data-nosnippet>176</a>		<span class="kw">crate</span>::Cache::PathCanon::Canonicalize::<a href="../../Cache/PathCanon/Canonicalize.rs.html#13-23">Fn</a>(<a href="#171">PathToCheck</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|<span class="kw">_</span>| <a href="#171">PathToCheck</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.to_path_buf">to_path_buf</a>());
+<a href=#176 id=176 data-nosnippet>176</a>		<span class="kw">crate</span>::Cache::PathCanon::Canonicalize::<a href="../../Cache/PathCanon/Canonicalize.rs.html#12-22">Fn</a>(<a href="#171">PathToCheck</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|<span class="kw">_</span>| <a href="#171">PathToCheck</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.to_path_buf">to_path_buf</a>());
 <a href=#177 id=177 data-nosnippet>177</a>
 <a href=#178 id=178 data-nosnippet>178</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Override) = std::env::<a href="https://doc.rust-lang.org/nightly/std/env/fn.var.html">var</a>(<span class="string">"Lodge"</span>) {
 <a href=#179 id=179 data-nosnippet>179</a>		<span class="kw">if </span>!<a href="#178">Override</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.is_empty">is_empty</a>() {
@@ -188,7 +188,7 @@
 <a href=#188 id=188 data-nosnippet>188</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Home) = std::env::<a href="https://doc.rust-lang.org/nightly/std/env/fn.var.html">var</a>(<span class="string">"HOME"</span>) {
 <a href=#189 id=189 data-nosnippet>189</a>		<span class="comment">// Primary user-scope root post-rename. Resolved through the
 <a href=#190 id=190 data-nosnippet>190</a>		// `FiddeeRoot` atom so any future rename touches a single file.
-<a href=#191 id=191 data-nosnippet>191</a>		</span><span class="kw">let </span>FiddeeRoot = <span class="kw">crate</span>::IPC::WindServiceHandlers::Utilities::FiddeeRoot::<a href="../../IPC/WindServiceHandlers/Utilities/FiddeeRoot.rs.html#23-33">Fn</a>();
+<a href=#191 id=191 data-nosnippet>191</a>		</span><span class="kw">let </span>FiddeeRoot = <span class="kw">crate</span>::IPC::WindServiceHandlers::Utilities::FiddeeRoot::<a href="../../IPC/WindServiceHandlers/Utilities/FiddeeRoot.rs.html#22-32">Fn</a>();
 <a href=#192 id=192 data-nosnippet>192</a>
 <a href=#193 id=193 data-nosnippet>193</a>		<span class="kw">if </span><a href="#175">Candidate</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.starts_with">starts_with</a>(<span class="kw-2">&amp;</span><a href="#191">FiddeeRoot</a>) || <a href="#171">PathToCheck</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.starts_with">starts_with</a>(<span class="kw-2">&amp;</span><a href="#191">FiddeeRoot</a>) {
 <a href=#194 id=194 data-nosnippet>194</a>			<span class="kw">return </span><span class="bool-val">true</span>;

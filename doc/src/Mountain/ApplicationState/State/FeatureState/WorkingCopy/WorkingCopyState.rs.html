@@ -3,7 +3,7 @@
 <a href=#3 id=3 data-nosnippet>3</a>	sync::{<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>, <a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">Mutex</a> <span class="kw">as </span>StandardMutex},
 <a href=#4 id=4 data-nosnippet>4</a>};
 <a href=#5 id=5 data-nosnippet>5</a>
-<a href=#6 id=6 data-nosnippet>6</a><span class="kw">use </span><a href="../../../../IPC/DevLog/mod.rs.html#51-121"><span class="kw">crate</span>::dev_log</a>;
+<a href=#6 id=6 data-nosnippet>6</a><span class="kw">use </span><a href="../../../../IPC/DevLog/mod.rs.html#50-120"><span class="kw">crate</span>::dev_log</a>;
 <a href=#7 id=7 data-nosnippet>7</a>
 <a href=#8 id=8 data-nosnippet>8</a><span class="doccomment">/// Tracks which URIs have unsaved changes (dirty state).
 <a href=#9 id=9 data-nosnippet>9</a>/// Drives the dirty dot in editor tabs and the explorer badge count.
@@ -14,7 +14,7 @@
 <a href=#14 id=14 data-nosnippet>14</a>
 <a href=#15 id=15 data-nosnippet>15</a><span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a> <span class="kw">for </span><a href="#11-13">WorkingCopyState</a> {
 <a href=#16 id=16 data-nosnippet>16</a>	<span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{
-<a href=#17 id=17 data-nosnippet>17</a>		<a href="../../../../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"workingcopy"</span>, <span class="string">"[WorkingCopyState] Initializing default working-copy state..."</span>);
+<a href=#17 id=17 data-nosnippet>17</a>		<a href="../../../../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"workingcopy"</span>, <span class="string">"[WorkingCopyState] Initializing default working-copy state..."</span>);
 <a href=#18 id=18 data-nosnippet>18</a>
 <a href=#19 id=19 data-nosnippet>19</a>		<span class="self">Self </span>{ DirtyUris:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">StandardMutex</a>::<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.new">new</a>(<a href="https://doc.rust-lang.org/nightly/std/collections/hash/set/struct.HashSet.html">HashSet</a>::<a href="https://doc.rust-lang.org/nightly/std/collections/hash/set/struct.HashSet.html#method.new">new</a>())) }
 <a href=#20 id=20 data-nosnippet>20</a>	}
@@ -32,11 +32,11 @@
 <a href=#32 id=32 data-nosnippet>32</a>			<span class="kw">if </span><a href="#30">Dirty</a> {
 <a href=#33 id=33 data-nosnippet>33</a>				<a href="#31">Guard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/set/struct.HashSet.html#method.insert">insert</a>(<a href="#30">Uri</a>.<a href="https://doc.rust-lang.org/nightly/alloc/borrow/trait.ToOwned.html#tymethod.to_owned">to_owned</a>());
 <a href=#34 id=34 data-nosnippet>34</a>
-<a href=#35 id=35 data-nosnippet>35</a>				<a href="../../../../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"workingcopy"</span>, <span class="string">"[WorkingCopyState] URI marked dirty: {}"</span>, Uri);
+<a href=#35 id=35 data-nosnippet>35</a>				<a href="../../../../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"workingcopy"</span>, <span class="string">"[WorkingCopyState] URI marked dirty: {}"</span>, Uri);
 <a href=#36 id=36 data-nosnippet>36</a>			} <span class="kw">else </span>{
 <a href=#37 id=37 data-nosnippet>37</a>				<a href="#31">Guard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/set/struct.HashSet.html#method.remove">remove</a>(<a href="#30">Uri</a>);
 <a href=#38 id=38 data-nosnippet>38</a>
-<a href=#39 id=39 data-nosnippet>39</a>				<a href="../../../../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"workingcopy"</span>, <span class="string">"[WorkingCopyState] URI marked clean: {}"</span>, Uri);
+<a href=#39 id=39 data-nosnippet>39</a>				<a href="../../../../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"workingcopy"</span>, <span class="string">"[WorkingCopyState] URI marked clean: {}"</span>, Uri);
 <a href=#40 id=40 data-nosnippet>40</a>			}
 <a href=#41 id=41 data-nosnippet>41</a>		}
 <a href=#42 id=42 data-nosnippet>42</a>	}

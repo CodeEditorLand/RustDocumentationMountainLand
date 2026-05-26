@@ -38,7 +38,7 @@
 <a href=#38 id=38 data-nosnippet>38</a>//! - Configuration updates trigger I/O operations
 <a href=#39 id=39 data-nosnippet>39</a>//! - Consider debouncing rapid updates
 <a href=#40 id=40 data-nosnippet>40</a>
-<a href=#41 id=41 data-nosnippet>41</a></span><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
+<a href=#41 id=41 data-nosnippet>41</a></span><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#42 id=42 data-nosnippet>42</a><span class="kw">use </span>tauri::AppHandle;
 <a href=#43 id=43 data-nosnippet>43</a>
 <a href=#44 id=44 data-nosnippet>44</a><span class="doccomment">/// Update configuration from Wind.
@@ -61,7 +61,7 @@
 <a href=#61 id=61 data-nosnippet>61</a>/// - Configuration structure is invalid
 <a href=#62 id=62 data-nosnippet>62</a>/// - Update cannot be persisted
 <a href=#63 id=63 data-nosnippet>63</a></span><span class="attr">#[tauri::command]
-<a href=#64 id=64 data-nosnippet>64</a></span><span class="kw">pub async fn </span><a href="#63">MountainUpdateConfigurationFromWind</a>(app_handle:AppHandle, config:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
+<a href=#64 id=64 data-nosnippet>64</a></span><span class="kw">pub async fn </span><a href="#63">MountainUpdateConfigurationFromWind</a>(app_handle:AppHandle, config:<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
 <a href=#65 id=65 data-nosnippet>65</a>	<span class="kw">crate</span>::IPC::ConfigurationBridge::mountain_update_configuration_from_wind(app_handle, config).<span class="kw">await</span><span class="question-mark">?</span>;
 <a href=#66 id=66 data-nosnippet>66</a>
 <a href=#67 id=67 data-nosnippet>67</a>	<span class="prelude-val">Ok</span>(Value::Null)

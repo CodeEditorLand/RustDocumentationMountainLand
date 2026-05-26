@@ -18,7 +18,7 @@
 <a href=#18 id=18 data-nosnippet>18</a></span><span class="kw">use </span>CommonLibrary::Webview::DTO::WebviewContentOptionsDTO::WebviewContentOptionsDTO;
 <a href=#19 id=19 data-nosnippet>19</a><span class="kw">use </span>serde::{<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>};
 <a href=#20 id=20 data-nosnippet>20</a><span class="comment">// For PanelOptions, etc.
-<a href=#21 id=21 data-nosnippet>21</a></span><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
+<a href=#21 id=21 data-nosnippet>21</a></span><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#22 id=22 data-nosnippet>22</a>
 <a href=#23 id=23 data-nosnippet>23</a><span class="doccomment">/// Maximum handle length (UUID string)
 <a href=#24 id=24 data-nosnippet>24</a></span><span class="kw">const </span><a href="../../../../Mountain/ApplicationState/DTO/WebviewStateDTO/constant.MAX_HANDLE_LENGTH.html">MAX_HANDLE_LENGTH</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a> = <span class="number">128</span>;
@@ -57,7 +57,7 @@
 <a href=#57 id=57 data-nosnippet>57</a>
 <a href=#58 id=58 data-nosnippet>58</a>	<span class="doccomment">/// The options controlling the behavior of the Webview panel itself.
 <a href=#59 id=59 data-nosnippet>59</a>	</span><span class="comment">// DTO: WebviewPanelOptionsDTO
-<a href=#60 id=60 data-nosnippet>60</a>	</span><span class="kw">pub </span>PanelOptions: <a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
+<a href=#60 id=60 data-nosnippet>60</a>	</span><span class="kw">pub </span>PanelOptions: <a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>,
 <a href=#61 id=61 data-nosnippet>61</a>
 <a href=#62 id=62 data-nosnippet>62</a>	<span class="doccomment">/// The identifier of the sidecar process that owns this Webview.
 <a href=#63 id=63 data-nosnippet>63</a>	</span><span class="attr">#[serde(skip_serializing_if = <span class="string">"String::is_empty"</span>)]
@@ -97,7 +97,7 @@
 <a href=#97 id=97 data-nosnippet>97</a>
 <a href=#98 id=98 data-nosnippet>98</a>		ContentOptions:WebviewContentOptionsDTO,
 <a href=#99 id=99 data-nosnippet>99</a>
-<a href=#100 id=100 data-nosnippet>100</a>		PanelOptions:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
+<a href=#100 id=100 data-nosnippet>100</a>		PanelOptions:<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>,
 <a href=#101 id=101 data-nosnippet>101</a>
 <a href=#102 id=102 data-nosnippet>102</a>		SideCarIdentifier:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#103 id=103 data-nosnippet>103</a>

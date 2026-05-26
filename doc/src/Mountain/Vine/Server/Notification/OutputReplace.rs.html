@@ -5,12 +5,12 @@
 <a href=#5 id=5 data-nosnippet>5</a>//! append) on the existing channels. That preserves semantics without
 <a href=#6 id=6 data-nosnippet>6</a>//! requiring a coordinated Sky-side change.
 <a href=#7 id=7 data-nosnippet>7</a>
-<a href=#8 id=8 data-nosnippet>8</a></span><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json</a>};
+<a href=#8 id=8 data-nosnippet>8</a></span><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>, <a href="https://docs.rs/serde_json/1.0.150/serde_json/macro.json.html">json</a>};
 <a href=#9 id=9 data-nosnippet>9</a><span class="kw">use </span>tauri::Emitter;
 <a href=#10 id=10 data-nosnippet>10</a>
-<a href=#11 id=11 data-nosnippet>11</a><span class="kw">use </span>crate::{<a href="../MountainVinegRPCService.rs.html#78-88">Vine::Server::MountainVinegRPCService::MountainVinegRPCService</a>, <a href="../../../IPC/DevLog/mod.rs.html#51-121">dev_log</a>};
+<a href=#11 id=11 data-nosnippet>11</a><span class="kw">use </span>crate::{<a href="../MountainVinegRPCService.rs.html#77-87">Vine::Server::MountainVinegRPCService::MountainVinegRPCService</a>, <a href="../../../IPC/DevLog/mod.rs.html#50-120">dev_log</a>};
 <a href=#12 id=12 data-nosnippet>12</a>
-<a href=#13 id=13 data-nosnippet>13</a><span class="kw">pub async fn </span><a href="../../../../../Mountain/Vine/Server/Notification/OutputReplace/fn.OutputReplace.html">OutputReplace</a>(Service:<span class="kw-2">&amp;</span><a href="../MountainVinegRPCService.rs.html#78-88">MountainVinegRPCService</a>, Parameter:<span class="kw-2">&amp;</span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) {
+<a href=#13 id=13 data-nosnippet>13</a><span class="kw">pub async fn </span><a href="../../../../../Mountain/Vine/Server/Notification/OutputReplace/fn.OutputReplace.html">OutputReplace</a>(Service:<span class="kw-2">&amp;</span><a href="../MountainVinegRPCService.rs.html#77-87">MountainVinegRPCService</a>, Parameter:<span class="kw-2">&amp;</span><a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>) {
 <a href=#14 id=14 data-nosnippet>14</a>	<span class="kw">let </span>Channel = Parameter.get(<span class="string">"channel"</span>).and_then(Value::as_str).unwrap_or(<span class="string">""</span>);
 <a href=#15 id=15 data-nosnippet>15</a>
 <a href=#16 id=16 data-nosnippet>16</a>	<span class="kw">let </span>Text = Parameter.get(<span class="string">"text"</span>).and_then(Value::as_str).unwrap_or(<span class="string">""</span>);

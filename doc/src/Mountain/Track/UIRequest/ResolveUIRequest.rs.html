@@ -51,10 +51,10 @@
 <a href=#51 id=51 data-nosnippet>51</a>
 <a href=#52 id=52 data-nosnippet>52</a></span><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">std::sync::Arc</a>;
 <a href=#53 id=53 data-nosnippet>53</a>
-<a href=#54 id=54 data-nosnippet>54</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
+<a href=#54 id=54 data-nosnippet>54</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#55 id=55 data-nosnippet>55</a><span class="kw">use </span>tauri::{State, command};
 <a href=#56 id=56 data-nosnippet>56</a>
-<a href=#57 id=57 data-nosnippet>57</a><span class="kw">use </span>crate::{<a href="../../ApplicationState/State/ApplicationState.rs.html#64-88">ApplicationState::State::ApplicationState::ApplicationState</a>, <a href="../../IPC/DevLog/mod.rs.html#51-121">dev_log</a>};
+<a href=#57 id=57 data-nosnippet>57</a><span class="kw">use </span>crate::{<a href="../../ApplicationState/State/ApplicationState.rs.html#64-88">ApplicationState::State::ApplicationState::ApplicationState</a>, <a href="../../IPC/DevLog/mod.rs.html#50-120">dev_log</a>};
 <a href=#58 id=58 data-nosnippet>58</a>
 <a href=#59 id=59 data-nosnippet>59</a><span class="doccomment">/// A specific Tauri command handler for the UI to send back the result of a
 <a href=#60 id=60 data-nosnippet>60</a>/// request-response interaction (like a dialog or message box).
@@ -64,7 +64,7 @@
 <a href=#64 id=64 data-nosnippet>64</a>
 <a href=#65 id=65 data-nosnippet>65</a>	RequestID:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#66 id=66 data-nosnippet>66</a>
-<a href=#67 id=67 data-nosnippet>67</a>	<span class="prelude-ty">Result</span>:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
+<a href=#67 id=67 data-nosnippet>67</a>	<span class="prelude-ty">Result</span>:<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>,
 <a href=#68 id=68 data-nosnippet>68</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
 <a href=#69 id=69 data-nosnippet>69</a>	<span class="macro">dev_log!</span>(<span class="string">"ipc"</span>, <span class="string">"[Track/UIRequest] Resolving UI request ID: {}"</span>, RequestID);
 <a href=#70 id=70 data-nosnippet>70</a>

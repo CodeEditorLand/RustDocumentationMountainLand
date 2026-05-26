@@ -22,12 +22,12 @@
 <a href=#22 id=22 data-nosnippet>22</a>
 <a href=#23 id=23 data-nosnippet>23</a></span><span class="kw">use </span>CommonLibrary::{Error::CommonError::CommonError, Utility::Serialization::URLSerializationHelper};
 <a href=#24 id=24 data-nosnippet>24</a><span class="kw">use </span>serde::{<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>};
-<a href=#25 id=25 data-nosnippet>25</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
+<a href=#25 id=25 data-nosnippet>25</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#26 id=26 data-nosnippet>26</a><span class="kw">use </span><a href="https://docs.rs/url/2.5.7/url/struct.Url.html">url::Url</a>;
 <a href=#27 id=27 data-nosnippet>27</a>
 <a href=#28 id=28 data-nosnippet>28</a><span class="kw">use </span>crate::{
 <a href=#29 id=29 data-nosnippet>29</a>	<a href="../Internal/TextProcessing/AnalyzeTextLinesAndEOL.rs.html#43-64">ApplicationState::Internal::TextProcessing::AnalyzeTextLinesAndEOL::Fn</a> <span class="kw">as </span>AnalyzeTextLinesAndEOL,
-<a href=#30 id=30 data-nosnippet>30</a>	<a href="../../IPC/DevLog/mod.rs.html#51-121">dev_log</a>,
+<a href=#30 id=30 data-nosnippet>30</a>	<a href="../../IPC/DevLog/mod.rs.html#50-120">dev_log</a>,
 <a href=#31 id=31 data-nosnippet>31</a>};
 <a href=#32 id=32 data-nosnippet>32</a><span class="kw">use </span>super::{<a href="RPCModelContentChangeDTO.rs.html#22-28">RPCModelContentChangeDTO::RPCModelContentChangeDTO</a>, <a href="RPCRangeDTO.rs.html#26-38">RPCRangeDTO::RPCRangeDTO</a>};
 <a href=#33 id=33 data-nosnippet>33</a>
@@ -192,13 +192,13 @@
 <a href=#192 id=192 data-nosnippet>192</a>	</span><span class="kw">pub fn </span>GetText(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a> { <a class="self" href="#192">self</a>.Lines.<a href="https://doc.rust-lang.org/nightly/alloc/foreigntype.slice.html#method.join">join</a>(<span class="kw-2">&amp;</span><a class="self" href="#192">self</a>.EOL) }
 <a href=#193 id=193 data-nosnippet>193</a>
 <a href=#194 id=194 data-nosnippet>194</a>	<span class="doccomment">/// Converts the struct to a `serde_json::Value`, useful for notifications.
-<a href=#195 id=195 data-nosnippet>195</a>	</span><span class="kw">pub fn </span>ToDTO(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, CommonError&gt; {
-<a href=#196 id=196 data-nosnippet>196</a>		serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/fn.to_value.html">to_value</a>(<a class="self" href="#195">self</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| CommonError::SerializationError { Description:<a href="#196">Error</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>() })
+<a href=#195 id=195 data-nosnippet>195</a>	</span><span class="kw">pub fn </span>ToDTO(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>, CommonError&gt; {
+<a href=#196 id=196 data-nosnippet>196</a>		serde_json::<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/fn.to_value.html">to_value</a>(<a class="self" href="#195">self</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| CommonError::SerializationError { Description:<a href="#196">Error</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>() })
 <a href=#197 id=197 data-nosnippet>197</a>	}
 <a href=#198 id=198 data-nosnippet>198</a>
 <a href=#199 id=199 data-nosnippet>199</a>	<span class="doccomment">/// Applies a set of changes to the document. This can be a full text
 <a href=#200 id=200 data-nosnippet>200</a>	/// replacement or a collection of delta changes.
-<a href=#201 id=201 data-nosnippet>201</a>	</span><span class="kw">pub fn </span>ApplyChanges(<span class="kw-2">&amp;mut </span><span class="self">self</span>, NewVersion:<a href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>, ChangesValue:<span class="kw-2">&amp;</span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
+<a href=#201 id=201 data-nosnippet>201</a>	</span><span class="kw">pub fn </span>ApplyChanges(<span class="kw-2">&amp;mut </span><span class="self">self</span>, NewVersion:<a href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>, ChangesValue:<span class="kw-2">&amp;</span><a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
 <a href=#202 id=202 data-nosnippet>202</a>		<span class="comment">// Ignore stale changes.
 <a href=#203 id=203 data-nosnippet>203</a>		</span><span class="kw">if </span><a href="#201">NewVersion</a> &lt;= <a class="self" href="#201">self</a>.Version {
 <a href=#204 id=204 data-nosnippet>204</a>			<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(());
@@ -206,10 +206,10 @@
 <a href=#206 id=206 data-nosnippet>206</a>
 <a href=#207 id=207 data-nosnippet>207</a>		<span class="comment">// Attempt to deserialize as an array of delta changes first.
 <a href=#208 id=208 data-nosnippet>208</a>		</span><span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(RPCChange) = serde_json::from_value::&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="RPCModelContentChangeDTO.rs.html#22-28">RPCModelContentChangeDTO</a>&gt;&gt;(<a href="#201">ChangesValue</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>()) {
-<a href=#209 id=209 data-nosnippet>209</a>			<a href="../../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"model"</span>, <span class="string">"applying {} delta change(s) to document {}"</span>, RPCChange.len(), <span class="self">self</span>.URI);
+<a href=#209 id=209 data-nosnippet>209</a>			<a href="../../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"model"</span>, <span class="string">"applying {} delta change(s) to document {}"</span>, RPCChange.len(), <span class="self">self</span>.URI);
 <a href=#210 id=210 data-nosnippet>210</a>
 <a href=#211 id=211 data-nosnippet>211</a>			<a class="self" href="#201">self</a>.Lines = <a href="#257-318">ApplyDeltaChanges</a>(<span class="kw-2">&amp;</span><a class="self" href="#201">self</a>.Lines, <span class="kw-2">&amp;</span><a class="self" href="#201">self</a>.EOL, <span class="kw-2">&amp;</span><a href="#208">RPCChange</a>);
-<a href=#212 id=212 data-nosnippet>212</a>		} <span class="kw">else if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(FullText) = <a href="#201">ChangesValue</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#method.as_str">as_str</a>() {
+<a href=#212 id=212 data-nosnippet>212</a>		} <span class="kw">else if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(FullText) = <a href="#201">ChangesValue</a>.<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html#method.as_str">as_str</a>() {
 <a href=#213 id=213 data-nosnippet>213</a>			<span class="comment">// If it's not deltas, check if it's a full text replacement.
 <a href=#214 id=214 data-nosnippet>214</a>			</span><span class="kw">let </span>(NewLines, NewEOL) = <a href="../Internal/TextProcessing/AnalyzeTextLinesAndEOL.rs.html#43-64">AnalyzeTextLinesAndEOL</a>(<a href="#212">FullText</a>);
 <a href=#215 id=215 data-nosnippet>215</a>

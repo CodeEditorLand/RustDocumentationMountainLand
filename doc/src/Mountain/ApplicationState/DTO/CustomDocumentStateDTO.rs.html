@@ -57,7 +57,7 @@
 <a href=#57 id=57 data-nosnippet>57</a>	<span class="doccomment">/// A map to store edit history or other versioning information.
 <a href=#58 id=58 data-nosnippet>58</a>	/// In a real implementation, this might hold a more structured edit type.
 <a href=#59 id=59 data-nosnippet>59</a>	</span><span class="attr">#[serde(skip_serializing_if = <span class="string">"HashMap::is_empty"</span>)]
-<a href=#60 id=60 data-nosnippet>60</a>	</span><span class="kw">pub </span>Edits:<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>, serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;,
+<a href=#60 id=60 data-nosnippet>60</a>	</span><span class="kw">pub </span>Edits:<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>, serde_json::<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>&gt;,
 <a href=#61 id=61 data-nosnippet>61</a>}
 <a href=#62 id=62 data-nosnippet>62</a>
 <a href=#63 id=63 data-nosnippet>63</a><span class="kw">impl </span><a href="#36-61">CustomDocumentStateDTO</a> {
@@ -108,7 +108,7 @@
 <a href=#108 id=108 data-nosnippet>108</a>	///
 <a href=#109 id=109 data-nosnippet>109</a>	/// # Returns
 <a href=#110 id=110 data-nosnippet>110</a>	/// Result indicating success or failure if map is full
-<a href=#111 id=111 data-nosnippet>111</a>	</span><span class="kw">pub fn </span>AddEdit(<span class="kw-2">&amp;mut </span><span class="self">self</span>, EditID:<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>, EditData:serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
+<a href=#111 id=111 data-nosnippet>111</a>	</span><span class="kw">pub fn </span>AddEdit(<span class="kw-2">&amp;mut </span><span class="self">self</span>, EditID:<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>, EditData:serde_json::<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
 <a href=#112 id=112 data-nosnippet>112</a>		<span class="kw">if </span><a class="self" href="#111">self</a>.Edits.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.len">len</a>() &gt;= <a href="#29">MAX_EDITS_PER_DOCUMENT</a> {
 <a href=#113 id=113 data-nosnippet>113</a>			<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Maximum edit limit of {} reached for document"</span>, MAX_EDITS_PER_DOCUMENT));
 <a href=#114 id=114 data-nosnippet>114</a>		}

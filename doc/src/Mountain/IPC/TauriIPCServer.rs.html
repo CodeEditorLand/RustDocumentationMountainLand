@@ -167,14 +167,14 @@
 <a href=#167 id=167 data-nosnippet>167</a>	time::timeout,
 <a href=#168 id=168 data-nosnippet>168</a>};
 <a href=#169 id=169 data-nosnippet>169</a>
-<a href=#170 id=170 data-nosnippet>170</a><span class="kw">use </span><a href="DevLog/mod.rs.html#51-121"><span class="kw">crate</span>::dev_log</a>;
+<a href=#170 id=170 data-nosnippet>170</a><span class="kw">use </span><a href="DevLog/mod.rs.html#50-120"><span class="kw">crate</span>::dev_log</a>;
 <a href=#171 id=171 data-nosnippet>171</a>
 <a href=#172 id=172 data-nosnippet>172</a><span class="doccomment">/// IPC Message structure matching Wind's ITauriIPCMessage interface
 <a href=#173 id=173 data-nosnippet>173</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>)]
 <a href=#174 id=174 data-nosnippet>174</a></span><span class="kw">pub struct </span><a href="#174-182">TauriIPCMessage</a> {
 <a href=#175 id=175 data-nosnippet>175</a>	<span class="kw">pub </span>channel:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#176 id=176 data-nosnippet>176</a>
-<a href=#177 id=177 data-nosnippet>177</a>	<span class="kw">pub </span>data:serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
+<a href=#177 id=177 data-nosnippet>177</a>	<span class="kw">pub </span>data:serde_json::<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>,
 <a href=#178 id=178 data-nosnippet>178</a>
 <a href=#179 id=179 data-nosnippet>179</a>	<span class="kw">pub </span>sender:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;,
 <a href=#180 id=180 data-nosnippet>180</a>
@@ -188,7 +188,7 @@
 <a href=#188 id=188 data-nosnippet>188</a>}
 <a href=#189 id=189 data-nosnippet>189</a>
 <a href=#190 id=190 data-nosnippet>190</a><span class="doccomment">/// Listener callback type
-<a href=#191 id=191 data-nosnippet>191</a></span><span class="kw">type </span><a href="../../../Mountain/IPC/TauriIPCServer_Old/type.ListenerCallback.html">ListenerCallback</a> = <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<span class="kw">dyn </span><a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a> + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html">Sync</a>&gt;;
+<a href=#191 id=191 data-nosnippet>191</a></span><span class="kw">type </span><a href="../../../Mountain/IPC/TauriIPCServer_Old/type.ListenerCallback.html">ListenerCallback</a> = <a href="https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html">Box</a>&lt;<span class="kw">dyn </span><a href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html">Fn</a>(serde_json::<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a> + <a href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html">Sync</a>&gt;;
 <a href=#192 id=192 data-nosnippet>192</a>
 <a href=#193 id=193 data-nosnippet>193</a><span class="doccomment">/// Mountain's IPC Server counterpart to Wind's TauriIPCServer
 <a href=#194 id=194 data-nosnippet>194</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>)]
@@ -237,7 +237,7 @@
 <a href=#237 id=237 data-nosnippet>237</a>			.read_to_end(<span class="kw-2">&amp;mut </span>DecompressedData)
 <a href=#238 id=238 data-nosnippet>238</a>			.map_err(|e| <span class="macro">format!</span>(<span class="string">"Failed to decompress data: {}"</span>, e))<span class="question-mark">?</span>;
 <a href=#239 id=239 data-nosnippet>239</a>
-<a href=#240 id=240 data-nosnippet>240</a>		serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/de/fn.from_slice.html">from_slice</a>(<span class="kw-2">&amp;</span><a href="#234">DecompressedData</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Failed to deserialize messages: {}"</span>, e))
+<a href=#240 id=240 data-nosnippet>240</a>		serde_json::<a href="https://docs.rs/serde_json/1.0.150/serde_json/de/fn.from_slice.html">from_slice</a>(<span class="kw-2">&amp;</span><a href="#234">DecompressedData</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Failed to deserialize messages: {}"</span>, e))
 <a href=#241 id=241 data-nosnippet>241</a>	}
 <a href=#242 id=242 data-nosnippet>242</a>
 <a href=#243 id=243 data-nosnippet>243</a>	<span class="doccomment">/// Check if messages should be batched for compression
@@ -247,7 +247,7 @@
 <a href=#247 id=247 data-nosnippet>247</a><span class="kw">impl </span><a href="#195-203">TauriIPCServer</a> {
 <a href=#248 id=248 data-nosnippet>248</a>	<span class="doccomment">/// Create a new Tauri IPC Server instance
 <a href=#249 id=249 data-nosnippet>249</a>	</span><span class="kw">pub fn </span>new(app_handle:AppHandle) -&gt; <span class="self">Self </span>{
-<a href=#250 id=250 data-nosnippet>250</a>		<a href="DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[TauriIPCServer] Initializing Mountain IPC Server"</span>);
+<a href=#250 id=250 data-nosnippet>250</a>		<a href="DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[TauriIPCServer] Initializing Mountain IPC Server"</span>);
 <a href=#251 id=251 data-nosnippet>251</a>
 <a href=#252 id=252 data-nosnippet>252</a>		<span class="self">Self </span>{
 <a href=#253 id=253 data-nosnippet>253</a>			<a href="#249">app_handle</a>,
@@ -288,7 +288,7 @@
 <a href=#288 id=288 data-nosnippet>288</a>	}
 <a href=#289 id=289 data-nosnippet>289</a>
 <a href=#290 id=290 data-nosnippet>290</a>	<span class="doccomment">/// Send a Message to the Wind frontend
-<a href=#291 id=291 data-nosnippet>291</a>	</span><span class="kw">pub async fn </span>send(<span class="kw-2">&amp;</span><span class="self">self</span>, channel:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, data:serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
+<a href=#291 id=291 data-nosnippet>291</a>	</span><span class="kw">pub async fn </span>send(<span class="kw-2">&amp;</span><span class="self">self</span>, channel:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, data:serde_json::<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
 <a href=#292 id=292 data-nosnippet>292</a>		<span class="kw">let </span>Message = TauriIPCMessage {
 <a href=#293 id=293 data-nosnippet>293</a>			channel:channel.to_string(),
 <a href=#294 id=294 data-nosnippet>294</a>
@@ -343,7 +343,7 @@
 <a href=#343 id=343 data-nosnippet>343</a>
 <a href=#344 id=344 data-nosnippet>344</a>		<a href="#339">listeners</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.entry">entry</a>(<a href="#338">channel</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>()).<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/enum.Entry.html#method.or_insert_with">or_insert_with</a>(<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>::<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.new">new</a>).<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.push">push</a>(<a href="#338">callback</a>);
 <a href=#345 id=345 data-nosnippet>345</a>
-<a href=#346 id=346 data-nosnippet>346</a>		<a href="DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[TauriIPCServer] Listener registered for channel: {}"</span>, channel);
+<a href=#346 id=346 data-nosnippet>346</a>		<a href="DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[TauriIPCServer] Listener registered for channel: {}"</span>, channel);
 <a href=#347 id=347 data-nosnippet>347</a>
 <a href=#348 id=348 data-nosnippet>348</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#349 id=349 data-nosnippet>349</a>	}
@@ -363,7 +363,7 @@
 <a href=#363 id=363 data-nosnippet>363</a>			}
 <a href=#364 id=364 data-nosnippet>364</a>		}
 <a href=#365 id=365 data-nosnippet>365</a>
-<a href=#366 id=366 data-nosnippet>366</a>		<a href="DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[TauriIPCServer] Listener removed from channel: {}"</span>, channel);
+<a href=#366 id=366 data-nosnippet>366</a>		<a href="DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[TauriIPCServer] Listener removed from channel: {}"</span>, channel);
 <a href=#367 id=367 data-nosnippet>367</a>
 <a href=#368 id=368 data-nosnippet>368</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#369 id=369 data-nosnippet>369</a>	}
@@ -498,7 +498,7 @@
 <a href=#498 id=498 data-nosnippet>498</a>			<span class="kw-2">*</span><a href="#493">is_connected</a> = <span class="bool-val">false</span>;
 <a href=#499 id=499 data-nosnippet>499</a>		}
 <a href=#500 id=500 data-nosnippet>500</a>
-<a href=#501 id=501 data-nosnippet>501</a>		<a href="DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[TauriIPCServer] IPC Server disposed"</span>);
+<a href=#501 id=501 data-nosnippet>501</a>		<a href="DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[TauriIPCServer] IPC Server disposed"</span>);
 <a href=#502 id=502 data-nosnippet>502</a>
 <a href=#503 id=503 data-nosnippet>503</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#504 id=504 data-nosnippet>504</a>	}
@@ -610,7 +610,7 @@
 <a href=#610 id=610 data-nosnippet>610</a>	}
 <a href=#611 id=611 data-nosnippet>611</a>
 <a href=#612 id=612 data-nosnippet>612</a>	<span class="doccomment">/// Send Message using connection pool
-<a href=#613 id=613 data-nosnippet>613</a>	</span><span class="kw">pub async fn </span>send_with_pool(<span class="kw-2">&amp;</span><span class="self">self</span>, channel:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, data:serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
+<a href=#613 id=613 data-nosnippet>613</a>	</span><span class="kw">pub async fn </span>send_with_pool(<span class="kw-2">&amp;</span><span class="self">self</span>, channel:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, data:serde_json::<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
 <a href=#614 id=614 data-nosnippet>614</a>		<span class="kw">let </span>pool = Arc::new(ConnectionPool::new(<span class="number">10</span>, Duration::from_secs(<span class="number">30</span>)));
 <a href=#615 id=615 data-nosnippet>615</a>
 <a href=#616 id=616 data-nosnippet>616</a>		<span class="kw">let </span>Handle = pool
@@ -633,7 +633,7 @@
 <a href=#633 id=633 data-nosnippet>633</a>	}
 <a href=#634 id=634 data-nosnippet>634</a>
 <a href=#635 id=635 data-nosnippet>635</a>	<span class="doccomment">/// Send encrypted Message
-<a href=#636 id=636 data-nosnippet>636</a>	</span><span class="kw">pub async fn </span>send_secure(<span class="kw-2">&amp;</span><span class="self">self</span>, channel:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, data:serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
+<a href=#636 id=636 data-nosnippet>636</a>	</span><span class="kw">pub async fn </span>send_secure(<span class="kw-2">&amp;</span><span class="self">self</span>, channel:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, data:serde_json::<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
 <a href=#637 id=637 data-nosnippet>637</a>		<span class="kw">let </span>secure_channel =
 <a href=#638 id=638 data-nosnippet>638</a>			SecureMessageChannel::new().map_err(|e| <span class="macro">format!</span>(<span class="string">"Failed to create secure channel: {}"</span>, e))<span class="question-mark">?</span>;
 <a href=#639 id=639 data-nosnippet>639</a>
@@ -661,7 +661,7 @@
 <a href=#661 id=661 data-nosnippet>661</a>	</span>}
 <a href=#662 id=662 data-nosnippet>662</a>
 <a href=#663 id=663 data-nosnippet>663</a>	<span class="doccomment">/// Handle encrypted Message
-<a href=#664 id=664 data-nosnippet>664</a>	</span><span class="kw">pub async fn </span>SecureMessage(<span class="kw-2">&amp;</span><span class="self">self</span>, encrypted_data:serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
+<a href=#664 id=664 data-nosnippet>664</a>	</span><span class="kw">pub async fn </span>SecureMessage(<span class="kw-2">&amp;</span><span class="self">self</span>, encrypted_data:serde_json::<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
 <a href=#665 id=665 data-nosnippet>665</a>		<span class="kw">let </span>encrypted_message:EncryptedMessage = serde_json::from_value(encrypted_data)
 <a href=#666 id=666 data-nosnippet>666</a>			.map_err(|e| <span class="macro">format!</span>(<span class="string">"Failed to deserialize encrypted Message: {}"</span>, e))<span class="question-mark">?</span>;
 <a href=#667 id=667 data-nosnippet>667</a>
@@ -1006,7 +1006,7 @@
 <a href=#1006 id=1006 data-nosnippet>1006</a>		<a href="#991">in_out</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.truncate">truncate</a>(<a href="#1004">plaintext_len</a>);
 <a href=#1007 id=1007 data-nosnippet>1007</a>
 <a href=#1008 id=1008 data-nosnippet>1008</a>		<span class="comment">// Deserialize Message
-<a href=#1009 id=1009 data-nosnippet>1009</a>		</span>serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/de/fn.from_slice.html">from_slice</a>(<span class="kw-2">&amp;</span><a href="#991">in_out</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Failed to deserialize Message: {}"</span>, e))
+<a href=#1009 id=1009 data-nosnippet>1009</a>		</span>serde_json::<a href="https://docs.rs/serde_json/1.0.150/serde_json/de/fn.from_slice.html">from_slice</a>(<span class="kw-2">&amp;</span><a href="#991">in_out</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|e| <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Failed to deserialize Message: {}"</span>, e))
 <a href=#1010 id=1010 data-nosnippet>1010</a>	}
 <a href=#1011 id=1011 data-nosnippet>1011</a>
 <a href=#1012 id=1012 data-nosnippet>1012</a>	<span class="doccomment">/// Rotate encryption keys

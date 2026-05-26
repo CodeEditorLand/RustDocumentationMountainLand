@@ -18,12 +18,12 @@
 <a href=#18 id=18 data-nosnippet>18</a>//! per-method atoms (`WebviewSetTitle`, `WebviewSetIconPath`, etc.) when
 <a href=#19 id=19 data-nosnippet>19</a>//! the divergence is worth it.
 <a href=#20 id=20 data-nosnippet>20</a>
-<a href=#21 id=21 data-nosnippet>21</a></span><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.149/serde_json/map/struct.Map.html">Map</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json</a>};
+<a href=#21 id=21 data-nosnippet>21</a></span><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.150/serde_json/map/struct.Map.html">Map</a>, <a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>, <a href="https://docs.rs/serde_json/1.0.150/serde_json/macro.json.html">json</a>};
 <a href=#22 id=22 data-nosnippet>22</a><span class="kw">use </span>tauri::Emitter;
 <a href=#23 id=23 data-nosnippet>23</a>
-<a href=#24 id=24 data-nosnippet>24</a><span class="kw">use </span>crate::{<a href="../MountainVinegRPCService.rs.html#78-88">Vine::Server::MountainVinegRPCService::MountainVinegRPCService</a>, <a href="../../../IPC/DevLog/mod.rs.html#51-121">dev_log</a>};
+<a href=#24 id=24 data-nosnippet>24</a><span class="kw">use </span>crate::{<a href="../MountainVinegRPCService.rs.html#77-87">Vine::Server::MountainVinegRPCService::MountainVinegRPCService</a>, <a href="../../../IPC/DevLog/mod.rs.html#50-120">dev_log</a>};
 <a href=#25 id=25 data-nosnippet>25</a>
-<a href=#26 id=26 data-nosnippet>26</a><span class="kw">pub async fn </span><a href="../../../../../Mountain/Vine/Server/Notification/WebviewLifecycle/fn.WebviewLifecycle.html">WebviewLifecycle</a>(Service:<span class="kw-2">&amp;</span><a href="../MountainVinegRPCService.rs.html#78-88">MountainVinegRPCService</a>, MethodName:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, Parameter:<span class="kw-2">&amp;</span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) {
+<a href=#26 id=26 data-nosnippet>26</a><span class="kw">pub async fn </span><a href="../../../../../Mountain/Vine/Server/Notification/WebviewLifecycle/fn.WebviewLifecycle.html">WebviewLifecycle</a>(Service:<span class="kw-2">&amp;</span><a href="../MountainVinegRPCService.rs.html#77-87">MountainVinegRPCService</a>, MethodName:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, Parameter:<span class="kw-2">&amp;</span><a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>) {
 <a href=#27 id=27 data-nosnippet>27</a>	<span class="comment">// Suffix mapping: stock VS Code wire methods are camelCase
 <a href=#28 id=28 data-nosnippet>28</a>	// (`webview.setHtml`, `webview.setIconPath`), but Sky's canonical
 <a href=#29 id=29 data-nosnippet>29</a>	// channel registry (`Common/Source/IPC/SkyEvent.rs`) standardises
@@ -38,7 +38,7 @@
 <a href=#38 id=38 data-nosnippet>38</a>	<span class="kw">let </span>Suffix = <span class="kw">match </span>RawSuffix {
 <a href=#39 id=39 data-nosnippet>39</a>		<span class="string">"setHtml" </span>=&gt; <span class="string">"set-html"</span>,
 <a href=#40 id=40 data-nosnippet>40</a>
-<a href=#41 id=41 data-nosnippet>41</a>		<span class="string">"postMessage" </span>=&gt; <span class="string">"post-message"</span>,
+<a href=#41 id=41 data-nosnippet>41</a>		<span class="string">"postMessage" </span>=&gt; <span class="string">"postMessage"</span>,
 <a href=#42 id=42 data-nosnippet>42</a>
 <a href=#43 id=43 data-nosnippet>43</a>		Other =&gt; Other,
 <a href=#44 id=44 data-nosnippet>44</a>	};

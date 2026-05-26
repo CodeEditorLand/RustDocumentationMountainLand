@@ -27,14 +27,14 @@
 <a href=#27 id=27 data-nosnippet>27</a>	Error::CommonError::CommonError,
 <a href=#28 id=28 data-nosnippet>28</a>	FileSystem::ReadFile::ReadFile,
 <a href=#29 id=29 data-nosnippet>29</a>};
-<a href=#30 id=30 data-nosnippet>30</a><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.149/serde_json/map/struct.Map.html">Map</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>};
+<a href=#30 id=30 data-nosnippet>30</a><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.150/serde_json/map/struct.Map.html">Map</a>, <a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>};
 <a href=#31 id=31 data-nosnippet>31</a><span class="kw">use </span>tauri::Manager;
 <a href=#32 id=32 data-nosnippet>32</a>
 <a href=#33 id=33 data-nosnippet>33</a><span class="kw">use </span>crate::{
 <a href=#34 id=34 data-nosnippet>34</a>	<a href="../../ApplicationState/DTO/MergedConfigurationStateDTO.rs.html#25-28">ApplicationState::DTO::MergedConfigurationStateDTO::MergedConfigurationStateDTO</a>,
-<a href=#35 id=35 data-nosnippet>35</a>	<a href="../mod.rs.html#120">Environment::Utility</a>,
-<a href=#36 id=36 data-nosnippet>36</a>	<a href="../../RunTime/ApplicationRunTime/mod.rs.html#15-21">RunTime::ApplicationRunTime::ApplicationRunTime</a>,
-<a href=#37 id=37 data-nosnippet>37</a>	<a href="../../IPC/DevLog/mod.rs.html#51-121">dev_log</a>,
+<a href=#35 id=35 data-nosnippet>35</a>	<a href="../mod.rs.html#127">Environment::Utility</a>,
+<a href=#36 id=36 data-nosnippet>36</a>	<a href="../../RunTime/ApplicationRunTime/mod.rs.html#14-20">RunTime::ApplicationRunTime::ApplicationRunTime</a>,
+<a href=#37 id=37 data-nosnippet>37</a>	<a href="../../IPC/DevLog/mod.rs.html#50-120">dev_log</a>,
 <a href=#38 id=38 data-nosnippet>38</a>};
 <a href=#39 id=39 data-nosnippet>39</a>
 <a href=#40 id=40 data-nosnippet>40</a><span class="doccomment">/// Short TTL cache for parsed `settings.json` reads. The
@@ -51,7 +51,7 @@
 <a href=#51 id=51 data-nosnippet>51</a><span class="kw">struct </span><a href="../../../../Mountain/Environment/ConfigurationProvider/Loading/struct.CachedSettingsValue.html">CachedSettingsValue</a> {
 <a href=#52 id=52 data-nosnippet>52</a>	StoredAt:<a href="https://doc.rust-lang.org/nightly/std/time/struct.Instant.html">Instant</a>,
 <a href=#53 id=53 data-nosnippet>53</a>
-<a href=#54 id=54 data-nosnippet>54</a>	Parsed:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
+<a href=#54 id=54 data-nosnippet>54</a>	Parsed:<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>,
 <a href=#55 id=55 data-nosnippet>55</a>}
 <a href=#56 id=56 data-nosnippet>56</a>
 <a href=#57 id=57 data-nosnippet>57</a><span class="kw">fn </span><a href="../../../../Mountain/Environment/ConfigurationProvider/Loading/fn.SettingsFileCache.html">SettingsFileCache</a>() -&gt; <span class="kw-2">&amp;</span><span class="lifetime">'static </span><a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">Mutex</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>, <a href="#51-55">CachedSettingsValue</a>&gt;&gt; {
@@ -231,8 +231,8 @@
 <a href=#231 id=231 data-nosnippet>231</a>/// land on the right node.
 <a href=#232 id=232 data-nosnippet>232</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">fn </span><a href="../../../../Mountain/Environment/ConfigurationProvider/Loading/fn.collect_default_configurations.html">collect_default_configurations</a>(
 <a href=#233 id=233 data-nosnippet>233</a>	application_state:<span class="kw-2">&amp;</span><span class="kw">crate</span>::ApplicationState::State::ApplicationState::<a href="../../ApplicationState/State/ApplicationState.rs.html#64-88">ApplicationState</a>,
-<a href=#234 id=234 data-nosnippet>234</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, CommonError&gt; {
-<a href=#235 id=235 data-nosnippet>235</a>	<span class="kw">let </span><span class="kw-2">mut </span>default_config = <a href="https://docs.rs/serde_json/1.0.149/serde_json/map/struct.Map.html">Map</a>::<a href="https://docs.rs/serde_json/1.0.149/serde_json/map/struct.Map.html#method.new">new</a>();
+<a href=#234 id=234 data-nosnippet>234</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>, CommonError&gt; {
+<a href=#235 id=235 data-nosnippet>235</a>	<span class="kw">let </span><span class="kw-2">mut </span>default_config = <a href="https://docs.rs/serde_json/1.0.150/serde_json/map/struct.Map.html">Map</a>::<a href="https://docs.rs/serde_json/1.0.150/serde_json/map/struct.Map.html#method.new">new</a>();
 <a href=#236 id=236 data-nosnippet>236</a>
 <a href=#237 id=237 data-nosnippet>237</a>	<span class="kw">for </span>extension <span class="kw">in </span>application_state
 <a href=#238 id=238 data-nosnippet>238</a>		.Extension
@@ -272,14 +272,14 @@
 <a href=#272 id=272 data-nosnippet>272</a>		}
 <a href=#273 id=273 data-nosnippet>273</a>	}
 <a href=#274 id=274 data-nosnippet>274</a>
-<a href=#275 id=275 data-nosnippet>275</a>	<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Value::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#variant.Object">Object</a>(<a href="#235">default_config</a>))
+<a href=#275 id=275 data-nosnippet>275</a>	<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Value::<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html#variant.Object">Object</a>(<a href="#235">default_config</a>))
 <a href=#276 id=276 data-nosnippet>276</a>}
 <a href=#277 id=277 data-nosnippet>277</a>
 <a href=#278 id=278 data-nosnippet>278</a><span class="doccomment">/// Insert a value into `target` at the dotted path `git.enabled`,
 <a href=#279 id=279 data-nosnippet>279</a>/// creating intermediate object nodes as needed. Mirrors
 <a href=#280 id=280 data-nosnippet>280</a>/// `inspect_configuration_value`'s `try_fold` traversal so a lookup
 <a href=#281 id=281 data-nosnippet>281</a>/// for `git.enabled` finds `target["git"]["enabled"]`.
-<a href=#282 id=282 data-nosnippet>282</a></span><span class="kw">fn </span><a href="../../../../Mountain/Environment/ConfigurationProvider/Loading/fn.InsertDottedDefault.html">InsertDottedDefault</a>(target:<span class="kw-2">&amp;mut </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/map/struct.Map.html">Map</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;, dotted:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, value:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) {
+<a href=#282 id=282 data-nosnippet>282</a></span><span class="kw">fn </span><a href="../../../../Mountain/Environment/ConfigurationProvider/Loading/fn.InsertDottedDefault.html">InsertDottedDefault</a>(target:<span class="kw-2">&amp;mut </span><a href="https://docs.rs/serde_json/1.0.150/serde_json/map/struct.Map.html">Map</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>&gt;, dotted:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, value:<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>) {
 <a href=#283 id=283 data-nosnippet>283</a>	<span class="kw">let </span>parts:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt; = <a href="#282">dotted</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.split">split</a>(<span class="string">'.'</span>).<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.collect">collect</a>();
 <a href=#284 id=284 data-nosnippet>284</a>
 <a href=#285 id=285 data-nosnippet>285</a>	<span class="kw">if </span><a href="#283">parts</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.is_empty">is_empty</a>() {
@@ -287,24 +287,24 @@
 <a href=#287 id=287 data-nosnippet>287</a>	}
 <a href=#288 id=288 data-nosnippet>288</a>
 <a href=#289 id=289 data-nosnippet>289</a>	<span class="kw">if </span><a href="#283">parts</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.len">len</a>() == <span class="number">1 </span>{
-<a href=#290 id=290 data-nosnippet>290</a>		<a href="#282">target</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/map/struct.Map.html#method.insert">insert</a>(<a href="#283">parts</a>[<span class="number">0</span>].<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(), <a href="#282">value</a>);
+<a href=#290 id=290 data-nosnippet>290</a>		<a href="#282">target</a>.<a href="https://docs.rs/serde_json/1.0.150/serde_json/map/struct.Map.html#method.insert">insert</a>(<a href="#283">parts</a>[<span class="number">0</span>].<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(), <a href="#282">value</a>);
 <a href=#291 id=291 data-nosnippet>291</a>
 <a href=#292 id=292 data-nosnippet>292</a>		<span class="kw">return</span>;
 <a href=#293 id=293 data-nosnippet>293</a>	}
 <a href=#294 id=294 data-nosnippet>294</a>
 <a href=#295 id=295 data-nosnippet>295</a>	<span class="kw">let </span>head = <a href="#283">parts</a>[<span class="number">0</span>];
 <a href=#296 id=296 data-nosnippet>296</a>
-<a href=#297 id=297 data-nosnippet>297</a>	<span class="kw">let </span>entry = <a href="#282">target</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/map/struct.Map.html#method.entry">entry</a>(<a href="#295">head</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>()).<a href="https://docs.rs/serde_json/1.0.149/serde_json/map/enum.Entry.html#method.or_insert_with">or_insert_with</a>(|| Value::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#variant.Object">Object</a>(<a href="https://docs.rs/serde_json/1.0.149/serde_json/map/struct.Map.html">Map</a>::<a href="https://docs.rs/serde_json/1.0.149/serde_json/map/struct.Map.html#method.new">new</a>()));
+<a href=#297 id=297 data-nosnippet>297</a>	<span class="kw">let </span>entry = <a href="#282">target</a>.<a href="https://docs.rs/serde_json/1.0.150/serde_json/map/struct.Map.html#method.entry">entry</a>(<a href="#295">head</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>()).<a href="https://docs.rs/serde_json/1.0.150/serde_json/map/enum.Entry.html#method.or_insert_with">or_insert_with</a>(|| Value::<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html#variant.Object">Object</a>(<a href="https://docs.rs/serde_json/1.0.150/serde_json/map/struct.Map.html">Map</a>::<a href="https://docs.rs/serde_json/1.0.150/serde_json/map/struct.Map.html#method.new">new</a>()));
 <a href=#298 id=298 data-nosnippet>298</a>
-<a href=#299 id=299 data-nosnippet>299</a>	<span class="kw">if </span>!<a href="#297">entry</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#method.is_object">is_object</a>() {
+<a href=#299 id=299 data-nosnippet>299</a>	<span class="kw">if </span>!<a href="#297">entry</a>.<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html#method.is_object">is_object</a>() {
 <a href=#300 id=300 data-nosnippet>300</a>		<span class="comment">// Conflicting prior insert (e.g. another extension declared
 <a href=#301 id=301 data-nosnippet>301</a>		// `git` as a non-object). Replace with a fresh map so we don't
 <a href=#302 id=302 data-nosnippet>302</a>		// silently drop the deeper key. Last-writer-wins matches the
 <a href=#303 id=303 data-nosnippet>303</a>		// merge precedence in `initialize_and_merge_configurations`.
-<a href=#304 id=304 data-nosnippet>304</a>		</span><span class="kw-2">*</span><a href="#297">entry</a> = Value::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#variant.Object">Object</a>(<a href="https://docs.rs/serde_json/1.0.149/serde_json/map/struct.Map.html">Map</a>::<a href="https://docs.rs/serde_json/1.0.149/serde_json/map/struct.Map.html#method.new">new</a>());
+<a href=#304 id=304 data-nosnippet>304</a>		</span><span class="kw-2">*</span><a href="#297">entry</a> = Value::<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html#variant.Object">Object</a>(<a href="https://docs.rs/serde_json/1.0.150/serde_json/map/struct.Map.html">Map</a>::<a href="https://docs.rs/serde_json/1.0.150/serde_json/map/struct.Map.html#method.new">new</a>());
 <a href=#305 id=305 data-nosnippet>305</a>	}
 <a href=#306 id=306 data-nosnippet>306</a>
-<a href=#307 id=307 data-nosnippet>307</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(child) = <a href="#297">entry</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#method.as_object_mut">as_object_mut</a>() {
+<a href=#307 id=307 data-nosnippet>307</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(child) = <a href="#297">entry</a>.<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html#method.as_object_mut">as_object_mut</a>() {
 <a href=#308 id=308 data-nosnippet>308</a>		<span class="comment">// Walk the rest of the dotted path recursively. Re-build a
 <a href=#309 id=309 data-nosnippet>309</a>		// `Map&lt;String, Value&gt;` and insert from there, then move it
 <a href=#310 id=310 data-nosnippet>310</a>		// back. (Borrow-checker-friendly variant of in-place

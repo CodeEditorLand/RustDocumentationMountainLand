@@ -53,7 +53,7 @@
 <a href=#53 id=53 data-nosnippet>53</a>	StatusBar::DTO::StatusBarEntryDTO::StatusBarEntryDTO,
 <a href=#54 id=54 data-nosnippet>54</a>};
 <a href=#55 id=55 data-nosnippet>55</a>
-<a href=#56 id=56 data-nosnippet>56</a><span class="kw">use </span>crate::{<a href="../../../DTO/CustomDocumentStateDTO.rs.html#36-61">ApplicationState::DTO::CustomDocumentStateDTO::CustomDocumentStateDTO</a>, <a href="../../../../IPC/DevLog/mod.rs.html#51-121">dev_log</a>};
+<a href=#56 id=56 data-nosnippet>56</a><span class="kw">use </span>crate::{<a href="../../../DTO/CustomDocumentStateDTO.rs.html#36-61">ApplicationState::DTO::CustomDocumentStateDTO::CustomDocumentStateDTO</a>, <a href="../../../../IPC/DevLog/mod.rs.html#50-120">dev_log</a>};
 <a href=#57 id=57 data-nosnippet>57</a>
 <a href=#58 id=58 data-nosnippet>58</a><span class="doccomment">/// Marker-related state containing custom documents, status bar, and SCM state.
 <a href=#59 id=59 data-nosnippet>59</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>)]
@@ -81,7 +81,7 @@
 <a href=#81 id=81 data-nosnippet>81</a>
 <a href=#82 id=82 data-nosnippet>82</a><span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a> <span class="kw">for </span><a href="#60-80">MarkerState</a> {
 <a href=#83 id=83 data-nosnippet>83</a>	<span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{
-<a href=#84 id=84 data-nosnippet>84</a>		<a href="../../../../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[MarkerState] Initializing default marker state..."</span>);
+<a href=#84 id=84 data-nosnippet>84</a>		<a href="../../../../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[MarkerState] Initializing default marker state..."</span>);
 <a href=#85 id=85 data-nosnippet>85</a>
 <a href=#86 id=86 data-nosnippet>86</a>		<span class="self">Self </span>{
 <a href=#87 id=87 data-nosnippet>87</a>			ActiveCustomDocuments:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">StandardMutex</a>::<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.new">new</a>(<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>::<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.new">new</a>())),
@@ -120,7 +120,7 @@
 <a href=#120 id=120 data-nosnippet>120</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="kw-2">mut </span>guard) = <a class="self" href="#119">self</a>.ActiveCustomDocuments.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>() {
 <a href=#121 id=121 data-nosnippet>121</a>			<a href="#120">guard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(<a href="#119">id</a>, <a href="#119">document</a>);
 <a href=#122 id=122 data-nosnippet>122</a>
-<a href=#123 id=123 data-nosnippet>123</a>			<a href="../../../../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[MarkerState] Custom document added/updated"</span>);
+<a href=#123 id=123 data-nosnippet>123</a>			<a href="../../../../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[MarkerState] Custom document added/updated"</span>);
 <a href=#124 id=124 data-nosnippet>124</a>		}
 <a href=#125 id=125 data-nosnippet>125</a>	}
 <a href=#126 id=126 data-nosnippet>126</a>
@@ -129,7 +129,7 @@
 <a href=#129 id=129 data-nosnippet>129</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="kw-2">mut </span>guard) = <a class="self" href="#128">self</a>.ActiveCustomDocuments.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>() {
 <a href=#130 id=130 data-nosnippet>130</a>			<a href="#129">guard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.remove">remove</a>(<a href="#128">id</a>);
 <a href=#131 id=131 data-nosnippet>131</a>
-<a href=#132 id=132 data-nosnippet>132</a>			<a href="../../../../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[MarkerState] Custom document removed: {}"</span>, id);
+<a href=#132 id=132 data-nosnippet>132</a>			<a href="../../../../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[MarkerState] Custom document removed: {}"</span>, id);
 <a href=#133 id=133 data-nosnippet>133</a>		}
 <a href=#134 id=134 data-nosnippet>134</a>	}
 <a href=#135 id=135 data-nosnippet>135</a>
@@ -147,7 +147,7 @@
 <a href=#147 id=147 data-nosnippet>147</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="kw-2">mut </span>guard) = <a class="self" href="#146">self</a>.ActiveStatusBarItems.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>() {
 <a href=#148 id=148 data-nosnippet>148</a>			<a href="#147">guard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(<a href="#146">id</a>, <a href="#146">item</a>);
 <a href=#149 id=149 data-nosnippet>149</a>
-<a href=#150 id=150 data-nosnippet>150</a>			<a href="../../../../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[MarkerState] Status bar item added/updated"</span>);
+<a href=#150 id=150 data-nosnippet>150</a>			<a href="../../../../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[MarkerState] Status bar item added/updated"</span>);
 <a href=#151 id=151 data-nosnippet>151</a>		}
 <a href=#152 id=152 data-nosnippet>152</a>	}
 <a href=#153 id=153 data-nosnippet>153</a>
@@ -156,7 +156,7 @@
 <a href=#156 id=156 data-nosnippet>156</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="kw-2">mut </span>guard) = <a class="self" href="#155">self</a>.ActiveStatusBarItems.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>() {
 <a href=#157 id=157 data-nosnippet>157</a>			<a href="#156">guard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.remove">remove</a>(<a href="#155">id</a>);
 <a href=#158 id=158 data-nosnippet>158</a>
-<a href=#159 id=159 data-nosnippet>159</a>			<a href="../../../../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[MarkerState] Status bar item removed: {}"</span>, id);
+<a href=#159 id=159 data-nosnippet>159</a>			<a href="../../../../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[MarkerState] Status bar item removed: {}"</span>, id);
 <a href=#160 id=160 data-nosnippet>160</a>		}
 <a href=#161 id=161 data-nosnippet>161</a>	}
 <a href=#162 id=162 data-nosnippet>162</a>}

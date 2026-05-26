@@ -30,10 +30,10 @@
 <a href=#30 id=30 data-nosnippet>30</a>
 <a href=#31 id=31 data-nosnippet>31</a></span><span class="kw">use </span>std::{<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">collections::HashMap</a>, <a href="https://doc.rust-lang.org/nightly/std/fs/index.html">fs</a>, <a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html">path::Path</a>};
 <a href=#32 id=32 data-nosnippet>32</a>
-<a href=#33 id=33 data-nosnippet>33</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
+<a href=#33 id=33 data-nosnippet>33</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#34 id=34 data-nosnippet>34</a><span class="kw">use </span>CommonLibrary::Error::CommonError::CommonError;
 <a href=#35 id=35 data-nosnippet>35</a>
-<a href=#36 id=36 data-nosnippet>36</a><span class="kw">use </span><a href="../../../IPC/DevLog/mod.rs.html#51-121"><span class="kw">crate</span>::dev_log</a>;
+<a href=#36 id=36 data-nosnippet>36</a><span class="kw">use </span><a href="../../../IPC/DevLog/mod.rs.html#50-120"><span class="kw">crate</span>::dev_log</a>;
 <a href=#37 id=37 data-nosnippet>37</a>
 <a href=#38 id=38 data-nosnippet>38</a><span class="doccomment">/// Asynchronously saves Memento storage data to a JSON file.
 <a href=#39 id=39 data-nosnippet>39</a>///
@@ -51,7 +51,7 @@
 <a href=#51 id=51 data-nosnippet>51</a>/// - Creates parent directory if it doesn't exist
 <a href=#52 id=52 data-nosnippet>52</a>/// - Serializes data to JSON
 <a href=#53 id=53 data-nosnippet>53</a>/// - Writes to file atomically (creates temp file then renames)
-<a href=#54 id=54 data-nosnippet>54</a></span><span class="kw">pub async fn </span><a href="../../../../../Mountain/ApplicationState/Internal/Persistence/MementoSaver/fn.Fn.html">Fn</a>(StorageFilePath:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html">Path</a>, MementoData:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
+<a href=#54 id=54 data-nosnippet>54</a></span><span class="kw">pub async fn </span><a href="../../../../../Mountain/ApplicationState/Internal/Persistence/MementoSaver/fn.Fn.html">Fn</a>(StorageFilePath:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html">Path</a>, MementoData:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
 <a href=#55 id=55 data-nosnippet>55</a>	<span class="comment">// Ensure parent directory exists
 <a href=#56 id=56 data-nosnippet>56</a>	</span><span class="kw">if let </span><span class="prelude-val">Some</span>(parent) = StorageFilePath.parent() {
 <a href=#57 id=57 data-nosnippet>57</a>		<span class="kw">if </span>!parent.exists() {

@@ -237,22 +237,22 @@
 <a href=#237 id=237 data-nosnippet>237</a>
 <a href=#238 id=238 data-nosnippet>238</a><span class="kw">use </span>crate::{
 <a href=#239 id=239 data-nosnippet>239</a>	IPC::WindServiceAdapters::{
-<a href=#240 id=240 data-nosnippet>240</a>		<a href="WindServiceAdapters/WindDesktopConfiguration.rs.html#12-56">WindDesktopConfiguration::Struct</a> <span class="kw">as </span>WindDesktopConfiguration,
-<a href=#241 id=241 data-nosnippet>241</a>		<a href="WindServiceAdapters/WindServiceAdapter.rs.html#33-35">WindServiceAdapter::Struct</a> <span class="kw">as </span>WindServiceAdapter,
+<a href=#240 id=240 data-nosnippet>240</a>		<a href="WindServiceAdapters/WindDesktopConfiguration.rs.html#11-55">WindDesktopConfiguration::Struct</a> <span class="kw">as </span>WindDesktopConfiguration,
+<a href=#241 id=241 data-nosnippet>241</a>		<a href="WindServiceAdapters/WindServiceAdapter.rs.html#32-34">WindServiceAdapter::Struct</a> <span class="kw">as </span>WindServiceAdapter,
 <a href=#242 id=242 data-nosnippet>242</a>	},
-<a href=#243 id=243 data-nosnippet>243</a>	<a href="../RunTime/ApplicationRunTime/mod.rs.html#15-21">RunTime::ApplicationRunTime::ApplicationRunTime</a>,
-<a href=#244 id=244 data-nosnippet>244</a>	<a href="DevLog/mod.rs.html#51-121">dev_log</a>,
+<a href=#243 id=243 data-nosnippet>243</a>	<a href="../RunTime/ApplicationRunTime/mod.rs.html#14-20">RunTime::ApplicationRunTime::ApplicationRunTime</a>,
+<a href=#244 id=244 data-nosnippet>244</a>	<a href="DevLog/mod.rs.html#50-120">dev_log</a>,
 <a href=#245 id=245 data-nosnippet>245</a>};
 <a href=#246 id=246 data-nosnippet>246</a>
 <a href=#247 id=247 data-nosnippet>247</a><span class="doccomment">/// Configuration bridge that handles Wind's desktop configuration needs
 <a href=#248 id=248 data-nosnippet>248</a></span><span class="kw">pub struct </span><a href="../../../Mountain/IPC/ConfigurationBridge/struct.ConfigurationBridge.html">ConfigurationBridge</a> {
-<a href=#249 id=249 data-nosnippet>249</a>	runtime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/mod.rs.html#15-21">ApplicationRunTime</a>&gt;,
+<a href=#249 id=249 data-nosnippet>249</a>	runtime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/mod.rs.html#14-20">ApplicationRunTime</a>&gt;,
 <a href=#250 id=250 data-nosnippet>250</a>}
 <a href=#251 id=251 data-nosnippet>251</a>
 <a href=#252 id=252 data-nosnippet>252</a><span class="kw">impl </span><a href="#248-250">ConfigurationBridge</a> {
 <a href=#253 id=253 data-nosnippet>253</a>	<span class="doccomment">/// Create a new configuration bridge
-<a href=#254 id=254 data-nosnippet>254</a>	</span><span class="kw">pub fn </span>new(runtime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/mod.rs.html#15-21">ApplicationRunTime</a>&gt;) -&gt; <span class="self">Self </span>{
-<a href=#255 id=255 data-nosnippet>255</a>		<a href="DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"config"</span>, <span class="string">"[ConfigurationBridge] Creating configuration bridge"</span>);
+<a href=#254 id=254 data-nosnippet>254</a>	</span><span class="kw">pub fn </span>new(runtime:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="../RunTime/ApplicationRunTime/mod.rs.html#14-20">ApplicationRunTime</a>&gt;) -&gt; <span class="self">Self </span>{
+<a href=#255 id=255 data-nosnippet>255</a>		<a href="DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"config"</span>, <span class="string">"[ConfigurationBridge] Creating configuration bridge"</span>);
 <a href=#256 id=256 data-nosnippet>256</a>
 <a href=#257 id=257 data-nosnippet>257</a>		<span class="self">Self </span>{ <a href="#254">runtime</a> }
 <a href=#258 id=258 data-nosnippet>258</a>	}
@@ -275,7 +275,7 @@
 <a href=#275 id=275 data-nosnippet>275</a>	}
 <a href=#276 id=276 data-nosnippet>276</a>
 <a href=#277 id=277 data-nosnippet>277</a>	<span class="doccomment">/// Update configuration from Wind frontend
-<a href=#278 id=278 data-nosnippet>278</a>	</span><span class="kw">pub async fn </span>update_configuration_from_wind(<span class="kw-2">&amp;</span><span class="self">self</span>, wind_config:<a href="WindServiceAdapters/WindDesktopConfiguration.rs.html#12-56">WindDesktopConfiguration</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
+<a href=#278 id=278 data-nosnippet>278</a>	</span><span class="kw">pub async fn </span>update_configuration_from_wind(<span class="kw-2">&amp;</span><span class="self">self</span>, wind_config:<a href="WindServiceAdapters/WindDesktopConfiguration.rs.html#11-55">WindDesktopConfiguration</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
 <a href=#279 id=279 data-nosnippet>279</a>		<span class="macro">dev_log!</span>(<span class="string">"config"</span>, <span class="string">"[ConfigurationBridge] Updating configuration from Wind"</span>);
 <a href=#280 id=280 data-nosnippet>280</a>
 <a href=#281 id=281 data-nosnippet>281</a>		<span class="comment">// Convert Wind configuration to Mountain format
@@ -304,7 +304,7 @@
 <a href=#304 id=304 data-nosnippet>304</a>	}
 <a href=#305 id=305 data-nosnippet>305</a>
 <a href=#306 id=306 data-nosnippet>306</a>	<span class="doccomment">/// Update Mountain's configuration
-<a href=#307 id=307 data-nosnippet>307</a>	</span><span class="kw">async fn </span>update_mountain_configuration(<span class="kw-2">&amp;</span><span class="self">self</span>, config:serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
+<a href=#307 id=307 data-nosnippet>307</a>	</span><span class="kw">async fn </span>update_mountain_configuration(<span class="kw-2">&amp;</span><span class="self">self</span>, config:serde_json::<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
 <a href=#308 id=308 data-nosnippet>308</a>		<span class="macro">dev_log!</span>(<span class="string">"config"</span>, <span class="string">"[ConfigurationBridge] Updating Mountain configuration"</span>);
 <a href=#309 id=309 data-nosnippet>309</a>
 <a href=#310 id=310 data-nosnippet>310</a>		<span class="comment">// Validate configuration before updating
@@ -334,14 +334,14 @@
 <a href=#334 id=334 data-nosnippet>334</a>	}
 <a href=#335 id=335 data-nosnippet>335</a>
 <a href=#336 id=336 data-nosnippet>336</a>	<span class="doccomment">/// Validate configuration data
-<a href=#337 id=337 data-nosnippet>337</a>	</span><span class="kw">fn </span>validate_configuration(<span class="kw-2">&amp;</span><span class="self">self</span>, config:<span class="kw-2">&amp;</span>serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
+<a href=#337 id=337 data-nosnippet>337</a>	</span><span class="kw">fn </span>validate_configuration(<span class="kw-2">&amp;</span><span class="self">self</span>, config:<span class="kw-2">&amp;</span>serde_json::<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
 <a href=#338 id=338 data-nosnippet>338</a>		<span class="comment">// Basic validation: config must be an object
-<a href=#339 id=339 data-nosnippet>339</a>		</span><span class="kw">if </span>!<a href="#337">config</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#method.is_object">is_object</a>() {
+<a href=#339 id=339 data-nosnippet>339</a>		</span><span class="kw">if </span>!<a href="#337">config</a>.<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html#method.is_object">is_object</a>() {
 <a href=#340 id=340 data-nosnippet>340</a>			<span class="kw">return </span><span class="bool-val">false</span>;
 <a href=#341 id=341 data-nosnippet>341</a>		}
 <a href=#342 id=342 data-nosnippet>342</a>
 <a href=#343 id=343 data-nosnippet>343</a>		<span class="comment">// Validate individual configuration values
-<a href=#344 id=344 data-nosnippet>344</a>		</span><span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(obj) = <a href="#337">config</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#method.as_object">as_object</a>() {
+<a href=#344 id=344 data-nosnippet>344</a>		</span><span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(obj) = <a href="#337">config</a>.<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html#method.as_object">as_object</a>() {
 <a href=#345 id=345 data-nosnippet>345</a>			<span class="kw">for </span>(key, value) <span class="kw">in </span>obj {
 <a href=#346 id=346 data-nosnippet>346</a>				<span class="comment">// Key validation
 <a href=#347 id=347 data-nosnippet>347</a>				</span><span class="kw">if </span>key.trim().is_empty() {
@@ -393,7 +393,7 @@
 <a href=#393 id=393 data-nosnippet>393</a>	</span><span class="kw">async fn </span>convert_to_mountain_configuration(
 <a href=#394 id=394 data-nosnippet>394</a>		<span class="kw-2">&amp;</span><span class="self">self</span>,
 <a href=#395 id=395 data-nosnippet>395</a>
-<a href=#396 id=396 data-nosnippet>396</a>		wind_config:<a href="WindServiceAdapters/WindDesktopConfiguration.rs.html#12-56">WindDesktopConfiguration</a>,
+<a href=#396 id=396 data-nosnippet>396</a>		wind_config:<a href="WindServiceAdapters/WindDesktopConfiguration.rs.html#11-55">WindDesktopConfiguration</a>,
 <a href=#397 id=397 data-nosnippet>397</a>	) -&gt; <span class="prelude-ty">Result</span>&lt;serde_json::Value, String&gt; {
 <a href=#398 id=398 data-nosnippet>398</a>		<span class="macro">dev_log!</span>(<span class="string">"config"</span>, <span class="string">"[ConfigurationBridge] Converting Wind config to Mountain format"</span>);
 <a href=#399 id=399 data-nosnippet>399</a>
@@ -447,7 +447,7 @@
 <a href=#447 id=447 data-nosnippet>447</a>	}
 <a href=#448 id=448 data-nosnippet>448</a>
 <a href=#449 id=449 data-nosnippet>449</a>	<span class="doccomment">/// Send configuration to Wind frontend via IPC
-<a href=#450 id=450 data-nosnippet>450</a>	</span><span class="kw">async fn </span>send_configuration_to_wind(<span class="kw-2">&amp;</span><span class="self">self</span>, config:<a href="WindServiceAdapters/WindDesktopConfiguration.rs.html#12-56">WindDesktopConfiguration</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
+<a href=#450 id=450 data-nosnippet>450</a>	</span><span class="kw">async fn </span>send_configuration_to_wind(<span class="kw-2">&amp;</span><span class="self">self</span>, config:<a href="WindServiceAdapters/WindDesktopConfiguration.rs.html#11-55">WindDesktopConfiguration</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
 <a href=#451 id=451 data-nosnippet>451</a>		<span class="macro">dev_log!</span>(<span class="string">"config"</span>, <span class="string">"[ConfigurationBridge] Sending configuration to Wind"</span>);
 <a href=#452 id=452 data-nosnippet>452</a>
 <a href=#453 id=453 data-nosnippet>453</a>		<span class="comment">// Get the IPC server
@@ -472,7 +472,7 @@
 <a href=#472 id=472 data-nosnippet>472</a>	}
 <a href=#473 id=473 data-nosnippet>473</a>
 <a href=#474 id=474 data-nosnippet>474</a>	<span class="doccomment">/// Handle configuration changes from Wind
-<a href=#475 id=475 data-nosnippet>475</a>	</span><span class="kw">pub async fn </span>WindConfigurationChange(<span class="kw-2">&amp;</span><span class="self">self</span>, new_config:serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
+<a href=#475 id=475 data-nosnippet>475</a>	</span><span class="kw">pub async fn </span>WindConfigurationChange(<span class="kw-2">&amp;</span><span class="self">self</span>, new_config:serde_json::<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
 <a href=#476 id=476 data-nosnippet>476</a>		<span class="macro">dev_log!</span>(<span class="string">"config"</span>, <span class="string">"[ConfigurationBridge] Handling Wind configuration change"</span>);
 <a href=#477 id=477 data-nosnippet>477</a>
 <a href=#478 id=478 data-nosnippet>478</a>		<span class="comment">// Parse Wind configuration
@@ -691,7 +691,7 @@
 <a href=#691 id=691 data-nosnippet>691</a>
 <a href=#692 id=692 data-nosnippet>692</a><span class="doccomment">/// Tauri command to save configuration data from Wind frontend
 <a href=#693 id=693 data-nosnippet>693</a></span><span class="attr">#[tauri::command]
-<a href=#694 id=694 data-nosnippet>694</a></span><span class="kw">pub async fn </span><a href="#693">save_configuration_data</a>(app_handle:tauri::AppHandle, config_data:serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
+<a href=#694 id=694 data-nosnippet>694</a></span><span class="kw">pub async fn </span><a href="#693">save_configuration_data</a>(app_handle:tauri::AppHandle, config_data:serde_json::<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
 <a href=#695 id=695 data-nosnippet>695</a>	<span class="macro">dev_log!</span>(<span class="string">"config"</span>, <span class="string">"[ConfigurationBridge] Tauri command: save_configuration_data"</span>);
 <a href=#696 id=696 data-nosnippet>696</a>
 <a href=#697 id=697 data-nosnippet>697</a>	<span class="kw">if let </span><span class="prelude-val">Some</span>(runtime) = app_handle.try_state::&lt;Arc&lt;ApplicationRunTime&gt;&gt;() {
@@ -713,7 +713,7 @@
 <a href=#713 id=713 data-nosnippet>713</a></span><span class="kw">pub async fn </span><a href="#712">mountain_update_configuration_from_wind</a>(
 <a href=#714 id=714 data-nosnippet>714</a>	app_handle:tauri::AppHandle,
 <a href=#715 id=715 data-nosnippet>715</a>
-<a href=#716 id=716 data-nosnippet>716</a>	config:serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
+<a href=#716 id=716 data-nosnippet>716</a>	config:serde_json::<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>,
 <a href=#717 id=717 data-nosnippet>717</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
 <a href=#718 id=718 data-nosnippet>718</a>	<span class="macro">dev_log!</span>(<span class="string">"config"</span>, <span class="string">"[ConfigurationBridge] Tauri command: update_configuration_from_wind"</span>);
 <a href=#719 id=719 data-nosnippet>719</a>

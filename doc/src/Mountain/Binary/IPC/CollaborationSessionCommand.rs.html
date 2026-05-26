@@ -37,7 +37,7 @@
 <a href=#37 id=37 data-nosnippet>37</a>//! - Session operations should be fast
 <a href=#38 id=38 data-nosnippet>38</a>//! - Consider connection pooling for active sessions
 <a href=#39 id=39 data-nosnippet>39</a>
-<a href=#40 id=40 data-nosnippet>40</a></span><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
+<a href=#40 id=40 data-nosnippet>40</a></span><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#41 id=41 data-nosnippet>41</a><span class="kw">use </span>tauri::AppHandle;
 <a href=#42 id=42 data-nosnippet>42</a>
 <a href=#43 id=43 data-nosnippet>43</a><span class="doccomment">/// Create collaboration session.
@@ -59,7 +59,7 @@
 <a href=#59 id=59 data-nosnippet>59</a>/// - Session data is invalid
 <a href=#60 id=60 data-nosnippet>60</a>/// - Session creation fails
 <a href=#61 id=61 data-nosnippet>61</a></span><span class="attr">#[tauri::command]
-<a href=#62 id=62 data-nosnippet>62</a></span><span class="kw">pub async fn </span><a href="#61">MountainCreateCollaborationSession</a>(app_handle:AppHandle, session_data:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
+<a href=#62 id=62 data-nosnippet>62</a></span><span class="kw">pub async fn </span><a href="#61">MountainCreateCollaborationSession</a>(app_handle:AppHandle, session_data:<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
 <a href=#63 id=63 data-nosnippet>63</a>	<span class="comment">// Extract session_id and permissions from the JSON object
 <a href=#64 id=64 data-nosnippet>64</a>	</span><span class="kw">let </span>session_id = session_data
 <a href=#65 id=65 data-nosnippet>65</a>		.get(<span class="string">"session_id"</span>)

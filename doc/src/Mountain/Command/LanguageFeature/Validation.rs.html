@@ -2,7 +2,7 @@
 <a href=#2 id=2 data-nosnippet>2</a>//!
 <a href=#3 id=3 data-nosnippet>3</a>//! Validation helper for language feature requests
 <a href=#4 id=4 data-nosnippet>4</a>
-<a href=#5 id=5 data-nosnippet>5</a></span><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/index.html">serde_json</a>;
+<a href=#5 id=5 data-nosnippet>5</a></span><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.150/serde_json/index.html">serde_json</a>;
 <a href=#6 id=6 data-nosnippet>6</a>
 <a href=#7 id=7 data-nosnippet>7</a><span class="doccomment">/// Validates language feature request parameters.
 <a href=#8 id=8 data-nosnippet>8</a></span><span class="kw">pub</span>(<span class="kw">super</span>) <span class="kw">fn </span><a href="../../../../Mountain/Command/LanguageFeature/Validation/fn.validate_language_feature_request.html">validate_language_feature_request</a>(
@@ -10,23 +10,23 @@
 <a href=#10 id=10 data-nosnippet>10</a>
 <a href=#11 id=11 data-nosnippet>11</a>	uri:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
 <a href=#12 id=12 data-nosnippet>12</a>
-<a href=#13 id=13 data-nosnippet>13</a>	position:<span class="kw-2">&amp;</span>serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
+<a href=#13 id=13 data-nosnippet>13</a>	position:<span class="kw-2">&amp;</span>serde_json::<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>,
 <a href=#14 id=14 data-nosnippet>14</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
 <a href=#15 id=15 data-nosnippet>15</a>	<span class="kw">if </span><a href="#11">uri</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.is_empty">is_empty</a>() {
 <a href=#16 id=16 data-nosnippet>16</a>		<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Empty URI for {} request"</span>, request_type));
 <a href=#17 id=17 data-nosnippet>17</a>	}
 <a href=#18 id=18 data-nosnippet>18</a>
 <a href=#19 id=19 data-nosnippet>19</a>	<span class="comment">// Validate position format
-<a href=#20 id=20 data-nosnippet>20</a>	</span><span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(line) = <a href="#13">position</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#method.get">get</a>(<span class="string">"line"</span>) {
-<a href=#21 id=21 data-nosnippet>21</a>		<span class="kw">if </span>!<a href="#20">line</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#method.is_u64">is_u64</a>() {
+<a href=#20 id=20 data-nosnippet>20</a>	</span><span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(line) = <a href="#13">position</a>.<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html#method.get">get</a>(<span class="string">"line"</span>) {
+<a href=#21 id=21 data-nosnippet>21</a>		<span class="kw">if </span>!<a href="#20">line</a>.<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html#method.is_u64">is_u64</a>() {
 <a href=#22 id=22 data-nosnippet>22</a>			<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Invalid line position for {} request"</span>, request_type));
 <a href=#23 id=23 data-nosnippet>23</a>		}
 <a href=#24 id=24 data-nosnippet>24</a>	} <span class="kw">else </span>{
 <a href=#25 id=25 data-nosnippet>25</a>		<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Missing line position for {} request"</span>, request_type));
 <a href=#26 id=26 data-nosnippet>26</a>	}
 <a href=#27 id=27 data-nosnippet>27</a>
-<a href=#28 id=28 data-nosnippet>28</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(character) = <a href="#13">position</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#method.get">get</a>(<span class="string">"character"</span>) {
-<a href=#29 id=29 data-nosnippet>29</a>		<span class="kw">if </span>!<a href="#28">character</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#method.is_u64">is_u64</a>() {
+<a href=#28 id=28 data-nosnippet>28</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(character) = <a href="#13">position</a>.<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html#method.get">get</a>(<span class="string">"character"</span>) {
+<a href=#29 id=29 data-nosnippet>29</a>		<span class="kw">if </span>!<a href="#28">character</a>.<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html#method.is_u64">is_u64</a>() {
 <a href=#30 id=30 data-nosnippet>30</a>			<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Invalid character position for {} request"</span>, request_type));
 <a href=#31 id=31 data-nosnippet>31</a>		}
 <a href=#32 id=32 data-nosnippet>32</a>	} <span class="kw">else </span>{

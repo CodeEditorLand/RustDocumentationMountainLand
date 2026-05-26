@@ -7,9 +7,9 @@
 <a href=#7 id=7 data-nosnippet>7</a>
 <a href=#8 id=8 data-nosnippet>8</a><span class="kw">use </span>super::{
 <a href=#9 id=9 data-nosnippet>9</a>	<a href="Health.rs.html#69-72">Health::HealthChecker</a>,
-<a href=#10 id=10 data-nosnippet>10</a>	Types::{<a href="Types.rs.html#132-147">ConnectionHandle</a>, <a href="Types.rs.html#293-308">ConnectionStats</a>},
+<a href=#10 id=10 data-nosnippet>10</a>	Types::{<a href="Types.rs.html#132-147">ConnectionHandle</a>, <a href="Types.rs.html#292-307">ConnectionStats</a>},
 <a href=#11 id=11 data-nosnippet>11</a>};
-<a href=#12 id=12 data-nosnippet>12</a><span class="kw">use </span><a href="../DevLog/mod.rs.html#51-121"><span class="kw">crate</span>::dev_log</a>;
+<a href=#12 id=12 data-nosnippet>12</a><span class="kw">use </span><a href="../DevLog/mod.rs.html#50-120"><span class="kw">crate</span>::dev_log</a>;
 <a href=#13 id=13 data-nosnippet>13</a>
 <a href=#14 id=14 data-nosnippet>14</a><span class="doccomment">/// Connection manager (alias for ConnectionPool)
 <a href=#15 id=15 data-nosnippet>15</a>///
@@ -97,7 +97,7 @@
 <a href=#97 id=97 data-nosnippet>97</a>	/// let pool = ConnectionPool::new(10, Duration::from_secs(30));
 <a href=#98 id=98 data-nosnippet>98</a>	/// ```
 <a href=#99 id=99 data-nosnippet>99</a>	</span><span class="kw">pub fn </span>new(MaxConnections:<a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, ConnectionTimeout:<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html">Duration</a>) -&gt; <span class="self">Self </span>{
-<a href=#100 id=100 data-nosnippet>100</a>		<a href="../DevLog/mod.rs.html#51-121">dev_log!</a>(
+<a href=#100 id=100 data-nosnippet>100</a>		<a href="../DevLog/mod.rs.html#50-120">dev_log!</a>(
 <a href=#101 id=101 data-nosnippet>101</a>			<span class="string">"ipc"</span>,
 <a href=#102 id=102 data-nosnippet>102</a>			<span class="string">"[ConnectionPool] Creating pool with max: {}, timeout: {:?}"</span>,
 <a href=#103 id=103 data-nosnippet>103</a>			MaxConnections,

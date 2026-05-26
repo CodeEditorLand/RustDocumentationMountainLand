@@ -32,7 +32,7 @@
 <a href=#32 id=32 data-nosnippet>32</a>// - Support multiple health check types
 <a href=#33 id=33 data-nosnippet>33</a>
 <a href=#34 id=34 data-nosnippet>34</a></span><span class="kw">use </span><a href="Types.rs.html#132-147"><span class="kw">super</span>::Types::ConnectionHandle</a>;
-<a href=#35 id=35 data-nosnippet>35</a><span class="kw">use </span><a href="../DevLog/mod.rs.html#51-121"><span class="kw">crate</span>::dev_log</a>;
+<a href=#35 id=35 data-nosnippet>35</a><span class="kw">use </span><a href="../DevLog/mod.rs.html#50-120"><span class="kw">crate</span>::dev_log</a>;
 <a href=#36 id=36 data-nosnippet>36</a>
 <a href=#37 id=37 data-nosnippet>37</a><span class="doccomment">/// Connection health checker
 <a href=#38 id=38 data-nosnippet>38</a>///
@@ -76,7 +76,7 @@
 <a href=#76 id=76 data-nosnippet>76</a>	///
 <a href=#77 id=77 data-nosnippet>77</a>	/// Default ping timeout is 5 seconds.
 <a href=#78 id=78 data-nosnippet>78</a>	</span><span class="kw">pub fn </span>new() -&gt; <span class="self">Self </span>{
-<a href=#79 id=79 data-nosnippet>79</a>		<a href="../DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[HealthChecker] Creating health checker with 5s timeout"</span>);
+<a href=#79 id=79 data-nosnippet>79</a>		<a href="../DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[HealthChecker] Creating health checker with 5s timeout"</span>);
 <a href=#80 id=80 data-nosnippet>80</a>
 <a href=#81 id=81 data-nosnippet>81</a>		<span class="self">Self </span>{ ping_timeout:std::time::<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html">Duration</a>::<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html#method.from_secs">from_secs</a>(<span class="number">5</span>) }
 <a href=#82 id=82 data-nosnippet>82</a>	}
@@ -86,7 +86,7 @@
 <a href=#86 id=86 data-nosnippet>86</a>	/// ## Parameters
 <a href=#87 id=87 data-nosnippet>87</a>	/// - `ping_timeout`: Maximum allowed response time
 <a href=#88 id=88 data-nosnippet>88</a>	</span><span class="kw">pub fn </span>with_timeout(ping_timeout:std::time::<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html">Duration</a>) -&gt; <span class="self">Self </span>{
-<a href=#89 id=89 data-nosnippet>89</a>		<a href="../DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[HealthChecker] Creating health checker with {:?} timeout"</span>, ping_timeout);
+<a href=#89 id=89 data-nosnippet>89</a>		<a href="../DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[HealthChecker] Creating health checker with {:?} timeout"</span>, ping_timeout);
 <a href=#90 id=90 data-nosnippet>90</a>
 <a href=#91 id=91 data-nosnippet>91</a>		<span class="self">Self </span>{ <a href="#88">ping_timeout</a> }
 <a href=#92 id=92 data-nosnippet>92</a>	}
@@ -149,7 +149,7 @@
 <a href=#149 id=149 data-nosnippet>149</a>	</span><span class="kw">pub fn </span>set_ping_timeout(<span class="kw-2">&amp;mut </span><span class="self">self</span>, timeout:std::time::<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html">Duration</a>) {
 <a href=#150 id=150 data-nosnippet>150</a>		<a class="self" href="#149">self</a>.ping_timeout = <a href="#149">timeout</a>;
 <a href=#151 id=151 data-nosnippet>151</a>
-<a href=#152 id=152 data-nosnippet>152</a>		<a href="../DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[HealthChecker] Ping timeout updated to {:?}"</span>, timeout);
+<a href=#152 id=152 data-nosnippet>152</a>		<a href="../DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"ipc"</span>, <span class="string">"[HealthChecker] Ping timeout updated to {:?}"</span>, timeout);
 <a href=#153 id=153 data-nosnippet>153</a>	}
 <a href=#154 id=154 data-nosnippet>154</a>}
 <a href=#155 id=155 data-nosnippet>155</a>

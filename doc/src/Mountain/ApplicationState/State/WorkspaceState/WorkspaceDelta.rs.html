@@ -17,21 +17,21 @@
 <a href=#17 id=17 data-nosnippet>17</a>//! synchronous reads.
 <a href=#18 id=18 data-nosnippet>18</a>
 <a href=#19 id=19 data-nosnippet>19</a></span><span class="kw">use </span>CommonLibrary::IPC::SkyEvent::SkyEvent;
-<a href=#20 id=20 data-nosnippet>20</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">serde_json::json</a>;
+<a href=#20 id=20 data-nosnippet>20</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.150/serde_json/macro.json.html">serde_json::json</a>;
 <a href=#21 id=21 data-nosnippet>21</a>
 <a href=#22 id=22 data-nosnippet>22</a><span class="kw">use </span>crate::{
 <a href=#23 id=23 data-nosnippet>23</a>	<a href="../../DTO/WorkspaceFolderStateDTO.rs.html#26-37">ApplicationState::DTO::WorkspaceFolderStateDTO::WorkspaceFolderStateDTO</a>,
-<a href=#24 id=24 data-nosnippet>24</a>	<a href="../../../IPC/SkyEmit.rs.html#44-69">IPC::SkyEmit::LogSkyEmit</a>,
-<a href=#25 id=25 data-nosnippet>25</a>	<a href="../../../Vine/mod.rs.html#86">Vine::Client</a>,
-<a href=#26 id=26 data-nosnippet>26</a>	<a href="../../../IPC/DevLog/mod.rs.html#51-121">dev_log</a>,
+<a href=#24 id=24 data-nosnippet>24</a>	<a href="../../../IPC/SkyEmit.rs.html#43-68">IPC::SkyEmit::LogSkyEmit</a>,
+<a href=#25 id=25 data-nosnippet>25</a>	<a href="../../../Vine/mod.rs.html#85">Vine::Client</a>,
+<a href=#26 id=26 data-nosnippet>26</a>	<a href="../../../IPC/DevLog/mod.rs.html#50-120">dev_log</a>,
 <a href=#27 id=27 data-nosnippet>27</a>};
 <a href=#28 id=28 data-nosnippet>28</a>
 <a href=#29 id=29 data-nosnippet>29</a><span class="doccomment">/// Serialisation shape matching the Cocoon-side Workspace shim. Mirrors the
 <a href=#30 id=30 data-nosnippet>30</a>/// camelCase DTO Sky already serialises for `workspaces:getFolders`, so the
 <a href=#31 id=31 data-nosnippet>31</a>/// Cocoon handler can pass the payload through to extension listeners without
 <a href=#32 id=32 data-nosnippet>32</a>/// renaming fields.
-<a href=#33 id=33 data-nosnippet>33</a></span><span class="kw">fn </span><a href="../../../../../Mountain/ApplicationState/State/WorkspaceState/WorkspaceDelta/fn.FolderToWire.html">FolderToWire</a>(Folder:<span class="kw-2">&amp;</span><a href="../../DTO/WorkspaceFolderStateDTO.rs.html#26-37">WorkspaceFolderStateDTO</a>) -&gt; serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a> {
-<a href=#34 id=34 data-nosnippet>34</a>	<a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json!</a>({
+<a href=#33 id=33 data-nosnippet>33</a></span><span class="kw">fn </span><a href="../../../../../Mountain/ApplicationState/State/WorkspaceState/WorkspaceDelta/fn.FolderToWire.html">FolderToWire</a>(Folder:<span class="kw-2">&amp;</span><a href="../../DTO/WorkspaceFolderStateDTO.rs.html#26-37">WorkspaceFolderStateDTO</a>) -&gt; serde_json::<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a> {
+<a href=#34 id=34 data-nosnippet>34</a>	<a href="https://docs.rs/serde_json/1.0.150/serde_json/macro.json.html">json!</a>({
 <a href=#35 id=35 data-nosnippet>35</a>		<span class="string">"uri"</span>: Folder.URI.to_string(),
 <a href=#36 id=36 data-nosnippet>36</a>		<span class="string">"name"</span>: Folder.GetDisplayName(),
 <a href=#37 id=37 data-nosnippet>37</a>		<span class="string">"index"</span>: Folder.Index,
@@ -100,7 +100,7 @@
 <a href=#100 id=100 data-nosnippet>100</a>			DispatchDeltaWorkspaceFolders(Added, Removed).<span class="kw">await</span>;
 <a href=#101 id=101 data-nosnippet>101</a>		});
 <a href=#102 id=102 data-nosnippet>102</a>	} <span class="kw">else </span>{
-<a href=#103 id=103 data-nosnippet>103</a>		<a href="../../../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(
+<a href=#103 id=103 data-nosnippet>103</a>		<a href="../../../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(
 <a href=#104 id=104 data-nosnippet>104</a>			<span class="string">"workspaces"</span>,
 <a href=#105 id=105 data-nosnippet>105</a>			<span class="string">"warn: [LandFix:WsDelta] No tokio runtime available - delta dropped ({} added, {} removed)"</span>,
 <a href=#106 id=106 data-nosnippet>106</a>			Added.len(),
@@ -130,11 +130,11 @@
 <a href=#130 id=130 data-nosnippet>130</a>		<span class="kw">return</span>;
 <a href=#131 id=131 data-nosnippet>131</a>	}
 <a href=#132 id=132 data-nosnippet>132</a>
-<a href=#133 id=133 data-nosnippet>133</a>	<span class="kw">let </span>AddedWire:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt; = <a href="#127">Added</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.iter">iter</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.map">map</a>(<a href="#33-39">FolderToWire</a>).<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.collect">collect</a>();
+<a href=#133 id=133 data-nosnippet>133</a>	<span class="kw">let </span>AddedWire:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;serde_json::<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>&gt; = <a href="#127">Added</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.iter">iter</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.map">map</a>(<a href="#33-39">FolderToWire</a>).<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.collect">collect</a>();
 <a href=#134 id=134 data-nosnippet>134</a>
-<a href=#135 id=135 data-nosnippet>135</a>	<span class="kw">let </span>RemovedWire:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt; = <a href="#127">Removed</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.iter">iter</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.map">map</a>(<a href="#33-39">FolderToWire</a>).<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.collect">collect</a>();
+<a href=#135 id=135 data-nosnippet>135</a>	<span class="kw">let </span>RemovedWire:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;serde_json::<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>&gt; = <a href="#127">Removed</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.iter">iter</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.map">map</a>(<a href="#33-39">FolderToWire</a>).<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.collect">collect</a>();
 <a href=#136 id=136 data-nosnippet>136</a>
-<a href=#137 id=137 data-nosnippet>137</a>	<span class="kw">let </span>BroadcastPayload = <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">serde_json::json!</a>({
+<a href=#137 id=137 data-nosnippet>137</a>	<span class="kw">let </span>BroadcastPayload = <a href="https://docs.rs/serde_json/1.0.150/serde_json/macro.json.html">serde_json::json!</a>({
 <a href=#138 id=138 data-nosnippet>138</a>		<span class="string">"added"</span>: AddedWire.clone(),
 <a href=#139 id=139 data-nosnippet>139</a>		<span class="string">"removed"</span>: RemovedWire.clone(),
 <a href=#140 id=140 data-nosnippet>140</a>		<span class="string">"folders"</span>: State
@@ -144,8 +144,8 @@
 <a href=#144 id=144 data-nosnippet>144</a>			.collect::&lt;Vec&lt;<span class="kw">_</span>&gt;&gt;(),
 <a href=#145 id=145 data-nosnippet>145</a>	});
 <a href=#146 id=146 data-nosnippet>146</a>
-<a href=#147 id=147 data-nosnippet>147</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error) = <a href="../../../IPC/SkyEmit.rs.html#44-69">LogSkyEmit</a>(<a href="#117">ApplicationHandle</a>, SkyEvent::WorkspacesChanged.AsStr(), <a href="#137">BroadcastPayload</a>) {
-<a href=#148 id=148 data-nosnippet>148</a>		<a href="../../../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(
+<a href=#147 id=147 data-nosnippet>147</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error) = <a href="../../../IPC/SkyEmit.rs.html#43-68">LogSkyEmit</a>(<a href="#117">ApplicationHandle</a>, SkyEvent::WorkspacesChanged.AsStr(), <a href="#137">BroadcastPayload</a>) {
+<a href=#148 id=148 data-nosnippet>148</a>		<a href="../../../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(
 <a href=#149 id=149 data-nosnippet>149</a>			<span class="string">"workspaces"</span>,
 <a href=#150 id=150 data-nosnippet>150</a>			<span class="string">"warn: [LandFix:WsDelta] sky://workspaces/changed emit failed: {}"</span>,
 <a href=#151 id=151 data-nosnippet>151</a>			Error
@@ -174,19 +174,19 @@
 <a href=#174 id=174 data-nosnippet>174</a>		<span class="kw">return</span>;
 <a href=#175 id=175 data-nosnippet>175</a>	}
 <a href=#176 id=176 data-nosnippet>176</a>
-<a href=#177 id=177 data-nosnippet>177</a>	<span class="kw">let </span>Path = <span class="kw">crate</span>::IPC::WindServiceHandlers::Utilities::FiddeeRoot::<a href="../../../IPC/WindServiceHandlers/Utilities/FiddeeRoot.rs.html#23-33">Fn</a>()
+<a href=#177 id=177 data-nosnippet>177</a>	<span class="kw">let </span>Path = <span class="kw">crate</span>::IPC::WindServiceHandlers::Utilities::FiddeeRoot::<a href="../../../IPC/WindServiceHandlers/Utilities/FiddeeRoot.rs.html#22-32">Fn</a>()
 <a href=#178 id=178 data-nosnippet>178</a>		.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">"workspaces"</span>)
 <a href=#179 id=179 data-nosnippet>179</a>		.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">"RecentlyOpened.json"</span>);
 <a href=#180 id=180 data-nosnippet>180</a>
-<a href=#181 id=181 data-nosnippet>181</a>	<span class="kw">let </span><span class="kw-2">mut </span>Current:serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/map/struct.Map.html">Map</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt; = std::fs::<a href="https://doc.rust-lang.org/nightly/std/fs/fn.read_to_string.html">read_to_string</a>(<span class="kw-2">&amp;</span><a href="#177">Path</a>)
+<a href=#181 id=181 data-nosnippet>181</a>	<span class="kw">let </span><span class="kw-2">mut </span>Current:serde_json::<a href="https://docs.rs/serde_json/1.0.150/serde_json/map/struct.Map.html">Map</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, serde_json::<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>&gt; = std::fs::<a href="https://doc.rust-lang.org/nightly/std/fs/fn.read_to_string.html">read_to_string</a>(<span class="kw-2">&amp;</span><a href="#177">Path</a>)
 <a href=#182 id=182 data-nosnippet>182</a>		.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>()
-<a href=#183 id=183 data-nosnippet>183</a>		.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|Contents| serde_json::from_str::&lt;serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;(<span class="kw-2">&amp;</span><a href="#183">Contents</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>())
-<a href=#184 id=184 data-nosnippet>184</a>		.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|V| <a href="#184">V</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#method.as_object">as_object</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.cloned">cloned</a>())
+<a href=#183 id=183 data-nosnippet>183</a>		.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|Contents| serde_json::from_str::&lt;serde_json::<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>&gt;(<span class="kw-2">&amp;</span><a href="#183">Contents</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.ok">ok</a>())
+<a href=#184 id=184 data-nosnippet>184</a>		.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|V| <a href="#184">V</a>.<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html#method.as_object">as_object</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.cloned">cloned</a>())
 <a href=#185 id=185 data-nosnippet>185</a>		.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or_default">unwrap_or_default</a>();
 <a href=#186 id=186 data-nosnippet>186</a>
 <a href=#187 id=187 data-nosnippet>187</a>	<span class="kw">let </span><span class="kw-2">mut </span>Workspaces = <a href="#181">Current</a>
-<a href=#188 id=188 data-nosnippet>188</a>		.<a href="https://docs.rs/serde_json/1.0.149/serde_json/map/struct.Map.html#method.get">get</a>(<span class="string">"workspaces"</span>)
-<a href=#189 id=189 data-nosnippet>189</a>		.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|V| <a href="#189">V</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#method.as_array">as_array</a>())
+<a href=#188 id=188 data-nosnippet>188</a>		.<a href="https://docs.rs/serde_json/1.0.150/serde_json/map/struct.Map.html#method.get">get</a>(<span class="string">"workspaces"</span>)
+<a href=#189 id=189 data-nosnippet>189</a>		.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|V| <a href="#189">V</a>.<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html#method.as_array">as_array</a>())
 <a href=#190 id=190 data-nosnippet>190</a>		.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.cloned">cloned</a>()
 <a href=#191 id=191 data-nosnippet>191</a>		.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or_default">unwrap_or_default</a>();
 <a href=#192 id=192 data-nosnippet>192</a>
@@ -206,17 +206,17 @@
 <a href=#206 id=206 data-nosnippet>206</a>
 <a href=#207 id=207 data-nosnippet>207</a>	<a href="#187">Workspaces</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.truncate">truncate</a>(<span class="number">50</span>);
 <a href=#208 id=208 data-nosnippet>208</a>
-<a href=#209 id=209 data-nosnippet>209</a>	<a href="#181">Current</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/map/struct.Map.html#method.insert">insert</a>(<span class="string">"workspaces"</span>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into">into</a>(), serde_json::Value::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#variant.Array">Array</a>(<a href="#187">Workspaces</a>));
+<a href=#209 id=209 data-nosnippet>209</a>	<a href="#181">Current</a>.<a href="https://docs.rs/serde_json/1.0.150/serde_json/map/struct.Map.html#method.insert">insert</a>(<span class="string">"workspaces"</span>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into">into</a>(), serde_json::Value::<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html#variant.Array">Array</a>(<a href="#187">Workspaces</a>));
 <a href=#210 id=210 data-nosnippet>210</a>
-<a href=#211 id=211 data-nosnippet>211</a>	<span class="kw">if </span>!<a href="#181">Current</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/map/struct.Map.html#method.contains_key">contains_key</a>(<span class="string">"files"</span>) {
-<a href=#212 id=212 data-nosnippet>212</a>		<a href="#181">Current</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/map/struct.Map.html#method.insert">insert</a>(<span class="string">"files"</span>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into">into</a>(), <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">serde_json::json!</a>([]));
+<a href=#211 id=211 data-nosnippet>211</a>	<span class="kw">if </span>!<a href="#181">Current</a>.<a href="https://docs.rs/serde_json/1.0.150/serde_json/map/struct.Map.html#method.contains_key">contains_key</a>(<span class="string">"files"</span>) {
+<a href=#212 id=212 data-nosnippet>212</a>		<a href="#181">Current</a>.<a href="https://docs.rs/serde_json/1.0.150/serde_json/map/struct.Map.html#method.insert">insert</a>(<span class="string">"files"</span>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into">into</a>(), <a href="https://docs.rs/serde_json/1.0.150/serde_json/macro.json.html">serde_json::json!</a>([]));
 <a href=#213 id=213 data-nosnippet>213</a>	}
 <a href=#214 id=214 data-nosnippet>214</a>
 <a href=#215 id=215 data-nosnippet>215</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Parent) = <a href="#177">Path</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.parent">parent</a>() {
 <a href=#216 id=216 data-nosnippet>216</a>		<span class="kw">let _ </span>= std::fs::<a href="https://doc.rust-lang.org/nightly/std/fs/fn.create_dir_all.html">create_dir_all</a>(<a href="#215">Parent</a>);
 <a href=#217 id=217 data-nosnippet>217</a>	}
 <a href=#218 id=218 data-nosnippet>218</a>
-<a href=#219 id=219 data-nosnippet>219</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Serialised) = serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/ser/fn.to_vec_pretty.html">to_vec_pretty</a>(<span class="kw-2">&amp;</span>serde_json::Value::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#variant.Object">Object</a>(<a href="#181">Current</a>)) {
+<a href=#219 id=219 data-nosnippet>219</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Serialised) = serde_json::<a href="https://docs.rs/serde_json/1.0.150/serde_json/ser/fn.to_vec_pretty.html">to_vec_pretty</a>(<span class="kw-2">&amp;</span>serde_json::Value::<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html#variant.Object">Object</a>(<a href="#181">Current</a>)) {
 <a href=#220 id=220 data-nosnippet>220</a>		<span class="kw">let _ </span>= std::fs::<a href="https://doc.rust-lang.org/nightly/std/fs/fn.write.html">write</a>(<span class="kw-2">&amp;</span><a href="#177">Path</a>, <a href="#219">Serialised</a>);
 <a href=#221 id=221 data-nosnippet>221</a>	}
 <a href=#222 id=222 data-nosnippet>222</a>}

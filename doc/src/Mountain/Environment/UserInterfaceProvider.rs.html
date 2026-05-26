@@ -51,14 +51,14 @@
 <a href=#51 id=51 data-nosnippet>51</a>};
 <a href=#52 id=52 data-nosnippet>52</a><span class="kw">use </span><a href="https://docs.rs/async-trait/0.1.89/async_trait/attr.async_trait.html">async_trait::async_trait</a>;
 <a href=#53 id=53 data-nosnippet>53</a><span class="kw">use </span><a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">serde::Serialize</a>;
-<a href=#54 id=54 data-nosnippet>54</a><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>, <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json</a>};
+<a href=#54 id=54 data-nosnippet>54</a><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>, <a href="https://docs.rs/serde_json/1.0.150/serde_json/macro.json.html">json</a>};
 <a href=#55 id=55 data-nosnippet>55</a><span class="kw">use </span>tauri::Emitter;
 <a href=#56 id=56 data-nosnippet>56</a><span class="kw">use </span>tauri_plugin_dialog::{DialogExt, FilePath};
 <a href=#57 id=57 data-nosnippet>57</a><span class="kw">use </span>tokio::time::{<a href="https://doc.rust-lang.org/nightly/core/time/struct.Duration.html">Duration</a>, timeout};
 <a href=#58 id=58 data-nosnippet>58</a><span class="kw">use </span><a href="https://docs.rs/uuid/1.23.1/uuid/struct.Uuid.html">uuid::Uuid</a>;
 <a href=#59 id=59 data-nosnippet>59</a>
-<a href=#60 id=60 data-nosnippet>60</a><span class="kw">use </span>super::{<a href="MountainEnvironment.rs.html#72-85">MountainEnvironment::MountainEnvironment</a>, <a href="mod.rs.html#120">Utility</a>};
-<a href=#61 id=61 data-nosnippet>61</a><span class="kw">use </span><a href="../IPC/DevLog/mod.rs.html#51-121"><span class="kw">crate</span>::dev_log</a>;
+<a href=#60 id=60 data-nosnippet>60</a><span class="kw">use </span>super::{<a href="MountainEnvironment.rs.html#72-85">MountainEnvironment::MountainEnvironment</a>, <a href="mod.rs.html#127">Utility</a>};
+<a href=#61 id=61 data-nosnippet>61</a><span class="kw">use </span><a href="../IPC/DevLog/mod.rs.html#50-120"><span class="kw">crate</span>::dev_log</a>;
 <a href=#62 id=62 data-nosnippet>62</a>
 <a href=#63 id=63 data-nosnippet>63</a><span class="comment">// TODO: custom dialog buttons/layouts, glob-pattern file-type filters,
 <a href=#64 id=64 data-nosnippet>64</a>// dialog position + sizing, modal vs non-modal, accessibility (screen reader),
@@ -84,24 +84,24 @@
 <a href=#84 id=84 data-nosnippet>84</a>
 <a href=#85 id=85 data-nosnippet>85</a>		<a href="#85">Message</a>:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#86 id=86 data-nosnippet>86</a>
-<a href=#87 id=87 data-nosnippet>87</a>		<a href="#87">Options</a>:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;,
+<a href=#87 id=87 data-nosnippet>87</a>		<a href="#87">Options</a>:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>&gt;,
 <a href=#88 id=88 data-nosnippet>88</a>	) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;, CommonError&gt; {
-<a href=#89 id=89 data-nosnippet>89</a>		<a href="../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"window"</span>, <span class="string">"[UserInterfaceProvider] Showing interactive message: {}"</span>, Message);
+<a href=#89 id=89 data-nosnippet>89</a>		<a href="../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"window"</span>, <span class="string">"[UserInterfaceProvider] Showing interactive message: {}"</span>, Message);
 <a href=#90 id=90 data-nosnippet>90</a>
 <a href=#91 id=91 data-nosnippet>91</a>		<span class="comment">// camelCase wire shape per the project-wide audit. Sky's listener
 <a href=#92 id=92 data-nosnippet>92</a>		// at `SkyBridge.ts:2444` already tolerates both casings via the
 <a href=#93 id=93 data-nosnippet>93</a>		// `?? severity` fallbacks; emit camelCase as the canonical form.
-<a href=#94 id=94 data-nosnippet>94</a>		</span><span class="kw">let </span>Payload = <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json!</a>({ <span class="string">"severity"</span>: Severity, <span class="string">"message"</span>: Message, <span class="string">"options"</span>: Options });
+<a href=#94 id=94 data-nosnippet>94</a>		</span><span class="kw">let </span>Payload = <a href="https://docs.rs/serde_json/1.0.150/serde_json/macro.json.html">json!</a>({ <span class="string">"severity"</span>: Severity, <span class="string">"message"</span>: Message, <span class="string">"options"</span>: Options });
 <a href=#95 id=95 data-nosnippet>95</a>
 <a href=#96 id=96 data-nosnippet>96</a>		<span class="kw">let </span>ResponseValue = SendUserInterfaceRequest(<span class="self">self</span>, SkyEvent::UIShowMessageRequest.AsStr(), Payload).<span class="kw">await</span><span class="question-mark">?</span>;
 <a href=#97 id=97 data-nosnippet>97</a>
-<a href=#98 id=98 data-nosnippet>98</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="#96">ResponseValue</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#method.as_str">as_str</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>::<a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from">from</a>))
+<a href=#98 id=98 data-nosnippet>98</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="#96">ResponseValue</a>.<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html#method.as_str">as_str</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>::<a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from">from</a>))
 <a href=#99 id=99 data-nosnippet>99</a>	}
 <a href=#100 id=100 data-nosnippet>100</a>
 <a href=#101 id=101 data-nosnippet>101</a>	<span class="doccomment">/// Shows a dialog for opening files or folders using the
 <a href=#102 id=102 data-nosnippet>102</a>	/// tauri-plugin-dialog.
 <a href=#103 id=103 data-nosnippet>103</a>	</span><span class="kw">async fn </span>ShowOpenDialog(<span class="kw-2">&amp;</span><a class="self" href="#103">self</a>, <a href="#103">Options</a>:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;OpenDialogOptionsDTO&gt;) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>&gt;&gt;, CommonError&gt; {
-<a href=#104 id=104 data-nosnippet>104</a>		<a href="../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"window"</span>, <span class="string">"[UserInterfaceProvider] Showing open dialog."</span>);
+<a href=#104 id=104 data-nosnippet>104</a>		<a href="../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"window"</span>, <span class="string">"[UserInterfaceProvider] Showing open dialog."</span>);
 <a href=#105 id=105 data-nosnippet>105</a>
 <a href=#106 id=106 data-nosnippet>106</a>		<span class="kw">let </span><span class="kw-2">mut </span>Builder = <a class="self" href="#103">self</a>.ApplicationHandle.dialog().file();
 <a href=#107 id=107 data-nosnippet>107</a>
@@ -156,7 +156,7 @@
 <a href=#156 id=156 data-nosnippet>156</a>
 <a href=#157 id=157 data-nosnippet>157</a>	<span class="doccomment">/// Shows a dialog for saving a file using the tauri-plugin-dialog.
 <a href=#158 id=158 data-nosnippet>158</a>	</span><span class="kw">async fn </span>ShowSaveDialog(<span class="kw-2">&amp;</span><a class="self" href="#158">self</a>, <a href="#158">Options</a>:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;SaveDialogOptionsDTO&gt;) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>&gt;, CommonError&gt; {
-<a href=#159 id=159 data-nosnippet>159</a>		<a href="../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"window"</span>, <span class="string">"[UserInterfaceProvider] Showing save dialog."</span>);
+<a href=#159 id=159 data-nosnippet>159</a>		<a href="../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"window"</span>, <span class="string">"[UserInterfaceProvider] Showing save dialog."</span>);
 <a href=#160 id=160 data-nosnippet>160</a>
 <a href=#161 id=161 data-nosnippet>161</a>		<span class="kw">let </span><span class="kw-2">mut </span>Builder = <a class="self" href="#158">self</a>.ApplicationHandle.dialog().file();
 <a href=#162 id=162 data-nosnippet>162</a>
@@ -203,14 +203,14 @@
 <a href=#203 id=203 data-nosnippet>203</a>
 <a href=#204 id=204 data-nosnippet>204</a>		<a href="#204">Options</a>:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;QuickPickOptionsDTO&gt;,
 <a href=#205 id=205 data-nosnippet>205</a>	) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;&gt;, CommonError&gt; {
-<a href=#206 id=206 data-nosnippet>206</a>		<a href="../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(
+<a href=#206 id=206 data-nosnippet>206</a>		<a href="../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(
 <a href=#207 id=207 data-nosnippet>207</a>			<span class="string">"window"</span>,
 <a href=#208 id=208 data-nosnippet>208</a>			<span class="string">"[UserInterfaceProvider] Showing quick pick with {} items."</span>,
 <a href=#209 id=209 data-nosnippet>209</a>			Items.len()
 <a href=#210 id=210 data-nosnippet>210</a>		);
 <a href=#211 id=211 data-nosnippet>211</a>
 <a href=#212 id=212 data-nosnippet>212</a>		<span class="comment">// camelCase wire shape per project-wide audit.
-<a href=#213 id=213 data-nosnippet>213</a>		</span><span class="kw">let </span>Payload = <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">json!</a>({ <span class="string">"items"</span>: Items, <span class="string">"options"</span>: Options });
+<a href=#213 id=213 data-nosnippet>213</a>		</span><span class="kw">let </span>Payload = <a href="https://docs.rs/serde_json/1.0.150/serde_json/macro.json.html">json!</a>({ <span class="string">"items"</span>: Items, <span class="string">"options"</span>: Options });
 <a href=#214 id=214 data-nosnippet>214</a>
 <a href=#215 id=215 data-nosnippet>215</a>		<span class="comment">// Use the Sky-listener-aligned channel (`sky://quickpick/show`).
 <a href=#216 id=216 data-nosnippet>216</a>		// The legacy `UIShowQuickPickRequest` channel
@@ -218,7 +218,7 @@
 <a href=#218 id=218 data-nosnippet>218</a>		// every emit silently disappeared.
 <a href=#219 id=219 data-nosnippet>219</a>		</span><span class="kw">let </span>ResponseValue = SendUserInterfaceRequest(<span class="self">self</span>, SkyEvent::QuickPickShow.AsStr(), Payload).<span class="kw">await</span><span class="question-mark">?</span>;
 <a href=#220 id=220 data-nosnippet>220</a>
-<a href=#221 id=221 data-nosnippet>221</a>		serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/fn.from_value.html">from_value</a>(<a href="#219">ResponseValue</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| {
+<a href=#221 id=221 data-nosnippet>221</a>		serde_json::<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/fn.from_value.html">from_value</a>(<a href="#219">ResponseValue</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| {
 <a href=#222 id=222 data-nosnippet>222</a>			CommonError::SerializationError {
 <a href=#223 id=223 data-nosnippet>223</a>				Description:<a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Failed to deserialize quick pick response: {}"</span>, Error),
 <a href=#224 id=224 data-nosnippet>224</a>			}
@@ -227,14 +227,14 @@
 <a href=#227 id=227 data-nosnippet>227</a>
 <a href=#228 id=228 data-nosnippet>228</a>	<span class="doccomment">/// Shows an input box to solicit a string input from the user.
 <a href=#229 id=229 data-nosnippet>229</a>	</span><span class="kw">async fn </span>ShowInputBox(<span class="kw-2">&amp;</span><a class="self" href="#229">self</a>, <a href="#229">Options</a>:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;InputBoxOptionsDTO&gt;) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;, CommonError&gt; {
-<a href=#230 id=230 data-nosnippet>230</a>		<a href="../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"window"</span>, <span class="string">"[UserInterfaceProvider] Showing input box."</span>);
+<a href=#230 id=230 data-nosnippet>230</a>		<a href="../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"window"</span>, <span class="string">"[UserInterfaceProvider] Showing input box."</span>);
 <a href=#231 id=231 data-nosnippet>231</a>
 <a href=#232 id=232 data-nosnippet>232</a>		<span class="comment">// Use the Sky-listener-aligned channel (`sky://input-box/show`).
 <a href=#233 id=233 data-nosnippet>233</a>		// The legacy `UIShowInputBoxRequest` channel
 <a href=#234 id=234 data-nosnippet>234</a>		// (`sky://ui/show-input-box-request`) had no Sky listener.
 <a href=#235 id=235 data-nosnippet>235</a>		</span><span class="kw">let </span>ResponseValue = SendUserInterfaceRequest(<span class="self">self</span>, SkyEvent::InputBoxShow.AsStr(), Options).<span class="kw">await</span><span class="question-mark">?</span>;
 <a href=#236 id=236 data-nosnippet>236</a>
-<a href=#237 id=237 data-nosnippet>237</a>		serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/fn.from_value.html">from_value</a>(<a href="#235">ResponseValue</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| {
+<a href=#237 id=237 data-nosnippet>237</a>		serde_json::<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/fn.from_value.html">from_value</a>(<a href="#235">ResponseValue</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.map_err">map_err</a>(|Error| {
 <a href=#238 id=238 data-nosnippet>238</a>			CommonError::SerializationError {
 <a href=#239 id=239 data-nosnippet>239</a>				Description:<a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Failed to deserialize input box response: {}"</span>, Error),
 <a href=#240 id=240 data-nosnippet>240</a>			}

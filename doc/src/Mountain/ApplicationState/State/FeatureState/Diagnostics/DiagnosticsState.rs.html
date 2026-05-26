@@ -36,7 +36,7 @@
 <a href=#36 id=36 data-nosnippet>36</a>	sync::{<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>, <a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">Mutex</a> <span class="kw">as </span>StandardMutex},
 <a href=#37 id=37 data-nosnippet>37</a>};
 <a href=#38 id=38 data-nosnippet>38</a>
-<a href=#39 id=39 data-nosnippet>39</a><span class="kw">use </span>crate::{<a href="../../../DTO/MarkerDataDTO.rs.html#40-79">ApplicationState::DTO::MarkerDataDTO::MarkerDataDTO</a>, <a href="../../../../IPC/DevLog/mod.rs.html#51-121">dev_log</a>};
+<a href=#39 id=39 data-nosnippet>39</a><span class="kw">use </span>crate::{<a href="../../../DTO/MarkerDataDTO.rs.html#40-79">ApplicationState::DTO::MarkerDataDTO::MarkerDataDTO</a>, <a href="../../../../IPC/DevLog/mod.rs.html#50-120">dev_log</a>};
 <a href=#40 id=40 data-nosnippet>40</a>
 <a href=#41 id=41 data-nosnippet>41</a><span class="doccomment">/// Diagnostic errors state containing markers by owner and resource.
 <a href=#42 id=42 data-nosnippet>42</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>)]
@@ -49,7 +49,7 @@
 <a href=#49 id=49 data-nosnippet>49</a>
 <a href=#50 id=50 data-nosnippet>50</a><span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a> <span class="kw">for </span><a href="#43-48">DiagnosticsState</a> {
 <a href=#51 id=51 data-nosnippet>51</a>	<span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{
-<a href=#52 id=52 data-nosnippet>52</a>		<a href="../../../../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[DiagnosticsState] Initializing default diagnostics state..."</span>);
+<a href=#52 id=52 data-nosnippet>52</a>		<a href="../../../../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[DiagnosticsState] Initializing default diagnostics state..."</span>);
 <a href=#53 id=53 data-nosnippet>53</a>
 <a href=#54 id=54 data-nosnippet>54</a>		<span class="self">Self </span>{ DiagnosticsMap:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>::<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html#method.new">new</a>(<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">StandardMutex</a>::<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.new">new</a>(<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>::<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.new">new</a>())) }
 <a href=#55 id=55 data-nosnippet>55</a>	}
@@ -84,7 +84,7 @@
 <a href=#84 id=84 data-nosnippet>84</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="kw-2">mut </span>guard) = <a class="self" href="#83">self</a>.DiagnosticsMap.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>() {
 <a href=#85 id=85 data-nosnippet>85</a>			<a href="#84">guard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(<a href="#83">owner</a>, <a href="#83">diagnostics</a>);
 <a href=#86 id=86 data-nosnippet>86</a>
-<a href=#87 id=87 data-nosnippet>87</a>			<a href="../../../../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[DiagnosticsState] Diagnostics updated for owner"</span>);
+<a href=#87 id=87 data-nosnippet>87</a>			<a href="../../../../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[DiagnosticsState] Diagnostics updated for owner"</span>);
 <a href=#88 id=88 data-nosnippet>88</a>		}
 <a href=#89 id=89 data-nosnippet>89</a>	}
 <a href=#90 id=90 data-nosnippet>90</a>
@@ -93,7 +93,7 @@
 <a href=#93 id=93 data-nosnippet>93</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="kw-2">mut </span>guard) = <a class="self" href="#92">self</a>.DiagnosticsMap.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>() {
 <a href=#94 id=94 data-nosnippet>94</a>			<a href="#93">guard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.entry">entry</a>(<a href="#92">owner</a>).<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/enum.Entry.html#method.or_insert_with">or_insert_with</a>(<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>::<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.new">new</a>).<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(<a href="#92">resource</a>, <a href="#92">markers</a>);
 <a href=#95 id=95 data-nosnippet>95</a>
-<a href=#96 id=96 data-nosnippet>96</a>			<a href="../../../../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[DiagnosticsState] Diagnostics updated for owner and resource"</span>);
+<a href=#96 id=96 data-nosnippet>96</a>			<a href="../../../../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[DiagnosticsState] Diagnostics updated for owner and resource"</span>);
 <a href=#97 id=97 data-nosnippet>97</a>		}
 <a href=#98 id=98 data-nosnippet>98</a>	}
 <a href=#99 id=99 data-nosnippet>99</a>
@@ -102,7 +102,7 @@
 <a href=#102 id=102 data-nosnippet>102</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="kw-2">mut </span>guard) = <a class="self" href="#101">self</a>.DiagnosticsMap.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>() {
 <a href=#103 id=103 data-nosnippet>103</a>			<a href="#102">guard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.remove">remove</a>(<a href="#101">owner</a>);
 <a href=#104 id=104 data-nosnippet>104</a>
-<a href=#105 id=105 data-nosnippet>105</a>			<a href="../../../../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[DiagnosticsState] Diagnostics cleared for owner: {}"</span>, owner);
+<a href=#105 id=105 data-nosnippet>105</a>			<a href="../../../../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[DiagnosticsState] Diagnostics cleared for owner: {}"</span>, owner);
 <a href=#106 id=106 data-nosnippet>106</a>		}
 <a href=#107 id=107 data-nosnippet>107</a>	}
 <a href=#108 id=108 data-nosnippet>108</a>
@@ -112,7 +112,7 @@
 <a href=#112 id=112 data-nosnippet>112</a>			<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(resources) = <a href="#111">guard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.get_mut">get_mut</a>(<a href="#110">owner</a>) {
 <a href=#113 id=113 data-nosnippet>113</a>				<a href="#112">resources</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.remove">remove</a>(<a href="#110">resource</a>);
 <a href=#114 id=114 data-nosnippet>114</a>
-<a href=#115 id=115 data-nosnippet>115</a>				<a href="../../../../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[DiagnosticsState] Diagnostics cleared for owner and resource"</span>);
+<a href=#115 id=115 data-nosnippet>115</a>				<a href="../../../../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[DiagnosticsState] Diagnostics cleared for owner and resource"</span>);
 <a href=#116 id=116 data-nosnippet>116</a>			}
 <a href=#117 id=117 data-nosnippet>117</a>		}
 <a href=#118 id=118 data-nosnippet>118</a>	}
@@ -122,7 +122,7 @@
 <a href=#122 id=122 data-nosnippet>122</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<span class="kw-2">mut </span>guard) = <a class="self" href="#121">self</a>.DiagnosticsMap.<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html#method.lock">lock</a>() {
 <a href=#123 id=123 data-nosnippet>123</a>			<a href="#122">guard</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.clear">clear</a>();
 <a href=#124 id=124 data-nosnippet>124</a>
-<a href=#125 id=125 data-nosnippet>125</a>			<a href="../../../../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[DiagnosticsState] All diagnostics cleared"</span>);
+<a href=#125 id=125 data-nosnippet>125</a>			<a href="../../../../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[DiagnosticsState] All diagnostics cleared"</span>);
 <a href=#126 id=126 data-nosnippet>126</a>		}
 <a href=#127 id=127 data-nosnippet>127</a>	}
 <a href=#128 id=128 data-nosnippet>128</a>}

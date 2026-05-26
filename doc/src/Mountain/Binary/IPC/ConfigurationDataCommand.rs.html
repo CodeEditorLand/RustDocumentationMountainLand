@@ -39,7 +39,7 @@
 <a href=#39 id=39 data-nosnippet>39</a>//! - Writes trigger persistence, may be slower
 <a href=#40 id=40 data-nosnippet>40</a>//! - Consider debouncing save operations
 <a href=#41 id=41 data-nosnippet>41</a>
-<a href=#42 id=42 data-nosnippet>42</a></span><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
+<a href=#42 id=42 data-nosnippet>42</a></span><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#43 id=43 data-nosnippet>43</a><span class="kw">use </span>tauri::AppHandle;
 <a href=#44 id=44 data-nosnippet>44</a>
 <a href=#45 id=45 data-nosnippet>45</a><span class="doccomment">/// Get configuration data for Wind frontend.
@@ -83,7 +83,7 @@
 <a href=#83 id=83 data-nosnippet>83</a>/// - Configuration validation fails
 <a href=#84 id=84 data-nosnippet>84</a>/// - File system errors occur when persisting
 <a href=#85 id=85 data-nosnippet>85</a></span><span class="attr">#[tauri::command]
-<a href=#86 id=86 data-nosnippet>86</a></span><span class="kw">pub async fn </span><a href="#85">SaveConfigurationData</a>(app:AppHandle, config_data:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
+<a href=#86 id=86 data-nosnippet>86</a></span><span class="kw">pub async fn </span><a href="#85">SaveConfigurationData</a>(app:AppHandle, config_data:<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), String&gt; {
 <a href=#87 id=87 data-nosnippet>87</a>	<span class="kw">crate</span>::IPC::ConfigurationBridge::save_configuration_data(app, config_data).<span class="kw">await
 <a href=#88 id=88 data-nosnippet>88</a></span>}
 </code></pre></div></section></main></body></html>

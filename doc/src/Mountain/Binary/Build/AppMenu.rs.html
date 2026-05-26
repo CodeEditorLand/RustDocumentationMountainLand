@@ -16,7 +16,7 @@
 <a href=#16 id=16 data-nosnippet>16</a>//! On Windows / Linux, no menu override is applied - those platforms do not
 <a href=#17 id=17 data-nosnippet>17</a>//! have the same WKWebView responder-chain interception.
 <a href=#18 id=18 data-nosnippet>18</a>
-<a href=#19 id=19 data-nosnippet>19</a></span><span class="kw">use </span><a href="../../IPC/DevLog/mod.rs.html#51-121"><span class="kw">crate</span>::dev_log</a>;
+<a href=#19 id=19 data-nosnippet>19</a></span><span class="kw">use </span><a href="../../IPC/DevLog/mod.rs.html#50-120"><span class="kw">crate</span>::dev_log</a>;
 <a href=#20 id=20 data-nosnippet>20</a>
 <a href=#21 id=21 data-nosnippet>21</a><span class="doccomment">/// Install a custom app menu on `App`, removing Undo/Redo from the Edit
 <a href=#22 id=22 data-nosnippet>22</a>/// submenu so Cmd+Z reaches VS Code's Monaco keybinding handler.
@@ -50,7 +50,7 @@
 <a href=#50 id=50 data-nosnippet>50</a>
 <a href=#51 id=51 data-nosnippet>51</a>		App.set_menu(Menu)<span class="question-mark">?</span>;
 <a href=#52 id=52 data-nosnippet>52</a>
-<a href=#53 id=53 data-nosnippet>53</a>		<a href="../../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(
+<a href=#53 id=53 data-nosnippet>53</a>		<a href="../../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(
 <a href=#54 id=54 data-nosnippet>54</a>			<span class="string">"lifecycle"</span>,
 <a href=#55 id=55 data-nosnippet>55</a>			<span class="string">"[UI] [Menu] macOS Edit menu set (Undo/Redo removed; Cmd+Z routes to Monaco)."
 <a href=#56 id=56 data-nosnippet>56</a>		</span>);
@@ -59,7 +59,7 @@
 <a href=#59 id=59 data-nosnippet>59</a>	})();
 <a href=#60 id=60 data-nosnippet>60</a>
 <a href=#61 id=61 data-nosnippet>61</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error) = <a class="prelude-ty" href="#31">Result</a> {
-<a href=#62 id=62 data-nosnippet>62</a>		<a href="../../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(
+<a href=#62 id=62 data-nosnippet>62</a>		<a href="../../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(
 <a href=#63 id=63 data-nosnippet>63</a>			<span class="string">"lifecycle"</span>,
 <a href=#64 id=64 data-nosnippet>64</a>			<span class="string">"warn: [UI] [Menu] Failed to override macOS app menu ({}); default menu retained - Cmd+Z may trigger \
 <a href=#65 id=65 data-nosnippet>65</a>			 native undo instead of Monaco undo."</span>,

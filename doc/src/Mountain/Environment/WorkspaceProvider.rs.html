@@ -34,12 +34,12 @@
 <a href=#34 id=34 data-nosnippet>34</a><span class="kw">use </span><a href="https://docs.rs/async-trait/0.1.89/async_trait/attr.async_trait.html">async_trait::async_trait</a>;
 <a href=#35 id=35 data-nosnippet>35</a><span class="kw">use </span>globset::GlobBuilder;
 <a href=#36 id=36 data-nosnippet>36</a><span class="kw">use </span>ignore::WalkBuilder;
-<a href=#37 id=37 data-nosnippet>37</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
+<a href=#37 id=37 data-nosnippet>37</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#38 id=38 data-nosnippet>38</a><span class="kw">use </span>tokio::sync::Notify;
 <a href=#39 id=39 data-nosnippet>39</a><span class="kw">use </span><a href="https://docs.rs/url/2.5.7/url/struct.Url.html">url::Url</a>;
 <a href=#40 id=40 data-nosnippet>40</a>
-<a href=#41 id=41 data-nosnippet>41</a><span class="kw">use </span>super::{<a href="MountainEnvironment.rs.html#72-85">MountainEnvironment::MountainEnvironment</a>, <a href="mod.rs.html#120">Utility</a>};
-<a href=#42 id=42 data-nosnippet>42</a><span class="kw">use </span><a href="../IPC/DevLog/mod.rs.html#51-121"><span class="kw">crate</span>::dev_log</a>;
+<a href=#41 id=41 data-nosnippet>41</a><span class="kw">use </span>super::{<a href="MountainEnvironment.rs.html#72-85">MountainEnvironment::MountainEnvironment</a>, <a href="mod.rs.html#127">Utility</a>};
+<a href=#42 id=42 data-nosnippet>42</a><span class="kw">use </span><a href="../IPC/DevLog/mod.rs.html#50-120"><span class="kw">crate</span>::dev_log</a>;
 <a href=#43 id=43 data-nosnippet>43</a>
 <a href=#44 id=44 data-nosnippet>44</a><span class="doccomment">/// Process-wide LRU cache for `FindFilesInWorkspace`. Cache key folds
 <a href=#45 id=45 data-nosnippet>45</a>/// every input that influences the walk; TTL is short so we never serve
@@ -155,7 +155,7 @@
 <a href=#155 id=155 data-nosnippet>155</a></span><span class="kw">impl </span>WorkspaceProvider <span class="kw">for </span><a href="MountainEnvironment.rs.html#72-85">MountainEnvironment</a> {
 <a href=#156 id=156 data-nosnippet>156</a>	<span class="doccomment">/// Retrieves information about all currently open workspace folders.
 <a href=#157 id=157 data-nosnippet>157</a>	</span><span class="kw">async fn </span>GetWorkspaceFoldersInfo(<span class="kw-2">&amp;</span><a class="self" href="#157">self</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;(<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>)&gt;, CommonError&gt; {
-<a href=#158 id=158 data-nosnippet>158</a>		<a href="../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[WorkspaceProvider] Getting workspace folders info."</span>);
+<a href=#158 id=158 data-nosnippet>158</a>		<a href="../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[WorkspaceProvider] Getting workspace folders info."</span>);
 <a href=#159 id=159 data-nosnippet>159</a>
 <a href=#160 id=160 data-nosnippet>160</a>		<span class="kw">let </span>FoldersGuard = <span class="self">self
 <a href=#161 id=161 data-nosnippet>161</a>			</span>.ApplicationState
@@ -212,8 +212,8 @@
 <a href=#212 id=212 data-nosnippet>212</a>	}
 <a href=#213 id=213 data-nosnippet>213</a>
 <a href=#214 id=214 data-nosnippet>214</a>	<span class="doccomment">/// Requests workspace trust from the user.
-<a href=#215 id=215 data-nosnippet>215</a>	</span><span class="kw">async fn </span>RequestWorkspaceTrust(<span class="kw-2">&amp;</span><a class="self" href="#215">self</a>, <a href="#215">_Options</a>:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>, CommonError&gt; {
-<a href=#216 id=216 data-nosnippet>216</a>		<a href="../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(
+<a href=#215 id=215 data-nosnippet>215</a>	</span><span class="kw">async fn </span>RequestWorkspaceTrust(<span class="kw-2">&amp;</span><a class="self" href="#215">self</a>, <a href="#215">_Options</a>:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>&gt;) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>, CommonError&gt; {
+<a href=#216 id=216 data-nosnippet>216</a>		<a href="../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(
 <a href=#217 id=217 data-nosnippet>217</a>			<span class="string">"workspaces"</span>,
 <a href=#218 id=218 data-nosnippet>218</a>			<span class="string">"warn: [WorkspaceProvider] RequestWorkspaceTrust is not implemented; defaulting to trusted."
 <a href=#219 id=219 data-nosnippet>219</a>		</span>);
@@ -248,9 +248,9 @@
 <a href=#248 id=248 data-nosnippet>248</a>	</span><span class="kw">async fn </span>FindFilesInWorkspace(
 <a href=#249 id=249 data-nosnippet>249</a>		<span class="kw-2">&amp;</span><a class="self" href="#249">self</a>,
 <a href=#250 id=250 data-nosnippet>250</a>
-<a href=#251 id=251 data-nosnippet>251</a>		<a href="#251">IncludePatternDTO</a>:<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
+<a href=#251 id=251 data-nosnippet>251</a>		<a href="#251">IncludePatternDTO</a>:<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>,
 <a href=#252 id=252 data-nosnippet>252</a>
-<a href=#253 id=253 data-nosnippet>253</a>		<a href="#253">ExcludePatternDTO</a>:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;,
+<a href=#253 id=253 data-nosnippet>253</a>		<a href="#253">ExcludePatternDTO</a>:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>&gt;,
 <a href=#254 id=254 data-nosnippet>254</a>
 <a href=#255 id=255 data-nosnippet>255</a>		<a href="#255">MaxResults</a>:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>&gt;,
 <a href=#256 id=256 data-nosnippet>256</a>
@@ -258,7 +258,7 @@
 <a href=#258 id=258 data-nosnippet>258</a>
 <a href=#259 id=259 data-nosnippet>259</a>		<a href="#259">FollowSymlinks</a>:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
 <a href=#260 id=260 data-nosnippet>260</a>	) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>&gt;, CommonError&gt; {
-<a href=#261 id=261 data-nosnippet>261</a>		<a href="../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[WorkspaceProvider] FindFilesInWorkspace called"</span>);
+<a href=#261 id=261 data-nosnippet>261</a>		<a href="../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[WorkspaceProvider] FindFilesInWorkspace called"</span>);
 <a href=#262 id=262 data-nosnippet>262</a>
 <a href=#263 id=263 data-nosnippet>263</a>		<span class="kw">let </span>IncludePattern = <a href="#888-908">ExtractGlobPattern</a>(<span class="kw-2">&amp;</span><a href="#251">IncludePatternDTO</a>);
 <a href=#264 id=264 data-nosnippet>264</a>
@@ -266,7 +266,7 @@
 <a href=#266 id=266 data-nosnippet>266</a>			<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(P) <span class="kw">if </span>!<a href="#266">P</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html#method.is_empty">is_empty</a>() =&gt; <a href="#266">P</a>,
 <a href=#267 id=267 data-nosnippet>267</a>
 <a href=#268 id=268 data-nosnippet>268</a>			<span class="kw">_ </span>=&gt; {
-<a href=#269 id=269 data-nosnippet>269</a>				<a href="../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[FindFilesInWorkspace] empty include pattern → []"</span>);
+<a href=#269 id=269 data-nosnippet>269</a>				<a href="../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[FindFilesInWorkspace] empty include pattern → []"</span>);
 <a href=#270 id=270 data-nosnippet>270</a>
 <a href=#271 id=271 data-nosnippet>271</a>				<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>::<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.new">new</a>());
 <a href=#272 id=272 data-nosnippet>272</a>			},
@@ -282,7 +282,7 @@
 <a href=#282 id=282 data-nosnippet>282</a>		// pattern like `/**/*.json` (leading slash) that globset
 <a href=#283 id=283 data-nosnippet>283</a>		// then fails to match against the relative paths produced by
 <a href=#284 id=284 data-nosnippet>284</a>		// `Path.strip_prefix(...)`.
-<a href=#285 id=285 data-nosnippet>285</a>		</span><a href="../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(
+<a href=#285 id=285 data-nosnippet>285</a>		</span><a href="../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(
 <a href=#286 id=286 data-nosnippet>286</a>			<span class="string">"workspaces"</span>,
 <a href=#287 id=287 data-nosnippet>287</a>			<span class="string">"[FindFilesInWorkspace] include={} dto_shape={}"</span>,
 <a href=#288 id=288 data-nosnippet>288</a>			IncludePattern,
@@ -348,7 +348,7 @@
 <a href=#348 id=348 data-nosnippet>348</a>			.<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.collect">collect</a>();
 <a href=#349 id=349 data-nosnippet>349</a>
 <a href=#350 id=350 data-nosnippet>350</a>		<span class="kw">if </span><a href="#340">Folders</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.is_empty">is_empty</a>() {
-<a href=#351 id=351 data-nosnippet>351</a>			<a href="../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[FindFilesInWorkspace] no workspace folders → []"</span>);
+<a href=#351 id=351 data-nosnippet>351</a>			<a href="../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[FindFilesInWorkspace] no workspace folders → []"</span>);
 <a href=#352 id=352 data-nosnippet>352</a>
 <a href=#353 id=353 data-nosnippet>353</a>			<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>::<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.new">new</a>());
 <a href=#354 id=354 data-nosnippet>354</a>		}
@@ -390,7 +390,7 @@
 <a href=#390 id=390 data-nosnippet>390</a>		};
 <a href=#391 id=391 data-nosnippet>391</a>
 <a href=#392 id=392 data-nosnippet>392</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Cached) = <a href="#113-123">FindFilesCacheGet</a>(<span class="kw-2">&amp;</span><a href="#376">CacheKey</a>) {
-<a href=#393 id=393 data-nosnippet>393</a>			<a href="../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[FindFilesInWorkspace] cache hit → {} match(es)"</span>, Cached.len());
+<a href=#393 id=393 data-nosnippet>393</a>			<a href="../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[FindFilesInWorkspace] cache hit → {} match(es)"</span>, Cached.len());
 <a href=#394 id=394 data-nosnippet>394</a>
 <a href=#395 id=395 data-nosnippet>395</a>			<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="#392">Cached</a>);
 <a href=#396 id=396 data-nosnippet>396</a>		}
@@ -430,7 +430,7 @@
 <a href=#430 id=430 data-nosnippet>430</a>
 <a href=#431 id=431 data-nosnippet>431</a>		<span class="kw">let </span>LeaderNotify:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;Notify&gt; = <span class="kw">match </span><a href="#413">RoleResolved</a> {
 <a href=#432 id=432 data-nosnippet>432</a>			SingleFlightRole::<a href="#408">Follower</a>(WaitNotify) =&gt; {
-<a href=#433 id=433 data-nosnippet>433</a>				<a href="../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(
+<a href=#433 id=433 data-nosnippet>433</a>				<a href="../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(
 <a href=#434 id=434 data-nosnippet>434</a>					<span class="string">"workspaces"</span>,
 <a href=#435 id=435 data-nosnippet>435</a>					<span class="string">"[FindFilesInWorkspace] singleflight wait - leader walk in progress for include={}"</span>,
 <a href=#436 id=436 data-nosnippet>436</a>					IncludePattern
@@ -551,7 +551,7 @@
 <a href=#551 id=551 data-nosnippet>551</a>			</span>.into_inner()
 <a href=#552 id=552 data-nosnippet>552</a>			.map_err(|Error| CommonError::StateLockPoisoned { Context:Error.to_string() })<span class="question-mark">?</span>;
 <a href=#553 id=553 data-nosnippet>553</a>
-<a href=#554 id=554 data-nosnippet>554</a>		<a href="../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(
+<a href=#554 id=554 data-nosnippet>554</a>		<a href="../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(
 <a href=#555 id=555 data-nosnippet>555</a>			<span class="string">"workspaces"</span>,
 <a href=#556 id=556 data-nosnippet>556</a>			<span class="string">"[FindFilesInWorkspace] returned {} match(es) include={} exclude={:?} roots={}"</span>,
 <a href=#557 id=557 data-nosnippet>557</a>			Final.len(),
@@ -595,7 +595,7 @@
 <a href=#595 id=595 data-nosnippet>595</a>	</span><span class="kw">async fn </span>OpenFile(<span class="kw-2">&amp;</span><a class="self" href="#595">self</a>, <a href="#595">path</a>:<a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(), CommonError&gt; {
 <a href=#596 id=596 data-nosnippet>596</a>		<span class="kw">use </span>tauri::Emitter;
 <a href=#597 id=597 data-nosnippet>597</a>
-<a href=#598 id=598 data-nosnippet>598</a>		<a href="../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[WorkspaceProvider] OpenFile called for: {:?}"</span>, path);
+<a href=#598 id=598 data-nosnippet>598</a>		<a href="../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[WorkspaceProvider] OpenFile called for: {:?}"</span>, path);
 <a href=#599 id=599 data-nosnippet>599</a>
 <a href=#600 id=600 data-nosnippet>600</a>		<span class="kw">let </span>UriString = <span class="kw">match </span><a href="https://docs.rs/url/2.5.7/url/struct.Url.html">Url</a>::<a href="https://docs.rs/url/2.5.7/url/struct.Url.html#method.from_file_path">from_file_path</a>(<span class="kw-2">&amp;</span><a href="#595">path</a>) {
 <a href=#601 id=601 data-nosnippet>601</a>			<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(U) =&gt; <a href="#601">U</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
@@ -637,7 +637,7 @@
 <a href=#637 id=637 data-nosnippet>637</a>	</span><span class="kw">async fn </span>ApplyWorkspaceEdit(<span class="kw-2">&amp;</span><a class="self" href="#637">self</a>, <a href="#637">Edit</a>:WorkspaceEditDTO) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>, CommonError&gt; {
 <a href=#638 id=638 data-nosnippet>638</a>		<span class="kw">use </span>tauri::Emitter;
 <a href=#639 id=639 data-nosnippet>639</a>
-<a href=#640 id=640 data-nosnippet>640</a>		<a href="../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[WorkspaceEditApplier] Applying workspace edit"</span>);
+<a href=#640 id=640 data-nosnippet>640</a>		<a href="../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"workspaces"</span>, <span class="string">"[WorkspaceEditApplier] Applying workspace edit"</span>);
 <a href=#641 id=641 data-nosnippet>641</a>
 <a href=#642 id=642 data-nosnippet>642</a>		<span class="kw">let </span>WorkspaceEditDTO { Edits } = <a href="#637">Edit</a>;
 <a href=#643 id=643 data-nosnippet>643</a>
@@ -699,7 +699,7 @@
 <a href=#699 id=699 data-nosnippet>699</a>/// each subsequent edit's offsets stay valid. Errors propagate as
 <a href=#700 id=700 data-nosnippet>700</a>/// `CommonError::FromStandardIOError` for read/write failures and
 <a href=#701 id=701 data-nosnippet>701</a>/// `CommonError::InvalidArgument` for malformed edits.
-<a href=#702 id=702 data-nosnippet>702</a></span><span class="kw">async fn </span><a href="../../../Mountain/Environment/WorkspaceProvider/fn.ApplyEditsToDisk.html">ApplyEditsToDisk</a>(UriString:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, TextEdits:<span class="kw-2">&amp;</span>[<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>]) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
+<a href=#702 id=702 data-nosnippet>702</a></span><span class="kw">async fn </span><a href="../../../Mountain/Environment/WorkspaceProvider/fn.ApplyEditsToDisk.html">ApplyEditsToDisk</a>(UriString:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, TextEdits:<span class="kw-2">&amp;</span>[<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>]) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
 <a href=#703 id=703 data-nosnippet>703</a>	<span class="kw">use </span>std::path::Path;
 <a href=#704 id=704 data-nosnippet>704</a>
 <a href=#705 id=705 data-nosnippet>705</a>	<span class="kw">let </span>RawPath = <span class="kw">if let </span><span class="prelude-val">Some</span>(Stripped) = UriString.strip_prefix(<span class="string">"file://"</span>) {
@@ -885,21 +885,21 @@
 <a href=#885 id=885 data-nosnippet>885</a>///   - Object with `pattern`: `{ pattern: "..." }` (or `{ base, pattern }` for
 <a href=#886 id=886 data-nosnippet>886</a>///     VS Code's `RelativePattern`).
 <a href=#887 id=887 data-nosnippet>887</a>///   - Object whose `value` field is a string: legacy serialised form.
-<a href=#888 id=888 data-nosnippet>888</a></span><span class="kw">fn </span><a href="../../../Mountain/Environment/WorkspaceProvider/fn.ExtractGlobPattern.html">ExtractGlobPattern</a>(Pattern:<span class="kw-2">&amp;</span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
-<a href=#889 id=889 data-nosnippet>889</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(S) = <a href="#888">Pattern</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#method.as_str">as_str</a>() {
+<a href=#888 id=888 data-nosnippet>888</a></span><span class="kw">fn </span><a href="../../../Mountain/Environment/WorkspaceProvider/fn.ExtractGlobPattern.html">ExtractGlobPattern</a>(Pattern:<span class="kw-2">&amp;</span><a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
+<a href=#889 id=889 data-nosnippet>889</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(S) = <a href="#888">Pattern</a>.<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html#method.as_str">as_str</a>() {
 <a href=#890 id=890 data-nosnippet>890</a>		<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<a href="#889">S</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>());
 <a href=#891 id=891 data-nosnippet>891</a>	}
 <a href=#892 id=892 data-nosnippet>892</a>
-<a href=#893 id=893 data-nosnippet>893</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Obj) = <a href="#888">Pattern</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#method.as_object">as_object</a>() {
-<a href=#894 id=894 data-nosnippet>894</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(P) = <a href="#893">Obj</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/map/struct.Map.html#method.get">get</a>(<span class="string">"pattern"</span>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#method.as_str">as_str</a>) {
+<a href=#893 id=893 data-nosnippet>893</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Obj) = <a href="#888">Pattern</a>.<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html#method.as_object">as_object</a>() {
+<a href=#894 id=894 data-nosnippet>894</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(P) = <a href="#893">Obj</a>.<a href="https://docs.rs/serde_json/1.0.150/serde_json/map/struct.Map.html#method.get">get</a>(<span class="string">"pattern"</span>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>::<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html#method.as_str">as_str</a>) {
 <a href=#895 id=895 data-nosnippet>895</a>			<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<a href="#894">P</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>());
 <a href=#896 id=896 data-nosnippet>896</a>		}
 <a href=#897 id=897 data-nosnippet>897</a>
-<a href=#898 id=898 data-nosnippet>898</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(P) = <a href="#893">Obj</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/map/struct.Map.html#method.get">get</a>(<span class="string">"value"</span>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#method.as_str">as_str</a>) {
+<a href=#898 id=898 data-nosnippet>898</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(P) = <a href="#893">Obj</a>.<a href="https://docs.rs/serde_json/1.0.150/serde_json/map/struct.Map.html#method.get">get</a>(<span class="string">"value"</span>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>::<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html#method.as_str">as_str</a>) {
 <a href=#899 id=899 data-nosnippet>899</a>			<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<a href="#898">P</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>());
 <a href=#900 id=900 data-nosnippet>900</a>		}
 <a href=#901 id=901 data-nosnippet>901</a>
-<a href=#902 id=902 data-nosnippet>902</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(P) = <a href="#893">Obj</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/map/struct.Map.html#method.get">get</a>(<span class="string">"Pattern"</span>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#method.as_str">as_str</a>) {
+<a href=#902 id=902 data-nosnippet>902</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(P) = <a href="#893">Obj</a>.<a href="https://docs.rs/serde_json/1.0.150/serde_json/map/struct.Map.html#method.get">get</a>(<span class="string">"Pattern"</span>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>::<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html#method.as_str">as_str</a>) {
 <a href=#903 id=903 data-nosnippet>903</a>			<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<a href="#902">P</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>());
 <a href=#904 id=904 data-nosnippet>904</a>		}
 <a href=#905 id=905 data-nosnippet>905</a>	}
@@ -911,15 +911,15 @@
 <a href=#911 id=911 data-nosnippet>911</a>/// VS Code's `RelativePattern` carries `{ base, pattern }` (or
 <a href=#912 id=912 data-nosnippet>912</a>/// `{ baseUri, pattern }`); when present, the walk must be restricted
 <a href=#913 id=913 data-nosnippet>913</a>/// to `base`. Returns `None` for plain glob strings.
-<a href=#914 id=914 data-nosnippet>914</a></span><span class="kw">fn </span><a href="../../../Mountain/Environment/WorkspaceProvider/fn.ExtractRelativeBase.html">ExtractRelativeBase</a>(Pattern:<span class="kw-2">&amp;</span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
+<a href=#914 id=914 data-nosnippet>914</a></span><span class="kw">fn </span><a href="../../../Mountain/Environment/WorkspaceProvider/fn.ExtractRelativeBase.html">ExtractRelativeBase</a>(Pattern:<span class="kw-2">&amp;</span><a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
 <a href=#915 id=915 data-nosnippet>915</a>	<span class="kw">let </span>Obj = Pattern.as_object()<span class="question-mark">?</span>;
 <a href=#916 id=916 data-nosnippet>916</a>
-<a href=#917 id=917 data-nosnippet>917</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(B) = <a href="#915">Obj</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/map/struct.Map.html#method.get">get</a>(<span class="string">"base"</span>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#method.as_str">as_str</a>) {
+<a href=#917 id=917 data-nosnippet>917</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(B) = <a href="#915">Obj</a>.<a href="https://docs.rs/serde_json/1.0.150/serde_json/map/struct.Map.html#method.get">get</a>(<span class="string">"base"</span>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>::<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html#method.as_str">as_str</a>) {
 <a href=#918 id=918 data-nosnippet>918</a>		<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<a href="#917">B</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>());
 <a href=#919 id=919 data-nosnippet>919</a>	}
 <a href=#920 id=920 data-nosnippet>920</a>
-<a href=#921 id=921 data-nosnippet>921</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(B) = <a href="#915">Obj</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/map/struct.Map.html#method.get">get</a>(<span class="string">"baseUri"</span>) {
-<a href=#922 id=922 data-nosnippet>922</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(S) = <a href="#921">B</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#method.as_str">as_str</a>() {
+<a href=#921 id=921 data-nosnippet>921</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(B) = <a href="#915">Obj</a>.<a href="https://docs.rs/serde_json/1.0.150/serde_json/map/struct.Map.html#method.get">get</a>(<span class="string">"baseUri"</span>) {
+<a href=#922 id=922 data-nosnippet>922</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(S) = <a href="#921">B</a>.<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html#method.as_str">as_str</a>() {
 <a href=#923 id=923 data-nosnippet>923</a>			<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Stripped) = <a href="#922">S</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.strip_prefix">strip_prefix</a>(<span class="string">"file://"</span>) {
 <a href=#924 id=924 data-nosnippet>924</a>				<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<a href="#923">Stripped</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>());
 <a href=#925 id=925 data-nosnippet>925</a>			}
@@ -927,11 +927,11 @@
 <a href=#927 id=927 data-nosnippet>927</a>			<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<a href="#922">S</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>());
 <a href=#928 id=928 data-nosnippet>928</a>		}
 <a href=#929 id=929 data-nosnippet>929</a>
-<a href=#930 id=930 data-nosnippet>930</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(P) = <a href="#921">B</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#method.as_object">as_object</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|O| <a href="#930">O</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/map/struct.Map.html#method.get">get</a>(<span class="string">"path"</span>)).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#method.as_str">as_str</a>) {
+<a href=#930 id=930 data-nosnippet>930</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(P) = <a href="#921">B</a>.<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html#method.as_object">as_object</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|O| <a href="#930">O</a>.<a href="https://docs.rs/serde_json/1.0.150/serde_json/map/struct.Map.html#method.get">get</a>(<span class="string">"path"</span>)).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>::<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html#method.as_str">as_str</a>) {
 <a href=#931 id=931 data-nosnippet>931</a>			<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<a href="#930">P</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>());
 <a href=#932 id=932 data-nosnippet>932</a>		}
 <a href=#933 id=933 data-nosnippet>933</a>
-<a href=#934 id=934 data-nosnippet>934</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(P) = <a href="#921">B</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#method.as_object">as_object</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|O| <a href="#934">O</a>.<a href="https://docs.rs/serde_json/1.0.149/serde_json/map/struct.Map.html#method.get">get</a>(<span class="string">"fsPath"</span>)).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html#method.as_str">as_str</a>) {
+<a href=#934 id=934 data-nosnippet>934</a>		<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(P) = <a href="#921">B</a>.<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html#method.as_object">as_object</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|O| <a href="#934">O</a>.<a href="https://docs.rs/serde_json/1.0.150/serde_json/map/struct.Map.html#method.get">get</a>(<span class="string">"fsPath"</span>)).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>::<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html#method.as_str">as_str</a>) {
 <a href=#935 id=935 data-nosnippet>935</a>			<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<a href="#934">P</a>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>());
 <a href=#936 id=936 data-nosnippet>936</a>		}
 <a href=#937 id=937 data-nosnippet>937</a>	}

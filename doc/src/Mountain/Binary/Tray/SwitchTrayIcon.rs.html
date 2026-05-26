@@ -49,7 +49,7 @@
 <a href=#49 id=49 data-nosnippet>49</a>
 <a href=#50 id=50 data-nosnippet>50</a></span><span class="kw">use </span>tauri::{AppHandle, image::Image};
 <a href=#51 id=51 data-nosnippet>51</a>
-<a href=#52 id=52 data-nosnippet>52</a><span class="kw">use </span><a href="../../IPC/DevLog/mod.rs.html#51-121"><span class="kw">crate</span>::dev_log</a>;
+<a href=#52 id=52 data-nosnippet>52</a><span class="kw">use </span><a href="../../IPC/DevLog/mod.rs.html#50-120"><span class="kw">crate</span>::dev_log</a>;
 <a href=#53 id=53 data-nosnippet>53</a>
 <a href=#54 id=54 data-nosnippet>54</a><span class="doccomment">/// Dynamically switches the tray icon based on the theme (Light/Dark).
 <a href=#55 id=55 data-nosnippet>55</a>/// Can be invoked from the frontend when the theme changes.
@@ -73,7 +73,7 @@
 <a href=#73 id=73 data-nosnippet>73</a>///   - If setting the new icon fails
 <a href=#74 id=74 data-nosnippet>74</a></span><span class="attr">#[tauri::command]
 <a href=#75 id=75 data-nosnippet>75</a></span><span class="kw">pub fn </span><a href="#74">SwitchTrayIcon</a>(App:AppHandle, IsDarkMode:<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) {
-<a href=#76 id=76 data-nosnippet>76</a>	<a href="../../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"window"</span>, <span class="string">"[UI] [Tray] Switching icon. IsDarkMode: {}"</span>, IsDarkMode);
+<a href=#76 id=76 data-nosnippet>76</a>	<a href="../../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"window"</span>, <span class="string">"[UI] [Tray] Switching icon. IsDarkMode: {}"</span>, IsDarkMode);
 <a href=#77 id=77 data-nosnippet>77</a>
 <a href=#78 id=78 data-nosnippet>78</a>	<span class="kw">const </span>DARK_ICON_BYTES:<span class="kw-2">&amp;</span>[<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>] = <a href="https://doc.rust-lang.org/nightly/core/macro.include_bytes.html">include_bytes!</a>(<span class="string">"../../../icons/32x32.png"</span>);
 <a href=#79 id=79 data-nosnippet>79</a>
@@ -85,14 +85,14 @@
 <a href=#85 id=85 data-nosnippet>85</a>		<span class="kw">match </span>Image::from_bytes(<a href="#82">IconBytes</a>) {
 <a href=#86 id=86 data-nosnippet>86</a>			<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(IconImage) =&gt; {
 <a href=#87 id=87 data-nosnippet>87</a>				<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(e) = <a href="#84">Tray</a>.set_icon(<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(<a href="#86">IconImage</a>)) {
-<a href=#88 id=88 data-nosnippet>88</a>					<a href="../../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"window"</span>, <span class="string">"error: [UI] [Tray] Failed to set icon: {}"</span>, e);
+<a href=#88 id=88 data-nosnippet>88</a>					<a href="../../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"window"</span>, <span class="string">"error: [UI] [Tray] Failed to set icon: {}"</span>, e);
 <a href=#89 id=89 data-nosnippet>89</a>				}
 <a href=#90 id=90 data-nosnippet>90</a>			},
 <a href=#91 id=91 data-nosnippet>91</a>
-<a href=#92 id=92 data-nosnippet>92</a>			<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(e) =&gt; <a href="../../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"window"</span>, <span class="string">"error: [UI] [Tray] Failed to load icon bytes: {}"</span>, e),
+<a href=#92 id=92 data-nosnippet>92</a>			<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(e) =&gt; <a href="../../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"window"</span>, <span class="string">"error: [UI] [Tray] Failed to load icon bytes: {}"</span>, e),
 <a href=#93 id=93 data-nosnippet>93</a>		}
 <a href=#94 id=94 data-nosnippet>94</a>	} <span class="kw">else </span>{
-<a href=#95 id=95 data-nosnippet>95</a>		<a href="../../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"window"</span>, <span class="string">"warn: [UI] [Tray] Tray with ID 'tray' not found."</span>);
+<a href=#95 id=95 data-nosnippet>95</a>		<a href="../../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"window"</span>, <span class="string">"warn: [UI] [Tray] Tray with ID 'tray' not found."</span>);
 <a href=#96 id=96 data-nosnippet>96</a>	}
 <a href=#97 id=97 data-nosnippet>97</a>}
 </code></pre></div></section></main></body></html>

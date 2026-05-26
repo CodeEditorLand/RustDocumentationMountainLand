@@ -17,12 +17,12 @@
 <a href=#17 id=17 data-nosnippet>17</a>//! - EndLineNumber/EndColumn: Position end (1-based, same convention)
 <a href=#18 id=18 data-nosnippet>18</a>//! - Source: Diagnostic source (e.g., compiler, linter)
 <a href=#19 id=19 data-nosnippet>19</a>//! - Code: Diagnostic code for quick fix lookup
-<a href=#20 id=20 data-nosnippet>20</a>//! - ModelVersionIdentifier: Document version for tracking
+<a href=#20 id=20 data-nosnippet>20</a>//! - ModelVersionId: Document version for tracking
 <a href=#21 id=21 data-nosnippet>21</a>//! - RelatedInformation: Related diagnostic information
 <a href=#22 id=22 data-nosnippet>22</a>//! - Tags: Additional marker tags (deprecated, unnecessary)
 <a href=#23 id=23 data-nosnippet>23</a>
 <a href=#24 id=24 data-nosnippet>24</a></span><span class="kw">use </span>serde::{<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>};
-<a href=#25 id=25 data-nosnippet>25</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">serde_json::Value</a>;
+<a href=#25 id=25 data-nosnippet>25</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">serde_json::Value</a>;
 <a href=#26 id=26 data-nosnippet>26</a>
 <a href=#27 id=27 data-nosnippet>27</a><span class="kw">use </span><a href="MarkerSeverity.rs.html#16-28"><span class="kw">super</span>::MarkerSeverity::MarkerSeverity</a>;
 <a href=#28 id=28 data-nosnippet>28</a>
@@ -63,15 +63,15 @@
 <a href=#63 id=63 data-nosnippet>63</a>
 <a href=#64 id=64 data-nosnippet>64</a>	<span class="doccomment">/// Diagnostic code for quick fix lookup (string or object)
 <a href=#65 id=65 data-nosnippet>65</a>	</span><span class="attr">#[serde(skip_serializing_if = <span class="string">"Option::is_none"</span>)]
-<a href=#66 id=66 data-nosnippet>66</a>	</span><span class="kw">pub </span>Code:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;,
+<a href=#66 id=66 data-nosnippet>66</a>	</span><span class="kw">pub </span>Code:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>&gt;,
 <a href=#67 id=67 data-nosnippet>67</a>
 <a href=#68 id=68 data-nosnippet>68</a>	<span class="doccomment">/// Document version marker is associated with
 <a href=#69 id=69 data-nosnippet>69</a>	</span><span class="attr">#[serde(skip_serializing_if = <span class="string">"Option::is_none"</span>)]
-<a href=#70 id=70 data-nosnippet>70</a>	</span><span class="kw">pub </span>ModelVersionIdentifier:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>&gt;,
+<a href=#70 id=70 data-nosnippet>70</a>	</span><span class="kw">pub </span>ModelVersionId:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>&gt;,
 <a href=#71 id=71 data-nosnippet>71</a>
 <a href=#72 id=72 data-nosnippet>72</a>	<span class="doccomment">/// Related diagnostic information
 <a href=#73 id=73 data-nosnippet>73</a>	</span><span class="attr">#[serde(skip_serializing_if = <span class="string">"Option::is_none"</span>)]
-<a href=#74 id=74 data-nosnippet>74</a>	</span><span class="kw">pub </span>RelatedInformation:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>&gt;,
+<a href=#74 id=74 data-nosnippet>74</a>	</span><span class="kw">pub </span>RelatedInformation:<a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>&gt;,
 <a href=#75 id=75 data-nosnippet>75</a>
 <a href=#76 id=76 data-nosnippet>76</a>	<span class="doccomment">/// Additional marker tags (deprecated, unnecessary)
 <a href=#77 id=77 data-nosnippet>77</a>	</span><span class="attr">#[serde(skip_serializing_if = <span class="string">"Option::is_none"</span>)]
@@ -133,7 +133,7 @@
 <a href=#133 id=133 data-nosnippet>133</a>			<a href="#105">EndColumn</a>,
 <a href=#134 id=134 data-nosnippet>134</a>			Source:<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>,
 <a href=#135 id=135 data-nosnippet>135</a>			Code:<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>,
-<a href=#136 id=136 data-nosnippet>136</a>			ModelVersionIdentifier:<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>,
+<a href=#136 id=136 data-nosnippet>136</a>			ModelVersionId:<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>,
 <a href=#137 id=137 data-nosnippet>137</a>			RelatedInformation:<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>,
 <a href=#138 id=138 data-nosnippet>138</a>			Tags:<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a>,
 <a href=#139 id=139 data-nosnippet>139</a>		})

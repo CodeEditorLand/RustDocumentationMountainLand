@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["CreateEffect","StripFileUriScheme"]};
+window.SIDEBAR_ITEMS = {"fn":["CreateEffect"]};

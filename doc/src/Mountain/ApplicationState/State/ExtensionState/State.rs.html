@@ -35,8 +35,8 @@
 <a href=#35 id=35 data-nosnippet>35</a>
 <a href=#36 id=36 data-nosnippet>36</a><span class="kw">use </span>tokio::sync::Notify;
 <a href=#37 id=37 data-nosnippet>37</a>
-<a href=#38 id=38 data-nosnippet>38</a><span class="kw">use </span>super::{<a href="mod.rs.html#6">ExtensionRegistry</a>, <a href="mod.rs.html#8">ProviderRegistration</a>, <a href="mod.rs.html#10">ScannedExtensions</a>};
-<a href=#39 id=39 data-nosnippet>39</a><span class="kw">use </span><a href="../../../IPC/DevLog/mod.rs.html#51-121"><span class="kw">crate</span>::dev_log</a>;
+<a href=#38 id=38 data-nosnippet>38</a><span class="kw">use </span>super::{<a href="mod.rs.html#5">ExtensionRegistry</a>, <a href="mod.rs.html#7">ProviderRegistration</a>, <a href="mod.rs.html#9">ScannedExtensions</a>};
+<a href=#39 id=39 data-nosnippet>39</a><span class="kw">use </span><a href="../../../IPC/DevLog/mod.rs.html#50-120"><span class="kw">crate</span>::dev_log</a>;
 <a href=#40 id=40 data-nosnippet>40</a>
 <a href=#41 id=41 data-nosnippet>41</a><span class="doccomment">/// Extension state combining all extension-related components.
 <a href=#42 id=42 data-nosnippet>42</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>)]
@@ -59,7 +59,7 @@
 <a href=#59 id=59 data-nosnippet>59</a>
 <a href=#60 id=60 data-nosnippet>60</a><span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html">Default</a> <span class="kw">for </span><a href="#43-58">State</a> {
 <a href=#61 id=61 data-nosnippet>61</a>	<span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{
-<a href=#62 id=62 data-nosnippet>62</a>		<a href="../../../IPC/DevLog/mod.rs.html#51-121">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[ExtensionState::State] Initializing default extension state..."</span>);
+<a href=#62 id=62 data-nosnippet>62</a>		<a href="../../../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(<span class="string">"extensions"</span>, <span class="string">"[ExtensionState::State] Initializing default extension state..."</span>);
 <a href=#63 id=63 data-nosnippet>63</a>
 <a href=#64 id=64 data-nosnippet>64</a>		<span class="self">Self </span>{
 <a href=#65 id=65 data-nosnippet>65</a>			Registry:ExtensionRegistry::ExtensionRegistry::<a href="ExtensionRegistry/ExtensionRegistry.rs.html#50-62">Registry</a>::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>(),

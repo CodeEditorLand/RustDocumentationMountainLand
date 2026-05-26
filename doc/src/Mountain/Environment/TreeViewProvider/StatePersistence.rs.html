@@ -3,10 +3,10 @@
 <a href=#3 id=3 data-nosnippet>3</a>//! Internal helper functions for saving and restoring tree view state.
 <a href=#4 id=4 data-nosnippet>4</a>
 <a href=#5 id=5 data-nosnippet>5</a></span><span class="kw">use </span>CommonLibrary::{Error::CommonError::CommonError, IPC::SkyEvent::SkyEvent};
-<a href=#6 id=6 data-nosnippet>6</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">serde_json::json</a>;
+<a href=#6 id=6 data-nosnippet>6</a><span class="kw">use </span><a href="https://docs.rs/serde_json/1.0.150/serde_json/macro.json.html">serde_json::json</a>;
 <a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span>tauri::Emitter;
 <a href=#8 id=8 data-nosnippet>8</a>
-<a href=#9 id=9 data-nosnippet>9</a><span class="kw">use </span>crate::{<a href="../mod.rs.html#120">Environment::Utility</a>, <a href="../../IPC/DevLog/mod.rs.html#51-121">dev_log</a>};
+<a href=#9 id=9 data-nosnippet>9</a><span class="kw">use </span>crate::{<a href="../mod.rs.html#127">Environment::Utility</a>, <a href="../../IPC/DevLog/mod.rs.html#50-120">dev_log</a>};
 <a href=#10 id=10 data-nosnippet>10</a>
 <a href=#11 id=11 data-nosnippet>11</a><span class="doccomment">/// Persists the current state of a tree view.
 <a href=#12 id=12 data-nosnippet>12</a>/// Saves the expansion, selection, and other state for later restoration.
@@ -51,7 +51,7 @@
 <a href=#51 id=51 data-nosnippet>51</a>
 <a href=#52 id=52 data-nosnippet>52</a>	view_identifier:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#53 id=53 data-nosnippet>53</a>
-<a href=#54 id=54 data-nosnippet>54</a>	state_value:serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/value/enum.Value.html">Value</a>,
+<a href=#54 id=54 data-nosnippet>54</a>	state_value:serde_json::<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>,
 <a href=#55 id=55 data-nosnippet>55</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), CommonError&gt; {
 <a href=#56 id=56 data-nosnippet>56</a>	<span class="macro">dev_log!</span>(
 <a href=#57 id=57 data-nosnippet>57</a>		<span class="string">"extensions"</span>,
