@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["Fn","GetFdTable"],"static":["FD_TABLE","NEXT_FD"],"struct":["FdTable"]};

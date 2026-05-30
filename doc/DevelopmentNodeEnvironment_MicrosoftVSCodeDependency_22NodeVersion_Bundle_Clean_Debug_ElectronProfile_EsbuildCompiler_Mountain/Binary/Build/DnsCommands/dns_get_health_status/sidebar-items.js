@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["dns_get_health_status"]};

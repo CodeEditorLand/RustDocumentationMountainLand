@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["CocoonManagement","ExtractDevTag","InitializationData","NodeResolver","WorkspaceContainsGlob"]};
+window.SIDEBAR_ITEMS = {"mod":["CocoonManagement","ExtractDevTag","InitializationData","NodeResolver"]};

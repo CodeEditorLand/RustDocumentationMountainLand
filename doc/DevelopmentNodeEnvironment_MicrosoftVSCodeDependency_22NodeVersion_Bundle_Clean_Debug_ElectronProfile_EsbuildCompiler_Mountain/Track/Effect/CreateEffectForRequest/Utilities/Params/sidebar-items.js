@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["array_unwrap","bool_at","bool_at_true","ensure_array","i64_at","i64_at_or","obj_bool","obj_f64","obj_str","obj_val","str_at","str_obj_or_pos","string_at","string_at_or","strip_file_uri","u64_at","u64_at_or","uri_from_params","val_at"]};

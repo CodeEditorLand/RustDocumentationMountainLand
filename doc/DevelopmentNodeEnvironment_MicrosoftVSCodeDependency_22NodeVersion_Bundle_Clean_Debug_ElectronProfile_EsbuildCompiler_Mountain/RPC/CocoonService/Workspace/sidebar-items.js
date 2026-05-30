@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"mod":["ApplyEdit","OpenDocument","SaveAll","UpdateConfiguration","UpdateWorkspaceFolders"]};

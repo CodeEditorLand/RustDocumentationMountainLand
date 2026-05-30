@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"mod":["ApplyEdit","CreateStatusBarItem","CreateWebviewPanel","OpenDocument","OpenExternal","SaveAll","SetStatusBarText","SetWebviewHtml","ShowInputBox","ShowMessage","ShowOpenDialog","ShowSaveDialog","ShowTextDocument"]};

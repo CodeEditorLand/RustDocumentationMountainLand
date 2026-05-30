@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"mod":["BatchConfig","BatchStats","CompressedBatch","CompressionAlgorithm","CompressionInfo","CompressionLevel","Compressor"]};

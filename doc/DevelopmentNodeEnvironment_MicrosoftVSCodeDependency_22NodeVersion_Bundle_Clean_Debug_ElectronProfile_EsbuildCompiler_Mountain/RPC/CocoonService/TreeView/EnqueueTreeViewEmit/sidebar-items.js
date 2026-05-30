@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["Fn","GetOrInitChannel"],"static":["TV_CH"],"struct":["TreeViewChannel"]};

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["RelayToSky","UnregisterByHandle"]};
+window.SIDEBAR_ITEMS = {};

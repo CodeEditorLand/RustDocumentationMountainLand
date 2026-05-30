@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"mod":["Channel","EncryptedMessage","EncryptionKey","SecureMessage","SecurityConfig","SecurityStats"]};

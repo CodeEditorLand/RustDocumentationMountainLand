@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"constant":["MAX_CACHE_AGE"],"fn":["Fn"],"struct":["CacheBlob","CachedEntry"]};

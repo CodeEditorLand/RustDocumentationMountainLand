@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["mountain_start_service_discovery"]};

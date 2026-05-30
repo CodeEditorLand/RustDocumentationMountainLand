@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["FileSinkEnabled","Fn","InitFileSink","ResolveLogDirectory"],"static":["LOG_FILE"]};

@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["GetOrInitChannel","RegisterCommand"],"static":["CMD_CHANNEL"],"struct":["CommandBatchChannel"]};

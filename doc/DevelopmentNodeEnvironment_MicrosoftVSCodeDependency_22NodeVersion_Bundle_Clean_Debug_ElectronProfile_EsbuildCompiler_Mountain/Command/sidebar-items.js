@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"mod":["Bootstrap","Hover","Keybinding","LanguageFeature","SourceControlManagement","TreeView"]};

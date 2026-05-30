@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `Element/Mountain/Source/IPC/WindServiceHandlers/NativeDialog/ShowOpenDialog.rs`."><title>ShowOpenDialog.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../../../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../../../../../" data-static-root-path="../../../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.97.0-nightly (d3cd04068 2026-05-16)" data-channel="nightly" data-search-js="search-fd9372ac.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../../../static.files/storage-41dd4d93.js"></script><script defer src="../../../../../static.files/src-script-813739b1.js"></script><script defer src="../../../../../src-files.js"></script><script defer src="../../../../../static.files/main-fcd733ba.js"></script><noscript><link rel="stylesheet" href="../../../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><h1><div class="sub-heading">Mountain/IPC/WindServiceHandlers/NativeDialog/</div>ShowOpenDialog.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="doccomment">//! `nativeHost:showOpenDialog` handler. Wires VS Code's
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `Element/Mountain/Source/IPC/WindServiceHandlers/NativeDialog/ShowOpenDialog.rs`."><title>ShowOpenDialog.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../../../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../../../../../" data-static-root-path="../../../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.98.0-nightly (cced03bfd 2026-05-28)" data-channel="nightly" data-search-js="search-fd9372ac.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../../../static.files/storage-41dd4d93.js"></script><script defer src="../../../../../static.files/src-script-813739b1.js"></script><script defer src="../../../../../src-files.js"></script><script defer src="../../../../../static.files/main-fcd733ba.js"></script><noscript><link rel="stylesheet" href="../../../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><h1><div class="sub-heading">Mountain/IPC/WindServiceHandlers/NativeDialog/</div>ShowOpenDialog.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="doccomment">//! `nativeHost:showOpenDialog` handler. Wires VS Code's
 <a href=#2 id=2 data-nosnippet>2</a>//! `nativeHostService.showOpenDialog(options)` contract to Tauri's
 <a href=#3 id=3 data-nosnippet>3</a>//! dialog plugin.
 <a href=#4 id=4 data-nosnippet>4</a>//!
@@ -16,7 +16,7 @@
 <a href=#16 id=16 data-nosnippet>16</a></span><span class="kw">use </span>serde_json::{<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>, <a href="https://docs.rs/serde_json/1.0.150/serde_json/macro.json.html">json</a>};
 <a href=#17 id=17 data-nosnippet>17</a><span class="kw">use </span>tauri::AppHandle;
 <a href=#18 id=18 data-nosnippet>18</a>
-<a href=#19 id=19 data-nosnippet>19</a><span class="kw">use </span>crate::{<a href="ParseDialogFilters.rs.html#10-33">IPC::WindServiceHandlers::NativeDialog::ParseDialogFilters::Fn</a> <span class="kw">as </span>ParseDialogFilters, <a href="../../DevLog/mod.rs.html#50-120">dev_log</a>};
+<a href=#19 id=19 data-nosnippet>19</a><span class="kw">use crate</span>::{<a href="ParseDialogFilters.rs.html#10-35">IPC::WindServiceHandlers::NativeDialog::ParseDialogFilters::Fn</a> <span class="kw">as </span>ParseDialogFilters, <a href="../../DevLog/mod.rs.html#50-120">dev_log</a>};
 <a href=#20 id=20 data-nosnippet>20</a>
 <a href=#21 id=21 data-nosnippet>21</a><span class="kw">pub async fn </span><a href="../../../../../Mountain/IPC/WindServiceHandlers/NativeDialog/ShowOpenDialog/fn.Fn.html">Fn</a>(ApplicationHandle:AppHandle, Args:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://docs.rs/serde_json/1.0.150/serde_json/value/enum.Value.html">Value</a>&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;Value, String&gt; {
 <a href=#22 id=22 data-nosnippet>22</a>	<span class="kw">use </span>tauri_plugin_dialog::DialogExt;
@@ -55,57 +55,61 @@
 <a href=#55 id=55 data-nosnippet>55</a>
 <a href=#56 id=56 data-nosnippet>56</a>	<span class="kw">let </span>Selected = tokio::task::spawn_blocking(<span class="kw">move </span>|| -&gt; Vec&lt;String&gt; {
 <a href=#57 id=57 data-nosnippet>57</a>		<span class="kw">let </span><span class="kw-2">mut </span>Builder = Handle.dialog().file().set_title(<span class="kw-2">&amp;</span>Title);
-<a href=#58 id=58 data-nosnippet>58</a>		<span class="kw">if let </span><span class="prelude-val">Some</span>(Path) = DefaultPath.as_deref() {
-<a href=#59 id=59 data-nosnippet>59</a>			Builder = Builder.set_directory(Path);
-<a href=#60 id=60 data-nosnippet>60</a>		}
-<a href=#61 id=61 data-nosnippet>61</a>		<span class="comment">// Apply filters only for file pickers - Tauri returns an error on
-<a href=#62 id=62 data-nosnippet>62</a>		// folder pickers if filters are set on some platforms.
-<a href=#63 id=63 data-nosnippet>63</a>		</span><span class="kw">if </span>!IsFolder {
-<a href=#64 id=64 data-nosnippet>64</a>			<span class="kw">for </span>Filter <span class="kw">in </span><span class="kw-2">&amp;</span>FiltersForThread {
-<a href=#65 id=65 data-nosnippet>65</a>				<span class="kw">let </span>ExtRefs:Vec&lt;<span class="kw-2">&amp;</span>str&gt; = Filter.Extensions.iter().map(String::as_str).collect();
-<a href=#66 id=66 data-nosnippet>66</a>				Builder = Builder.add_filter(<span class="kw-2">&amp;</span>Filter.Name, <span class="kw-2">&amp;</span>ExtRefs);
-<a href=#67 id=67 data-nosnippet>67</a>			}
-<a href=#68 id=68 data-nosnippet>68</a>		}
-<a href=#69 id=69 data-nosnippet>69</a>		<span class="kw">if </span>IsFolder {
-<a href=#70 id=70 data-nosnippet>70</a>			<span class="kw">if </span>IsMultiple {
-<a href=#71 id=71 data-nosnippet>71</a>				Builder
-<a href=#72 id=72 data-nosnippet>72</a>					.blocking_pick_folders()
-<a href=#73 id=73 data-nosnippet>73</a>					.unwrap_or_default()
-<a href=#74 id=74 data-nosnippet>74</a>					.into_iter()
-<a href=#75 id=75 data-nosnippet>75</a>					.map(|P| P.to_string())
-<a href=#76 id=76 data-nosnippet>76</a>					.collect()
-<a href=#77 id=77 data-nosnippet>77</a>			} <span class="kw">else </span>{
-<a href=#78 id=78 data-nosnippet>78</a>				Builder.blocking_pick_folder().map(|P| <span class="macro">vec!</span>[P.to_string()]).unwrap_or_default()
-<a href=#79 id=79 data-nosnippet>79</a>			}
-<a href=#80 id=80 data-nosnippet>80</a>		} <span class="kw">else if </span>IsMultiple {
-<a href=#81 id=81 data-nosnippet>81</a>			Builder
-<a href=#82 id=82 data-nosnippet>82</a>				.blocking_pick_files()
-<a href=#83 id=83 data-nosnippet>83</a>				.unwrap_or_default()
-<a href=#84 id=84 data-nosnippet>84</a>				.into_iter()
-<a href=#85 id=85 data-nosnippet>85</a>				.map(|P| P.to_string())
-<a href=#86 id=86 data-nosnippet>86</a>				.collect()
-<a href=#87 id=87 data-nosnippet>87</a>		} <span class="kw">else </span>{
-<a href=#88 id=88 data-nosnippet>88</a>			Builder.blocking_pick_file().map(|P| <span class="macro">vec!</span>[P.to_string()]).unwrap_or_default()
-<a href=#89 id=89 data-nosnippet>89</a>		}
-<a href=#90 id=90 data-nosnippet>90</a>	})
-<a href=#91 id=91 data-nosnippet>91</a>	.<span class="kw">await
-<a href=#92 id=92 data-nosnippet>92</a>	</span>.map_err(|Error| <span class="macro">format!</span>(<span class="string">"showOpenDialog join error: {}"</span>, Error))<span class="question-mark">?</span>;
-<a href=#93 id=93 data-nosnippet>93</a>
-<a href=#94 id=94 data-nosnippet>94</a>	<span class="kw">if </span>Selected.is_empty() {
-<a href=#95 id=95 data-nosnippet>95</a>		<span class="macro">dev_log!</span>(<span class="string">"folder"</span>, <span class="string">"showOpenDialog cancelled by user"</span>);
-<a href=#96 id=96 data-nosnippet>96</a>
-<a href=#97 id=97 data-nosnippet>97</a>		<span class="prelude-val">Ok</span>(<span class="macro">json!</span>({ <span class="string">"canceled"</span>: <span class="bool-val">true</span>, <span class="string">"filePaths"</span>: [] }))
-<a href=#98 id=98 data-nosnippet>98</a>	} <span class="kw">else </span>{
-<a href=#99 id=99 data-nosnippet>99</a>		<span class="macro">dev_log!</span>(
-<a href=#100 id=100 data-nosnippet>100</a>			<span class="string">"folder"</span>,
-<a href=#101 id=101 data-nosnippet>101</a>			<span class="string">"showOpenDialog selected {} path(s) (folder={}, multi={}, filters={})"</span>,
-<a href=#102 id=102 data-nosnippet>102</a>			Selected.len(),
-<a href=#103 id=103 data-nosnippet>103</a>			IsFolder,
-<a href=#104 id=104 data-nosnippet>104</a>			IsMultiple,
-<a href=#105 id=105 data-nosnippet>105</a>			Filters.len()
-<a href=#106 id=106 data-nosnippet>106</a>		);
-<a href=#107 id=107 data-nosnippet>107</a>
-<a href=#108 id=108 data-nosnippet>108</a>		<span class="prelude-val">Ok</span>(<span class="macro">json!</span>({ <span class="string">"canceled"</span>: <span class="bool-val">false</span>, <span class="string">"filePaths"</span>: Selected }))
-<a href=#109 id=109 data-nosnippet>109</a>	}
-<a href=#110 id=110 data-nosnippet>110</a>}
+<a href=#58 id=58 data-nosnippet>58</a>
+<a href=#59 id=59 data-nosnippet>59</a>		<span class="kw">if let </span><span class="prelude-val">Some</span>(Path) = DefaultPath.as_deref() {
+<a href=#60 id=60 data-nosnippet>60</a>			Builder = Builder.set_directory(Path);
+<a href=#61 id=61 data-nosnippet>61</a>		}
+<a href=#62 id=62 data-nosnippet>62</a>
+<a href=#63 id=63 data-nosnippet>63</a>		<span class="comment">// Apply filters only for file pickers - Tauri returns an error on
+<a href=#64 id=64 data-nosnippet>64</a>		// folder pickers if filters are set on some platforms.
+<a href=#65 id=65 data-nosnippet>65</a>		</span><span class="kw">if </span>!IsFolder {
+<a href=#66 id=66 data-nosnippet>66</a>			<span class="kw">for </span>Filter <span class="kw">in </span><span class="kw-2">&amp;</span>FiltersForThread {
+<a href=#67 id=67 data-nosnippet>67</a>				<span class="kw">let </span>ExtRefs:Vec&lt;<span class="kw-2">&amp;</span>str&gt; = Filter.Extensions.iter().map(String::as_str).collect();
+<a href=#68 id=68 data-nosnippet>68</a>
+<a href=#69 id=69 data-nosnippet>69</a>				Builder = Builder.add_filter(<span class="kw-2">&amp;</span>Filter.Name, <span class="kw-2">&amp;</span>ExtRefs);
+<a href=#70 id=70 data-nosnippet>70</a>			}
+<a href=#71 id=71 data-nosnippet>71</a>		}
+<a href=#72 id=72 data-nosnippet>72</a>
+<a href=#73 id=73 data-nosnippet>73</a>		<span class="kw">if </span>IsFolder {
+<a href=#74 id=74 data-nosnippet>74</a>			<span class="kw">if </span>IsMultiple {
+<a href=#75 id=75 data-nosnippet>75</a>				Builder
+<a href=#76 id=76 data-nosnippet>76</a>					.blocking_pick_folders()
+<a href=#77 id=77 data-nosnippet>77</a>					.unwrap_or_default()
+<a href=#78 id=78 data-nosnippet>78</a>					.into_iter()
+<a href=#79 id=79 data-nosnippet>79</a>					.map(|P| P.to_string())
+<a href=#80 id=80 data-nosnippet>80</a>					.collect()
+<a href=#81 id=81 data-nosnippet>81</a>			} <span class="kw">else </span>{
+<a href=#82 id=82 data-nosnippet>82</a>				Builder.blocking_pick_folder().map(|P| <span class="macro">vec!</span>[P.to_string()]).unwrap_or_default()
+<a href=#83 id=83 data-nosnippet>83</a>			}
+<a href=#84 id=84 data-nosnippet>84</a>		} <span class="kw">else if </span>IsMultiple {
+<a href=#85 id=85 data-nosnippet>85</a>			Builder
+<a href=#86 id=86 data-nosnippet>86</a>				.blocking_pick_files()
+<a href=#87 id=87 data-nosnippet>87</a>				.unwrap_or_default()
+<a href=#88 id=88 data-nosnippet>88</a>				.into_iter()
+<a href=#89 id=89 data-nosnippet>89</a>				.map(|P| P.to_string())
+<a href=#90 id=90 data-nosnippet>90</a>				.collect()
+<a href=#91 id=91 data-nosnippet>91</a>		} <span class="kw">else </span>{
+<a href=#92 id=92 data-nosnippet>92</a>			Builder.blocking_pick_file().map(|P| <span class="macro">vec!</span>[P.to_string()]).unwrap_or_default()
+<a href=#93 id=93 data-nosnippet>93</a>		}
+<a href=#94 id=94 data-nosnippet>94</a>	})
+<a href=#95 id=95 data-nosnippet>95</a>	.<span class="kw">await
+<a href=#96 id=96 data-nosnippet>96</a>	</span>.map_err(|Error| <span class="macro">format!</span>(<span class="string">"showOpenDialog join error: {}"</span>, Error))<span class="question-mark">?</span>;
+<a href=#97 id=97 data-nosnippet>97</a>
+<a href=#98 id=98 data-nosnippet>98</a>	<span class="kw">if </span>Selected.is_empty() {
+<a href=#99 id=99 data-nosnippet>99</a>		<span class="macro">dev_log!</span>(<span class="string">"folder"</span>, <span class="string">"showOpenDialog cancelled by user"</span>);
+<a href=#100 id=100 data-nosnippet>100</a>
+<a href=#101 id=101 data-nosnippet>101</a>		<span class="prelude-val">Ok</span>(<span class="macro">json!</span>({ <span class="string">"canceled"</span>: <span class="bool-val">true</span>, <span class="string">"filePaths"</span>: [] }))
+<a href=#102 id=102 data-nosnippet>102</a>	} <span class="kw">else </span>{
+<a href=#103 id=103 data-nosnippet>103</a>		<span class="macro">dev_log!</span>(
+<a href=#104 id=104 data-nosnippet>104</a>			<span class="string">"folder"</span>,
+<a href=#105 id=105 data-nosnippet>105</a>			<span class="string">"showOpenDialog selected {} path(s) (folder={}, multi={}, filters={})"</span>,
+<a href=#106 id=106 data-nosnippet>106</a>			Selected.len(),
+<a href=#107 id=107 data-nosnippet>107</a>			IsFolder,
+<a href=#108 id=108 data-nosnippet>108</a>			IsMultiple,
+<a href=#109 id=109 data-nosnippet>109</a>			Filters.len()
+<a href=#110 id=110 data-nosnippet>110</a>		);
+<a href=#111 id=111 data-nosnippet>111</a>
+<a href=#112 id=112 data-nosnippet>112</a>		<span class="prelude-val">Ok</span>(<span class="macro">json!</span>({ <span class="string">"canceled"</span>: <span class="bool-val">false</span>, <span class="string">"filePaths"</span>: Selected }))
+<a href=#113 id=113 data-nosnippet>113</a>	}
+<a href=#114 id=114 data-nosnippet>114</a>}
 </code></pre></div></section></main></body></html>

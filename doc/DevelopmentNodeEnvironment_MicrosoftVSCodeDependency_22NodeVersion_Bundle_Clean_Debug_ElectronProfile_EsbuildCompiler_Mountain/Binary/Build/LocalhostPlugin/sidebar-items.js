@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"constant":["OTLP_HOST"],"fn":["LocalhostPlugin","MimeFromUrl","ProxyToOTLP"]};

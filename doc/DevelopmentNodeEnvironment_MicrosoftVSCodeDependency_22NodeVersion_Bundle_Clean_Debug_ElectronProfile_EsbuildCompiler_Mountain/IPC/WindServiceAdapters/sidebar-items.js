@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"mod":["FileToDiff","FileToOpenOrCreate","FilesToWait","Logger","MountainSandboxConfiguration","OsInfo","Profiles","WindConfigurationService","WindDesktopConfiguration","WindEnvironmentService","WindFileService","WindServiceAdapter","WindStorageService"]};

@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"mod":["ConfigurationScope","ConfigurationService","ConfigurationUpdate"]};

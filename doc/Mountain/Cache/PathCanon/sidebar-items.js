@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"mod":["Cache","CacheStats","Canonicalize","CanonicalizeUncached","Clear","Invalidate","SpawnDiagnosticLogger","Stats"]};

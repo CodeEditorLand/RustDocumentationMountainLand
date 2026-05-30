@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"mod":["AppMenu","CertificateManager","DnsCommands","LocalhostPlugin","LoggingPlugin","PostHogPlugin","Scheme","ServiceRegistry","TauriBuild","TlsCommands","WindowBuild"]};

@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"constant":["DOTFILE_NAME"],"fn":["Fn"]};

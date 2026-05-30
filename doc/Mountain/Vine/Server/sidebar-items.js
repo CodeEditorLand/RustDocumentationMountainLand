@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["Initialize","MountainVinegRPCService","Notification"]};
+window.SIDEBAR_ITEMS = {"mod":["Initialize","MountainVinegRPCService","Notification","VineHostImpl"]};

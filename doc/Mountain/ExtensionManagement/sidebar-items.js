@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["DefaultConfigurations","NLSResolver","Scanner","VsixInstaller"]};
+window.SIDEBAR_ITEMS = {"mod":["Scanner","VsixInstaller"]};

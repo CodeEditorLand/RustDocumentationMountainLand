@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"mod":["AdvancedFeaturesRegister","CommandRegister","IPCServerRegister","StatusReporterRegister","WindSyncRegister"]};

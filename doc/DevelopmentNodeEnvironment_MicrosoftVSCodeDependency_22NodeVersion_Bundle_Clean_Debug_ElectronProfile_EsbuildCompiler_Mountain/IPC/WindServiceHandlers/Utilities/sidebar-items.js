@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"mod":["ApplicationRoot","ChannelPriority","FiddeeRoot","JsonValueHelpers","LocalhostUrl","MetadataEncoding","PathExtraction","RecentlyOpened","UserdataDir"]};

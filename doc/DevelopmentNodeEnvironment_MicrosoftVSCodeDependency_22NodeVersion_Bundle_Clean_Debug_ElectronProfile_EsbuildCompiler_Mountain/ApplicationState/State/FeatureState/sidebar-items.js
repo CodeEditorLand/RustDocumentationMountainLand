@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"mod":["Debug","Decorations","Diagnostics","Documents","Keybindings","LifecyclePhase","Markers","NavigationHistory","OutputChannels","State","Terminals","TreeViews","Webviews","WorkingCopy"]};

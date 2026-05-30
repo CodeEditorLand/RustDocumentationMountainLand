@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["Client","Error","Generated","Multiplexer","Server"]};
+window.SIDEBAR_ITEMS = {"mod":["Server"]};

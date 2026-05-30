@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["ConstructExtensionHostInitializationData","ConstructSandboxConfiguration","SessionId","get_or_generate_machine_id"],"static":["SESSION_ID"]};

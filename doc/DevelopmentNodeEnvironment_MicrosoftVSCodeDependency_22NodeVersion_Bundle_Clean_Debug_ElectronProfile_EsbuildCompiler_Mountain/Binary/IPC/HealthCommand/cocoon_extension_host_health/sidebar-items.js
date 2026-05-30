@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["cocoon_extension_host_health"]};

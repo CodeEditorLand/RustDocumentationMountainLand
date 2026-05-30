@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"struct":["NLSConfiguration","ProductConfiguration","Struct","Versions"]};
