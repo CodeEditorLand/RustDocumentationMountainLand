@@ -2,15 +2,15 @@
 <h2 id="parameters"><a class="doc-anchor" href="#parameters">§</a>Parameters</h2>
 <ul>
 <li><code>uri</code>: The land:// URI (e.g.,
-“land://code.land.playform.cloud/path/to/resource”)</li>
+“land://code.editor.land/path/to/resource”)</li>
 </ul>
 <h2 id="returns"><a class="doc-anchor" href="#returns">§</a>Returns</h2>
 <p>A tuple of (domain, path) where:</p>
 <ul>
-<li>domain: “code.land.playform.cloud”</li>
+<li>domain: “code.editor.land”</li>
 <li>path: “/path/to/resource”</li>
 </ul>
 <h2 id="example"><a class="doc-anchor" href="#example">§</a>Example</h2>
-<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>(domain, path) = parse_land_uri(<span class="string">"land://code.land.playform.cloud/api/status"</span>);
-<span class="macro">assert_eq!</span>(domain, <span class="string">"code.land.playform.cloud"</span>);
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>(domain, path) = parse_land_uri(<span class="string">"land://code.editor.land/api/status"</span>);
+<span class="macro">assert_eq!</span>(domain, <span class="string">"code.editor.land"</span>);
 <span class="macro">assert_eq!</span>(path, <span class="string">"/api/status"</span>);</code></pre></div></div></details></section></div></main></body></html>

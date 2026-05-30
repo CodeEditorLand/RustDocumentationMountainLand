@@ -64,7 +64,7 @@
 <a href=#64 id=64 data-nosnippet>64</a>	<span class="attr">#[test]
 <a href=#65 id=65 data-nosnippet>65</a>	</span><span class="kw">fn </span>ZoneRecordSerialization() {
 <a href=#66 id=66 data-nosnippet>66</a>		<span class="kw">let </span>record = ZoneRecord {
-<a href=#67 id=67 data-nosnippet>67</a>			name:<span class="string">"code.land.playform.cloud."</span>.to_string(),
+<a href=#67 id=67 data-nosnippet>67</a>			name:<span class="string">"code.editor.land."</span>.to_string(),
 <a href=#68 id=68 data-nosnippet>68</a>
 <a href=#69 id=69 data-nosnippet>69</a>			record_type:<span class="string">"A"</span>.to_string(),
 <a href=#70 id=70 data-nosnippet>70</a>
@@ -77,7 +77,7 @@
 <a href=#77 id=77 data-nosnippet>77</a>
 <a href=#78 id=78 data-nosnippet>78</a>		<span class="kw">let </span>deserialized:ZoneRecord = serde_json::from_str(<span class="kw-2">&amp;</span>json).unwrap();
 <a href=#79 id=79 data-nosnippet>79</a>
-<a href=#80 id=80 data-nosnippet>80</a>		<span class="macro">assert_eq!</span>(deserialized.name, <span class="string">"code.land.playform.cloud."</span>);
+<a href=#80 id=80 data-nosnippet>80</a>		<span class="macro">assert_eq!</span>(deserialized.name, <span class="string">"code.editor.land."</span>);
 <a href=#81 id=81 data-nosnippet>81</a>
 <a href=#82 id=82 data-nosnippet>82</a>		<span class="macro">assert_eq!</span>(deserialized.record_type, <span class="string">"A"</span>);
 <a href=#83 id=83 data-nosnippet>83</a>
@@ -88,7 +88,7 @@
 <a href=#88 id=88 data-nosnippet>88</a>
 <a href=#89 id=89 data-nosnippet>89</a>	<span class="attr">#[test]
 <a href=#90 id=90 data-nosnippet>90</a>	</span><span class="kw">fn </span>ForwardAllowListSerialization() {
-<a href=#91 id=91 data-nosnippet>91</a>		<span class="kw">let </span>allowlist = ForwardAllowList { domains:<span class="macro">vec!</span>[<span class="string">"update.land.playform.cloud."</span>.to_string()] };
+<a href=#91 id=91 data-nosnippet>91</a>		<span class="kw">let </span>allowlist = ForwardAllowList { domains:<span class="macro">vec!</span>[<span class="string">"update.editor.land."</span>.to_string()] };
 <a href=#92 id=92 data-nosnippet>92</a>
 <a href=#93 id=93 data-nosnippet>93</a>		<span class="kw">let </span>json = serde_json::to_string(<span class="kw-2">&amp;</span>allowlist).unwrap();
 <a href=#94 id=94 data-nosnippet>94</a>
@@ -96,7 +96,7 @@
 <a href=#96 id=96 data-nosnippet>96</a>
 <a href=#97 id=97 data-nosnippet>97</a>		<span class="macro">assert_eq!</span>(deserialized.domains.len(), <span class="number">1</span>);
 <a href=#98 id=98 data-nosnippet>98</a>
-<a href=#99 id=99 data-nosnippet>99</a>		<span class="macro">assert_eq!</span>(deserialized.domains[<span class="number">0</span>], <span class="string">"update.land.playform.cloud."</span>);
+<a href=#99 id=99 data-nosnippet>99</a>		<span class="macro">assert_eq!</span>(deserialized.domains[<span class="number">0</span>], <span class="string">"update.editor.land."</span>);
 <a href=#100 id=100 data-nosnippet>100</a>	}
 <a href=#101 id=101 data-nosnippet>101</a>
 <a href=#102 id=102 data-nosnippet>102</a>	<span class="attr">#[test]
@@ -127,7 +127,7 @@
 <a href=#127 id=127 data-nosnippet>127</a>	<span class="attr">#[test]
 <a href=#128 id=128 data-nosnippet>128</a>	</span><span class="kw">fn </span>DnsResolutionResultSerialization() {
 <a href=#129 id=129 data-nosnippet>129</a>		<span class="kw">let </span>result = DnsResolutionResult {
-<a href=#130 id=130 data-nosnippet>130</a>			domain:<span class="string">"code.land.playform.cloud."</span>.to_string(),
+<a href=#130 id=130 data-nosnippet>130</a>			domain:<span class="string">"code.editor.land."</span>.to_string(),
 <a href=#131 id=131 data-nosnippet>131</a>
 <a href=#132 id=132 data-nosnippet>132</a>			record_type:<span class="string">"A"</span>.to_string(),
 <a href=#133 id=133 data-nosnippet>133</a>
@@ -144,7 +144,7 @@
 <a href=#144 id=144 data-nosnippet>144</a>
 <a href=#145 id=145 data-nosnippet>145</a>		<span class="kw">let </span>deserialized:DnsResolutionResult = serde_json::from_str(<span class="kw-2">&amp;</span>json).unwrap();
 <a href=#146 id=146 data-nosnippet>146</a>
-<a href=#147 id=147 data-nosnippet>147</a>		<span class="macro">assert_eq!</span>(deserialized.domain, <span class="string">"code.land.playform.cloud."</span>);
+<a href=#147 id=147 data-nosnippet>147</a>		<span class="macro">assert_eq!</span>(deserialized.domain, <span class="string">"code.editor.land."</span>);
 <a href=#148 id=148 data-nosnippet>148</a>
 <a href=#149 id=149 data-nosnippet>149</a>		<span class="macro">assert_eq!</span>(deserialized.record_type, <span class="string">"A"</span>);
 <a href=#150 id=150 data-nosnippet>150</a>

@@ -9,7 +9,7 @@
 <h3 id="architectural-role"><a class="doc-anchor" href="#architectural-role">§</a>ARCHITECTURAL ROLE</h3>
 <p>The ServiceRegistry provides the bridge between land:// URIs and local
 services:</p>
-<div class="example-wrap"><pre class="language-text"><code>land://code.land.playform.cloud/path ──► ServiceRegistry ──► http://127.0.0.1:PORT/path</code></pre></div><h3 id="thread-safety"><a class="doc-anchor" href="#thread-safety">§</a>THREAD SAFETY</h3>
+<div class="example-wrap"><pre class="language-text"><code>land://code.editor.land/path ──► ServiceRegistry ──► http://127.0.0.1:PORT/path</code></pre></div><h3 id="thread-safety"><a class="doc-anchor" href="#thread-safety">§</a>THREAD SAFETY</h3>
 <ul>
 <li>Uses Arc&lt;RwLock&lt;HashMap&lt;String, LocalService&gt;&gt;&gt; for concurrent access</li>
 <li>Multiple readers allowed concurrently</li>
@@ -17,7 +17,7 @@ services:</p>
 </ul>
 <h3 id="usage"><a class="doc-anchor" href="#usage">§</a>USAGE</h3>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>registry = ServiceRegistry::new();
-registry.register(<span class="string">"code.land.playform.cloud"</span>.to_string(), <span class="number">8080</span>, <span class="prelude-val">Some</span>(<span class="string">"/health"</span>.to_string()));
+registry.register(<span class="string">"code.editor.land"</span>.to_string(), <span class="number">8080</span>, <span class="prelude-val">Some</span>(<span class="string">"/health"</span>.to_string()));
 
-<span class="kw">let </span>service = registry.lookup(<span class="string">"code.land.playform.cloud"</span>).unwrap();
+<span class="kw">let </span>service = registry.lookup(<span class="string">"code.editor.land"</span>).unwrap();
 <span class="macro">assert_eq!</span>(service.port, <span class="number">8080</span>);</code></pre></div></div></details><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.LocalService.html" title="struct DevelopmentNodeEnvironment_MicrosoftVSCodeDependency_22NodeVersion_Bundle_Clean_Debug_ElectronProfile_EsbuildCompiler_Mountain::Binary::Build::ServiceRegistry::LocalService">Local<wbr>Service</a></dt><dd>Represents a local HTTP/HTTPS service registered with the land:// scheme</dd><dt><a class="struct" href="struct.ServiceRegistry.html" title="struct DevelopmentNodeEnvironment_MicrosoftVSCodeDependency_22NodeVersion_Bundle_Clean_Debug_ElectronProfile_EsbuildCompiler_Mountain::Binary::Build::ServiceRegistry::ServiceRegistry">Service<wbr>Registry</a></dt><dd>Registry for tracking local HTTP/HTTPS services</dd></dl></section></div></main></body></html>

@@ -486,16 +486,16 @@
 <a href=#486 id=486 data-nosnippet>486</a>					// Register the main code editor service
 <a href=#487 id=487 data-nosnippet>487</a>					</span><a href="../../IPC/DevLog/mod.rs.html#50-120">dev_log!</a>(
 <a href=#488 id=488 data-nosnippet>488</a>						<span class="string">"lifecycle"</span>,
-<a href=#489 id=489 data-nosnippet>489</a>						<span class="string">"[Lifecycle] [Setup] Registering code.land.playform.cloud service on port {}"</span>,
+<a href=#489 id=489 data-nosnippet>489</a>						<span class="string">"[Lifecycle] [Setup] Registering code.editor.land service on port {}"</span>,
 <a href=#490 id=490 data-nosnippet>490</a>						ServerPortForClosure
 <a href=#491 id=491 data-nosnippet>491</a>					);
-<a href=#492 id=492 data-nosnippet>492</a>					<a href="../Build/Scheme.rs.html#675-681">register_land_service</a>(<span class="string">"code.land.playform.cloud"</span>, <a href="#468">ServerPortForClosure</a>);
+<a href=#492 id=492 data-nosnippet>492</a>					<a href="../Build/Scheme.rs.html#675-681">register_land_service</a>(<span class="string">"code.editor.land"</span>, <a href="#468">ServerPortForClosure</a>);
 <a href=#493 id=493 data-nosnippet>493</a>
 <a href=#494 id=494 data-nosnippet>494</a>					<span class="comment">// Register API editor service (same port for now, can be separate later)
-<a href=#495 id=495 data-nosnippet>495</a>					</span><a href="../Build/Scheme.rs.html#675-681">register_land_service</a>(<span class="string">"api.land.playform.cloud"</span>, <a href="#468">ServerPortForClosure</a>);
+<a href=#495 id=495 data-nosnippet>495</a>					</span><a href="../Build/Scheme.rs.html#675-681">register_land_service</a>(<span class="string">"api.editor.land"</span>, <a href="#468">ServerPortForClosure</a>);
 <a href=#496 id=496 data-nosnippet>496</a>
 <a href=#497 id=497 data-nosnippet>497</a>					<span class="comment">// Register assets editor service (same port for now, can be separate later)
-<a href=#498 id=498 data-nosnippet>498</a>					</span><a href="../Build/Scheme.rs.html#675-681">register_land_service</a>(<span class="string">"assets.land.playform.cloud"</span>, <a href="#468">ServerPortForClosure</a>);
+<a href=#498 id=498 data-nosnippet>498</a>					</span><a href="../Build/Scheme.rs.html#675-681">register_land_service</a>(<span class="string">"assets.editor.land"</span>, <a href="#468">ServerPortForClosure</a>);
 <a href=#499 id=499 data-nosnippet>499</a>
 <a href=#500 id=500 data-nosnippet>500</a>					<span class="comment">// Make the registry available as managed state for Tauri commands
 <a href=#501 id=501 data-nosnippet>501</a>					</span><a href="#469">app</a>.manage(<a href="#480">service_registry</a>);

@@ -18,7 +18,7 @@
 <a href=#18 id=18 data-nosnippet>18</a>//! webviews:
 <a href=#19 id=19 data-nosnippet>19</a>//!
 <a href=#20 id=20 data-nosnippet>20</a>//! ```text
-<a href=#21 id=21 data-nosnippet>21</a>//! land://code.land.playform.cloud/path ──► ServiceRegistry ──► http://127.0.0.1:PORT/path
+<a href=#21 id=21 data-nosnippet>21</a>//! land://code.editor.land/path ──► ServiceRegistry ──► http://127.0.0.1:PORT/path
 <a href=#22 id=22 data-nosnippet>22</a>//!                                       │                        │
 <a href=#23 id=23 data-nosnippet>23</a>//!                                       ▼                        ▼
 <a href=#24 id=24 data-nosnippet>24</a>//!                               CORS Headers Set          Local Service
@@ -28,7 +28,7 @@
 <a href=#28 id=28 data-nosnippet>28</a>//! ## SECURITY
 <a href=#29 id=29 data-nosnippet>29</a>//!
 <a href=#30 id=30 data-nosnippet>30</a>//! - All responses include Access-Control-Allow-Origin:
-<a href=#31 id=31 data-nosnippet>31</a>//!   land://code.land.playform.cloud
+<a href=#31 id=31 data-nosnippet>31</a>//!   land://code.editor.land
 <a href=#32 id=32 data-nosnippet>32</a>//! - Content-Type preserved from local service response
 <a href=#33 id=33 data-nosnippet>33</a>//! - CORS headers set appropriately for cross-origin requests
 <a href=#34 id=34 data-nosnippet>34</a>//! - Request validation and sanitization
@@ -163,19 +163,19 @@
 <a href=#163 id=163 data-nosnippet>163</a>/// # Parameters
 <a href=#164 id=164 data-nosnippet>164</a>///
 <a href=#165 id=165 data-nosnippet>165</a>/// - `uri`: The land:// URI (e.g.,
-<a href=#166 id=166 data-nosnippet>166</a>///   "land://code.land.playform.cloud/path/to/resource")
+<a href=#166 id=166 data-nosnippet>166</a>///   "land://code.editor.land/path/to/resource")
 <a href=#167 id=167 data-nosnippet>167</a>///
 <a href=#168 id=168 data-nosnippet>168</a>/// # Returns
 <a href=#169 id=169 data-nosnippet>169</a>///
 <a href=#170 id=170 data-nosnippet>170</a>/// A tuple of (domain, path) where:
-<a href=#171 id=171 data-nosnippet>171</a>/// - domain: "code.land.playform.cloud"
+<a href=#171 id=171 data-nosnippet>171</a>/// - domain: "code.editor.land"
 <a href=#172 id=172 data-nosnippet>172</a>/// - path: "/path/to/resource"
 <a href=#173 id=173 data-nosnippet>173</a>///
 <a href=#174 id=174 data-nosnippet>174</a>/// # Example
 <a href=#175 id=175 data-nosnippet>175</a>///
 <a href=#176 id=176 data-nosnippet>176</a>/// ```rust
-<a href=#177 id=177 data-nosnippet>177</a>/// let (domain, path) = parse_land_uri("land://code.land.playform.cloud/api/status");
-<a href=#178 id=178 data-nosnippet>178</a>/// assert_eq!(domain, "code.land.playform.cloud");
+<a href=#177 id=177 data-nosnippet>177</a>/// let (domain, path) = parse_land_uri("land://code.editor.land/api/status");
+<a href=#178 id=178 data-nosnippet>178</a>/// assert_eq!(domain, "code.editor.land");
 <a href=#179 id=179 data-nosnippet>179</a>/// assert_eq!(path, "/api/status");
 <a href=#180 id=180 data-nosnippet>180</a>/// ```
 <a href=#181 id=181 data-nosnippet>181</a></span><span class="kw">fn </span><a href="../../../../DevelopmentNodeEnvironment_MicrosoftVSCodeDependency_22NodeVersion_Bundle_Clean_Debug_ElectronProfile_EsbuildCompiler_Mountain/Binary/Build/Scheme/fn.parse_land_uri.html">parse_land_uri</a>(uri:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html">Result</a>&lt;(<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>), <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
@@ -549,7 +549,7 @@
 <a href=#549 id=549 data-nosnippet>549</a>				<span class="kw">return </span>Builder::new()
 <a href=#550 id=550 data-nosnippet>550</a>					.status(<span class="number">404</span>)
 <a href=#551 id=551 data-nosnippet>551</a>					.header(<span class="string">"Content-Type"</span>, <span class="string">"text/plain; charset=utf-8"</span>)
-<a href=#552 id=552 data-nosnippet>552</a>					.header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"land://code.land.playform.cloud"</span>)
+<a href=#552 id=552 data-nosnippet>552</a>					.header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"land://code.editor.land"</span>)
 <a href=#553 id=553 data-nosnippet>553</a>					.body(Vec::&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;::<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.new">new</a>())
 <a href=#554 id=554 data-nosnippet>554</a>					.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|<span class="kw">_</span>| <a href="#620-632">build_error_response</a>(<span class="number">500</span>, <span class="string">"Failed to build 404 response"</span>));
 <a href=#555 id=555 data-nosnippet>555</a>			}
@@ -557,7 +557,7 @@
 <a href=#557 id=557 data-nosnippet>557</a>			<span class="comment">// Build response with CORS headers
 <a href=#558 id=558 data-nosnippet>558</a>			</span><span class="kw">let </span><span class="kw-2">mut </span>response_builder = Builder::new()
 <a href=#559 id=559 data-nosnippet>559</a>				.status(<a href="#506">status</a>)
-<a href=#560 id=560 data-nosnippet>560</a>				.header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"land://code.land.playform.cloud"</span>)
+<a href=#560 id=560 data-nosnippet>560</a>				.header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"land://code.editor.land"</span>)
 <a href=#561 id=561 data-nosnippet>561</a>				.header(<span class="string">"Access-Control-Allow-Methods"</span>, <span class="string">"GET, POST, PUT, DELETE, PATCH, OPTIONS"</span>)
 <a href=#562 id=562 data-nosnippet>562</a>				.header(<span class="string">"Access-Control-Allow-Headers"</span>, <span class="string">"Content-Type, Authorization, X-Requested-With"</span>);
 <a href=#563 id=563 data-nosnippet>563</a>
@@ -626,7 +626,7 @@
 <a href=#626 id=626 data-nosnippet>626</a>	Builder::new()
 <a href=#627 id=627 data-nosnippet>627</a>		.status(<a href="#620">status</a>)
 <a href=#628 id=628 data-nosnippet>628</a>		.header(<span class="string">"Content-Type"</span>, <span class="string">"application/json"</span>)
-<a href=#629 id=629 data-nosnippet>629</a>		.header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"land://code.land.playform.cloud"</span>)
+<a href=#629 id=629 data-nosnippet>629</a>		.header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"land://code.editor.land"</span>)
 <a href=#630 id=630 data-nosnippet>630</a>		.body(serde_json::<a href="https://docs.rs/serde_json/1.0.150/serde_json/ser/fn.to_vec.html">to_vec</a>(<span class="kw-2">&amp;</span><a href="#621">body</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_default">unwrap_or_default</a>())
 <a href=#631 id=631 data-nosnippet>631</a>		.<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|<span class="kw">_</span>| Builder::new().status(<span class="number">500</span>).body(<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>::<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.new">new</a>()).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap">unwrap</a>())
 <a href=#632 id=632 data-nosnippet>632</a>}
@@ -635,7 +635,7 @@
 <a href=#635 id=635 data-nosnippet>635</a></span><span class="kw">fn </span><a href="../../../../DevelopmentNodeEnvironment_MicrosoftVSCodeDependency_22NodeVersion_Bundle_Clean_Debug_ElectronProfile_EsbuildCompiler_Mountain/Binary/Build/Scheme/fn.build_cors_preflight_response.html">build_cors_preflight_response</a>() -&gt; Response&lt;<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;&gt; {
 <a href=#636 id=636 data-nosnippet>636</a>	Builder::new()
 <a href=#637 id=637 data-nosnippet>637</a>		.status(<span class="number">204</span>)
-<a href=#638 id=638 data-nosnippet>638</a>		.header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"land://code.land.playform.cloud"</span>)
+<a href=#638 id=638 data-nosnippet>638</a>		.header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"land://code.editor.land"</span>)
 <a href=#639 id=639 data-nosnippet>639</a>		.header(<span class="string">"Access-Control-Allow-Methods"</span>, <span class="string">"GET, POST, PUT, DELETE, PATCH, OPTIONS"</span>)
 <a href=#640 id=640 data-nosnippet>640</a>		.header(<span class="string">"Access-Control-Allow-Headers"</span>, <span class="string">"Content-Type, Authorization, X-Requested-With"</span>)
 <a href=#641 id=641 data-nosnippet>641</a>		.header(<span class="string">"Access-Control-Max-Age"</span>, <span class="string">"86400"</span>)
@@ -648,7 +648,7 @@
 <a href=#648 id=648 data-nosnippet>648</a>	<span class="kw">let </span><span class="kw-2">mut </span>builder = Builder::new()
 <a href=#649 id=649 data-nosnippet>649</a>		.status(<span class="number">200</span>)
 <a href=#650 id=650 data-nosnippet>650</a>		.header(<span class="string">"Content-Type"</span>, <span class="kw-2">&amp;</span><a href="#647">entry</a>.content_type)
-<a href=#651 id=651 data-nosnippet>651</a>		.header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"land://code.land.playform.cloud"</span>)
+<a href=#651 id=651 data-nosnippet>651</a>		.header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"land://code.editor.land"</span>)
 <a href=#652 id=652 data-nosnippet>652</a>		.header(<span class="string">"Cache-Control"</span>, <span class="kw-2">&amp;</span><a href="#647">entry</a>.cache_control);
 <a href=#653 id=653 data-nosnippet>653</a>
 <a href=#654 id=654 data-nosnippet>654</a>	<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(etag) = <span class="kw-2">&amp;</span><a href="#647">entry</a>.etag {
@@ -670,7 +670,7 @@
 <a href=#670 id=670 data-nosnippet>670</a>///
 <a href=#671 id=671 data-nosnippet>671</a>/// # Parameters
 <a href=#672 id=672 data-nosnippet>672</a>///
-<a href=#673 id=673 data-nosnippet>673</a>/// - `name`: Domain name (e.g., "code.land.playform.cloud")
+<a href=#673 id=673 data-nosnippet>673</a>/// - `name`: Domain name (e.g., "code.editor.land")
 <a href=#674 id=674 data-nosnippet>674</a>/// - `port`: Local port where the service is listening
 <a href=#675 id=675 data-nosnippet>675</a></span><span class="kw">pub fn </span><a href="../../../../DevelopmentNodeEnvironment_MicrosoftVSCodeDependency_22NodeVersion_Bundle_Clean_Debug_ElectronProfile_EsbuildCompiler_Mountain/Binary/Build/Scheme/fn.register_land_service.html">register_land_service</a>(name:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, port:<a href="https://doc.rust-lang.org/nightly/std/primitive.u16.html">u16</a>) {
 <a href=#676 id=676 data-nosnippet>676</a>	<span class="kw">let </span>registry = <a href="#75-79">get_service_registry</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.expect">expect</a>(<span class="string">"Service registry not initialized. Call init_service_registry first."</span>);
@@ -752,7 +752,7 @@
 <a href=#752 id=752 data-nosnippet>752</a>/// Returns a comma-separated list of origins to support all platforms.
 <a href=#753 id=753 data-nosnippet>753</a></span><span class="kw">fn </span><a href="../../../../DevelopmentNodeEnvironment_MicrosoftVSCodeDependency_22NodeVersion_Bundle_Clean_Debug_ElectronProfile_EsbuildCompiler_Mountain/Binary/Build/Scheme/fn.get_cors_origins.html">get_cors_origins</a>() -&gt; <span class="kw-2">&amp;</span><span class="lifetime">'static </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a> {
 <a href=#754 id=754 data-nosnippet>754</a>	<span class="comment">// Support both macOS/Linux (land://localhost) and Windows (http://land.localhost)
-<a href=#755 id=755 data-nosnippet>755</a>	</span><span class="string">"land://localhost, http://land.localhost, land://code.land.playform.cloud"
+<a href=#755 id=755 data-nosnippet>755</a>	</span><span class="string">"land://localhost, http://land.localhost, land://code.editor.land"
 <a href=#756 id=756 data-nosnippet>756</a></span>}
 <a href=#757 id=757 data-nosnippet>757</a>
 <a href=#758 id=758 data-nosnippet>758</a><span class="doccomment">/// Initializes the scheme handler module

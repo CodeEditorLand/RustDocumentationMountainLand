@@ -5,8 +5,8 @@ services. It manages a root CA certificate and generates server certificates
 signed by the CA.</p>
 <h3 id="certificate-hierarchy"><a class="doc-anchor" href="#certificate-hierarchy">§</a>Certificate Hierarchy</h3><div class="example-wrap"><pre class="language-text"><code>Root CA (stored in keyring)
   └── Server Certificates (cached, per hostname)
-       ├── code.land.playform.cloud
-       ├── api.land.playform.cloud
+       ├── code.editor.land
+       ├── api.editor.land
        └── ...other services</code></pre></div><h3 id="trust-model"><a class="doc-anchor" href="#trust-model">§</a>Trust Model</h3>
 <ul>
 <li>The webview must trust the CA certificate to validate server certificates</li>
@@ -23,7 +23,7 @@ signed by the CA.</p>
 	</span>cert_manager.initialize_ca().<span class="kw">await</span><span class="question-mark">?</span>;
 
 	<span class="comment">// Get server configuration for a service
-	</span><span class="kw">let </span>server_config = cert_manager.get_server_cert(<span class="string">"code.land.playform.cloud"</span>).<span class="kw">await</span><span class="question-mark">?</span>;
+	</span><span class="kw">let </span>server_config = cert_manager.get_server_cert(<span class="string">"code.editor.land"</span>).<span class="kw">await</span><span class="question-mark">?</span>;
 
 	<span class="comment">// Get CA certificate PEM for webview installation
 	</span><span class="kw">let </span>ca_cert = cert_manager.get_ca_cert_pem().unwrap();

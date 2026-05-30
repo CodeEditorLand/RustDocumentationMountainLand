@@ -24,13 +24,13 @@ registrations.</p>
 )</h4></section></summary><div class="docblock"><p>Register a local HTTP service</p>
 <h5 id="parameters-1"><a class="doc-anchor" href="#parameters-1">§</a>Parameters</h5>
 <ul>
-<li><code>name</code>: Domain name (e.g., “code.land.playform.cloud”)</li>
+<li><code>name</code>: Domain name (e.g., “code.editor.land”)</li>
 <li><code>port</code>: Local port where the service is listening</li>
 <li><code>health_check_path</code>: Optional path for health check endpoint (e.g.,
 “/health”)</li>
 </ul>
 <h5 id="example"><a class="doc-anchor" href="#example">§</a>Example</h5>
-<div class="example-wrap"><pre class="rust rust-example-rendered"><code>registry.register(<span class="string">"code.land.playform.cloud"</span>.to_string(), <span class="number">8080</span>, <span class="prelude-val">Some</span>(<span class="string">"/health"</span>.to_string()));</code></pre></div></div></details><details class="toggle method-toggle" open><summary><section id="method.register_with_options" class="method"><a class="src rightside" href="../../../../src/DevelopmentNodeEnvironment_MicrosoftVSCodeDependency_22NodeVersion_Bundle_Clean_Debug_ElectronProfile_EsbuildCompiler_Mountain/Binary/Build/ServiceRegistry.rs.html#162-219">Source</a><h4 class="code-header">pub fn <a href="#method.register_with_options" class="fn">register_with_options</a>(
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code>registry.register(<span class="string">"code.editor.land"</span>.to_string(), <span class="number">8080</span>, <span class="prelude-val">Some</span>(<span class="string">"/health"</span>.to_string()));</code></pre></div></div></details><details class="toggle method-toggle" open><summary><section id="method.register_with_options" class="method"><a class="src rightside" href="../../../../src/DevelopmentNodeEnvironment_MicrosoftVSCodeDependency_22NodeVersion_Bundle_Clean_Debug_ElectronProfile_EsbuildCompiler_Mountain/Binary/Build/ServiceRegistry.rs.html#162-219">Source</a><h4 class="code-header">pub fn <a href="#method.register_with_options" class="fn">register_with_options</a>(
     &amp;self,
     name: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>,
     port: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u16.html">u16</a>,
@@ -40,7 +40,7 @@ registrations.</p>
 )</h4></section></summary><div class="docblock"><p>Register a local service with TLS options</p>
 <h5 id="parameters-2"><a class="doc-anchor" href="#parameters-2">§</a>Parameters</h5>
 <ul>
-<li><code>name</code>: Domain name (e.g., “code.land.playform.cloud”)</li>
+<li><code>name</code>: Domain name (e.g., “code.editor.land”)</li>
 <li><code>port</code>: Local HTTP port</li>
 <li><code>tls_port</code>: Optional TLS port (defaults to port + 1000)</li>
 <li><code>use_tls</code>: Whether to enable HTTPS</li>
@@ -49,7 +49,7 @@ registrations.</p>
 <h5 id="example-1"><a class="doc-anchor" href="#example-1">§</a>Example</h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// Register with TLS enabled
 </span>registry.register_with_options(
-	<span class="string">"code.land.playform.cloud"</span>.to_string(),
+	<span class="string">"code.editor.land"</span>.to_string(),
 	<span class="number">8080</span>,
 	<span class="prelude-val">None</span>, <span class="comment">// Use default TLS port (9080)
 	</span><span class="bool-val">true</span>,
@@ -65,7 +65,7 @@ registrations.</p>
 <li><code>None</code> if not registered</li>
 </ul>
 <h5 id="example-2"><a class="doc-anchor" href="#example-2">§</a>Example</h5>
-<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>service = registry.lookup(<span class="string">"code.land.playform.cloud"</span>);
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>service = registry.lookup(<span class="string">"code.editor.land"</span>);
 <span class="kw">if let </span><span class="prelude-val">Some</span>(svc) = service {
 	<span class="macro">println!</span>(<span class="string">"Service running on port {}"</span>, svc.port);
 }</code></pre></div></div></details><details class="toggle method-toggle" open><summary><section id="method.all_services" class="method"><a class="src rightside" href="../../../../src/DevelopmentNodeEnvironment_MicrosoftVSCodeDependency_22NodeVersion_Bundle_Clean_Debug_ElectronProfile_EsbuildCompiler_Mountain/Binary/Build/ServiceRegistry.rs.html#265-276">Source</a><h4 class="code-header">pub fn <a href="#method.all_services" class="fn">all_services</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="struct.LocalService.html" title="struct DevelopmentNodeEnvironment_MicrosoftVSCodeDependency_22NodeVersion_Bundle_Clean_Debug_ElectronProfile_EsbuildCompiler_Mountain::Binary::Build::ServiceRegistry::LocalService">LocalService</a>&gt;</h4></section></summary><div class="docblock"><p>Get all registered services</p>

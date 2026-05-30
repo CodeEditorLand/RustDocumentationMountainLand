@@ -14,14 +14,14 @@
 <h3 id="architectural-role"><a class="doc-anchor" href="#architectural-role">§</a>ARCHITECTURAL ROLE</h3>
 <p>The Scheme module provides protocol-level isolation and routing for
 webviews:</p>
-<div class="example-wrap"><pre class="language-text"><code>land://code.land.playform.cloud/path ──► ServiceRegistry ──► http://127.0.0.1:PORT/path
+<div class="example-wrap"><pre class="language-text"><code>land://code.editor.land/path ──► ServiceRegistry ──► http://127.0.0.1:PORT/path
                                       │                        │
                                       ▼                        ▼
                               CORS Headers Set          Local Service
                                                            Response</code></pre></div><h3 id="security"><a class="doc-anchor" href="#security">§</a>SECURITY</h3>
 <ul>
 <li>All responses include Access-Control-Allow-Origin:
-land://code.land.playform.cloud</li>
+land://code.editor.land</li>
 <li>Content-Type preserved from local service response</li>
 <li>CORS headers set appropriately for cross-origin requests</li>
 <li>Request validation and sanitization</li>
