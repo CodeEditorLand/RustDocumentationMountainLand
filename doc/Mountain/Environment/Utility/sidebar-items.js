@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["ErrorMapping","LanguageDetection","PathSecurity","UriParsing"]};
+window.SIDEBAR_ITEMS = {"mod":["EnhanceShellEnvironment","ErrorMapping","GlobPattern","LanguageDetection","PathSecurity","TextEdit","UriParsing"]};

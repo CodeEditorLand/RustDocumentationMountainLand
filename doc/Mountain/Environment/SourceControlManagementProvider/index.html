@@ -1,197 +1,50 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="SourceControlManagementProvider (Environment)"><title>Mountain::Environment::SourceControlManagementProvider - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-b7b9f40b.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-41dd4d93.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module SourceControlManagementProvider</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Source<wbr>Control<wbr>Management<wbr>Provider</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#sourcecontrolmanagementprovider-environment" title="SourceControlManagementProvider (Environment)">SourceControlManagementProvider (Environment)</a><ul><li><a href="#responsibilities" title="RESPONSIBILITIES">RESPONSIBILITIES</a></li><li><a href="#architectural-role" title="ARCHITECTURAL ROLE">ARCHITECTURAL ROLE</a></li><li><a href="#data-model" title="DATA MODEL">DATA MODEL</a></li><li><a href="#repository-states" title="REPOSITORY STATES">REPOSITORY STATES</a></li><li><a href="#error-handling" title="ERROR HANDLING">ERROR HANDLING</a></li><li><a href="#performance" title="PERFORMANCE">PERFORMANCE</a></li><li><a href="#vs-code-reference" title="VS CODE REFERENCE">VS CODE REFERENCE</a></li><li><a href="#todo" title="TODO">TODO</a></li><li><a href="#module-contents" title="MODULE CONTENTS">MODULE CONTENTS</a></li></ul></li><li><a href="#sourcecontrolmanagementprovider-implementation" title="SourceControlManagementProvider Implementation">SourceControlManagementProvider Implementation</a><ul><li><a href="#scm-provider-architecture" title="SCM Provider Architecture">SCM Provider Architecture</a></li><li><a href="#resource-groups" title="Resource Groups">Resource Groups</a></li><li><a href="#scm-lifecycle" title="SCM Lifecycle">SCM Lifecycle</a></li><li><a href="#git-integration-patterns" title="Git Integration Patterns">Git Integration Patterns</a></li></ul></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Environment</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Environment</a></div><h1>Module <span>Source<wbr>Control<wbr>Management<wbr>Provider</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Environment/SourceControlManagementProvider.rs.html#1-448">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="sourcecontrolmanagementprovider-environment"><a class="doc-anchor" href="#sourcecontrolmanagementprovider-environment">§</a>SourceControlManagementProvider (Environment)</h2>
-<p>Implements the <code>SourceControlManagementProvider</code> trait for
-<code>MountainEnvironment</code>, providing Git and other source control management
-(SCM) capabilities to the application.</p>
-<h3 id="responsibilities"><a class="doc-anchor" href="#responsibilities">§</a>RESPONSIBILITIES</h3><h4 id="1-repository-detection"><a class="doc-anchor" href="#1-repository-detection">§</a>1. Repository Detection</h4>
-<ul>
-<li>Scan workspace folders for Git repositories</li>
-<li>Detect repository root directories</li>
-<li>Track repository state (clean, dirty, branching)</li>
-<li>Monitor repository changes (commit, checkout, merge)</li>
-</ul>
-<h4 id="2-scm-providers"><a class="doc-anchor" href="#2-scm-providers">§</a>2. SCM Providers</h4>
-<ul>
-<li>Create and manage <code>SourceControlManagementProvider</code> instances</li>
-<li>Support multiple SCM systems (Git, Mercurial, etc.)</li>
-<li>Load extension-provided SCM providers</li>
-<li>Route SCM operations to appropriate provider</li>
-</ul>
-<h4 id="3-change-management"><a class="doc-anchor" href="#3-change-management">§</a>3. Change Management</h4>
-<ul>
-<li>Track file changes (modified, added, deleted, renamed)</li>
-<li>Provide diff information for changed files</li>
-<li>Support staging and unstaging changes</li>
-<li>Handle merge conflicts</li>
-</ul>
-<h4 id="4-authentication"><a class="doc-anchor" href="#4-authentication">§</a>4. Authentication</h4>
-<ul>
-<li>Manage SCM credentials and authentication</li>
-<li>Support SSH keys and HTTPS tokens</li>
-<li>Store credentials securely via <code>SecretProvider</code></li>
-<li>Handle authentication failures and prompts</li>
-</ul>
-<h4 id="5-operations"><a class="doc-anchor" href="#5-operations">§</a>5. Operations</h4>
-<ul>
-<li>Commit, push, pull, fetch operations</li>
-<li>Branch management (create, delete, rename, checkout)</li>
-<li>Merge and rebase operations</li>
-<li>Remote management (add, remove, rename)</li>
-</ul>
-<h3 id="architectural-role"><a class="doc-anchor" href="#architectural-role">§</a>ARCHITECTURAL ROLE</h3>
-<p>SourceControlManagementProvider is the <strong>SCM integration layer</strong>:</p>
-<div class="example-wrap"><pre class="language-text"><code>UI (SCM View) ──► SourceControlManagementProvider ──► Git CLI / Libgit2
-                             │
-                             └─► Extension SCM Providers</code></pre></div><h4 id="position-in-mountain"><a class="doc-anchor" href="#position-in-mountain">§</a>Position in Mountain</h4>
-<ul>
-<li><code>Environment</code> module: SCM capability provider</li>
-<li>Implements
-<code>CommonLibrary::SourceControlManagement::SourceControlManagementProvider</code>
-trait</li>
-<li>Accessible via <code>Environment.Require&lt;dyn SourceControlManagementProvider&gt;()</code></li>
-</ul>
-<h4 id="scm-provider-hierarchy"><a class="doc-anchor" href="#scm-provider-hierarchy">§</a>SCM Provider Hierarchy</h4>
-<ul>
-<li><strong>Built-in Git Provider</strong>: Native Git implementation (preferred)</li>
-<li><strong>Extension Providers</strong>: Custom SCM support (Mercurial, SVN, etc.)</li>
-<li><strong>Fallback Providers</strong>: Basic functionality for unknown SCM types</li>
-</ul>
-<h4 id="dependencies"><a class="doc-anchor" href="#dependencies">§</a>Dependencies</h4>
-<ul>
-<li><code>SecretProvider</code>: For storing SCM credentials</li>
-<li><code>FileSystemReader</code> / <code>FileSystemWriter</code>: For .git operations</li>
-<li><code>Log</code>: SCM operation logging</li>
-<li>External Git binary or libgit2 library</li>
-</ul>
-<h4 id="dependents"><a class="doc-anchor" href="#dependents">§</a>Dependents</h4>
-<ul>
-<li>SCM UI view: Display repository state and changes</li>
-<li>Source control commands: Commit, push, pull, etc.</li>
-<li><code>Binary::Main</code>::<code>MountainGetWorkbenchConfiguration</code>: SCM state</li>
-<li>Extension SCM providers: Custom SCM implementations</li>
-</ul>
-<h3 id="data-model"><a class="doc-anchor" href="#data-model">§</a>DATA MODEL</h3>
-<p>Stored in <code>ApplicationState</code>:</p>
-<ul>
-<li><code>SourceControlManagementProviders</code>: Registered providers by ID</li>
-<li><code>SourceControlManagementGroups</code>: Repository groups (by workspace)</li>
-<li><code>SourceControlManagementResources</code>: Resource state (changed files)</li>
-</ul>
-<p>Key structures:</p>
-<ul>
-<li><code>SourceControlManagementProviderDTO</code>: Provider metadata</li>
-<li><code>SourceControlManagementGroupDTO</code>: Repository group state</li>
-<li><code>SourceControlManagementResourceDTO</code>: Changed file information</li>
-</ul>
-<h3 id="repository-states"><a class="doc-anchor" href="#repository-states">§</a>REPOSITORY STATES</h3>
-<ul>
-<li><strong>Clean</strong>: No uncommitted changes</li>
-<li><strong>Dirty</strong>: Unstaged changes present</li>
-<li><strong>Staged</strong>: Changes staged for commit</li>
-<li><strong>Merging</strong>: Merge in progress</li>
-<li><strong>Rebasing</strong>: Rebase in progress</li>
-<li><strong>Cherry-picking</strong>: Cherry-pick in progress</li>
-</ul>
-<h3 id="error-handling"><a class="doc-anchor" href="#error-handling">§</a>ERROR HANDLING</h3>
-<ul>
-<li>Repository not found: <code>CommonError::SCMNotFound</code></li>
-<li>Authentication failure: <code>CommonError::SCMAuthenticationFailed</code></li>
-<li>Operation failure: <code>CommonError::SCMOperationFailed</code></li>
-<li>Merge conflict: <code>CommonError::SCMConflict</code></li>
-<li>Uncommitted changes: <code>CommonError::SCMUncommittedChanges</code></li>
-</ul>
-<h3 id="performance"><a class="doc-anchor" href="#performance">§</a>PERFORMANCE</h3>
-<ul>
-<li>Repository scanning should be async and cached</li>
-<li>Use file system watchers to detect changes</li>
-<li>Batch operations when possible (e.g., status of multiple files)</li>
-<li>Consider background indexing for large repositories</li>
-</ul>
-<h3 id="vs-code-reference"><a class="doc-anchor" href="#vs-code-reference">§</a>VS CODE REFERENCE</h3>
-<p>Patterns from VS Code:</p>
-<ul>
-<li><code>vs/workbench/services/scm/common/scmService.ts</code> - SCM service</li>
-<li><code>vs/platform/scm/common/scm.ts</code> - SCM provider interface</li>
-<li><code>vs/sourcecontrol/git/common/git.ts</code> - Git provider implementation</li>
-</ul>
-<h3 id="todo"><a class="doc-anchor" href="#todo">§</a>TODO</h3>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Implement built-in Git provider using libgit2 or Git CLI</li>
-<li><input disabled="" type="checkbox"/>
-Add repository discovery and change detection</li>
-<li><input disabled="" type="checkbox"/>
-Support staging, unstaging, and committing changes</li>
-<li><input disabled="" type="checkbox"/>
-Implement branch management UI and operations</li>
-<li><input disabled="" type="checkbox"/>
-Add remote operations (push, pull, fetch)</li>
-<li><input disabled="" type="checkbox"/>
-Handle merge conflicts with UI resolution</li>
-<li><input disabled="" type="checkbox"/>
-Support Git LFS and submodules</li>
-<li><input disabled="" type="checkbox"/>
-Add SCM authentication and credential management</li>
-<li><input disabled="" type="checkbox"/>
-Implement SCM extensions API for custom providers</li>
-<li><input disabled="" type="checkbox"/>
-Add SCM history and blame views</li>
-<li><input disabled="" type="checkbox"/>
-Support stash and pop operations</li>
-<li><input disabled="" type="checkbox"/>
-Implement tag management</li>
-<li><input disabled="" type="checkbox"/>
-Add SCM configuration and settings</li>
-<li><input disabled="" type="checkbox"/>
-Support detached HEAD and bisect operations</li>
-<li><input disabled="" type="checkbox"/>
-Implement SCM telemetry and diagnostics</li>
-</ul>
-<h3 id="module-contents"><a class="doc-anchor" href="#module-contents">§</a>MODULE CONTENTS</h3>
-<ul>
-<li>[<code>SourceControlManagementProvider</code>]: Main struct implementing the trait</li>
-<li>Repository detection and tracking</li>
-<li>Provider registration and routing</li>
-<li>SCM operation implementations</li>
-<li>Authentication and credential management</li>
-</ul>
-<h2 id="sourcecontrolmanagementprovider-implementation"><a class="doc-anchor" href="#sourcecontrolmanagementprovider-implementation">§</a>SourceControlManagementProvider Implementation</h2>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="`SourceControlManagementProvider`: exposes SCM repository state and actions."><title>Mountain::Environment::SourceControlManagementProvider - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.98.0-nightly (cced03bfd 2026-05-28)" data-channel="nightly" data-search-js="search-fd9372ac.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-41dd4d93.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-fcd733ba.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module SourceControlManagementProvider</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Source<wbr>Control<wbr>Management<wbr>Provider</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#sourcecontrolmanagementprovider-environment" title="SourceControlManagementProvider (Environment)">SourceControlManagementProvider (Environment)</a><ul><li><a href="#scm-provider-architecture" title="SCM provider architecture">SCM provider architecture</a></li><li><a href="#resource-groups" title="Resource groups">Resource groups</a></li><li><a href="#scm-lifecycle" title="SCM lifecycle">SCM lifecycle</a></li><li><a href="#git-integration-patterns" title="Git integration patterns">Git integration patterns</a></li><li><a href="#vs-code-reference" title="VS Code reference">VS Code reference</a></li></ul></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Environment</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Environment</a></div><h1>Module <span>Source<wbr>Control<wbr>Management<wbr>Provider</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Environment/SourceControlManagementProvider.rs.html#1-319">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p><code>SourceControlManagementProvider</code>: exposes SCM repository state and actions.</p>
+<h2 id="sourcecontrolmanagementprovider-environment"><a class="doc-anchor" href="#sourcecontrolmanagementprovider-environment">§</a>SourceControlManagementProvider (Environment)</h2>
 <p>Implements the <code>SourceControlManagementProvider</code> trait for the
 <code>MountainEnvironment</code>.</p>
-<h3 id="scm-provider-architecture"><a class="doc-anchor" href="#scm-provider-architecture">§</a>SCM Provider Architecture</h3>
+<h3 id="scm-provider-architecture"><a class="doc-anchor" href="#scm-provider-architecture">§</a>SCM provider architecture</h3>
 <p>Each SCM provider maintains:</p>
 <ul>
-<li><strong>Handle</strong>: Unique identifier for the provider</li>
-<li><strong>Label</strong>: User-friendly name (e.g., “Git”)</li>
-<li><strong>Root URI</strong>: URI of the repository root</li>
-<li><strong>Groups</strong>: Resource groups organizing changed resources</li>
-<li><strong>Input Box</strong>: User input widget for operations (e.g., commit messages)</li>
-<li><strong>Count</strong>: Badge count for changed items</li>
+<li><strong>Handle</strong> - unique <code>u32</code> identifier; callers may supply their own so the
+same handle key used in <code>ScmNamespace.ts</code> maps correctly on both sides of
+the IPC boundary.</li>
+<li><strong>Label</strong> - user-friendly name (e.g., “Git”)</li>
+<li><strong>Root URI</strong> - URI of the repository root</li>
+<li><strong>Groups</strong> - resource groups organizing changed resources</li>
+<li><strong>Input box</strong> - user input widget (e.g., commit messages)</li>
+<li><strong>Count</strong> - badge count for changed items</li>
 </ul>
-<h3 id="resource-groups"><a class="doc-anchor" href="#resource-groups">§</a>Resource Groups</h3>
+<h3 id="resource-groups"><a class="doc-anchor" href="#resource-groups">§</a>Resource groups</h3>
 <p>Groups organize resources by their state:</p>
 <ul>
-<li><strong>Changes</strong>: Modified files ready to commit</li>
-<li><strong>Untracked</strong>: New files not yet tracked</li>
-<li><strong>Staged</strong>: Files staged for commit</li>
-<li><strong>Merge Changes</strong>: Files with merge conflicts</li>
-<li><strong>Conflict Unresolved</strong>: Unresolved conflict markers</li>
+<li><strong>Changes</strong> - modified files ready to commit</li>
+<li><strong>Untracked</strong> - new files not yet tracked</li>
+<li><strong>Staged</strong> - files staged for commit</li>
+<li><strong>Merge changes</strong> - files with merge conflicts</li>
+<li><strong>Conflict unresolved</strong> - unresolved conflict markers</li>
 </ul>
-<h3 id="scm-lifecycle"><a class="doc-anchor" href="#scm-lifecycle">§</a>SCM Lifecycle</h3>
+<h3 id="scm-lifecycle"><a class="doc-anchor" href="#scm-lifecycle">§</a>SCM lifecycle</h3>
 <ol>
-<li><strong>Create Provider</strong>: Register a new SCM provider with handle and metadata</li>
-<li><strong>Update Provider</strong>: Update provider state (badge count, input box)</li>
-<li><strong>Update Group</strong>: Add or remove resources from groups</li>
-<li><strong>Register Input Box</strong>: Create input widget for user interaction</li>
-<li><strong>Dispose Provider</strong>: Remove provider and all associated state</li>
+<li><strong>CreateSourceControl</strong> - register provider, emit <code>SCMProviderAdded</code></li>
+<li><strong>UpdateSourceControl</strong> - update badge/input-box, emit
+<code>SCMProviderChanged</code></li>
+<li><strong>UpdateSourceControlGroup</strong> - upsert group entry, emit <code>SCMGroupChanged</code></li>
+<li><strong>RegisterInputBox</strong> - attach input-box DTO to provider</li>
+<li><strong>DisposeSourceControl</strong> - remove provider + groups, emit
+<code>SCMProviderRemoved</code></li>
 </ol>
-<h3 id="git-integration-patterns"><a class="doc-anchor" href="#git-integration-patterns">§</a>Git Integration Patterns</h3>
+<h3 id="git-integration-patterns"><a class="doc-anchor" href="#git-integration-patterns">§</a>Git integration patterns</h3>
 <p>Typical Git provider workflow:</p>
 <ul>
-<li>Detect Git repository via <code>.git</code> directory</li>
-<li>Run <code>git status</code> to populate resource groups</li>
-<li>Run <code>git diff</code> to provide file diffs</li>
-<li>Use input box for commit messages</li>
+<li>Detect <code>.git</code> directory, run <code>git status</code> to populate groups</li>
+<li>Run <code>git diff</code> for file diffs; use input box for commit messages</li>
 <li>Show badge count for changed files</li>
 <li>Provide commands: Stage, Unstage, Commit, Push, Pull, Discard</li>
+</ul>
+<h3 id="vs-code-reference"><a class="doc-anchor" href="#vs-code-reference">§</a>VS Code reference</h3>
+<ul>
+<li><code>vs/workbench/services/scm/common/scmService.ts</code></li>
+<li><code>vs/platform/scm/common/scm.ts</code></li>
+<li><code>vs/sourcecontrol/git/common/git.ts</code></li>
 </ul>
 </div></details></section></div></main></body></html>

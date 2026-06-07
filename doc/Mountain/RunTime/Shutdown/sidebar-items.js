@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["Shutdown"]};
+window.SIDEBAR_ITEMS = {"mod":["DisposeTerminalsSafely","FlushPendingOperations","SaveApplicationState","Shutdown","ShutdownCocoonWithRetry","ShutdownWithRecovery"]};

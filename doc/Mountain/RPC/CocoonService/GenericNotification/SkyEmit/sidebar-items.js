@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["DisposeStatusBarItem","OnDidReceiveMessage","OpenExternal","OutputAppend","OutputAppendLine","OutputClear","OutputCreate","OutputDispose","OutputShow","ProgressComplete","ProgressStart","ProgressUpdate","SetLanguageConfiguration","SetStatusBarText","WebviewDispose","WebviewPostMessage"]};

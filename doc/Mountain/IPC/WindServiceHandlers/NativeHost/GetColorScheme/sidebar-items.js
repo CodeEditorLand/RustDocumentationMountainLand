@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["Fn","detect_dark_mode"],"static":["DARK_MODE_CACHE"]};

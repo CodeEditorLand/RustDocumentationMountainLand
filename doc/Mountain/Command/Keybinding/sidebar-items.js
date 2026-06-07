@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["CheckKeybindingConflicts","GetResolvedKeybinding","GetUserKeybindings","RegisterExtensionKeybindings","UnregisterExtensionKeybindings"]};
+window.SIDEBAR_ITEMS = {"mod":["CheckKeybindingConflicts","GetResolvedKeybinding","GetUserKeybindings","RegisterExtensionKeybindings","UnregisterExtensionKeybindings"]};

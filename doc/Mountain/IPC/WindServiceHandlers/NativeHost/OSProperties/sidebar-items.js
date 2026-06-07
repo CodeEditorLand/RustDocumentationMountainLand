@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["Fn","compute_os_properties"],"static":["OS_PROPERTIES_CACHE"]};

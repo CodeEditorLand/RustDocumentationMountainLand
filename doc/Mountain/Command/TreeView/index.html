@@ -1,90 +1,40 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="TreeView (Command)"><title>Mountain::Command::TreeView - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-b7b9f40b.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-41dd4d93.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module TreeView</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Tree<wbr>View</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#treeview-command" title="TreeView (Command)">TreeView (Command)</a></li></ul><h3><a href="#functions">Module Items</a></h3><ul class="block"><li><a href="#functions" title="Functions">Functions</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Command</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Command</a></div><h1>Module <span>Tree<wbr>View</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Command/TreeView.rs.html#1-308">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="treeview-command"><a class="doc-anchor" href="#treeview-command">§</a>TreeView (Command)</h2>
-<p>RESPONSIBILITIES:</p>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="TreeView (Tauri command surface)"><title>Mountain::Command::TreeView - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.98.0-nightly (cced03bfd 2026-05-28)" data-channel="nightly" data-search-js="search-fd9372ac.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-41dd4d93.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-fcd733ba.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module TreeView</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Tree<wbr>View</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#treeview-tauri-command-surface" title="TreeView (Tauri command surface)">TreeView (Tauri command surface)</a><ul><li><a href="#planned-work" title="Planned Work">Planned Work</a></li></ul></li></ul><h3><a href="#modules">Module Items</a></h3><ul class="block"><li><a href="#modules" title="Modules">Modules</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Command</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Command</a></div><h1>Module <span>Tree<wbr>View</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Command/TreeView.rs.html#1-47">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="treeview-tauri-command-surface"><a class="doc-anchor" href="#treeview-tauri-command-surface">§</a>TreeView (Tauri command surface)</h2>
+<p>Bridges tree-view UI requests from Sky (file explorer, SCM
+viewlet, debug viewlet, extension-contributed views) into the
+<code>MountainEnvironment::Require&lt;dyn TreeViewProvider&gt;</code> registry.
+Eight wire-bound commands, each in its own file (file name =
+Tauri command identifier per the Naming-Convention exception):</p>
 <ul>
-<li>Defines Tauri command handlers for TreeView operations from Sky frontend</li>
-<li>Bridges TreeView UI requests to
-<a href="CommonLibrary::TreeView::TreeViewProvider"><code>TreeViewProvider</code></a></li>
-<li>Handles tree data fetching, expansion, selection, and refresh operations</li>
-<li>Manages tree view state persistence and restoration (stubs)</li>
+<li><code>GetTreeViewChildren::GetTreeViewChildren</code> - fetch children for a tree
+node (or root).</li>
+<li><code>GetTreeViewItem::GetTreeViewItem</code> - fetch a single item’s metadata.</li>
+<li><code>OnTreeViewExpansionChanged::OnTreeViewExpansionChanged</code> (stub).</li>
+<li><code>OnTreeViewSelectionChanged::OnTreeViewSelectionChanged</code> (stub).</li>
+<li><code>RefreshTreeView::RefreshTreeView</code> - request data refresh.</li>
+<li><code>RevealTreeViewItem::RevealTreeViewItem</code> - focus / scroll-into -view.</li>
+<li><code>PersistTreeView::PersistTreeView</code> (stub).</li>
+<li><code>RestoreTreeView::RestoreTreeView</code> (stub).</li>
 </ul>
-<p>ARCHITECTURAL ROLE:</p>
+<p>Errors propagate as <code>Result&lt;Value, String&gt;</code> with the error
+string surfaced directly to the renderer.</p>
+<p>VS Code reference:
+<code>vs/workbench/api/browser/mainThreadTreeViews.ts</code>,
+<code>vs/workbench/api/common/extHostTreeViews.ts</code>.</p>
+<h3 id="planned-work"><a class="doc-anchor" href="#planned-work">§</a>Planned Work</h3>
 <ul>
-<li>Command module exposing TreeView functionality via Tauri IPC
-(<code>#[command]</code>)</li>
-<li>Delegates to Environment’s <code>TreeViewProvider</code> via DI with <code>Require()</code>
-trait from <code>MountainEnvironment</code></li>
-<li>Translates frontend requests to provider method calls with proper error
-mapping</li>
+<li>Trait additions on <code>CommonTreeViewProvider</code> for the four stubs (expansion,
+selection, persist, restore)</li>
+<li>Drag-and-drop, multi-column, badge / tooltip / icon-theming support</li>
+<li>Tree-item validation</li>
 </ul>
-<p>COMMAND REFERENCE (Tauri IPC):</p>
-<ul>
-<li><a href="fn.GetTreeViewChildren.html" title="fn Mountain::Command::TreeView::GetTreeViewChildren"><code>GetTreeViewChildren</code></a>: Fetch child items for a tree node (by
-<code>ElementHandle</code>, null for root)</li>
-<li><a href="fn.GetTreeViewItem.html" title="fn Mountain::Command::TreeView::GetTreeViewItem"><code>GetTreeViewItem</code></a>: Get tree item metadata (label, icon, description) by
-handle</li>
-<li><a href="fn.OnTreeViewExpansionChanged.html" title="fn Mountain::Command::TreeView::OnTreeViewExpansionChanged"><code>OnTreeViewExpansionChanged</code></a>: Notify when user expands/collapses a node
-(stub - trait method missing)</li>
-<li><a href="fn.OnTreeViewSelectionChanged.html" title="fn Mountain::Command::TreeView::OnTreeViewSelectionChanged"><code>OnTreeViewSelectionChanged</code></a>: Notify when user selects/deselects tree
-items (stub - trait method missing)</li>
-<li><a href="fn.RefreshTreeView.html" title="fn Mountain::Command::TreeView::RefreshTreeView"><code>RefreshTreeView</code></a>: Request tree view to refresh its data, optionally
-specific items</li>
-<li><a href="fn.RevealTreeViewItem.html" title="fn Mountain::Command::TreeView::RevealTreeViewItem"><code>RevealTreeViewItem</code></a>: Request to reveal/focus a specific tree item in
-the UI</li>
-<li><a href="fn.PersistTreeView.html" title="fn Mountain::Command::TreeView::PersistTreeView"><code>PersistTreeView</code></a>: Save tree view state (scroll position, expansion)
-(stub)</li>
-<li><a href="fn.RestoreTreeView.html" title="fn Mountain::Command::TreeView::RestoreTreeView"><code>RestoreTreeView</code></a>: Restore previously saved tree view state (stub)</li>
-</ul>
-<p>ERROR HANDLING:</p>
-<ul>
-<li>Returns <code>Result&lt;Value, String&gt;</code> with error strings sent to frontend</li>
-<li>Provider errors are logged with context and converted to error strings</li>
-<li>Missing trait methods return structured error indicating not implemented</li>
-</ul>
-<p>PERFORMANCE:</p>
-<ul>
-<li>All commands are async and non-blocking</li>
-<li>Tree data fetching should be efficient; provider may cache results</li>
-<li>Refresh can target specific items to avoid full tree rebuild</li>
-</ul>
-<p>VS CODE REFERENCE:</p>
-<ul>
-<li><code>vs/workbench/api/browser/mainThreadTreeViews.ts</code> - main thread tree view
-API</li>
-<li><code>vs/workbench/api/common/extHostTreeViews.ts</code> - extension host tree view
-API</li>
-<li><code>vs/workbench/contrib/files/browser/explorerView.ts</code> - file explorer tree
-view</li>
-<li><code>vs/workbench/contrib/tree/browser/treeView.ts</code> - generic tree view
-component</li>
-</ul>
-<p>TODO:</p>
-<ul>
-<li>Implement <code>OnTreeNodeExpanded</code> and <code>OnTreeSelectionChanged</code> in
-TreeViewProvider trait</li>
-<li>Add tree view state persistence to ApplicationState</li>
-<li>Implement drag and drop support for tree items</li>
-<li>Add tree item validation and disabled states</li>
-<li>Support tree item tooltips and description rendering</li>
-<li>Implement tree item icon theming (light/dark)</li>
-<li>Add tree view column support (multi-column tree views)</li>
-<li>Support tree view title and description updates</li>
-<li>Implement tree view badge (count overlay) functionality</li>
-<li>Add tree view message handling for dynamic updates</li>
-<li>Support tree item context menu contributions</li>
-<li>Implement tree item editing (inline rename)</li>
-<li>Add tree view accessibility (ARIA labels, keyboard navigation)</li>
-</ul>
-<p>MODULE CONTENTS:</p>
-<ul>
-<li>Tauri command functions (all <code>#[command] pub async fn</code>):
-<ul>
-<li>Data retrieval: <code>GetTreeViewChildren</code>, <code>GetTreeViewItem</code></li>
-<li>UI events: <code>OnTreeViewExpansionChanged</code>, <code>OnTreeViewSelectionChanged</code></li>
-<li>Management: <code>RefreshTreeView</code>, <code>RevealTreeViewItem</code></li>
-<li>State: <code>PersistTreeView</code>, <code>RestoreTreeView</code></li>
-</ul>
-</li>
-</ul>
-</div></details><h2 id="functions" class="section-header">Functions<a href="#functions" class="anchor">§</a></h2><dl class="item-table"><dt><a class="fn" href="fn.GetTreeViewChildren.html" title="fn Mountain::Command::TreeView::GetTreeViewChildren">GetTree<wbr>View<wbr>Children</a></dt><dd>A specific Tauri command handler for the UI to fetch the children of a tree
-view node. This handler dispatches to the correct provider (native or
-proxied).</dd><dt><a class="fn" href="fn.GetTreeViewItem.html" title="fn Mountain::Command::TreeView::GetTreeViewItem">GetTree<wbr>View<wbr>Item</a></dt><dd>Gets the tree item for a given tree element handle.</dd><dt><a class="fn" href="fn.OnTreeViewExpansionChanged.html" title="fn Mountain::Command::TreeView::OnTreeViewExpansionChanged">OnTree<wbr>View<wbr>Expansion<wbr>Changed</a></dt><dd>Handles tree node expansion/collapse events.</dd><dt><a class="fn" href="fn.OnTreeViewSelectionChanged.html" title="fn Mountain::Command::TreeView::OnTreeViewSelectionChanged">OnTree<wbr>View<wbr>Selection<wbr>Changed</a></dt><dd>Handles tree selection changes.</dd><dt><a class="fn" href="fn.PersistTreeView.html" title="fn Mountain::Command::TreeView::PersistTreeView">Persist<wbr>Tree<wbr>View</a></dt><dd>Persists tree view state.</dd><dt><a class="fn" href="fn.RefreshTreeView.html" title="fn Mountain::Command::TreeView::RefreshTreeView">Refresh<wbr>Tree<wbr>View</a></dt><dd>Refreshes a tree view.</dd><dt><a class="fn" href="fn.RestoreTreeView.html" title="fn Mountain::Command::TreeView::RestoreTreeView">Restore<wbr>Tree<wbr>View</a></dt><dd>Restores tree view state.</dd><dt><a class="fn" href="fn.RevealTreeViewItem.html" title="fn Mountain::Command::TreeView::RevealTreeViewItem">Reveal<wbr>Tree<wbr>View<wbr>Item</a></dt><dd>Reveals a specific tree item.</dd></dl></section></div></main></body></html>
+</div></details><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="GetTreeViewChildren/index.html" title="mod Mountain::Command::TreeView::GetTreeViewChildren">GetTree<wbr>View<wbr>Children</a></dt><dd>Tauri command - fetch children for a tree node. <code>ElementHandle = None</code> returns the root level. Dispatches through
+<code>MountainEnvironment::Require&lt;dyn TreeViewProvider&gt;</code>.</dd><dt><a class="mod" href="GetTreeViewItem/index.html" title="mod Mountain::Command::TreeView::GetTreeViewItem">GetTree<wbr>View<wbr>Item</a></dt><dd>Tauri command - fetch a single tree item’s metadata (label, icon,
+description, command, contextValue) by its element handle.</dd><dt><a class="mod" href="OnTreeViewExpansionChanged/index.html" title="mod Mountain::Command::TreeView::OnTreeViewExpansionChanged">OnTree<wbr>View<wbr>Expansion<wbr>Changed</a></dt><dd>Tauri command - notify the provider when a tree node is
+expanded / collapsed.</dd><dt><a class="mod" href="OnTreeViewSelectionChanged/index.html" title="mod Mountain::Command::TreeView::OnTreeViewSelectionChanged">OnTree<wbr>View<wbr>Selection<wbr>Changed</a></dt><dd>Tauri command - notify the provider when tree-item selection
+changes (multi-select supported via <code>SelectedHandles</code>).</dd><dt><a class="mod" href="PersistTreeView/index.html" title="mod Mountain::Command::TreeView::PersistTreeView">Persist<wbr>Tree<wbr>View</a></dt><dd>Tauri command - serialise tree-view state (expansion, selection,
+scroll position) for cross-session restore.</dd><dt><a class="mod" href="RefreshTreeView/index.html" title="mod Mountain::Command::TreeView::RefreshTreeView">Refresh<wbr>Tree<wbr>View</a></dt><dd>Tauri command - request a tree view refresh, optionally targeting
+specific item handles. <code>None</code> refreshes the entire tree.</dd><dt><a class="mod" href="RestoreTreeView/index.html" title="mod Mountain::Command::TreeView::RestoreTreeView">Restore<wbr>Tree<wbr>View</a></dt><dd>Tauri command - deserialise + apply tree-view state captured by
+<code>PersistTreeView</code> (sibling). Called when a tree view is recreated
+or the workspace is reloaded.</dd><dt><a class="mod" href="RevealTreeViewItem/index.html" title="mod Mountain::Command::TreeView::RevealTreeViewItem">Reveal<wbr>Tree<wbr>View<wbr>Item</a></dt><dd>Tauri command - focus / scroll-into-view a specific tree item.
+<code>Options</code> carries the LSP-shaped <code>select</code>, <code>focus</code>, <code>expand</code>
+booleans (matches <code>vscode.TreeView.reveal</code>).</dd></dl></section></div></main></body></html>

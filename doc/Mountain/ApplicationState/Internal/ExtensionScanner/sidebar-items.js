@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["ScanAndPopulateExtensions"]};
+window.SIDEBAR_ITEMS = {"mod":["LoadFromCache","ScanAndPopulateExtensions"]};

@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["CliParse","LogLevel","PortSelector","RuntimeBuild","StateBuild"]};
+window.SIDEBAR_ITEMS = {"mod":["CliParse","LogLevel","PortSelector","StateBuild"]};

@@ -1,137 +1,45 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="CommandProvider (Environment)"><title>Mountain::Environment::CommandProvider - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-b7b9f40b.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.96.0-nightly (b41f22de2 2026-03-08)" data-channel="nightly" data-search-js="search-63369b7b.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-41dd4d93.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-5013f961.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module CommandProvider</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Command<wbr>Provider</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#commandprovider-environment" title="CommandProvider (Environment)">CommandProvider (Environment)</a><ul><li><a href="#responsibilities" title="RESPONSIBILITIES">RESPONSIBILITIES</a></li><li><a href="#architectural-role" title="ARCHITECTURAL ROLE">ARCHITECTURAL ROLE</a></li><li><a href="#command-execution-flow" title="COMMAND EXECUTION FLOW">COMMAND EXECUTION FLOW</a></li><li><a href="#native-vs-extension-commands" title="NATIVE vs EXTENSION COMMANDS">NATIVE vs EXTENSION COMMANDS</a></li><li><a href="#error-handling" title="ERROR HANDLING">ERROR HANDLING</a></li><li><a href="#performance" title="PERFORMANCE">PERFORMANCE</a></li><li><a href="#vs-code-reference" title="VS CODE REFERENCE">VS CODE REFERENCE</a></li><li><a href="#todo" title="TODO">TODO</a></li><li><a href="#module-contents" title="MODULE CONTENTS">MODULE CONTENTS</a></li></ul></li></ul><h3><a href="#enums">Module Items</a></h3><ul class="block"><li><a href="#enums" title="Enums">Enums</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Environment</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Environment</a></div><h1>Module <span>Command<wbr>Provider</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Environment/CommandProvider.rs.html#1-335">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="commandprovider-environment"><a class="doc-anchor" href="#commandprovider-environment">§</a>CommandProvider (Environment)</h2>
-<p>Implements the <code>CommandExecutor</code> trait, serving as the central registry and
-dispatcher for all commands in the Mountain application. Commands can be
-handled either by native Rust handlers or proxied to extension sidecar
-processes.</p>
-<h3 id="responsibilities"><a class="doc-anchor" href="#responsibilities">§</a>RESPONSIBILITIES</h3><h4 id="1-command-registry"><a class="doc-anchor" href="#1-command-registry">§</a>1. Command Registry</h4>
-<ul>
-<li>Maintain centralized registry of all registered commands</li>
-<li>Store command metadata (id, title, category, flags)</li>
-<li>Track command source (native vs extension)</li>
-<li>Support command enablement/disable state</li>
-</ul>
-<h4 id="2-command-dispatching"><a class="doc-anchor" href="#2-command-dispatching">§</a>2. Command Dispatching</h4>
-<ul>
-<li>Route command execution requests to appropriate handlers</li>
-<li>Execute native commands directly via function calls</li>
-<li>Proxy extension commands via IPC to sidecar processes</li>
-<li>Handle command result propagation and error translation</li>
-</ul>
-<h4 id="3-command-execution-context"><a class="doc-anchor" href="#3-command-execution-context">§</a>3. Command Execution Context</h4>
-<ul>
-<li>Provide <code>CommandExecutor</code> capability to command handlers</li>
-<li>Manage command scope (text editor, file system, etc.)</li>
-<li>Track command invocation source and user context</li>
-<li>Support command cancellation for long-running operations</li>
-</ul>
-<h4 id="4-command-discovery"><a class="doc-anchor" href="#4-command-discovery">§</a>4. Command Discovery</h4>
-<ul>
-<li>Enumerate all registered commands for UI display</li>
-<li>Support command palette and quick open</li>
-<li>Provide command categories and visibility rules</li>
-<li>Handle command contribution points from extensions</li>
-</ul>
-<h3 id="architectural-role"><a class="doc-anchor" href="#architectural-role">§</a>ARCHITECTURAL ROLE</h3>
-<p>CommandProvider is the <strong>command execution hub</strong> for Mountain:</p>
-<div class="example-wrap"><pre class="language-text"><code>Command Caller ──► CommandProvider ──► Handler (Native or Extension)
-      │                            │
-      └─► ExecuteCommand() ───────► Execute</code></pre></div><h4 id="position-in-mountain"><a class="doc-anchor" href="#position-in-mountain">§</a>Position in Mountain</h4>
-<ul>
-<li><code>Environment</code> module: Core capability provider</li>
-<li>Implements <code>CommonLibrary::Command::CommandExecutor</code> trait</li>
-<li>Accessible via <code>Environment.Require&lt;dyn CommandExecutor&gt;()</code></li>
-</ul>
-<h4 id="command-sources"><a class="doc-anchor" href="#command-sources">§</a>Command Sources</h4>
-<ul>
-<li><strong>Native Commands</strong>: Defined in Rust, registered at startup</li>
-<li><strong>Extension Commands</strong>: Defined in package.json, contributed by extensions</li>
-<li><strong>Built-in Commands</strong>: Core Mountain functionality</li>
-<li><strong>User-defined Commands</strong>: Custom macros and keybindings (future)</li>
-</ul>
-<h4 id="dependencies"><a class="doc-anchor" href="#dependencies">§</a>Dependencies</h4>
-<ul>
-<li><code>ApplicationState</code>: Command registry storage</li>
-<li><code>IPCProvider</code>: For proxying to extension sidecars</li>
-<li><code>Log</code>: For command execution tracing</li>
-</ul>
-<h4 id="dependents"><a class="doc-anchor" href="#dependents">§</a>Dependents</h4>
-<ul>
-<li>All command handlers: Use <code>CommandExecutor</code> to execute other commands</li>
-<li><code>DispatchLogic</code>::<code>DispatchFrontendCommand</code>: Main entry point</li>
-<li>Tauri command handlers: Many invoke <code>ExecuteCommand</code></li>
-<li>Keybinding system: Trigger commands via keyboard shortcuts</li>
-</ul>
-<h3 id="command-execution-flow"><a class="doc-anchor" href="#command-execution-flow">§</a>COMMAND EXECUTION FLOW</h3>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="`CommandExecutor` provider: runs shell commands in a managed subprocess."><title>Mountain::Environment::CommandProvider - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.98.0-nightly (cced03bfd 2026-05-28)" data-channel="nightly" data-search-js="search-fd9372ac.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-41dd4d93.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-fcd733ba.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module CommandProvider</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Command<wbr>Provider</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#commandprovider" title="CommandProvider">CommandProvider</a><ul><li><a href="#execution-flow" title="Execution flow">Execution flow</a></li><li><a href="#special-case-no-ops" title="Special-case no-ops">Special-case no-ops</a></li><li><a href="#lazy-activation" title="Lazy activation">Lazy activation</a></li><li><a href="#backlog" title="Backlog">Backlog</a></li></ul></li></ul><h3><a href="#enums">Module Items</a></h3><ul class="block"><li><a href="#enums" title="Enums">Enums</a></li><li><a href="#functions" title="Functions">Functions</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>Environment</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">Mountain</a>::<wbr><a href="../index.html">Environment</a></div><h1>Module <span>Command<wbr>Provider</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/Mountain/Environment/CommandProvider.rs.html#1-457">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p><code>CommandExecutor</code> provider: runs shell commands in a managed subprocess.</p>
+<h2 id="commandprovider"><a class="doc-anchor" href="#commandprovider">§</a>CommandProvider</h2>
+<p>Implements <code>CommandExecutor</code> for <code>MountainEnvironment</code> - the central
+registry and dispatcher for all commands in Mountain. Commands are
+identified by string IDs and handled either by native Rust functions
+or proxied to extension sidecar processes via IPC.</p>
+<h3 id="execution-flow"><a class="doc-anchor" href="#execution-flow">§</a>Execution flow</h3>
 <ol>
-<li><strong>Request</strong>: Caller invokes <code>ExecuteCommand(command_id, args)</code></li>
-<li><strong>Lookup</strong>: Provider looks up command in
-<code>ApplicationState::CommandRegistry</code></li>
-<li><strong>Handler</strong>: Retrieves the associated handler (native function or
-extension RPC)</li>
-<li><strong>Execute</strong>: Calls handler with arguments</li>
-<li><strong>Result</strong>: Returns serialized JSON result or error</li>
+<li>Caller invokes <code>ExecuteCommand(id, args)</code>.</li>
+<li>Provider looks up <code>id</code> in <code>ApplicationState::CommandRegistry</code>.</li>
+<li><strong>Native handler</strong>: calls the Rust function pointer directly with
+<code>AppHandle</code>, the main <code>WebviewWindow</code>, <code>ApplicationRunTime</code>, and <code>args</code>.</li>
+<li><strong>Proxied handler</strong>: sends an RPC request to the owning extension sidecar
+via the Vine IPC client.</li>
+<li>Returns a serialized <code>serde_json::Value</code> result or a <code>CommonError</code>.</li>
 </ol>
-<h3 id="native-vs-extension-commands"><a class="doc-anchor" href="#native-vs-extension-commands">§</a>NATIVE vs EXTENSION COMMANDS</h3><h4 id="native-commands"><a class="doc-anchor" href="#native-commands">§</a>Native Commands</h4>
+<h3 id="special-case-no-ops"><a class="doc-anchor" href="#special-case-no-ops">§</a>Special-case no-ops</h3>
+<p>Three categories of unknown commands are silently returned as
+<code>Value::Null</code> rather than an error, to match VS Code’s behaviour:</p>
 <ul>
-<li>Implemented directly in Rust</li>
-<li>Registered via <code>RegisterCommand</code> function</li>
-<li>Handler is a function pointer or <code>Arc&lt;Fn&gt;</code></li>
-<li>Zero IPC overhead, direct call</li>
+<li>View-action auto-commands (<code>.focus</code>, <code>.resetViewLocation</code>, <code>.removeView</code>)</li>
+<li>Workbench-internal commands with no Land backing service
+(<code>getTelemetrySenderObject</code>, <code>testing.clearTestResults</code>)</li>
+<li>Bootstrap-phase activation-race commands (<code>_typescript.*</code>, etc.)</li>
 </ul>
-<h4 id="extension-commands"><a class="doc-anchor" href="#extension-commands">§</a>Extension Commands</h4>
+<h3 id="lazy-activation"><a class="doc-anchor" href="#lazy-activation">§</a>Lazy activation</h3>
+<p>If a command is not yet in the registry but a scanned extension declares
+<code>onCommand:&lt;id&gt;</code> as an activation event, <code>ExecuteCommand</code> fires
+<code>$activateByEvent</code> to Cocoon, yields 50 ms for the fire-and-forget
+<code>registerCommand</code> notification to arrive, then retries the lookup.</p>
+<h3 id="backlog"><a class="doc-anchor" href="#backlog">§</a>Backlog</h3>
 <ul>
-<li>Defined in extension’s <code>package.json</code> <code>contributes.commands</code></li>
-<li>Registered when extension is activated</li>
-<li>Handler is RPC method to extension sidecar</li>
-<li>Goes through IPC layer with serialization</li>
+<li>Contribution points from extensions; enablement/disable state</li>
+<li>Categories, grouping, aliases, deprecation</li>
+<li>History and undo/redo stack; keyboard shortcut resolution</li>
+<li>Permission validation; batching for related operations; telemetry</li>
 </ul>
-<h3 id="error-handling"><a class="doc-anchor" href="#error-handling">§</a>ERROR HANDLING</h3>
-<ul>
-<li>Command not found: Returns <code>CommonError::InvalidArgument</code></li>
-<li>Handler errors: Propagated as <code>CommonError</code></li>
-<li>IPC failures: Converted to <code>CommonError::IPCError</code></li>
-<li>Serialization failures: <code>CommonError::SerializationError</code></li>
-</ul>
-<h3 id="performance"><a class="doc-anchor" href="#performance">§</a>PERFORMANCE</h3>
-<ul>
-<li>Native commands: Near-zero overhead (direct function call)</li>
-<li>Extension commands: IPC serialization + network latency</li>
-<li>Command lookup: HashMap lookup by string ID (fast)</li>
-<li>Consider caching frequently used command results</li>
-</ul>
-<h3 id="vs-code-reference"><a class="doc-anchor" href="#vs-code-reference">§</a>VS CODE REFERENCE</h3>
-<p>Borrowed from VS Code’s command system:</p>
-<ul>
-<li><code>vs/platform/commands/common/commands.ts</code> - Command definitions</li>
-<li><code>vs/workbench/services/commands/common/commandService.ts</code> - Command
-registry</li>
-<li><code>vs/platform/commands/common/commandExecutor.ts</code> - Command execution</li>
-</ul>
-<h3 id="todo"><a class="doc-anchor" href="#todo">§</a>TODO</h3>
-<ul>
-<li><input disabled="" type="checkbox"/>
-Implement command contribution points from extensions</li>
-<li><input disabled="" type="checkbox"/>
-Add command enablement/disable state management</li>
-<li><input disabled="" type="checkbox"/>
-Support command categories and grouping</li>
-<li><input disabled="" type="checkbox"/>
-Add command history and undo/redo stack</li>
-<li><input disabled="" type="checkbox"/>
-Implement command keyboard shortcut resolution</li>
-<li><input disabled="" type="checkbox"/>
-Add command telemetry (usage metrics)</li>
-<li><input disabled="" type="checkbox"/>
-Support command aliases and deprecation</li>
-<li><input disabled="" type="checkbox"/>
-Add command permission validation</li>
-<li><input disabled="" type="checkbox"/>
-Implement command batching for related operations</li>
-</ul>
-<h3 id="module-contents"><a class="doc-anchor" href="#module-contents">§</a>MODULE CONTENTS</h3>
-<ul>
-<li><code>CommandProvider</code>: Main struct implementing <code>CommandExecutor</code></li>
-<li>Command registration functions (to be added)</li>
-<li>Extension command proxy logic</li>
-</ul>
-</div></details><h2 id="enums" class="section-header">Enums<a href="#enums" class="anchor">§</a></h2><dl class="item-table"><dt><a class="enum" href="enum.CommandHandler.html" title="enum Mountain::Environment::CommandProvider::CommandHandler">Command<wbr>Handler</a></dt><dd>An enum representing the different ways a command can be handled.</dd></dl></section></div></main></body></html>
+<p>VS Code reference: <code>vs/platform/commands/common/commands.ts</code>,
+<code>vs/workbench/services/commands/common/commandService.ts</code>.</p>
+</div></details><h2 id="enums" class="section-header">Enums<a href="#enums" class="anchor">§</a></h2><dl class="item-table"><dt><a class="enum" href="enum.CommandHandler.html" title="enum Mountain::Environment::CommandProvider::CommandHandler">Command<wbr>Handler</a></dt><dd>An enum representing the different ways a command can be handled.</dd></dl><h2 id="functions" class="section-header">Functions<a href="#functions" class="anchor">§</a></h2><dl class="item-table"><dt><a class="fn" href="fn.LookupCommandContributingExtension.html" title="fn Mountain::Environment::CommandProvider::LookupCommandContributingExtension">Lookup<wbr>Command<wbr>Contributing<wbr>Extension</a><span title="Restricted Visibility">&nbsp;🔒</span> </dt><dd>Return <code>true</code> when some scanned extension declares
+<code>onCommand:&lt;CommandIdentifier&gt;</code> as one of its activation events. Used
+by the lazy-activation fallback in <code>ExecuteCommand</code> - without this
+check we’d fire an <code>$activateByEvent("onCommand:X")</code> for every
+unknown command, which would cause Cocoon to log “no extension
+matching event” for every typo. Scans the cached registry; no IPC.</dd></dl></section></div></main></body></html>

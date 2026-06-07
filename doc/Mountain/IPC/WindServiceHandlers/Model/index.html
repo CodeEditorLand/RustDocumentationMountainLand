@@ -1,0 +1,41 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Text Model registry + TextFile handlers"><title>Mountain::IPC::WindServiceHandlers::Model - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../../../../" data-static-root-path="../../../../static.files/" data-current-crate="Mountain" data-themes="" data-resource-suffix="" data-rustdoc-version="1.98.0-nightly (cced03bfd 2026-05-28)" data-channel="nightly" data-search-js="search-fd9372ac.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../../static.files/storage-41dd4d93.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../../static.files/main-fcd733ba.js"></script><noscript><link rel="stylesheet" href="../../../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module Model</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../../Mountain/index.html">Mountain</a><span class="version">0.0.1</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module Model</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#text-model-registry--textfile-handlers" title="Text Model registry + TextFile handlers">Text Model registry + TextFile handlers</a></li></ul><h3><a href="#modules">Module Items</a></h3><ul class="block"><li><a href="#modules" title="Modules">Modules</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In Mountain::<wbr>IPC::<wbr>Wind<wbr>Service<wbr>Handlers</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../../index.html">Mountain</a>::<wbr><a href="../../index.html">IPC</a>::<wbr><a href="../index.html">WindServiceHandlers</a></div><h1>Module <span>Model</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../../src/Mountain/IPC/WindServiceHandlers/Model.rs.html#1-32">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="text-model-registry--textfile-handlers"><a class="doc-anchor" href="#text-model-registry--textfile-handlers">§</a>Text Model registry + TextFile handlers</h2>
+<p>Two related responsibilities sharing the same dispatcher
+family:</p>
+<ul>
+<li><code>Model*</code> - Monaco-side text model registry. Mountain owns
+<code>ApplicationState.Feature.Documents</code>; Wind reads/writes through these
+handlers so the document state survives a webview reload.</li>
+<li><code>Textfile*</code> - disk-only paths that bypass the registry. Used for tooling
+reads (settings, manifests) and for the actual save round-trip.</li>
+</ul>
+<p>Layout (one export per file, file name = identity):</p>
+<ul>
+<li><code>ModelOpen::ModelOpen</code>, <code>ModelClose::ModelClose</code>, <code>ModelGet::ModelGet</code>,
+<code>ModelGetAll::ModelGetAll</code>, <code>ModelUpdateContent::ModelUpdateContent</code>.</li>
+<li><code>TextfileRead::TextfileRead</code>, <code>TextfileWrite::TextfileWrite</code>,
+<code>TextfileSave::TextfileSave</code>.</li>
+</ul>
+</div></details><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="ModelClose/index.html" title="mod Mountain::IPC::WindServiceHandlers::Model::ModelClose">Model<wbr>Close</a></dt><dd>Close a text model. Drops the entry from
+<code>ApplicationState.Feature.Documents</code>. Idempotent - closing
+an already-closed URI is a no-op.</dd><dt><a class="mod" href="ModelGet/index.html" title="mod Mountain::IPC::WindServiceHandlers::Model::ModelGet">Model<wbr>Get</a></dt><dd>Snapshot a single open text model. Returns
+<code>{ uri, content, version, languageId }</code> or <code>null</code> when the
+URI isn’t currently open. <code>content</code> is rejoined from
+<code>Lines</code> using the document’s EOL so the wire shape matches
+VS Code’s <code>TextDocument.getText()</code>.</dd><dt><a class="mod" href="ModelGetAll/index.html" title="mod Mountain::IPC::WindServiceHandlers::Model::ModelGetAll">Model<wbr>GetAll</a></dt><dd>Bulk snapshot of every open text model. Used by Wind on
+workbench restore to repopulate the Monaco model registry
+without per-tab <code>ModelOpen</code> round-trips.</dd><dt><a class="mod" href="ModelOpen/index.html" title="mod Mountain::IPC::WindServiceHandlers::Model::ModelOpen">Model<wbr>Open</a></dt><dd>Open a text model: read content from disk, derive language
+ID from the extension, register the resulting
+<code>DocumentStateDTO</code> in <code>ApplicationState.Feature.Documents</code>,
+and return <code>{ uri, content, version, languageId }</code> to Wind.</dd><dt><a class="mod" href="ModelUpdateContent/index.html" title="mod Mountain::IPC::WindServiceHandlers::Model::ModelUpdateContent">Model<wbr>Update<wbr>Content</a></dt><dd>Replace an open model’s content. Increments <code>Version</code>,
+recomputes <code>Lines</code>, marks <code>IsDirty=true</code>. Mirrors VS Code’s
+<code>TextDocument.update(...)</code> semantics - the Monaco model
+observers see a single coherent edit, not partial state.</dd><dt><a class="mod" href="TextfileRead/index.html" title="mod Mountain::IPC::WindServiceHandlers::Model::TextfileRead">Textfile<wbr>Read</a></dt><dd>Read a text file from disk verbatim. Distinct from
+<code>ModelOpen</code> - this returns the bytes without registering a
+<code>DocumentStateDTO</code>. Used by tooling paths that want raw
+content (e.g. import resolvers, settings inspectors).</dd><dt><a class="mod" href="TextfileSave/index.html" title="mod Mountain::IPC::WindServiceHandlers::Model::TextfileSave">Textfile<wbr>Save</a></dt><dd>Save-intent hint from Wind. Actual disk write happens via <code>TextfileWrite</code>.
+Returns an <code>IStat</code>-shaped object (mtime/size) so the workbench’s
+<code>TextFileEditorModel</code> can update its etag cache and clear the dirty dot
+without a spurious “file changed on disk” conflict on the next read.</dd><dt><a class="mod" href="TextfileWrite/index.html" title="mod Mountain::IPC::WindServiceHandlers::Model::TextfileWrite">Textfile<wbr>Write</a></dt><dd>Write text to a file on disk. Counterpart to <code>TextfileRead</code>;
+does not touch the document registry. After a successful disk
+write, fires <code>$acceptModelSaved</code> to Cocoon so extensions
+receive <code>onDidSaveTextDocument</code> (T1.4).</dd></dl></section></div></main></body></html>

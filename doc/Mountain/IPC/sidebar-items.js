@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["AdvancedFeatures","Common","ConfigurationBridge","Connection","Encryption","Enhanced","Message","Permission","Security","StatusReporter","TauriIPCServer_Old","WindAdvancedSync","WindAirCommands","WindServiceAdapters","WindServiceHandlers"]};
+window.SIDEBAR_ITEMS = {"mod":["AdvancedFeatures","Common","ConfigurationBridge","DevLog","SkyEmit","StatusReporter","TauriIPCServer_Old","UriComponents","WindAdvancedSync","WindServiceAdapters","WindServiceHandlers"]};

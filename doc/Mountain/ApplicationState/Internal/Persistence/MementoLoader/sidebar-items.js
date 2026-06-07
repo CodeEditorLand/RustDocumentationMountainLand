@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["LoadInitialMementoFromDisk","LoadMementoWithRecovery","attempt_memento_recovery","create_corrupted_backup"]};
+window.SIDEBAR_ITEMS = {"mod":["AttemptMementoRecovery","CreateCorruptedBackup","LoadInitialMementoFromDisk","LoadMementoWithRecovery"]};
